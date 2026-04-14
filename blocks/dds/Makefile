@@ -7,7 +7,9 @@ PYTHON   ?= python3
 YOSYS    ?= yosys
 
 # ── PDK  ──────────────────
-PDK_ROOT   ?= /headless/QucsWorkspace/IHP-Open-PDK
+# Default: ciel install.  Override with  make PDK_ROOT=/foss/pdks  (IHP Docker)
+#                                    or  export PDK_ROOT=/your/path
+PDK_ROOT   ?= $(HOME)/.ciel
 SCL        ?= gf180mcu_fd_sc_mcu9t5v0
 CORNER     ?= tt_025C_3v30
 LIB_FILE   = $(PDK_ROOT)/gf180mcuD/libs.ref/$(SCL)/lib/$(SCL)__$(CORNER).lib
@@ -52,7 +54,8 @@ LUT_SCRIPT = scripts/gen_sine_lut.py
 SYN_NET    = $(SYN_DIR)/dds_top_syn.v
 SYN_SCRIPT = $(SYN_DIR)/synth.ys
 
-STA        ?= sta
+# STA tool: use standalone 'sta' if found, else fall back to 'openroad'
+STA        ?= $(shell command -v sta >/dev/null 2>&1 && echo sta || echo openroad)
 OPENROAD   ?= openroad
 KLAYOUT    ?= klayout
 CLK_PERIOD ?= 3.2
@@ -191,8 +194,11 @@ $(SYN_NET): $(RTL_ALL) $(LUT_HEX) $(SYN_SCRIPT)
 
 # ── STA ──────────────────────────────────────────────────────
 
+# STA flags: standalone sta accepts -no_splash, openroad does not
+STA_FLAGS  = -exit $(if $(filter sta,$(notdir $(STA))),-no_splash,)
+
 sta: $(SYN_NET) $(STA_SCRIPT)
-	$(STA) -exit -no_splash $(STA_SCRIPT)
+	$(STA) $(STA_FLAGS) $(STA_SCRIPT)
 
 $(STA_SCRIPT): | $(SYN_NET)
 	@echo "read_liberty $(LIB_FILE)"                          >  $@
