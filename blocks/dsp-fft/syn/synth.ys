@@ -1,8 +1,0 @@
-read_verilog -sv src/fft.sv src/fft_wrapper.sv src/stage.sv src/r2.sv src/rotator.sv src/triv_rotator.sv src/twiddle_rom.sv src/buffer.sv
-hierarchy -top fft_wrapper -check
-proc; opt; memory; opt
-techmap; opt
-dfflibmap -liberty /usr/share/pdk//gf180mcuD/libs.ref/gf180mcu_fd_sc_mcu9t5v0/lib/gf180mcu_fd_sc_mcu9t5v0__tt_025C_3v30.lib
-abc -liberty /usr/share/pdk//gf180mcuD/libs.ref/gf180mcu_fd_sc_mcu9t5v0/lib/gf180mcu_fd_sc_mcu9t5v0__tt_025C_3v30.lib -D 3200
-clean
-write_verilog syn/fft_syn.v
