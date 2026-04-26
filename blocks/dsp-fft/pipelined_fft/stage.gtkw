@@ -1,0 +1,61 @@
+[*]
+[*] GTKWave Analyzer v4.0.0-prealpha (a6aae77) (w)1999-2022 BSI
+[*] Tue Mar 24 05:19:06 2026
+[*]
+[dumpfile] "/foss/designs/pipelined_fft/testbench.vcd"
+[dumpfile_mtime] "Tue Mar 24 05:16:28 2026"
+[dumpfile_size] 51509
+[savefile] "/foss/designs/pipelined_fft/stage.gtkw"
+[timestart] 0
+[size] 1427 600
+[pos] -1 -1
+*-18.039255 185000 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+[markername] AA
+[markername] BB
+[markername] CC
+[markername] DD
+[markername] EE
+[markername] FF
+[markername] GG
+[markername] HH
+[markername] II
+[markername] JJ
+[markername] KK
+[markername] LL
+[markername] MM
+[markername] NN
+[markername] OO
+[markername] PP
+[markername] QQ
+[markername] RR
+[markername] SS
+[markername] TT
+[markername] UU
+[markername] VV
+[markername] WW
+[markername] XX
+[markername] YY
+[markername] ZZ
+[treeopen] tb_stage.
+[treeopen] tb_stage.DUT.
+[treeopen] tb_stage.DUT.genblk1.
+[sst_width] 297
+[signals_width] 396
+[sst_expanded] 1
+[sst_vpaned_height] 198
+@28
+tb_stage.DUT.clk
+tb_stage.DUT.rst
+tb_stage.DUT.mode
+@22
+tb_stage.DUT.in[63:0]
+tb_stage.DUT.out[63:0]
+tb_stage.DUT.bfu_out[63:0]
+tb_stage.DUT.twiddle[63:0]
+tb_stage.DUT.addr[7:0]
+@28
+tb_stage.DUT.sel
+@23
+tb_stage.DUT.val[63:0]
+[pattern_trace] 1
+[pattern_trace] 0
