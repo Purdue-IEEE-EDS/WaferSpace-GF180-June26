@@ -7,32 +7,32 @@ module buffer #(
 )(
     input  logic clk,
     input  logic rst,
+
     input  logic signed [2*BITS-1:0] in_data,
     output logic signed [2*BITS-1:0] out_data
 );
 
-    localparam int BUFFER_SIZE = (1 << (STAGES - CURR_STAGE));
+    localparam BUFF_BITS   = STAGES - CURR_STAGE;
+    localparam BUFFER_SIZE  = (BUFF_BITS <= 0) ? 1 : (1 << BUFF_BITS);
 
-    logic signed [2*BITS-1:0] mem [0:BUFFER_SIZE-1];
+    logic signed [2*BITS-1:0] buff_reg [0:BUFFER_SIZE-1];
 
     integer i;
 
-    always_ff @(posedge clk) begin
-        if (!rst) begin
-            for (i = 0; i < BUFFER_SIZE; i++)
-                mem[i] <= '0;
-        end else begin
-            mem[0] <= in_data;
-            for (i = 1; i < BUFFER_SIZE; i++)
-                mem[i] <= mem[i-1];
-        end
-    end
+    assign out_data = buff_reg[BUFFER_SIZE-1];
 
     always_ff @(posedge clk) begin
-        if (!rst)
-            out_data <= '0;
-        else
-            out_data <= mem[BUFFER_SIZE-1];
+        if (!rst) begin
+            for (i = 0; i < BUFFER_SIZE; i++) begin
+                buff_reg[i] <= '0;
+            end
+        end
+        else begin
+            for (i = BUFFER_SIZE-1; i > 0; i--) begin
+                buff_reg[i] <= buff_reg[i-1];
+            end
+            buff_reg[0] <= in_data;
+        end
     end
 
 endmodule

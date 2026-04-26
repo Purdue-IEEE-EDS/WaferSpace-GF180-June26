@@ -1,91 +1,87 @@
 `default_nettype none
 
-module stage #(
-    parameter BITS = 16,
-    parameter DECIMAL = 8,
-    parameter STAGES = 3,
-    parameter CURR_STAGE = 1
-)(
-    input  logic clk,
-    input  logic rst,
-    input  logic [STAGES-CURR_STAGE:0] count,
-    input  logic [BITS-1:0] in_real,
-    input  logic [BITS-1:0] in_imag,
-    output logic [BITS-1:0] out_real,
-    output logic [BITS-1:0] out_imag
+module stage #(parameter BITS = 16, parameter DECIMAL = 8, parameter STAGES=3, parameter CURR_STAGE=1)
+(
+    input logic clk, rst,
+    input logic [STAGES-CURR_STAGE:0] count, 
+    input logic [BITS-1:0] in_real, in_imag, 
+    output logic [BITS-1:0] out_real, out_imag
 );
 
-    logic signed [2*BITS-1:0] in, buf_out;
+    logic [2*BITS-1:0] in;
+    logic [2*BITS-1:0] out;
+    logic [2*BITS-1:0] out_data, in_data, bfu_out;
+    logic [2*BITS-1:0] b_out, a_out, prev_b_out;
+    logic mode;
 
     assign in = {in_real, in_imag};
+    assign out_real = out[2*BITS-1:BITS];
+    assign out_imag = out[BITS-1:0];
 
-    buffer #(
-        .BITS(BITS),
-        .STAGES(STAGES),
-        .CURR_STAGE(CURR_STAGE)
-    ) delay (
-        .clk(clk),
-        .rst(rst),
-        .in_data(in),
-        .out_data(buf_out)
+    assign mode = (STAGES == CURR_STAGE) ? ~(count >> (STAGES-CURR_STAGE)): count >> (STAGES-CURR_STAGE);
+    //assign mode = count >> (STAGES-CURR_STAGE);
+
+    buffer #(.BITS(BITS), .STAGES(STAGES), .CURR_STAGE(CURR_STAGE))
+    delay (
+        .clk, .rst,
+        .in_data,
+        .out_data
     );
 
-    logic signed [2*BITS-1:0] bf_a, bf_b;
-
-    r2 #(.BITS(BITS)) butterfly (
-        .clk(clk),
-        .rst(rst),
-        .a_in(buf_out),
-        .b_in(in),
-        .a_out(bf_a),
-        .b_out(bf_b)
+    r2 #(.BITS(BITS), .DECIMAL(DECIMAL))
+    butterfly (
+        .clk, .rst,
+        .a_in(out_data), .b_in(in),
+        .a_out, .b_out
     );
-
-    logic signed [2*BITS-1:0] bf_reg;
 
     always_ff @(posedge clk) begin
-        if (!rst)
-            bf_reg <= '0;
-        else
-            bf_reg <= bf_a;   // selected path pre-multiplier stage
+        if (!rst) begin 
+            bfu_out <= '0;
+        end
+        else begin 
+            if (mode == 1'b1) begin
+                bfu_out <= a_out;
+            end else begin
+                bfu_out <= out_data;
+            end
+        end
     end
 
-    logic signed [2*BITS-1:0] rot_out;
-    logic signed [2*BITS-1:0] twiddle;
+    always_comb begin 
+        if (mode == 1'b1) begin
+            in_data = b_out; 
+        end else begin
+            in_data = in; 
+        end
+    end
 
-    logic [7:0] addr;
-    assign addr = (count) << (CURR_STAGE-1);
+    logic sel;
+    logic [2*BITS-1:0] twiddle, val;
+    logic [7:0] addr; // Specific to N = 512
+    localparam DELAY = (1 << (STAGES-CURR_STAGE)) + 4;
 
-    twiddle_rom twid_rom (
-        .clk(clk),
-        .rst(rst),
-        .address(addr),
-        .real_out(twiddle[2*BITS-1:BITS]),
-        .imag_out(twiddle[BITS-1:0])
-    );
-
-
-    rotator #(.BITS(32), .DECIMAL(12)) rot (
-        .clk(clk),
-        .rst(rst),
-        .data_in(bf_reg),
-        .twiddle(twiddle),
-        .data_out(rot_out)
-    );
-
-    logic mode;
-    assign mode = count[STAGES-CURR_STAGE];
-
-    logic signed [2*BITS-1:0] stage_out;
-
+    assign addr = (count)<<(CURR_STAGE-1); 
     always_ff @(posedge clk) begin
-        if (!rst)
-            stage_out <= '0;
-        else
-            stage_out <= mode ? rot_out : bf_b;
+        if (!rst) sel <= 1'b1;
+        else sel <= (count) >> (STAGES-CURR_STAGE) == 1'b1;
+    end
+    assign val = sel ? 1'b1 << (BITS + DECIMAL) : twiddle; //twiddle multiplier is 1.
+
+    logic rot_en;
+    if (STAGES-CURR_STAGE == 1'b1) begin
+        assign rot_en = count == 2'h2;
+    end else begin
+        assign rot_en = 1'b0;
     end
 
-    assign out_real = stage_out[2*BITS-1:BITS];
-    assign out_imag = stage_out[BITS-1:0];
-
+    generate
+        if (STAGES == CURR_STAGE) assign out = bfu_out;
+        else if (STAGES-CURR_STAGE == 1'b1) begin
+            triv_rotator #(.BITS(32), .DECIMAL(12)) triv_rot(.data_in(bfu_out), .rot_en(rot_en), .data_out(out));
+        end else begin
+            twiddle_rom twid_rom(.clk, .rst, .address(addr), .real_out(twiddle[2*BITS-1:BITS]), .imag_out(twiddle[BITS-1:0]));
+            rotator #(.BITS(32), .DECIMAL(12)) rot(.clk, .rst, .data_in(bfu_out), .twiddle(val), .data_out(out));
+        end
+    endgenerate
 endmodule
