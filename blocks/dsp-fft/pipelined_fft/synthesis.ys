@@ -1,0 +1,34 @@
+# synthesis.ys
+# Complete generic synthesis flow
+
+# 1. Read RTL
+read_verilog -sv src/fft_wrapper.sv
+read_verilog -sv src/fft.sv
+read_verilog -sv src/rotator.sv
+read_verilog -sv src/triv_rotator.sv
+read_verilog -sv src/stage.sv
+read_verilog -sv src/r2.sv
+read_verilog -sv src/buffer.sv
+read_verilog -sv src/twiddle_rom.sv
+
+# 2. Elaborate hierarchy
+hierarchy -check -top fft
+
+# 3. High-level synthesis
+proc          # Convert behavioral to structural
+fsm           # Optimize FSMs
+memory        # Handle memories
+
+# 4. Optimize
+opt           # First optimization pass
+opt           # Second pass (often finds more)
+
+# 5. Generate visual output
+show -format png -prefix synth_fft fft
+
+# 6. Statistics
+stat
+
+# 7. Write output
+write_verilog -noattr src/netlist.v
+
