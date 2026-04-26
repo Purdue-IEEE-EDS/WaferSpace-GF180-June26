@@ -10,7 +10,7 @@ module tb_fft();
         $readmemh("data.mem", wave);
     end
 
-    fft #(.BITS(32), .DECIMAL(12))
+    fft_wrapper
     DUT (
         .clk, .rst,
         .in_real, .in_imag,
