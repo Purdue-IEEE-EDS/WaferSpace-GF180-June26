@@ -1,0 +1,46 @@
+read_liberty /foss/pdks/gf180mcuD/libs.ref/gf180mcu_fd_sc_mcu9t5v0/lib/gf180mcu_fd_sc_mcu9t5v0__tt_025C_3v30.lib
+read_verilog syn/fft_syn.v
+link_design dds_top
+create_clock -name clk -period 3.2 [get_ports clk]
+create_clock -name sclk -period 20.0 [get_ports sclk]
+create_clock -name csn_clk -period 1000.0 [get_ports csn]
+
+# CDC false paths — crossing handled by sync_edge and io_update protocol
+set_false_path -from [get_clocks sclk]    -to [get_clocks clk]
+set_false_path -from [get_clocks clk]     -to [get_clocks sclk]
+set_false_path -from [get_clocks csn_clk] -to [get_clocks clk]
+set_false_path -from [get_clocks csn_clk] -to [get_clocks sclk]
+set_false_path -from [get_clocks sclk]    -to [get_clocks csn_clk]
+
+puts "
+=== WORST PATH (max) ==="
+report_checks -path_delay max -fields {fanout capacitance slew} -digits 3
+
+puts "
+=== WORST PATH (min / hold) ==="
+report_checks -path_delay min -digits 3
+
+puts "
+=== freq_ctrl ==="
+report_checks -path_delay max -through [get_cells u_freq/*] -fields {fanout capacitance slew} -digits 3
+
+puts "
+=== seg_timer (inside freq_ctrl) ==="
+report_checks -path_delay max -through [get_cells u_freq/u_timer/*] -fields {fanout capacitance slew} -digits 3
+
+puts "
+=== phase_accum ==="
+report_checks -path_delay max -through [get_cells u_accum/*] -fields {fanout capacitance slew} -digits 3
+
+puts "
+=== datapath ==="
+report_checks -path_delay max -through [get_cells u_dp/*] -fields {fanout capacitance slew} -digits 3
+
+puts "
+=== sine_rom ==="
+report_checks -path_delay max -through [get_cells u_dp/u_rom/*] -fields {fanout capacitance slew} -digits 3
+
+puts "
+=== SUMMARY ==="
+report_tns
+report_wns
