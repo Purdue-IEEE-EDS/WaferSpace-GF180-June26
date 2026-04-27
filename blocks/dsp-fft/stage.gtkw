@@ -1,0 +1,31 @@
+[*]
+[*] GTKWave Analyzer v4.0.0-prealpha (8ba24ab) (w)1999-2022 BSI
+[*] Mon Apr 27 18:45:15 2026
+[*]
+[dumpfile] "/foss/designs/WaferSpace-GF180-June26/blocks/dsp-fft/sim/testbench.vcd"
+[dumpfile_mtime] "Mon Apr 27 18:43:48 2026"
+[dumpfile_size] 60645
+[savefile] "/foss/designs/WaferSpace-GF180-June26/blocks/dsp-fft/stage.gtkw"
+[timestart] 0
+[size] 1427 600
+[pos] -1 -1
+*-14.512059 87000 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+[treeopen] tb_stage.
+[sst_width] 297
+[signals_width] 142
+[sst_expanded] 1
+[sst_vpaned_height] 149
+@28
+tb_stage.DUT.clk
+tb_stage.DUT.in_valid
+@22
+tb_stage.DUT.in_imag[15:0]
+tb_stage.DUT.in_real[15:0]
+@28
+tb_stage.DUT.out_valid
+@23
+tb_stage.DUT.out_imag[15:0]
+@22
+tb_stage.DUT.out_real[15:0]
+[pattern_trace] 1
+[pattern_trace] 0
