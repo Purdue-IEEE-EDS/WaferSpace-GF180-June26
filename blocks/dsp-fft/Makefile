@@ -21,6 +21,8 @@ CELL_LEF = $(LIB_DIR)/lef/$(SCL).lef
 CELL_VLOG = $(LIB_DIR)/verilog/primitives.v \
             $(LIB_DIR)/verilog/$(SCL).v
 
+SITE_NAME  ?= GF018hv5v_green_sc9
+
 CLK_PERIOD ?= 3.2
 CLK_PS     ?= 3200
 
@@ -210,32 +212,85 @@ sim_syn: $(SYN_NET)
 # PNR (OpenROAD)
 # ============================================================
 
-$(PNR_SDC):
-	mkdir -p $(PNR_DIR)
-	echo "create_clock -period 3.2 [get_ports clk]" > $@
+PNR_SCRIPT = $(SYN_DIR)/pnr.tcl
+PNR_SDC    = $(SYN_DIR)/pnr.sdc
+PNR_DEF    = $(SYN_DIR)/dds_top_pnr.def
+PNR_GDS    = $(SYN_DIR)/dds_top.gds
 
-$(PNR_SCRIPT): $(SYN_NET) $(PNR_SDC)
-	mkdir -p $(PNR_DIR)
-	echo "read_lef $(TECH_LEF)" > $@
-	echo "read_lef $(CELL_LEF)" >> $@
-	echo "read_liberty $(LIB_FILE)" >> $@
-	echo "read_verilog $(SYN_NET)" >> $@
-	echo "link_design $(TOP)" >> $@
-	echo "read_sdc $(PNR_SDC)" >> $@
-	echo "initialize_floorplan -utilization 40 -aspect_ratio 1.0" >> $@
-	echo "global_placement" >> $@
-	echo "detailed_placement" >> $@
-	echo "clock_tree_synthesis" >> $@
-	echo "global_route" >> $@
-	echo "detailed_route" >> $@
-	echo "write_def $(PNR_DEF)" >> $@
-	echo "write_verilog $(PNR_DIR)/fft_pnr.v" >> $@
-
-$(PNR_DEF): $(SYN_NET) $(PNR_SCRIPT)
-	mkdir -p $(PNR_DIR)
-	$(OPENROAD) $(PNR_SCRIPT)
 
 pnr: $(PNR_DEF)
+
+$(PNR_SDC): | $(SYN_DIR)
+	@echo "create_clock -name clk -period $(CLK_PERIOD) [get_ports clk]"   >  $@
+	@echo "set_input_delay  0.1 -clock clk [get_ports {rst}]" >> $@
+	@echo "set_max_fanout 16 [current_design]"                             >> $@
+	@echo "set_max_transition 0.3 [current_design]"                        >> $@
+
+$(PNR_SCRIPT): | $(SYN_DIR)
+	@echo "read_lef $(TECH_LEF)"                                           >  $@
+	@echo "read_lef $(CELL_LEF)"                                           >> $@
+	@echo "read_liberty $(LIB_FILE)"                                       >> $@
+	@echo "read_verilog $(SYN_NET)"                                        >> $@
+	@echo "link_design $(TOP)"                                            >> $@
+	@echo "read_sdc $(PNR_SDC)"                                            >> $@
+	@echo ""                                                               >> $@
+	@echo "initialize_floorplan -utilization 35 -aspect_ratio 1.0 -core_space 10 -site $(SITE_NAME)" >> $@
+	@echo ""                                                               >> $@
+	@echo "make_tracks Metal1 -x_offset 0.24 -x_pitch 0.48 -y_offset 0.28 -y_pitch 0.56" >> $@
+	@echo "make_tracks Metal2 -x_offset 0.28 -x_pitch 0.56 -y_offset 0.24 -y_pitch 0.48" >> $@
+	@echo "make_tracks Metal3 -x_offset 0.28 -x_pitch 0.56 -y_offset 0.28 -y_pitch 0.56" >> $@
+	@echo "make_tracks Metal4 -x_offset 0.28 -x_pitch 0.56 -y_offset 0.28 -y_pitch 0.56" >> $@
+	@echo "make_tracks Metal5 -x_offset 0.28 -x_pitch 0.56 -y_offset 0.28 -y_pitch 0.56" >> $@
+	@echo ""                                                               >> $@
+	@echo "set_routing_layers -signal Metal1-Metal5"                       >> $@
+	@echo "set_wire_rc -signal -layer Metal3"                              >> $@
+	@echo "set_wire_rc -clock -layer Metal4"                               >> $@
+	@echo ""                                                               >> $@
+	@echo "place_pins -hor_layers Metal3 -ver_layers Metal2"               >> $@
+	@echo ""                                                               >> $@
+	@echo "add_global_connection -net VDD -pin_pattern VDD -power"         >> $@
+	@echo "add_global_connection -net VSS -pin_pattern VSS -ground"        >> $@
+	@echo "set_voltage_domain -power VDD -ground VSS"                      >> $@
+	@echo "define_pdn_grid -name core -pins {Metal5}"                      >> $@
+	@echo "add_pdn_stripe -grid core -layer Metal1 -width 0.48 -followpins" >> $@
+	@echo "add_pdn_stripe -grid core -layer Metal4 -width 1.6 -spacing 1.6 -pitch 40.0 -offset 2.0" >> $@
+	@echo "add_pdn_stripe -grid core -layer Metal5 -width 1.6 -spacing 1.6 -pitch 40.0 -offset 2.0" >> $@
+	@echo "add_pdn_connect -layers {Metal1 Metal4}"                        >> $@
+	@echo "add_pdn_connect -layers {Metal4 Metal5}"                        >> $@
+	@echo "pdngen"                                                         >> $@
+	@echo ""                                                               >> $@
+	@echo "global_placement -density 0.45 -pad_left 2 -pad_right 2"       >> $@
+	@echo "estimate_parasitics -placement"                                 >> $@
+	@echo "repair_design"                                                  >> $@
+	@echo "detailed_placement"                                             >> $@
+	@echo "check_placement"                                                >> $@
+	@echo ""                                                               >> $@
+	@echo "clock_tree_synthesis -root_buf $(SCL)__clkbuf_8 -buf_list {$(SCL)__clkbuf_2 $(SCL)__clkbuf_4 $(SCL)__clkbuf_8} -sink_clustering_enable" >> $@
+	@echo "set_propagated_clock [all_clocks]"                              >> $@
+	@echo "repair_clock_nets"                                              >> $@
+	@echo "detailed_placement"                                             >> $@
+	@echo ""                                                               >> $@
+	@echo "estimate_parasitics -placement"                                 >> $@
+	@echo "repair_timing -setup -verbose"                                  >> $@
+	@echo "repair_timing -hold -verbose"                                   >> $@
+	@echo "detailed_placement"                                             >> $@
+	@echo ""                                                               >> $@
+	@echo "global_route -verbose -allow_congestion"                        >> $@
+	@echo "detailed_route -output_drc $(SYN_DIR)/route_drc.rpt -bottom_routing_layer Metal1 -top_routing_layer Metal5" >> $@
+	@echo ""                                                               >> $@
+	@echo "estimate_parasitics -global_routing"                            >> $@
+	@echo "report_checks -path_delay max -slack_max -0.0 -group_count 5"  >> $@
+	@echo "report_checks -path_delay min -slack_max -0.0 -group_count 5"  >> $@
+	@echo "report_tns"                                                     >> $@
+	@echo "report_wns"                                                     >> $@
+	@echo "report_clock_skew"                                              >> $@
+	@echo "report_design_area"                                             >> $@
+	@echo ""                                                               >> $@
+	@echo "write_def $(PNR_DEF)"                                           >> $@
+	@echo "write_verilog $(SYN_DIR)/fft_pnr.v"                        >> $@
+
+$(PNR_DEF): $(SYN_NET) $(PNR_SDC) $(PNR_SCRIPT)
+	$(OPENROAD) $(PNR_SCRIPT) 2>&1 | tee $(SYN_DIR)/pnr.log
 
 # ============================================================
 # POST-PNR STA
