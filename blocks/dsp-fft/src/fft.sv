@@ -32,7 +32,7 @@ module fft
                 .BITS(16), 
                 .STAGES(8), 
                 .CURR_STAGE((i+1)))
-            stage (
+            s (
                 .clk(clk), .rst(rst),
                 .in_valid(valid[i]), 
                 .in_real(in_re[i]), .in_imag(in_im[i]), 
