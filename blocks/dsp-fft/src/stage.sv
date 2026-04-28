@@ -71,8 +71,14 @@ generate
             assign out_valid = valid_pipe[LATENCY-1];
     end 
     else if (STAGES == CURR_STAGE + 1) begin 
+        localparam BUFF_BITS   = STAGES - CURR_STAGE;
+        localparam BUFF_SIZE  = (1 << BUFF_BITS);
 
+        logic signed [2*BITS-1:0] buff_reg [0:BUFF_SIZE-1];
         logic signed [BITS-1:0] a_in_real, a_in_imag, b_in_real, b_in_imag, b_out_real, b_out_imag, rot_re, rot_im; 
+            
+        assign a_in_real = buff_reg[cnt[CNT_BITS-2:0]][2*BITS-1:BITS];
+        assign a_in_imag = buff_reg[cnt[CNT_BITS-2:0]][BITS-1:0];
 
         logic mode, rot_en; 
 
@@ -92,12 +98,12 @@ generate
 
         always_ff @(posedge clk, negedge rst) begin
             if (!rst) begin
-                a_in_real <= '0;
-                a_in_imag <= '0;
+                for (int i = 0; i < BUFF_SIZE; i++) begin
+                    buff_reg[i] <= '0;
+                end
             end
             else begin
-                a_in_real <= b_out_real;
-                a_in_imag <= b_out_imag;
+                buff_reg[cnt_d[CNT_BITS-2:0]] <= {b_out_real, b_out_imag}; 
             end
         end
         r2 #(
@@ -137,10 +143,10 @@ generate
         localparam int ROM_DEPTH = 1 << (STAGES - CURR_STAGE);
 
         logic signed [2*BITS-1:0] buff_reg [0:BUFF_SIZE-1];
-        logic signed [BITS-1:0] a_in_real, a_in_imag, b_out_real, b_out_imag, rot_re, rot_im, p_rot_re, p_rot_im, tw_re, tw_im, b_in_real, b_in_imag, b_in_real_d, b_in_imag_d; 
+        logic signed [BITS-1:0] a_in_real, a_in_imag, b_out_real, b_out_imag, rot_re, rot_im, p_rot_re, p_rot_im, tw_re, tw_im, b_in_real, b_in_imag; 
 
-        // assign a_in_real = buff_reg[cnt[CNT_BITS-2:0]][2*BITS-1:BITS];
-        // assign a_in_imag = buff_reg[cnt[CNT_BITS-2:0]][BITS-1:0];
+        assign a_in_real = buff_reg[cnt[CNT_BITS-2:0]][2*BITS-1:BITS];
+        assign a_in_imag = buff_reg[cnt[CNT_BITS-2:0]][BITS-1:0];
 
         logic [CNT_BITS-2:0] addr, p_addr; 
         logic en, p_en; 
@@ -151,27 +157,19 @@ generate
                 en <= '0; 
                 p_rot_re <= '0;
                 p_rot_im <= '0; 
-                b_in_real_d <= '0; 
-                b_in_imag_d <= '0;
                 b_in_real <= '0; 
                 b_in_imag <= '0;
                 p_en <= '0; 
                 p_addr <= '0; 
-                a_in_real <= '0;
-                a_in_imag <= '0;
             end else begin 
-                addr <= cnt_d[CNT_BITS-2:0]; 
-                en <= cnt_d[CNT_BITS-1];
+                addr <= cnt[CNT_BITS-2:0]; 
+                en <= cnt[CNT_BITS-1];
                 p_rot_re <= rot_re; 
                 p_rot_im <= rot_im;
-                b_in_real_d <= in_real; 
-                b_in_imag_d <= in_imag;
-                b_in_real <= b_in_real_d; 
-                b_in_imag <= b_in_imag_d;
+                b_in_real <= in_real; 
+                b_in_imag <= in_imag;
                 p_en <= en; 
                 p_addr <= addr; 
-                a_in_real <= buff_reg[cnt[CNT_BITS-2:0]][2*BITS-1:BITS];
-                a_in_imag <= buff_reg[cnt[CNT_BITS-2:0]][BITS-1:0];
             end
         end
 
@@ -213,7 +211,7 @@ generate
                 .tw_im
             );
 
-            localparam LATENCY = ROM_DEPTH + 7; 
+            localparam LATENCY = ROM_DEPTH + 6; 
             logic [LATENCY-1:0] valid_pipe;
 
             always_ff @(posedge clk or negedge rst) begin
