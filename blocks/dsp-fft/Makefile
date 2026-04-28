@@ -41,6 +41,7 @@ RTL = \
 	$(RTL_DIR)/r2.sv \
 	$(RTL_DIR)/rotator.sv \
 	$(RTL_DIR)/triv_rotator.sv \
+	$(RTL_DIR)/ram.sv \
 	$(RTL_DIR)/twiddle_rom.sv 
 
 TB_FFT   = $(TB_DIR)/tb_fft.sv
@@ -81,6 +82,7 @@ $(STAGE_VVP): $(RTL) $(TB_STAGE)
 		$(RTL_DIR)/triv_rotator.sv \
 		$(RTL_DIR)/r2.sv \
 		$(RTL_DIR)/twiddle_rom.sv \
+		$(RTL_DIR)/ram.sv \
 		$(TB_STAGE)
 
 sim_stage: $(STAGE_VVP)

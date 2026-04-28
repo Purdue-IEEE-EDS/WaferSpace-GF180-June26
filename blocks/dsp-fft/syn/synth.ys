@@ -1,5 +1,5 @@
 # ── Read RTL ──
-read_verilog -sv src/fft.sv src/stage.sv src/delay.sv src/r2.sv src/rotator.sv src/triv_rotator.sv src/twiddle_rom.sv 
+read_verilog -sv src/fft.sv src/stage.sv src/delay.sv src/r2.sv src/rotator.sv src/triv_rotator.sv src/ram.sv src/twiddle_rom.sv 
 
 # ── Elaborate hierarchy ──
 hierarchy -top fft -check
