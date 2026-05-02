@@ -15,8 +15,8 @@ module triv_rotator #(parameter BITS = 16, parameter DECIMAL = 8)
             rot_real <= '0;
             rot_imag <= '0;
         end else begin 
-            rot_real <= -2'sd1 * imag_in;
-            rot_imag <= real_in;
+            rot_real <= imag_in;
+            rot_imag <= -2'sd1 * real_in;
         end
     end
 

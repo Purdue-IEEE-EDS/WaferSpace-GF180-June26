@@ -1,0 +1,225 @@
+$date
+	Sat May  2 20:55:03 2026
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ps
+$end
+$scope module tb_mdc_stage $end
+$scope module DUT $end
+$var wire 1 ! clk $end
+$var wire 16 " din_im0 [15:0] $end
+$var wire 16 # din_im1 [15:0] $end
+$var wire 16 $ din_im2 [15:0] $end
+$var wire 16 % din_im3 [15:0] $end
+$var wire 16 & din_re0 [15:0] $end
+$var wire 16 ' din_re1 [15:0] $end
+$var wire 16 ( din_re2 [15:0] $end
+$var wire 16 ) din_re3 [15:0] $end
+$var wire 1 * in_valid $end
+$var wire 1 + rst $end
+$var wire 16 , dout_re3 [15:0] $end
+$var wire 16 - dout_im3 [15:0] $end
+$var wire 16 . bf_out_re3 [15:0] $end
+$var wire 16 / bf_out_re2 [15:0] $end
+$var wire 16 0 bf_out_re1 [15:0] $end
+$var wire 16 1 bf_out_re0 [15:0] $end
+$var wire 16 2 bf_out_im3 [15:0] $end
+$var wire 16 3 bf_out_im2 [15:0] $end
+$var wire 16 4 bf_out_im1 [15:0] $end
+$var wire 16 5 bf_out_im0 [15:0] $end
+$var parameter 32 6 BITS $end
+$var parameter 32 7 CURR_STAGE $end
+$var parameter 32 8 STAGES $end
+$var reg 16 9 dout_im0 [15:0] $end
+$var reg 16 : dout_im1 [15:0] $end
+$var reg 16 ; dout_im2 [15:0] $end
+$var reg 16 < dout_re0 [15:0] $end
+$var reg 16 = dout_re1 [15:0] $end
+$var reg 16 > dout_re2 [15:0] $end
+$var reg 1 ? out_valid $end
+$scope begin genblk1 $end
+$scope module butterfly1 $end
+$var wire 16 @ a_in_imag [15:0] $end
+$var wire 16 A a_in_real [15:0] $end
+$var wire 16 B b_in_imag [15:0] $end
+$var wire 16 C b_in_real [15:0] $end
+$var wire 1 ! clk $end
+$var wire 1 D mode $end
+$var wire 1 + rst $end
+$var parameter 32 E BITS $end
+$var reg 16 F a_out_imag [15:0] $end
+$var reg 16 G a_out_real [15:0] $end
+$var reg 16 H b_out_imag [15:0] $end
+$var reg 16 I b_out_real [15:0] $end
+$var reg 16 J next_a_out_imag [15:0] $end
+$var reg 16 K next_a_out_real [15:0] $end
+$var reg 16 L next_b_out_imag [15:0] $end
+$var reg 16 M next_b_out_real [15:0] $end
+$scope begin next_out_logic $end
+$upscope $end
+$upscope $end
+$scope module butterfly2 $end
+$var wire 16 N a_in_imag [15:0] $end
+$var wire 16 O a_in_real [15:0] $end
+$var wire 16 P b_in_imag [15:0] $end
+$var wire 16 Q b_in_real [15:0] $end
+$var wire 1 ! clk $end
+$var wire 1 R mode $end
+$var wire 1 + rst $end
+$var parameter 32 S BITS $end
+$var reg 16 T a_out_imag [15:0] $end
+$var reg 16 U a_out_real [15:0] $end
+$var reg 16 V b_out_imag [15:0] $end
+$var reg 16 W b_out_real [15:0] $end
+$var reg 16 X next_a_out_imag [15:0] $end
+$var reg 16 Y next_a_out_real [15:0] $end
+$var reg 16 Z next_b_out_imag [15:0] $end
+$var reg 16 [ next_b_out_real [15:0] $end
+$scope begin next_out_logic $end
+$upscope $end
+$upscope $end
+$scope module triv_rot $end
+$var wire 1 ! clk $end
+$var wire 16 \ imag_in [15:0] $end
+$var wire 16 ] real_in [15:0] $end
+$var wire 1 ^ rot_en $end
+$var wire 1 + rst $end
+$var wire 16 _ real_out [15:0] $end
+$var wire 16 ` imag_out [15:0] $end
+$var parameter 32 a BITS $end
+$var parameter 32 b DECIMAL $end
+$var reg 16 c rot_imag [15:0] $end
+$var reg 16 d rot_real [15:0] $end
+$upscope $end
+$upscope $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+$comment Show the parameter values. $end
+$dumpall
+b1000 b
+b10000 a
+b10000 S
+b10000 E
+b1000 8
+b0 7
+b10000 6
+$end
+#0
+$dumpvars
+b0 d
+b0 c
+b0 `
+b0 _
+1^
+b0 ]
+b0 \
+b1111111111111111 [
+b1111111111111111 Z
+b111 Y
+b111 X
+b0 W
+b0 V
+b0 U
+b0 T
+1R
+b100 Q
+b100 P
+b11 O
+b11 N
+b1111111111111111 M
+b1111111111111111 L
+b11 K
+b11 J
+b0 I
+b0 H
+b0 G
+b0 F
+1D
+b10 C
+b10 B
+b1 A
+b1 @
+x?
+b0 >
+b0 =
+b0 <
+b0 ;
+b0 :
+b0 9
+b0 5
+b0 4
+b0 3
+b0 2
+b0 1
+b0 0
+b0 /
+b0 .
+b0 -
+b0 ,
+0+
+1*
+b100 )
+b11 (
+b10 '
+b1 &
+b100 %
+b11 $
+b10 #
+b1 "
+0!
+$end
+#5000
+1!
+#10000
+0!
+#15000
+1!
+#20000
+1+
+0!
+#25000
+b1111111111111111 2
+b1111111111111111 V
+b1111111111111111 \
+b1111111111111111 .
+b1111111111111111 W
+b1111111111111111 ]
+b111 3
+b111 T
+b111 /
+b111 U
+b1111111111111111 4
+b1111111111111111 H
+b1111111111111111 0
+b1111111111111111 I
+b11 5
+b11 F
+b11 1
+b11 G
+1!
+#30000
+0!
+#35000
+b1 -
+b1 `
+b1 c
+b1111111111111111 ,
+b1111111111111111 _
+b1111111111111111 d
+b111 ;
+b1111111111111111 :
+b11 9
+b111 >
+b1111111111111111 =
+b11 <
+1!
+#40000
+0!
+#45000
+1!
+#50000
+0!
