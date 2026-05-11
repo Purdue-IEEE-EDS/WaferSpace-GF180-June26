@@ -23,8 +23,8 @@ CELL_VLOG = $(LIB_DIR)/verilog/primitives.v \
 
 SITE_NAME  ?= GF018hv5v_green_sc9
 
-CLK_PERIOD ?= 3.2
-CLK_PS     ?= 3200
+CLK_PERIOD ?= 6.2
+CLK_PS     ?= 6200
 
 # ---------------- Directories ----------------
 RTL_DIR = src
@@ -36,11 +36,17 @@ PNR_DIR = $(SYN_DIR)/pnr
 # ---------------- RTL ----------------
 RTL = \
 	$(RTL_DIR)/fft.sv \
-	$(RTL_DIR)/stage.sv \
+	$(RTL_DIR)/mdc_stage.sv \
 	$(RTL_DIR)/delay.sv \
 	$(RTL_DIR)/r2.sv \
 	$(RTL_DIR)/rotator.sv \
 	$(RTL_DIR)/triv_rotator.sv \
+	$(RTL_DIR)/adder.sv \
+	$(RTL_DIR)/CLA4.sv \
+	$(RTL_DIR)/full_adder_cla.sv \
+	$(RTL_DIR)/wallace_mult.sv \
+	$(RTL_DIR)/full_adder.sv \
+	$(RTL_DIR)/half_adder.sv \
 	$(RTL_DIR)/twiddle_rom.sv 
 
 TB_FFT   = $(TB_DIR)/tb_fft.sv
@@ -75,12 +81,18 @@ sim_fft: $(FFT_VVP)
 $(STAGE_VVP): $(RTL) $(TB_STAGE)
 	mkdir -p $(SIM_DIR)
 	$(IVERILOG) -g2012 -o $@ \
-		$(RTL_DIR)/stage.sv \
+		$(RTL_DIR)/mdc_stage.sv \
 		$(RTL_DIR)/delay.sv \
 		$(RTL_DIR)/rotator.sv \
 		$(RTL_DIR)/triv_rotator.sv \
 		$(RTL_DIR)/r2.sv \
+		$(RTL_DIR)/adder.sv \
+		$(RTL_DIR)/CLA4.sv \
+		$(RTL_DIR)/full_adder_cla.sv \
 		$(RTL_DIR)/twiddle_rom.sv \
+		$(RTL_DIR)/wallace_mult.sv \
+		$(RTL_DIR)/full_adder.sv \
+		$(RTL_DIR)/half_adder.sv \
 		$(TB_STAGE)
 
 sim_stage: $(STAGE_VVP)
