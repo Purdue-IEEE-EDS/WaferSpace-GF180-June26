@@ -45,8 +45,9 @@ module tb_fft();
         reset_dut;
 
         in_valid = 1'b1;
-        for (int i = 0; i < 512; i++) begin
-            in_real = 16'h10; //(~i[8])<<12;
+        for (int i = 0; i < (1 << 15); i++) begin
+            in_real = ~i;
+            in_imag = i; 
             @(negedge clk);
         end
         

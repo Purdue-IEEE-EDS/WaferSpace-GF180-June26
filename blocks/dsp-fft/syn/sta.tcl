@@ -1,7 +1,7 @@
 read_liberty /foss/pdks/gf180mcuD/libs.ref/gf180mcu_fd_sc_mcu9t5v0/lib/gf180mcu_fd_sc_mcu9t5v0__tt_025C_3v30.lib
 read_verilog syn/fft_syn.v
 link_design fft
-create_clock -name clk -period 3.2 [get_ports clk]
+create_clock -name clk -period 6.2 [get_ports clk]
 
 puts "
 === WORST PATH (max) ==="

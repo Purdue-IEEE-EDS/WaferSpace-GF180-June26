@@ -6,7 +6,7 @@ module tb_stage();
     logic signed [15:0] in_real, in_imag, out_real, out_imag;
 
     int count; 
-    stage #(.BITS(16), .STAGES(8), .CURR_STAGE(8))
+    mdc_stage #(.BITS(16), .STAGES(8), .CURR_STAGE(8))
     DUT (
         .clk, .rst,
         .in_valid, 
