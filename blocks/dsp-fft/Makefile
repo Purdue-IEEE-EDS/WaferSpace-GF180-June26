@@ -47,6 +47,7 @@ RTL = \
 	$(RTL_DIR)/wallace_mult.sv \
 	$(RTL_DIR)/full_adder.sv \
 	$(RTL_DIR)/half_adder.sv \
+	$(RTL_DIR)/carry_save_adder.sv \
 	$(RTL_DIR)/twiddle_rom.sv 
 
 TB_FFT   = $(TB_DIR)/tb_fft.sv
@@ -93,6 +94,7 @@ $(STAGE_VVP): $(RTL) $(TB_STAGE)
 		$(RTL_DIR)/wallace_mult.sv \
 		$(RTL_DIR)/full_adder.sv \
 		$(RTL_DIR)/half_adder.sv \
+		$(RTL_DIR)/carry_save_adder.sv \
 		$(TB_STAGE)
 
 sim_stage: $(STAGE_VVP)
@@ -120,6 +122,7 @@ $(SYN_SCRIPT): $(RTL)
 	@echo ""                                                     >> $@
 	@echo "# ── NO FLATTEN — preserve module boundaries ──"     >> $@
 	@echo "# flatten is intentionally omitted."                  >> $@
+	@echo "flatten fft"                                              >> $@
 	@echo "# seg_timer and kogge_stone must stay hierarchical."  >> $@
 	@echo ""                                                     >> $@
 	@echo "# ── Coarse optimisation ──"                         >> $@
@@ -157,7 +160,7 @@ $(SYN_SCRIPT): $(RTL)
 	@echo "# ── ABC: single pass, timing-driven ──"             >> $@
 	@echo "# -D $(CLK_PS): delay target (ps) = clock period"    >> $@
 	@echo "# No -dff: do NOT retime across register boundaries" >> $@
-	@echo "abc -liberty $(LIB_FILE) -D $(CLK_PS)"               >> $@
+	@echo "abc -liberty $(LIB_FILE) -D $(CLK_PS) "               >> $@
 	@echo ""                                                     >> $@
 	@echo "# ── Final cleanup and stats ──"                     >> $@
 	@echo "opt_clean"                                            >> $@

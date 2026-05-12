@@ -44,24 +44,22 @@ module fft
     logic [15:0] a, b;
     logic [31:0] c;
 
-    always_ff @(posedge clk, negedge rst) begin 
-        if (!rst) begin 
-            a <= '0; 
-            b <= '0; 
-            out_real <= '0; 
-        end else begin 
+    always_ff @(posedge clk) begin 
             a <= in_imag;
             b <= in_real; 
             out_real <= c;
-
-        end
     end
+
+    // multiplier mult (
+    //     .clk, .rst,
+    //     .a, .b, 
+    //     .p(c)
+    // );
 
     wallace_mult #(
      .W(16)
     ) mult(
         .clk,
-        .rst, 
         .a,
         .b,
         .p(c)

@@ -1,5 +1,5 @@
 # ── Read RTL ──
-read_verilog -sv src/fft.sv src/mdc_stage.sv src/delay.sv src/r2.sv src/rotator.sv src/triv_rotator.sv src/adder.sv src/CLA4.sv src/full_adder_cla.sv src/wallace_mult.sv src/full_adder.sv src/half_adder.sv src/twiddle_rom.sv 
+read_verilog -sv src/fft.sv src/mdc_stage.sv src/delay.sv src/r2.sv src/rotator.sv src/triv_rotator.sv src/adder.sv src/CLA4.sv src/full_adder_cla.sv src/wallace_mult.sv src/full_adder.sv src/half_adder.sv src/carry_save_adder.sv src/twiddle_rom.sv 
 
 # ── Elaborate hierarchy ──
 hierarchy -top fft -check
@@ -11,6 +11,7 @@ proc
 
 # ── NO FLATTEN — preserve module boundaries ──
 # flatten is intentionally omitted.
+flatten fft
 # seg_timer and kogge_stone must stay hierarchical.
 
 # ── Coarse optimisation ──
@@ -48,7 +49,7 @@ dfflibmap -liberty /foss/pdks/gf180mcuD/libs.ref/gf180mcu_fd_sc_mcu9t5v0/lib/gf1
 # ── ABC: single pass, timing-driven ──
 # -D 6200: delay target (ps) = clock period
 # No -dff: do NOT retime across register boundaries
-abc -liberty /foss/pdks/gf180mcuD/libs.ref/gf180mcu_fd_sc_mcu9t5v0/lib/gf180mcu_fd_sc_mcu9t5v0__tt_025C_3v30.lib -D 6200
+abc -liberty /foss/pdks/gf180mcuD/libs.ref/gf180mcu_fd_sc_mcu9t5v0/lib/gf180mcu_fd_sc_mcu9t5v0__tt_025C_3v30.lib -D 6200 
 
 # ── Final cleanup and stats ──
 opt_clean
