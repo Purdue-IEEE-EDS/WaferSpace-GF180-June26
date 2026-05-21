@@ -23,8 +23,8 @@ CELL_VLOG = $(LIB_DIR)/verilog/primitives.v \
 
 SITE_NAME  ?= GF018hv5v_green_sc9
 
-CLK_PERIOD ?= 6.2
-CLK_PS     ?= 6200
+CLK_PERIOD ?= 6.25
+CLK_PS     ?= 6250
 
 # ---------------- Directories ----------------
 RTL_DIR = src
@@ -37,25 +37,28 @@ PNR_DIR = $(SYN_DIR)/pnr
 RTL = \
 	$(RTL_DIR)/fft.sv \
 	$(RTL_DIR)/mdc_stage.sv \
-	$(RTL_DIR)/delay.sv \
+	$(RTL_DIR)/mdc_ram_delay.sv \
 	$(RTL_DIR)/r2.sv \
 	$(RTL_DIR)/rotator.sv \
 	$(RTL_DIR)/triv_rotator.sv \
 	$(RTL_DIR)/adder.sv \
 	$(RTL_DIR)/CLA4.sv \
+	$(RTL_DIR)/CLA16.sv \
+	$(RTL_DIR)/CLA32.sv \
 	$(RTL_DIR)/full_adder_cla.sv \
 	$(RTL_DIR)/wallace_mult.sv \
 	$(RTL_DIR)/full_adder.sv \
 	$(RTL_DIR)/half_adder.sv \
 	$(RTL_DIR)/carry_save_adder.sv \
+	$(RTL_DIR)/commutator.sv \
 	$(RTL_DIR)/twiddle_rom.sv 
 
 TB_FFT   = $(TB_DIR)/tb_fft.sv
-TB_STAGE = $(TB_DIR)/tb_stage.sv
+TB_STAGE = $(TB_DIR)/tb_mdc_stage.sv
 
 # ---------------- Outputs ----------------
 FFT_VVP      = $(SIM_DIR)/tb_fft.vvp
-STAGE_VVP    = $(SIM_DIR)/tb_stage.vvp
+STAGE_VVP    = $(SIM_DIR)/tb_mdc_stage.vvp
 SYN_NET      = $(SYN_DIR)/fft_syn.v
 SIM_SYN_VVP  = $(SIM_DIR)/tb_fft_syn.vvp
 
@@ -83,18 +86,21 @@ $(STAGE_VVP): $(RTL) $(TB_STAGE)
 	mkdir -p $(SIM_DIR)
 	$(IVERILOG) -g2012 -o $@ \
 		$(RTL_DIR)/mdc_stage.sv \
-		$(RTL_DIR)/delay.sv \
+		$(RTL_DIR)/mdc_ram_delay.sv \
 		$(RTL_DIR)/rotator.sv \
 		$(RTL_DIR)/triv_rotator.sv \
 		$(RTL_DIR)/r2.sv \
 		$(RTL_DIR)/adder.sv \
 		$(RTL_DIR)/CLA4.sv \
+		$(RTL_DIR)/CLA16.sv \
+		$(RTL_DIR)/CLA32.sv \
 		$(RTL_DIR)/full_adder_cla.sv \
 		$(RTL_DIR)/twiddle_rom.sv \
 		$(RTL_DIR)/wallace_mult.sv \
 		$(RTL_DIR)/full_adder.sv \
 		$(RTL_DIR)/half_adder.sv \
 		$(RTL_DIR)/carry_save_adder.sv \
+		$(RTL_DIR)/commutator.sv \
 		$(TB_STAGE)
 
 sim_stage: $(STAGE_VVP)
@@ -109,7 +115,8 @@ sim: sim_stage sim_fft
 
 $(SYN_SCRIPT): $(RTL)
 	@mkdir -p $(SYN_DIR)
-	@echo "# ── Read RTL ──"                                     >  $@
+	@echo "# ── Read RTL ──"                                     >>  $@
+	@echo "read_liberty -lib $(LIB_FILE)"                                >> $@
 	@echo "read_verilog -sv $(RTL)"                          >> $@
 	@echo ""                                                     >> $@
 	@echo "# ── Elaborate hierarchy ──"                          >> $@
@@ -121,10 +128,9 @@ $(SYN_SCRIPT): $(RTL)
 	@echo "proc"                                                 >> $@
 	@echo ""                                                     >> $@
 	@echo "# ── NO FLATTEN — preserve module boundaries ──"     >> $@
-	@echo "# flatten is intentionally omitted."                  >> $@
-	@echo "flatten fft"                                              >> $@
-	@echo "# seg_timer and kogge_stone must stay hierarchical."  >> $@
+	@echo "# cla must stay hierarchical."  >> $@
 	@echo ""                                                     >> $@
+	@echo "opt_clean"                                            >> $@
 	@echo "# ── Coarse optimisation ──"                         >> $@
 	@echo "opt_expr"                                             >> $@
 	@echo "opt_clean"                                            >> $@
@@ -150,6 +156,7 @@ $(SYN_SCRIPT): $(RTL)
 	@echo "techmap"                                              >> $@
 	@echo "opt -fast"                                            >> $@
 	@echo ""                                                     >> $@
+	@echo "opt_clean"                                            >> $@
 	@echo "# ── Hierarchy check before ABC ──"                  >> $@
 	@echo "# ── Pre-ABC hierarchy ──"                          >> $@
 	@echo "ls"                                                   >> $@
@@ -190,22 +197,10 @@ $(STA_SCRIPT): | $(SYN_NET)
 	@echo "create_clock -name clk -period $(CLK_PERIOD) [get_ports clk]" >> $@
 	@echo ""                                                  >> $@                                                >> $@
 	@echo "puts \"\n=== WORST PATH (max) ===\""               >> $@
-	@echo "report_checks -path_delay max -fields {fanout capacitance slew} -digits 3" >> $@
+	@echo "report_checks -path_delay max -group_count 10 -fields {fanout capacitance slew} -digits 3" >> $@
 	@echo ""                                                  >> $@
 	@echo "puts \"\n=== WORST PATH (min / hold) ===\""        >> $@
-	@echo "report_checks -path_delay min -digits 3"           >> $@
-	@echo ""                                                  >> $@
-	@echo "puts \"\n=== stage ===\""                      >> $@
-	@echo "report_checks -path_delay max -through [get_cells genblk1[0].s/*] -fields {fanout capacitance slew} -digits 3" >> $@
-	@echo ""                                                  >> $@
-	@echo "puts \"\n=== r2 (inside stage) ===\""   >> $@
-	@echo "report_checks -path_delay max -through [get_cells genblk1[0].s/genblk1.genblk1.butterfly/*] -fields {fanout capacitance slew} -digits 3" >> $@
-	@echo ""                                                  >> $@
-	@echo "puts \"\n=== twiddle (inside stage) ===\""   >> $@
-	@echo "report_checks -path_delay max -through [get_cells genblk1[0].s/genblk1.genblk1.tw_rom/*] -fields {fanout capacitance slew} -digits 3" >> $@
-	@echo ""                                                  >> $@
-	@echo "puts \"\n=== rotator (inside stage) ===\""   >> $@
-	@echo "report_checks -path_delay max -through [get_cells genblk1[0].s/genblk1.genblk1.rot/*] -fields {fanout capacitance slew} -digits 3" >> $@
+	@echo "report_checks -path_delay min -digits 3"           >> $@                                               >> $@
 	@echo ""                                                  >> $@
 	@echo "puts \"\n=== SUMMARY ===\""                        >> $@
 	@echo "report_tns"                                        >> $@
