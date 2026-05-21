@@ -3,70 +3,86 @@ module fft
     input  logic clk, rst,
     input logic in_valid,
 
-    input  logic signed [15:0] in_real,
-    input  logic signed [15:0] in_imag,
+    input logic signed [15:0] din_re0, din_re1, din_re2, din_re3,
+    input logic signed [15:0] din_im0, din_im1, din_im2, din_im3, 
 
-    output logic signed [15:0] out_real,
-    output logic signed [15:0] out_imag,
+    output logic signed [15:0] dout_re0, dout_re1, dout_re2, dout_re3,   
+    output logic signed [15:0] dout_im0, dout_im1, dout_im2, dout_im3,
+
     output logic out_valid
 ); 
     
-    // logic [15:0] in_re [0:8];
-    // logic [15:0] in_im [0:8];
+    logic signed [15:0] din_re0_reg, din_re1_reg, din_re2_reg, din_re3_reg;
+    logic signed [15:0] din_im0_reg, din_im1_reg, din_im2_reg, din_im3_reg; 
+    logic in_valid_reg;
 
-    // logic valid [0:8]; 
+    logic [8:0] val;
 
-    // assign in_re[0] = in_real;
-    // assign in_im[0] = in_imag;
+    logic [15:0] w_re [0:8], w_im [0:8], 
+                x_re [0:8], x_im [0:8], 
+                y_re [0:8], y_im [0:8], 
+                z_re [0:8], z_im [0:8];
 
-    // assign valid[0] = in_valid;
+    assign w_re[0] = din_re0_reg;
+    assign w_im[0] = din_im0_reg;
+    assign x_re[0] = din_re1_reg;
+    assign x_im[0] = din_im1_reg;
+    assign y_re[0] = din_re2_reg;
+    assign y_im[0] = din_im2_reg;
+    assign z_re[0] = din_re3_reg;
+    assign z_im[0] = din_im3_reg;
 
-    // assign out_real = in_re[8];
-    // assign out_imag = in_im[8];
-    // assign out_valid = valid[8];
-    
-    // genvar i;
-    // generate 
-    //     for (i = 0; i < 8; i++) begin 
-    //         stage #(
-    //             .BITS(16), 
-    //             .STAGES(8), 
-    //             .CURR_STAGE((i+1)))
-    //         s (
-    //             .clk(clk), .rst(rst),
-    //             .in_valid(valid[i]), 
-    //             .in_real(in_re[i]), .in_imag(in_im[i]), 
-    //             .out_real(in_re[i+1]), .out_imag(in_im[i+1]), 
-    //             .out_valid(valid[i+1])
-    //         );
-    //     end
-    // endgenerate
-    logic [15:0] a, b;
-    logic [31:0] c;
+    assign dout_re0 = w_re[8];
+    assign dout_im0 = w_im[8];
+    assign dout_re1 = x_re[8];
+    assign dout_im1 = x_im[8];
+    assign dout_re2 = y_re[8];
+    assign dout_im2 = y_im[8];
+    assign dout_re3 = z_re[8];
+    assign dout_im3 = z_im[8];
+
+    assign val[0] = in_valid_reg;
+    assign out_valid = val[8];
 
     always_ff @(posedge clk) begin 
-            a <= in_imag;
-            b <= in_real; 
-            out_real <= c;
+        din_re0_reg <= din_re0;
+        din_re1_reg <= din_re1; 
+        din_re2_reg <= din_re2; 
+        din_re3_reg <= din_re3; 
+        din_im0_reg <= din_im0;
+        din_im1_reg <= din_im1;
+        din_im2_reg <= din_im2;
+        din_im3_reg <= din_im3; 
+
+        in_valid_reg <= in_valid;
     end
 
-    // multiplier mult (
+    // mdc_stage #(.CURR_STAGE(2))
+    // stage1 ( 
     //     .clk, .rst,
-    //     .a, .b, 
-    //     .p(c)
+    //     .in_valid(val[i-1]), 
+    //     .din_re0(din_re0_reg), .din_re1(din_re1_reg), .din_re2(din_re2_reg), .din_re3(din_re3_reg),
+    //     .din_im0(din_im0_reg), .din_im1(din_im1_reg), .din_im2(din_im2_reg), .din_im3(din_im3_reg), 
+
+    //     .dout_re0, .dout_re1, .dout_re2, .dout_re3,   
+    //     .dout_im0, .dout_im1, .dout_im2, .dout_im3, 
+    //     .out_valid(val[i])
     // );
 
-    wallace_mult #(
-     .W(16)
-    ) mult(
-        .clk,
-        .a,
-        .b,
-        .p(c)
-    );
+    generate 
+        for (genvar i = 1; i <= 8; i++) begin : stages_gen_blk
+            mdc_stage #(.CURR_STAGE(i))
+            stage ( 
+                .clk, .rst,
+                .in_valid(val[i-1]), 
+                .din_re0(w_re[i-1]), .din_re1(x_re[i-1]), .din_re2(y_re[i-1]), .din_re3(z_re[i-1]),
+                .din_im0(w_im[i-1]), .din_im1(x_im[i-1]), .din_im2(y_im[i-1]), .din_im3(z_im[i-1]), 
 
-    // adder #(.SUB(1)) sub(
-    //     .a(1'b0), .b(b<<<1),
-    //     .result(c)
-    // );
+                .dout_re0(w_re[i]), .dout_re1(x_re[i]), .dout_re2(y_re[i]), .dout_re3(z_re[i]),   
+                .dout_im0(w_im[i]), .dout_im1(x_im[i]), .dout_im2(y_im[i]), .dout_im3(z_im[i]), 
+                .out_valid(val[i])
+            );
+        end
+    endgenerate
+    
 endmodule

@@ -7,57 +7,65 @@ module rotator #(parameter BITS = 16, parameter DECIMAL = 8)
     output logic signed [BITS-1:0] real_out, imag_out
 );
 
-    logic signed [BITS-1:0] a, b, c, d, out_real_s2;
-    logic signed [2*BITS-1:0] ac, bd, ad, bc;
+    logic signed [BITS-1:0] a, b, c, d, sum1, sum2, sum1_pip, sum2_pip;
+    logic signed [BITS-1:0] ac, bd, bc, ad, ac_pip, bd_pip, ad_pip, bc_pip;
 
-    assign a = real_in;
-    assign b = imag_in;
-    assign c = real_tw;
-    assign d = imag_tw;
-
-    logic signed [BITS-1:0] a_s1, b_s1, c_s1, d_s1;
-
-    // Stage 1
-    always_ff @(posedge clk) begin
-        if (!rst) begin
-            a_s1 <= '0;
-            b_s1 <= '0;
-            c_s1 <= '0;
-            d_s1 <= '0;
-            ac <= '0;
-            bd <= '0;
-        end else begin
-            a_s1 <= a;
-            b_s1 <= b;
-            c_s1 <= c;
-            d_s1 <= d;
-            ac <= a * c;
-            bd <= b * d;
-        end
+    always_ff @(posedge clk) begin 
+        a <= real_in;
+        b <= imag_in;
+        c <= real_tw;
+        d <= imag_tw;
     end
 
-    // Stage 2
-    always_ff @(posedge clk) begin
-        if (!rst) begin
-            out_real_s2 <= '0;
-            ad <= '0;
-            bc <= '0;
-        end else begin
-            out_real_s2 <= ((ac - bd) + (1<<(DECIMAL-1)))>>>DECIMAL;
-            ad <= a_s1 * d_s1;
-            bc <= b_s1 * c_s1;
-        end
+    wallace_mult #(
+     .W(16)
+    ) mult1(
+        .clk,
+        .a(a),
+        .b(c),
+        .p(ac)
+    );
+
+    wallace_mult #(
+     .W(16)
+    ) mult2(
+        .clk,
+        .a(b),
+        .b(d),
+        .p(bd)
+    );
+
+    wallace_mult #(
+     .W(16)
+    ) mult3(
+        .clk,
+        .a(b),
+        .b(c),
+        .p(bc)
+    );
+
+    wallace_mult #(
+     .W(16)
+    ) mult4(
+        .clk,
+        .a(a),
+        .b(d),
+        .p(ad)
+    );
+
+    logic [31:0] real_temp; 
+    logic [31:0] imag_temp;
+
+    always_ff @(posedge clk) begin 
+        ac_pip <= ac; 
+        ad_pip <= ad; 
+        bc_pip <= bc; 
+        bd_pip <= bd; 
     end
 
-    // Stage 3 / Output Stage
-    always_ff @(posedge clk) begin
-        if (!rst) begin
-            real_out <= '0;
-            imag_out <= '0;
-        end else begin
-            real_out <= out_real_s2;
-            imag_out <= ((ad + bc) + (1<<(DECIMAL-1)))>>>DECIMAL;
-        end
-    end
+    // CLA32 #(.SUB(1)) re(.a(ac_pip), .b(bd_pip), .result(real_out));
+    // CLA32 #(.SUB(0)) im(.a(bc_pip), .b(ad_pip), .result(imag_out));
 
+    adder #(.SUB(1)) re(.a(ac_pip), .b(bd_pip), .result(real_out));
+    adder #(.SUB(0)) im(.a(bc_pip), .b(ad_pip), .result(imag_out));
 endmodule

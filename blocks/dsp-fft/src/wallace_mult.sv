@@ -1,129 +1,33 @@
 module wallace_mult #(
-    parameter W = 16
+    parameter W = 16,
+    parameter DECIMAL = 12
 )(
     input logic clk, 
     input  logic signed [W-1:0] a,
     input  logic signed [W-1:0] b,
-    output logic signed [(2*W)-1:0] p
-);
-
-    // localparam PP = W/2 + 1;
-
-    // logic [W:0] b_ext;
-
-    // assign b_ext = {b, 1'b0};
-
-    // // -------------------------------------------------------------------------
-    // // Partial products
-    // // -------------------------------------------------------------------------
-
-    // logic signed [(2*W)-1:0] partial [0:PP-1];
-    // logic signed [(2*W)-1:0] partial_pip [0:PP-1];
-    // logic signed [(2*W)-1:0] partial_pip_b [0:PP-1];
-    // logic signed [(2*W)-1:0] partial_pip_c [0:PP-1];
-    // logic signed [(2*W)-1:0] partial_pip_d [0:PP-1];
-    // logic signed [(2*W)-1:0] partial_pip_e [0:PP-1];
-
-    // logic [2:0] booth_bits;
-
-    // logic signed [W-1:0] neg_a; 
-
-    // adder #(.SUB(1)) sub0(
-    //     .a(16'b0), .b(a),
-    //     .result(neg_a)
-    // );
-
-    // always_comb begin
-    //     for (int i = 0; i < PP; i = i + 1) begin
-
-    //         booth_bits = b_ext[2*i +: 3];
-
-    //         case (booth_bits)
-
-    //             // 0
-    //             3'b000,
-    //             3'b111:
-    //                 partial[i] = 0;
-
-    //             // +A
-    //             3'b001,
-    //             3'b010:
-    //                 partial[i] =
-    //                     $signed(a) <<< (2*i);
-
-    //             // +2A
-    //             3'b011:
-    //                 partial[i] =
-    //                     ($signed(a) <<< 1) <<< (2*i);
-
-    //             // -2A
-    //             3'b100:
-    //                 partial[i] =
-    //                     $signed(neg_a) <<< (2*i+1);
-
-    //             // -A
-    //             3'b101,
-    //             3'b110:
-    //                 partial[i] =
-    //                     $signed(neg_a) <<< (2*i);
-
-    //             default:
-    //                 partial[i] = 0;
-
-    //         endcase
-    //     end
-    // end
-
-    // always_ff @(posedge clk) begin 
-    //     for (int i = 0; i < PP; i++) partial_pip[i] <= partial[i];
-    //     for (int i = 0; i < PP; i++) partial_pip_b[i] <= partial[i];
-    //     for (int i = 0; i < PP; i++) partial_pip_c[i] <= partial[i];
-    //     for (int i = 0; i < PP; i++) partial_pip_d[i] <= partial[i];
-    //     for (int i = 0; i < PP; i++) partial_pip_e[i] <= partial[i];
-    // end
-
-
-    // // CSA adders 
-    // logic [(2*W)-1:0] s11, s12, s13, s14, s15, s16, s21, s22, s23, s24, s31, s32, op1, op2; 
-
-    // carry_save_adder #(.WIDTH(2*W)) csa1(.a(partial_pip[0]), .b(partial_pip_c[1]), .cin(partial_pip_d[2]), .s(s11), .cout(s12));
-    // carry_save_adder #(.WIDTH(2*W)) csa2(.a(partial_pip_d[3]), .b(partial_pip_e[4]), .cin(partial_pip[5]), .s(s13), .cout(s14));
-    // carry_save_adder #(.WIDTH(2*W)) csa3(.a(partial_pip[6]), .b(partial_pip_b[7]), .cin(partial_pip[8]), .s(s15), .cout(s16));
-
-    // logic [(2*W)-1:0] s11_pip, s12_pip, s13_pip, s14_pip, s15_pip, s16_pip; 
-    // always_ff @(posedge clk) begin 
-    //     s11_pip <= s11; 
-    //     s12_pip <= s12<<<1;  
-    //     s13_pip <= s13;  
-    //     s14_pip <= s14 <<1;  
-    //     s15_pip <= s15;  
-    //     s16_pip <= s16 <<<1;
-    // end
-
-    // carry_save_adder #(.WIDTH(2*W)) csa4(.a(s11_pip), .b(s12_pip), .cin(s13_pip), .s(s21), .cout(s22));
-    // carry_save_adder #(.WIDTH(2*W)) csa5(.a(s14_pip), .b(s15_pip), .cin(s16_pip), .s(s23), .cout(s24));
-
-    // carry_save_adder #(.WIDTH(2*W)) csa6(.a(s21), .b(s22<<<1), .cin(s23), .s(s31), .cout(s32));
-
-    // carry_save_adder #(.WIDTH(2*W)) csa7(.a(s31), .b(s32<<<1), .cin(s24<<<1), .s(op1), .cout(op2));
-
-    // logic [(2*W)-1:0] op1_pip, op2_pip; 
-
-    // always_ff @(posedge clk) begin 
-    //     op1_pip <= op1; 
-    //     op2_pip <= op2<<1; 
-    // end
-    // assign p = op1_pip + op2_pip; 
+    output logic signed [W-1:0] p
+); 
 
     logic [(2*W)-1:0] partial [0:W-1];
 
     always_comb begin
-        for (int i = 0; i < W-1; i++) begin
-            // Bitwise AND of a_reg with each bit of b_reg
-            // We sign-extend to 32 bits for the Wallace tree
-            partial[i] = (b[i]) ? ($signed(a) <<< i) : 32'b0;
+        // 1. Default initialization to prevent latches
+        for (int i = 0; i < 16; i++) begin
+            partial[i] = 32'b0;
         end
-        partial[W-1] = (b[W-1]) ? (-$signed(a) <<< (W-1)) : 32'b0;
+
+        // 2. Rows 0 through 14 (Standard Baugh-Wooley Rows)
+        for (int i = 0; i < 15; i++) begin
+            partial[i] = {~(a[15] & b[i]), (a[14:0] & {15{b[i]}})} << i;
+        end
+
+        // 4. Row 15 (The Sign Row - Negative Weight)
+        for (int j = 0; j < 16; j++) begin
+            partial[15] = {(a[15] & b[15]), ~(a[14:0] & {15{b[15]}})}<<15;
+        end
+
+        partial[15][31] = 1'b1;
+        partial[0][16] = 1'b1;
     end
 
     logic [(2*W)-1:0] partial_pip [0:W-1];
@@ -177,5 +81,8 @@ module wallace_mult #(
         op2 <= s61<<1; 
     end
 
-    assign p = op1 + op2; 
+    //assign p = op1 + op2; 
+
+    //CLA32 #(.SUB(0)) final_add(.a(op1), .b(op2), .result(p));
+    adder final_add(.a(op1>>>12), .b(op2>>>12), .result(p));
 endmodule
