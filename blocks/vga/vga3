@@ -10,27 +10,25 @@ N -100 -500 -100 -470 {lab=VDD}
 N -100 -410 -100 -380 {lab=GND}
 N -240 -220 -240 -190 {lab=Vcp}
 N -240 -130 -240 -100 {lab=GND}
-N 170 70 200 70 {lab=Vin_n}
+N 170 70 250 70 {lab=Vin_n}
 N 20 70 50 70 {lab=GND}
-N 680 -660 680 -610 {lab=VDD}
-N 560 -600 820 -600 {lab=VDD}
-N 680 -610 680 -600 {lab=VDD}
-N 400 -600 560 -600 {lab=VDD}
-N 820 -600 990 -600 {lab=VDD}
+N 680 -660 680 -600 {lab=VDD}
+N 680 -600 990 -600 {lab=VDD}
+N 400 -600 680 -600 {lab=VDD}
 N 400 -540 400 -520 {lab=#net1}
-N 560 -540 560 -520 {lab=Vin1}
-N 820 -540 820 -520 {lab=Vin_n1}
+N 560 -540 560 -500 {lab=Vin1}
+N 820 -540 820 -510 {lab=Vin_n1}
 N 990 -540 990 -520 {lab=#net2}
-N 560 -520 560 -440 {lab=Vin1}
-N 820 -520 820 -440 {lab=Vin_n1}
+N 560 -500 560 -440 {lab=Vin1}
+N 820 -510 820 -440 {lab=Vin_n1}
 N 560 -440 590 -440 {lab=Vin1}
 N 790 -440 820 -440 {lab=Vin_n1}
 N 560 -440 560 -390 {lab=Vin1}
 N 820 -440 820 -390 {lab=Vin_n1}
-N 220 -440 220 -270 {lab=#net1}
+N 220 -360 220 -270 {lab=#net1}
 N 220 -360 520 -360 {lab=#net1}
 N 220 -210 1140 -210 {lab=#net3}
-N 1140 -440 1140 -270 {lab=#net2}
+N 1140 -360 1140 -270 {lab=#net2}
 N 860 -360 1140 -360 {lab=#net2}
 N 220 -240 250 -240 {lab=GND}
 N 1110 -240 1140 -240 {lab=GND}
@@ -50,32 +48,30 @@ N 1140 -520 1140 -440 {lab=#net2}
 N 440 -440 560 -440 {lab=Vin1}
 N 440 -450 440 -440 {lab=Vin1}
 N 440 -440 440 -410 {lab=Vin1}
-N 380 -450 380 -410 {lab=#net1}
+N 380 -440 380 -410 {lab=#net1}
 N 990 -450 990 -440 {lab=#net2}
 N 990 -440 990 -410 {lab=#net2}
-N 930 -450 930 -410 {lab=Vin_n1}
+N 930 -440 930 -410 {lab=Vin_n1}
 N 820 -440 930 -440 {lab=Vin_n1}
 N 220 -440 380 -440 {lab=#net1}
 N 990 -440 1140 -440 {lab=#net2}
-N 1920 -650 1920 -600 {lab=VDD}
-N 1800 -590 2060 -590 {lab=VDD}
-N 1920 -600 1920 -590 {lab=VDD}
-N 1640 -590 1800 -590 {lab=VDD}
-N 2060 -590 2230 -590 {lab=VDD}
+N 1920 -650 1920 -590 {lab=VDD}
+N 1920 -590 2230 -590 {lab=VDD}
+N 1640 -590 1920 -590 {lab=VDD}
 N 1640 -530 1640 -510 {lab=#net5}
-N 1800 -530 1800 -510 {lab=Vout_buf}
-N 2060 -530 2060 -510 {lab=Vout_n_buf}
+N 1800 -530 1800 -490 {lab=Vout_buf}
+N 2060 -530 2060 -500 {lab=Vout_n_buf}
 N 2230 -530 2230 -510 {lab=#net6}
-N 1800 -510 1800 -430 {lab=Vout_buf}
-N 2060 -510 2060 -430 {lab=Vout_n_buf}
+N 1800 -490 1800 -430 {lab=Vout_buf}
+N 2060 -500 2060 -430 {lab=Vout_n_buf}
 N 1800 -430 1830 -430 {lab=Vout_buf}
 N 2030 -430 2060 -430 {lab=Vout_n_buf}
 N 1800 -430 1800 -380 {lab=Vout_buf}
 N 2060 -430 2060 -380 {lab=Vout_n_buf}
-N 1460 -430 1460 -260 {lab=#net5}
+N 1460 -350 1460 -260 {lab=#net5}
 N 1460 -350 1760 -350 {lab=#net5}
 N 1460 -200 2380 -200 {lab=#net7}
-N 2380 -430 2380 -260 {lab=#net6}
+N 2380 -350 2380 -260 {lab=#net6}
 N 2100 -350 2380 -350 {lab=#net6}
 N 1460 -230 1490 -230 {lab=GND}
 N 2350 -230 2380 -230 {lab=GND}
@@ -95,47 +91,39 @@ N 2380 -510 2380 -430 {lab=#net6}
 N 1680 -430 1800 -430 {lab=Vout_buf}
 N 1680 -440 1680 -430 {lab=Vout_buf}
 N 1680 -430 1680 -400 {lab=Vout_buf}
-N 1620 -440 1620 -400 {lab=#net5}
+N 1620 -430 1620 -400 {lab=#net5}
 N 2230 -440 2230 -430 {lab=#net6}
 N 2230 -430 2230 -400 {lab=#net6}
-N 2170 -440 2170 -400 {lab=Vout_n_buf}
+N 2170 -430 2170 -400 {lab=Vout_n_buf}
 N 2060 -430 2170 -430 {lab=Vout_n_buf}
 N 1460 -430 1620 -430 {lab=#net5}
 N 2230 -430 2380 -430 {lab=#net6}
-N 170 -30 200 -30 {lab=Vin}
+N 170 -30 250 -30 {lab=Vin}
 N 20 -30 50 -30 {lab=GND}
-N 200 -30 250 -30 {lab=Vin}
-N 200 70 250 70 {lab=Vin_n}
-N 2660 -500 2660 -440 {lab=Vout}
+N 2660 -470 2660 -440 {lab=Vout}
 N 2660 -380 2660 -350 {lab=GND}
 N 2580 -410 2620 -410 {lab=VBB}
-N 2660 -620 2660 -570 {lab=VDD}
-N 2660 -570 2660 -560 {lab=VDD}
-N 2930 -500 2930 -440 {lab=Vout_n}
-N 2930 -380 2930 -350 {lab=GND}
-N 2850 -410 2890 -410 {lab=VBB}
-N 2930 -620 2930 -570 {lab=VDD}
-N 2930 -570 2930 -560 {lab=VDD}
+N 2660 -620 2660 -560 {lab=VDD}
+N 2660 -130 2660 -100 {lab=Vout_n}
+N 2660 -40 2660 -10 {lab=GND}
+N 2580 -70 2620 -70 {lab=VBB}
+N 2660 -280 2660 -220 {lab=VDD}
 N 2580 -530 2620 -530 {lab=Vout_buf}
-N 2850 -530 2890 -530 {lab=Vout_n_buf}
+N 2580 -190 2620 -190 {lab=Vout_n_buf}
 N 2660 -410 2690 -410 {lab=GND}
 N 2660 -530 2690 -530 {lab=GND}
-N 2930 -530 2960 -530 {lab=GND}
-N 2930 -410 2960 -410 {lab=GND}
-N 630 -1250 630 -1200 {lab=VDD}
-N 560 -1150 630 -1150 {lab=VDD}
-N 630 -1200 630 -1150 {lab=VDD}
-N 630 -1150 720 -1150 {lab=VDD}
+N 2660 -190 2690 -190 {lab=GND}
+N 2660 -70 2690 -70 {lab=GND}
+N 630 -1250 630 -1150 {lab=VDD}
+N 590 -1150 630 -1150 {lab=VDD}
+N 700 -1150 720 -1150 {lab=VDD}
 N 520 -1120 520 -1060 {lab=#net9}
 N 520 -1060 680 -1060 {lab=#net9}
-N 680 -1070 680 -1060 {lab=#net9}
-N 680 -1120 680 -1070 {lab=#net9}
-N 720 -1090 720 -1020 {lab=#net9}
-N 720 -1020 720 -1010 {lab=#net9}
-N 520 -980 520 -910 {lab=VBB}
-N 520 -910 680 -910 {lab=VBB}
-N 680 -920 680 -910 {lab=VBB}
-N 680 -980 680 -920 {lab=VBB}
+N 680 -1120 680 -1060 {lab=#net9}
+N 720 -1060 720 -1010 {lab=#net9}
+N 520 -920 520 -910 {lab=VBB}
+N 630 -910 680 -910 {lab=VBB}
+N 680 -980 680 -910 {lab=VBB}
 N 560 -1010 610 -1010 {lab=VBB}
 N 610 -1010 610 -910 {lab=VBB}
 N 560 -950 560 -860 {lab=GND}
@@ -151,7 +139,7 @@ N 720 -1120 760 -1120 {lab=VDD}
 N 760 -1180 760 -1120 {lab=VDD}
 N 700 -1180 760 -1180 {lab=VDD}
 N 700 -1180 700 -1150 {lab=VDD}
-N 380 -1100 380 -1050 {lab=VDD}
+N 380 -1070 380 -1050 {lab=VDD}
 N 380 -990 380 -920 {lab=VBB}
 N 380 -920 520 -920 {lab=VBB}
 N 380 -1020 430 -1020 {lab=VDD}
@@ -167,7 +155,71 @@ N 1420 -500 2060 -500 {lab=Vout_n_buf}
 N 1420 -500 1420 -430 {lab=Vout_n_buf}
 N 1800 -490 2420 -490 {lab=Vout_buf}
 N 2420 -490 2420 -430 {lab=Vout_buf}
-N 2660 -470 2870 -470 {lab=Vout}
+N 2660 -470 2780 -470 {lab=Vout}
+N 2820 -540 2820 -500 {lab=#net11}
+N 2820 -640 2820 -620 {lab=VDD}
+N 2880 -640 3040 -640 {lab=VDD}
+N 3040 -640 3040 -620 {lab=VDD}
+N 2930 -590 3000 -590 {lab=#net11}
+N 2800 -590 2820 -590 {lab=VDD}
+N 2800 -640 2800 -590 {lab=VDD}
+N 2800 -640 2820 -640 {lab=VDD}
+N 3040 -590 3060 -590 {lab=VDD}
+N 3060 -640 3060 -590 {lab=VDD}
+N 3040 -640 3060 -640 {lab=VDD}
+N 3040 -560 3040 -500 {lab=Vout_s}
+N 2820 -440 2820 -420 {lab=#net12}
+N 2930 -420 3040 -420 {lab=#net12}
+N 3040 -440 3040 -420 {lab=#net12}
+N 2930 -420 2930 -360 {lab=#net12}
+N 3000 -330 3030 -330 {lab=#net13}
+N 2870 -470 3040 -470 {lab=GND}
+N 3000 -360 3000 -330 {lab=#net13}
+N 3000 -360 3140 -360 {lab=#net13}
+N 2870 -380 3120 -380 {lab=GND}
+N 2660 -130 3280 -130 {lab=Vout_n}
+N 3280 -470 3280 -130 {lab=Vout_n}
+N 3080 -470 3280 -470 {lab=Vout_n}
+N 3140 -640 3140 -500 {lab=VDD}
+N 220 -440 220 -360 {lab=#net1}
+N 1140 -440 1140 -360 {lab=#net2}
+N 930 -450 930 -440 {lab=Vin_n1}
+N 380 -450 380 -440 {lab=#net1}
+N 1460 -430 1460 -350 {lab=#net5}
+N 2380 -430 2380 -350 {lab=#net6}
+N 2170 -440 2170 -430 {lab=Vout_n_buf}
+N 1620 -440 1620 -430 {lab=#net5}
+N 520 -910 610 -910 {lab=VBB}
+N 720 -1090 720 -1060 {lab=#net9}
+N 610 -910 630 -910 {lab=VBB}
+N 560 -1150 590 -1150 {lab=VDD}
+N 630 -1150 700 -1150 {lab=VDD}
+N 520 -980 520 -920 {lab=VBB}
+N 380 -1100 380 -1070 {lab=VDD}
+N 2660 -500 2660 -470 {lab=Vout}
+N 2820 -420 2930 -420 {lab=#net12}
+N 2970 -330 3000 -330 {lab=#net13}
+N 2870 -470 2870 -390 {lab=GND}
+N 2660 -160 2660 -130 {lab=Vout_n}
+N 2820 -560 2820 -540 {lab=#net11}
+N 2860 -590 2930 -590 {lab=#net11}
+N 2820 -470 2870 -470 {lab=GND}
+N 2820 -640 2880 -640 {lab=VDD}
+N 3060 -640 3140 -640 {lab=VDD}
+N 2870 -300 3070 -300 {lab=GND}
+N 2870 -390 2870 -300 {lab=GND}
+N 3120 -410 3120 -380 {lab=GND}
+N 2900 -330 2930 -330 {lab=VDD}
+N 2900 -400 2900 -330 {lab=VDD}
+N 2900 -400 3100 -400 {lab=VDD}
+N 3100 -520 3100 -400 {lab=VDD}
+N 3100 -520 3140 -520 {lab=VDD}
+N 3100 -400 3100 -330 {lab=VDD}
+N 3070 -330 3100 -330 {lab=VDD}
+N 3040 -540 3280 -540 {lab=Vout_s}
+N 2930 -590 2930 -540 {lab=#net11}
+N 2820 -540 2930 -540 {lab=#net11}
+N 3140 -380 3140 -360 {lab=#net13}
 C {vsource.sym} -100 -440 0 0 {name=V1 value=3.3 savecurrent=false}
 C {gnd.sym} -100 -380 0 0 {name=l3 lab=GND}
 C {vsource.sym} -240 -160 0 0 {name=V3 value="dc 1.6" savecurrent=false}
@@ -225,12 +277,12 @@ C {lab_pin.sym} 610 -280 0 0 {name=p13 sig_type=std_logic lab=VBB
 }
 C {code_shown.sym} 730 -60 0 0 {name=s1 only_toplevel=false spice_ignore=false value="
 .include /foss/pdks/gf180mcuD/libs.tech/ngspice/design.ngspice
-.lib /foss/pdks/gf180mcuD/libs.tech/ngspice/sm141064.ngspice typical
-.lib /foss/pdks/gf180mcuD/libs.tech/ngspice/sm141064.ngspice res_typical
+.lib /foss/pdks/gf180mcuD/libs.tech/ngspice/sm141064.ngspice ss
+.lib /foss/pdks/gf180mcuD/libs.tech/ngspice/sm141064.ngspice res_ss
 .option method=gear
 
 .control
-set temp = 27
+set temp = 85
   * 1. Setup the sweep parameters
   let v_start = 0
   let v_stop = 3.3
@@ -257,7 +309,7 @@ set temp = 27
     let g_val = 20 * log10(vout_mag / vin_mag)
     
     * 5. Save results to vectors
-    let gain_db_20[i] = g_val[0]
+    let gain_db_20[i] = g_val[1]
     let gain_db_1200[i] = g_val[2]
     let vcp_axis[i] = v_current
     let i = i + 1
@@ -568,9 +620,9 @@ C {lab_pin.sym} 2580 -410 0 0 {name=p1 sig_type=std_logic lab=VBB
 }
 C {lab_pin.sym} 2660 -620 0 0 {name=p30 sig_type=std_logic lab=VDD
 }
-C {lab_pin.sym} 2660 -470 2 0 {name=p31 sig_type=std_logic lab=Vout
+C {lab_pin.sym} 2660 -470 2 1 {name=p31 sig_type=std_logic lab=Vout
 }
-C {symbols/nfet_03v3.sym} 2910 -530 0 0 {name=M19
+C {symbols/nfet_03v3.sym} 2640 -190 0 0 {name=M19
 L=0.28u
 W=25u
 nf=10
@@ -584,7 +636,7 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {symbols/nfet_03v3.sym} 2910 -410 0 0 {name=M20
+C {symbols/nfet_03v3.sym} 2640 -70 0 0 {name=M20
 L=0.28u
 W=25u
 nf=10
@@ -598,22 +650,22 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {gnd.sym} 2930 -350 0 0 {name=l24 lab=GND}
-C {lab_pin.sym} 2850 -410 0 0 {name=p32 sig_type=std_logic lab=VBB
+C {gnd.sym} 2660 -10 0 0 {name=l24 lab=GND}
+C {lab_pin.sym} 2580 -70 0 0 {name=p32 sig_type=std_logic lab=VBB
 
 }
-C {lab_pin.sym} 2930 -620 0 0 {name=p33 sig_type=std_logic lab=VDD
+C {lab_pin.sym} 2660 -280 0 0 {name=p33 sig_type=std_logic lab=VDD
 }
-C {lab_pin.sym} 2930 -470 2 0 {name=p34 sig_type=std_logic lab=Vout_n
+C {lab_pin.sym} 2660 -130 2 1 {name=p34 sig_type=std_logic lab=Vout_n
 }
 C {lab_pin.sym} 2580 -530 0 0 {name=p35 sig_type=std_logic lab=Vout_buf
 }
-C {lab_pin.sym} 2850 -530 0 0 {name=p36 sig_type=std_logic lab=Vout_n_buf
+C {lab_pin.sym} 2580 -190 0 0 {name=p36 sig_type=std_logic lab=Vout_n_buf
 }
 C {gnd.sym} 2690 -410 3 1 {name=l25 lab=GND}
 C {gnd.sym} 2690 -530 3 1 {name=l26 lab=GND}
-C {gnd.sym} 2960 -530 3 1 {name=l27 lab=GND}
-C {gnd.sym} 2960 -410 3 1 {name=l28 lab=GND}
+C {gnd.sym} 2690 -190 3 1 {name=l27 lab=GND}
+C {gnd.sym} 2690 -70 3 1 {name=l28 lab=GND}
 C {symbols/pfet_03v3.sym} 540 -1120 0 0 {name=M21
 L=0.28u
 W=5u
@@ -788,15 +840,15 @@ C {gnd.sym} 1620 -560 0 1 {name=l43 lab=GND}
 C {gnd.sym} 2210 -560 0 1 {name=l44 lab=GND}
 C {code_shown.sym} -750 190 0 0 {name=s2 only_toplevel=false spice_ignore=true value="
 .include /foss/pdks/gf180mcuD/libs.tech/ngspice/design.ngspice
-.lib /foss/pdks/gf180mcuD/libs.tech/ngspice/sm141064.ngspice typical
-.lib /foss/pdks/gf180mcuD/libs.tech/ngspice/sm141064.ngspice res_typical
+.lib /foss/pdks/gf180mcuD/libs.tech/ngspice/sm141064.ngspice ff
+.lib /foss/pdks/gf180mcuD/libs.tech/ngspice/sm141064.ngspice res_ff
 .option method=gear
 
 .control
-set temp = 27
+set temp = -10
 
 * this one is for conducting instantaneous power vs. time (transient analysis)
-let freq = 1G
+let freq = 20meg
 let steps = 500
 
 let per = 1 / freq
@@ -805,7 +857,7 @@ let fin = steps * per
 
 tran $&per $&fin
 let pwr = -1 * v1#branch * vdd
-plot pwr
+plot pwr ylimit 0 20m
 .endc
 "
 }
@@ -865,8 +917,139 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {capa-2.sym} 2900 -470 3 0 {name=C3
+C {capa-2.sym} 3220 -570 2 1 {name=C3
 m=1
 value=100f
+spice_ignore=true
 footprint=1206
 device=polarized_capacitor}
+C {symbols/pfet_03v3.sym} 2840 -590 0 1 {name=M32
+L=0.28u
+W=12.5u
+nf=5
+m=8
+ad="'int((nf+1)/2) * W/nf * 0.18u'"
+pd="'2*int((nf+1)/2) * (W/nf + 0.18u)'"
+as="'int((nf+2)/2) * W/nf * 0.18u'"
+ps="'2*int((nf+2)/2) * (W/nf + 0.18u)'"
+nrd="'0.18u / W'" nrs="'0.18u / W'"
+sa=0 sb=0 sd=0
+model=pfet_03v3
+spiceprefix=X
+}
+C {lab_pin.sym} 2930 -640 1 0 {name=p4 sig_type=std_logic lab=VDD
+}
+C {gnd.sym} 3000 -300 0 0 {name=l45 lab=GND}
+C {lab_pin.sym} 3280 -540 2 0 {name=p11 sig_type=std_logic lab=Vout_s
+}
+C {gnd.sym} 3220 -600 2 1 {name=l46 lab=GND}
+C {symbols/ppolyf_u_1k.sym} 3140 -410 0 0 {name=R16
+W=1e-6
+L=1e-6
+model=ppolyf_u_1k
+spiceprefix=X
+spice_ignore=false
+m=1}
+C {vsource.sym} 3140 -470 0 0 {name=V2 value=0 savecurrent=false}
+C {symbols/nfet_03v3.sym} 2800 -470 0 0 {name=M34
+L=0.28u
+W=12.5u
+nf=5
+m=1
+ad="'int((nf+1)/2) * W/nf * 0.18u'"
+pd="'2*int((nf+1)/2) * (W/nf + 0.18u)'"
+as="'int((nf+2)/2) * W/nf * 0.18u'"
+ps="'2*int((nf+2)/2) * (W/nf + 0.18u)'"
+nrd="'0.18u / W'" nrs="'0.18u / W'"
+sa=0 sb=0 sd=0
+model=nfet_03v3
+spiceprefix=X
+}
+C {symbols/pfet_03v3.sym} 3020 -590 0 0 {name=M33
+L=0.28u
+W=12.5u
+nf=5
+m=1
+ad="'int((nf+1)/2) * W/nf * 0.18u'"
+pd="'2*int((nf+1)/2) * (W/nf + 0.18u)'"
+as="'int((nf+2)/2) * W/nf * 0.18u'"
+ps="'2*int((nf+2)/2) * (W/nf + 0.18u)'"
+nrd="'0.18u / W'" nrs="'0.18u / W'"
+sa=0 sb=0 sd=0
+model=pfet_03v3
+spiceprefix=X
+}
+C {symbols/nfet_03v3.sym} 3060 -470 0 1 {name=M35
+L=0.28u
+W=12.5u
+nf=5
+m=8
+ad="'int((nf+1)/2) * W/nf * 0.18u'"
+pd="'2*int((nf+1)/2) * (W/nf + 0.18u)'"
+as="'int((nf+2)/2) * W/nf * 0.18u'"
+ps="'2*int((nf+2)/2) * (W/nf + 0.18u)'"
+nrd="'0.18u / W'" nrs="'0.18u / W'"
+sa=0 sb=0 sd=0
+model=nfet_03v3
+spiceprefix=X
+}
+C {symbols/pfet_03v3.sym} 2950 -330 0 1 {name=M30
+L=0.28u
+W=12.5u
+nf=5
+m=1
+ad="'int((nf+1)/2) * W/nf * 0.18u'"
+pd="'2*int((nf+1)/2) * (W/nf + 0.18u)'"
+as="'int((nf+2)/2) * W/nf * 0.18u'"
+ps="'2*int((nf+2)/2) * (W/nf + 0.18u)'"
+nrd="'0.18u / W'" nrs="'0.18u / W'"
+sa=0 sb=0 sd=0
+model=pfet_03v3
+spiceprefix=X
+}
+C {symbols/pfet_03v3.sym} 3050 -330 0 0 {name=M31
+L=0.28u
+W=12.5u
+nf=5
+m=1
+ad="'int((nf+1)/2) * W/nf * 0.18u'"
+pd="'2*int((nf+1)/2) * (W/nf + 0.18u)'"
+as="'int((nf+2)/2) * W/nf * 0.18u'"
+ps="'2*int((nf+2)/2) * (W/nf + 0.18u)'"
+nrd="'0.18u / W'" nrs="'0.18u / W'"
+sa=0 sb=0 sd=0
+model=pfet_03v3
+spiceprefix=X
+}
+C {code_shown.sym} 2150 60 0 0 {name=s3 only_toplevel=false spice_ignore=true value="
+.include /foss/pdks/gf180mcuD/libs.tech/ngspice/design.ngspice
+.lib /foss/pdks/gf180mcuD/libs.tech/ngspice/sm141064.ngspice ss
+.lib /foss/pdks/gf180mcuD/libs.tech/ngspice/sm141064.ngspice res_ss
+.option method=gear
+
+.control
+set temp = 85
+  * 1. Setup the sweep parameters
+  let v_ctrl = 1.65
+
+  let f_start = 20meg
+  let f_stop = 1.2G
+  let f_points = 60
+  
+  * 2. Initialize vectors to store results
+  let gain_db = unitvec(f_points)
+  
+  alter v3 = v_ctrl
+  ac dec 60 20meg 1.2G
+    
+  * 4. Calculate Differential Gain in dB
+  * Formula: 20 * log10(|Vout_diff| / |Vin_diff|)
+  let vout_mag = mag(v(vout) - v(vout_n))
+  let vin_mag = mag(v(vin) - v(vin_n))
+  let g_val = 20 * log10(vout_mag / vin_mag)
+  
+  * 5. Save results to vectors
+  plot g_val title 'Gain (dB) vs. Frequency from 20MHz to 1.2GHz, 1.65 vctrl'
+.endc
+"
+}
