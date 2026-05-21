@@ -10,8 +10,8 @@ ls
 # ── Behavioral → structural ──
 proc
 
-# ── NO FLATTEN — preserve module boundaries ──
-# cla must stay hierarchical.
+# ── FLATTEN — dont preserve module boundaries ──
+flatten
 
 opt_clean
 # ── Coarse optimisation ──
@@ -37,6 +37,7 @@ opt -full
 
 # ── Technology mapping ──
 techmap
+splitnets -driver
 opt -fast
 
 opt_clean

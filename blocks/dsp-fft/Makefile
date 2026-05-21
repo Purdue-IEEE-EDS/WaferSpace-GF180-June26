@@ -127,8 +127,8 @@ $(SYN_SCRIPT): $(RTL)
 	@echo "# ── Behavioral → structural ──"                     >> $@
 	@echo "proc"                                                 >> $@
 	@echo ""                                                     >> $@
-	@echo "# ── NO FLATTEN — preserve module boundaries ──"     >> $@
-	@echo "# cla must stay hierarchical."  >> $@
+	@echo "# ── FLATTEN — dont preserve module boundaries ──"     >> $@
+	@echo "flatten"  >> $@
 	@echo ""                                                     >> $@
 	@echo "opt_clean"                                            >> $@
 	@echo "# ── Coarse optimisation ──"                         >> $@
@@ -154,6 +154,7 @@ $(SYN_SCRIPT): $(RTL)
 	@echo ""                                                     >> $@
 	@echo "# ── Technology mapping ──"                           >> $@
 	@echo "techmap"                                              >> $@
+	@echo "splitnets -driver"                                    >> $@
 	@echo "opt -fast"                                            >> $@
 	@echo ""                                                     >> $@
 	@echo "opt_clean"                                            >> $@
