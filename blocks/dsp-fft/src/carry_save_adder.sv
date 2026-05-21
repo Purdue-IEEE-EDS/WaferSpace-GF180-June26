@@ -1,3 +1,4 @@
+(* keep_hierarchy *)
 module carry_save_adder #(parameter WIDTH) 
 (
     input logic [WIDTH-1:0] a, 

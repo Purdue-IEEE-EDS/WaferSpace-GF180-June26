@@ -37,7 +37,7 @@ for i in [256, 64, 16]:
         print("\talways_ff @(posedge clk) begin")
         print("\t\tcase(addr_re)")
         for k in range(i//4):
-            tw_re = int(np.cos(-2*np.pi*n*k/i)*2**12)
+            tw_re = int(np.cos(-2*np.pi*n*k/i)*2**14)
             if (tw_re < 0):
                 tw_re += 2**16
             print("\t\t\t" + f"{int(np.log2(i//4))}'d{k}: tw_re <= 16'h{tw_re:04x};")
@@ -47,7 +47,7 @@ for i in [256, 64, 16]:
         
         print("\t\tcase(addr_im)")
         for k in range(i//4):
-            tw_im = int(np.sin(-2*np.pi*n*k/i)*2**12)
+            tw_im = int(np.sin(-2*np.pi*n*k/i)*2**14)
             if (tw_im < 0):
                 tw_im += 2**16 
             print("\t\t\t" + f"{int(np.log2(i//4))}'d{k}: tw_im <= 16'h{tw_im:04x};")
