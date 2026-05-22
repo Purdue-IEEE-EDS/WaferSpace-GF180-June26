@@ -128,7 +128,6 @@ $(SYN_SCRIPT): $(RTL)
 	@echo "proc"                                                 >> $@
 	@echo ""                                                     >> $@
 	@echo "# ── FLATTEN — dont preserve module boundaries ──"     >> $@
-	@echo "flatten"  >> $@
 	@echo ""                                                     >> $@
 	@echo "opt_clean"                                            >> $@
 	@echo "# ── Coarse optimisation ──"                         >> $@
