@@ -63,12 +63,13 @@ SYN_NET      = $(SYN_DIR)/fft_syn.v
 SIM_SYN_VVP  = $(SIM_DIR)/tb_fft_syn.vvp
 
 PNR_SCRIPT   = $(PNR_DIR)/pnr.tcl
-PNR_DEF      = $(PNR_DIR)/fft.def
-PNR_GDS      = $(PNR_DIR)/fft.gds
 PNR_SDC      = $(PNR_DIR)/fft.sdc
+PNR_DEF      = $(PNR_DIR)/fft_pnr.def
+PNR_GDS      = $(PNR_DIR)/fft.gds
 
 SYN_SCRIPT   = $(SYN_DIR)/synth.ys
 STA_SCRIPT   = $(SYN_DIR)/sta.tcl
+STA_PNR_SCRIPT = $(SYN_DIR)/sta_pnr.tcl
 
 # ============================================================
 # SIMULATION (RTL)
@@ -79,7 +80,7 @@ $(FFT_VVP): $(RTL) $(TB_FFT)
 	$(IVERILOG) -g2012 -o $@ $(RTL) $(TB_FFT)
 
 sim_fft: $(FFT_VVP)
-	cp $(RTL_DIR)/*.mem $(SIM_DIR)/
+	cp $(RTL_DIR)/*.mem $(SIM_DIR)/ 2>/dev/null || true
 	cd $(SIM_DIR) && $(VVP) tb_fft.vvp
 
 $(STAGE_VVP): $(RTL) $(TB_STAGE)
@@ -104,8 +105,8 @@ $(STAGE_VVP): $(RTL) $(TB_STAGE)
 		$(TB_STAGE)
 
 sim_stage: $(STAGE_VVP)
-	cp $(RTL_DIR)/*.mem $(SIM_DIR)/
-	cd $(SIM_DIR) && $(VVP) tb_stage.vvp
+	cp $(RTL_DIR)/*.mem $(SIM_DIR)/ 2>/dev/null || true
+	cd $(SIM_DIR) && $(VVP) tb_mdc_stage.vvp
 
 sim: sim_stage sim_fft
 
@@ -115,69 +116,66 @@ sim: sim_stage sim_fft
 
 $(SYN_SCRIPT): $(RTL)
 	@mkdir -p $(SYN_DIR)
-	@echo "# ── Read RTL ──"                                     >>  $@
-	@echo "read_liberty -lib $(LIB_FILE)"                                >> $@
-	@echo "read_verilog -sv $(RTL)"                          >> $@
-	@echo ""                                                     >> $@
-	@echo "# ── Elaborate hierarchy ──"                          >> $@
-	@echo "hierarchy -top $(TOP) -check"                        >> $@
-	@echo "# ── Post-elaborate hierarchy ──"                    >> $@
-	@echo "ls"                                                   >> $@
-	@echo ""                                                     >> $@
-	@echo "# ── Behavioral → structural ──"                     >> $@
-	@echo "proc"                                                 >> $@
-	@echo ""                                                     >> $@
-	@echo "# ── FLATTEN — dont preserve module boundaries ──"     >> $@
-	@echo "flatten"  >> $@
-	@echo ""                                                     >> $@
-	@echo "opt_clean"                                            >> $@
-	@echo "# ── Coarse optimisation ──"                         >> $@
-	@echo "opt_expr"                                             >> $@
-	@echo "opt_clean"                                            >> $@
-	@echo "check"                                                >> $@
-	@echo "opt -nodffe -nosdff"                                  >> $@
-	@echo "wreduce"                                              >> $@
-	@echo "peepopt"                                              >> $@
-	@echo "opt_clean"                                            >> $@
-	@echo ""                                                     >> $@
-	@echo "# ── Arithmetic and sharing ──"                      >> $@
-	@echo "alumacc"                                              >> $@
-	@echo "share"                                                >> $@
-	@echo "opt"                                                  >> $@
-	@echo ""                                                     >> $@
-	@echo "# ── Memory ──"                                      >> $@
-	@echo "memory -nomap"                                        >> $@
-	@echo "opt_clean"                                            >> $@
-	@echo "opt -fast -full"                                      >> $@
-	@echo "memory_map"                                           >> $@
-	@echo "opt -full"                                            >> $@
-	@echo ""                                                     >> $@
-	@echo "# ── Technology mapping ──"                           >> $@
-	@echo "techmap"                                              >> $@
-	@echo "splitnets -driver"                                    >> $@
-	@echo "opt -fast"                                            >> $@
-	@echo ""                                                     >> $@
-	@echo "opt_clean"                                            >> $@
-	@echo "# ── Hierarchy check before ABC ──"                  >> $@
-	@echo "# ── Pre-ABC hierarchy ──"                          >> $@
-	@echo "ls"                                                   >> $@
-	@echo ""                                                     >> $@
-	@echo "# ── DFF → liberty cell mapping ──"                  >> $@
-	@echo "dfflibmap -liberty $(LIB_FILE)"                       >> $@
-	@echo ""                                                     >> $@
-	@echo "# ── ABC: single pass, timing-driven ──"             >> $@
-	@echo "# -D $(CLK_PS): delay target (ps) = clock period"    >> $@
-	@echo "# No -dff: do NOT retime across register boundaries" >> $@
-	@echo "abc -liberty $(LIB_FILE) -D $(CLK_PS) "               >> $@
-	@echo ""                                                     >> $@
-	@echo "# ── Final cleanup and stats ──"                     >> $@
-	@echo "opt_clean"                                            >> $@
-	@echo "stat -liberty $(LIB_FILE)"                            >> $@
-	@echo "# ── Final hierarchy ──"                             >> $@
-	@echo "ls"                                                   >> $@
-	@echo ""                                                     >> $@
-	@echo "# ── Write netlist ──"                                >> $@
-	@echo "write_verilog -noattr $(SYN_NET)"                     >> $@
+	@echo "# Read RTL"                                            >  $@
+	@echo "read_liberty -lib $(LIB_FILE)"                         >> $@
+	@echo "read_verilog -sv $(RTL)"                               >> $@
+	@echo ""                                                      >> $@
+	@echo "# Elaborate hierarchy"                                 >> $@
+	@echo "hierarchy -top $(TOP) -check"                          >> $@
+	@echo "# Post-elaborate hierarchy"                            >> $@
+	@echo "ls"                                                    >> $@
+	@echo ""                                                      >> $@
+	@echo "# Behavioral structural"                               >> $@
+	@echo "proc"                                                  >> $@
+	@echo ""                                                      >> $@
+	@echo "# FLATTEN  dont preserve module boundaries"           >> $@
+	@echo ""                                                      >> $@
+	@echo "opt_clean"                                             >> $@
+	@echo "# Coarse optimisation"                                 >> $@
+	@echo "opt_expr"                                              >> $@
+	@echo "opt_clean"                                             >> $@
+	@echo "check"                                                 >> $@
+	@echo "opt -nodffe -nosdff"                                   >> $@
+	@echo "wreduce"                                               >> $@
+	@echo "peepopt"                                               >> $@
+	@echo "opt_clean"                                             >> $@
+	@echo ""                                                      >> $@
+	@echo "# Arithmetic and sharing"                              >> $@
+	@echo "alumacc"                                               >> $@
+	@echo "share"                                                 >> $@
+	@echo "opt"                                                   >> $@
+	@echo ""                                                      >> $@
+	@echo "# Memory"                                              >> $@
+	@echo "memory -nomap"                                         >> $@
+	@echo "opt_clean"                                             >> $@
+	@echo "opt -fast -full"                                       >> $@
+	@echo "memory_map"                                            >> $@
+	@echo "opt -full"                                             >> $@
+	@echo ""                                                      >> $@
+	@echo "# Technology mapping"                                  >> $@
+	@echo "techmap"                                               >> $@
+	@echo "opt -fast"                                             >> $@
+	@echo "splitnets -driver"                                     >> $@
+	@echo ""                                                      >> $@
+	@echo "opt_clean"                                             >> $@
+	@echo "# Hierarchy check before ABC"                          >> $@
+	@echo "# Pre-ABC hierarchy"                                   >> $@
+	@echo "ls"                                                    >> $@
+	@echo ""                                                      >> $@
+	@echo "# DFF liberty cell mapping"                            >> $@
+	@echo "dfflibmap -liberty $(LIB_FILE)"                        >> $@
+	@echo ""                                                      >> $@
+	@echo "# ABC: single pass, timing-driven"                     >> $@
+	@echo "abc -liberty $(LIB_FILE) -D $(CLK_PS)"                 >> $@
+	@echo ""                                                      >> $@
+	@echo "# Final cleanup and stats"                             >> $@
+	@echo "opt_clean"                                             >> $@
+	@echo "stat -liberty $(LIB_FILE)"                             >> $@
+	@echo "# Final hierarchy"                                     >> $@
+	@echo "ls"                                                    >> $@
+	@echo ""                                                      >> $@
+	@echo "# Write netlist"                                       >> $@
+	@echo "write_verilog -noattr $(SYN_NET)"                      >> $@
 
 $(SYN_NET): $(RTL) $(SYN_SCRIPT)
 	$(YOSYS) -s $(SYN_SCRIPT)
@@ -191,17 +189,17 @@ syn: $(SYN_NET)
 sta: $(SYN_NET) $(STA_SCRIPT)
 	$(STA) -exit -no_splash $(STA_SCRIPT)
 
-$(STA_SCRIPT): | $(SYN_NET)
-	@echo "read_liberty $(LIB_FILE)"                          >  $@
-	@echo "read_verilog $(SYN_NET)"                           >> $@
-	@echo "link_design $(TOP)"                               >> $@
+$(STA_SCRIPT): | $(SYN_DIR)
+	@echo "read_liberty $(LIB_FILE)"                           >  $@
+	@echo "read_verilog $(SYN_NET)"                            >> $@
+	@echo "link_design $(TOP)"                                >> $@
 	@echo "create_clock -name clk -period $(CLK_PERIOD) [get_ports clk]" >> $@
-	@echo ""                                                  >> $@                                                >> $@
+	@echo ""                                                  >> $@
 	@echo "puts \"\n=== WORST PATH (max) ===\""               >> $@
 	@echo "report_checks -path_delay max -group_count 10 -fields {fanout capacitance slew} -digits 3" >> $@
 	@echo ""                                                  >> $@
 	@echo "puts \"\n=== WORST PATH (min / hold) ===\""        >> $@
-	@echo "report_checks -path_delay min -digits 3"           >> $@                                               >> $@
+	@echo "report_checks -path_delay min -digits 3"           >> $@
 	@echo ""                                                  >> $@
 	@echo "puts \"\n=== SUMMARY ===\""                        >> $@
 	@echo "report_tns"                                        >> $@
@@ -223,26 +221,20 @@ sim_syn: $(SYN_NET)
 # PNR (OpenROAD)
 # ============================================================
 
-PNR_SCRIPT = $(SYN_DIR)/pnr.tcl
-PNR_SDC    = $(SYN_DIR)/pnr.sdc
-PNR_DEF    = $(SYN_DIR)/dds_top_pnr.def
-PNR_GDS    = $(SYN_DIR)/dds_top.gds
-
-
 pnr: $(PNR_DEF)
 
-$(PNR_SDC): | $(SYN_DIR)
+$(PNR_SDC): | $(PNR_DIR)
 	@echo "create_clock -name clk -period $(CLK_PERIOD) [get_ports clk]"   >  $@
 	@echo "set_input_delay  0.1 -clock clk [get_ports {rst}]" >> $@
 	@echo "set_max_fanout 16 [current_design]"                             >> $@
 	@echo "set_max_transition 0.3 [current_design]"                        >> $@
 
-$(PNR_SCRIPT): | $(SYN_DIR)
+$(PNR_SCRIPT): | $(PNR_DIR)
 	@echo "read_lef $(TECH_LEF)"                                           >  $@
 	@echo "read_lef $(CELL_LEF)"                                           >> $@
 	@echo "read_liberty $(LIB_FILE)"                                       >> $@
 	@echo "read_verilog $(SYN_NET)"                                        >> $@
-	@echo "link_design $(TOP)"                                            >> $@
+	@echo "link_design $(TOP)"                                             >> $@
 	@echo "read_sdc $(PNR_SDC)"                                            >> $@
 	@echo ""                                                               >> $@
 	@echo "initialize_floorplan -utilization 35 -aspect_ratio 1.0 -core_space 10 -site $(SITE_NAME)" >> $@
@@ -259,8 +251,8 @@ $(PNR_SCRIPT): | $(SYN_DIR)
 	@echo ""                                                               >> $@
 	@echo "place_pins -hor_layers Metal3 -ver_layers Metal2"               >> $@
 	@echo ""                                                               >> $@
-	@echo "add_global_connection -net VDD -pin_pattern VDD -power"         >> $@
-	@echo "add_global_connection -net VSS -pin_pattern VSS -ground"        >> $@
+	@echo "add_global_connection -net VDD -pin_pattern VDD -power"          >> $@
+	@echo "add_global_connection -net VSS -pin_pattern VSS -ground"         >> $@
 	@echo "set_voltage_domain -power VDD -ground VSS"                      >> $@
 	@echo "define_pdn_grid -name core -pins {Metal5}"                      >> $@
 	@echo "add_pdn_stripe -grid core -layer Metal1 -width 0.48 -followpins" >> $@
@@ -270,10 +262,11 @@ $(PNR_SCRIPT): | $(SYN_DIR)
 	@echo "add_pdn_connect -layers {Metal4 Metal5}"                        >> $@
 	@echo "pdngen"                                                         >> $@
 	@echo ""                                                               >> $@
-	@echo "global_placement -density 0.45 -pad_left 2 -pad_right 2"       >> $@
+	@echo "global_placement -density 0.45 -pad_left 2 -pad_right 2"        >> $@
 	@echo "estimate_parasitics -placement"                                 >> $@
 	@echo "repair_design"                                                  >> $@
 	@echo "detailed_placement"                                             >> $@
+	@echo "estimate_parasitics -placement"                                 >> $@
 	@echo "check_placement"                                                >> $@
 	@echo ""                                                               >> $@
 	@echo "clock_tree_synthesis -root_buf $(SCL)__clkbuf_8 -buf_list {$(SCL)__clkbuf_2 $(SCL)__clkbuf_4 $(SCL)__clkbuf_8} -sink_clustering_enable" >> $@
@@ -282,8 +275,8 @@ $(PNR_SCRIPT): | $(SYN_DIR)
 	@echo "detailed_placement"                                             >> $@
 	@echo ""                                                               >> $@
 	@echo "estimate_parasitics -placement"                                 >> $@
-	@echo "repair_timing -setup -verbose"                                  >> $@
-	@echo "repair_timing -hold -verbose"                                   >> $@
+	@echo "repair_timing -setup -setup_margin 0.05 -verbose"               >> $@
+	@echo "repair_timing -hold -hold_margin 0.05 -verbose"                 >> $@
 	@echo "detailed_placement"                                             >> $@
 	@echo ""                                                               >> $@
 	@echo "global_route -verbose -allow_congestion"                        >> $@
@@ -298,10 +291,16 @@ $(PNR_SCRIPT): | $(SYN_DIR)
 	@echo "report_design_area"                                             >> $@
 	@echo ""                                                               >> $@
 	@echo "write_def $(PNR_DEF)"                                           >> $@
-	@echo "write_verilog $(SYN_DIR)/fft_pnr.v"                        >> $@
+	@echo "write_verilog $(SYN_DIR)/fft_pnr.v"                             >> $@
+
+$(PNR_DIR):
+	mkdir -p $(PNR_DIR)
+
+$(SYN_DIR):
+	mkdir -p $(SYN_DIR)
 
 $(PNR_DEF): $(SYN_NET) $(PNR_SDC) $(PNR_SCRIPT)
-	$(OPENROAD) $(PNR_SCRIPT) 2>&1 | tee $(SYN_DIR)/pnr.log
+	$(OPENROAD) -exit $(PNR_SCRIPT) 2>&1 | tee $(SYN_DIR)/pnr.log
 
 # ============================================================
 # POST-PNR STA
@@ -309,26 +308,22 @@ $(PNR_DEF): $(SYN_NET) $(PNR_SDC) $(PNR_SCRIPT)
 
 sta_pnr: $(PNR_DEF)
 	mkdir -p $(SYN_DIR)
-	echo "read_liberty $(LIB_FILE)" > $(STA_SCRIPT)
-	echo "read_verilog $(SYN_NET)" >> $(STA_SCRIPT)
-	echo "read_def $(PNR_DEF)" >> $(STA_SCRIPT)
-	echo "link_design $(TOP)" >> $(STA_SCRIPT)
-	echo "create_clock -period 3.2 [get_ports clk]" >> $(STA_SCRIPT)
-	echo "set_propagated_clock [all_clocks]" >> $(STA_SCRIPT)
-	echo "report_checks -path_delay max" >> $(STA_SCRIPT)
-	echo "report_wns" >> $(STA_SCRIPT)
-	echo "report_tns" >> $(STA_SCRIPT)
-	$(STA) -exit $(STA_SCRIPT)
+	@echo "read_liberty $(LIB_FILE)" > $(STA_PNR_SCRIPT)
+	@echo "read_verilog $(SYN_DIR)/fft_pnr.v" >> $(STA_PNR_SCRIPT)
+	@echo "link_design $(TOP)" >> $(STA_PNR_SCRIPT)
+	@echo "create_clock -period $(CLK_PERIOD) [get_ports clk]" >> $(STA_PNR_SCRIPT)
+	@echo "set_propagated_clock [all_clocks]" >> $(STA_PNR_SCRIPT)
+	@echo "report_checks -path_delay max" >> $(STA_PNR_SCRIPT)
+	@echo "report_wns" >> $(STA_PNR_SCRIPT)
+	@echo "report_tns" >> $(STA_PNR_SCRIPT)
+	$(STA) -exit $(STA_PNR_SCRIPT)
 
 # ============================================================
 # GDS
 # ============================================================
 
-GDS = $(PNR_DIR)/fft.gds
-
 gds: $(PNR_DEF)
-	$(OPENROAD) -exit $(PNR_SCRIPT)
-	@echo "GDS generated at $(GDS)"
+	@echo "GDS step needs an external streaming tool like KLayout or Magic, but DEF is ready at $(PNR_DEF)"
 
 # ============================================================
 # CLEAN
