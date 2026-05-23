@@ -6,15 +6,15 @@ S {}
 F {}
 E {}
 B 2 2140 -880 2940 -480 {flags=graph
-y1=-0.093
+y1=-0.19
 y2=3.4
 ypos1=0
 ypos2=2
 divy=5
 subdivy=1
 unity=1
-x1=3.5946717e-09
-x2=6.6011473e-09
+x1=-2.0935581e-09
+x2=2.5302947e-08
 divx=5
 subdivx=1
 xlabmag=1.0
@@ -31,15 +31,15 @@ b_out[3]
 b_out[4]
 b_out[5]"}
 B 2 2140 -1320 2940 -920 {flags=graph
-y1=1.98
-y2=5.28
+y1=0
+y2=3.3
 ypos1=0
 ypos2=2
 divy=5
 subdivy=1
 unity=1
-x1=3.5946717e-09
-x2=6.6011473e-09
+x1=-2.0935581e-09
+x2=2.5302947e-08
 divx=5
 subdivx=1
 xlabmag=1.0
@@ -60,8 +60,8 @@ ypos2=2
 divy=5
 subdivy=1
 unity=1
-x1=3.5946717e-09
-x2=6.6011473e-09
+x1=-2.0935581e-09
+x2=2.5302947e-08
 divx=5
 subdivx=1
 xlabmag=1.0
@@ -78,15 +78,15 @@ wl[59]
 wl[58]
 wl[57]"}
 B 2 2140 -480 2940 -80 {flags=graph
-y1=-0.026
+y1=-0.071
 y2=3.4
 ypos1=0
 ypos2=2
 divy=5
 subdivy=1
 unity=1
-x1=3.5946717e-09
-x2=6.6011473e-09
+x1=-2.0935581e-09
+x2=2.5302947e-08
 divx=5
 subdivx=1
 xlabmag=1.0
@@ -96,7 +96,7 @@ unitx=1
 logx=0
 logy=0
 color=12
-node=b}
+node=b_out[0]}
 N 3040 -1460 3040 -1430 {lab=VDD}
 N 3040 -1370 3040 -1350 {lab=GND}
 N 3700 -1660 3770 -1660 {lab=b[0]}
@@ -107,13 +107,13 @@ N 3700 -1580 3770 -1580 {lab=b[4]}
 N 3700 -1560 3770 -1560 {lab=b[5]}
 N 3550 -1720 3550 -1690 {lab=VDD}
 N 3550 -310 3550 -290 {lab=GND}
-N 3360 -1640 3400 -1640 {lab=CLK_PRE}
+N 3360 -1640 3400 -1640 {lab=CLK_EVAL}
 N 3260 -1610 3260 -360 {lab=wl[62:0]
 bus=true}
 N 3220 -1020 3260 -1020 {lab=wl[62:0]
 bus=true}
 N 3270 -1620 3400 -1620 {lab=wl[0]}
-N 3240 -1640 3360 -1640 {lab=CLK_PRE}
+N 3240 -1640 3360 -1640 {lab=CLK_EVAL}
 N 3270 -1600 3400 -1600 {lab=wl[1]}
 N 3270 -1580 3400 -1580 {lab=wl[2]}
 N 3270 -1560 3400 -1560 {lab=wl[3]}
@@ -182,7 +182,7 @@ N 3780 -1640 4040 -1640 {lab=b[5:0]
 bus=true}
 N 3990 -1700 4040 -1700 {lab=VDD}
 N 3990 -1680 4040 -1680 {lab=RST}
-N 3990 -1660 4050 -1660 {lab=CLK_EVAL}
+N 3990 -1660 4050 -1660 {lab=CLK_PRE}
 N 3990 -1620 4040 -1620 {lab=GND}
 N 4340 -1700 4370 -1700 {lab=b_out[5:0]
 bus=true}
@@ -400,7 +400,6 @@ C {lab_wire.sym} 3340 -440 0 0 {name=p73 sig_type=std_logic lab=wl[59]}
 C {lab_wire.sym} 3340 -420 0 0 {name=p74 sig_type=std_logic lab=wl[60]}
 C {lab_wire.sym} 3340 -400 0 0 {name=p75 sig_type=std_logic lab=wl[61]}
 C {lab_wire.sym} 3340 -380 0 0 {name=p76 sig_type=std_logic lab=wl[62]}
-C {ipin.sym} 3240 -1640 0 0 {name=p443 lab=CLK_PRE}
 C {ipin.sym} 3340 -360 0 0 {name=p14 lab=CLK_EVAL}
 C {bus_connect_nolab.sym} 3770 -1660 0 0 {name=r1}
 C {bus_connect_nolab.sym} 3770 -1640 0 0 {name=r3}
@@ -418,7 +417,6 @@ C {lab_wire.sym} 3780 -1720 0 0 {name=p81 sig_type=std_logic lab=b[5:0]}
 C {opin.sym} 4370 -1700 0 0 {name=p421 lab=b_out[5:0]}
 C {lab_wire.sym} 4020 -1700 0 0 {name=p6 sig_type=std_logic lab=VDD}
 C {lab_wire.sym} 4020 -1620 0 0 {name=p7 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 4020 -1660 0 0 {name=p82 sig_type=std_logic lab=CLK_EVAL}
 C {ipin.sym} 3990 -1680 0 0 {name=p83 lab=RST}
 C {encoder/sym/dff_encoder.sym} 4190 -1660 0 0 {name=x3[5:0]}
 C {ipin.sym} 3550 -1720 0 0 {name=p1 lab=VDD}
@@ -429,3 +427,5 @@ descr="load waves"
 tclcommand="xschem raw_read $netlist_dir/ROM2_test2.raw tran"
 }
 C {encoder/sym/ROM2.sym} 3550 -1000 0 0 {name=x1}
+C {lab_wire.sym} 3270 -1640 0 0 {name=p10 sig_type=std_logic lab=CLK_EVAL}
+C {ipin.sym} 4000 -1660 0 0 {name=p12 lab=CLK_PRE}

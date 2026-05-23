@@ -5,16 +5,16 @@ V {}
 S {}
 F {}
 E {}
-B 2 2010 -720 2810 -320 {flags=graph
-y1=-0.026
-y2=3.4
+B 2 1150 -1460 1950 -1060 {flags=graph
+y1=-0.12
+y2=3.5
 ypos1=0
 ypos2=2
 divy=5
 subdivy=1
 unity=1
-x1=4.1231753e-08
-x2=4.311607e-08
+x1=-2.8690086e-08
+x2=2.6090329e-08
 divx=5
 subdivx=1
 xlabmag=1.0
@@ -31,29 +31,7 @@ unitx=1
 logx=0
 logy=0
 }
-B 2 2010 -1160 2810 -760 {flags=graph
-y1=-0.66
-y2=2.64
-ypos1=0
-ypos2=2
-divy=5
-subdivy=1
-unity=1
-x1=4.1231753e-08
-x2=4.311607e-08
-divx=5
-subdivx=1
-xlabmag=1.0
-ylabmag=1.0
-node="clk_eval
-clk_pre"
-color="4 7"
-dataset=-1
-unitx=1
-logx=0
-logy=0
-}
-B 2 2010 -1610 2810 -1210 {flags=graph
+B 2 1950 -1860 2750 -1460 {flags=graph
 y1=0
 y2=3.3
 ypos1=0
@@ -61,35 +39,361 @@ ypos2=2
 divy=5
 subdivy=1
 unity=1
-x1=4.1231753e-08
-x2=4.311607e-08
+x1=-2.8690086e-08
+x2=2.6090329e-08
 divx=5
 subdivx=1
 xlabmag=1.0
 ylabmag=1.0
-node="in0
-in1
-in2
-in3
-in4
-in5
-in6"
-color="4 5 6 7 8 10 11"
+node="clk_eval
+clk_pre"
+color="4 12"
 dataset=-1
 unitx=1
 logx=0
 logy=0
 }
-B 2 2010 -320 2810 80 {flags=graph
-y1=-0.026
+B 2 1950 -2260 2750 -1860 {flags=graph
+y1=0.026
+y2=0.036
+ypos1=0
+ypos2=2
+divy=5
+subdivy=1
+unity=1
+x1=-2.8690086e-08
+x2=2.6090329e-08
+divx=5
+subdivx=1
+xlabmag=1.0
+ylabmag=1.0
+dataset=-1
+unitx=1
+logx=0
+logy=0
+color="4 5 6 7 8 9 10 11 12 13 14 15 16"
+node="in57
+in58
+in59
+in60
+in61
+in62
+in0
+in1
+in2
+in3
+in5
+in4
+in6"}
+B 2 1950 -1460 2750 -1060 {flags=graph
+y1=5.5658
+y2=9.0088
+ypos1=0
+ypos2=2
+divy=5
+subdivy=1
+unity=1
+x1=-2.8690086e-08
+x2=2.6090329e-08
+divx=5
+subdivx=1
+xlabmag=1.0
+ylabmag=1.0
+dataset=-1
+unitx=1
+logx=0
+logy=0
+color="7 17 4 8 10 13"
+node="b0bar
+b1bar
+b2bar
+b3bar
+b4bar
+b5bar"
+autoload=1}
+B 2 1950 -1060 2750 -660 {flags=graph
+y1=6.852
+y2=10.304
+ypos1=0
+ypos2=2
+divy=5
+subdivy=1
+unity=1
+x1=-2.8690086e-08
+x2=2.6090329e-08
+divx=5
+subdivx=1
+xlabmag=1.0
+ylabmag=1.0
+dataset=-1
+unitx=1
+logx=0
+logy=0
+color="7 10 13 14 15 17"
+node="b0out
+b1out
+
+b2out
+b3out
+b4out
+
+b5out"}
+B 2 -1090 20 -290 420 {flags=graph
+y1=0.032
 y2=3.4
 ypos1=0
 ypos2=2
 divy=5
 subdivy=1
 unity=1
-x1=4.1231753e-08
-x2=4.311607e-08
+x1=-2.8690086e-08
+x2=2.6090329e-08
+divx=5
+subdivx=1
+xlabmag=1.0
+ylabmag=1.0
+dataset=-1
+unitx=1
+logx=0
+logy=0
+color=7
+node=b0bar
+autoload=1}
+B 2 -1090 420 -290 820 {flags=graph
+y1=-0.047
+y2=3.3
+ypos1=0
+ypos2=2
+divy=5
+subdivy=1
+unity=1
+x1=-2.8690086e-08
+x2=2.6090329e-08
+divx=5
+subdivx=1
+xlabmag=1.0
+ylabmag=1.0
+dataset=-1
+unitx=1
+logx=0
+logy=0
+color=7
+node=b0out}
+B 2 -290 20 510 420 {flags=graph
+y1=0.45
+y2=3.5
+ypos1=0
+ypos2=2
+divy=5
+subdivy=1
+unity=1
+x1=-2.8690086e-08
+x2=2.6090329e-08
+divx=5
+subdivx=1
+xlabmag=1.0
+ylabmag=1.0
+dataset=-1
+unitx=1
+logx=0
+logy=0
+color=7
+node=b1bar
+autoload=1}
+B 2 -290 420 510 820 {flags=graph
+y1=-0.056
+y2=3.4
+ypos1=0
+ypos2=2
+divy=5
+subdivy=1
+unity=1
+x1=-2.8690086e-08
+x2=2.6090329e-08
+divx=5
+subdivx=1
+xlabmag=1.0
+ylabmag=1.0
+dataset=-1
+unitx=1
+logx=0
+logy=0
+color=7
+node=b1out}
+B 2 510 20 1310 420 {flags=graph
+y1=0.44
+y2=3.6
+ypos1=0
+ypos2=2
+divy=5
+subdivy=1
+unity=1
+x1=-2.8690086e-08
+x2=2.6090329e-08
+divx=5
+subdivx=1
+xlabmag=1.0
+ylabmag=1.0
+dataset=-1
+unitx=1
+logx=0
+logy=0
+color=7
+node=b2bar
+autoload=1}
+B 2 510 420 1310 820 {flags=graph
+y1=-0.056
+y2=3.4
+ypos1=0
+ypos2=2
+divy=5
+subdivy=1
+unity=1
+x1=-2.8690086e-08
+x2=2.6090329e-08
+divx=5
+subdivx=1
+xlabmag=1.0
+ylabmag=1.0
+dataset=-1
+unitx=1
+logx=0
+logy=0
+color=7
+node=b2out}
+B 2 1310 20 2110 420 {flags=graph
+y1=0.48
+y2=3.6
+ypos1=0
+ypos2=2
+divy=5
+subdivy=1
+unity=1
+x1=-2.8690086e-08
+x2=2.6090329e-08
+divx=5
+subdivx=1
+xlabmag=1.0
+ylabmag=1.0
+dataset=-1
+unitx=1
+logx=0
+logy=0
+color=7
+node=b3bar
+autoload=1}
+B 2 1310 420 2110 820 {flags=graph
+y1=-0.093
+y2=3.4
+ypos1=0
+ypos2=2
+divy=5
+subdivy=1
+unity=1
+x1=-2.8690086e-08
+x2=2.6090329e-08
+divx=5
+subdivx=1
+xlabmag=1.0
+ylabmag=1.0
+dataset=-1
+unitx=1
+logx=0
+logy=0
+color=7
+node=b3out}
+B 2 -220 1320 580 1720 {flags=graph
+y1=0.42
+y2=3.6
+ypos1=0
+ypos2=2
+divy=5
+subdivy=1
+unity=1
+x1=-2.8690086e-08
+x2=2.6090329e-08
+divx=5
+subdivx=1
+xlabmag=1.0
+ylabmag=1.0
+dataset=-1
+unitx=1
+logx=0
+logy=0
+color=7
+node=b4bar
+autoload=1}
+B 2 -220 1720 580 2120 {flags=graph
+y1=-1.4174
+y2=2.0236
+ypos1=0
+ypos2=2
+divy=5
+subdivy=1
+unity=1
+x1=-2.8690086e-08
+x2=2.6090329e-08
+divx=5
+subdivx=1
+xlabmag=1.0
+ylabmag=1.0
+dataset=-1
+unitx=1
+logx=0
+logy=0
+color=7
+node=b4out}
+B 2 580 1320 1380 1720 {flags=graph
+y1=0.4
+y2=3.3
+ypos1=0
+ypos2=2
+divy=5
+subdivy=1
+unity=1
+x1=-2.8690086e-08
+x2=2.6090329e-08
+divx=5
+subdivx=1
+xlabmag=1.0
+ylabmag=1.0
+dataset=-1
+unitx=1
+logx=0
+logy=0
+color=7
+node=b5bar
+autoload=1}
+B 2 580 1720 1380 2120 {flags=graph
+y1=1.3042
+y2=4.7972
+ypos1=0
+ypos2=2
+divy=5
+subdivy=1
+unity=1
+x1=-2.8690086e-08
+x2=2.6090329e-08
+divx=5
+subdivx=1
+xlabmag=1.0
+ylabmag=1.0
+dataset=-1
+unitx=1
+logx=0
+logy=0
+color=7
+node=b5out}
+B 2 -1090 820 -290 1220 {flags=graph
+y1=-0.078
+y2=3.4
+ypos1=0
+ypos2=2
+divy=5
+subdivy=1
+unity=1
+x1=-2.8690086e-08
+x2=2.6090329e-08
 divx=5
 subdivx=1
 xlabmag=1.0
@@ -99,7 +403,90 @@ unitx=1
 logx=0
 logy=0
 color=12
-node=b}
+node=b0}
+B 2 -1090 -380 -290 20 {flags=graph
+y1=0
+y2=3.3
+ypos1=0
+ypos2=2
+divy=5
+subdivy=1
+unity=1
+x1=-2.8690086e-08
+x2=2.6090329e-08
+divx=5
+subdivx=1
+xlabmag=1.0
+ylabmag=1.0
+node="clk_pre
+clk_eval"
+color="4 12"
+dataset=-1
+unitx=1
+logx=0
+logy=0
+}
+B 2 -290 820 510 1220 {flags=graph
+y1=-0.074
+y2=3.4
+ypos1=0
+ypos2=2
+divy=5
+subdivy=1
+unity=1
+x1=-2.8690086e-08
+x2=2.6090329e-08
+divx=5
+subdivx=1
+xlabmag=1.0
+ylabmag=1.0
+dataset=-1
+unitx=1
+logx=0
+logy=0
+color=12
+node=b1}
+B 2 510 820 1310 1220 {flags=graph
+y1=-0.064
+y2=3.4
+ypos1=0
+ypos2=2
+divy=5
+subdivy=1
+unity=1
+x1=-2.8690086e-08
+x2=2.6090329e-08
+divx=5
+subdivx=1
+xlabmag=1.0
+ylabmag=1.0
+dataset=-1
+unitx=1
+logx=0
+logy=0
+color=12
+node=b2}
+B 2 1310 820 2110 1220 {flags=graph
+y1=-0.064
+y2=3.4
+ypos1=0
+ypos2=2
+divy=5
+subdivy=1
+unity=1
+x1=-2.8690086e-08
+x2=2.6090329e-08
+divx=5
+subdivx=1
+xlabmag=1.0
+ylabmag=1.0
+dataset=-1
+unitx=1
+logx=0
+logy=0
+color=12
+node=b3}
+T {DFF Sample this} -1530 570 0 0 1 1 {}
 N 4600 -4440 4600 -4420 {lab=VDD}
 N 4595 -4390 4610 -4390 {lab=VDD}
 N 4600 -4240 4600 -4220 {lab=FOOT}
@@ -994,12 +1381,12 @@ N 4640 5295 4640 5345 {lab=GND}
 N 4620 5345 4640 5345 {lab=GND}
 N 4620 5345 4620 5365 {lab=GND}
 N 4550 5295 4580 5295 {lab=CLK_EVAL}
-N 4520 -4390 4560 -4390 {lab=CLK_PRE}
-N 4320 -4390 4360 -4390 {lab=CLK_PRE}
-N 4120 -4390 4160 -4390 {lab=CLK_PRE}
-N 3920 -4390 3960 -4390 {lab=CLK_PRE}
-N 3720 -4390 3760 -4390 {lab=CLK_PRE}
-N 3520 -4390 3560 -4390 {lab=CLK_PRE}
+N 4520 -4390 4560 -4390 {lab=CLK_EVAL}
+N 4320 -4390 4360 -4390 {lab=CLK_EVAL}
+N 4120 -4390 4160 -4390 {lab=CLK_EVAL}
+N 3920 -4390 3960 -4390 {lab=CLK_EVAL}
+N 3720 -4390 3760 -4390 {lab=CLK_EVAL}
+N 3520 -4390 3560 -4390 {lab=CLK_EVAL}
 N 4600 -100 4660 -100 {lab=B0bar}
 N 4550 430 4560 430 {lab=IN34}
 N 4550 1270 4560 1270 {lab=IN40}
@@ -1069,46 +1456,66 @@ N 4990 4600 4990 4620 {lab=VDD}
 N 4840 4730 4880 4730 {lab=B0bar}
 N 4985 4650 5000 4650 {lab=VDD}
 N 4990 4800 5010 4800 {lab=GND}
-N 2880 -1780 2880 -1750 {lab=VDD}
-N 2880 -1690 2880 -1670 {lab=GND}
-N 3285 4965 3335 4965 {lab=B5}
-N 2935 4965 2985 4965 {lab=VDD}
-N 2935 4985 2985 4985 {lab=RST}
-N 2935 5045 2985 5045 {lab=GND}
-N 2965 5005 2985 5005 {lab=CLK_EVAL}
-N 2970 5025 2985 5025 {lab=B5out}
+N 5030 -2420 5030 -2390 {lab=VDD}
+N 3290 4940 3340 4940 {lab=B5}
+N 2940 4940 2990 4940 {lab=VDD}
+N 2940 4960 2990 4960 {lab=RST}
+N 2940 5020 2990 5020 {lab=GND}
+N 2970 4980 2990 4980 {lab=CLK_PRE}
+N 2975 5000 2990 5000 {lab=B5out}
 N 3835 4980 3885 4980 {lab=B4}
 N 3485 4980 3535 4980 {lab=VDD}
 N 3485 5000 3535 5000 {lab=RST}
 N 3485 5060 3535 5060 {lab=GND}
-N 3515 5020 3535 5020 {lab=CLK_EVAL}
+N 3515 5020 3535 5020 {lab=CLK_PRE}
 N 3520 5040 3535 5040 {lab=B4out}
-N 4340 4985 4390 4985 {lab=B3}
-N 3990 4985 4040 4985 {lab=VDD}
-N 3990 5005 4040 5005 {lab=RST}
-N 3990 5065 4040 5065 {lab=GND}
-N 4020 5025 4040 5025 {lab=CLK_EVAL}
-N 4025 5045 4040 5045 {lab=B3out}
-N 4840 4995 4890 4995 {lab=B2}
-N 4490 4995 4540 4995 {lab=VDD}
-N 4490 5015 4540 5015 {lab=RST}
-N 4490 5075 4540 5075 {lab=GND}
-N 4520 5035 4540 5035 {lab=CLK_EVAL}
-N 4525 5055 4540 5055 {lab=B2out}
-N 5345 5000 5395 5000 {lab=B1}
-N 4995 5000 5045 5000 {lab=VDD}
-N 4995 5020 5045 5020 {lab=RST}
-N 4995 5080 5045 5080 {lab=GND}
-N 5025 5040 5045 5040 {lab=CLK_EVAL}
-N 5030 5060 5045 5060 {lab=B1out}
-N 5840 5005 5890 5005 {lab=B0}
-N 5490 5005 5540 5005 {lab=VDD}
-N 5490 5025 5540 5025 {lab=RST}
-N 5490 5085 5540 5085 {lab=GND}
-N 5520 5045 5540 5045 {lab=CLK_EVAL}
-N 5525 5065 5540 5065 {lab=B0out}
-C {lab_wire.sym} 4600 -4440 0 0 {name=p5 sig_type=std_logic lab=VDD}
+N 4340 4980 4390 4980 {lab=B3}
+N 3990 4980 4040 4980 {lab=VDD}
+N 3990 5000 4040 5000 {lab=RST}
+N 3990 5060 4040 5060 {lab=GND}
+N 4020 5020 4040 5020 {lab=CLK_PRE}
+N 4025 5040 4040 5040 {lab=B3out}
+N 4840 4980 4890 4980 {lab=B2}
+N 4490 4980 4540 4980 {lab=VDD}
+N 4490 5000 4540 5000 {lab=RST}
+N 4490 5060 4540 5060 {lab=GND}
+N 4520 5020 4540 5020 {lab=CLK_PRE}
+N 4525 5040 4540 5040 {lab=B2out}
+N 5340 4980 5390 4980 {lab=B1}
+N 4990 4980 5040 4980 {lab=VDD}
+N 4990 5000 5040 5000 {lab=RST}
+N 4990 5060 5040 5060 {lab=GND}
+N 5020 5020 5040 5020 {lab=CLK_PRE}
+N 5025 5040 5040 5040 {lab=B1out}
+N 5840 4980 5890 4980 {lab=B0}
+N 5490 4980 5540 4980 {lab=VDD}
+N 5490 5000 5540 5000 {lab=RST}
+N 5490 5060 5540 5060 {lab=GND}
+N 5520 5020 5540 5020 {lab=CLK_PRE}
+N 5525 5040 5540 5040 {lab=B0out}
+N 5390 4980 5400 4980 {lab=B1}
+N 5030 -2330 5030 -2310 {lab=GND}
+C {lab_wire.sym} 4600 -4440 0 0 {name=p5 sig_type=std_logic lab=VDD
+m=10}
 C {symbols/pfet_03v3.sym} 4580 -4390 0 0 {name=M5
+L=0.28u
+W=0.22u
+nf=1
+m=45
+ad="'int((nf+1)/2) * W/nf * 0.18u'"
+pd="'2*int((nf+1)/2) * (W/nf + 0.18u)'"
+as="'int((nf+2)/2) * W/nf * 0.18u'"
+ps="'2*int((nf+2)/2) * (W/nf + 0.18u)'"
+nrd="'0.18u / W'" nrs="'0.18u / W'"
+sa=0 sb=0 sd=0
+model=pfet_03v3
+spiceprefix=X
+}
+C {lab_wire.sym} 4605 -4390 0 0 {name=p17 sig_type=std_logic lab=VDD
+m=10}
+C {lab_wire.sym} 4600 -4230 0 0 {name=p7 sig_type=std_logic lab=FOOT
+m=7}
+C {symbols/nfet_03v3.sym} 4580 -4270 0 0 {name=M6
 L=0.28u
 W=0.22u
 nf=1
@@ -1119,32 +1526,18 @@ as="'int((nf+2)/2) * W/nf * 0.18u'"
 ps="'2*int((nf+2)/2) * (W/nf + 0.18u)'"
 nrd="'0.18u / W'" nrs="'0.18u / W'"
 sa=0 sb=0 sd=0
-model=pfet_03v3
-spiceprefix=X
-}
-C {lab_wire.sym} 4605 -4390 0 0 {name=p17 sig_type=std_logic lab=VDD}
-C {lab_wire.sym} 4600 -4230 0 0 {name=p7 sig_type=std_logic lab=FOOT}
-C {symbols/nfet_03v3.sym} 4580 -4270 0 0 {name=M6
-L=0.28u
-W=0.22u
-nf=1
-m=5
-ad="'int((nf+1)/2) * W/nf * 0.18u'"
-pd="'2*int((nf+1)/2) * (W/nf + 0.18u)'"
-as="'int((nf+2)/2) * W/nf * 0.18u'"
-ps="'2*int((nf+2)/2) * (W/nf + 0.18u)'"
-nrd="'0.18u / W'" nrs="'0.18u / W'"
-sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 4615 -4270 0 0 {name=p23 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 4600 -3950 0 0 {name=p141 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 4615 -4270 0 0 {name=p23 sig_type=std_logic lab=GND
+m=10}
+C {lab_wire.sym} 4600 -3950 0 0 {name=p141 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 4580 -3990 0 0 {name=M71
 L=0.28u
 W=0.22u
 nf=1
-m=5
+m=20
 ad="'int((nf+1)/2) * W/nf * 0.18u'"
 pd="'2*int((nf+1)/2) * (W/nf + 0.18u)'"
 as="'int((nf+2)/2) * W/nf * 0.18u'"
@@ -1154,13 +1547,15 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 4615 -3990 0 0 {name=p142 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 4600 -3670 0 0 {name=p149 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 4615 -3990 0 0 {name=p142 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 4600 -3670 0 0 {name=p149 sig_type=std_logic lab=FOOT
+m=20}
 C {symbols/nfet_03v3.sym} 4580 -3710 0 0 {name=M75
 L=0.28u
 W=0.22u
 nf=1
-m=5
+m=20
 ad="'int((nf+1)/2) * W/nf * 0.18u'"
 pd="'2*int((nf+1)/2) * (W/nf + 0.18u)'"
 as="'int((nf+2)/2) * W/nf * 0.18u'"
@@ -1170,8 +1565,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 4615 -3710 0 0 {name=p150 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 4400 -3950 0 0 {name=p153 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 4615 -3710 0 0 {name=p150 sig_type=std_logic lab=GND
+m=20}
+C {lab_wire.sym} 4400 -3950 0 0 {name=p153 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 4380 -3990 0 0 {name=M77
 L=0.28u
 W=0.22u
@@ -1186,8 +1583,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 4415 -3990 0 0 {name=p154 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 4400 -4090 0 0 {name=p155 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 4415 -3990 0 0 {name=p154 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 4400 -4090 0 0 {name=p155 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 4380 -4130 0 0 {name=M78
 L=0.28u
 W=0.22u
@@ -1202,8 +1601,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 4415 -4130 0 0 {name=p156 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 4400 -3530 0 0 {name=p159 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 4415 -4130 0 0 {name=p156 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 4400 -3530 0 0 {name=p159 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 4380 -3570 0 0 {name=M80
 L=0.28u
 W=0.22u
@@ -1218,13 +1619,15 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 4415 -3570 0 0 {name=p160 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 4600 -3390 0 0 {name=p163 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 4415 -3570 0 0 {name=p160 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 4600 -3390 0 0 {name=p163 sig_type=std_logic lab=FOOT
+m=20}
 C {symbols/nfet_03v3.sym} 4580 -3430 0 0 {name=M82
 L=0.28u
 W=0.22u
 nf=1
-m=5
+m=20
 ad="'int((nf+1)/2) * W/nf * 0.18u'"
 pd="'2*int((nf+1)/2) * (W/nf + 0.18u)'"
 as="'int((nf+2)/2) * W/nf * 0.18u'"
@@ -1234,8 +1637,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 4615 -3430 0 0 {name=p164 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 4400 -3390 0 0 {name=p165 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 4615 -3430 0 0 {name=p164 sig_type=std_logic lab=GND
+m=20}
+C {lab_wire.sym} 4400 -3390 0 0 {name=p165 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 4380 -3430 0 0 {name=M83
 L=0.28u
 W=0.22u
@@ -1250,8 +1655,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 4415 -3430 0 0 {name=p166 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 4200 -3670 0 0 {name=p143 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 4415 -3430 0 0 {name=p166 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 4200 -3670 0 0 {name=p143 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 4180 -3710 0 0 {name=M72
 L=0.28u
 W=0.22u
@@ -1266,8 +1673,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 4215 -3710 0 0 {name=p144 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 4200 -3810 0 0 {name=p145 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 4215 -3710 0 0 {name=p144 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 4200 -3810 0 0 {name=p145 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 4180 -3850 0 0 {name=M73
 L=0.28u
 W=0.22u
@@ -1282,8 +1691,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 4215 -3850 0 0 {name=p146 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 4200 -3390 0 0 {name=p147 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 4215 -3850 0 0 {name=p146 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 4200 -3390 0 0 {name=p147 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 4180 -3430 0 0 {name=M74
 L=0.28u
 W=0.22u
@@ -1298,8 +1709,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 4215 -3430 0 0 {name=p148 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 4200 -3530 0 0 {name=p151 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 4215 -3430 0 0 {name=p148 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 4200 -3530 0 0 {name=p151 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 4180 -3570 0 0 {name=M76
 L=0.28u
 W=0.22u
@@ -1314,13 +1727,15 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 4215 -3570 0 0 {name=p152 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 4600 -3110 0 0 {name=p161 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 4215 -3570 0 0 {name=p152 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 4600 -3110 0 0 {name=p161 sig_type=std_logic lab=FOOT
+m=20}
 C {symbols/nfet_03v3.sym} 4580 -3150 0 0 {name=M81
 L=0.28u
 W=0.22u
 nf=1
-m=5
+m=20
 ad="'int((nf+1)/2) * W/nf * 0.18u'"
 pd="'2*int((nf+1)/2) * (W/nf + 0.18u)'"
 as="'int((nf+2)/2) * W/nf * 0.18u'"
@@ -1330,13 +1745,15 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 4615 -3150 0 0 {name=p162 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 4600 -2830 0 0 {name=p167 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 4615 -3150 0 0 {name=p162 sig_type=std_logic lab=GND
+m=20}
+C {lab_wire.sym} 4600 -2830 0 0 {name=p167 sig_type=std_logic lab=FOOT
+m=20}
 C {symbols/nfet_03v3.sym} 4580 -2870 0 0 {name=M84
 L=0.28u
 W=0.22u
 nf=1
-m=5
+m=20
 ad="'int((nf+1)/2) * W/nf * 0.18u'"
 pd="'2*int((nf+1)/2) * (W/nf + 0.18u)'"
 as="'int((nf+2)/2) * W/nf * 0.18u'"
@@ -1346,13 +1763,15 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 4615 -2870 0 0 {name=p168 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 4600 -2550 0 0 {name=p169 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 4615 -2870 0 0 {name=p168 sig_type=std_logic lab=GND
+m=20}
+C {lab_wire.sym} 4600 -2550 0 0 {name=p169 sig_type=std_logic lab=FOOT
+m=20}
 C {symbols/nfet_03v3.sym} 4580 -2590 0 0 {name=M85
 L=0.28u
 W=0.22u
 nf=1
-m=5
+m=20
 ad="'int((nf+1)/2) * W/nf * 0.18u'"
 pd="'2*int((nf+1)/2) * (W/nf + 0.18u)'"
 as="'int((nf+2)/2) * W/nf * 0.18u'"
@@ -1362,8 +1781,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 4615 -2590 0 0 {name=p170 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 4400 -2830 0 0 {name=p171 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 4615 -2590 0 0 {name=p170 sig_type=std_logic lab=GND
+m=20}
+C {lab_wire.sym} 4400 -2830 0 0 {name=p171 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 4380 -2870 0 0 {name=M86
 L=0.28u
 W=0.22u
@@ -1378,8 +1799,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 4415 -2870 0 0 {name=p172 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 4400 -2970 0 0 {name=p173 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 4415 -2870 0 0 {name=p172 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 4400 -2970 0 0 {name=p173 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 4380 -3010 0 0 {name=M87
 L=0.28u
 W=0.22u
@@ -1394,8 +1817,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 4415 -3010 0 0 {name=p174 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 4400 -2410 0 0 {name=p175 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 4415 -3010 0 0 {name=p174 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 4400 -2410 0 0 {name=p175 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 4380 -2450 0 0 {name=M88
 L=0.28u
 W=0.22u
@@ -1410,13 +1835,15 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 4415 -2450 0 0 {name=p176 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 4600 -2270 0 0 {name=p177 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 4415 -2450 0 0 {name=p176 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 4600 -2270 0 0 {name=p177 sig_type=std_logic lab=FOOT
+m=20}
 C {symbols/nfet_03v3.sym} 4580 -2310 0 0 {name=M89
 L=0.28u
 W=0.22u
 nf=1
-m=5
+m=20
 ad="'int((nf+1)/2) * W/nf * 0.18u'"
 pd="'2*int((nf+1)/2) * (W/nf + 0.18u)'"
 as="'int((nf+2)/2) * W/nf * 0.18u'"
@@ -1426,8 +1853,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 4615 -2310 0 0 {name=p178 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 4400 -2270 0 0 {name=p179 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 4615 -2310 0 0 {name=p178 sig_type=std_logic lab=GND
+m=20}
+C {lab_wire.sym} 4400 -2270 0 0 {name=p179 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 4380 -2310 0 0 {name=M90
 L=0.28u
 W=0.22u
@@ -1442,8 +1871,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 4415 -2310 0 0 {name=p180 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 4200 -2550 0 0 {name=p181 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 4415 -2310 0 0 {name=p180 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 4200 -2550 0 0 {name=p181 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 4180 -2590 0 0 {name=M91
 L=0.28u
 W=0.22u
@@ -1458,8 +1889,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 4215 -2590 0 0 {name=p182 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 4200 -2690 0 0 {name=p183 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 4215 -2590 0 0 {name=p182 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 4200 -2690 0 0 {name=p183 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 4180 -2730 0 0 {name=M92
 L=0.28u
 W=0.22u
@@ -1474,8 +1907,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 4215 -2730 0 0 {name=p184 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 4200 -2270 0 0 {name=p185 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 4215 -2730 0 0 {name=p184 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 4200 -2270 0 0 {name=p185 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 4180 -2310 0 0 {name=M93
 L=0.28u
 W=0.22u
@@ -1490,8 +1925,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 4215 -2310 0 0 {name=p186 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 4200 -2410 0 0 {name=p187 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 4215 -2310 0 0 {name=p186 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 4200 -2410 0 0 {name=p187 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 4180 -2450 0 0 {name=M94
 L=0.28u
 W=0.22u
@@ -1506,8 +1943,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 4215 -2450 0 0 {name=p188 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 4000 -3110 0 0 {name=p157 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 4215 -2450 0 0 {name=p188 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 4000 -3110 0 0 {name=p157 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 3980 -3150 0 0 {name=M79
 L=0.28u
 W=0.22u
@@ -1522,8 +1961,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 4015 -3150 0 0 {name=p158 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 4000 -3250 0 0 {name=p189 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 4015 -3150 0 0 {name=p158 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 4000 -3250 0 0 {name=p189 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 3980 -3290 0 0 {name=M95
 L=0.28u
 W=0.22u
@@ -1538,8 +1979,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 4015 -3290 0 0 {name=p190 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 4000 -2830 0 0 {name=p191 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 4015 -3290 0 0 {name=p190 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 4000 -2830 0 0 {name=p191 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 3980 -2870 0 0 {name=M96
 L=0.28u
 W=0.22u
@@ -1554,8 +1997,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 4015 -2870 0 0 {name=p192 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 4000 -2970 0 0 {name=p193 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 4015 -2870 0 0 {name=p192 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 4000 -2970 0 0 {name=p193 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 3980 -3010 0 0 {name=M97
 L=0.28u
 W=0.22u
@@ -1570,8 +2015,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 4015 -3010 0 0 {name=p194 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 4000 -2550 0 0 {name=p195 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 4015 -3010 0 0 {name=p194 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 4000 -2550 0 0 {name=p195 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 3980 -2590 0 0 {name=M98
 L=0.28u
 W=0.22u
@@ -1586,8 +2033,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 4015 -2590 0 0 {name=p196 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 4000 -2690 0 0 {name=p197 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 4015 -2590 0 0 {name=p196 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 4000 -2690 0 0 {name=p197 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 3980 -2730 0 0 {name=M99
 L=0.28u
 W=0.22u
@@ -1602,8 +2051,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 4015 -2730 0 0 {name=p198 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 4000 -2270 0 0 {name=p199 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 4015 -2730 0 0 {name=p198 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 4000 -2270 0 0 {name=p199 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 3980 -2310 0 0 {name=M100
 L=0.28u
 W=0.22u
@@ -1618,8 +2069,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 4015 -2310 0 0 {name=p200 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 4000 -2410 0 0 {name=p201 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 4015 -2310 0 0 {name=p200 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 4000 -2410 0 0 {name=p201 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 3980 -2450 0 0 {name=M101
 L=0.28u
 W=0.22u
@@ -1634,8 +2087,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 4015 -2450 0 0 {name=p202 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 3800 -2130 0 0 {name=p203 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 4015 -2450 0 0 {name=p202 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 3800 -2130 0 0 {name=p203 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 3780 -2170 0 0 {name=M102
 L=0.28u
 W=0.22u
@@ -1650,13 +2105,15 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 3815 -2170 0 0 {name=p204 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 4600 -1990 0 0 {name=p205 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 3815 -2170 0 0 {name=p204 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 4600 -1990 0 0 {name=p205 sig_type=std_logic lab=FOOT
+m=20}
 C {symbols/nfet_03v3.sym} 4580 -2030 0 0 {name=M103
 L=0.28u
 W=0.22u
 nf=1
-m=5
+m=20
 ad="'int((nf+1)/2) * W/nf * 0.18u'"
 pd="'2*int((nf+1)/2) * (W/nf + 0.18u)'"
 as="'int((nf+2)/2) * W/nf * 0.18u'"
@@ -1666,13 +2123,15 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 4615 -2030 0 0 {name=p206 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 4600 -1710 0 0 {name=p207 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 4615 -2030 0 0 {name=p206 sig_type=std_logic lab=GND
+m=20}
+C {lab_wire.sym} 4600 -1710 0 0 {name=p207 sig_type=std_logic lab=FOOT
+m=20}
 C {symbols/nfet_03v3.sym} 4580 -1750 0 0 {name=M104
 L=0.28u
 W=0.22u
 nf=1
-m=5
+m=20
 ad="'int((nf+1)/2) * W/nf * 0.18u'"
 pd="'2*int((nf+1)/2) * (W/nf + 0.18u)'"
 as="'int((nf+2)/2) * W/nf * 0.18u'"
@@ -1682,13 +2141,15 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 4615 -1750 0 0 {name=p208 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 4600 -1430 0 0 {name=p209 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 4615 -1750 0 0 {name=p208 sig_type=std_logic lab=GND
+m=20}
+C {lab_wire.sym} 4600 -1430 0 0 {name=p209 sig_type=std_logic lab=FOOT
+m=20}
 C {symbols/nfet_03v3.sym} 4580 -1470 0 0 {name=M105
 L=0.28u
 W=0.22u
 nf=1
-m=5
+m=20
 ad="'int((nf+1)/2) * W/nf * 0.18u'"
 pd="'2*int((nf+1)/2) * (W/nf + 0.18u)'"
 as="'int((nf+2)/2) * W/nf * 0.18u'"
@@ -1698,8 +2159,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 4615 -1470 0 0 {name=p210 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 4400 -1710 0 0 {name=p211 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 4615 -1470 0 0 {name=p210 sig_type=std_logic lab=GND
+m=20}
+C {lab_wire.sym} 4400 -1710 0 0 {name=p211 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 4380 -1750 0 0 {name=M106
 L=0.28u
 W=0.22u
@@ -1714,8 +2177,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 4415 -1750 0 0 {name=p212 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 4400 -1850 0 0 {name=p213 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 4415 -1750 0 0 {name=p212 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 4400 -1850 0 0 {name=p213 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 4380 -1890 0 0 {name=M107
 L=0.28u
 W=0.22u
@@ -1730,8 +2195,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 4415 -1890 0 0 {name=p214 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 4400 -1290 0 0 {name=p215 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 4415 -1890 0 0 {name=p214 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 4400 -1290 0 0 {name=p215 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 4380 -1330 0 0 {name=M108
 L=0.28u
 W=0.22u
@@ -1746,13 +2213,15 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 4415 -1330 0 0 {name=p216 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 4600 -1150 0 0 {name=p217 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 4415 -1330 0 0 {name=p216 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 4600 -1150 0 0 {name=p217 sig_type=std_logic lab=FOOT
+m=20}
 C {symbols/nfet_03v3.sym} 4580 -1190 0 0 {name=M109
 L=0.28u
 W=0.22u
 nf=1
-m=5
+m=20
 ad="'int((nf+1)/2) * W/nf * 0.18u'"
 pd="'2*int((nf+1)/2) * (W/nf + 0.18u)'"
 as="'int((nf+2)/2) * W/nf * 0.18u'"
@@ -1762,8 +2231,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 4615 -1190 0 0 {name=p218 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 4400 -1150 0 0 {name=p219 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 4615 -1190 0 0 {name=p218 sig_type=std_logic lab=GND
+m=20}
+C {lab_wire.sym} 4400 -1150 0 0 {name=p219 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 4380 -1190 0 0 {name=M110
 L=0.28u
 W=0.22u
@@ -1778,8 +2249,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 4415 -1190 0 0 {name=p220 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 4200 -1430 0 0 {name=p221 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 4415 -1190 0 0 {name=p220 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 4200 -1430 0 0 {name=p221 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 4180 -1470 0 0 {name=M111
 L=0.28u
 W=0.22u
@@ -1794,8 +2267,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 4215 -1470 0 0 {name=p222 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 4200 -1570 0 0 {name=p223 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 4215 -1470 0 0 {name=p222 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 4200 -1570 0 0 {name=p223 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 4180 -1610 0 0 {name=M112
 L=0.28u
 W=0.22u
@@ -1810,8 +2285,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 4215 -1610 0 0 {name=p224 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 4200 -1150 0 0 {name=p225 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 4215 -1610 0 0 {name=p224 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 4200 -1150 0 0 {name=p225 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 4180 -1190 0 0 {name=M113
 L=0.28u
 W=0.22u
@@ -1826,8 +2303,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 4215 -1190 0 0 {name=p226 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 4200 -1290 0 0 {name=p227 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 4215 -1190 0 0 {name=p226 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 4200 -1290 0 0 {name=p227 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 4180 -1330 0 0 {name=M114
 L=0.28u
 W=0.22u
@@ -1842,13 +2321,15 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 4215 -1330 0 0 {name=p228 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 4600 -870 0 0 {name=p229 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 4215 -1330 0 0 {name=p228 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 4600 -870 0 0 {name=p229 sig_type=std_logic lab=FOOT
+m=20}
 C {symbols/nfet_03v3.sym} 4580 -910 0 0 {name=M115
 L=0.28u
 W=0.22u
 nf=1
-m=5
+m=20
 ad="'int((nf+1)/2) * W/nf * 0.18u'"
 pd="'2*int((nf+1)/2) * (W/nf + 0.18u)'"
 as="'int((nf+2)/2) * W/nf * 0.18u'"
@@ -1858,13 +2339,15 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 4615 -910 0 0 {name=p230 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 4600 -590 0 0 {name=p231 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 4615 -910 0 0 {name=p230 sig_type=std_logic lab=GND
+m=20}
+C {lab_wire.sym} 4600 -590 0 0 {name=p231 sig_type=std_logic lab=FOOT
+m=20}
 C {symbols/nfet_03v3.sym} 4580 -630 0 0 {name=M116
 L=0.28u
 W=0.22u
 nf=1
-m=5
+m=20
 ad="'int((nf+1)/2) * W/nf * 0.18u'"
 pd="'2*int((nf+1)/2) * (W/nf + 0.18u)'"
 as="'int((nf+2)/2) * W/nf * 0.18u'"
@@ -1874,13 +2357,15 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 4615 -630 0 0 {name=p232 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 4600 -310 0 0 {name=p233 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 4615 -630 0 0 {name=p232 sig_type=std_logic lab=GND
+m=20}
+C {lab_wire.sym} 4600 -310 0 0 {name=p233 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 4580 -350 0 0 {name=M117
 L=0.28u
 W=0.22u
 nf=1
-m=5
+m=20
 ad="'int((nf+1)/2) * W/nf * 0.18u'"
 pd="'2*int((nf+1)/2) * (W/nf + 0.18u)'"
 as="'int((nf+2)/2) * W/nf * 0.18u'"
@@ -1890,8 +2375,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 4615 -350 0 0 {name=p234 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 4400 -590 0 0 {name=p235 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 4615 -350 0 0 {name=p234 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 4400 -590 0 0 {name=p235 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 4380 -630 0 0 {name=M118
 L=0.28u
 W=0.22u
@@ -1906,8 +2393,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 4415 -630 0 0 {name=p236 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 4400 -730 0 0 {name=p237 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 4415 -630 0 0 {name=p236 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 4400 -730 0 0 {name=p237 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 4380 -770 0 0 {name=M119
 L=0.28u
 W=0.22u
@@ -1922,8 +2411,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 4415 -770 0 0 {name=p238 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 4400 -170 0 0 {name=p239 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 4415 -770 0 0 {name=p238 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 4400 -170 0 0 {name=p239 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 4380 -210 0 0 {name=M120
 L=0.28u
 W=0.22u
@@ -1938,13 +2429,15 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 4415 -210 0 0 {name=p240 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 4600 -30 0 0 {name=p241 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 4415 -210 0 0 {name=p240 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 4600 -30 0 0 {name=p241 sig_type=std_logic lab=FOOT
+m=20}
 C {symbols/nfet_03v3.sym} 4580 -70 0 0 {name=M121
 L=0.28u
 W=0.22u
 nf=1
-m=5
+m=20
 ad="'int((nf+1)/2) * W/nf * 0.18u'"
 pd="'2*int((nf+1)/2) * (W/nf + 0.18u)'"
 as="'int((nf+2)/2) * W/nf * 0.18u'"
@@ -1954,8 +2447,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 4615 -70 0 0 {name=p242 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 4400 -30 0 0 {name=p243 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 4615 -70 0 0 {name=p242 sig_type=std_logic lab=GND
+m=20}
+C {lab_wire.sym} 4400 -30 0 0 {name=p243 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 4380 -70 0 0 {name=M122
 L=0.28u
 W=0.22u
@@ -1970,8 +2465,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 4415 -70 0 0 {name=p244 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 4200 -310 0 0 {name=p245 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 4415 -70 0 0 {name=p244 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 4200 -310 0 0 {name=p245 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 4180 -350 0 0 {name=M123
 L=0.28u
 W=0.22u
@@ -1986,8 +2483,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 4215 -350 0 0 {name=p246 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 4200 -450 0 0 {name=p247 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 4215 -350 0 0 {name=p246 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 4200 -450 0 0 {name=p247 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 4180 -490 0 0 {name=M124
 L=0.28u
 W=0.22u
@@ -2002,8 +2501,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 4215 -490 0 0 {name=p248 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 4200 -30 0 0 {name=p249 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 4215 -490 0 0 {name=p248 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 4200 -30 0 0 {name=p249 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 4180 -70 0 0 {name=M125
 L=0.28u
 W=0.22u
@@ -2018,8 +2519,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 4215 -70 0 0 {name=p250 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 4200 -170 0 0 {name=p251 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 4215 -70 0 0 {name=p250 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 4200 -170 0 0 {name=p251 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 4180 -210 0 0 {name=M126
 L=0.28u
 W=0.22u
@@ -2034,8 +2537,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 4215 -210 0 0 {name=p252 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 4000 -870 0 0 {name=p253 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 4215 -210 0 0 {name=p252 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 4000 -870 0 0 {name=p253 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 3980 -910 0 0 {name=M127
 L=0.28u
 W=0.22u
@@ -2050,8 +2555,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 4015 -910 0 0 {name=p254 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 4000 -1010 0 0 {name=p255 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 4015 -910 0 0 {name=p254 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 4000 -1010 0 0 {name=p255 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 3980 -1050 0 0 {name=M128
 L=0.28u
 W=0.22u
@@ -2066,8 +2573,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 4015 -1050 0 0 {name=p256 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 4000 -590 0 0 {name=p257 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 4015 -1050 0 0 {name=p256 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 4000 -590 0 0 {name=p257 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 3980 -630 0 0 {name=M129
 L=0.28u
 W=0.22u
@@ -2082,8 +2591,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 4015 -630 0 0 {name=p258 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 4000 -730 0 0 {name=p259 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 4015 -630 0 0 {name=p258 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 4000 -730 0 0 {name=p259 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 3980 -770 0 0 {name=M130
 L=0.28u
 W=0.22u
@@ -2098,8 +2609,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 4015 -770 0 0 {name=p260 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 4000 -310 0 0 {name=p261 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 4015 -770 0 0 {name=p260 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 4000 -310 0 0 {name=p261 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 3980 -350 0 0 {name=M131
 L=0.28u
 W=0.22u
@@ -2114,8 +2627,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 4015 -350 0 0 {name=p262 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 4000 -450 0 0 {name=p263 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 4015 -350 0 0 {name=p262 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 4000 -450 0 0 {name=p263 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 3980 -490 0 0 {name=M132
 L=0.28u
 W=0.22u
@@ -2130,8 +2645,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 4015 -490 0 0 {name=p264 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 4000 -30 0 0 {name=p265 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 4015 -490 0 0 {name=p264 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 4000 -30 0 0 {name=p265 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 3980 -70 0 0 {name=M133
 L=0.28u
 W=0.22u
@@ -2146,8 +2663,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 4015 -70 0 0 {name=p266 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 4000 -170 0 0 {name=p267 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 4015 -70 0 0 {name=p266 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 4000 -170 0 0 {name=p267 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 3980 -210 0 0 {name=M134
 L=0.28u
 W=0.22u
@@ -2162,13 +2681,15 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 4015 -210 0 0 {name=p268 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 4600 250 0 0 {name=p271 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 4015 -210 0 0 {name=p268 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 4600 250 0 0 {name=p271 sig_type=std_logic lab=FOOT
+m=20}
 C {symbols/nfet_03v3.sym} 4580 210 0 0 {name=M136
 L=0.28u
 W=0.22u
 nf=1
-m=5
+m=20
 ad="'int((nf+1)/2) * W/nf * 0.18u'"
 pd="'2*int((nf+1)/2) * (W/nf + 0.18u)'"
 as="'int((nf+2)/2) * W/nf * 0.18u'"
@@ -2178,13 +2699,15 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 4615 210 0 0 {name=p272 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 4600 530 0 0 {name=p273 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 4615 210 0 0 {name=p272 sig_type=std_logic lab=GND
+m=20}
+C {lab_wire.sym} 4600 530 0 0 {name=p273 sig_type=std_logic lab=FOOT
+m=20}
 C {symbols/nfet_03v3.sym} 4580 490 0 0 {name=M137
 L=0.28u
 W=0.22u
 nf=1
-m=5
+m=20
 ad="'int((nf+1)/2) * W/nf * 0.18u'"
 pd="'2*int((nf+1)/2) * (W/nf + 0.18u)'"
 as="'int((nf+2)/2) * W/nf * 0.18u'"
@@ -2194,13 +2717,15 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 4615 490 0 0 {name=p274 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 4600 810 0 0 {name=p275 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 4615 490 0 0 {name=p274 sig_type=std_logic lab=GND
+m=20}
+C {lab_wire.sym} 4600 810 0 0 {name=p275 sig_type=std_logic lab=FOOT
+m=20}
 C {symbols/nfet_03v3.sym} 4580 770 0 0 {name=M138
 L=0.28u
 W=0.22u
 nf=1
-m=5
+m=20
 ad="'int((nf+1)/2) * W/nf * 0.18u'"
 pd="'2*int((nf+1)/2) * (W/nf + 0.18u)'"
 as="'int((nf+2)/2) * W/nf * 0.18u'"
@@ -2210,8 +2735,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 4615 770 0 0 {name=p276 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 4400 530 0 0 {name=p277 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 4615 770 0 0 {name=p276 sig_type=std_logic lab=GND
+m=20}
+C {lab_wire.sym} 4400 530 0 0 {name=p277 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 4380 490 0 0 {name=M139
 L=0.28u
 W=0.22u
@@ -2226,8 +2753,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 4415 490 0 0 {name=p278 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 4400 390 0 0 {name=p279 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 4415 490 0 0 {name=p278 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 4400 390 0 0 {name=p279 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 4380 350 0 0 {name=M140
 L=0.28u
 W=0.22u
@@ -2242,8 +2771,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 4415 350 0 0 {name=p280 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 4400 950 0 0 {name=p281 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 4415 350 0 0 {name=p280 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 4400 950 0 0 {name=p281 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 4380 910 0 0 {name=M141
 L=0.28u
 W=0.22u
@@ -2258,13 +2789,15 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 4415 910 0 0 {name=p282 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 4600 1090 0 0 {name=p283 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 4415 910 0 0 {name=p282 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 4600 1090 0 0 {name=p283 sig_type=std_logic lab=FOOT
+m=20}
 C {symbols/nfet_03v3.sym} 4580 1050 0 0 {name=M142
 L=0.28u
 W=0.22u
 nf=1
-m=5
+m=20
 ad="'int((nf+1)/2) * W/nf * 0.18u'"
 pd="'2*int((nf+1)/2) * (W/nf + 0.18u)'"
 as="'int((nf+2)/2) * W/nf * 0.18u'"
@@ -2274,8 +2807,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 4615 1050 0 0 {name=p284 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 4400 1090 0 0 {name=p285 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 4615 1050 0 0 {name=p284 sig_type=std_logic lab=GND
+m=20}
+C {lab_wire.sym} 4400 1090 0 0 {name=p285 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 4380 1050 0 0 {name=M143
 L=0.28u
 W=0.22u
@@ -2290,8 +2825,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 4415 1050 0 0 {name=p286 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 4200 810 0 0 {name=p287 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 4415 1050 0 0 {name=p286 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 4200 810 0 0 {name=p287 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 4180 770 0 0 {name=M144
 L=0.28u
 W=0.22u
@@ -2306,8 +2843,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 4215 770 0 0 {name=p288 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 4200 670 0 0 {name=p289 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 4215 770 0 0 {name=p288 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 4200 670 0 0 {name=p289 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 4180 630 0 0 {name=M145
 L=0.28u
 W=0.22u
@@ -2322,8 +2861,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 4215 630 0 0 {name=p290 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 4200 1090 0 0 {name=p291 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 4215 630 0 0 {name=p290 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 4200 1090 0 0 {name=p291 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 4180 1050 0 0 {name=M146
 L=0.28u
 W=0.22u
@@ -2338,8 +2879,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 4215 1050 0 0 {name=p292 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 4200 950 0 0 {name=p293 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 4215 1050 0 0 {name=p292 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 4200 950 0 0 {name=p293 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 4180 910 0 0 {name=M147
 L=0.28u
 W=0.22u
@@ -2354,13 +2897,15 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 4215 910 0 0 {name=p294 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 4600 1370 0 0 {name=p295 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 4215 910 0 0 {name=p294 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 4600 1370 0 0 {name=p295 sig_type=std_logic lab=FOOT
+m=20}
 C {symbols/nfet_03v3.sym} 4580 1330 0 0 {name=M148
 L=0.28u
 W=0.22u
 nf=1
-m=5
+m=20
 ad="'int((nf+1)/2) * W/nf * 0.18u'"
 pd="'2*int((nf+1)/2) * (W/nf + 0.18u)'"
 as="'int((nf+2)/2) * W/nf * 0.18u'"
@@ -2370,13 +2915,15 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 4615 1330 0 0 {name=p296 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 4600 1650 0 0 {name=p297 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 4615 1330 0 0 {name=p296 sig_type=std_logic lab=GND
+m=20}
+C {lab_wire.sym} 4600 1650 0 0 {name=p297 sig_type=std_logic lab=FOOT
+m=20}
 C {symbols/nfet_03v3.sym} 4580 1610 0 0 {name=M149
 L=0.28u
 W=0.22u
 nf=1
-m=5
+m=20
 ad="'int((nf+1)/2) * W/nf * 0.18u'"
 pd="'2*int((nf+1)/2) * (W/nf + 0.18u)'"
 as="'int((nf+2)/2) * W/nf * 0.18u'"
@@ -2386,13 +2933,15 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 4615 1610 0 0 {name=p298 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 4600 1930 0 0 {name=p299 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 4615 1610 0 0 {name=p298 sig_type=std_logic lab=GND
+m=20}
+C {lab_wire.sym} 4600 1930 0 0 {name=p299 sig_type=std_logic lab=FOOT
+m=20}
 C {symbols/nfet_03v3.sym} 4580 1890 0 0 {name=M150
 L=0.28u
 W=0.22u
 nf=1
-m=5
+m=20
 ad="'int((nf+1)/2) * W/nf * 0.18u'"
 pd="'2*int((nf+1)/2) * (W/nf + 0.18u)'"
 as="'int((nf+2)/2) * W/nf * 0.18u'"
@@ -2402,8 +2951,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 4615 1890 0 0 {name=p300 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 4400 1650 0 0 {name=p301 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 4615 1890 0 0 {name=p300 sig_type=std_logic lab=GND
+m=20}
+C {lab_wire.sym} 4400 1650 0 0 {name=p301 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 4380 1610 0 0 {name=M151
 L=0.28u
 W=0.22u
@@ -2418,8 +2969,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 4415 1610 0 0 {name=p302 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 4400 1510 0 0 {name=p303 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 4415 1610 0 0 {name=p302 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 4400 1510 0 0 {name=p303 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 4380 1470 0 0 {name=M152
 L=0.28u
 W=0.22u
@@ -2434,8 +2987,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 4415 1470 0 0 {name=p304 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 4400 2070 0 0 {name=p305 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 4415 1470 0 0 {name=p304 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 4400 2070 0 0 {name=p305 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 4380 2030 0 0 {name=M153
 L=0.28u
 W=0.22u
@@ -2450,13 +3005,15 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 4415 2030 0 0 {name=p306 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 4600 2210 0 0 {name=p307 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 4415 2030 0 0 {name=p306 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 4600 2210 0 0 {name=p307 sig_type=std_logic lab=FOOT
+m=20}
 C {symbols/nfet_03v3.sym} 4580 2170 0 0 {name=M154
 L=0.28u
 W=0.22u
 nf=1
-m=5
+m=20
 ad="'int((nf+1)/2) * W/nf * 0.18u'"
 pd="'2*int((nf+1)/2) * (W/nf + 0.18u)'"
 as="'int((nf+2)/2) * W/nf * 0.18u'"
@@ -2466,8 +3023,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 4615 2170 0 0 {name=p308 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 4400 2210 0 0 {name=p309 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 4615 2170 0 0 {name=p308 sig_type=std_logic lab=GND
+m=20}
+C {lab_wire.sym} 4400 2210 0 0 {name=p309 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 4380 2170 0 0 {name=M155
 L=0.28u
 W=0.22u
@@ -2482,8 +3041,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 4415 2170 0 0 {name=p310 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 4200 1930 0 0 {name=p311 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 4415 2170 0 0 {name=p310 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 4200 1930 0 0 {name=p311 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 4180 1890 0 0 {name=M156
 L=0.28u
 W=0.22u
@@ -2498,8 +3059,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 4215 1890 0 0 {name=p312 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 4200 1790 0 0 {name=p313 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 4215 1890 0 0 {name=p312 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 4200 1790 0 0 {name=p313 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 4180 1750 0 0 {name=M157
 L=0.28u
 W=0.22u
@@ -2514,8 +3077,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 4215 1750 0 0 {name=p314 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 4200 2210 0 0 {name=p315 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 4215 1750 0 0 {name=p314 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 4200 2210 0 0 {name=p315 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 4180 2170 0 0 {name=M158
 L=0.28u
 W=0.22u
@@ -2530,8 +3095,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 4215 2170 0 0 {name=p316 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 4200 2070 0 0 {name=p317 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 4215 2170 0 0 {name=p316 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 4200 2070 0 0 {name=p317 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 4180 2030 0 0 {name=M159
 L=0.28u
 W=0.22u
@@ -2546,8 +3113,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 4215 2030 0 0 {name=p318 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 4000 1370 0 0 {name=p319 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 4215 2030 0 0 {name=p318 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 4000 1370 0 0 {name=p319 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 3980 1330 0 0 {name=M160
 L=0.28u
 W=0.22u
@@ -2562,8 +3131,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 4015 1330 0 0 {name=p320 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 4000 1230 0 0 {name=p321 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 4015 1330 0 0 {name=p320 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 4000 1230 0 0 {name=p321 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 3980 1190 0 0 {name=M161
 L=0.28u
 W=0.22u
@@ -2578,8 +3149,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 4015 1190 0 0 {name=p322 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 4000 1650 0 0 {name=p323 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 4015 1190 0 0 {name=p322 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 4000 1650 0 0 {name=p323 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 3980 1610 0 0 {name=M162
 L=0.28u
 W=0.22u
@@ -2594,8 +3167,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 4015 1610 0 0 {name=p324 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 4000 1510 0 0 {name=p325 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 4015 1610 0 0 {name=p324 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 4000 1510 0 0 {name=p325 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 3980 1470 0 0 {name=M163
 L=0.28u
 W=0.22u
@@ -2610,8 +3185,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 4015 1470 0 0 {name=p326 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 4000 1930 0 0 {name=p327 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 4015 1470 0 0 {name=p326 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 4000 1930 0 0 {name=p327 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 3980 1890 0 0 {name=M164
 L=0.28u
 W=0.22u
@@ -2626,8 +3203,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 4015 1890 0 0 {name=p328 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 4000 1790 0 0 {name=p329 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 4015 1890 0 0 {name=p328 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 4000 1790 0 0 {name=p329 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 3980 1750 0 0 {name=M165
 L=0.28u
 W=0.22u
@@ -2642,8 +3221,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 4015 1750 0 0 {name=p330 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 4000 2210 0 0 {name=p331 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 4015 1750 0 0 {name=p330 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 4000 2210 0 0 {name=p331 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 3980 2170 0 0 {name=M166
 L=0.28u
 W=0.22u
@@ -2658,8 +3239,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 4015 2170 0 0 {name=p332 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 4000 2070 0 0 {name=p333 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 4015 2170 0 0 {name=p332 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 4000 2070 0 0 {name=p333 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 3980 2030 0 0 {name=M167
 L=0.28u
 W=0.22u
@@ -2674,13 +3257,15 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 4015 2030 0 0 {name=p334 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 4600 2490 0 0 {name=p337 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 4015 2030 0 0 {name=p334 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 4600 2490 0 0 {name=p337 sig_type=std_logic lab=FOOT
+m=25}
 C {symbols/nfet_03v3.sym} 4580 2450 0 0 {name=M169
 L=0.28u
 W=0.22u
 nf=1
-m=5
+m=25
 ad="'int((nf+1)/2) * W/nf * 0.18u'"
 pd="'2*int((nf+1)/2) * (W/nf + 0.18u)'"
 as="'int((nf+2)/2) * W/nf * 0.18u'"
@@ -2690,13 +3275,15 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 4615 2450 0 0 {name=p338 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 4600 2770 0 0 {name=p339 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 4615 2450 0 0 {name=p338 sig_type=std_logic lab=GND
+m=25}
+C {lab_wire.sym} 4600 2770 0 0 {name=p339 sig_type=std_logic lab=FOOT
+m=25}
 C {symbols/nfet_03v3.sym} 4580 2730 0 0 {name=M170
 L=0.28u
 W=0.22u
 nf=1
-m=5
+m=25
 ad="'int((nf+1)/2) * W/nf * 0.18u'"
 pd="'2*int((nf+1)/2) * (W/nf + 0.18u)'"
 as="'int((nf+2)/2) * W/nf * 0.18u'"
@@ -2706,13 +3293,15 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 4615 2730 0 0 {name=p340 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 4600 3050 0 0 {name=p341 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 4615 2730 0 0 {name=p340 sig_type=std_logic lab=GND
+m=25}
+C {lab_wire.sym} 4600 3050 0 0 {name=p341 sig_type=std_logic lab=FOOT
+m=25}
 C {symbols/nfet_03v3.sym} 4580 3010 0 0 {name=M171
 L=0.28u
 W=0.22u
 nf=1
-m=5
+m=25
 ad="'int((nf+1)/2) * W/nf * 0.18u'"
 pd="'2*int((nf+1)/2) * (W/nf + 0.18u)'"
 as="'int((nf+2)/2) * W/nf * 0.18u'"
@@ -2722,8 +3311,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 4615 3010 0 0 {name=p342 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 4400 2770 0 0 {name=p343 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 4615 3010 0 0 {name=p342 sig_type=std_logic lab=GND
+m=25}
+C {lab_wire.sym} 4400 2770 0 0 {name=p343 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 4380 2730 0 0 {name=M172
 L=0.28u
 W=0.22u
@@ -2738,8 +3329,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 4415 2730 0 0 {name=p344 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 4400 2630 0 0 {name=p345 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 4415 2730 0 0 {name=p344 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 4400 2630 0 0 {name=p345 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 4380 2590 0 0 {name=M173
 L=0.28u
 W=0.22u
@@ -2754,8 +3347,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 4415 2590 0 0 {name=p346 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 4400 3190 0 0 {name=p347 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 4415 2590 0 0 {name=p346 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 4400 3190 0 0 {name=p347 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 4380 3150 0 0 {name=M174
 L=0.28u
 W=0.22u
@@ -2770,13 +3365,15 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 4415 3150 0 0 {name=p348 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 4600 3330 0 0 {name=p349 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 4415 3150 0 0 {name=p348 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 4600 3330 0 0 {name=p349 sig_type=std_logic lab=FOOT
+m=25}
 C {symbols/nfet_03v3.sym} 4580 3290 0 0 {name=M175
 L=0.28u
 W=0.22u
 nf=1
-m=5
+m=25
 ad="'int((nf+1)/2) * W/nf * 0.18u'"
 pd="'2*int((nf+1)/2) * (W/nf + 0.18u)'"
 as="'int((nf+2)/2) * W/nf * 0.18u'"
@@ -2786,8 +3383,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 4615 3290 0 0 {name=p350 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 4400 3330 0 0 {name=p351 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 4615 3290 0 0 {name=p350 sig_type=std_logic lab=GND
+m=25}
+C {lab_wire.sym} 4400 3330 0 0 {name=p351 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 4380 3290 0 0 {name=M176
 L=0.28u
 W=0.22u
@@ -2802,8 +3401,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 4415 3290 0 0 {name=p352 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 4200 3050 0 0 {name=p353 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 4415 3290 0 0 {name=p352 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 4200 3050 0 0 {name=p353 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 4180 3010 0 0 {name=M177
 L=0.28u
 W=0.22u
@@ -2818,8 +3419,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 4215 3010 0 0 {name=p354 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 4200 2910 0 0 {name=p355 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 4215 3010 0 0 {name=p354 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 4200 2910 0 0 {name=p355 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 4180 2870 0 0 {name=M178
 L=0.28u
 W=0.22u
@@ -2834,8 +3437,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 4215 2870 0 0 {name=p356 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 4200 3330 0 0 {name=p357 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 4215 2870 0 0 {name=p356 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 4200 3330 0 0 {name=p357 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 4180 3290 0 0 {name=M179
 L=0.28u
 W=0.22u
@@ -2850,8 +3455,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 4215 3290 0 0 {name=p358 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 4200 3190 0 0 {name=p359 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 4215 3290 0 0 {name=p358 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 4200 3190 0 0 {name=p359 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 4180 3150 0 0 {name=M180
 L=0.28u
 W=0.22u
@@ -2866,13 +3473,15 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 4215 3150 0 0 {name=p360 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 4600 3610 0 0 {name=p361 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 4215 3150 0 0 {name=p360 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 4600 3610 0 0 {name=p361 sig_type=std_logic lab=FOOT
+m=25}
 C {symbols/nfet_03v3.sym} 4580 3570 0 0 {name=M181
 L=0.28u
 W=0.22u
 nf=1
-m=5
+m=25
 ad="'int((nf+1)/2) * W/nf * 0.18u'"
 pd="'2*int((nf+1)/2) * (W/nf + 0.18u)'"
 as="'int((nf+2)/2) * W/nf * 0.18u'"
@@ -2882,13 +3491,15 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 4615 3570 0 0 {name=p362 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 4600 3890 0 0 {name=p363 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 4615 3570 0 0 {name=p362 sig_type=std_logic lab=GND
+m=25}
+C {lab_wire.sym} 4600 3890 0 0 {name=p363 sig_type=std_logic lab=FOOT
+m=25}
 C {symbols/nfet_03v3.sym} 4580 3850 0 0 {name=M182
 L=0.28u
 W=0.22u
 nf=1
-m=5
+m=25
 ad="'int((nf+1)/2) * W/nf * 0.18u'"
 pd="'2*int((nf+1)/2) * (W/nf + 0.18u)'"
 as="'int((nf+2)/2) * W/nf * 0.18u'"
@@ -2898,13 +3509,15 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 4615 3850 0 0 {name=p364 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 4600 4170 0 0 {name=p365 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 4615 3850 0 0 {name=p364 sig_type=std_logic lab=GND
+m=25}
+C {lab_wire.sym} 4600 4170 0 0 {name=p365 sig_type=std_logic lab=FOOT
+m=25}
 C {symbols/nfet_03v3.sym} 4580 4130 0 0 {name=M183
 L=0.28u
 W=0.22u
 nf=1
-m=5
+m=25
 ad="'int((nf+1)/2) * W/nf * 0.18u'"
 pd="'2*int((nf+1)/2) * (W/nf + 0.18u)'"
 as="'int((nf+2)/2) * W/nf * 0.18u'"
@@ -2914,8 +3527,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 4615 4130 0 0 {name=p366 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 4400 3890 0 0 {name=p367 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 4615 4130 0 0 {name=p366 sig_type=std_logic lab=GND
+m=25}
+C {lab_wire.sym} 4400 3890 0 0 {name=p367 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 4380 3850 0 0 {name=M184
 L=0.28u
 W=0.22u
@@ -2930,8 +3545,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 4415 3850 0 0 {name=p368 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 4400 3750 0 0 {name=p369 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 4415 3850 0 0 {name=p368 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 4400 3750 0 0 {name=p369 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 4380 3710 0 0 {name=M185
 L=0.28u
 W=0.22u
@@ -2946,8 +3563,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 4415 3710 0 0 {name=p370 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 4400 4310 0 0 {name=p371 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 4415 3710 0 0 {name=p370 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 4400 4310 0 0 {name=p371 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 4380 4270 0 0 {name=M186
 L=0.28u
 W=0.22u
@@ -2962,13 +3581,15 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 4415 4270 0 0 {name=p372 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 4600 4450 0 0 {name=p373 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 4415 4270 0 0 {name=p372 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 4600 4450 0 0 {name=p373 sig_type=std_logic lab=FOOT
+m=25}
 C {symbols/nfet_03v3.sym} 4580 4410 0 0 {name=M187
 L=0.28u
 W=0.22u
 nf=1
-m=5
+m=25
 ad="'int((nf+1)/2) * W/nf * 0.18u'"
 pd="'2*int((nf+1)/2) * (W/nf + 0.18u)'"
 as="'int((nf+2)/2) * W/nf * 0.18u'"
@@ -2978,8 +3599,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 4615 4410 0 0 {name=p374 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 4400 4450 0 0 {name=p375 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 4615 4410 0 0 {name=p374 sig_type=std_logic lab=GND
+m=25}
+C {lab_wire.sym} 4400 4450 0 0 {name=p375 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 4380 4410 0 0 {name=M188
 L=0.28u
 W=0.22u
@@ -2994,8 +3617,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 4415 4410 0 0 {name=p376 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 4200 4170 0 0 {name=p377 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 4415 4410 0 0 {name=p376 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 4200 4170 0 0 {name=p377 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 4180 4130 0 0 {name=M189
 L=0.28u
 W=0.22u
@@ -3010,8 +3635,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 4215 4130 0 0 {name=p378 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 4200 4030 0 0 {name=p379 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 4215 4130 0 0 {name=p378 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 4200 4030 0 0 {name=p379 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 4180 3990 0 0 {name=M190
 L=0.28u
 W=0.22u
@@ -3026,8 +3653,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 4215 3990 0 0 {name=p380 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 4200 4450 0 0 {name=p381 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 4215 3990 0 0 {name=p380 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 4200 4450 0 0 {name=p381 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 4180 4410 0 0 {name=M191
 L=0.28u
 W=0.22u
@@ -3042,8 +3671,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 4215 4410 0 0 {name=p382 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 4200 4310 0 0 {name=p383 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 4215 4410 0 0 {name=p382 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 4200 4310 0 0 {name=p383 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 4180 4270 0 0 {name=M192
 L=0.28u
 W=0.22u
@@ -3058,8 +3689,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 4215 4270 0 0 {name=p384 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 4000 3610 0 0 {name=p385 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 4215 4270 0 0 {name=p384 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 4000 3610 0 0 {name=p385 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 3980 3570 0 0 {name=M193
 L=0.28u
 W=0.22u
@@ -3074,8 +3707,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 4015 3570 0 0 {name=p386 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 4000 3470 0 0 {name=p387 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 4015 3570 0 0 {name=p386 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 4000 3470 0 0 {name=p387 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 3980 3430 0 0 {name=M194
 L=0.28u
 W=0.22u
@@ -3090,8 +3725,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 4015 3430 0 0 {name=p388 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 4000 3890 0 0 {name=p389 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 4015 3430 0 0 {name=p388 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 4000 3890 0 0 {name=p389 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 3980 3850 0 0 {name=M195
 L=0.28u
 W=0.22u
@@ -3106,8 +3743,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 4015 3850 0 0 {name=p390 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 4000 3750 0 0 {name=p391 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 4015 3850 0 0 {name=p390 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 4000 3750 0 0 {name=p391 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 3980 3710 0 0 {name=M196
 L=0.28u
 W=0.22u
@@ -3122,8 +3761,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 4015 3710 0 0 {name=p392 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 4000 4170 0 0 {name=p393 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 4015 3710 0 0 {name=p392 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 4000 4170 0 0 {name=p393 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 3980 4130 0 0 {name=M197
 L=0.28u
 W=0.22u
@@ -3138,8 +3779,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 4015 4130 0 0 {name=p394 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 4000 4030 0 0 {name=p395 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 4015 4130 0 0 {name=p394 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 4000 4030 0 0 {name=p395 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 3980 3990 0 0 {name=M198
 L=0.28u
 W=0.22u
@@ -3154,8 +3797,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 4015 3990 0 0 {name=p396 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 4000 4450 0 0 {name=p397 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 4015 3990 0 0 {name=p396 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 4000 4450 0 0 {name=p397 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 3980 4410 0 0 {name=M199
 L=0.28u
 W=0.22u
@@ -3170,8 +3815,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 4015 4410 0 0 {name=p398 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 4000 4310 0 0 {name=p399 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 4015 4410 0 0 {name=p398 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 4000 4310 0 0 {name=p399 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 3980 4270 0 0 {name=M200
 L=0.28u
 W=0.22u
@@ -3186,8 +3833,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 4015 4270 0 0 {name=p400 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 3800 -1850 0 0 {name=p1 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 4015 4270 0 0 {name=p400 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 3800 -1850 0 0 {name=p1 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 3780 -1890 0 0 {name=M1
 L=0.28u
 W=0.22u
@@ -3202,8 +3851,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 3815 -1890 0 0 {name=p2 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 3800 -1990 0 0 {name=p3 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 3815 -1890 0 0 {name=p2 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 3800 -1990 0 0 {name=p3 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 3780 -2030 0 0 {name=M2
 L=0.28u
 W=0.22u
@@ -3218,8 +3869,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 3815 -2030 0 0 {name=p4 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 3800 -1570 0 0 {name=p6 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 3815 -2030 0 0 {name=p4 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 3800 -1570 0 0 {name=p6 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 3780 -1610 0 0 {name=M3
 L=0.28u
 W=0.22u
@@ -3234,8 +3887,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 3815 -1610 0 0 {name=p8 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 3800 -1710 0 0 {name=p9 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 3815 -1610 0 0 {name=p8 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 3800 -1710 0 0 {name=p9 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 3780 -1750 0 0 {name=M4
 L=0.28u
 W=0.22u
@@ -3250,8 +3905,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 3815 -1750 0 0 {name=p10 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 3800 -1290 0 0 {name=p11 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 3815 -1750 0 0 {name=p10 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 3800 -1290 0 0 {name=p11 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 3780 -1330 0 0 {name=M7
 L=0.28u
 W=0.22u
@@ -3266,8 +3923,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 3815 -1330 0 0 {name=p12 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 3800 -1430 0 0 {name=p13 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 3815 -1330 0 0 {name=p12 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 3800 -1430 0 0 {name=p13 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 3780 -1470 0 0 {name=M8
 L=0.28u
 W=0.22u
@@ -3282,8 +3941,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 3815 -1470 0 0 {name=p14 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 3800 -1150 0 0 {name=p18 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 3815 -1470 0 0 {name=p14 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 3800 -1150 0 0 {name=p18 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 3780 -1190 0 0 {name=M10
 L=0.28u
 W=0.22u
@@ -3298,8 +3959,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 3815 -1190 0 0 {name=p19 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 3800 -1010 0 0 {name=p15 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 3815 -1190 0 0 {name=p19 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 3800 -1010 0 0 {name=p15 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 3780 -1050 0 0 {name=M9
 L=0.28u
 W=0.22u
@@ -3314,8 +3977,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 3815 -1050 0 0 {name=p16 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 3800 -730 0 0 {name=p20 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 3815 -1050 0 0 {name=p16 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 3800 -730 0 0 {name=p20 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 3780 -770 0 0 {name=M11
 L=0.28u
 W=0.22u
@@ -3330,8 +3995,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 3815 -770 0 0 {name=p21 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 3800 -870 0 0 {name=p22 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 3815 -770 0 0 {name=p21 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 3800 -870 0 0 {name=p22 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 3780 -910 0 0 {name=M12
 L=0.28u
 W=0.22u
@@ -3346,8 +4013,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 3815 -910 0 0 {name=p24 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 3800 -450 0 0 {name=p25 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 3815 -910 0 0 {name=p24 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 3800 -450 0 0 {name=p25 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 3780 -490 0 0 {name=M13
 L=0.28u
 W=0.22u
@@ -3362,8 +4031,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 3815 -490 0 0 {name=p26 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 3800 -590 0 0 {name=p27 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 3815 -490 0 0 {name=p26 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 3800 -590 0 0 {name=p27 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 3780 -630 0 0 {name=M14
 L=0.28u
 W=0.22u
@@ -3378,8 +4049,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 3815 -630 0 0 {name=p28 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 3800 -170 0 0 {name=p29 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 3815 -630 0 0 {name=p28 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 3800 -170 0 0 {name=p29 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 3780 -210 0 0 {name=M15
 L=0.28u
 W=0.22u
@@ -3394,8 +4067,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 3815 -210 0 0 {name=p30 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 3800 -310 0 0 {name=p31 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 3815 -210 0 0 {name=p30 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 3800 -310 0 0 {name=p31 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 3780 -350 0 0 {name=M16
 L=0.28u
 W=0.22u
@@ -3410,8 +4085,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 3815 -350 0 0 {name=p32 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 3800 -30 0 0 {name=p33 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 3815 -350 0 0 {name=p32 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 3800 -30 0 0 {name=p33 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 3780 -70 0 0 {name=M17
 L=0.28u
 W=0.22u
@@ -3426,8 +4103,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 3815 -70 0 0 {name=p34 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 3800 2350 0 0 {name=p35 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 3815 -70 0 0 {name=p34 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 3800 2350 0 0 {name=p35 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 3780 2310 0 0 {name=M18
 L=0.28u
 W=0.22u
@@ -3442,8 +4121,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 3815 2310 0 0 {name=p36 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 3800 2630 0 0 {name=p37 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 3815 2310 0 0 {name=p36 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 3800 2630 0 0 {name=p37 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 3780 2590 0 0 {name=M19
 L=0.28u
 W=0.22u
@@ -3458,8 +4139,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 3815 2590 0 0 {name=p38 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 3800 2490 0 0 {name=p39 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 3815 2590 0 0 {name=p38 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 3800 2490 0 0 {name=p39 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 3780 2450 0 0 {name=M20
 L=0.28u
 W=0.22u
@@ -3474,8 +4157,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 3815 2450 0 0 {name=p40 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 3800 2910 0 0 {name=p41 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 3815 2450 0 0 {name=p40 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 3800 2910 0 0 {name=p41 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 3780 2870 0 0 {name=M21
 L=0.28u
 W=0.22u
@@ -3490,8 +4175,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 3815 2870 0 0 {name=p42 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 3800 2770 0 0 {name=p43 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 3815 2870 0 0 {name=p42 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 3800 2770 0 0 {name=p43 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 3780 2730 0 0 {name=M22
 L=0.28u
 W=0.22u
@@ -3506,8 +4193,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 3815 2730 0 0 {name=p44 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 3800 3190 0 0 {name=p45 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 3815 2730 0 0 {name=p44 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 3800 3190 0 0 {name=p45 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 3780 3150 0 0 {name=M23
 L=0.28u
 W=0.22u
@@ -3522,8 +4211,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 3815 3150 0 0 {name=p46 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 3800 3050 0 0 {name=p47 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 3815 3150 0 0 {name=p46 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 3800 3050 0 0 {name=p47 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 3780 3010 0 0 {name=M24
 L=0.28u
 W=0.22u
@@ -3538,8 +4229,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 3815 3010 0 0 {name=p48 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 3800 3330 0 0 {name=p49 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 3815 3010 0 0 {name=p48 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 3800 3330 0 0 {name=p49 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 3780 3290 0 0 {name=M25
 L=0.28u
 W=0.22u
@@ -3554,8 +4247,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 3815 3290 0 0 {name=p50 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 3800 3470 0 0 {name=p51 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 3815 3290 0 0 {name=p50 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 3800 3470 0 0 {name=p51 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 3780 3430 0 0 {name=M26
 L=0.28u
 W=0.22u
@@ -3570,8 +4265,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 3815 3430 0 0 {name=p52 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 3800 3750 0 0 {name=p53 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 3815 3430 0 0 {name=p52 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 3800 3750 0 0 {name=p53 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 3780 3710 0 0 {name=M27
 L=0.28u
 W=0.22u
@@ -3586,8 +4283,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 3815 3710 0 0 {name=p54 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 3800 3610 0 0 {name=p55 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 3815 3710 0 0 {name=p54 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 3800 3610 0 0 {name=p55 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 3780 3570 0 0 {name=M28
 L=0.28u
 W=0.22u
@@ -3602,8 +4301,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 3815 3570 0 0 {name=p56 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 3800 4030 0 0 {name=p57 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 3815 3570 0 0 {name=p56 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 3800 4030 0 0 {name=p57 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 3780 3990 0 0 {name=M29
 L=0.28u
 W=0.22u
@@ -3618,8 +4319,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 3815 3990 0 0 {name=p58 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 3800 3890 0 0 {name=p59 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 3815 3990 0 0 {name=p58 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 3800 3890 0 0 {name=p59 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 3780 3850 0 0 {name=M30
 L=0.28u
 W=0.22u
@@ -3634,8 +4337,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 3815 3850 0 0 {name=p60 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 3800 4310 0 0 {name=p61 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 3815 3850 0 0 {name=p60 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 3800 4310 0 0 {name=p61 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 3780 4270 0 0 {name=M31
 L=0.28u
 W=0.22u
@@ -3650,8 +4355,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 3815 4270 0 0 {name=p62 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 3800 4170 0 0 {name=p63 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 3815 4270 0 0 {name=p62 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 3800 4170 0 0 {name=p63 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 3780 4130 0 0 {name=M32
 L=0.28u
 W=0.22u
@@ -3666,8 +4373,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 3815 4130 0 0 {name=p64 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 3800 4450 0 0 {name=p65 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 3815 4130 0 0 {name=p64 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 3800 4450 0 0 {name=p65 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 3780 4410 0 0 {name=M33
 L=0.28u
 W=0.22u
@@ -3682,8 +4391,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 3815 4410 0 0 {name=p66 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 3600 2350 0 0 {name=p67 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 3815 4410 0 0 {name=p66 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 3600 2350 0 0 {name=p67 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 3580 2310 0 0 {name=M34
 L=0.28u
 W=0.22u
@@ -3698,8 +4409,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 3615 2310 0 0 {name=p68 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 3600 2630 0 0 {name=p69 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 3615 2310 0 0 {name=p68 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 3600 2630 0 0 {name=p69 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 3580 2590 0 0 {name=M35
 L=0.28u
 W=0.22u
@@ -3714,8 +4427,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 3615 2590 0 0 {name=p70 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 3600 2490 0 0 {name=p71 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 3615 2590 0 0 {name=p70 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 3600 2490 0 0 {name=p71 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 3580 2450 0 0 {name=M36
 L=0.28u
 W=0.22u
@@ -3730,8 +4445,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 3615 2450 0 0 {name=p72 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 3600 2910 0 0 {name=p73 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 3615 2450 0 0 {name=p72 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 3600 2910 0 0 {name=p73 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 3580 2870 0 0 {name=M37
 L=0.28u
 W=0.22u
@@ -3746,8 +4463,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 3615 2870 0 0 {name=p74 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 3600 2770 0 0 {name=p75 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 3615 2870 0 0 {name=p74 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 3600 2770 0 0 {name=p75 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 3580 2730 0 0 {name=M38
 L=0.28u
 W=0.22u
@@ -3762,8 +4481,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 3615 2730 0 0 {name=p76 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 3600 3190 0 0 {name=p77 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 3615 2730 0 0 {name=p76 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 3600 3190 0 0 {name=p77 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 3580 3150 0 0 {name=M39
 L=0.28u
 W=0.22u
@@ -3778,8 +4499,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 3615 3150 0 0 {name=p78 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 3600 3050 0 0 {name=p79 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 3615 3150 0 0 {name=p78 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 3600 3050 0 0 {name=p79 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 3580 3010 0 0 {name=M40
 L=0.28u
 W=0.22u
@@ -3794,8 +4517,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 3615 3010 0 0 {name=p80 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 3600 3330 0 0 {name=p81 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 3615 3010 0 0 {name=p80 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 3600 3330 0 0 {name=p81 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 3580 3290 0 0 {name=M41
 L=0.28u
 W=0.22u
@@ -3810,8 +4535,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 3615 3290 0 0 {name=p82 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 3600 3470 0 0 {name=p83 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 3615 3290 0 0 {name=p82 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 3600 3470 0 0 {name=p83 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 3580 3430 0 0 {name=M42
 L=0.28u
 W=0.22u
@@ -3826,8 +4553,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 3615 3430 0 0 {name=p84 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 3600 3750 0 0 {name=p85 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 3615 3430 0 0 {name=p84 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 3600 3750 0 0 {name=p85 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 3580 3710 0 0 {name=M43
 L=0.28u
 W=0.22u
@@ -3842,8 +4571,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 3615 3710 0 0 {name=p86 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 3600 3610 0 0 {name=p87 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 3615 3710 0 0 {name=p86 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 3600 3610 0 0 {name=p87 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 3580 3570 0 0 {name=M44
 L=0.28u
 W=0.22u
@@ -3858,8 +4589,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 3615 3570 0 0 {name=p88 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 3600 4030 0 0 {name=p89 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 3615 3570 0 0 {name=p88 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 3600 4030 0 0 {name=p89 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 3580 3990 0 0 {name=M45
 L=0.28u
 W=0.22u
@@ -3874,8 +4607,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 3615 3990 0 0 {name=p90 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 3600 3890 0 0 {name=p91 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 3615 3990 0 0 {name=p90 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 3600 3890 0 0 {name=p91 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 3580 3850 0 0 {name=M46
 L=0.28u
 W=0.22u
@@ -3890,8 +4625,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 3615 3850 0 0 {name=p92 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 3600 4310 0 0 {name=p93 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 3615 3850 0 0 {name=p92 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 3600 4310 0 0 {name=p93 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 3580 4270 0 0 {name=M47
 L=0.28u
 W=0.22u
@@ -3906,8 +4643,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 3615 4270 0 0 {name=p94 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 3600 4170 0 0 {name=p95 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 3615 4270 0 0 {name=p94 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 3600 4170 0 0 {name=p95 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 3580 4130 0 0 {name=M48
 L=0.28u
 W=0.22u
@@ -3922,8 +4661,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 3615 4130 0 0 {name=p96 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 3600 4450 0 0 {name=p97 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 3615 4130 0 0 {name=p96 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 3600 4450 0 0 {name=p97 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 3580 4410 0 0 {name=M49
 L=0.28u
 W=0.22u
@@ -3938,8 +4679,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 3615 4410 0 0 {name=p98 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 3600 110 0 0 {name=p99 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 3615 4410 0 0 {name=p98 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 3600 110 0 0 {name=p99 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 3580 70 0 0 {name=M50
 L=0.28u
 W=0.22u
@@ -3954,8 +4697,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 3615 70 0 0 {name=p100 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 3600 390 0 0 {name=p101 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 3615 70 0 0 {name=p100 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 3600 390 0 0 {name=p101 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 3580 350 0 0 {name=M51
 L=0.28u
 W=0.22u
@@ -3970,8 +4715,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 3615 350 0 0 {name=p102 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 3600 250 0 0 {name=p103 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 3615 350 0 0 {name=p102 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 3600 250 0 0 {name=p103 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 3580 210 0 0 {name=M52
 L=0.28u
 W=0.22u
@@ -3986,8 +4733,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 3615 210 0 0 {name=p104 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 3600 670 0 0 {name=p105 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 3615 210 0 0 {name=p104 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 3600 670 0 0 {name=p105 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 3580 630 0 0 {name=M53
 L=0.28u
 W=0.22u
@@ -4002,8 +4751,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 3615 630 0 0 {name=p106 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 3600 530 0 0 {name=p107 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 3615 630 0 0 {name=p106 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 3600 530 0 0 {name=p107 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 3580 490 0 0 {name=M54
 L=0.28u
 W=0.22u
@@ -4018,8 +4769,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 3615 490 0 0 {name=p108 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 3600 950 0 0 {name=p109 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 3615 490 0 0 {name=p108 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 3600 950 0 0 {name=p109 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 3580 910 0 0 {name=M55
 L=0.28u
 W=0.22u
@@ -4034,8 +4787,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 3615 910 0 0 {name=p110 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 3600 810 0 0 {name=p111 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 3615 910 0 0 {name=p110 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 3600 810 0 0 {name=p111 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 3580 770 0 0 {name=M56
 L=0.28u
 W=0.22u
@@ -4050,8 +4805,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 3615 770 0 0 {name=p112 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 3600 1090 0 0 {name=p113 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 3615 770 0 0 {name=p112 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 3600 1090 0 0 {name=p113 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 3580 1050 0 0 {name=M57
 L=0.28u
 W=0.22u
@@ -4066,8 +4823,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 3615 1050 0 0 {name=p114 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 3600 1230 0 0 {name=p115 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 3615 1050 0 0 {name=p114 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 3600 1230 0 0 {name=p115 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 3580 1190 0 0 {name=M58
 L=0.28u
 W=0.22u
@@ -4082,8 +4841,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 3615 1190 0 0 {name=p116 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 3600 1510 0 0 {name=p117 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 3615 1190 0 0 {name=p116 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 3600 1510 0 0 {name=p117 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 3580 1470 0 0 {name=M59
 L=0.28u
 W=0.22u
@@ -4098,8 +4859,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 3615 1470 0 0 {name=p118 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 3600 1370 0 0 {name=p119 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 3615 1470 0 0 {name=p118 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 3600 1370 0 0 {name=p119 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 3580 1330 0 0 {name=M60
 L=0.28u
 W=0.22u
@@ -4114,8 +4877,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 3615 1330 0 0 {name=p120 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 3600 1790 0 0 {name=p121 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 3615 1330 0 0 {name=p120 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 3600 1790 0 0 {name=p121 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 3580 1750 0 0 {name=M61
 L=0.28u
 W=0.22u
@@ -4130,8 +4895,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 3615 1750 0 0 {name=p122 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 3600 1650 0 0 {name=p123 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 3615 1750 0 0 {name=p122 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 3600 1650 0 0 {name=p123 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 3580 1610 0 0 {name=M62
 L=0.28u
 W=0.22u
@@ -4146,8 +4913,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 3615 1610 0 0 {name=p124 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 3600 2070 0 0 {name=p125 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 3615 1610 0 0 {name=p124 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 3600 2070 0 0 {name=p125 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 3580 2030 0 0 {name=M63
 L=0.28u
 W=0.22u
@@ -4162,8 +4931,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 3615 2030 0 0 {name=p126 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 3600 1930 0 0 {name=p127 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 3615 2030 0 0 {name=p126 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 3600 1930 0 0 {name=p127 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 3580 1890 0 0 {name=M64
 L=0.28u
 W=0.22u
@@ -4178,8 +4949,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 3615 1890 0 0 {name=p128 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 3600 2210 0 0 {name=p129 sig_type=std_logic lab=FOOT}
+C {lab_wire.sym} 3615 1890 0 0 {name=p128 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 3600 2210 0 0 {name=p129 sig_type=std_logic lab=FOOT
+m=5}
 C {symbols/nfet_03v3.sym} 3580 2170 0 0 {name=M65
 L=0.28u
 W=0.22u
@@ -4194,8 +4967,10 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 3615 2170 0 0 {name=p130 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 4400 -4440 0 0 {name=p131 sig_type=std_logic lab=VDD}
+C {lab_wire.sym} 3615 2170 0 0 {name=p130 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 4400 -4440 0 0 {name=p131 sig_type=std_logic lab=VDD
+m=20}
 C {symbols/pfet_03v3.sym} 4380 -4390 0 0 {name=M66
 L=0.28u
 W=0.22u
@@ -4210,8 +4985,10 @@ sa=0 sb=0 sd=0
 model=pfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 4405 -4390 0 0 {name=p132 sig_type=std_logic lab=VDD}
-C {lab_wire.sym} 4200 -4440 0 0 {name=p135 sig_type=std_logic lab=VDD}
+C {lab_wire.sym} 4405 -4390 0 0 {name=p132 sig_type=std_logic lab=VDD
+m=20}
+C {lab_wire.sym} 4200 -4440 0 0 {name=p135 sig_type=std_logic lab=VDD
+m=20}
 C {symbols/pfet_03v3.sym} 4180 -4390 0 0 {name=M68
 L=0.28u
 W=0.22u
@@ -4226,8 +5003,10 @@ sa=0 sb=0 sd=0
 model=pfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 4205 -4390 0 0 {name=p136 sig_type=std_logic lab=VDD}
-C {lab_wire.sym} 4000 -4440 0 0 {name=p133 sig_type=std_logic lab=VDD}
+C {lab_wire.sym} 4205 -4390 0 0 {name=p136 sig_type=std_logic lab=VDD
+m=20}
+C {lab_wire.sym} 4000 -4440 0 0 {name=p133 sig_type=std_logic lab=VDD
+m=20}
 C {symbols/pfet_03v3.sym} 3980 -4390 0 0 {name=M67
 L=0.28u
 W=0.22u
@@ -4242,8 +5021,10 @@ sa=0 sb=0 sd=0
 model=pfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 4005 -4390 0 0 {name=p134 sig_type=std_logic lab=VDD}
-C {lab_wire.sym} 3800 -4440 0 0 {name=p137 sig_type=std_logic lab=VDD}
+C {lab_wire.sym} 4005 -4390 0 0 {name=p134 sig_type=std_logic lab=VDD
+m=20}
+C {lab_wire.sym} 3800 -4440 0 0 {name=p137 sig_type=std_logic lab=VDD
+m=20}
 C {symbols/pfet_03v3.sym} 3780 -4390 0 0 {name=M69
 L=0.28u
 W=0.22u
@@ -4258,8 +5039,10 @@ sa=0 sb=0 sd=0
 model=pfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 3805 -4390 0 0 {name=p138 sig_type=std_logic lab=VDD}
-C {lab_wire.sym} 3600 -4440 0 0 {name=p139 sig_type=std_logic lab=VDD}
+C {lab_wire.sym} 3805 -4390 0 0 {name=p138 sig_type=std_logic lab=VDD
+m=20}
+C {lab_wire.sym} 3600 -4440 0 0 {name=p139 sig_type=std_logic lab=VDD
+m=20}
 C {symbols/pfet_03v3.sym} 3580 -4390 0 0 {name=M70
 L=0.28u
 W=0.22u
@@ -4274,13 +5057,14 @@ sa=0 sb=0 sd=0
 model=pfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 3605 -4390 0 0 {name=p140 sig_type=std_logic lab=VDD}
+C {lab_wire.sym} 3605 -4390 0 0 {name=p140 sig_type=std_logic lab=VDD
+m=20}
 C {lab_wire.sym} 3650 5265 0 0 {name=p269 sig_type=std_logic lab=FOOT}
 C {symbols/nfet_03v3.sym} 3600 5295 0 0 {name=M135
 L=0.28u
 W=0.22u
 nf=4
-m=70
+m=95
 ad="'int((nf+1)/2) * W/nf * 0.18u'"
 pd="'2*int((nf+1)/2) * (W/nf + 0.18u)'"
 as="'int((nf+2)/2) * W/nf * 0.18u'"
@@ -4296,7 +5080,7 @@ C {symbols/nfet_03v3.sym} 3800 5295 0 0 {name=M168
 L=0.28u
 W=0.22u
 nf=4
-m=70
+m=95
 ad="'int((nf+1)/2) * W/nf * 0.18u'"
 pd="'2*int((nf+1)/2) * (W/nf + 0.18u)'"
 as="'int((nf+2)/2) * W/nf * 0.18u'"
@@ -4313,7 +5097,7 @@ C {symbols/nfet_03v3.sym} 4000 5295 0 0 {name=M201
 L=0.28u
 W=0.22u
 nf=4
-m=70
+m=95
 ad="'int((nf+1)/2) * W/nf * 0.18u'"
 pd="'2*int((nf+1)/2) * (W/nf + 0.18u)'"
 as="'int((nf+2)/2) * W/nf * 0.18u'"
@@ -4330,7 +5114,7 @@ C {symbols/nfet_03v3.sym} 4200 5295 0 0 {name=M202
 L=0.28u
 W=0.22u
 nf=4
-m=70
+m=95
 ad="'int((nf+1)/2) * W/nf * 0.18u'"
 pd="'2*int((nf+1)/2) * (W/nf + 0.18u)'"
 as="'int((nf+2)/2) * W/nf * 0.18u'"
@@ -4347,7 +5131,7 @@ C {symbols/nfet_03v3.sym} 4400 5295 0 0 {name=M203
 L=0.28u
 W=0.22u
 nf=4
-m=70
+m=95
 ad="'int((nf+1)/2) * W/nf * 0.18u'"
 pd="'2*int((nf+1)/2) * (W/nf + 0.18u)'"
 as="'int((nf+2)/2) * W/nf * 0.18u'"
@@ -4364,7 +5148,7 @@ C {symbols/nfet_03v3.sym} 4600 5295 0 0 {name=M204
 L=0.28u
 W=0.22u
 nf=1
-m=70
+m=95
 ad="'int((nf+1)/2) * W/nf * 0.18u'"
 pd="'2*int((nf+1)/2) * (W/nf + 0.18u)'"
 as="'int((nf+2)/2) * W/nf * 0.18u'"
@@ -4376,17 +5160,12 @@ spiceprefix=X
 }
 C {lab_wire.sym} 4635 5295 0 0 {name=p413 sig_type=std_logic lab=GND}
 C {lab_wire.sym} 4550 5295 0 0 {name=p414 sig_type=std_logic lab=CLK_EVAL}
-C {lab_wire.sym} 4540 -4390 0 0 {name=p415 sig_type=std_logic lab=CLK_PRE}
-C {lab_wire.sym} 4340 -4390 0 0 {name=p416 sig_type=std_logic lab=CLK_PRE}
-C {lab_wire.sym} 4140 -4390 0 0 {name=p417 sig_type=std_logic lab=CLK_PRE}
-C {lab_wire.sym} 3940 -4390 0 0 {name=p418 sig_type=std_logic lab=CLK_PRE}
-C {lab_wire.sym} 3740 -4390 0 0 {name=p419 sig_type=std_logic lab=CLK_PRE}
-C {opin.sym} 3335 4965 0 0 {name=p421 lab=B5}
+C {opin.sym} 3340 4940 0 0 {name=p421 lab=B5}
 C {opin.sym} 3880 4980 0 0 {name=p422 lab=B4}
-C {opin.sym} 4380 4985 0 0 {name=p424 lab=B3}
-C {opin.sym} 4870 4995 0 0 {name=p425 lab=B2}
-C {opin.sym} 5360 5000 0 0 {name=p426 lab=B1}
-C {opin.sym} 5875 5005 0 0 {name=p427 lab=B0}
+C {opin.sym} 4380 4980 0 0 {name=p424 lab=B3}
+C {opin.sym} 4870 4980 0 0 {name=p425 lab=B2}
+C {opin.sym} 5395 4980 0 0 {name=p426 lab=B1}
+C {opin.sym} 5875 4980 0 0 {name=p427 lab=B0}
 C {ipin.sym} 3070 -4270 0 0 {name=p423 lab=IN0}
 C {ipin.sym} 3080 -4130 0 0 {name=p428 lab=IN1}
 C {ipin.sym} 3080 -4050 0 0 {name=p429 lab=IN2}
@@ -4421,14 +5200,22 @@ C {ipin.sym} 3140 -130 0 0 {name=p457 lab=IN30}
 C {ipin.sym} 3120 10 0 0 {name=p458 lab=IN31}
 C {ipin.sym} 3130 150 0 0 {name=p459 lab=IN32}
 C {ipin.sym} 3120 290 0 0 {name=p460 lab=IN33}
-C {ipin.sym} 3140 430 0 0 {name=p461 lab=IN34}
-C {ipin.sym} 3140 570 0 0 {name=p462 lab=IN35}
-C {ipin.sym} 3150 710 0 0 {name=p463 lab=IN36}
-C {ipin.sym} 3140 850 0 0 {name=p464 lab=IN37}
-C {ipin.sym} 3150 990 0 0 {name=p465 lab=IN38}
-C {ipin.sym} 3150 1130 0 0 {name=p466 lab=IN39}
-C {ipin.sym} 3160 1270 0 0 {name=p467 lab=IN40}
-C {ipin.sym} 3150 1410 0 0 {name=p468 lab=IN41}
+C {ipin.sym} 3140 430 0 0 {name=p461 lab=IN34
+m=35}
+C {ipin.sym} 3140 570 0 0 {name=p462 lab=IN35
+m=35}
+C {ipin.sym} 3150 710 0 0 {name=p463 lab=IN36
+m=35}
+C {ipin.sym} 3140 850 0 0 {name=p464 lab=IN37
+m=35}
+C {ipin.sym} 3150 990 0 0 {name=p465 lab=IN38
+m=35}
+C {ipin.sym} 3150 1130 0 0 {name=p466 lab=IN39
+m=35}
+C {ipin.sym} 3160 1270 0 0 {name=p467 lab=IN40
+m=35}
+C {ipin.sym} 3150 1410 0 0 {name=p468 lab=IN41
+m=35}
 C {ipin.sym} 3160 1550 0 0 {name=p469 lab=IN42}
 C {ipin.sym} 3160 1690 0 0 {name=p470 lab=IN43}
 C {ipin.sym} 3170 1830 0 0 {name=p471 lab=IN44}
@@ -4450,15 +5237,14 @@ C {ipin.sym} 3170 3930 0 0 {name=p486 lab=IN59}
 C {ipin.sym} 3180 4070 0 0 {name=p487 lab=IN60}
 C {ipin.sym} 3180 4210 0 0 {name=p488 lab=IN61}
 C {ipin.sym} 3190 4350 0 0 {name=p489 lab=IN62}
-C {code_shown.sym} 1285 -1765 0 0 {name=MODELS only_toplevel=true
+C {code_shown.sym} -1595 215 0 0 {name=MODELS only_toplevel=true
 format="tcleval( @value )"
 value="
 .include $::180MCU_MODELS/design.ngspice
 .lib $::180MCU_MODELS/sm141064.ngspice typical
 "}
 C {ipin.sym} 3550 5295 0 0 {name=p335 lab=CLK_EVAL}
-C {ipin.sym} 3520 -4390 0 0 {name=p490 lab=CLK_PRE}
-C {code_shown.sym} 1285 -1605 0 0 {name=SPICE only_toplevel=false value="
+C {code_shown.sym} 335 -1745 0 0 {name=SPICE only_toplevel=false value="
 V_PRE CLK_PRE 0 pulse(3.3 0 0p 10p 10p 240p 500p)
 V_EVAL CLK_EVAL 0 pulse(0 3.3 0 10p 10p 240p 500p)
 V_RST RST 0 pulse(3.3 3.3 0 10p 10p 240p 500p)
@@ -4527,10 +5313,18 @@ V_IN2 IN2 0 PWL(0 0 30.000n 0 30.010n 3.3 30.490n 3.3 30.500n 0)
 V_IN1 IN1 0 PWL(0 0 30.500n 0 30.510n 3.3 30.990n 3.3 31.000n 0)
 V_IN0 IN0 0 PWL(0 0 31.000n 0 31.010n 3.3 31.490n 3.3 31.500n 0)
 
-.tran 2p 35n uic
+.tran 2p 10n uic
+
+.control
+ run
+ write ROM3_test.raw
+.endc
+
 "}
-C {lab_wire.sym} 3410 4600 0 0 {name=p420 sig_type=std_logic lab=VDD}
-C {lab_wire.sym} 3410 4840 0 0 {name=p491 sig_type=std_logic lab=GND}
+C {lab_wire.sym} 3410 4600 0 0 {name=p420 sig_type=std_logic lab=VDD
+m=35}
+C {lab_wire.sym} 3410 4840 0 0 {name=p491 sig_type=std_logic lab=GND
+m=5}
 C {lab_wire.sym} 3280 4730 0 0 {name=p492 sig_type=std_logic lab=B5bar}
 C {symbols/pfet_03v3.sym} 3390 4650 0 0 {name=M205
 L=0.28u
@@ -4550,7 +5344,7 @@ C {symbols/nfet_03v3.sym} 3390 4800 0 0 {name=M206
 L=0.28u
 W=0.22u
 nf=1
-m=5
+m=15
 ad="'int((nf+1)/2) * W/nf * 0.18u'"
 pd="'2*int((nf+1)/2) * (W/nf + 0.18u)'"
 as="'int((nf+2)/2) * W/nf * 0.18u'"
@@ -4560,10 +5354,14 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 3415 4650 0 0 {name=p494 sig_type=std_logic lab=VDD}
-C {lab_wire.sym} 3425 4800 0 0 {name=p495 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 3720 4600 0 0 {name=p496 sig_type=std_logic lab=VDD}
-C {lab_wire.sym} 3720 4840 0 0 {name=p497 sig_type=std_logic lab=GND}
+C {lab_wire.sym} 3415 4650 0 0 {name=p494 sig_type=std_logic lab=VDD
+m=35}
+C {lab_wire.sym} 3425 4800 0 0 {name=p495 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 3720 4600 0 0 {name=p496 sig_type=std_logic lab=VDD
+m=35}
+C {lab_wire.sym} 3720 4840 0 0 {name=p497 sig_type=std_logic lab=GND
+m=5}
 C {lab_wire.sym} 3590 4730 0 0 {name=p498 sig_type=std_logic lab=B4bar}
 C {symbols/pfet_03v3.sym} 3700 4650 0 0 {name=M207
 L=0.28u
@@ -4583,7 +5381,7 @@ C {symbols/nfet_03v3.sym} 3700 4800 0 0 {name=M208
 L=0.28u
 W=0.22u
 nf=1
-m=5
+m=15
 ad="'int((nf+1)/2) * W/nf * 0.18u'"
 pd="'2*int((nf+1)/2) * (W/nf + 0.18u)'"
 as="'int((nf+2)/2) * W/nf * 0.18u'"
@@ -4593,10 +5391,14 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 3725 4650 0 0 {name=p500 sig_type=std_logic lab=VDD}
-C {lab_wire.sym} 3735 4800 0 0 {name=p501 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 4030 4600 0 0 {name=p502 sig_type=std_logic lab=VDD}
-C {lab_wire.sym} 4030 4840 0 0 {name=p503 sig_type=std_logic lab=GND}
+C {lab_wire.sym} 3725 4650 0 0 {name=p500 sig_type=std_logic lab=VDD
+m=35}
+C {lab_wire.sym} 3735 4800 0 0 {name=p501 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 4030 4600 0 0 {name=p502 sig_type=std_logic lab=VDD
+m=35}
+C {lab_wire.sym} 4030 4840 0 0 {name=p503 sig_type=std_logic lab=GND
+m=5}
 C {lab_wire.sym} 3900 4730 0 0 {name=p504 sig_type=std_logic lab=B3bar}
 C {symbols/pfet_03v3.sym} 4010 4650 0 0 {name=M209
 L=0.28u
@@ -4616,7 +5418,7 @@ C {symbols/nfet_03v3.sym} 4010 4800 0 0 {name=M210
 L=0.28u
 W=0.22u
 nf=1
-m=5
+m=15
 ad="'int((nf+1)/2) * W/nf * 0.18u'"
 pd="'2*int((nf+1)/2) * (W/nf + 0.18u)'"
 as="'int((nf+2)/2) * W/nf * 0.18u'"
@@ -4626,10 +5428,14 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 4035 4650 0 0 {name=p506 sig_type=std_logic lab=VDD}
-C {lab_wire.sym} 4045 4800 0 0 {name=p507 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 4350 4600 0 0 {name=p508 sig_type=std_logic lab=VDD}
-C {lab_wire.sym} 4350 4840 0 0 {name=p509 sig_type=std_logic lab=GND}
+C {lab_wire.sym} 4035 4650 0 0 {name=p506 sig_type=std_logic lab=VDD
+m=35}
+C {lab_wire.sym} 4045 4800 0 0 {name=p507 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 4350 4600 0 0 {name=p508 sig_type=std_logic lab=VDD
+m=35}
+C {lab_wire.sym} 4350 4840 0 0 {name=p509 sig_type=std_logic lab=GND
+m=5}
 C {lab_wire.sym} 4220 4730 0 0 {name=p510 sig_type=std_logic lab=B2bar}
 C {symbols/pfet_03v3.sym} 4330 4650 0 0 {name=M211
 L=0.28u
@@ -4649,7 +5455,7 @@ C {symbols/nfet_03v3.sym} 4330 4800 0 0 {name=M212
 L=0.28u
 W=0.22u
 nf=1
-m=5
+m=15
 ad="'int((nf+1)/2) * W/nf * 0.18u'"
 pd="'2*int((nf+1)/2) * (W/nf + 0.18u)'"
 as="'int((nf+2)/2) * W/nf * 0.18u'"
@@ -4659,9 +5465,12 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 4355 4650 0 0 {name=p512 sig_type=std_logic lab=VDD}
-C {lab_wire.sym} 4365 4800 0 0 {name=p513 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 4670 4600 0 0 {name=p514 sig_type=std_logic lab=VDD}
+C {lab_wire.sym} 4355 4650 0 0 {name=p512 sig_type=std_logic lab=VDD
+m=35}
+C {lab_wire.sym} 4365 4800 0 0 {name=p513 sig_type=std_logic lab=GND
+m=5}
+C {lab_wire.sym} 4670 4600 0 0 {name=p514 sig_type=std_logic lab=VDD
+m=35}
 C {lab_wire.sym} 4670 4840 0 0 {name=p515 sig_type=std_logic lab=GND}
 C {lab_wire.sym} 4540 4730 0 0 {name=p516 sig_type=std_logic lab=B1bar}
 C {symbols/pfet_03v3.sym} 4650 4650 0 0 {name=M213
@@ -4682,7 +5491,7 @@ C {symbols/nfet_03v3.sym} 4650 4800 0 0 {name=M214
 L=0.28u
 W=0.22u
 nf=1
-m=5
+m=15
 ad="'int((nf+1)/2) * W/nf * 0.18u'"
 pd="'2*int((nf+1)/2) * (W/nf + 0.18u)'"
 as="'int((nf+2)/2) * W/nf * 0.18u'"
@@ -4692,7 +5501,8 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 4675 4650 0 0 {name=p518 sig_type=std_logic lab=VDD}
+C {lab_wire.sym} 4675 4650 0 0 {name=p518 sig_type=std_logic lab=VDD
+m=35}
 C {lab_wire.sym} 4685 4800 0 0 {name=p519 sig_type=std_logic lab=GND}
 C {lab_wire.sym} 4990 4600 0 0 {name=p520 sig_type=std_logic lab=VDD}
 C {lab_wire.sym} 4990 4840 0 0 {name=p521 sig_type=std_logic lab=GND}
@@ -4715,7 +5525,7 @@ C {symbols/nfet_03v3.sym} 4970 4800 0 0 {name=M216
 L=0.28u
 W=0.22u
 nf=1
-m=5
+m=15
 ad="'int((nf+1)/2) * W/nf * 0.18u'"
 pd="'2*int((nf+1)/2) * (W/nf + 0.18u)'"
 as="'int((nf+2)/2) * W/nf * 0.18u'"
@@ -4727,59 +5537,77 @@ spiceprefix=X
 }
 C {lab_wire.sym} 4995 4650 0 0 {name=p524 sig_type=std_logic lab=VDD}
 C {lab_wire.sym} 5005 4800 0 0 {name=p525 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 3660 4500 0 0 {name=p493 sig_type=std_logic lab=B5bar}
-C {lab_wire.sym} 3860 4480 0 0 {name=p499 sig_type=std_logic lab=B4bar}
-C {lab_wire.sym} 4060 4480 0 0 {name=p505 sig_type=std_logic lab=B3bar}
-C {lab_wire.sym} 4260 4490 0 0 {name=p511 sig_type=std_logic lab=B2bar}
-C {lab_wire.sym} 4460 4500 0 0 {name=p517 sig_type=std_logic lab=B1bar}
-C {lab_wire.sym} 4660 4500 0 0 {name=p523 sig_type=std_logic lab=B0bar}
-C {vsource.sym} 2880 -1720 0 0 {name=V1 value=3.3 savecurrent=false}
-C {vdd.sym} 2880 -1780 0 0 {name=l3 lab=VDD}
-C {gnd.sym} 2880 -1670 0 1 {name=l4 lab=GND
+C {lab_wire.sym} 3660 4500 0 0 {name=p493 sig_type=std_logic lab=B5bar
+m=5}
+C {lab_wire.sym} 3860 4480 0 0 {name=p499 sig_type=std_logic lab=B4bar
+m=5}
+C {lab_wire.sym} 4060 4480 0 0 {name=p505 sig_type=std_logic lab=B3bar
+m=5}
+C {lab_wire.sym} 4260 4490 0 0 {name=p511 sig_type=std_logic lab=B2bar
+m=5}
+C {lab_wire.sym} 4460 4500 0 0 {name=p517 sig_type=std_logic lab=B1bar
+m=5}
+C {lab_wire.sym} 4660 4500 0 0 {name=p523 sig_type=std_logic lab=B0bar
+m=5}
+C {vsource.sym} 5030 -2360 0 0 {name=V1 value=3.3 savecurrent=false}
+C {vdd.sym} 5030 -2420 0 0 {name=l3 lab=VDD}
+C {gnd.sym} 5030 -2310 0 1 {name=l4 lab=GND
 }
 C {lab_wire.sym} 3485 4730 0 0 {name=p526 sig_type=std_logic lab=B5out}
-C {lab_wire.sym} 2965 4965 0 0 {name=p528 sig_type=std_logic lab=VDD}
-C {lab_wire.sym} 2965 5045 0 0 {name=p529 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 2965 5005 0 0 {name=p530 sig_type=std_logic lab=CLK_EVAL}
-C {ipin.sym} 2935 4985 0 0 {name=p531 lab=RST}
-C {lab_wire.sym} 2970 5025 0 0 {name=p527 sig_type=std_logic lab=B5out}
+C {lab_wire.sym} 2970 4940 0 0 {name=p528 sig_type=std_logic lab=VDD}
+C {lab_wire.sym} 2970 5020 0 0 {name=p529 sig_type=std_logic lab=GND}
+C {ipin.sym} 2940 4960 0 0 {name=p531 lab=RST}
+C {lab_wire.sym} 2975 5000 0 0 {name=p527 sig_type=std_logic lab=B5out}
 C {lab_wire.sym} 3515 4980 0 0 {name=p533 sig_type=std_logic lab=VDD}
 C {lab_wire.sym} 3515 5060 0 0 {name=p534 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 3515 5020 0 0 {name=p535 sig_type=std_logic lab=CLK_EVAL}
-C {ipin.sym} 3485 5000 0 0 {name=p536 lab=RST}
-C {lab_wire.sym} 4020 4985 0 0 {name=p539 sig_type=std_logic lab=VDD}
-C {lab_wire.sym} 4020 5065 0 0 {name=p540 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 4020 5025 0 0 {name=p541 sig_type=std_logic lab=CLK_EVAL}
-C {ipin.sym} 3990 5005 0 0 {name=p542 lab=RST}
-C {lab_wire.sym} 4520 4995 0 0 {name=p545 sig_type=std_logic lab=VDD}
-C {lab_wire.sym} 4520 5075 0 0 {name=p546 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 4520 5035 0 0 {name=p547 sig_type=std_logic lab=CLK_EVAL}
-C {ipin.sym} 4490 5015 0 0 {name=p548 lab=RST}
-C {lab_wire.sym} 5025 5000 0 0 {name=p551 sig_type=std_logic lab=VDD}
-C {lab_wire.sym} 5025 5080 0 0 {name=p552 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 5025 5040 0 0 {name=p553 sig_type=std_logic lab=CLK_EVAL}
-C {ipin.sym} 4995 5020 0 0 {name=p554 lab=RST}
-C {lab_wire.sym} 5520 5005 0 0 {name=p557 sig_type=std_logic lab=VDD}
-C {lab_wire.sym} 5520 5085 0 0 {name=p558 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 5520 5045 0 0 {name=p559 sig_type=std_logic lab=CLK_EVAL}
-C {ipin.sym} 5490 5025 0 0 {name=p560 lab=RST}
+C {lab_wire.sym} 4020 4980 0 0 {name=p539 sig_type=std_logic lab=VDD}
+C {lab_wire.sym} 4020 5060 0 0 {name=p540 sig_type=std_logic lab=GND}
+C {lab_wire.sym} 4520 4980 0 0 {name=p545 sig_type=std_logic lab=VDD}
+C {lab_wire.sym} 4520 5060 0 0 {name=p546 sig_type=std_logic lab=GND}
+C {lab_wire.sym} 5020 4980 0 0 {name=p551 sig_type=std_logic lab=VDD}
+C {lab_wire.sym} 5020 5060 0 0 {name=p552 sig_type=std_logic lab=GND}
+C {lab_wire.sym} 5520 4980 0 0 {name=p557 sig_type=std_logic lab=VDD}
+C {lab_wire.sym} 5520 5060 0 0 {name=p558 sig_type=std_logic lab=GND}
 C {lab_wire.sym} 3520 5040 0 0 {name=p532 sig_type=std_logic lab=B4out}
 C {lab_wire.sym} 3750 4730 0 0 {name=p537 sig_type=std_logic lab=B4out}
-C {lab_wire.sym} 4030 5045 0 0 {name=p538 sig_type=std_logic lab=B3out}
-C {lab_wire.sym} 4530 5055 0 0 {name=p543 sig_type=std_logic lab=B2out}
-C {lab_wire.sym} 5030 5060 0 0 {name=p544 sig_type=std_logic lab=B1out}
-C {lab_wire.sym} 5535 5065 0 0 {name=p549 sig_type=std_logic lab=B0out}
+C {lab_wire.sym} 4030 5040 0 0 {name=p538 sig_type=std_logic lab=B3out}
+C {lab_wire.sym} 4530 5040 0 0 {name=p543 sig_type=std_logic lab=B2out}
+C {lab_wire.sym} 5025 5040 0 0 {name=p544 sig_type=std_logic lab=B1out}
+C {lab_wire.sym} 5535 5040 0 0 {name=p549 sig_type=std_logic lab=B0out}
 C {lab_wire.sym} 4125 4730 0 0 {name=p550 sig_type=std_logic lab=B3out}
 C {lab_wire.sym} 4445 4730 0 0 {name=p555 sig_type=std_logic lab=B2out}
 C {lab_wire.sym} 4745 4730 0 0 {name=p556 sig_type=std_logic lab=B1out}
 C {lab_wire.sym} 5075 4730 0 0 {name=p561 sig_type=std_logic lab=B0out}
-C {launcher.sym} 2080 -1190 0 0 {name=h5
+C {encoder/sym/dff_encoder.sym} 3140 4980 0 0 {name=x6}
+C {encoder/sym/dff_encoder.sym} 3685 5020 0 0 {name=x1}
+C {encoder/sym/dff_encoder.sym} 4190 5020 0 0 {name=x2}
+C {encoder/sym/dff_encoder.sym} 4690 5020 0 0 {name=x3}
+C {encoder/sym/dff_encoder.sym} 5190 5020 0 0 {name=x4}
+C {encoder/sym/dff_encoder.sym} 5690 5020 0 0 {name=x5}
+C {lab_wire.sym} 3515 5000 0 0 {name=p536 sig_type=std_logic lab=RST}
+C {lab_wire.sym} 4020 5000 0 0 {name=p542 sig_type=std_logic lab=RST}
+C {lab_wire.sym} 4525 5000 0 0 {name=p548 sig_type=std_logic lab=RST}
+C {lab_wire.sym} 5020 5000 0 0 {name=p554 sig_type=std_logic lab=RST}
+C {lab_wire.sym} 5520 5000 0 0 {name=p560 sig_type=std_logic lab=RST}
+C {launcher.sym} -160 -150 0 0 {name=h5
 descr="load waves"
 tclcommand="xschem raw_read $netlist_dir/ROM2_test.raw tran"
 }
-C {encoder/sym/dff_encoder.sym} 3135 5005 0 0 {name=x6}
-C {encoder/sym/dff_encoder.sym} 3685 5020 0 0 {name=x1}
-C {encoder/sym/dff_encoder.sym} 4190 5025 0 0 {name=x2}
-C {encoder/sym/dff_encoder.sym} 4690 5035 0 0 {name=x3}
-C {encoder/sym/dff_encoder.sym} 5195 5040 0 0 {name=x4}
-C {encoder/sym/dff_encoder.sym} 5690 5045 0 0 {name=x5}
+C {lab_wire.sym} 3750 -4390 0 0 {name=p415 sig_type=std_logic lab=CLK_EVAL
+m=20}
+C {lab_wire.sym} 3940 -4390 0 0 {name=p416 sig_type=std_logic lab=CLK_EVAL
+m=20}
+C {lab_wire.sym} 4140 -4390 0 0 {name=p417 sig_type=std_logic lab=CLK_EVAL
+m=20}
+C {lab_wire.sym} 4350 -4390 0 0 {name=p418 sig_type=std_logic lab=CLK_EVAL
+m=20}
+C {lab_wire.sym} 4540 -4390 0 0 {name=p419 sig_type=std_logic lab=CLK_EVAL
+m=20}
+C {ipin.sym} 2970 4980 0 0 {name=p530 lab=CLK_PRE}
+C {lab_wire.sym} 4025 5020 0 0 {name=p535 sig_type=std_logic lab=CLK_PRE}
+C {lab_wire.sym} 4525 5020 0 0 {name=p541 sig_type=std_logic lab=CLK_PRE}
+C {lab_wire.sym} 5025 5020 0 0 {name=p547 sig_type=std_logic lab=CLK_PRE}
+C {lab_wire.sym} 5525 5020 0 0 {name=p553 sig_type=std_logic lab=CLK_PRE}
+C {lab_wire.sym} 3525 5020 0 0 {name=p490 sig_type=std_logic lab=CLK_PRE}
+C {lab_wire.sym} 3540 -4390 0 0 {name=p559 sig_type=std_logic lab=CLK_EVAL
+m=20}

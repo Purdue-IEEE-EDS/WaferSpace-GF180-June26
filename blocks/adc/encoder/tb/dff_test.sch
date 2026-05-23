@@ -6,45 +6,43 @@ S {}
 F {}
 E {}
 B 2 1000 -2040 1800 -1640 {flags=graph
-y1=-0.12
-y2=3.4
+y1=-0.18
+y2=3.5
 ypos1=0
 ypos2=2
 divy=5
 subdivy=1
 unity=1
-x1=0
-x2=5e-09
+x1=2.2144214e-10
+x2=3.3403217e-10
 divx=5
 subdivx=1
 xlabmag=1.0
 ylabmag=1.0
-node="d
-
-q"
-color="12 13"
+node=clk
+color=4
 dataset=-1
 unitx=1
 logx=0
 logy=0
 }
 B 2 1000 -2440 1800 -2040 {flags=graph
-y1=0
-y2=3.3
+y1=-0.18
+y2=3.5
 ypos1=0
 ypos2=2
 divy=5
 subdivy=1
 unity=1
-x1=0
-x2=5e-09
+x1=2.2144214e-10
+x2=3.3403217e-10
 divx=5
 subdivx=1
 xlabmag=1.0
 ylabmag=1.0
-node="clk
-rst"
-color="7 10"
+node="d
+q"
+color="4 5"
 dataset=-1
 unitx=1
 logx=0
@@ -111,18 +109,21 @@ N 1160 -1250 1160 -1180 {lab=#net4}
 N 470 -1040 500 -1040 {lab=#net2}
 N 470 -1110 470 -1040 {lab=#net2}
 N 580 -1010 580 -940 {lab=#net7}
-C {opin.sym} 1290 -1110 0 0 {name=p425 lab=Q}
+N 1380 -1040 1380 -990 {lab=GND}
+N 1290 -1110 1450 -1110 {lab=Q}
+N 1380 -1110 1380 -1100 {lab=Q}
+C {opin.sym} 1450 -1110 0 0 {name=p425 lab=Q}
 C {code_shown.sym} 1555 -1405 0 0 {name=MODELS only_toplevel=true
 format="tcleval( @value )"
 value="
 .include $::180MCU_MODELS/design.ngspice
-.lib $::180MCU_MODELS/sm141064.ngspice typical
+.lib $::180MCU_MODELS/sm141064.ngspice ss
 "}
 C {code_shown.sym} 1575 -1235 0 0 {name=SPICE only_toplevel=false value="
 V_VDD VDD 0 3.3
 
-V_CLK CLK 0 pulse(0 3.3 0s 10p 10p 240p 500p)
-V_D D 0 pwl(0 0 250p 0 260p 3.3 1.25n 3.3 1.26n 0 1.75n 0 1.76n 3.3 2.25n 3.3 2.26n 0 3.25n 0 3.26n 3.3 3.75n 3.3 3.76n 0 4.25n 0 4.26n 3.3 6n 3.3)
+V_CLK CLK 0 pulse(0 3.3 260p 10p 10p 290p 500p)
+V_D D 0 pwl(0 0 250p 0 260p 3.3 300p 3.3 310p 0 1.75n 0)
 V_RST RST 0 pulse(3.3 3.3 0s 10p 10p 240p 500p)
 .control
   save CLK D RST Q
@@ -137,7 +138,7 @@ C {symbols/pfet_03v3.sym} 330 -1340 0 0 {name=M2
 L=0.28u
 W=0.22u
 nf=1
-m=10
+m=35
 ad="'int((nf+1)/2) * W/nf * 0.18u'"
 pd="'2*int((nf+1)/2) * (W/nf + 0.18u)'"
 as="'int((nf+2)/2) * W/nf * 0.18u'"
@@ -152,7 +153,7 @@ C {symbols/pfet_03v3.sym} 330 -1190 0 0 {name=M3
 L=0.28u
 W=0.22u
 nf=1
-m=10
+m=35
 ad="'int((nf+1)/2) * W/nf * 0.18u'"
 pd="'2*int((nf+1)/2) * (W/nf + 0.18u)'"
 as="'int((nf+2)/2) * W/nf * 0.18u'"
@@ -167,7 +168,7 @@ C {symbols/pfet_03v3.sym} 560 -1340 0 0 {name=M4
 L=0.28u
 W=0.22u
 nf=1
-m=10
+m=35
 ad="'int((nf+1)/2) * W/nf * 0.18u'"
 pd="'2*int((nf+1)/2) * (W/nf + 0.18u)'"
 as="'int((nf+2)/2) * W/nf * 0.18u'"
@@ -182,7 +183,7 @@ C {symbols/pfet_03v3.sym} 560 -1190 0 0 {name=M5
 L=0.28u
 W=0.22u
 nf=1
-m=10
+m=35
 ad="'int((nf+1)/2) * W/nf * 0.18u'"
 pd="'2*int((nf+1)/2) * (W/nf + 0.18u)'"
 as="'int((nf+2)/2) * W/nf * 0.18u'"
@@ -197,7 +198,7 @@ C {symbols/pfet_03v3.sym} 780 -1340 0 0 {name=M6
 L=0.28u
 W=0.22u
 nf=1
-m=10
+m=35
 ad="'int((nf+1)/2) * W/nf * 0.18u'"
 pd="'2*int((nf+1)/2) * (W/nf + 0.18u)'"
 as="'int((nf+2)/2) * W/nf * 0.18u'"
@@ -212,7 +213,7 @@ C {symbols/nfet_03v3.sym} 330 -1040 0 0 {name=M11
 L=0.28u
 W=0.22u
 nf=1
-m=5
+m=17
 ad="'int((nf+1)/2) * W/nf * 0.18u'"
 pd="'2*int((nf+1)/2) * (W/nf + 0.18u)'"
 as="'int((nf+2)/2) * W/nf * 0.18u'"
@@ -227,7 +228,7 @@ C {symbols/nfet_03v3.sym} 560 -1040 0 0 {name=M12
 L=0.28u
 W=0.22u
 nf=1
-m=5
+m=17
 ad="'int((nf+1)/2) * W/nf * 0.18u'"
 pd="'2*int((nf+1)/2) * (W/nf + 0.18u)'"
 as="'int((nf+2)/2) * W/nf * 0.18u'"
@@ -242,7 +243,7 @@ C {symbols/nfet_03v3.sym} 990 -1190 0 0 {name=M13
 L=0.28u
 W=0.22u
 nf=1
-m=5
+m=17
 ad="'int((nf+1)/2) * W/nf * 0.18u'"
 pd="'2*int((nf+1)/2) * (W/nf + 0.18u)'"
 as="'int((nf+2)/2) * W/nf * 0.18u'"
@@ -257,7 +258,7 @@ C {symbols/nfet_03v3.sym} 990 -1040 0 0 {name=M14
 L=0.28u
 W=0.22u
 nf=1
-m=5
+m=17
 ad="'int((nf+1)/2) * W/nf * 0.18u'"
 pd="'2*int((nf+1)/2) * (W/nf + 0.18u)'"
 as="'int((nf+2)/2) * W/nf * 0.18u'"
@@ -273,7 +274,7 @@ C {symbols/nfet_03v3.sym} 1220 -1040 0 0 {name=M15
 L=0.28u
 W=0.22u
 nf=1
-m=5
+m=25
 ad="'int((nf+1)/2) * W/nf * 0.18u'"
 pd="'2*int((nf+1)/2) * (W/nf + 0.18u)'"
 as="'int((nf+2)/2) * W/nf * 0.18u'"
@@ -289,7 +290,7 @@ C {symbols/pfet_03v3.sym} 1220 -1190 0 0 {name=M16
 L=0.28u
 W=0.22u
 nf=1
-m=10
+m=50
 ad="'int((nf+1)/2) * W/nf * 0.18u'"
 pd="'2*int((nf+1)/2) * (W/nf + 0.18u)'"
 as="'int((nf+2)/2) * W/nf * 0.18u'"
@@ -304,7 +305,7 @@ C {symbols/pfet_03v3.sym} 990 -1340 0 0 {name=M17
 L=0.28u
 W=0.22u
 nf=1
-m=10
+m=35
 ad="'int((nf+1)/2) * W/nf * 0.18u'"
 pd="'2*int((nf+1)/2) * (W/nf + 0.18u)'"
 as="'int((nf+2)/2) * W/nf * 0.18u'"
@@ -319,7 +320,7 @@ C {symbols/nfet_03v3.sym} 560 -910 0 0 {name=M18
 L=0.28u
 W=0.22u
 nf=1
-m=5
+m=17
 ad="'int((nf+1)/2) * W/nf * 0.18u'"
 pd="'2*int((nf+1)/2) * (W/nf + 0.18u)'"
 as="'int((nf+2)/2) * W/nf * 0.18u'"
@@ -346,3 +347,9 @@ C {ipin.sym} 280 -1190 0 0 {name=p11 lab=CLK}
 C {ipin.sym} 730 -1340 0 0 {name=p13 lab=RST}
 C {ipin.sym} 350 -1390 0 0 {name=p1 lab=VDD}
 C {ipin.sym} 350 -990 0 0 {name=p9 lab=GND}
+C {lab_wire.sym} 1380 -1000 0 0 {name=p15 sig_type=std_logic lab=GND}
+C {capa.sym} 1380 -1070 0 0 {name=C9[5:0]
+m=1
+value=20f
+footprint=1206
+device="ceramic capacitor"}
