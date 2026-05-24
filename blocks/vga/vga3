@@ -8,8 +8,6 @@ E {}
 P 4 1 290 -590 {}
 N -100 -500 -100 -470 {lab=VDD}
 N -100 -410 -100 -380 {lab=GND}
-N -240 -220 -240 -190 {lab=Vcp}
-N -240 -130 -240 -100 {lab=GND}
 N 170 70 250 70 {lab=Vin_n}
 N 20 70 50 70 {lab=GND}
 N 680 -660 680 -600 {lab=VDD}
@@ -270,10 +268,61 @@ N 3360 -420 3420 -420 {lab=#net18}
 N 3420 -420 3420 -380 {lab=#net18}
 N 3900 -470 3900 -440 {lab=GND}
 N 3900 -440 4040 -440 {lab=GND}
+N -300 -260 -100 -260 {lab=Vcp}
+N -260 -300 -260 -260 {lab=Vcp}
+N -520 -260 -360 -260 {lab=#net19}
+N -480 -300 -480 -260 {lab=#net19}
+N -740 -260 -580 -260 {lab=#net20}
+N -700 -300 -700 -260 {lab=#net20}
+N -960 -260 -800 -260 {lab=#net21}
+N -920 -300 -920 -260 {lab=#net21}
+N -1040 -160 -970 -160 {lab=#net22}
+N -1010 -160 -1010 -120 {lab=#net22}
+N -910 -160 -750 -160 {lab=#net23}
+N -790 -160 -790 -120 {lab=#net23}
+N -690 -160 -530 -160 {lab=#net24}
+N -570 -160 -570 -120 {lab=#net24}
+N -470 -160 -310 -160 {lab=#net25}
+N -350 -160 -350 -120 {lab=#net25}
+N -990 -220 -220 -220 {lab=GND}
+N -990 -240 -990 -90 {lab=GND}
+N -940 -330 -940 -220 {lab=GND}
+N -940 -220 -940 -180 {lab=GND}
+N -770 -220 -770 -90 {lab=GND}
+N -770 -240 -770 -220 {lab=GND}
+N -720 -330 -720 -220 {lab=GND}
+N -720 -220 -720 -180 {lab=GND}
+N -550 -220 -550 -90 {lab=GND}
+N -550 -240 -550 -220 {lab=GND}
+N -500 -330 -500 -220 {lab=GND}
+N -500 -220 -500 -180 {lab=GND}
+N -330 -220 -330 -90 {lab=GND}
+N -330 -240 -330 -220 {lab=GND}
+N -280 -330 -280 -220 {lab=GND}
+N -280 -220 -280 -180 {lab=GND}
+N -1040 -260 -1020 -260 {lab=#net22}
+N -1040 -260 -1040 -160 {lab=#net22}
+N -250 -180 -250 -160 {lab=GND}
+N -280 -180 -250 -180 {lab=GND}
+N -1160 -540 -1160 -510 {lab=Vcp_0}
+N -1160 -450 -1160 -420 {lab=GND}
+N -1080 -540 -1080 -510 {lab=Vcp_1}
+N -1080 -450 -1080 -420 {lab=GND}
+N -1000 -540 -1000 -510 {lab=Vcp_2}
+N -1000 -450 -1000 -420 {lab=GND}
+N -920 -540 -920 -510 {lab=Vcp_3}
+N -920 -450 -920 -420 {lab=GND}
+N -840 -540 -840 -510 {lab=Vcp_4}
+N -840 -450 -840 -420 {lab=GND}
+N -760 -540 -760 -510 {lab=Vcp_5}
+N -760 -450 -760 -420 {lab=GND}
+N -680 -540 -680 -510 {lab=Vcp_6}
+N -680 -450 -680 -420 {lab=GND}
+N -600 -540 -600 -510 {lab=Vcp_7}
+N -600 -450 -600 -420 {lab=GND}
+N -160 -200 -160 -170 {lab=GND}
 C {vsource.sym} -100 -440 0 0 {name=V1 value=3.3 savecurrent=false}
 C {gnd.sym} -100 -380 0 0 {name=l3 lab=GND}
-C {vsource.sym} -240 -160 0 0 {name=V3 value="dc 1" savecurrent=false}
-C {gnd.sym} -240 -100 0 0 {name=l7 lab=GND}
 C {lab_pin.sym} 410 -490 2 0 {name=p3 sig_type=std_logic lab=Vcp
 
 }
@@ -438,9 +487,6 @@ spiceprefix=X
 }
 C {gnd.sym} 750 -180 3 1 {name=l11 lab=GND}
 C {gnd.sym} 690 -150 0 0 {name=l12 lab=GND}
-C {lab_pin.sym} -240 -220 1 0 {name=p7 sig_type=std_logic lab=Vcp
-
-}
 C {symbols/pfet_03v3.sym} 410 -470 3 1 {name=M9
 L=0.28u
 W=10u
@@ -1285,3 +1331,145 @@ model=ppolyf_u_2k
 spiceprefix=X
 m=1
 spice_ignore=false}
+C {lab_pin.sym} -100 -260 2 0 {name=p1 sig_type=std_logic lab=Vcp
+
+}
+C {symbols/ppolyf_u_1k.sym} -330 -260 1 1 {name=R16
+W=1e-6
+L=1e-6
+model=ppolyf_u_1k
+spiceprefix=X
+m=1}
+C {symbols/ppolyf_u_1k.sym} -260 -330 2 1 {name=R20
+W=1e-6
+L=2.2e-6
+model=ppolyf_u_1k
+spiceprefix=X
+m=1}
+C {symbols/ppolyf_u_1k.sym} -550 -260 1 1 {name=R21
+W=1e-6
+L=1e-6
+model=ppolyf_u_1k
+spiceprefix=X
+m=1}
+C {symbols/ppolyf_u_1k.sym} -480 -330 2 1 {name=R22
+W=1e-6
+L=2.2e-6
+model=ppolyf_u_1k
+spiceprefix=X
+m=1}
+C {symbols/ppolyf_u_1k.sym} -770 -260 1 1 {name=R23
+W=1e-6
+L=1e-6
+model=ppolyf_u_1k
+spiceprefix=X
+m=1}
+C {symbols/ppolyf_u_1k.sym} -700 -330 2 1 {name=R24
+W=1e-6
+L=2.2e-6
+model=ppolyf_u_1k
+spiceprefix=X
+m=1}
+C {symbols/ppolyf_u_1k.sym} -990 -260 1 1 {name=R25
+W=1e-6
+L=1e-6
+model=ppolyf_u_1k
+spiceprefix=X
+m=1}
+C {symbols/ppolyf_u_1k.sym} -920 -330 2 1 {name=R26
+W=1e-6
+L=2.2e-6
+model=ppolyf_u_1k
+spiceprefix=X
+m=1}
+C {symbols/ppolyf_u_1k.sym} -940 -160 3 1 {name=R27
+W=1e-6
+L=1e-6
+model=ppolyf_u_1k
+spiceprefix=X
+m=1}
+C {symbols/ppolyf_u_1k.sym} -1010 -90 0 1 {name=R28
+W=1e-6
+L=2.2e-6
+model=ppolyf_u_1k
+spiceprefix=X
+m=1}
+C {symbols/ppolyf_u_1k.sym} -720 -160 3 1 {name=R29
+W=1e-6
+L=1e-6
+model=ppolyf_u_1k
+spiceprefix=X
+m=1}
+C {symbols/ppolyf_u_1k.sym} -790 -90 0 1 {name=R30
+W=1e-6
+L=2.2e-6
+model=ppolyf_u_1k
+spiceprefix=X
+m=1}
+C {symbols/ppolyf_u_1k.sym} -500 -160 3 1 {name=R31
+W=1e-6
+L=1e-6
+model=ppolyf_u_1k
+spiceprefix=X
+m=1}
+C {symbols/ppolyf_u_1k.sym} -570 -90 0 1 {name=R32
+W=1e-6
+L=2.2e-6
+model=ppolyf_u_1k
+spiceprefix=X
+m=1}
+C {symbols/ppolyf_u_1k.sym} -280 -160 3 1 {name=R33
+W=1e-6
+L=2.2e-6
+model=ppolyf_u_1k
+spiceprefix=X
+m=1}
+C {symbols/ppolyf_u_1k.sym} -350 -90 0 1 {name=R34
+W=1e-6
+L=2.2e-6
+model=ppolyf_u_1k
+spiceprefix=X
+m=1}
+C {gnd.sym} -220 -220 3 0 {name=l5 lab=GND}
+C {lab_pin.sym} -350 -60 2 0 {name=p30 sig_type=std_logic lab=Vcp_0}
+C {lab_pin.sym} -570 -60 2 0 {name=p31 sig_type=std_logic lab=Vcp_1}
+C {lab_pin.sym} -790 -60 2 0 {name=p32 sig_type=std_logic lab=Vcp_2}
+C {lab_pin.sym} -1010 -60 2 0 {name=p33 sig_type=std_logic lab=Vcp_3}
+C {lab_pin.sym} -920 -360 2 0 {name=p34 sig_type=std_logic lab=Vcp_4}
+C {lab_pin.sym} -700 -360 2 0 {name=p50 sig_type=std_logic lab=Vcp_5}
+C {lab_pin.sym} -480 -360 2 0 {name=p51 sig_type=std_logic lab=Vcp_6}
+C {lab_pin.sym} -260 -360 2 0 {name=p52 sig_type=std_logic lab=Vcp_7}
+C {vsource.sym} -1160 -480 0 0 {name=V10 value=3.3 savecurrent=false}
+C {gnd.sym} -1160 -420 0 0 {name=l6 lab=GND}
+C {lab_pin.sym} -1160 -540 0 0 {name=p53 sig_type=std_logic lab=Vcp_0
+}
+C {vsource.sym} -1080 -480 0 0 {name=V11 value=3.3 savecurrent=false}
+C {gnd.sym} -1080 -420 0 0 {name=l24 lab=GND}
+C {lab_pin.sym} -1080 -540 0 0 {name=p54 sig_type=std_logic lab=Vcp_1
+}
+C {vsource.sym} -1000 -480 0 0 {name=V4 value=3.3 savecurrent=false}
+C {gnd.sym} -1000 -420 0 0 {name=l25 lab=GND}
+C {lab_pin.sym} -1000 -540 0 0 {name=p55 sig_type=std_logic lab=Vcp_2
+}
+C {vsource.sym} -920 -480 0 0 {name=V13 value=3.3 savecurrent=false}
+C {gnd.sym} -920 -420 0 0 {name=l26 lab=GND}
+C {lab_pin.sym} -920 -540 0 0 {name=p56 sig_type=std_logic lab=Vcp_3
+}
+C {vsource.sym} -840 -480 0 0 {name=V14 value=3.3 savecurrent=false}
+C {gnd.sym} -840 -420 0 0 {name=l27 lab=GND}
+C {lab_pin.sym} -840 -540 0 0 {name=p57 sig_type=std_logic lab=Vcp_4
+}
+C {vsource.sym} -760 -480 0 0 {name=V15 value=3.3 savecurrent=false}
+C {gnd.sym} -760 -420 0 0 {name=l28 lab=GND}
+C {lab_pin.sym} -760 -540 0 0 {name=p58 sig_type=std_logic lab=Vcp_5
+}
+C {vsource.sym} -680 -480 0 0 {name=V16 value=3.3 savecurrent=false}
+C {gnd.sym} -680 -420 0 0 {name=l54 lab=GND}
+C {lab_pin.sym} -680 -540 0 0 {name=p59 sig_type=std_logic lab=Vcp_6
+}
+C {vsource.sym} -600 -480 0 0 {name=V17 value=3.3 savecurrent=false}
+C {gnd.sym} -600 -420 0 0 {name=l55 lab=GND}
+C {lab_pin.sym} -600 -540 0 0 {name=p60 sig_type=std_logic lab=Vcp_7
+}
+C {vsource.sym} -160 -230 0 0 {name=V3 value=0 savecurrent=false}
+C {gnd.sym} -160 -170 0 0 {name=l56 lab=GND}
