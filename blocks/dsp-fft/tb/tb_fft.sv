@@ -75,24 +75,24 @@ module tb_fft();
             // din_im2 = 1'b0;
             // din_im3 = 1'b0; 
 
-            din_re0 = wave[i]; 
-            din_re1 = wave[i+128]; 
-            din_re2 = wave[i+64]; 
-            din_re3 = wave[i+192]; 
-            din_im0 = 1'b0;
-            din_im1 = 1'b0;
-            din_im2 = 1'b0;
-            din_im3 = 1'b0; 
-
-            // if(i == 0) din_re0 = 16'h10; 
-            // else din_re0 = 16'h0; 
-            // din_re1 = '0; 
-            // din_re2 = '0; 
-            // din_re3 = '0; 
+            // din_re0 = wave[i]; 
+            // din_re1 = wave[i+128]; 
+            // din_re2 = wave[i+64]; 
+            // din_re3 = wave[i+192]; 
             // din_im0 = 1'b0;
             // din_im1 = 1'b0;
             // din_im2 = 1'b0;
-            // din_im3 = 1'b0;
+            // din_im3 = 1'b0; 
+
+            if(i == 0) din_re0 = 16'h10; 
+            else din_re0 = 16'h0; 
+            din_re1 = '0; 
+            din_re2 = '0; 
+            din_re3 = '0; 
+            din_im0 = 1'b0;
+            din_im1 = 1'b0;
+            din_im2 = 1'b0;
+            din_im3 = 1'b0;
             @(negedge clk);
         end
         
