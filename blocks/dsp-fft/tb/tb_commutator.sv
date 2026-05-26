@@ -16,8 +16,8 @@ module tb_commutator();
         .WIDTH(16)
     ) 
     DUT (
-        .clk, 
-        .select, .en,
+        .clk, .rst, 
+        .select,
         .up_in, .low_in, 
         .up_out, .low_out
     );
@@ -51,7 +51,6 @@ module tb_commutator();
         for (int i = 0; i < 64; i++) begin
             up_in = i;
             low_in = i + 128; 
-            en = 1'b1; 
             if (i < 32) select = 1'b0; 
             else select = 1'b1;
             @(negedge clk);

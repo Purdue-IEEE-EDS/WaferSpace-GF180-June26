@@ -116,66 +116,68 @@ sim: sim_stage sim_fft
 
 $(SYN_SCRIPT): $(RTL)
 	@mkdir -p $(SYN_DIR)
-	@echo "# Read RTL"                                            >  $@
-	@echo "read_liberty -lib $(LIB_FILE)"                         >> $@
-	@echo "read_verilog -sv $(RTL)"                               >> $@
-	@echo ""                                                      >> $@
-	@echo "# Elaborate hierarchy"                                 >> $@
-	@echo "hierarchy -top $(TOP) -check"                          >> $@
-	@echo "# Post-elaborate hierarchy"                            >> $@
-	@echo "ls"                                                    >> $@
-	@echo ""                                                      >> $@
-	@echo "# Behavioral structural"                               >> $@
-	@echo "proc"                                                  >> $@
-	@echo ""                                                      >> $@
-	@echo "# FLATTEN  dont preserve module boundaries"           >> $@
-	@echo ""                                                      >> $@
-	@echo "opt_clean"                                             >> $@
-	@echo "# Coarse optimisation"                                 >> $@
-	@echo "opt_expr"                                              >> $@
-	@echo "opt_clean"                                             >> $@
-	@echo "check"                                                 >> $@
-	@echo "opt -nodffe -nosdff"                                   >> $@
-	@echo "wreduce"                                               >> $@
-	@echo "peepopt"                                               >> $@
-	@echo "opt_clean"                                             >> $@
-	@echo ""                                                      >> $@
-	@echo "# Arithmetic and sharing"                              >> $@
-	@echo "alumacc"                                               >> $@
-	@echo "share"                                                 >> $@
-	@echo "opt"                                                   >> $@
-	@echo ""                                                      >> $@
-	@echo "# Memory"                                              >> $@
-	@echo "memory -nomap"                                         >> $@
-	@echo "opt_clean"                                             >> $@
-	@echo "opt -fast -full"                                       >> $@
-	@echo "memory_map"                                            >> $@
-	@echo "opt -full"                                             >> $@
-	@echo ""                                                      >> $@
-	@echo "# Technology mapping"                                  >> $@
-	@echo "techmap"                                               >> $@
-	@echo "opt -fast"                                             >> $@
-	@echo "splitnets -driver"                                     >> $@
-	@echo ""                                                      >> $@
-	@echo "opt_clean"                                             >> $@
-	@echo "# Hierarchy check before ABC"                          >> $@
-	@echo "# Pre-ABC hierarchy"                                   >> $@
-	@echo "ls"                                                    >> $@
-	@echo ""                                                      >> $@
-	@echo "# DFF liberty cell mapping"                            >> $@
-	@echo "dfflibmap -liberty $(LIB_FILE)"                        >> $@
-	@echo ""                                                      >> $@
-	@echo "# ABC: single pass, timing-driven"                     >> $@
-	@echo "abc -liberty $(LIB_FILE) -D $(CLK_PS)"                 >> $@
-	@echo ""                                                      >> $@
-	@echo "# Final cleanup and stats"                             >> $@
-	@echo "opt_clean"                                             >> $@
-	@echo "stat -liberty $(LIB_FILE)"                             >> $@
-	@echo "# Final hierarchy"                                     >> $@
-	@echo "ls"                                                    >> $@
-	@echo ""                                                      >> $@
-	@echo "# Write netlist"                                       >> $@
-	@echo "write_verilog -noattr $(SYN_NET)"                      >> $@
+	@echo "# ── Read RTL ──"                                     >>  $@
+	@echo "read_liberty -lib $(LIB_FILE)"                                >> $@
+	@echo "read_verilog -sv $(RTL)"                          >> $@
+	@echo ""                                                     >> $@
+	@echo "# ── Elaborate hierarchy ──"                          >> $@
+	@echo "hierarchy -top $(TOP) -check"                        >> $@
+	@echo "# ── Post-elaborate hierarchy ──"                    >> $@
+	@echo "ls"                                                   >> $@
+	@echo ""                                                     >> $@
+	@echo "# ── Behavioral → structural ──"                     >> $@
+	@echo "proc"                                                 >> $@
+	@echo ""                                                     >> $@
+	@echo "# ── FLATTEN — dont preserve module boundaries ──"     >> $@
+	@echo ""                                                     >> $@
+	@echo "opt_clean"                                            >> $@
+	@echo "# ── Coarse optimisation ──"                         >> $@
+	@echo "opt_expr"                                             >> $@
+	@echo "opt_clean"                                            >> $@
+	@echo "check"                                                >> $@
+	@echo "opt -nodffe -nosdff"                                  >> $@
+	@echo "wreduce"                                              >> $@
+	@echo "peepopt"                                              >> $@
+	@echo "opt_clean"                                            >> $@
+	@echo ""                                                     >> $@
+	@echo "# ── Arithmetic and sharing ──"                      >> $@
+	@echo "alumacc"                                              >> $@
+	@echo "share"                                                >> $@
+	@echo "opt"                                                  >> $@
+	@echo ""                                                     >> $@
+	@echo "# ── Memory ──"                                      >> $@
+	@echo "memory -nomap"                                        >> $@
+	@echo "opt_clean"                                            >> $@
+	@echo "opt -fast -full"                                      >> $@
+	@echo "memory_map"                                           >> $@
+	@echo "opt -full"                                            >> $@
+	@echo ""                                                     >> $@
+	@echo "# ── Technology mapping ──"                           >> $@
+	@echo "techmap"                                              >> $@
+	@echo "splitnets -driver"                                    >> $@
+	@echo "opt -fast"                                            >> $@
+	@echo ""                                                     >> $@
+	@echo "opt_clean"                                            >> $@
+	@echo "# ── Hierarchy check before ABC ──"                  >> $@
+	@echo "# ── Pre-ABC hierarchy ──"                          >> $@
+	@echo "ls"                                                   >> $@
+	@echo ""                                                     >> $@
+	@echo "# ── DFF → liberty cell mapping ──"                  >> $@
+	@echo "dfflibmap -liberty $(LIB_FILE)"                       >> $@
+	@echo ""                                                     >> $@
+	@echo "# ── ABC: single pass, timing-driven ──"             >> $@
+	@echo "# -D $(CLK_PS): delay target (ps) = clock period"    >> $@
+	@echo "# No -dff: do NOT retime across register boundaries" >> $@
+	@echo "abc -liberty $(LIB_FILE) -D $(CLK_PS) "               >> $@
+	@echo ""                                                     >> $@
+	@echo "# ── Final cleanup and stats ──"                     >> $@
+	@echo "opt_clean"                                            >> $@
+	@echo "stat -liberty $(LIB_FILE)"                            >> $@
+	@echo "# ── Final hierarchy ──"                             >> $@
+	@echo "ls"                                                   >> $@
+	@echo ""                                                     >> $@
+	@echo "# ── Write netlist ──"                                >> $@
+	@echo "write_verilog -noattr $(SYN_NET)"                     >> $@
 
 $(SYN_NET): $(RTL) $(SYN_SCRIPT)
 	$(YOSYS) -s $(SYN_SCRIPT)

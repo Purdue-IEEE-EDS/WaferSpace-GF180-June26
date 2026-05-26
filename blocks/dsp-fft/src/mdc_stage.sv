@@ -215,8 +215,8 @@ generate
         twiddle_rom #(.BITS(16), .DEPTH(1<<(STAGES-CURR_STAGE)), .BRANCH(2)) rom2(.clk, .rst, .in_valid, .tw_re(real_tw2), .tw_im(imag_tw2));
         twiddle_rom #(.BITS(16), .DEPTH(1<<(STAGES-CURR_STAGE)), .BRANCH(3)) rom3(.clk, .rst, .in_valid, .tw_re(real_tw3), .tw_im(imag_tw3));
 
-        commutator #(.DELAY(1<<(STAGES-CURR_STAGE-1)), .WIDTH(32)) top_comm(.clk, .select(sel), .up_in(comm0), .low_in(comm2), .up_out({dout_re0, dout_im0}), .low_out({dout_re1, dout_im1}));
-        commutator #(.DELAY(1<<(STAGES-CURR_STAGE-1)), .WIDTH(32)) bottom_comm(.clk, .select(sel), .up_in(comm1), .low_in(comm3), .up_out({dout_re2, dout_im2}), .low_out({dout_re3, dout_im3}));
+        commutator #(.DELAY(1<<(STAGES-CURR_STAGE-1)), .WIDTH(32)) top_comm(.clk, .rst, .select(sel), .up_in(comm0), .low_in(comm2), .up_out({dout_re0, dout_im0}), .low_out({dout_re1, dout_im1}));
+        commutator #(.DELAY(1<<(STAGES-CURR_STAGE-1)), .WIDTH(32)) bottom_comm(.clk, .rst, .select(sel), .up_in(comm1), .low_in(comm3), .up_out({dout_re2, dout_im2}), .low_out({dout_re3, dout_im3}));
 
     end
     else if ((CURR_STAGE == 3) || (CURR_STAGE == 5) || (CURR_STAGE == 7)) begin : odd_stage   
@@ -355,8 +355,8 @@ generate
             .real_out(rot_out_re), .imag_out(rot_out_im)
         );
 
-        commutator #(.DELAY(1<<(STAGES-CURR_STAGE-1)), .WIDTH(32)) top_comm(.clk, .select(sel), .up_in(comm0), .low_in(comm2), .up_out(comm0_out), .low_out(comm1_out));
-        commutator #(.DELAY(1<<(STAGES-CURR_STAGE-1)), .WIDTH(32)) bottom_comm(.clk, .select(sel), .up_in(comm1), .low_in(comm3), .up_out(comm2_out), .low_out(comm3_out));
+        commutator #(.DELAY(1<<(STAGES-CURR_STAGE-1)), .WIDTH(32)) top_comm(.clk, .rst, .select(sel), .up_in(comm0), .low_in(comm2), .up_out(comm0_out), .low_out(comm1_out));
+        commutator #(.DELAY(1<<(STAGES-CURR_STAGE-1)), .WIDTH(32)) bottom_comm(.clk, .rst, .select(sel), .up_in(comm1), .low_in(comm3), .up_out(comm2_out), .low_out(comm3_out));
 
     end
     else if (CURR_STAGE == 8) begin : last_stage
