@@ -229,7 +229,7 @@ $(PNR_SDC): | $(PNR_DIR)
 	@echo "create_clock -name clk -period $(CLK_PERIOD) [get_ports clk]"   >  $@
 	@echo "set_input_delay  0.1 -clock clk [get_ports {rst}]" >> $@
 	@echo "set_max_fanout 16 [current_design]"                             >> $@
-	@echo "set_max_transition 0.3 [current_design]"                        >> $@
+	@echo "set_max_transition 1.5 [current_design]"                        >> $@
 
 $(PNR_SCRIPT): | $(PNR_DIR)
 	@echo "read_lef $(TECH_LEF)"                                           >  $@
@@ -266,7 +266,7 @@ $(PNR_SCRIPT): | $(PNR_DIR)
 	@echo ""                                                               >> $@
 	@echo "global_placement -density 0.45 -pad_left 2 -pad_right 2"        >> $@
 	@echo "estimate_parasitics -placement"                                 >> $@
-	@echo "repair_design"                                                  >> $@
+	@echo "# repair_design"                                                  >> $@
 	@echo "detailed_placement"                                             >> $@
 	@echo "estimate_parasitics -placement"                                 >> $@
 	@echo "check_placement"                                                >> $@
