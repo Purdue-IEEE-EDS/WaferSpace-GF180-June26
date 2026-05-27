@@ -32,19 +32,16 @@ module fft
     assign z_re[0] = din_re3_reg;
     assign z_im[0] = din_im3_reg;
 
-    assign dout_re0 = w_re[6];
-    assign dout_im0 = w_im[6];
-    assign dout_re1 = x_re[6];
-    assign dout_im1 = x_im[6];
-    assign dout_re2 = y_re[6];
-    assign dout_im2 = y_im[6];
-    assign dout_re3 = z_re[6];
-    assign dout_im3 = z_im[6];
-
     assign val[0] = in_valid_reg;
-    assign out_valid = val[6];
 
-    always_ff @(posedge clk) begin 
+    always_ff @(posedge clk, negedge rst) begin 
+        if (!rst) begin 
+            in_valid_reg <= '0;
+            out_valid <= '0; 
+        end else begin 
+            in_valid_reg <= in_valid;
+            out_valid <= val[6]; 
+        end
         din_re0_reg <= din_re0;
         din_re1_reg <= din_re1; 
         din_re2_reg <= din_re2; 
@@ -54,7 +51,14 @@ module fft
         din_im2_reg <= din_im2;
         din_im3_reg <= din_im3; 
 
-        in_valid_reg <= in_valid;
+        dout_re0 <= w_re[6];
+        dout_im0 <= w_im[6];
+        dout_re1 <= x_re[6];
+        dout_im1 <= x_im[6];
+        dout_re2 <= y_re[6];
+        dout_im2 <= y_im[6];
+        dout_re3 <= z_re[6];
+        dout_im3 <= z_im[6];
     end
 
     // generate 
