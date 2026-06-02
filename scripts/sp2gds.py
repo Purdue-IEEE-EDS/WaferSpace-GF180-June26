@@ -26,10 +26,14 @@ def init_cfg():
     #  or an Exception to raise one upon parsing the symbol.
     # Symbols not mapped are ignored.
     DEVICE_MAP = {
-        "ppolyf_u_1k.sym": ppolyf_u_1k,
-        "pfet_03v3.sym": nfet_pfet_03v3,
-        "nfet_03v3.sym": nfet_pfet_03v3,
-        "cap_mim_1f5fF.sym": cap_mim_1f5fF,
+        "ppolyf_u_1k.sym": place_polyres,
+        "pfet_03v3.sym": place_nfet_pfet_03v3,
+        "nfet_03v3.sym": place_nfet_pfet_03v3,
+        "cap_mim_1f5fF.sym": place_cap_mim_1f5fF,
+        "ppolyf_u.sym": place_polyres,
+        "ppolyf_s.sym": place_polyres,
+        "npolyf_u.sym": place_polyres,
+        "npolyf_s.sym": place_polyres,
     
         "res.sym": gen_place_warn("Ideal component: res.sym"),
         "capa-2.sym": gen_place_warn("Ideal component: capa-2.sym"),
@@ -145,43 +149,50 @@ def map_sym(sym, *, default = place_pass):
 def gen_place_warn(msg):
     def place_warn(lib, cv, ly, top, c):
         print(f"Warning: Char {c['spice_loc']}: {msg}")
+        return 0
     return place_warn
 
 
 def gen_place_err(err_t, msg):
     def place_err(lib, cv, ly, top, c):
         raise err_t(f"Char {c['spice_loc']}: {msg}")
+        return 0
     return place_err
 
 
 def place_pass(lib, cv, ly, top, c):
     # print(f"Skipping: {c['sym']}")
-    pass
+    return 0
 
 
-def ppolyf_u_1k(lib, cv, ly, top, c):
+def place_polyres(lib, cv, ly, top, c):
+    pcell_name = c["props"]["model"] \
+                    .replace("1k", "high_Rs") \
+                    .replace("2k", "high_Rs") \
+                    .replace("3k", "high_Rs") \
+                    + "_resistor"
     width = parse_si_value(c["props"]["W"]) * 1e6
     length = parse_si_value(c["props"]["L"]) * 1e6
     params = {
         "deepnwell": False,
         "pcmpgr": False,
-        "volt": "3.3V",
         "w_res": width,
         "l_res": length,
         "array_x": 1,
         "array_y": int(c["props"]["m"]),
-        "lbl": True,
-        "r0_lbl": "",
-        "r1_lbl": "",
-        "sub_lbl": c["props"]["name"]
+        "lbl": False
     }
-    cell = ly.create_cell("ppolyf_u_high_Rs_resistor", lib.name(), params)
+    if "high_Rs" in pcell_name:
+        params["volt"] = "3.3V"
+    cell = ly.create_cell(pcell_name, lib.name(), params)
     pos = pya.Vector(pya.DVector(c["x"], -c["y"]) * SCALE_FACTOR)
     inst = top.insert(pya.CellInstArray(cell, pos))
+    inst.set_property(99, c["props"]["name"])  # User property for SPICE name
     print(f"Created a new resistor {c["props"]["name"]}.")
+    return 1
 
 
-def nfet_pfet_03v3(lib, cv, ly, top, c):
+def place_nfet_pfet_03v3(lib, cv, ly, top, c):
     pcell_name = "nfet" if c["props"]["model"] == "nfet_03v3" else "pfet"
     width = parse_si_value(c["props"]["W"]) * 1e6
     length = parse_si_value(c["props"]["L"]) * 1e6
@@ -195,10 +206,7 @@ def nfet_pfet_03v3(lib, cv, ly, top, c):
         "l_gate": length,
         "nf": nfingers,
         "con_bet_fin": False if nfingers == 1 else True,  # Disabling allows width to reach minimum @ 0.22u
-        "lbl": True,
-        "sd_lbl": "",
-        "g_lbl": "",
-        "sub_lbl": c["props"]["name"]
+        "lbl": False
     }
     # Idk man
     # lib.refresh()
@@ -212,6 +220,7 @@ def nfet_pfet_03v3(lib, cv, ly, top, c):
         #  or just restart KLayout. Some weird cache issue I haven't yet
         #  figured out (maybe the result of the way I use ly.create_cell)
         inst = top.insert(pya.CellInstArray(cell, pos))
+        inst.set_property(99, c["props"]["name"])  # User property for SPICE name
         # Evidently, if you have ran this script, the workaround
         #  does not actually work-around the problem, but the code
         #  is staying in case a future fix can use it.
@@ -220,14 +229,16 @@ def nfet_pfet_03v3(lib, cv, ly, top, c):
         # inst.cell.change_ref(lib.name(), pcell_name)
         # This is what's broken, but KLayout doesn't let us fix it.
         # print("BBox", inst.dbbox())
-        print("\tKLayout sucks so your pfet is invisible. " +
-              "Fix it by going to Instance Properties (select, press Q) -> Cell " +
-              "then changing to nfet and back to pfet.")
+        if pcell_name == "pfet":
+            print("\tKLayout sucks so your pfet may be invisible. " +
+                  "Fix it by going to Instance Properties (select, press Q) -> Cell " +
+                  "then changing to nfet and back to pfet.")
         print(f"Created a new transistor {c["props"]["name"]}.")
-        pos += pya.Vector(pya.DVector(width, -length) * SCALE_FACTOR)
+        pos += pya.Vector(pya.DVector(width, -length) * SCALE_FACTOR * 3)
+    return int(c["props"]["m"])
 
 
-def cap_mim_1f5fF(lib, cv, ly, top, c):
+def place_cap_mim_1f5fF(lib, cv, ly, top, c):
     # ref: https://gf180mcu-pdk.readthedocs.io/en/latest/analog/layout/inter_specs/inter_specs_3_43.html
     width = parse_si_value(c["props"]["W"]) * 1e6
     length = parse_si_value(c["props"]["L"]) * 1e6
@@ -236,16 +247,16 @@ def cap_mim_1f5fF(lib, cv, ly, top, c):
         "metal_level": "M5",  # Between M4 and M5
         "wc": width,
         "lc": length,
-        "lbl": True,
-        "top_lbl": "",
-        "bot_lbl": c["props"]["name"]
+        "lbl": False
     }
     cell = ly.create_cell("cap_mim", lib.name(), params)
     pos = pya.Vector(pya.DVector(c["x"], -c["y"]) * SCALE_FACTOR)
     for _ in range(int(c["props"]["m"])):
         inst = top.insert(pya.CellInstArray(cell, pos))
+        inst.set_property(99, c["props"]["name"])  # User property for SPICE name
         print(f"Created a new mimcap {c["props"]["name"]}.")
-        pos += pya.Vector(pya.DVector(width, -length) * SCALE_FACTOR)
+        pos += pya.Vector(pya.DVector(width, -length) * SCALE_FACTOR * 3)
+    return int(c["props"]["m"])
 
 
 # --- Main ---
@@ -306,8 +317,12 @@ def run_import():
 
     # 4. Place devices
     print("Placing devices... This will take ~30s per unique device.")
+    i = 0
     for c in components:
-        map_sym(c['sym'])(lib, cv, ly, top, c)
+        i += map_sym(c['sym'])(lib, cv, ly, top, c)
+
+    # 5. Inform user that import finished
+    print(f"Import complete. Placed {i} devices.")
 
 
 if __name__ == "__main__":
@@ -322,4 +337,3 @@ if __name__ == "__main__":
             print_pcells(lib)
     else:
         run_import()
-    print("Bye")
