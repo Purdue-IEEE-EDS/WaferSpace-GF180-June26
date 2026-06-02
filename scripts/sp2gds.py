@@ -2,6 +2,8 @@ import os
 import re
 import pya
 
+# TODO: Maybe running "File -> Refresh Libraries" fixes the pfet issue
+
 
 # --- Configuration ---
 # Must be in a function because other functions are used
@@ -139,10 +141,6 @@ def parse_props(props, *, prop_match_expr = re.compile(r"""(?P<key>[^=]*)=\s*(?P
         parsed[m.group("key").strip()] = m.group("value").strip()
         i = m.end()
     return parsed
-
-
-def map_sym(sym, *, default = place_pass):
-    return DEVICE_MAP.get(os.path.basename(sym), default)
 
 
 # --- Placing functions ---
@@ -288,6 +286,7 @@ def run_import():
     components = []
     comp_regex = re.compile(r"C \{(?P<sym>[^}]*)\} (?P<x>-?[0-9]+) (?P<y>-?[0-9]+) (?P<b>-?[0-9]+) (?P<h>-?[0-9]+) \{(?P<props>[^}]*)\}")
     next_line = lambda content, pos: content.find("\n", pos) + 1
+    map_sym = lambda sym: DEVICE_MAP.get(os.path.basename(sym), place_pass)
     
     i = 0
     while True:
