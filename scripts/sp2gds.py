@@ -5,12 +5,12 @@ import pya
 
 # --- Configuration ---
 # Must be in a function because other functions are used
-# as part of the configuration variables.
+#  as part of the configuration variables.
 def init_cfg():
-    global PDK_LIB_NAME, SCALE_FACTOR, SI_MULTIPLIERS, DEVICE_MAP, PRINT_PCELLS
+    global PDK_LIB_NAME, SCALE_FACTOR, SI_MULTIPLIERS, DEVICE_MAP, PRINT_PDKS, PRINT_PCELLS
 
     # Returned from calling 'pya.Library.library_names()'.
-    # Set to 'None' to print the result of above and exit.
+    # See below for debugging options.
     PDK_LIB_NAME = "gf180mcu"
 
     # Device coordinates will be multiplied by this factor.
@@ -22,24 +22,39 @@ def init_cfg():
         "u": 1e-6, "n": 1e-9, "p": 1e-12, "f": 1e-15, None: 1
     }
 
-    # Leave symbols out to ignore them.
+    # Map each schematic symbol to either a placing function
+    #  or an Exception to raise one upon parsing the symbol.
+    # Symbols not mapped are ignored.
     DEVICE_MAP = {
         "ppolyf_u_1k.sym": ppolyf_u_1k,
         "pfet_03v3.sym": nfet_pfet_03v3,
         "nfet_03v3.sym": nfet_pfet_03v3,
+        "cap_mim_1f5fF.sym": cap_mim_1f5fF,
     
         "res.sym": gen_place_warn("Ideal component: res.sym"),
         "capa-2.sym": gen_place_warn("Ideal component: capa-2.sym"),
     
-        "ppolyf_u_3k.sym": gen_place_err(ValueError, "Can't use in WaferSpace tapeout"),
-        "ppolyf_u_2k.sym": gen_place_err(ValueError, "Can't use in WaferSpace tapeout")
+        "ppolyf_u_3k.sym": ValueError("Can't use in WaferSpace tapeout"),
+        "ppolyf_u_2k.sym": ValueError("Can't use in WaferSpace tapeout"),
+        "cap_mim_2f0fF.sym": ValueError("Can't use in WaferSpace tapeout"),
+        "cap_mim_1f0fF.sym": ValueError("Can't use in WaferSpace tapeout")
     }
 
-    # Debug: Print all pcells and parameters
+    # Debug: Print available PDKs, then exit.
+    PRINT_PDKS = False
+
+    # Debug: Print all pcells and parameters, then exit.
     PRINT_PCELLS = False
 
 
 # --- Util functions ---
+def resolve_lib(name):
+    for lib_id in pya.Library.library_ids():
+        lib = pya.Library.library_by_id(lib_id)
+        if lib.name() == name:
+            return lib
+
+
 def get_or_create_cellview():
     cv = pya.CellView.active()
     if cv is None or cv.layout() is None:
@@ -72,13 +87,6 @@ def get_or_create_top(ly):
     else:
         top = ly.create_cell("TOP")
     return top
-
-
-def resolve_lib(name):
-    for lib_id in pya.Library.library_ids():
-        lib = pya.Library.library_by_id(lib_id)
-        if lib.name() == name:
-            return lib
 
 
 def print_pcells(lib):
@@ -129,25 +137,29 @@ def parse_props(props, *, prop_match_expr = re.compile(r"""(?P<key>[^=]*)=\s*(?P
     return parsed
 
 
+def map_sym(sym, *, default = place_pass):
+    return DEVICE_MAP.get(os.path.basename(sym), default)
+
+
 # --- Placing functions ---
 def gen_place_warn(msg):
-    def place_err(cv, ly, top, lib, c):
+    def place_warn(lib, cv, ly, top, c):
         print(f"Warning: Char {c['spice_loc']}: {msg}")
-    return place_err
+    return place_warn
 
 
 def gen_place_err(err_t, msg):
-    def place_err(cv, ly, top, lib, c):
+    def place_err(lib, cv, ly, top, c):
         raise err_t(f"Char {c['spice_loc']}: {msg}")
     return place_err
 
 
-def place_pass(cv, ly, top, lib, c):
+def place_pass(lib, cv, ly, top, c):
     # print(f"Skipping: {c['sym']}")
     pass
 
 
-def ppolyf_u_1k(cv, ly, top, lib, c):
+def ppolyf_u_1k(lib, cv, ly, top, c):
     width = parse_si_value(c["props"]["W"]) * 1e6
     length = parse_si_value(c["props"]["L"]) * 1e6
     params = {
@@ -169,37 +181,70 @@ def ppolyf_u_1k(cv, ly, top, lib, c):
     print(f"Created a new resistor {c["props"]["name"]}.")
 
 
-def nfet_pfet_03v3(cv, ly, top, lib, c):
+def nfet_pfet_03v3(lib, cv, ly, top, c):
     pcell_name = "nfet" if c["props"]["model"] == "nfet_03v3" else "pfet"
     width = parse_si_value(c["props"]["W"]) * 1e6
     length = parse_si_value(c["props"]["L"]) * 1e6
+    nfingers = int(c["props"]["nf"])
     params = {
         "deepnwell": False,
         "pcmpgr": False,
         "volt": "3.3V",
-        "bulk": "None",
+        "bulk": "Bulk Tie",
         "w_gate": width,
         "l_gate": length,
-        "nf": int(c["props"]["nf"]),
+        "nf": nfingers,
+        "con_bet_fin": False if nfingers == 1 else True,  # Disabling allows width to reach minimum @ 0.22u
         "lbl": True,
         "sd_lbl": "",
         "g_lbl": "",
         "sub_lbl": c["props"]["name"]
     }
+    # Idk man
+    # lib.refresh()
     # Always create nfet first to work around klayout bug
-    # where pfets do not appear.
-    cell = ly.create_cell("nfet", lib.name(), params)
+    #  where pfets do not appear.
+    # cell = ly.create_cell("nfet", lib.name(), params)
+    cell = ly.create_cell(pcell_name, lib.name(), params)
     pos = pya.Vector(pya.DVector(c["x"], -c["y"]) * SCALE_FACTOR)
     for _ in range(int(c["props"]["m"])):
-        # Also, there's some weird issue where the tool can just
-        # grab the wrong cell/index if there is more than
-        # one window open, so uh don't do that ig.
+        # If the instance is outdated click File -> Refresh Libraries
+        #  or just restart KLayout. Some weird cache issue I haven't yet
+        #  figured out (maybe the result of the way I use ly.create_cell)
         inst = top.insert(pya.CellInstArray(cell, pos))
         # Evidently, if you have ran this script, the workaround
-        # does not actually work-around the problem, but the code
-        # is staying in case a future fix can use it.
-        inst.cell.change_ref(lib.name(), pcell_name)
+        #  does not actually work-around the problem, but the code
+        #  is staying in case a future fix can use it.
+        # inst.cell.change_ref(lib.name(), "pfet")
+        # inst.cell.change_ref(lib.name(), "nfet")
+        # inst.cell.change_ref(lib.name(), pcell_name)
+        # This is what's broken, but KLayout doesn't let us fix it.
+        # print("BBox", inst.dbbox())
+        print("\tKLayout sucks so your pfet is invisible. " +
+              "Fix it by going to Instance Properties (select, press Q) -> Cell " +
+              "then changing to nfet and back to pfet.")
         print(f"Created a new transistor {c["props"]["name"]}.")
+        pos += pya.Vector(pya.DVector(width, -length) * SCALE_FACTOR)
+
+
+def cap_mim_1f5fF(lib, cv, ly, top, c):
+    # ref: https://gf180mcu-pdk.readthedocs.io/en/latest/analog/layout/inter_specs/inter_specs_3_43.html
+    width = parse_si_value(c["props"]["W"]) * 1e6
+    length = parse_si_value(c["props"]["L"]) * 1e6
+    params = {
+        "mim_option": "MIM-B",  # Use MIM-B option
+        "metal_level": "M5",  # Between M4 and M5
+        "wc": width,
+        "lc": length,
+        "lbl": True,
+        "top_lbl": "",
+        "bot_lbl": c["props"]["name"]
+    }
+    cell = ly.create_cell("cap_mim", lib.name(), params)
+    pos = pya.Vector(pya.DVector(c["x"], -c["y"]) * SCALE_FACTOR)
+    for _ in range(int(c["props"]["m"])):
+        inst = top.insert(pya.CellInstArray(cell, pos))
+        print(f"Created a new mimcap {c["props"]["name"]}.")
         pos += pya.Vector(pya.DVector(width, -length) * SCALE_FACTOR)
 
 
@@ -248,6 +293,11 @@ def run_import():
                 "spice_loc": i
             })
             i = m.end()
+            
+            # Detect and raise parse-time errors
+            m = map_sym(m.group("sym"))
+            if isinstance(m, Exception):
+                raise m
 
         # Continue to next line
         i = next_line(f_content, i)
@@ -255,14 +305,14 @@ def run_import():
             break
 
     # 4. Place devices
-    print("Placing devices...")
+    print("Placing devices... This will take ~30s per unique device.")
     for c in components:
-        DEVICE_MAP.get(os.path.basename(c['sym']), place_pass)(cv, ly, top, lib, c)
+        map_sym(c['sym'])(lib, cv, ly, top, c)
 
 
 if __name__ == "__main__":
     init_cfg()
-    if PDK_LIB_NAME is None:
+    if PRINT_PDKS:
         print(f"Library names detected by pya:\n{pya.Library.library_names()}")
     elif PRINT_PCELLS:
         lib = resolve_lib(PDK_LIB_NAME)
