@@ -10,7 +10,7 @@ import bisect
 # Must be in a function because other functions are used
 #  as part of the configuration variables.
 def init_cfg():
-    global PDK_LIB_NAME, SCALE_FACTOR, SI_MULTIPLIERS, DEVICE_MAP, PRINT_PDKS, PRINT_PCELLS
+    global PDK_LIB_NAME, SCALE_FACTOR, SI_MULTIPLIERS, SKIP_SPICE_IGNORE, DEVICE_MAP, PRINT_PDKS, PRINT_PCELLS
 
     # Returned from calling 'pya.Library.library_names()'.
     # See below for debugging options.
@@ -25,6 +25,9 @@ def init_cfg():
         "u": 1e-6, "n": 1e-9, "p": 1e-12, "f": 1e-15, None: 1
     }
 
+    # Skip placing devices with the parameter "spice_ignore=true".
+    SKIP_SPICE_IGNORE = True
+
     # Map each schematic symbol to either a placing function
     #  or an Exception to raise one upon parsing the symbol.
     # Symbols not mapped are ignored.
@@ -32,7 +35,8 @@ def init_cfg():
         "ppolyf_u_1k.sym": place_npolyf_ppolyf,
         "pfet_03v3.sym": place_nfet_pfet_03v3,
         "nfet_03v3.sym": place_nfet_pfet_03v3,
-        "cap_mim_1f5fF.sym": place_cap_mim_1f5fF,
+        "cap_mim_2f0fF.sym": gen_place_warn("SPICE model for cap_mim_2f0fF may differ from intended model cap_mim_2f0_m4m5_noshield.", place_cap_mim_1f5fF),
+        "cap_mim_analog.sym": place_cap_mim_1f5fF,
         "ppolyf_u.sym": place_npolyf_ppolyf,
         "ppolyf_s.sym": place_npolyf_ppolyf,
         "npolyf_u.sym": place_npolyf_ppolyf,
@@ -42,12 +46,12 @@ def init_cfg():
         "cap_pmos_03v3.sym": place_cap_nmos_pmos_03v3,
         "cap_pmos_03v3_b.sym": place_cap_nmos_pmos_03v3,
     
-        "res.sym": gen_place_warn("Ideal component: res.sym"),
-        "capa-2.sym": gen_place_warn("Ideal component: capa-2.sym"),
+        "res.sym": gen_place_warn("Ideal component: res.sym", place_pass),
+        "capa-2.sym": gen_place_warn("Ideal component: capa-2.sym", place_pass),
     
         "ppolyf_u_3k.sym": ValueError("Can't use ppolyf_u_3k in WaferSpace tapeout"),
         "ppolyf_u_2k.sym": ValueError("Can't use ppolyf_u_2k in WaferSpace tapeout"),
-        "cap_mim_2f0fF.sym": ValueError("Can't use cap_mim_2f0fF in WaferSpace tapeout"),
+        "cap_mim_1f5fF.sym": ValueError("Can't use cap_mim_1f5fF in WaferSpace tapeout"),
         "cap_mim_1f0fF.sym": ValueError("Can't use cap_mim_1f0fF in WaferSpace tapeout")
     }
 
@@ -83,7 +87,6 @@ def get_or_create_top(ly):
         # 3) Use the first one in the list.
         candidates = [None] * 3
         for t in available_tops:
-            print(t)
             if t.name.lower() == "top":
                 candidates[0] = t
                 break
@@ -126,12 +129,13 @@ def get_line_number(newline_indices, i):
 def parse_si_value(value, *, si_match_expr = re.compile(r"([+-]?\d+(?:\.\d+)?(?:e[+-]?\d+)?)\s*([a-zµ]+)?")):
     if not isinstance(value, str):
         return value
-    
-    match = si_match_expr.fullmatch(value.strip().lower())
+
+    value = value.strip().lower()
+    match = si_match_expr.fullmatch(value)
     if not match:
         print(f"Could not parse SI value: {value}. Setting to 0.0.")
         return 0.0
-    
+
     number = float(match.group(1))
     suffix = match.group(2)
     if suffix not in SI_MULTIPLIERS:
@@ -143,7 +147,7 @@ def parse_si_value(value, *, si_match_expr = re.compile(r"([+-]?\d+(?:\.\d+)?(?:
 
 
 def parse_props(props, *, prop_match_expr = re.compile(r"""(?P<key>[^=]*)=\s*(?P<value>"(?:[^"\\]|\\.)*"|'(?:[^'\\]|\\.)*'|\S*)""")):
-    props = props.strip()
+    props = props.strip().lower()
     parsed = dict()
     i = 0
     while i < len(props):
@@ -157,10 +161,10 @@ def parse_props(props, *, prop_match_expr = re.compile(r"""(?P<key>[^=]*)=\s*(?P
 
 
 # --- Placing functions ---
-def gen_place_warn(msg):
+def gen_place_warn(msg, place_func):
     def place_warn(lib, cv, ly, top, c, nl_inds):
         print(f"Warning: Line {get_line_number(nl_inds, c['spice_loc'])}: {msg}")
-        return 0
+        return place_func(lib, cv, ly, top, c, nl_inds)
     return place_warn
 
 
@@ -177,13 +181,13 @@ def place_pass(lib, cv, ly, top, c, nl_inds):
 
 
 def place_npolyf_ppolyf(lib, cv, ly, top, c, nl_inds):
-    pcell_name = c["props"]["model"].strip() \
+    pcell_name = c["props"]["model"] \
                     .replace("1k", "high_Rs") \
                     .replace("2k", "high_Rs") \
                     .replace("3k", "high_Rs") \
                     + "_resistor"
-    width = parse_si_value(c["props"]["W"]) * 1e6
-    length = parse_si_value(c["props"]["L"]) * 1e6
+    width = parse_si_value(c["props"]["w"]) * 1e6
+    length = parse_si_value(c["props"]["l"]) * 1e6
     params = {
         "deepnwell": False,
         "pcmpgr": False,
@@ -204,9 +208,9 @@ def place_npolyf_ppolyf(lib, cv, ly, top, c, nl_inds):
 
 
 def place_nfet_pfet_03v3(lib, cv, ly, top, c, nl_inds):
-    pcell_name = "nfet" if c["props"]["model"].strip() == "nfet_03v3" else "pfet"
-    width = parse_si_value(c["props"]["W"]) * 1e6
-    length = parse_si_value(c["props"]["L"]) * 1e6
+    pcell_name = "nfet" if c["props"]["model"] == "nfet_03v3" else "pfet"
+    width = parse_si_value(c["props"]["w"]) * 1e6
+    length = parse_si_value(c["props"]["l"]) * 1e6
     nfingers = int(c["props"]["nf"])
     params = {
         "deepnwell": False,
@@ -231,8 +235,8 @@ def place_nfet_pfet_03v3(lib, cv, ly, top, c, nl_inds):
 
 def place_cap_mim_1f5fF(lib, cv, ly, top, c, nl_inds):
     # ref: https://gf180mcu-pdk.readthedocs.io/en/latest/analog/layout/inter_specs/inter_specs_3_43.html
-    width = parse_si_value(c["props"]["W"]) * 1e6
-    length = parse_si_value(c["props"]["L"]) * 1e6
+    width = parse_si_value(c["props"]["w"]) * 1e6
+    length = parse_si_value(c["props"]["l"]) * 1e6
     params = {
         "mim_option": "MIM-B",  # Use MIM-B option
         "metal_level": "M5",  # Between M4 and M5
@@ -251,9 +255,9 @@ def place_cap_mim_1f5fF(lib, cv, ly, top, c, nl_inds):
 
 
 def place_cap_nmos_pmos_03v3(lib, cv, ly, top, c, nl_inds):
-    pcell_name = c["props"]["model"].strip().replace("_03v3", "")
-    width = parse_si_value(c["props"]["W"]) * 1e6
-    length = parse_si_value(c["props"]["L"]) * 1e6
+    pcell_name = c["props"]["model"].replace("_03v3", "")
+    width = parse_si_value(c["props"]["w"]) * 1e6
+    length = parse_si_value(c["props"]["l"]) * 1e6
     params = {
         "volt": "3.3V",
         "lc": width,
@@ -309,10 +313,15 @@ def run_import():
     
     i = 0
     while True:
-        # Lines containing components start with 'C'
-        if f_content.startswith('C ', i):
+        # Store target end index
+        j = i
+        try:
+            # Lines containing components start with 'C'
+            if not f_content.startswith('C ', i):
+                continue
+
             m = comp_regex.match(f_content, i)
-            components.append({
+            c = {
                 "sym": m.group("sym"),
                 "x": parse_si_value(m.group("x")),
                 "y": parse_si_value(m.group("y")),
@@ -320,19 +329,25 @@ def run_import():
                 "h": parse_si_value(m.group("h")),
                 "props": parse_props(m.group("props")),
                 "spice_loc": i
-            })
-            i = m.end()
+            }
+            j = m.end()
+
+            # If desired, skip devices with spice_ignore=true
+            if SKIP_SPICE_IGNORE and c["props"].get("spice_ignore", "false") == "true":
+                continue
             
             # Detect and raise parse-time errors
-            m = map_sym(m.group("sym"))
-            if isinstance(m, Exception):
-                m.add_note(f"(Line {get_line_number(nl_inds, i)})")
-                raise m
+            place_func = map_sym(c["sym"])
+            if isinstance(place_func, Exception):
+                place_func.add_note(f"(Line {get_line_number(nl_inds, i)})")
+                raise place_func
 
-        # Continue to next line
-        i = next_line(f_content, i)
-        if i == 0:
-            break
+            components.append(c)
+        finally:
+            # Continue to next line
+            i = next_line(f_content, j)
+            if i == 0:
+                break
 
     # 4. Place devices
     print("Placing devices... This will take ~30s per unique device.")
