@@ -1,6 +1,7 @@
 import os
 import re
 import pya
+import bisect
 
 # TODO: Maybe running "File -> Refresh Libraries" fixes the pfet issue
 
@@ -16,7 +17,7 @@ def init_cfg():
     PDK_LIB_NAME = "gf180mcu"
 
     # Device coordinates will be multiplied by this factor.
-    SCALE_FACTOR = 32.0
+    SCALE_FACTOR = 16.0
 
     # The units will correspond to multiplying by this number.
     SI_MULTIPLIERS = {
@@ -28,22 +29,26 @@ def init_cfg():
     #  or an Exception to raise one upon parsing the symbol.
     # Symbols not mapped are ignored.
     DEVICE_MAP = {
-        "ppolyf_u_1k.sym": place_polyres,
+        "ppolyf_u_1k.sym": place_npolyf_ppolyf,
         "pfet_03v3.sym": place_nfet_pfet_03v3,
         "nfet_03v3.sym": place_nfet_pfet_03v3,
         "cap_mim_1f5fF.sym": place_cap_mim_1f5fF,
-        "ppolyf_u.sym": place_polyres,
-        "ppolyf_s.sym": place_polyres,
-        "npolyf_u.sym": place_polyres,
-        "npolyf_s.sym": place_polyres,
+        "ppolyf_u.sym": place_npolyf_ppolyf,
+        "ppolyf_s.sym": place_npolyf_ppolyf,
+        "npolyf_u.sym": place_npolyf_ppolyf,
+        "npolyf_s.sym": place_npolyf_ppolyf,
+        "cap_nmos_03v3.sym": place_cap_nmos_pmos_03v3,
+        "cap_nmos_03v3_b.sym": place_cap_nmos_pmos_03v3,
+        "cap_pmos_03v3.sym": place_cap_nmos_pmos_03v3,
+        "cap_pmos_03v3_b.sym": place_cap_nmos_pmos_03v3,
     
         "res.sym": gen_place_warn("Ideal component: res.sym"),
         "capa-2.sym": gen_place_warn("Ideal component: capa-2.sym"),
     
-        "ppolyf_u_3k.sym": ValueError("Can't use in WaferSpace tapeout"),
-        "ppolyf_u_2k.sym": ValueError("Can't use in WaferSpace tapeout"),
-        "cap_mim_2f0fF.sym": ValueError("Can't use in WaferSpace tapeout"),
-        "cap_mim_1f0fF.sym": ValueError("Can't use in WaferSpace tapeout")
+        "ppolyf_u_3k.sym": ValueError("Can't use ppolyf_u_3k in WaferSpace tapeout"),
+        "ppolyf_u_2k.sym": ValueError("Can't use ppolyf_u_2k in WaferSpace tapeout"),
+        "cap_mim_2f0fF.sym": ValueError("Can't use cap_mim_2f0fF in WaferSpace tapeout"),
+        "cap_mim_1f0fF.sym": ValueError("Can't use cap_mim_1f0fF in WaferSpace tapeout")
     }
 
     # Debug: Print available PDKs, then exit.
@@ -110,6 +115,14 @@ def print_pcells(lib):
         print()
 
 
+def get_newline_indices(f_content):
+    return [i for i, c in enumerate(f_content) if c == "\n"]
+
+
+def get_line_number(newline_indices, i):
+    return bisect.bisect_left(newline_indices, i)
+
+
 def parse_si_value(value, *, si_match_expr = re.compile(r"([+-]?\d+(?:\.\d+)?(?:e[+-]?\d+)?)\s*([a-zµ]+)?")):
     if not isinstance(value, str):
         return value
@@ -145,26 +158,26 @@ def parse_props(props, *, prop_match_expr = re.compile(r"""(?P<key>[^=]*)=\s*(?P
 
 # --- Placing functions ---
 def gen_place_warn(msg):
-    def place_warn(lib, cv, ly, top, c):
-        print(f"Warning: Char {c['spice_loc']}: {msg}")
+    def place_warn(lib, cv, ly, top, c, nl_inds):
+        print(f"Warning: Line {get_line_number(nl_inds, c['spice_loc'])}: {msg}")
         return 0
     return place_warn
 
 
 def gen_place_err(err_t, msg):
-    def place_err(lib, cv, ly, top, c):
-        raise err_t(f"Char {c['spice_loc']}: {msg}")
+    def place_err(lib, cv, ly, top, c, nl_inds):
+        raise err_t(f"Line {get_line_number(nl_inds, c['spice_loc'])}: {msg}")
         return 0
     return place_err
 
 
-def place_pass(lib, cv, ly, top, c):
+def place_pass(lib, cv, ly, top, c, nl_inds):
     # print(f"Skipping: {c['sym']}")
     return 0
 
 
-def place_polyres(lib, cv, ly, top, c):
-    pcell_name = c["props"]["model"] \
+def place_npolyf_ppolyf(lib, cv, ly, top, c, nl_inds):
+    pcell_name = c["props"]["model"].strip() \
                     .replace("1k", "high_Rs") \
                     .replace("2k", "high_Rs") \
                     .replace("3k", "high_Rs") \
@@ -190,8 +203,8 @@ def place_polyres(lib, cv, ly, top, c):
     return 1
 
 
-def place_nfet_pfet_03v3(lib, cv, ly, top, c):
-    pcell_name = "nfet" if c["props"]["model"] == "nfet_03v3" else "pfet"
+def place_nfet_pfet_03v3(lib, cv, ly, top, c, nl_inds):
+    pcell_name = "nfet" if c["props"]["model"].strip() == "nfet_03v3" else "pfet"
     width = parse_si_value(c["props"]["W"]) * 1e6
     length = parse_si_value(c["props"]["L"]) * 1e6
     nfingers = int(c["props"]["nf"])
@@ -200,43 +213,23 @@ def place_nfet_pfet_03v3(lib, cv, ly, top, c):
         "pcmpgr": False,
         "volt": "3.3V",
         "bulk": "Bulk Tie",
-        "w_gate": width,
+        "w_gate": width / nfingers,
         "l_gate": length,
         "nf": nfingers,
         "con_bet_fin": False if nfingers == 1 else True,  # Disabling allows width to reach minimum @ 0.22u
         "lbl": False
     }
-    # Idk man
-    # lib.refresh()
-    # Always create nfet first to work around klayout bug
-    #  where pfets do not appear.
-    # cell = ly.create_cell("nfet", lib.name(), params)
     cell = ly.create_cell(pcell_name, lib.name(), params)
     pos = pya.Vector(pya.DVector(c["x"], -c["y"]) * SCALE_FACTOR)
     for _ in range(int(c["props"]["m"])):
-        # If the instance is outdated click File -> Refresh Libraries
-        #  or just restart KLayout. Some weird cache issue I haven't yet
-        #  figured out (maybe the result of the way I use ly.create_cell)
         inst = top.insert(pya.CellInstArray(cell, pos))
         inst.set_property(99, c["props"]["name"])  # User property for SPICE name
-        # Evidently, if you have ran this script, the workaround
-        #  does not actually work-around the problem, but the code
-        #  is staying in case a future fix can use it.
-        # inst.cell.change_ref(lib.name(), "pfet")
-        # inst.cell.change_ref(lib.name(), "nfet")
-        # inst.cell.change_ref(lib.name(), pcell_name)
-        # This is what's broken, but KLayout doesn't let us fix it.
-        # print("BBox", inst.dbbox())
-        if pcell_name == "pfet":
-            print("\tKLayout sucks so your pfet may be invisible. " +
-                  "Fix it by going to Instance Properties (select, press Q) -> Cell " +
-                  "then changing to nfet and back to pfet.")
         print(f"Created a new transistor {c["props"]["name"]}.")
         pos += pya.Vector(pya.DVector(width, -length) * SCALE_FACTOR * 3)
     return int(c["props"]["m"])
 
 
-def place_cap_mim_1f5fF(lib, cv, ly, top, c):
+def place_cap_mim_1f5fF(lib, cv, ly, top, c, nl_inds):
     # ref: https://gf180mcu-pdk.readthedocs.io/en/latest/analog/layout/inter_specs/inter_specs_3_43.html
     width = parse_si_value(c["props"]["W"]) * 1e6
     length = parse_si_value(c["props"]["L"]) * 1e6
@@ -257,6 +250,29 @@ def place_cap_mim_1f5fF(lib, cv, ly, top, c):
     return int(c["props"]["m"])
 
 
+def place_cap_nmos_pmos_03v3(lib, cv, ly, top, c, nl_inds):
+    pcell_name = c["props"]["model"].strip().replace("_03v3", "")
+    width = parse_si_value(c["props"]["W"]) * 1e6
+    length = parse_si_value(c["props"]["L"]) * 1e6
+    params = {
+        "volt": "3.3V",
+        "lc": width,
+        "wc": length,
+        "lbl": False
+    }
+    if not pcell_name.endswith("_b"):
+        params["deepnwell"] = False
+        params["pcmpgr"] = False
+    cell = ly.create_cell(pcell_name, lib.name(), params)
+    pos = pya.Vector(pya.DVector(c["x"], -c["y"]) * SCALE_FACTOR)
+    for _ in range(int(c["props"]["m"])):
+        inst = top.insert(pya.CellInstArray(cell, pos))
+        inst.set_property(99, c["props"]["name"])  # User property for SPICE name
+        print(f"Created a new transistor {c["props"]["name"]}.")
+        pos += pya.Vector(pya.DVector(width, -length) * SCALE_FACTOR * 3)
+    return int(c["props"]["m"])
+
+
 # --- Main ---
 def run_import():
     # 1. Get layout context, load library
@@ -271,17 +287,20 @@ def run_import():
     top = get_or_create_top(ly)
     if ly.dbu != 0.005:
         # # Efabless says to use 0.005um for gf180mcu.
-        print(f"Warning: Layout database units are not 0.005um!")
+        print("Warning: Layout database units are not 0.005um!")
 
     # 2. Choose file
     netlist_path = pya.FileDialog.ask_open_file_name("Choose Netlist", '.', "SPICE (*.spice *.sch)")
     if not netlist_path:
+        print("No file selected. Exiting.")
         return
 
     # 3. Parse devices
     print("Parsing devices...")
     with open(netlist_path, 'r') as f:
         f_content = f.read()
+    
+    nl_inds = get_newline_indices(f_content)
 
     components = []
     comp_regex = re.compile(r"C \{(?P<sym>[^}]*)\} (?P<x>-?[0-9]+) (?P<y>-?[0-9]+) (?P<b>-?[0-9]+) (?P<h>-?[0-9]+) \{(?P<props>[^}]*)\}")
@@ -307,6 +326,7 @@ def run_import():
             # Detect and raise parse-time errors
             m = map_sym(m.group("sym"))
             if isinstance(m, Exception):
+                m.add_note(f"(Line {get_line_number(nl_inds, i)})")
                 raise m
 
         # Continue to next line
@@ -318,7 +338,7 @@ def run_import():
     print("Placing devices... This will take ~30s per unique device.")
     i = 0
     for c in components:
-        i += map_sym(c['sym'])(lib, cv, ly, top, c)
+        i += map_sym(c['sym'])(lib, cv, ly, top, c, nl_inds)
 
     # 5. Inform user that import finished
     print(f"Import complete. Placed {i} devices.")
