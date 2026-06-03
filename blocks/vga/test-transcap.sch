@@ -18,7 +18,11 @@ N 360 -380 360 -320 {lab=GND}
 C {code_shown.sym} 10 30 0 0 {name=s1 only_toplevel=false value="
 .include /foss/pdks/gf180mcuD/libs.tech/ngspice/design.ngspice
 .lib /foss/pdks/gf180mcuD/libs.tech/ngspice/sm141064.ngspice typical
+.lib /foss/pdks/gf180mcuD/libs.tech/ngspice/sm141064.ngspice bjt_typical
+.lib /foss/pdks/gf180mcuD/libs.tech/ngspice/sm141064.ngspice diode_typical
 .lib /foss/pdks/gf180mcuD/libs.tech/ngspice/sm141064.ngspice res_typical
+.lib /foss/pdks/gf180mcuD/libs.tech/ngspice/sm141064.ngspice mimcap_typical
+.lib /foss/pdks/gf180mcuD/libs.tech/ngspice/sm141064.ngspice moscap_typical
 .option method=gear
 
 .control
@@ -41,20 +45,6 @@ C {gnd.sym} 80 -260 0 0 {name=l3 lab=GND}
 C {lab_wire.sym} 80 -380 0 0 {name=p1 sig_type=std_logic lab=vout
 }
 C {vsource.sym} 80 -320 0 0 {name=V1 value="dc 0 ac 3.3 0" savecurrent=true}
-C {symbols/nfet_03v3.sym} 280 -340 1 0 {name=M2
-L=0.28u
-W=11u
-nf=5
-m=1
-ad="'int((nf+1)/2) * W/nf * 0.18u'"
-pd="'2*int((nf+1)/2) * (W/nf + 0.18u)'"
-as="'int((nf+2)/2) * W/nf * 0.18u'"
-ps="'2*int((nf+2)/2) * (W/nf + 0.18u)'"
-nrd="'0.18u / W'" nrs="'0.18u / W'"
-sa=0 sb=0 sd=0
-model=nfet_03v3
-spiceprefix=X
-spice_ignore=true}
 C {symbols/ppolyf_u_1k.sym} 860 -500 0 0 {name=R1
 W=1e-6
 L=2.3e-6
@@ -120,5 +110,11 @@ C {symbols/ppolyf_u_1k.sym} 860 -100 0 0 {name=R10
 W=1e-6
 L=5.3e-6
 model=ppolyf_u_1k
+spiceprefix=X
+m=1}
+C {symbols/cap_mim_analog.sym} 360 -410 0 0 {name=C1
+w=1e-6
+l=1e-6
+model=cap_mim_2f0_m4m5_noshield
 spiceprefix=X
 m=1}
