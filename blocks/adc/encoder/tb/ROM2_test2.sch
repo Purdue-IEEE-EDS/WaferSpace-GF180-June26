@@ -13,8 +13,8 @@ ypos2=2
 divy=5
 subdivy=1
 unity=1
-x1=-2.0935581e-09
-x2=2.5302947e-08
+x1=-1.156766e-11
+x2=1.6617281e-11
 divx=5
 subdivx=1
 xlabmag=1.0
@@ -24,12 +24,12 @@ unitx=1
 logx=0
 logy=0
 color="15 12 17 4 14 18"
-node="b_out[0]
-b_out[1]
-b_out[2]
-b_out[3]
-b_out[4]
-b_out[5]"}
+node="b[0]
+b[1]
+b[2]
+b[3]
+b[4]
+b[5]"}
 B 2 2140 -1320 2940 -920 {flags=graph
 y1=0
 y2=3.3
@@ -38,8 +38,8 @@ ypos2=2
 divy=5
 subdivy=1
 unity=1
-x1=-2.0935581e-09
-x2=2.5302947e-08
+x1=-1.156766e-11
+x2=1.6617281e-11
 divx=5
 subdivx=1
 xlabmag=1.0
@@ -60,8 +60,8 @@ ypos2=2
 divy=5
 subdivy=1
 unity=1
-x1=-2.0935581e-09
-x2=2.5302947e-08
+x1=-1.156766e-11
+x2=1.6617281e-11
 divx=5
 subdivx=1
 xlabmag=1.0
@@ -85,8 +85,8 @@ ypos2=2
 divy=5
 subdivy=1
 unity=1
-x1=-2.0935581e-09
-x2=2.5302947e-08
+x1=-1.156766e-11
+x2=1.6617281e-11
 divx=5
 subdivx=1
 xlabmag=1.0
@@ -180,12 +180,6 @@ N 3780 -1770 3780 -1500 {lab=b[5:0]
 bus=true}
 N 3780 -1640 4040 -1640 {lab=b[5:0]
 bus=true}
-N 3990 -1700 4040 -1700 {lab=VDD}
-N 3990 -1680 4040 -1680 {lab=RST}
-N 3990 -1660 4050 -1660 {lab=CLK_PRE}
-N 3990 -1620 4040 -1620 {lab=GND}
-N 4340 -1700 4370 -1700 {lab=b_out[5:0]
-bus=true}
 N 3340 -360 3400 -360 {lab=CLK_EVAL}
 C {code_shown.sym} 1285 -1765 0 0 {name=MODELS only_toplevel=true
 format="tcleval( @value )"
@@ -194,75 +188,75 @@ value="
 .lib $::180MCU_MODELS/sm141064.ngspice typical
 "}
 C {code_shown.sym} 1295 -1605 0 0 {name=SPICE only_toplevel=false value="
-V_PRE CLK_PRE 0 pulse(3.3 0 0p 10p 10p 240p 500p)
-V_EVAL CLK_EVAL 0 pulse(0 3.3 0 10p 10p 240p 500p)
-V_RST RST 0 pulse(3.3 3.3 0 10p 10p 240p 500p)
+V_PRE CLK_PRE 0 pulse(3.3 0 0p 20p 20p 480p 1000p)
+V_EVAL CLK_EVAL 0 3.3
+V_RST RST 0 pulse(3.3 3.3 0 20p 20p 480p 1000p)
 
-V_WL62 wl[62] 0 PWL(0 0 0.000n 0 0.010n 3.3 0.490n 3.3 0.500n 0)
-V_WL61 wl[61] 0 PWL(0 0 0.500n 0 0.510n 3.3 0.990n 3.3 1.000n 0)
-V_WL60 wl[60] 0 PWL(0 0 1.000n 0 1.010n 3.3 1.490n 3.3 1.500n 0)
-V_WL59 wl[59] 0 PWL(0 0 1.500n 0 1.510n 3.3 1.990n 3.3 2.000n 0)
-V_WL58 wl[58] 0 PWL(0 0 2.000n 0 2.010n 3.3 2.490n 3.3 2.500n 0)
-V_WL57 wl[57] 0 PWL(0 0 2.500n 0 2.510n 3.3 2.990n 3.3 3.000n 0)
-V_WL56 wl[56] 0 PWL(0 0 3.000n 0 3.010n 3.3 3.490n 3.3 3.500n 0)
-V_WL55 wl[55] 0 PWL(0 0 3.500n 0 3.510n 3.3 3.990n 3.3 4.000n 0)
-V_WL54 wl[54] 0 PWL(0 0 4.000n 0 4.010n 3.3 4.490n 3.3 4.500n 0)
-V_WL53 wl[53] 0 PWL(0 0 4.500n 0 4.510n 3.3 4.990n 3.3 5.000n 0)
-V_WL52 wl[52] 0 PWL(0 0 5.000n 0 5.010n 3.3 5.490n 3.3 5.500n 0)
-V_WL51 wl[51] 0 PWL(0 0 5.500n 0 5.510n 3.3 5.990n 3.3 6.000n 0)
-V_WL50 wl[50] 0 PWL(0 0 6.000n 0 6.010n 3.3 6.490n 3.3 6.500n 0)
-V_WL49 wl[49] 0 PWL(0 0 6.500n 0 6.510n 3.3 6.990n 3.3 7.000n 0)
-V_WL48 wl[48] 0 PWL(0 0 7.000n 0 7.010n 3.3 7.490n 3.3 7.500n 0)
-V_WL47 wl[47] 0 PWL(0 0 7.500n 0 7.510n 3.3 7.990n 3.3 8.000n 0)
-V_WL46 wl[46] 0 PWL(0 0 8.000n 0 8.010n 3.3 8.490n 3.3 8.500n 0)
-V_WL45 wl[45] 0 PWL(0 0 8.500n 0 8.510n 3.3 8.990n 3.3 9.000n 0)
-V_WL44 wl[44] 0 PWL(0 0 9.000n 0 9.010n 3.3 9.490n 3.3 9.500n 0)
-V_WL43 wl[43] 0 PWL(0 0 9.500n 0 9.510n 3.3 9.990n 3.3 10.000n 0)
-V_WL42 wl[42] 0 PWL(0 0 10.000n 0 10.010n 3.3 10.490n 3.3 10.500n 0)
-V_WL41 wl[41] 0 PWL(0 0 10.500n 0 10.510n 3.3 10.990n 3.3 11.000n 0)
-V_WL40 wl[40] 0 PWL(0 0 11.000n 0 11.010n 3.3 11.490n 3.3 11.500n 0)
-V_WL39 wl[39] 0 PWL(0 0 11.500n 0 11.510n 3.3 11.990n 3.3 12.000n 0)
-V_WL38 wl[38] 0 PWL(0 0 12.000n 0 12.010n 3.3 12.490n 3.3 12.500n 0)
-V_WL37 wl[37] 0 PWL(0 0 12.500n 0 12.510n 3.3 12.990n 3.3 13.000n 0)
-V_WL36 wl[36] 0 PWL(0 0 13.000n 0 13.010n 3.3 13.490n 3.3 13.500n 0)
-V_WL35 wl[35] 0 PWL(0 0 13.500n 0 13.510n 3.3 13.990n 3.3 14.000n 0)
-V_WL34 wl[34] 0 PWL(0 0 14.000n 0 14.010n 3.3 14.490n 3.3 14.500n 0)
-V_WL33 wl[33] 0 PWL(0 0 14.500n 0 14.510n 3.3 14.990n 3.3 15.000n 0)
-V_WL32 wl[32] 0 PWL(0 0 15.000n 0 15.010n 3.3 15.490n 3.3 15.500n 0)
-V_WL31 wl[31] 0 PWL(0 0 15.500n 0 15.510n 3.3 15.990n 3.3 16.000n 0)
-V_WL30 wl[30] 0 PWL(0 0 16.000n 0 16.010n 3.3 16.490n 3.3 16.500n 0)
-V_WL29 wl[29] 0 PWL(0 0 16.500n 0 16.510n 3.3 16.990n 3.3 17.000n 0)
-V_WL28 wl[28] 0 PWL(0 0 17.000n 0 17.010n 3.3 17.490n 3.3 17.500n 0)
-V_WL27 wl[27] 0 PWL(0 0 17.500n 0 17.510n 3.3 17.990n 3.3 18.000n 0)
-V_WL26 wl[26] 0 PWL(0 0 18.000n 0 18.010n 3.3 18.490n 3.3 18.500n 0)
-V_WL25 wl[25] 0 PWL(0 0 18.500n 0 18.510n 3.3 18.990n 3.3 19.000n 0)
-V_WL24 wl[24] 0 PWL(0 0 19.000n 0 19.010n 3.3 19.490n 3.3 19.500n 0)
-V_WL23 wl[23] 0 PWL(0 0 19.500n 0 19.510n 3.3 19.990n 3.3 20.000n 0)
-V_WL22 wl[22] 0 PWL(0 0 20.000n 0 20.010n 3.3 20.490n 3.3 20.500n 0)
-V_WL21 wl[21] 0 PWL(0 0 20.500n 0 20.510n 3.3 20.990n 3.3 21.000n 0)
-V_WL20 wl[20] 0 PWL(0 0 21.000n 0 21.010n 3.3 21.490n 3.3 21.500n 0)
-V_WL19 wl[19] 0 PWL(0 0 21.500n 0 21.510n 3.3 21.990n 3.3 22.000n 0)
-V_WL18 wl[18] 0 PWL(0 0 22.000n 0 22.010n 3.3 22.490n 3.3 22.500n 0)
-V_WL17 wl[17] 0 PWL(0 0 22.500n 0 22.510n 3.3 22.990n 3.3 23.000n 0)
-V_WL16 wl[16] 0 PWL(0 0 23.000n 0 23.010n 3.3 23.490n 3.3 23.500n 0)
-V_WL15 wl[15] 0 PWL(0 0 23.500n 0 23.510n 3.3 23.990n 3.3 24.000n 0)
-V_WL14 wl[14] 0 PWL(0 0 24.000n 0 24.010n 3.3 24.490n 3.3 24.500n 0)
-V_WL13 wl[13] 0 PWL(0 0 24.500n 0 24.510n 3.3 24.990n 3.3 25.000n 0)
-V_WL12 wl[12] 0 PWL(0 0 25.000n 0 25.010n 3.3 25.490n 3.3 25.500n 0)
-V_WL11 wl[11] 0 PWL(0 0 25.500n 0 25.510n 3.3 25.990n 3.3 26.000n 0)
-V_WL10 wl[10] 0 PWL(0 0 26.000n 0 26.010n 3.3 26.490n 3.3 26.500n 0)
-V_WL9  wl[9]  0 PWL(0 0 26.500n 0 26.510n 3.3 26.990n 3.3 27.000n 0)
-V_WL8  wl[8]  0 PWL(0 0 27.000n 0 27.010n 3.3 27.490n 3.3 27.500n 0)
-V_WL7  wl[7]  0 PWL(0 0 27.500n 0 27.510n 3.3 27.990n 3.3 28.000n 0)
-V_WL6  wl[6]  0 PWL(0 0 28.000n 0 28.010n 3.3 28.490n 3.3 28.500n 0)
-V_WL5  wl[5]  0 PWL(0 0 28.500n 0 28.510n 3.3 28.990n 3.3 29.000n 0)
-V_WL4  wl[4]  0 PWL(0 0 29.000n 0 29.010n 3.3 29.490n 3.3 29.500n 0)
-V_WL3  wl[3]  0 PWL(0 0 29.500n 0 29.510n 3.3 29.990n 3.3 30.000n 0)
-V_WL2  wl[2]  0 PWL(0 0 30.000n 0 30.010n 3.3 30.490n 3.3 30.500n 0)
-V_WL1  wl[1]  0 PWL(0 0 30.500n 0 30.510n 3.3 30.990n 3.3 31.000n 0)
-V_WL0  wl[0]  0 PWL(0 0 31.000n 0 31.010n 3.3 31.490n 3.3 31.500n 0)
+V_WL62 wl[62] 0 dc 0
+V_WL61 wl[61] 0 dc 0
+V_WL60 wl[60] 0 dc 0
+V_WL59 wl[59] 0 dc 0
+V_WL58 wl[58] 0 dc 0
+V_WL57 wl[57] 0 dc 0
+V_WL56 wl[56] 0 dc 0
+V_WL55 wl[55] 0 dc 0
+V_WL54 wl[54] 0 dc 0
+V_WL53 wl[53] 0 dc 0
+V_WL52 wl[52] 0 dc 0
+V_WL51 wl[51] 0 dc 0
+V_WL50 wl[50] 0 dc 0
+V_WL49 wl[49] 0 dc 0
+V_WL48 wl[48] 0 dc 0
+V_WL47 wl[47] 0 dc 0
+V_WL46 wl[46] 0 dc 0
+V_WL45 wl[45] 0 dc 0
+V_WL44 wl[44] 0 dc 0
+V_WL43 wl[43] 0 dc 0
+V_WL42 wl[42] 0 dc 0
+V_WL41 wl[41] 0 dc 0
+V_WL40 wl[40] 0 dc 0
+V_WL39 wl[39] 0 dc 0
+V_WL38 wl[38] 0 dc 0
+V_WL37 wl[37] 0 dc 0
+V_WL36 wl[36] 0 dc 0
+V_WL35 wl[35] 0 dc 0
+V_WL34 wl[34] 0 dc 0
+V_WL33 wl[33] 0 dc 0
+V_WL32 wl[32] 0 dc 0
+V_WL31 wl[31] 0 dc 0
+V_WL30 wl[30] 0 dc 0
+V_WL29 wl[29] 0 dc 0
+V_WL28 wl[28] 0 dc 0
+V_WL27 wl[27] 0 dc 0
+V_WL26 wl[26] 0 dc 0
+V_WL25 wl[25] 0 dc 0
+V_WL24 wl[24] 0 dc 0
+V_WL23 wl[23] 0 dc 0
+V_WL22 wl[22] 0 dc 0
+V_WL21 wl[21] 0 dc 0
+V_WL20 wl[20] 0 dc 0
+V_WL19 wl[19] 0 dc 0
+V_WL18 wl[18] 0 dc 0
+V_WL17 wl[17] 0 dc 0
+V_WL16 wl[16] 0 dc 0
+V_WL15 wl[15] 0 dc 0
+V_WL14 wl[14] 0 dc 0
+V_WL13 wl[13] 0 dc 0
+V_WL12 wl[12] 0 dc 0
+V_WL11 wl[11] 0 dc 0
+V_WL10 wl[10] 0 dc 0
+V_WL9 wl[9] 0 dc 0
+V_WL8 wl[8] 0 dc 0
+V_WL7 wl[7] 0 dc 0
+V_WL6 wl[6] 0 dc 0
+V_WL5 wl[5] 0 dc 0
+V_WL4 wl[4] 0 dc 0
+V_WL3 wl[3] 0 dc 0
+V_WL2 wl[2] 0 dc 0
+V_WL1 wl[1] 0 dc 0
+V_WL0 wl[0] 0 dc 0
 
-.tran 2p 35n uic
+.tran 2p 35n
 
 .control
  run
@@ -414,18 +408,19 @@ C {lab_wire.sym} 3760 -1580 0 0 {name=p78 sig_type=std_logic lab=b[4]}
 C {lab_wire.sym} 3760 -1620 0 0 {name=p79 sig_type=std_logic lab=b[2]}
 C {lab_wire.sym} 3760 -1560 0 0 {name=p80 sig_type=std_logic lab=b[5]}
 C {lab_wire.sym} 3780 -1720 0 0 {name=p81 sig_type=std_logic lab=b[5:0]}
-C {opin.sym} 4370 -1700 0 0 {name=p421 lab=b_out[5:0]}
-C {lab_wire.sym} 4020 -1700 0 0 {name=p6 sig_type=std_logic lab=VDD}
-C {lab_wire.sym} 4020 -1620 0 0 {name=p7 sig_type=std_logic lab=GND}
-C {ipin.sym} 3990 -1680 0 0 {name=p83 lab=RST}
-C {encoder/sym/dff_encoder.sym} 4190 -1660 0 0 {name=x3[5:0]}
 C {ipin.sym} 3550 -1720 0 0 {name=p1 lab=VDD}
 C {ipin.sym} 3550 -290 0 0 {name=p3 lab=GND}
 C {ipin.sym} 3220 -1020 0 0 {name=p5 lab=wl[62:0]}
 C {launcher.sym} 2230 -1350 0 0 {name=h5
 descr="load waves"
-tclcommand="xschem raw_read $netlist_dir/ROM2_test2.raw tran"
+tclcommand="xschem raw_read $netlist_dir/ROM_2G.raw tran"
 }
 C {encoder/sym/ROM2.sym} 3550 -1000 0 0 {name=x1}
 C {lab_wire.sym} 3270 -1640 0 0 {name=p10 sig_type=std_logic lab=CLK_EVAL}
-C {ipin.sym} 4000 -1660 0 0 {name=p12 lab=CLK_PRE}
+C {capa-2.sym} 4040 -1610 0 0 {name=C1
+m=1
+value=1p
+footprint=1206
+device=polarized_capacitor}
+C {gnd.sym} 4040 -1580 0 1 {name=l1 lab=GND
+}
