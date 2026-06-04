@@ -26,17 +26,17 @@ C {code_shown.sym} 10 30 0 0 {name=s1 only_toplevel=false value="
 .option method=gear
 
 .control
-set temp = 27
+set temp = 25
 ac lin 727 20meg 1.5G
 let imag = mag(i(v1))
 
 * For a resistor, Z = V/I
-let resistannnnn = 3.3 / imag
+* let resistannnnn = 3.3 / imag
 
 * For a capacitor, Z = 1/(jwC) = V/I -> C = (I/V) * 1/(jw)
-*let resistannnnn = mag((i(v1) / (3.3, 0)) / (0, 6.28 * frequency))
+let resistannnnn = mag((i(v1) / (3.3, 0)) / (0, 6.28 * frequency))
 
-plot resistannnnn ylimit 0 3k
+plot resistannnnn ylimit 0 10f
 print mean(resistannnnn)
 .endc
 "
@@ -50,7 +50,8 @@ W=1e-6
 L=2.3e-6
 model=ppolyf_u_1k
 spiceprefix=X
-m=1}
+m=1
+spice_ignore=true}
 C {symbols/ppolyf_u_3k.sym} 730 -500 0 0 {name=R2
 W=1e-6
 L=.6e-6
@@ -70,13 +71,15 @@ W=1e-6
 L=7.8e-6
 model=ppolyf_u_1k
 spiceprefix=X
-m=1}
+m=1
+spice_ignore=true}
 C {symbols/ppolyf_u_1k.sym} 870 -380 0 0 {name=R5
 W=1e-6
 L=7.8e-6
 model=ppolyf_u_1k
 spiceprefix=X
-m=1}
+m=1
+spice_ignore=true}
 C {symbols/ppolyf_u_2k.sym} 730 -300 0 0 {name=R_wtf
 W=1e-6
 L=1e-6
@@ -89,7 +92,8 @@ W=1e-6
 L=2.3e-6
 model=ppolyf_u_1k
 spiceprefix=X
-m=1}
+m=1
+spice_ignore=true}
 C {symbols/ppolyf_u_3k.sym} 730 -200 0 0 {name=R7
 W=1e-6
 L=0.8e-6
@@ -102,7 +106,8 @@ W=1e-6
 L=2.9e-6
 model=ppolyf_u_1k
 spiceprefix=X
-m=1}
+m=1
+spice_ignore=true}
 C {symbols/ppolyf_u_3k.sym} 730 -100 0 0 {name=R9
 W=1e-6
 L=1.6e-6
@@ -115,7 +120,8 @@ W=1e-6
 L=5.3e-6
 model=ppolyf_u_1k
 spiceprefix=X
-m=1}
+m=1
+spice_ignore=true}
 C {symbols/cap_mim_analog.sym} 360 -410 0 0 {name=C1
 w=1e-6
 l=1e-6
@@ -128,4 +134,4 @@ L=1e-6
 model=cap_mim_2f0fF
 spiceprefix=X
 m=1
-spice_ignore=false}
+spice_ignore=true}
