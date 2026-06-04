@@ -4427,9 +4427,9 @@ C {lab_wire.sym} 3060 -285 0 0 {name=p922 sig_type=std_logic lab=FOOT
 m=85}
 C {symbols/nfet_03v3.sym} 3010 -255 0 0 {name=M415
 L=0.28u
-W=28.8u
-nf=80
-m=1
+W=57.6u
+nf=40
+m=5
 ad="'int((nf+1)/2) * W/nf * 0.18u'"
 pd="'2*int((nf+1)/2) * (W/nf + 0.18u)'"
 as="'int((nf+2)/2) * W/nf * 0.18u'"
