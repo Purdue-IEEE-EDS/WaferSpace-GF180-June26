@@ -220,7 +220,7 @@ def place_nfet_pfet_03v3(lib, cv, ly, top, c, nl_inds):
         "w_gate": width / nfingers,
         "l_gate": length,
         "nf": nfingers,
-        "con_bet_fin": False if nfingers == 1 else True,  # Disabling allows width to reach minimum @ 0.22u
+        "con_bet_fin": False if nfingers == 1 else True,  # Disabling allows width to reach minimum @ 0.22u and fixes a KLayout bug where pmos has zero initial bbox (disappears initially).
         "lbl": False
     }
     cell = ly.create_cell(pcell_name, lib.name(), params)
@@ -303,14 +303,14 @@ def run_import():
     print("Parsing devices...")
     with open(netlist_path, 'r') as f:
         f_content = f.read()
-    
+
     nl_inds = get_newline_indices(f_content)
 
     components = []
     comp_regex = re.compile(r"C \{(?P<sym>[^}]*)\} (?P<x>-?[0-9]+) (?P<y>-?[0-9]+) (?P<b>-?[0-9]+) (?P<h>-?[0-9]+) \{(?P<props>[^}]*)\}")
     next_line = lambda content, pos: content.find("\n", pos) + 1
     map_sym = lambda sym: DEVICE_MAP.get(os.path.basename(sym), place_pass)
-    
+
     i = 0
     while True:
         # Store target end index
@@ -335,7 +335,7 @@ def run_import():
             # If desired, skip devices with spice_ignore=true
             if SKIP_SPICE_IGNORE and c["props"].get("spice_ignore", "false") == "true":
                 continue
-            
+
             # Detect and raise parse-time errors
             place_func = map_sym(c["sym"])
             if isinstance(place_func, Exception):
