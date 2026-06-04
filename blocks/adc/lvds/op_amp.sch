@@ -21,12 +21,12 @@ N 120 140 120 220 {lab=VdM4}
 N 120 220 120 230 {lab=VdM4}
 N 160 260 200 260 {lab=Vin_p}
 N -210 260 -160 260 {lab=Vin_n}
-N 120 290 120 360 {lab=VsM5}
-N -120 360 120 360 {lab=VsM5}
-N -120 290 -120 360 {lab=VsM5}
-N -120 260 120 260 {lab=Vdd}
-N 0 370 -0 390 {lab=VsM5}
-N 0 360 0 370 {lab=VsM5}
+N 120 290 120 360 {lab=#net1}
+N -120 360 120 360 {lab=#net1}
+N -120 290 -120 360 {lab=#net1}
+N -120 260 120 260 {lab=Vss}
+N 0 370 -0 390 {lab=#net1}
+N 0 360 0 370 {lab=#net1}
 N -160 110 -120 110 {lab=Vdd}
 N -180 110 -160 110 {lab=Vdd}
 N 120 110 200 110 {lab=Vdd}
@@ -53,34 +53,31 @@ N 960 150 960 200 {lab=Vout}
 N 600 150 600 200 {lab=VgM14}
 N 640 230 920 230 {lab=Vb2}
 N 780 200 780 230 {lab=Vb2}
-N 960 260 960 340 {lab=#net1}
-N 600 260 600 340 {lab=#net2}
+N 960 260 960 340 {lab=#net2}
+N 600 260 600 340 {lab=#net3}
 N 960 180 1180 180 {lab=Vout}
 N 640 370 920 370 {lab=VgM14}
-N 600 400 600 440 {lab=0}
-N 960 400 960 440 {lab=0}
 N 780 370 780 560 {lab=VgM14}
 N 460 560 780 560 {lab=VgM14}
 N 460 180 460 560 {lab=VgM14}
 N 460 180 600 180 {lab=VgM14}
 N -260 0 -160 -0 {lab=vgM1}
 N -0 450 -0 500 {lab=Vss}
-N 0 240 0 260 {lab=Vdd}
+N 0 240 0 260 {lab=Vss}
 N 120 50 170 50 {lab=VdM2}
 N -160 50 -120 50 {lab=VdM1}
 N 960 60 1000 60 {lab=VdM9}
 N 550 60 600 60 {lab=VdM7}
-N 550 230 600 230 {lab=0}
-N 960 230 1060 230 {lab=0}
+N 550 230 600 230 {lab=Vss}
+N 960 230 1060 230 {lab=Vss}
 N 520 120 600 120 {lab=Vdd}
 N 960 120 1070 120 {lab=Vdd}
-N 590 370 600 370 {lab=0}
-N 590 370 590 420 {lab=0}
-N 590 420 600 420 {lab=0}
-N 960 370 970 370 {lab=0}
-N 970 370 970 400 {lab=0}
-N 970 400 970 420 {lab=0}
-N 960 420 970 420 {lab=0}
+N 590 370 600 370 {lab=Vss}
+N 960 370 970 370 {lab=Vss}
+N 960 400 960 440 {lab=0}
+N 600 400 600 440 {lab=0}
+N 530 370 590 370 {lab=Vss}
+N 970 370 1060 370 {lab=Vss}
 C {symbols/pfet_03v3.sym} -140 0 0 0 {name=M1
 L=0.28u
 W=10.5u
@@ -258,9 +255,8 @@ spiceprefix=X
 C {opin.sym} 1180 180 0 0 {name=p7 lab=Vout}
 C {gnd.sym} 600 440 0 0 {name=l2 lab=0}
 C {gnd.sym} 960 440 0 0 {name=l3 lab=0}
-C {isource.sym} 0 420 0 0 {name=ibias value=250u}
 C {lab_wire.sym} -180 110 0 0 {name=p9 sig_type=std_logic lab=Vdd}
-C {lab_wire.sym} 0 240 0 0 {name=p10 sig_type=std_logic lab=Vdd}
+C {lab_wire.sym} 0 240 0 0 {name=p10 sig_type=std_logic lab=Vss}
 C {lab_wire.sym} 200 110 0 1 {name=p8 sig_type=std_logic lab=Vdd}
 C {lab_wire.sym} 170 50 0 1 {name=p11 sig_type=std_logic lab=VdM2}
 C {lab_wire.sym} -160 50 0 0 {name=p12 sig_type=std_logic lab=VdM1}
@@ -268,7 +264,6 @@ C {lab_wire.sym} 1000 60 0 1 {name=p13 sig_type=std_logic lab=VdM9}
 C {lab_wire.sym} 550 60 0 0 {name=p14 sig_type=std_logic lab=VdM7}
 C {lab_wire.sym} -260 0 0 0 {name=p15 sig_type=std_logic lab=vgM1}
 C {lab_wire.sym} 360 190 0 1 {name=p16 sig_type=std_logic lab=VdM4}
-C {lab_wire.sym} 120 360 0 1 {name=p17 sig_type=std_logic lab=VsM5}
 C {lab_wire.sym} 780 560 0 1 {name=p18 sig_type=std_logic lab=VgM14}
 C {symbols/pfet_03v3.sym} 620 120 0 1 {name=M8
 L=0.28u
@@ -298,9 +293,12 @@ sa=0 sb=0 sd=0
 model=pfet_03v3
 spiceprefix=X
 }
-C {gnd.sym} 550 230 1 0 {name=l4 lab=0}
-C {gnd.sym} 1060 230 3 1 {name=l5 lab=0}
 C {lab_wire.sym} 520 120 0 0 {name=p19 sig_type=std_logic lab=Vdd}
 C {lab_wire.sym} 1070 120 0 1 {name=p20 sig_type=std_logic lab=Vdd}
 C {lab_wire.sym} 0 80 0 0 {name=p6 sig_type=std_logic lab=Vb2}
 C {ipin.sym} 0 500 3 0 {name=p21 lab=Vss}
+C {lab_wire.sym} 550 230 0 0 {name=p17 sig_type=std_logic lab=Vss}
+C {lab_wire.sym} 1060 230 0 1 {name=p22 sig_type=std_logic lab=Vss}
+C {lab_wire.sym} 1060 370 0 1 {name=p23 sig_type=std_logic lab=Vss}
+C {lab_wire.sym} 530 370 0 0 {name=p24 sig_type=std_logic lab=Vss}
+C {isource.sym} 0 420 0 0 {name=ibias value=300u}
