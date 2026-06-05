@@ -1,0 +1,14 @@
+** sch_path: /foss/designs/encoder/sym/NAND3.sch
+.subckt NAND3 b a VDD out C GND
+*.PININFO a:I out:O C:I b:I VDD:I GND:I
+M5 out net1 VDD VDD pfet_03v3 L=0.28u W=3.3u nf=5
+M6 out net1 GND GND nfet_03v3 L=0.28u W=2.54u nf=4
+M7 cbar C VDD VDD pfet_03v3 L=0.28u W=3.3u nf=5
+M8 cbar C GND GND nfet_03v3 L=0.28u W=2.54u nf=4
+M13 net1 a VDD VDD pfet_03v3 L=0.28u W=3.3u nf=5
+M14 net1 b VDD VDD pfet_03v3 L=0.28u W=3.3u nf=5
+M15 net1 cbar VDD VDD pfet_03v3 L=0.28u W=3.3u nf=5
+M16 net1 a net2 GND nfet_03v3 L=0.28u W=2.54u nf=4
+M17 net2 b net3 GND nfet_03v3 L=0.28u W=2.54u nf=4
+M18 net3 cbar GND GND nfet_03v3 L=0.28u W=2.54u nf=4
+.ends

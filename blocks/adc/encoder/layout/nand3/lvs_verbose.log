@@ -1,0 +1,2973 @@
+/foss/designs/encoder/lvs/run_lvs.py:413: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now_str = datetime.utcnow().strftime("lvs_run_%Y_%m_%d_%H_%M_%S")
+30-May-2026 22:16:43 | INFO    | Your Klayout version is: KLayout 0.30.6
+30-May-2026 22:16:43 | INFO    | Running Global Foundries 180nm MCU /foss/designs/encoder/lvs/gf180mcu.lvs checks on design /foss/designs/encoder/layout/nand3/NAND_klayout1.gds on cell NAND3
+2026-05-30 22:16:46 +0200: Memory Usage (655912K) : Starting running GF180MCU Klayout LVS runset on /foss/designs/encoder/layout/nand3/NAND_klayout1.gds
+2026-05-30 22:16:46 +0200: Memory Usage (655912K) : Ruby Version for klayout: 3.2.3
+2026-05-30 22:16:46 +0200: Memory Usage (655912K) : Loading database to memory is complete.
+2026-05-30 22:16:46 +0200: Memory Usage (655912K) : GF180MCU Klayout LVS runset output at: /foss/designs/encoder/layout/nand3/lvs_results/NAND_klayout1.lvsdb
+2026-05-30 22:16:46 +0200: Memory Usage (655912K) : Evaluate switches.
+2026-05-30 22:16:46 +0200: Memory Usage (655912K) : Substrate name used: GND
+2026-05-30 22:16:46 +0200: Memory Usage (655912K) : Extracted netlist with net names: true
+2026-05-30 22:16:46 +0200: Memory Usage (655912K) : Extracted netlist with comments in details: false
+2026-05-30 22:16:46 +0200: Memory Usage (655912K) : LVS extracted netlist at: /foss/designs/encoder/layout/nand3/lvs_results/NAND_klayout1.cir
+2026-05-30 22:16:46 +0200: Memory Usage (655912K) : LVS device_scaling option: false
+2026-05-30 22:16:46 +0200: Memory Usage (655912K) : Selected SCH_SIMPLE option: false
+2026-05-30 22:16:46 +0200: Memory Usage (655912K) : Selected NET_ONLY option: false
+2026-05-30 22:16:46 +0200: Memory Usage (655912K) : Selected TOP_LVL_PINS option: false
+2026-05-30 22:16:46 +0200: Memory Usage (655912K) : Selected COMBINE option: true
+2026-05-30 22:16:46 +0200: Memory Usage (655912K) : Selected PURGE option: false
+2026-05-30 22:16:46 +0200: Memory Usage (655912K) : Selected PURGE_NETS option: false
+2026-05-30 22:16:46 +0200: Memory Usage (655912K) : Selected SIMPLIFY option: false
+2026-05-30 22:16:46 +0200: Memory Usage (655912K) : Verbose mode: true
+2026-05-30 22:16:46 +0200: Memory Usage (655912K) : deep  mode is enabled.
+2026-05-30 22:16:46 +0200: Memory Usage (655912K) : METAL_TOP Selected is 11K
+2026-05-30 22:16:46 +0200: Memory Usage (655912K) : METAL_STACK Selected is 5LM
+2026-05-30 22:16:46 +0200: Memory Usage (655912K) : POLY_RES Selected is 1k
+2026-05-30 22:16:46 +0200: Memory Usage (655912K) : MIM Option selected: B
+Reading netlist: /foss/designs/encoder/layout/nand3/NAND3.cdl ..
+2026-05-30 22:16:46 +0200: Memory Usage (655912K) : MIM CAP selected: 2
+2026-05-30 22:16:46 +0200: Memory Usage (655912K) : Netlist file: /foss/designs/encoder/layout/nand3/NAND3.cdl
+"polygons" in: layers_definitions.lvs:25
+    Polygons (raw): 40 (flat)  8 (hierarchical)
+    Elapsed: 0.040s  Memory: 427.00M
+2026-05-30 22:16:46 +0200: Memory Usage (655912K) : Read in polygons from layers.
+"polygons" in: layers_definitions.lvs:25
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 427.00M
+2026-05-30 22:16:46 +0200: Memory Usage (655912K) : comp has 40 polygons
+"polygons" in: layers_definitions.lvs:25
+    Polygons (raw): 9 (flat)  5 (hierarchical)
+    Elapsed: 0.000s  Memory: 427.00M
+2026-05-30 22:16:46 +0200: Memory Usage (655912K) : dnwell has 0 polygons
+"polygons" in: layers_definitions.lvs:25
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 427.00M
+2026-05-30 22:16:46 +0200: Memory Usage (655912K) : nwell has 9 polygons
+"polygons" in: layers_definitions.lvs:25
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 427.00M
+2026-05-30 22:16:46 +0200: Memory Usage (655912K) : lvpwell has 0 polygons
+"polygons" in: layers_definitions.lvs:25
+    Polygons (raw): 100 (flat)  28 (hierarchical)
+    Elapsed: 0.000s  Memory: 427.00M
+2026-05-30 22:16:46 +0200: Memory Usage (655912K) : dualgate has 0 polygons
+"polygons" in: layers_definitions.lvs:25
+    Polygons (raw): 10 (flat)  2 (hierarchical)
+    Elapsed: 0.000s  Memory: 427.00M
+2026-05-30 22:16:46 +0200: Memory Usage (655912K) : poly2 has 100 polygons
+"polygons" in: layers_definitions.lvs:25
+    Polygons (raw): 10 (flat)  2 (hierarchical)
+    Elapsed: 0.000s  Memory: 427.00M
+2026-05-30 22:16:46 +0200: Memory Usage (655912K) : nplus has 10 polygons
+"polygons" in: layers_definitions.lvs:25
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 427.00M
+2026-05-30 22:16:46 +0200: Memory Usage (655912K) : pplus has 10 polygons
+"polygons" in: layers_definitions.lvs:25
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 427.00M
+2026-05-30 22:16:46 +0200: Memory Usage (655912K) : sab has 0 polygons
+"polygons" in: layers_definitions.lvs:25
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 427.00M
+2026-05-30 22:16:46 +0200: Memory Usage (655912K) : esd has 0 polygons
+"polygons" in: layers_definitions.lvs:25
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 427.00M
+2026-05-30 22:16:46 +0200: Memory Usage (655912K) : resistor has 0 polygons
+"polygons" in: layers_definitions.lvs:25
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 427.00M
+2026-05-30 22:16:46 +0200: Memory Usage (655912K) : fhres has 0 polygons
+"polygons" in: layers_definitions.lvs:25
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.010s  Memory: 427.00M
+2026-05-30 22:16:46 +0200: Memory Usage (655912K) : fusetop has 0 polygons
+"polygons" in: layers_definitions.lvs:25
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 427.00M
+2026-05-30 22:16:46 +0200: Memory Usage (655912K) : fusewindow_d has 0 polygons
+"polygons" in: layers_definitions.lvs:25
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 427.00M
+2026-05-30 22:16:46 +0200: Memory Usage (655912K) : polyfuse has 0 polygons
+"polygons" in: layers_definitions.lvs:25
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.010s  Memory: 427.00M
+2026-05-30 22:16:46 +0200: Memory Usage (655912K) : mvsd has 0 polygons
+"polygons" in: layers_definitions.lvs:25
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 427.00M
+2026-05-30 22:16:46 +0200: Memory Usage (655912K) : mvpsd has 0 polygons
+"polygons" in: layers_definitions.lvs:25
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 427.00M
+2026-05-30 22:16:47 +0200: Memory Usage (655912K) : nat has 0 polygons
+"polygons" in: layers_definitions.lvs:25
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 427.00M
+2026-05-30 22:16:47 +0200: Memory Usage (655912K) : comp_dummy has 0 polygons
+"polygons" in: layers_definitions.lvs:25
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 427.00M
+2026-05-30 22:16:47 +0200: Memory Usage (655912K) : poly2_dummy has 0 polygons
+"polygons" in: layers_definitions.lvs:25
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 427.00M
+2026-05-30 22:16:47 +0200: Memory Usage (655912K) : schottky_diode has 0 polygons
+"polygons" in: layers_definitions.lvs:25
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 427.00M
+2026-05-30 22:16:47 +0200: Memory Usage (655912K) : zener has 0 polygons
+"polygons" in: layers_definitions.lvs:25
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 427.00M
+2026-05-30 22:16:47 +0200: Memory Usage (656188K) : res_mk has 0 polygons
+"polygons" in: layers_definitions.lvs:25
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.010s  Memory: 427.00M
+2026-05-30 22:16:47 +0200: Memory Usage (656188K) : opc_drc has 0 polygons
+"polygons" in: layers_definitions.lvs:25
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 427.00M
+2026-05-30 22:16:47 +0200: Memory Usage (656188K) : ndmy has 0 polygons
+"polygons" in: layers_definitions.lvs:25
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 427.00M
+2026-05-30 22:16:47 +0200: Memory Usage (656188K) : pmndmy has 0 polygons
+"polygons" in: layers_definitions.lvs:25
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 427.00M
+2026-05-30 22:16:47 +0200: Memory Usage (656440K) : v5_xtor has 0 polygons
+"polygons" in: layers_definitions.lvs:25
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 427.00M
+2026-05-30 22:16:47 +0200: Memory Usage (656440K) : cap_mk has 0 polygons
+"polygons" in: layers_definitions.lvs:25
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 427.00M
+2026-05-30 22:16:47 +0200: Memory Usage (656440K) : mos_cap_mk has 0 polygons
+"polygons" in: layers_definitions.lvs:25
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 427.00M
+2026-05-30 22:16:47 +0200: Memory Usage (656440K) : ind_mk has 0 polygons
+"polygons" in: layers_definitions.lvs:25
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 428.00M
+2026-05-30 22:16:47 +0200: Memory Usage (656744K) : diode_mk has 0 polygons
+"polygons" in: layers_definitions.lvs:25
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 428.00M
+2026-05-30 22:16:47 +0200: Memory Usage (656744K) : drc_bjt has 0 polygons
+"polygons" in: layers_definitions.lvs:25
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 428.00M
+2026-05-30 22:16:47 +0200: Memory Usage (656744K) : lvs_bjt has 0 polygons
+"polygons" in: layers_definitions.lvs:25
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 428.00M
+2026-05-30 22:16:47 +0200: Memory Usage (656744K) : mim_l_mk has 0 polygons
+"polygons" in: layers_definitions.lvs:25
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.020s  Memory: 428.00M
+2026-05-30 22:16:47 +0200: Memory Usage (657048K) : latchup_mk has 0 polygons
+"polygons" in: layers_definitions.lvs:25
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 428.00M
+2026-05-30 22:16:47 +0200: Memory Usage (657048K) : guard_ring_mk has 0 polygons
+"polygons" in: layers_definitions.lvs:25
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 428.00M
+2026-05-30 22:16:47 +0200: Memory Usage (657048K) : otp_mk has 0 polygons
+"polygons" in: layers_definitions.lvs:25
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 428.00M
+2026-05-30 22:16:47 +0200: Memory Usage (657048K) : mtpmark has 0 polygons
+"polygons" in: layers_definitions.lvs:25
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 428.00M
+2026-05-30 22:16:47 +0200: Memory Usage (657048K) : neo_ee_mk has 0 polygons
+"polygons" in: layers_definitions.lvs:25
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 428.00M
+2026-05-30 22:16:47 +0200: Memory Usage (657048K) : sramcore has 0 polygons
+"polygons" in: layers_definitions.lvs:25
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 428.00M
+2026-05-30 22:16:47 +0200: Memory Usage (657048K) : lvs_rf has 0 polygons
+"polygons" in: layers_definitions.lvs:25
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 428.00M
+2026-05-30 22:16:47 +0200: Memory Usage (657048K) : lvs_drain has 0 polygons
+"polygons" in: layers_definitions.lvs:25
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 428.00M
+2026-05-30 22:16:47 +0200: Memory Usage (657048K) : ind_mk has 0 polygons
+"polygons" in: layers_definitions.lvs:25
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 428.00M
+2026-05-30 22:16:47 +0200: Memory Usage (657048K) : hvpolyrs has 0 polygons
+"polygons" in: layers_definitions.lvs:25
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 428.00M
+2026-05-30 22:16:47 +0200: Memory Usage (657048K) : lvs_io has 0 polygons
+"polygons" in: layers_definitions.lvs:25
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 428.00M
+2026-05-30 22:16:47 +0200: Memory Usage (657048K) : probe_mk has 0 polygons
+"polygons" in: layers_definitions.lvs:25
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.010s  Memory: 428.00M
+2026-05-30 22:16:47 +0200: Memory Usage (657048K) : esd_mk has 0 polygons
+"polygons" in: layers_definitions.lvs:25
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 428.00M
+2026-05-30 22:16:47 +0200: Memory Usage (657048K) : lvs_source has 0 polygons
+"polygons" in: layers_definitions.lvs:25
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 428.00M
+2026-05-30 22:16:47 +0200: Memory Usage (657048K) : well_diode_mk has 0 polygons
+"polygons" in: layers_definitions.lvs:25
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 428.00M
+2026-05-30 22:16:47 +0200: Memory Usage (657048K) : ldmos_xtor has 0 polygons
+"polygons" in: layers_definitions.lvs:25
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 428.00M
+2026-05-30 22:16:47 +0200: Memory Usage (657048K) : plfuse has 0 polygons
+"polygons" in: layers_definitions.lvs:25
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 428.00M
+2026-05-30 22:16:47 +0200: Memory Usage (657048K) : efuse_mk has 0 polygons
+"polygons" in: layers_definitions.lvs:25
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 428.00M
+2026-05-30 22:16:47 +0200: Memory Usage (657048K) : mcell_feol_mk has 0 polygons
+"polygons" in: layers_definitions.lvs:25
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 428.00M
+2026-05-30 22:16:47 +0200: Memory Usage (657048K) : ymtp_mk has 0 polygons
+"labels" in: layers_definitions.lvs:304
+    Texts: 0 (flat)  0 (hierarchical)
+    Elapsed: 0.010s  Memory: 428.00M
+2026-05-30 22:16:47 +0200: Memory Usage (657048K) : dev_wf_mk has 0 polygons
+"labels" in: layers_definitions.lvs:309
+    Texts: 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 428.00M
+2026-05-30 22:16:47 +0200: Memory Usage (657048K) : comp_label has 0 polygons
+"polygons" in: layers_definitions.lvs:25
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 428.00M
+2026-05-30 22:16:47 +0200: Memory Usage (657048K) : poly2_label has 0 polygons
+"polygons" in: layers_definitions.lvs:25
+    Polygons (raw): 375 (flat)  75 (hierarchical)
+    Elapsed: 0.000s  Memory: 428.00M
+2026-05-30 22:16:47 +0200: Memory Usage (657048K) : mdiode has 0 polygons
+"polygons" in: layers_definitions.lvs:25
+    Polygons (raw): 184 (flat)  96 (hierarchical)
+    Elapsed: 0.000s  Memory: 428.00M
+2026-05-30 22:16:47 +0200: Memory Usage (657048K) : contact has 375 polygons
+"polygons" in: layers_definitions.lvs:25
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.010s  Memory: 428.00M
+2026-05-30 22:16:47 +0200: Memory Usage (657048K) : metal1_drawn has 184 polygons
+"+" in: layers_definitions.lvs:334
+    Polygons (raw): 184 (flat)  96 (hierarchical)
+    Elapsed: 0.000s  Memory: 428.00M
+"labels" in: layers_definitions.lvs:336
+    Texts: 16 (flat)  8 (hierarchical)
+    Elapsed: 0.000s  Memory: 428.00M
+2026-05-30 22:16:47 +0200: Memory Usage (657048K) : metal1_dummy has 0 polygons
+"polygons" in: layers_definitions.lvs:25
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 428.00M
+2026-05-30 22:16:47 +0200: Memory Usage (657048K) : metal1_label has 16 polygons
+"polygons" in: layers_definitions.lvs:25
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 428.00M
+2026-05-30 22:16:47 +0200: Memory Usage (657048K) : metal1_slot has 0 polygons
+"polygons" in: layers_definitions.lvs:25
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 428.00M
+2026-05-30 22:16:47 +0200: Memory Usage (657048K) : metal1_blk has 0 polygons
+"polygons" in: layers_definitions.lvs:25
+    Polygons (raw): 47 (flat)  47 (hierarchical)
+    Elapsed: 0.000s  Memory: 428.00M
+2026-05-30 22:16:47 +0200: Memory Usage (657048K) : metal1_res has 0 polygons
+"polygons" in: layers_definitions.lvs:25
+    Polygons (raw): 64 (flat)  64 (hierarchical)
+    Elapsed: 0.000s  Memory: 428.00M
+2026-05-30 22:16:47 +0200: Memory Usage (657048K) : via1 has 47 polygons
+"polygons" in: layers_definitions.lvs:25
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.030s  Memory: 428.00M
+2026-05-30 22:16:47 +0200: Memory Usage (657048K) : metal2_drawn has 64 polygons
+"+" in: layers_definitions.lvs:371
+    Polygons (raw): 64 (flat)  64 (hierarchical)
+    Elapsed: 0.000s  Memory: 428.00M
+"labels" in: layers_definitions.lvs:373
+    Texts: 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 428.00M
+2026-05-30 22:16:47 +0200: Memory Usage (657048K) : metal2_dummy has 0 polygons
+"polygons" in: layers_definitions.lvs:25
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 428.00M
+2026-05-30 22:16:47 +0200: Memory Usage (657048K) : metal2_label has 0 polygons
+"polygons" in: layers_definitions.lvs:25
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 428.00M
+2026-05-30 22:16:47 +0200: Memory Usage (657048K) : metal2_slot has 0 polygons
+"polygons" in: layers_definitions.lvs:25
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.010s  Memory: 428.00M
+2026-05-30 22:16:47 +0200: Memory Usage (657048K) : metal2_blk has 0 polygons
+"polygons" in: layers_definitions.lvs:25
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 428.00M
+2026-05-30 22:16:47 +0200: Memory Usage (657048K) : metal2_res has 0 polygons
+"polygons" in: layers_definitions.lvs:25
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 428.00M
+2026-05-30 22:16:47 +0200: Memory Usage (657048K) : via2 has 0 polygons
+"polygons" in: layers_definitions.lvs:25
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 428.00M
+2026-05-30 22:16:47 +0200: Memory Usage (657048K) : metal3_drawn has 0 polygons
+"+" in: layers_definitions.lvs:410
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 428.00M
+"labels" in: layers_definitions.lvs:412
+    Texts: 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 428.00M
+2026-05-30 22:16:47 +0200: Memory Usage (657048K) : metal3_dummy has 0 polygons
+"polygons" in: layers_definitions.lvs:25
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 428.00M
+2026-05-30 22:16:47 +0200: Memory Usage (657048K) : metal3_label has 0 polygons
+"polygons" in: layers_definitions.lvs:25
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 428.00M
+2026-05-30 22:16:47 +0200: Memory Usage (657048K) : metal3_slot has 0 polygons
+"polygons" in: layers_definitions.lvs:25
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 428.00M
+2026-05-30 22:16:47 +0200: Memory Usage (657048K) : metal3_blk has 0 polygons
+"polygons" in: layers_definitions.lvs:25
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 428.00M
+2026-05-30 22:16:47 +0200: Memory Usage (657048K) : metal3_res has 0 polygons
+"polygons" in: layers_definitions.lvs:25
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 428.00M
+2026-05-30 22:16:47 +0200: Memory Usage (657048K) : via3 has 0 polygons
+"polygons" in: layers_definitions.lvs:25
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 428.00M
+2026-05-30 22:16:47 +0200: Memory Usage (657048K) : metal4_drawn has 0 polygons
+"+" in: layers_definitions.lvs:450
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 428.00M
+"labels" in: layers_definitions.lvs:452
+    Texts: 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 428.00M
+2026-05-30 22:16:48 +0200: Memory Usage (657048K) : metal4_dummy has 0 polygons
+"polygons" in: layers_definitions.lvs:25
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 428.00M
+2026-05-30 22:16:48 +0200: Memory Usage (657048K) : metal4_label has 0 polygons
+"polygons" in: layers_definitions.lvs:25
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 428.00M
+2026-05-30 22:16:48 +0200: Memory Usage (657048K) : metal4_slot has 0 polygons
+"polygons" in: layers_definitions.lvs:25
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 428.00M
+2026-05-30 22:16:48 +0200: Memory Usage (657048K) : metal4_blk has 0 polygons
+"polygons" in: layers_definitions.lvs:25
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 428.00M
+2026-05-30 22:16:48 +0200: Memory Usage (657048K) : metal4_res has 0 polygons
+"polygons" in: layers_definitions.lvs:25
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 428.00M
+2026-05-30 22:16:48 +0200: Memory Usage (657048K) : via4 has 0 polygons
+"polygons" in: layers_definitions.lvs:25
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 428.00M
+2026-05-30 22:16:48 +0200: Memory Usage (657048K) : metal5_drawn has 0 polygons
+"+" in: layers_definitions.lvs:490
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 428.00M
+"labels" in: layers_definitions.lvs:492
+    Texts: 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 428.00M
+2026-05-30 22:16:48 +0200: Memory Usage (657048K) : metal5_dummy has 0 polygons
+"polygons" in: layers_definitions.lvs:25
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 428.00M
+2026-05-30 22:16:48 +0200: Memory Usage (657048K) : metal5_label has 0 polygons
+"polygons" in: layers_definitions.lvs:25
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 428.00M
+2026-05-30 22:16:48 +0200: Memory Usage (657048K) : metal5_slot has 0 polygons
+"polygons" in: layers_definitions.lvs:25
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 428.00M
+2026-05-30 22:16:48 +0200: Memory Usage (657048K) : metal5_blk has 0 polygons
+"-" in: layers_definitions.lvs:579
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 428.00M
+"polygons" in: layers_definitions.lvs:25
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 428.00M
+2026-05-30 22:16:48 +0200: Memory Usage (657048K) : metal5_res has 0 polygons
+"polygons" in: layers_definitions.lvs:25
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 428.00M
+2026-05-30 22:16:48 +0200: Memory Usage (657048K) : pad has 0 polygons
+"polygons" in: layers_definitions.lvs:25
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 428.00M
+2026-05-30 22:16:48 +0200: Memory Usage (657048K) : ubmpperi has 0 polygons
+"polygons" in: layers_definitions.lvs:25
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 428.00M
+2026-05-30 22:16:48 +0200: Memory Usage (657048K) : ubmparray has 0 polygons
+"polygons" in: layers_definitions.lvs:25
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 428.00M
+2026-05-30 22:16:48 +0200: Memory Usage (657048K) : ubmeplate has 0 polygons
+"polygons" in: layers_definitions.lvs:25
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 428.00M
+2026-05-30 22:16:48 +0200: Memory Usage (657048K) : pr_bndry has 0 polygons
+2026-05-30 22:16:48 +0200: Memory Usage (657048K) : border has 0 polygons
+2026-05-30 22:16:48 +0200: Memory Usage (657048K) : Total no. of polygons in the design is 855
+2026-05-30 22:16:48 +0200: Memory Usage (657048K) : Starting deriving base layers.
+2026-05-30 22:16:48 +0200: Memory Usage (657048K) : Starting GF180MCU LVS runset
+"&" in: general_derivations.lvs:21
+    Polygons (raw): 10 (flat)  2 (hierarchical)
+    Elapsed: 0.030s  Memory: 430.00M
+"&" in: general_derivations.lvs:22
+    Polygons (raw): 10 (flat)  2 (hierarchical)
+    Elapsed: 0.000s  Memory: 430.00M
+"&" in: general_derivations.lvs:23
+    Polygons (raw): 45 (flat)  9 (hierarchical)
+    Elapsed: 0.010s  Memory: 430.00M
+"-" in: general_derivations.lvs:23
+    Polygons (raw): 45 (flat)  9 (hierarchical)
+    Elapsed: 0.000s  Memory: 430.00M
+"&" in: general_derivations.lvs:25
+    Polygons (raw): 20 (flat)  4 (hierarchical)
+    Elapsed: 0.000s  Memory: 430.00M
+"outside" in: general_derivations.lvs:26
+    Polygons (raw): 5 (flat)  1 (hierarchical)
+    Elapsed: 0.010s  Memory: 431.00M
+"interacting" in: general_derivations.lvs:26
+    Polygons (raw): 5 (flat)  1 (hierarchical)
+    Elapsed: 0.000s  Memory: 431.00M
+"-" in: general_derivations.lvs:26
+    Polygons (raw): 25 (flat)  5 (hierarchical)
+    Elapsed: 0.000s  Memory: 431.00M
+"-" in: general_derivations.lvs:26
+    Polygons (raw): 25 (flat)  5 (hierarchical)
+    Elapsed: 0.000s  Memory: 431.00M
+"outside" in: general_derivations.lvs:27
+    Polygons (raw): 5 (flat)  1 (hierarchical)
+    Elapsed: 0.000s  Memory: 431.00M
+"outside" in: general_derivations.lvs:27
+    Polygons (raw): 5 (flat)  1 (hierarchical)
+    Elapsed: 0.000s  Memory: 431.00M
+"-" in: general_derivations.lvs:27
+    Polygons (raw): 5 (flat)  1 (hierarchical)
+    Elapsed: 0.010s  Memory: 431.00M
+"&" in: general_derivations.lvs:29
+    Polygons (raw): 25 (flat)  5 (hierarchical)
+    Elapsed: 0.010s  Memory: 431.00M
+"&" in: general_derivations.lvs:30
+    Polygons (raw): 5 (flat)  1 (hierarchical)
+    Elapsed: 0.000s  Memory: 431.00M
+"interacting" in: general_derivations.lvs:30
+    Polygons (raw): 5 (flat)  1 (hierarchical)
+    Elapsed: 0.000s  Memory: 431.00M
+"-" in: general_derivations.lvs:30
+    Polygons (raw): 30 (flat)  6 (hierarchical)
+    Elapsed: 0.000s  Memory: 431.00M
+"-" in: general_derivations.lvs:30
+    Polygons (raw): 30 (flat)  6 (hierarchical)
+    Elapsed: 0.000s  Memory: 431.00M
+"&" in: general_derivations.lvs:31
+    Polygons (raw): 5 (flat)  1 (hierarchical)
+    Elapsed: 0.000s  Memory: 431.00M
+"-" in: general_derivations.lvs:31
+    Polygons (raw): 5 (flat)  1 (hierarchical)
+    Elapsed: 0.000s  Memory: 431.00M
+"&" in: general_derivations.lvs:33
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 431.00M
+"&" in: general_derivations.lvs:33
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.010s  Memory: 431.00M
+"&" in: general_derivations.lvs:34
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 431.00M
+"&" in: general_derivations.lvs:34
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 431.00M
+"outside" in: general_derivations.lvs:34
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 431.00M
+"-" in: general_derivations.lvs:34
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 431.00M
+"&" in: general_derivations.lvs:36
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 431.00M
+"-" in: general_derivations.lvs:36
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 431.00M
+"-" in: general_derivations.lvs:37
+    Polygons (raw): 10 (flat)  2 (hierarchical)
+    Elapsed: 0.000s  Memory: 431.00M
+"&" in: general_derivations.lvs:37
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 431.00M
+"-" in: general_derivations.lvs:37
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 431.00M
+"-" in: general_derivations.lvs:39
+    Polygons (raw): 10 (flat)  2 (hierarchical)
+    Elapsed: 0.000s  Memory: 431.00M
+"&" in: general_derivations.lvs:39
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.010s  Memory: 431.00M
+"interacting" in: general_derivations.lvs:39
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 431.00M
+"-" in: general_derivations.lvs:39
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 431.00M
+"-" in: general_derivations.lvs:39
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 431.00M
+"-" in: general_derivations.lvs:40
+    Polygons (raw): 9 (flat)  5 (hierarchical)
+    Elapsed: 0.000s  Memory: 431.00M
+"-" in: general_derivations.lvs:41
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 431.00M
+"-" in: general_derivations.lvs:42
+    Polygons (raw): 100 (flat)  28 (hierarchical)
+    Elapsed: 0.000s  Memory: 431.00M
+"-" in: general_derivations.lvs:42
+    Polygons (raw): 100 (flat)  28 (hierarchical)
+    Elapsed: 0.000s  Memory: 431.00M
+"-" in: general_derivations.lvs:44
+    Polygons (raw): 25 (flat)  5 (hierarchical)
+    Elapsed: 0.000s  Memory: 431.00M
+"-" in: general_derivations.lvs:44
+    Polygons (raw): 25 (flat)  5 (hierarchical)
+    Elapsed: 0.000s  Memory: 431.00M
+"&" in: general_derivations.lvs:45
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 431.00M
+"&" in: general_derivations.lvs:45
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 431.00M
+"-" in: general_derivations.lvs:46
+    Polygons (raw): 25 (flat)  5 (hierarchical)
+    Elapsed: 0.000s  Memory: 431.00M
+"&" in: general_derivations.lvs:46
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 431.00M
+"-" in: general_derivations.lvs:48
+    Polygons (raw): 25 (flat)  5 (hierarchical)
+    Elapsed: 0.000s  Memory: 431.00M
+"-" in: general_derivations.lvs:49
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 432.00M
+"-" in: general_derivations.lvs:50
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 432.00M
+"&" in: general_derivations.lvs:52
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 432.00M
+"&" in: general_derivations.lvs:53
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 432.00M
+"&" in: general_derivations.lvs:54
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 432.00M
+"-" in: general_derivations.lvs:56
+    Polygons (raw): 20 (flat)  4 (hierarchical)
+    Elapsed: 0.000s  Memory: 432.00M
+"-" in: general_derivations.lvs:56
+    Polygons (raw): 20 (flat)  4 (hierarchical)
+    Elapsed: 0.000s  Memory: 432.00M
+"&" in: general_derivations.lvs:57
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.010s  Memory: 432.00M
+"&" in: general_derivations.lvs:57
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 432.00M
+"-" in: general_derivations.lvs:58
+    Polygons (raw): 20 (flat)  4 (hierarchical)
+    Elapsed: 0.000s  Memory: 432.00M
+"&" in: general_derivations.lvs:58
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 432.00M
+"-" in: general_derivations.lvs:60
+    Polygons (raw): 20 (flat)  4 (hierarchical)
+    Elapsed: 0.000s  Memory: 432.00M
+"-" in: general_derivations.lvs:61
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 432.00M
+"-" in: general_derivations.lvs:62
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 432.00M
+"&" in: general_derivations.lvs:64
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 433.00M
+"&" in: general_derivations.lvs:65
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 433.00M
+"&" in: general_derivations.lvs:66
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 433.00M
+"-" in: general_derivations.lvs:68
+    Polygons (raw): 184 (flat)  96 (hierarchical)
+    Elapsed: 0.000s  Memory: 433.00M
+"-" in: general_derivations.lvs:69
+    Polygons (raw): 64 (flat)  64 (hierarchical)
+    Elapsed: 0.000s  Memory: 433.00M
+"-" in: general_derivations.lvs:73
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 433.00M
+"-" in: general_derivations.lvs:74
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 433.00M
+"&" in: general_derivations.lvs:75
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 433.00M
+"-" in: general_derivations.lvs:79
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 433.00M
+"-" in: general_derivations.lvs:80
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 433.00M
+"&" in: general_derivations.lvs:81
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 433.00M
+"-" in: general_derivations.lvs:85
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 433.00M
+"-" in: general_derivations.lvs:86
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 433.00M
+"&" in: general_derivations.lvs:87
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 433.00M
+"-" in: general_derivations.lvs:113
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 434.00M
+"-" in: general_derivations.lvs:114
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 434.00M
+"&" in: general_derivations.lvs:115
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 434.00M
+"&" in: general_derivations.lvs:116
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 434.00M
+2026-05-30 22:16:48 +0200: Memory Usage (657048K) : Starting base layers derivations
+"join" in: mos_derivations.lvs:23
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 434.00M
+"join" in: mos_derivations.lvs:23
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 434.00M
+"join" in: mos_derivations.lvs:24
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 434.00M
+"join" in: mos_derivations.lvs:24
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 434.00M
+"join" in: mos_derivations.lvs:24
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 434.00M
+"join" in: mos_derivations.lvs:25
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 434.00M
+"join" in: mos_derivations.lvs:25
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 434.00M
+"join" in: mos_derivations.lvs:25
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 434.00M
+"join" in: mos_derivations.lvs:26
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 434.00M
+"join" in: mos_derivations.lvs:26
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 435.00M
+"join" in: mos_derivations.lvs:26
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 435.00M
+"join" in: mos_derivations.lvs:27
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 435.00M
+2026-05-30 22:16:48 +0200: Memory Usage (807820K) : Starting MOSFET DERIVATIONS
+"join" in: mos_derivations.lvs:34
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 435.00M
+"join" in: mos_derivations.lvs:34
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 435.00M
+"join" in: mos_derivations.lvs:35
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 435.00M
+"join" in: mos_derivations.lvs:35
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 435.00M
+"join" in: mos_derivations.lvs:35
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 435.00M
+"join" in: mos_derivations.lvs:36
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.010s  Memory: 435.00M
+"-" in: mos_derivations.lvs:39
+    Polygons (raw): 25 (flat)  5 (hierarchical)
+    Elapsed: 0.000s  Memory: 435.00M
+"-" in: mos_derivations.lvs:42
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 435.00M
+"-" in: mos_derivations.lvs:45
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 435.00M
+"-" in: mos_derivations.lvs:48
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.010s  Memory: 435.00M
+"-" in: mos_derivations.lvs:51
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 435.00M
+"-" in: mos_derivations.lvs:54
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 436.00M
+"join" in: mos_derivations.lvs:59
+    Polygons (raw): 9 (flat)  5 (hierarchical)
+    Elapsed: 0.000s  Memory: 436.00M
+"join" in: mos_derivations.lvs:59
+    Polygons (raw): 9 (flat)  5 (hierarchical)
+    Elapsed: 0.000s  Memory: 436.00M
+"join" in: mos_derivations.lvs:60
+    Polygons (raw): 9 (flat)  5 (hierarchical)
+    Elapsed: 0.000s  Memory: 436.00M
+"join" in: mos_derivations.lvs:60
+    Polygons (raw): 9 (flat)  5 (hierarchical)
+    Elapsed: 0.000s  Memory: 436.00M
+"join" in: mos_derivations.lvs:60
+    Polygons (raw): 9 (flat)  5 (hierarchical)
+    Elapsed: 0.000s  Memory: 436.00M
+"interacting" in: mos_derivations.lvs:62
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 436.00M
+"&" in: mos_derivations.lvs:62
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 436.00M
+"-" in: mos_derivations.lvs:62
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 436.00M
+"-" in: mos_derivations.lvs:62
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 436.00M
+"-" in: mos_derivations.lvs:63
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 436.00M
+"&" in: mos_derivations.lvs:63
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 436.00M
+"&" in: mos_derivations.lvs:63
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 437.00M
+"&" in: mos_derivations.lvs:63
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 437.00M
+"&" in: mos_derivations.lvs:64
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 437.00M
+"-" in: mos_derivations.lvs:65
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 437.00M
+"-" in: mos_derivations.lvs:66
+    Polygons (raw): 10 (flat)  2 (hierarchical)
+    Elapsed: 0.000s  Memory: 437.00M
+"&" in: mos_derivations.lvs:66
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 437.00M
+"&" in: mos_derivations.lvs:66
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 437.00M
+"&" in: mos_derivations.lvs:66
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 437.00M
+"interacting" in: mos_derivations.lvs:67
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.010s  Memory: 437.00M
+"sized" in: mos_derivations.lvs:67
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 437.00M
+"sized" in: mos_derivations.lvs:67
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 437.00M
+"extents" in: mos_derivations.lvs:67
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 437.00M
+"-" in: mos_derivations.lvs:67
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 438.00M
+2026-05-30 22:16:48 +0200: Memory Usage (808732K) : Starting PMOS layers DERIVATIONS
+"join" in: mos_derivations.lvs:74
+    Polygons (raw): 9 (flat)  5 (hierarchical)
+    Elapsed: 0.000s  Memory: 438.00M
+"join" in: mos_derivations.lvs:74
+    Polygons (raw): 9 (flat)  5 (hierarchical)
+    Elapsed: 0.010s  Memory: 438.00M
+"join" in: mos_derivations.lvs:75
+    Polygons (raw): 9 (flat)  5 (hierarchical)
+    Elapsed: 0.000s  Memory: 438.00M
+"join" in: mos_derivations.lvs:75
+    Polygons (raw): 9 (flat)  5 (hierarchical)
+    Elapsed: 0.000s  Memory: 438.00M
+"join" in: mos_derivations.lvs:75
+    Polygons (raw): 9 (flat)  5 (hierarchical)
+    Elapsed: 0.000s  Memory: 438.00M
+"join" in: mos_derivations.lvs:77
+    Polygons (raw): 9 (flat)  5 (hierarchical)
+    Elapsed: 0.000s  Memory: 438.00M
+"-" in: mos_derivations.lvs:80
+    Polygons (raw): 20 (flat)  4 (hierarchical)
+    Elapsed: 0.000s  Memory: 438.00M
+"-" in: mos_derivations.lvs:83
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 438.00M
+"-" in: mos_derivations.lvs:86
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 438.00M
+"-" in: mos_derivations.lvs:89
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 438.00M
+"-" in: mos_derivations.lvs:92
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 438.00M
+"-" in: mos_derivations.lvs:95
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"&" in: mos_derivations.lvs:99
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"-" in: mos_derivations.lvs:99
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"join" in: mos_derivations.lvs:104
+    Polygons (raw): 9 (flat)  5 (hierarchical)
+    Elapsed: 0.020s  Memory: 439.00M
+"join" in: mos_derivations.lvs:104
+    Polygons (raw): 9 (flat)  5 (hierarchical)
+    Elapsed: 0.010s  Memory: 439.00M
+"join" in: mos_derivations.lvs:105
+    Polygons (raw): 9 (flat)  5 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"join" in: mos_derivations.lvs:105
+    Polygons (raw): 9 (flat)  5 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"join" in: mos_derivations.lvs:105
+    Polygons (raw): 9 (flat)  5 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"interacting" in: mos_derivations.lvs:107
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"&" in: mos_derivations.lvs:107
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"-" in: mos_derivations.lvs:107
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"-" in: mos_derivations.lvs:107
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"-" in: mos_derivations.lvs:108
+    Polygons (raw): 30 (flat)  6 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"-" in: mos_derivations.lvs:108
+    Polygons (raw): 30 (flat)  6 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"&" in: mos_derivations.lvs:108
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.010s  Memory: 439.00M
+"&" in: mos_derivations.lvs:108
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"-" in: mos_derivations.lvs:108
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"&" in: mos_derivations.lvs:108
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"-" in: mos_derivations.lvs:109
+    Polygons (raw): 25 (flat)  5 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"&" in: mos_derivations.lvs:109
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"&" in: mos_derivations.lvs:109
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"-" in: mos_derivations.lvs:109
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"-" in: mos_derivations.lvs:109
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"-" in: mos_derivations.lvs:110
+    Polygons (raw): 10 (flat)  2 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"&" in: mos_derivations.lvs:110
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"&" in: mos_derivations.lvs:110
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"-" in: mos_derivations.lvs:110
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"interacting" in: mos_derivations.lvs:111
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"sized" in: mos_derivations.lvs:111
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"sized" in: mos_derivations.lvs:111
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"extents" in: mos_derivations.lvs:111
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"-" in: mos_derivations.lvs:111
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+2026-05-30 22:16:48 +0200: Memory Usage (811652K) : Starting NMOS layers DERIVATIONS
+2026-05-30 22:16:48 +0200: Memory Usage (812660K) : Starting BJT DERIVATIONS
+"join" in: bjt_derivations.lvs:28
+    Polygons (raw): 100 (flat)  28 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"join" in: bjt_derivations.lvs:28
+    Polygons (raw): 100 (flat)  28 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"join" in: bjt_derivations.lvs:29
+    Polygons (raw): 100 (flat)  28 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"join" in: bjt_derivations.lvs:29
+    Polygons (raw): 100 (flat)  28 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"join" in: bjt_derivations.lvs:29
+    Polygons (raw): 100 (flat)  28 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"join" in: bjt_derivations.lvs:30
+    Polygons (raw): 100 (flat)  28 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"join" in: bjt_derivations.lvs:30
+    Polygons (raw): 100 (flat)  28 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"join" in: bjt_derivations.lvs:30
+    Polygons (raw): 100 (flat)  28 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"join" in: bjt_derivations.lvs:31
+    Polygons (raw): 100 (flat)  28 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"join" in: bjt_derivations.lvs:31
+    Polygons (raw): 100 (flat)  28 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"join" in: bjt_derivations.lvs:31
+    Polygons (raw): 100 (flat)  28 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"join" in: bjt_derivations.lvs:32
+    Polygons (raw): 100 (flat)  28 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"join" in: bjt_derivations.lvs:32
+    Polygons (raw): 100 (flat)  28 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"join" in: bjt_derivations.lvs:32
+    Polygons (raw): 100 (flat)  28 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"join" in: bjt_derivations.lvs:33
+    Polygons (raw): 100 (flat)  28 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"join" in: bjt_derivations.lvs:33
+    Polygons (raw): 100 (flat)  28 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"join" in: bjt_derivations.lvs:33
+    Polygons (raw): 100 (flat)  28 (hierarchical)
+    Elapsed: 0.010s  Memory: 439.00M
+"join" in: bjt_derivations.lvs:34
+    Polygons (raw): 100 (flat)  28 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"join" in: bjt_derivations.lvs:34
+    Polygons (raw): 100 (flat)  28 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"join" in: bjt_derivations.lvs:34
+    Polygons (raw): 100 (flat)  28 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"join" in: bjt_derivations.lvs:34
+    Polygons (raw): 100 (flat)  28 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"join" in: bjt_derivations.lvs:36
+    Polygons (raw): 109 (flat)  33 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"join" in: bjt_derivations.lvs:37
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"join" in: bjt_derivations.lvs:37
+    Polygons (raw): 100 (flat)  28 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"&" in: bjt_derivations.lvs:40
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"&" in: bjt_derivations.lvs:40
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"&" in: bjt_derivations.lvs:40
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"-" in: bjt_derivations.lvs:40
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"&" in: bjt_derivations.lvs:41
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"&" in: bjt_derivations.lvs:41
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"&" in: bjt_derivations.lvs:41
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"-" in: bjt_derivations.lvs:41
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"&" in: bjt_derivations.lvs:42
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"-" in: bjt_derivations.lvs:42
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"&" in: bjt_derivations.lvs:42
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"-" in: bjt_derivations.lvs:42
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"with_area" in: bjt_derivations.lvs:45
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"edges" in: bjt_derivations.lvs:45
+    Edges: 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"with_length" in: bjt_derivations.lvs:45
+    Edges: 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"interacting" in: bjt_derivations.lvs:45
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"extents" in: bjt_derivations.lvs:46
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"interacting" in: bjt_derivations.lvs:46
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"interacting" in: bjt_derivations.lvs:46
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"extents" in: bjt_derivations.lvs:47
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"interacting" in: bjt_derivations.lvs:47
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"interacting" in: bjt_derivations.lvs:47
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"with_area" in: bjt_derivations.lvs:50
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"edges" in: bjt_derivations.lvs:50
+    Edges: 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"with_length" in: bjt_derivations.lvs:50
+    Edges: 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"interacting" in: bjt_derivations.lvs:50
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"extents" in: bjt_derivations.lvs:51
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"interacting" in: bjt_derivations.lvs:51
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"interacting" in: bjt_derivations.lvs:51
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.010s  Memory: 439.00M
+"extents" in: bjt_derivations.lvs:52
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"interacting" in: bjt_derivations.lvs:52
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"interacting" in: bjt_derivations.lvs:52
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"with_area" in: bjt_derivations.lvs:55
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"edges" in: bjt_derivations.lvs:55
+    Edges: 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"with_length" in: bjt_derivations.lvs:55
+    Edges: 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"interacting" in: bjt_derivations.lvs:55
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"extents" in: bjt_derivations.lvs:56
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"interacting" in: bjt_derivations.lvs:56
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"interacting" in: bjt_derivations.lvs:56
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"extents" in: bjt_derivations.lvs:57
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"interacting" in: bjt_derivations.lvs:57
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"interacting" in: bjt_derivations.lvs:57
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"with_area" in: bjt_derivations.lvs:60
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"edges" in: bjt_derivations.lvs:60
+    Edges: 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"with_length" in: bjt_derivations.lvs:60
+    Edges: 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"interacting" in: bjt_derivations.lvs:60
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"extents" in: bjt_derivations.lvs:61
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"interacting" in: bjt_derivations.lvs:61
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"interacting" in: bjt_derivations.lvs:61
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"extents" in: bjt_derivations.lvs:62
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"interacting" in: bjt_derivations.lvs:62
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"interacting" in: bjt_derivations.lvs:62
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"with_area" in: bjt_derivations.lvs:65
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"edges" in: bjt_derivations.lvs:65
+    Edges: 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"with_length" in: bjt_derivations.lvs:65
+    Edges: 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"interacting" in: bjt_derivations.lvs:65
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"extents" in: bjt_derivations.lvs:66
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"interacting" in: bjt_derivations.lvs:66
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"interacting" in: bjt_derivations.lvs:66
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"extents" in: bjt_derivations.lvs:67
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"interacting" in: bjt_derivations.lvs:67
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"interacting" in: bjt_derivations.lvs:67
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"with_area" in: bjt_derivations.lvs:70
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"edges" in: bjt_derivations.lvs:70
+    Edges: 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"with_length" in: bjt_derivations.lvs:70
+    Edges: 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"interacting" in: bjt_derivations.lvs:70
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"extents" in: bjt_derivations.lvs:71
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"interacting" in: bjt_derivations.lvs:71
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"interacting" in: bjt_derivations.lvs:71
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"extents" in: bjt_derivations.lvs:72
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"interacting" in: bjt_derivations.lvs:72
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"interacting" in: bjt_derivations.lvs:72
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+2026-05-30 22:16:48 +0200: Memory Usage (812660K) : Starting vnpn layers DERIVATIONS
+"&" in: bjt_derivations.lvs:80
+    Polygons (raw): 5 (flat)  1 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"&" in: bjt_derivations.lvs:80
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"-" in: bjt_derivations.lvs:80
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"&" in: bjt_derivations.lvs:81
+    Polygons (raw): 5 (flat)  1 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"&" in: bjt_derivations.lvs:81
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"-" in: bjt_derivations.lvs:81
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"-" in: bjt_derivations.lvs:82
+    Polygons (raw): 5 (flat)  1 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"&" in: bjt_derivations.lvs:82
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"-" in: bjt_derivations.lvs:82
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"with_area" in: bjt_derivations.lvs:85
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"edges" in: bjt_derivations.lvs:85
+    Edges: 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"with_length" in: bjt_derivations.lvs:85
+    Edges: 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"interacting" in: bjt_derivations.lvs:85
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"extents" in: bjt_derivations.lvs:86
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"interacting" in: bjt_derivations.lvs:86
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"interacting" in: bjt_derivations.lvs:86
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"extents" in: bjt_derivations.lvs:87
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"interacting" in: bjt_derivations.lvs:87
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"interacting" in: bjt_derivations.lvs:87
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"with_area" in: bjt_derivations.lvs:90
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"edges" in: bjt_derivations.lvs:90
+    Edges: 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"with_length" in: bjt_derivations.lvs:90
+    Edges: 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"interacting" in: bjt_derivations.lvs:90
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 439.00M
+"extents" in: bjt_derivations.lvs:91
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 440.00M
+"interacting" in: bjt_derivations.lvs:91
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 440.00M
+"interacting" in: bjt_derivations.lvs:91
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 440.00M
+"extents" in: bjt_derivations.lvs:92
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 440.00M
+"interacting" in: bjt_derivations.lvs:92
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 440.00M
+"interacting" in: bjt_derivations.lvs:92
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 440.00M
+"with_area" in: bjt_derivations.lvs:95
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 440.00M
+"edges" in: bjt_derivations.lvs:95
+    Edges: 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 440.00M
+"with_length" in: bjt_derivations.lvs:95
+    Edges: 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 440.00M
+"interacting" in: bjt_derivations.lvs:95
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 440.00M
+"extents" in: bjt_derivations.lvs:96
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 440.00M
+"interacting" in: bjt_derivations.lvs:96
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 440.00M
+"interacting" in: bjt_derivations.lvs:96
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 441.00M
+"extents" in: bjt_derivations.lvs:97
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 441.00M
+"interacting" in: bjt_derivations.lvs:97
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 441.00M
+"interacting" in: bjt_derivations.lvs:97
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 441.00M
+"with_area" in: bjt_derivations.lvs:100
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 441.00M
+"edges" in: bjt_derivations.lvs:100
+    Edges: 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 441.00M
+"with_length" in: bjt_derivations.lvs:100
+    Edges: 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 441.00M
+"interacting" in: bjt_derivations.lvs:100
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 441.00M
+"extents" in: bjt_derivations.lvs:101
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 441.00M
+"interacting" in: bjt_derivations.lvs:101
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.020s  Memory: 441.00M
+"interacting" in: bjt_derivations.lvs:101
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 441.00M
+"extents" in: bjt_derivations.lvs:102
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 441.00M
+"interacting" in: bjt_derivations.lvs:102
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 441.00M
+"interacting" in: bjt_derivations.lvs:102
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 441.00M
+2026-05-30 22:16:49 +0200: Memory Usage (812660K) : Starting vpnp layers DERIVATIONS
+"join" in: diode_derivations.lvs:23
+    Polygons (raw): 100 (flat)  28 (hierarchical)
+    Elapsed: 0.000s  Memory: 441.00M
+"join" in: diode_derivations.lvs:23
+    Polygons (raw): 100 (flat)  28 (hierarchical)
+    Elapsed: 0.000s  Memory: 441.00M
+"join" in: diode_derivations.lvs:23
+    Polygons (raw): 100 (flat)  28 (hierarchical)
+    Elapsed: 0.000s  Memory: 441.00M
+"join" in: diode_derivations.lvs:24
+    Polygons (raw): 100 (flat)  28 (hierarchical)
+    Elapsed: 0.000s  Memory: 441.00M
+"join" in: diode_derivations.lvs:24
+    Polygons (raw): 100 (flat)  28 (hierarchical)
+    Elapsed: 0.000s  Memory: 441.00M
+"join" in: diode_derivations.lvs:24
+    Polygons (raw): 100 (flat)  28 (hierarchical)
+    Elapsed: 0.010s  Memory: 441.00M
+"join" in: diode_derivations.lvs:25
+    Polygons (raw): 100 (flat)  28 (hierarchical)
+    Elapsed: 0.000s  Memory: 441.00M
+"join" in: diode_derivations.lvs:25
+    Polygons (raw): 100 (flat)  28 (hierarchical)
+    Elapsed: 0.000s  Memory: 441.00M
+"join" in: diode_derivations.lvs:25
+    Polygons (raw): 100 (flat)  28 (hierarchical)
+    Elapsed: 0.000s  Memory: 441.00M
+"join" in: diode_derivations.lvs:26
+    Polygons (raw): 100 (flat)  28 (hierarchical)
+    Elapsed: 0.000s  Memory: 441.00M
+"join" in: diode_derivations.lvs:26
+    Polygons (raw): 100 (flat)  28 (hierarchical)
+    Elapsed: 0.000s  Memory: 441.00M
+"join" in: diode_derivations.lvs:26
+    Polygons (raw): 100 (flat)  28 (hierarchical)
+    Elapsed: 0.000s  Memory: 441.00M
+"join" in: diode_derivations.lvs:27
+    Polygons (raw): 100 (flat)  28 (hierarchical)
+    Elapsed: 0.000s  Memory: 441.00M
+"join" in: diode_derivations.lvs:27
+    Polygons (raw): 100 (flat)  28 (hierarchical)
+    Elapsed: 0.000s  Memory: 441.00M
+"-" in: diode_derivations.lvs:29
+    Polygons (raw): 10 (flat)  2 (hierarchical)
+    Elapsed: 0.000s  Memory: 441.00M
+"-" in: diode_derivations.lvs:29
+    Polygons (raw): 10 (flat)  2 (hierarchical)
+    Elapsed: 0.000s  Memory: 441.00M
+"&" in: diode_derivations.lvs:30
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 441.00M
+"-" in: diode_derivations.lvs:32
+    Polygons (raw): 10 (flat)  2 (hierarchical)
+    Elapsed: 0.000s  Memory: 441.00M
+"-" in: diode_derivations.lvs:32
+    Polygons (raw): 10 (flat)  2 (hierarchical)
+    Elapsed: 0.010s  Memory: 441.00M
+"&" in: diode_derivations.lvs:33
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 441.00M
+"-" in: diode_derivations.lvs:35
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 441.00M
+"-" in: diode_derivations.lvs:35
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 441.00M
+"&" in: diode_derivations.lvs:36
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 441.00M
+"-" in: diode_derivations.lvs:38
+    Polygons (raw): 9 (flat)  5 (hierarchical)
+    Elapsed: 0.000s  Memory: 441.00M
+"-" in: diode_derivations.lvs:38
+    Polygons (raw): 9 (flat)  5 (hierarchical)
+    Elapsed: 0.000s  Memory: 441.00M
+"overlapping" in: diode_derivations.lvs:39
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 441.00M
+"join" in: diode_derivations.lvs:42
+    Polygons (raw): 109 (flat)  33 (hierarchical)
+    Elapsed: 0.000s  Memory: 441.00M
+"-" in: diode_derivations.lvs:43
+    Polygons (raw): 10 (flat)  2 (hierarchical)
+    Elapsed: 0.000s  Memory: 441.00M
+"&" in: diode_derivations.lvs:43
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 441.00M
+"-" in: diode_derivations.lvs:44
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 441.00M
+"&" in: diode_derivations.lvs:47
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 441.00M
+"&" in: diode_derivations.lvs:47
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 441.00M
+"-" in: diode_derivations.lvs:48
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 441.00M
+"-" in: diode_derivations.lvs:51
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 441.00M
+"&" in: diode_derivations.lvs:51
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.010s  Memory: 441.00M
+"-" in: diode_derivations.lvs:52
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 441.00M
+"&" in: diode_derivations.lvs:55
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 441.00M
+"&" in: diode_derivations.lvs:55
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 441.00M
+"-" in: diode_derivations.lvs:56
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 441.00M
+"join" in: diode_derivations.lvs:59
+    Polygons (raw): 100 (flat)  28 (hierarchical)
+    Elapsed: 0.000s  Memory: 441.00M
+"-" in: diode_derivations.lvs:60
+    Polygons (raw): 10 (flat)  2 (hierarchical)
+    Elapsed: 0.000s  Memory: 441.00M
+"&" in: diode_derivations.lvs:60
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 441.00M
+"-" in: diode_derivations.lvs:61
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 441.00M
+"-" in: diode_derivations.lvs:63
+    Polygons (raw): 9 (flat)  5 (hierarchical)
+    Elapsed: 0.000s  Memory: 441.00M
+"interacting" in: diode_derivations.lvs:63
+    Polygons (raw): 1 (flat)  1 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"-" in: diode_derivations.lvs:64
+    Polygons (raw): 21 (flat)  21 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"&" in: diode_derivations.lvs:66
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"&" in: diode_derivations.lvs:66
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"-" in: diode_derivations.lvs:67
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"&" in: diode_derivations.lvs:69
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"interacting" in: diode_derivations.lvs:69
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"-" in: diode_derivations.lvs:70
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"-" in: diode_derivations.lvs:73
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"&" in: diode_derivations.lvs:73
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"-" in: diode_derivations.lvs:74
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"-" in: diode_derivations.lvs:76
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"interacting" in: diode_derivations.lvs:76
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"-" in: diode_derivations.lvs:77
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.010s  Memory: 442.00M
+"&" in: diode_derivations.lvs:80
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"&" in: diode_derivations.lvs:80
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"-" in: diode_derivations.lvs:81
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"&" in: diode_derivations.lvs:83
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"interacting" in: diode_derivations.lvs:83
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"-" in: diode_derivations.lvs:84
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"&" in: diode_derivations.lvs:87
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"-" in: diode_derivations.lvs:87
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.010s  Memory: 442.00M
+"covering" in: diode_derivations.lvs:88
+    Polygons (raw): 1 (flat)  1 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"covering" in: diode_derivations.lvs:88
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"-" in: diode_derivations.lvs:89
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"&" in: diode_derivations.lvs:92
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"-" in: diode_derivations.lvs:92
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"covering" in: diode_derivations.lvs:93
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.010s  Memory: 442.00M
+"covering" in: diode_derivations.lvs:93
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"-" in: diode_derivations.lvs:94
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"join" in: diode_derivations.lvs:97
+    Polygons (raw): 109 (flat)  33 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"interacting" in: diode_derivations.lvs:98
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.010s  Memory: 442.00M
+"interacting" in: diode_derivations.lvs:99
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"-" in: diode_derivations.lvs:99
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"interacting" in: diode_derivations.lvs:102
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"interacting" in: diode_derivations.lvs:103
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.010s  Memory: 442.00M
+"-" in: diode_derivations.lvs:103
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"extents" in: diode_derivations.lvs:106
+    Polygons (raw): 5 (flat)  1 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"not_interacting" in: diode_derivations.lvs:107
+    Polygons (raw): 5 (flat)  1 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"covering" in: diode_derivations.lvs:108
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"interacting" in: diode_derivations.lvs:108
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"not_interacting" in: diode_derivations.lvs:109
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"not_interacting" in: diode_derivations.lvs:112
+    Polygons (raw): 5 (flat)  1 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"covering" in: diode_derivations.lvs:113
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"interacting" in: diode_derivations.lvs:113
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"not_interacting" in: diode_derivations.lvs:114
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"join" in: diode_derivations.lvs:117
+    Polygons (raw): 10 (flat)  2 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"join" in: diode_derivations.lvs:117
+    Polygons (raw): 10 (flat)  2 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"join" in: diode_derivations.lvs:118
+    Polygons (raw): 10 (flat)  2 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"join" in: diode_derivations.lvs:118
+    Polygons (raw): 10 (flat)  2 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"join" in: diode_derivations.lvs:118
+    Polygons (raw): 110 (flat)  30 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"&" in: diode_derivations.lvs:120
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"&" in: diode_derivations.lvs:120
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"-" in: diode_derivations.lvs:120
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"&" in: diode_derivations.lvs:121
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"not_interacting" in: diode_derivations.lvs:121
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"-" in: diode_derivations.lvs:121
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+2026-05-30 22:16:49 +0200: Memory Usage (815368K) : Starting DIODE DERIVATIONS
+"join" in: res_derivations.lvs:23
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"join" in: res_derivations.lvs:23
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"join" in: res_derivations.lvs:24
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"join" in: res_derivations.lvs:24
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"join" in: res_derivations.lvs:24
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"join" in: res_derivations.lvs:25
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"join" in: res_derivations.lvs:25
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"join" in: res_derivations.lvs:25
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.010s  Memory: 442.00M
+"join" in: res_derivations.lvs:26
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"join" in: res_derivations.lvs:26
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"join" in: res_derivations.lvs:26
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"join" in: res_derivations.lvs:27
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"join" in: res_derivations.lvs:27
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"join" in: res_derivations.lvs:27
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"join" in: res_derivations.lvs:34
+    Polygons (raw): 9 (flat)  5 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"join" in: res_derivations.lvs:34
+    Polygons (raw): 9 (flat)  5 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"join" in: res_derivations.lvs:35
+    Polygons (raw): 109 (flat)  33 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"join" in: res_derivations.lvs:35
+    Polygons (raw): 119 (flat)  35 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"join" in: res_derivations.lvs:35
+    Polygons (raw): 119 (flat)  35 (hierarchical)
+    Elapsed: 0.010s  Memory: 442.00M
+"&" in: res_derivations.lvs:38
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"&" in: res_derivations.lvs:38
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"-" in: res_derivations.lvs:38
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.010s  Memory: 442.00M
+"-" in: res_derivations.lvs:38
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"-" in: res_derivations.lvs:39
+    Polygons (raw): 5 (flat)  1 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"not_interacting" in: res_derivations.lvs:39
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.010s  Memory: 442.00M
+"interacting" in: res_derivations.lvs:40
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"-" in: res_derivations.lvs:40
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"-" in: res_derivations.lvs:40
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"&" in: res_derivations.lvs:43
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"&" in: res_derivations.lvs:43
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"&" in: res_derivations.lvs:43
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"&" in: res_derivations.lvs:43
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"-" in: res_derivations.lvs:43
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"&" in: res_derivations.lvs:46
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"not_interacting" in: res_derivations.lvs:46
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"-" in: res_derivations.lvs:46
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"-" in: res_derivations.lvs:46
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"&" in: res_derivations.lvs:49
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"&" in: res_derivations.lvs:49
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"&" in: res_derivations.lvs:49
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"not_interacting" in: res_derivations.lvs:49
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"-" in: res_derivations.lvs:49
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"join" in: res_derivations.lvs:52
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"join" in: res_derivations.lvs:52
+    Polygons (raw): 100 (flat)  28 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"join" in: res_derivations.lvs:53
+    Polygons (raw): 110 (flat)  30 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"join" in: res_derivations.lvs:53
+    Polygons (raw): 110 (flat)  30 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"join" in: res_derivations.lvs:53
+    Polygons (raw): 110 (flat)  30 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"&" in: res_derivations.lvs:56
+    Polygons (raw): 5 (flat)  1 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"&" in: res_derivations.lvs:56
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"&" in: res_derivations.lvs:56
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"-" in: res_derivations.lvs:56
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"-" in: res_derivations.lvs:56
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"inside" in: res_derivations.lvs:57
+    Polygons (raw): 5 (flat)  1 (hierarchical)
+    Elapsed: 0.010s  Memory: 442.00M
+"not_interacting" in: res_derivations.lvs:57
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"interacting" in: res_derivations.lvs:58
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"-" in: res_derivations.lvs:58
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"-" in: res_derivations.lvs:58
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"&" in: res_derivations.lvs:61
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"&" in: res_derivations.lvs:61
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"&" in: res_derivations.lvs:61
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"-" in: res_derivations.lvs:61
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"-" in: res_derivations.lvs:62
+    Polygons (raw): 10 (flat)  2 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"&" in: res_derivations.lvs:62
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"not_interacting" in: res_derivations.lvs:62
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"interacting" in: res_derivations.lvs:63
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"-" in: res_derivations.lvs:63
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"-" in: res_derivations.lvs:63
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"&" in: res_derivations.lvs:66
+    Polygons (raw): 5 (flat)  1 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"&" in: res_derivations.lvs:66
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.010s  Memory: 442.00M
+"not_interacting" in: res_derivations.lvs:66
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"-" in: res_derivations.lvs:66
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"-" in: res_derivations.lvs:66
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"not_interacting" in: res_derivations.lvs:69
+    Polygons (raw): 10 (flat)  2 (hierarchical)
+    Elapsed: 0.010s  Memory: 442.00M
+"&" in: res_derivations.lvs:69
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"&" in: res_derivations.lvs:69
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"not_interacting" in: res_derivations.lvs:70
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"-" in: res_derivations.lvs:70
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.010s  Memory: 442.00M
+"join" in: res_derivations.lvs:73
+    Polygons (raw): 100 (flat)  28 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"join" in: res_derivations.lvs:73
+    Polygons (raw): 100 (flat)  28 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"join" in: res_derivations.lvs:74
+    Polygons (raw): 100 (flat)  28 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"join" in: res_derivations.lvs:74
+    Polygons (raw): 100 (flat)  28 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"interacting" in: res_derivations.lvs:76
+    Polygons (raw): 1 (flat)  1 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"&" in: res_derivations.lvs:76
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"-" in: res_derivations.lvs:76
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"-" in: res_derivations.lvs:76
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"interacting" in: res_derivations.lvs:79
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"&" in: res_derivations.lvs:79
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"&" in: res_derivations.lvs:79
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"-" in: res_derivations.lvs:79
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"join" in: res_derivations.lvs:86
+    Polygons (raw): 40 (flat)  8 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"join" in: res_derivations.lvs:89
+    Polygons (raw): 50 (flat)  10 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"join" in: res_derivations.lvs:89
+    Polygons (raw): 50 (flat)  10 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"&" in: res_derivations.lvs:92
+    Polygons (raw): 20 (flat)  4 (hierarchical)
+    Elapsed: 0.010s  Memory: 442.00M
+"&" in: res_derivations.lvs:92
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"&" in: res_derivations.lvs:92
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"-" in: res_derivations.lvs:92
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.010s  Memory: 442.00M
+"-" in: res_derivations.lvs:92
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"&" in: res_derivations.lvs:95
+    Polygons (raw): 20 (flat)  4 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"&" in: res_derivations.lvs:95
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"&" in: res_derivations.lvs:95
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.010s  Memory: 442.00M
+"&" in: res_derivations.lvs:95
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"-" in: res_derivations.lvs:95
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"&" in: res_derivations.lvs:98
+    Polygons (raw): 20 (flat)  4 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"&" in: res_derivations.lvs:98
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.010s  Memory: 442.00M
+"-" in: res_derivations.lvs:98
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"not_interacting" in: res_derivations.lvs:98
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"-" in: res_derivations.lvs:98
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.010s  Memory: 442.00M
+"&" in: res_derivations.lvs:101
+    Polygons (raw): 20 (flat)  4 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"&" in: res_derivations.lvs:101
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"&" in: res_derivations.lvs:101
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"not_interacting" in: res_derivations.lvs:101
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"-" in: res_derivations.lvs:101
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"join" in: res_derivations.lvs:104
+    Polygons (raw): 50 (flat)  10 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"&" in: res_derivations.lvs:107
+    Polygons (raw): 25 (flat)  5 (hierarchical)
+    Elapsed: 0.010s  Memory: 442.00M
+"&" in: res_derivations.lvs:107
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"&" in: res_derivations.lvs:107
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"not_interacting" in: res_derivations.lvs:107
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"-" in: res_derivations.lvs:107
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"-" in: res_derivations.lvs:107
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.010s  Memory: 442.00M
+"&" in: res_derivations.lvs:110
+    Polygons (raw): 25 (flat)  5 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"&" in: res_derivations.lvs:110
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"&" in: res_derivations.lvs:110
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.010s  Memory: 442.00M
+"not_interacting" in: res_derivations.lvs:110
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"&" in: res_derivations.lvs:110
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"-" in: res_derivations.lvs:110
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"&" in: res_derivations.lvs:113
+    Polygons (raw): 25 (flat)  5 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"&" in: res_derivations.lvs:113
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"-" in: res_derivations.lvs:113
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"not_interacting" in: res_derivations.lvs:113
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.010s  Memory: 442.00M
+"not_interacting" in: res_derivations.lvs:114
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"-" in: res_derivations.lvs:114
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"&" in: res_derivations.lvs:117
+    Polygons (raw): 25 (flat)  5 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"&" in: res_derivations.lvs:117
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"&" in: res_derivations.lvs:117
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"not_interacting" in: res_derivations.lvs:117
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"not_interacting" in: res_derivations.lvs:118
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"-" in: res_derivations.lvs:118
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"&" in: res_derivations.lvs:125
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"&" in: res_derivations.lvs:125
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"&" in: res_derivations.lvs:125
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"-" in: res_derivations.lvs:125
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"-" in: res_derivations.lvs:125
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"-" in: res_derivations.lvs:125
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"-" in: res_derivations.lvs:125
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"&" in: res_derivations.lvs:128
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.010s  Memory: 442.00M
+"&" in: res_derivations.lvs:128
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"&" in: res_derivations.lvs:128
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"-" in: res_derivations.lvs:128
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"-" in: res_derivations.lvs:128
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.010s  Memory: 442.00M
+"-" in: res_derivations.lvs:128
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"&" in: res_derivations.lvs:131
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"&" in: res_derivations.lvs:131
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"&" in: res_derivations.lvs:131
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"-" in: res_derivations.lvs:131
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"-" in: res_derivations.lvs:131
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"&" in: res_derivations.lvs:131
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"-" in: res_derivations.lvs:131
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"&" in: res_derivations.lvs:134
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"&" in: res_derivations.lvs:134
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"&" in: res_derivations.lvs:134
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"-" in: res_derivations.lvs:134
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"&" in: res_derivations.lvs:134
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"-" in: res_derivations.lvs:134
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"&" in: res_derivations.lvs:141
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"&" in: res_derivations.lvs:144
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"&" in: res_derivations.lvs:147
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"&" in: res_derivations.lvs:150
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+2026-05-30 22:16:49 +0200: Memory Usage (815368K) : Starting RESISTOR DERIVATIONS
+"join" in: mimcap_derivations.lvs:23
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"sized" in: mimcap_derivations.lvs:26
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"interacting" in: mimcap_derivations.lvs:26
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"&" in: mimcap_derivations.lvs:26
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"-" in: mimcap_derivations.lvs:27
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"-" in: mimcap_derivations.lvs:28
+    Polygons (raw): 64 (flat)  64 (hierarchical)
+    Elapsed: 0.010s  Memory: 442.00M
+"interacting" in: mimcap_derivations.lvs:29
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"interacting" in: mimcap_derivations.lvs:29
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"-" in: mimcap_derivations.lvs:30
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"sized" in: mimcap_derivations.lvs:33
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"interacting" in: mimcap_derivations.lvs:33
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"&" in: mimcap_derivations.lvs:33
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+2026-05-30 22:16:50 +0200: Memory Usage (815652K) : Starting MIMCAP DERIVATIONS
+"join" in: moscap_derivations.lvs:23
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"join" in: moscap_derivations.lvs:23
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"join" in: moscap_derivations.lvs:24
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"join" in: moscap_derivations.lvs:24
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"join" in: moscap_derivations.lvs:24
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"join" in: moscap_derivations.lvs:25
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"join" in: moscap_derivations.lvs:25
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"join" in: moscap_derivations.lvs:25
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"join" in: moscap_derivations.lvs:26
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"join" in: moscap_derivations.lvs:26
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"join" in: moscap_derivations.lvs:26
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"join" in: moscap_derivations.lvs:27
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"join" in: moscap_derivations.lvs:27
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"join" in: moscap_derivations.lvs:27
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.010s  Memory: 442.00M
+"join" in: moscap_derivations.lvs:28
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"join" in: moscap_derivations.lvs:28
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"interacting" in: moscap_derivations.lvs:31
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"-" in: moscap_derivations.lvs:31
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"interacting" in: moscap_derivations.lvs:34
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"-" in: moscap_derivations.lvs:34
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"interacting" in: moscap_derivations.lvs:37
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"-" in: moscap_derivations.lvs:37
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"interacting" in: moscap_derivations.lvs:40
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"-" in: moscap_derivations.lvs:40
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"interacting" in: moscap_derivations.lvs:43
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"-" in: moscap_derivations.lvs:43
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"interacting" in: moscap_derivations.lvs:46
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"-" in: moscap_derivations.lvs:46
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"interacting" in: moscap_derivations.lvs:49
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"-" in: moscap_derivations.lvs:49
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"interacting" in: moscap_derivations.lvs:52
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"-" in: moscap_derivations.lvs:52
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"&" in: moscap_derivations.lvs:55
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.010s  Memory: 442.00M
+"interacting" in: moscap_derivations.lvs:55
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"-" in: moscap_derivations.lvs:55
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"&" in: moscap_derivations.lvs:58
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"interacting" in: moscap_derivations.lvs:58
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"-" in: moscap_derivations.lvs:58
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"&" in: moscap_derivations.lvs:61
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"interacting" in: moscap_derivations.lvs:61
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"-" in: moscap_derivations.lvs:61
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"&" in: moscap_derivations.lvs:64
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"interacting" in: moscap_derivations.lvs:64
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"-" in: moscap_derivations.lvs:64
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+2026-05-30 22:16:50 +0200: Memory Usage (815652K) : Starting MOSCAP DERIVATIONS
+"join" in: mos_sab_derivations.lvs:23
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"join" in: mos_sab_derivations.lvs:23
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"join" in: mos_sab_derivations.lvs:24
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.010s  Memory: 442.00M
+"join" in: mos_sab_derivations.lvs:24
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"join" in: mos_sab_derivations.lvs:24
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"join" in: mos_sab_derivations.lvs:25
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"join" in: mos_sab_derivations.lvs:25
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"join" in: mos_sab_derivations.lvs:25
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"join" in: mos_sab_derivations.lvs:26
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"join" in: mos_sab_derivations.lvs:26
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"join" in: mos_sab_derivations.lvs:26
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"join" in: mos_sab_derivations.lvs:27
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"join" in: mos_sab_derivations.lvs:27
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+2026-05-30 22:16:50 +0200: Memory Usage (815652K) : Starting MOS SAB DERIVATIONS
+"&" in: mos_sab_derivations.lvs:35
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"interacting" in: mos_sab_derivations.lvs:35
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"interacting" in: mos_sab_derivations.lvs:36
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"-" in: mos_sab_derivations.lvs:36
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"&" in: mos_sab_derivations.lvs:39
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"interacting" in: mos_sab_derivations.lvs:39
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"interacting" in: mos_sab_derivations.lvs:40
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"-" in: mos_sab_derivations.lvs:40
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.020s  Memory: 442.00M
+"&" in: mos_sab_derivations.lvs:43
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"interacting" in: mos_sab_derivations.lvs:43
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"interacting" in: mos_sab_derivations.lvs:44
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"-" in: mos_sab_derivations.lvs:44
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"&" in: mos_sab_derivations.lvs:47
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"interacting" in: mos_sab_derivations.lvs:47
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"interacting" in: mos_sab_derivations.lvs:48
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"-" in: mos_sab_derivations.lvs:48
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.010s  Memory: 442.00M
+"&" in: mos_sab_derivations.lvs:51
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"interacting" in: mos_sab_derivations.lvs:51
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"interacting" in: mos_sab_derivations.lvs:52
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"-" in: mos_sab_derivations.lvs:52
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"&" in: mos_sab_derivations.lvs:55
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"interacting" in: mos_sab_derivations.lvs:55
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"interacting" in: mos_sab_derivations.lvs:56
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"-" in: mos_sab_derivations.lvs:56
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.010s  Memory: 442.00M
+2026-05-30 22:16:50 +0200: Memory Usage (815652K) : Starting PMOS SAB DERIVATIONS
+"&" in: mos_sab_derivations.lvs:64
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"interacting" in: mos_sab_derivations.lvs:64
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"interacting" in: mos_sab_derivations.lvs:65
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"-" in: mos_sab_derivations.lvs:65
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"&" in: mos_sab_derivations.lvs:68
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"interacting" in: mos_sab_derivations.lvs:68
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"interacting" in: mos_sab_derivations.lvs:69
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"-" in: mos_sab_derivations.lvs:69
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.010s  Memory: 442.00M
+"&" in: mos_sab_derivations.lvs:72
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"interacting" in: mos_sab_derivations.lvs:72
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"interacting" in: mos_sab_derivations.lvs:73
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"-" in: mos_sab_derivations.lvs:73
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"&" in: mos_sab_derivations.lvs:76
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"interacting" in: mos_sab_derivations.lvs:76
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"interacting" in: mos_sab_derivations.lvs:77
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"-" in: mos_sab_derivations.lvs:77
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"&" in: mos_sab_derivations.lvs:80
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"interacting" in: mos_sab_derivations.lvs:80
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"interacting" in: mos_sab_derivations.lvs:81
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"-" in: mos_sab_derivations.lvs:81
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"&" in: mos_sab_derivations.lvs:84
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"interacting" in: mos_sab_derivations.lvs:84
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"interacting" in: mos_sab_derivations.lvs:85
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"-" in: mos_sab_derivations.lvs:85
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+2026-05-30 22:16:50 +0200: Memory Usage (815916K) : Starting NMOS SAB DERIVATIONS
+"inside" in: efuse_derivations.lvs:23
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"or" in: efuse_derivations.lvs:23
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"-" in: efuse_derivations.lvs:23
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"&" in: efuse_derivations.lvs:24
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"inside" in: efuse_derivations.lvs:24
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"&" in: efuse_derivations.lvs:25
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"inside" in: efuse_derivations.lvs:25
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+"|" in: efuse_derivations.lvs:26
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 442.00M
+2026-05-30 22:16:50 +0200: Memory Usage (815916K) : Starting NMOS EFUSE DERIVATIONS
+2026-05-30 22:16:50 +0200: Memory Usage (815916K) : Starting GF180 LVS connectivity setup
+2026-05-30 22:16:50 +0200: Memory Usage (815916K) : Starting GF180 LVS connectivity setup (Inter-layer)
+2026-05-30 22:16:50 +0200: Memory Usage (815916K) : Starting GF180 LVS connectivity setup (Global)
+2026-05-30 22:16:50 +0200: Memory Usage (815916K) : Starting GF180 LVS connectivity setup (Multifinger Devices)
+2026-05-30 22:16:50 +0200: Memory Usage (815916K) : Starting LVS MOSFET CONNECTIONS
+2026-05-30 22:16:50 +0200: Memory Usage (815916K) : Starting LVS BJT CONNECTIONS
+2026-05-30 22:16:50 +0200: Memory Usage (815916K) : Starting LVS DIODE CONNECTIONS
+2026-05-30 22:16:50 +0200: Memory Usage (815916K) : Starting LVS MIMCAP CONNECTIONS
+2026-05-30 22:16:50 +0200: Memory Usage (815916K) : Starting LVS RESISTOR CONNECTIONS
+2026-05-30 22:16:50 +0200: Memory Usage (815916K) : Starting LVS EFUSE CONNECTIONS
+2026-05-30 22:16:50 +0200: Memory Usage (815916K) : Starting GF180 LVS DEVICES EXTRACTION
+2026-05-30 22:16:50 +0200: Memory Usage (815916K) : Starting MOSFET EXTRACTION
+2026-05-30 22:16:50 +0200: Memory Usage (815916K) : Starting PMOS EXTRACTION
+"extract_devices" in: mos_extraction.lvs:30
+    Elapsed: 0.000s  Memory: 443.00M
+2026-05-30 22:16:50 +0200: Memory Usage (815916K) : Extracting 3.3V PMOS transistor outside DNWEL
+"extract_devices" in: mos_extraction.lvs:35
+    Elapsed: 0.010s  Memory: 443.00M
+2026-05-30 22:16:50 +0200: Memory Usage (815916K) : Extracting 5V PMOS transistor outside DNWELL
+"extract_devices" in: mos_extraction.lvs:40
+    Elapsed: 0.000s  Memory: 443.00M
+2026-05-30 22:16:50 +0200: Memory Usage (815916K) : Extracting 6V PMOS transistor outside DNWELL
+"extract_devices" in: mos_extraction.lvs:45
+    Elapsed: 0.000s  Memory: 443.00M
+2026-05-30 22:16:50 +0200: Memory Usage (815916K) : Extracting 3.3V PMOS transistor inside DNWELL
+"extract_devices" in: mos_extraction.lvs:51
+    Elapsed: 0.000s  Memory: 443.00M
+2026-05-30 22:16:50 +0200: Memory Usage (815916K) : Extracting 5V PMOS transistor inside DNWELL
+"extract_devices" in: mos_extraction.lvs:57
+    Elapsed: 0.010s  Memory: 443.00M
+2026-05-30 22:16:50 +0200: Memory Usage (815916K) : Extracting 6V PMOS transistor inside DNWELL
+"extract_devices" in: mos_extraction.lvs:63
+    Elapsed: 0.000s  Memory: 443.00M
+2026-05-30 22:16:50 +0200: Memory Usage (815916K) : Extracting LDPMOS transistor
+2026-05-30 22:16:50 +0200: Memory Usage (815916K) : Starting NMOS EXTRACTION
+"extract_devices" in: mos_extraction.lvs:75
+    Elapsed: 0.000s  Memory: 443.00M
+2026-05-30 22:16:50 +0200: Memory Usage (815916K) : 3.3V NMOS transistor outside DNWELL
+"extract_devices" in: mos_extraction.lvs:80
+    Elapsed: 0.000s  Memory: 443.00M
+2026-05-30 22:16:50 +0200: Memory Usage (815916K) : 5V NMOS transistor outside DNWELL
+"extract_devices" in: mos_extraction.lvs:85
+    Elapsed: 0.010s  Memory: 443.00M
+2026-05-30 22:16:50 +0200: Memory Usage (815916K) : 6V NMOS transistor outside DNWELL
+"extract_devices" in: mos_extraction.lvs:90
+    Elapsed: 0.000s  Memory: 443.00M
+2026-05-30 22:16:50 +0200: Memory Usage (815916K) : 3.3V NMOS transistor inside DNWELL
+"extract_devices" in: mos_extraction.lvs:95
+    Elapsed: 0.000s  Memory: 443.00M
+2026-05-30 22:16:50 +0200: Memory Usage (815916K) : 5V NMOS transistor inside DNWELL
+"extract_devices" in: mos_extraction.lvs:100
+    Elapsed: 0.000s  Memory: 443.00M
+2026-05-30 22:16:50 +0200: Memory Usage (815916K) : 6V NMOS transistor inside DNWELL
+"extract_devices" in: mos_extraction.lvs:105
+    Elapsed: 0.000s  Memory: 443.00M
+2026-05-30 22:16:50 +0200: Memory Usage (815916K) : Native Vt NMOS transistor
+"extract_devices" in: mos_extraction.lvs:110
+    Elapsed: 0.000s  Memory: 443.00M
+2026-05-30 22:16:50 +0200: Memory Usage (815916K) : Extracting LDNMOS transistor
+2026-05-30 22:16:50 +0200: Memory Usage (815916K) : Starting BJT EXTRACTION
+2026-05-30 22:16:50 +0200: Memory Usage (815916K) : Starting vnpn BJT EXTRACTION
+"extents" in: bjt_extraction.lvs:31
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.020s  Memory: 443.00M
+"extents" in: bjt_extraction.lvs:32
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 443.00M
+"extents" in: bjt_extraction.lvs:34
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 443.00M
+"extract_devices" in: bjt_extraction.lvs:31
+    Elapsed: 0.000s  Memory: 443.00M
+2026-05-30 22:16:50 +0200: Memory Usage (815916K) : Extracting npn_10p00x10p00 BJT
+"extents" in: bjt_extraction.lvs:43
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 443.00M
+"extents" in: bjt_extraction.lvs:44
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 443.00M
+"extents" in: bjt_extraction.lvs:46
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 443.00M
+"extract_devices" in: bjt_extraction.lvs:43
+    Elapsed: 0.000s  Memory: 443.00M
+2026-05-30 22:16:50 +0200: Memory Usage (815916K) : Extracting npn_05p00x05p00 BJT
+"extents" in: bjt_extraction.lvs:55
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 443.00M
+"extents" in: bjt_extraction.lvs:56
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 443.00M
+"extents" in: bjt_extraction.lvs:58
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 443.00M
+"extract_devices" in: bjt_extraction.lvs:55
+    Elapsed: 0.000s  Memory: 443.00M
+2026-05-30 22:16:51 +0200: Memory Usage (815916K) : Extracting npn_00p54x16p00 BJT
+"extents" in: bjt_extraction.lvs:67
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 443.00M
+"extents" in: bjt_extraction.lvs:68
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 443.00M
+"extents" in: bjt_extraction.lvs:70
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 443.00M
+"extract_devices" in: bjt_extraction.lvs:67
+    Elapsed: 0.000s  Memory: 443.00M
+2026-05-30 22:16:51 +0200: Memory Usage (815916K) : Extracting npn_00p54x08p00 BJT
+"extents" in: bjt_extraction.lvs:79
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 443.00M
+"extents" in: bjt_extraction.lvs:80
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 443.00M
+"extents" in: bjt_extraction.lvs:82
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 443.00M
+"extract_devices" in: bjt_extraction.lvs:79
+    Elapsed: 0.000s  Memory: 443.00M
+2026-05-30 22:16:51 +0200: Memory Usage (815916K) : Extracting npn_00p54x04p00 BJT
+"extents" in: bjt_extraction.lvs:91
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 443.00M
+"extents" in: bjt_extraction.lvs:92
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.010s  Memory: 443.00M
+"extents" in: bjt_extraction.lvs:94
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 443.00M
+"extract_devices" in: bjt_extraction.lvs:91
+    Elapsed: 0.000s  Memory: 443.00M
+2026-05-30 22:16:51 +0200: Memory Usage (815916K) : Extracting npn_00p54x02p00 BJT
+2026-05-30 22:16:51 +0200: Memory Usage (815916K) : Starting vpnp BJT EXTRACTION
+"extents" in: bjt_extraction.lvs:108
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 443.00M
+"extents" in: bjt_extraction.lvs:109
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 443.00M
+"extract_devices" in: bjt_extraction.lvs:108
+    Elapsed: 0.000s  Memory: 443.00M
+2026-05-30 22:16:51 +0200: Memory Usage (815916K) : Extracting pnp_10p00x10p00 BJT
+"extents" in: bjt_extraction.lvs:118
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 443.00M
+"extents" in: bjt_extraction.lvs:119
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 443.00M
+"extract_devices" in: bjt_extraction.lvs:118
+    Elapsed: 0.000s  Memory: 443.00M
+2026-05-30 22:16:51 +0200: Memory Usage (815916K) : Extracting pnp_05p00x05p00 BJT
+"extents" in: bjt_extraction.lvs:128
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 443.00M
+"extents" in: bjt_extraction.lvs:129
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 443.00M
+"extract_devices" in: bjt_extraction.lvs:128
+    Elapsed: 0.000s  Memory: 443.00M
+2026-05-30 22:16:51 +0200: Memory Usage (815916K) : Extracting pnp_10p00x00p42 BJT
+"extents" in: bjt_extraction.lvs:138
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.010s  Memory: 443.00M
+"extents" in: bjt_extraction.lvs:139
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 443.00M
+"extract_devices" in: bjt_extraction.lvs:138
+    Elapsed: 0.000s  Memory: 443.00M
+2026-05-30 22:16:51 +0200: Memory Usage (815916K) : Extracting pnp_05p00x00p42 BJT
+2026-05-30 22:16:51 +0200: Memory Usage (815916K) : Starting DIODE EXTRACTION
+"extract_devices" in: diode_extraction.lvs:25
+    Elapsed: 0.000s  Memory: 443.00M
+2026-05-30 22:16:51 +0200: Memory Usage (815916K) : Extracting diode_nd2ps_03v3 diode
+"extract_devices" in: diode_extraction.lvs:29
+    Elapsed: 0.000s  Memory: 443.00M
+2026-05-30 22:16:51 +0200: Memory Usage (815916K) : Extracting diode_nd2ps_03v3_dn diode
+"extract_devices" in: diode_extraction.lvs:33
+    Elapsed: 0.000s  Memory: 443.00M
+2026-05-30 22:16:51 +0200: Memory Usage (815916K) : Extracting diode_nd2ps_06v0 diode
+"extract_devices" in: diode_extraction.lvs:37
+    Elapsed: 0.000s  Memory: 443.00M
+2026-05-30 22:16:51 +0200: Memory Usage (815916K) : Extracting diode_nd2ps_06v0_dn diode
+"extract_devices" in: diode_extraction.lvs:41
+    Elapsed: 0.000s  Memory: 443.00M
+2026-05-30 22:16:51 +0200: Memory Usage (815916K) : Extracting diode_pd2nw_03v3 diode
+"extract_devices" in: diode_extraction.lvs:45
+    Elapsed: 0.000s  Memory: 443.00M
+2026-05-30 22:16:51 +0200: Memory Usage (815916K) : Extractingdiode_pd2nw_03v3_dn diode
+"extract_devices" in: diode_extraction.lvs:50
+    Elapsed: 0.000s  Memory: 443.00M
+2026-05-30 22:16:51 +0200: Memory Usage (815916K) : Extracting diode_pd2nw_06v0 diode
+"extract_devices" in: diode_extraction.lvs:54
+    Elapsed: 0.000s  Memory: 443.00M
+2026-05-30 22:16:51 +0200: Memory Usage (815916K) : Extracting diode_pd2nw_06v0_dn diode
+"extract_devices" in: diode_extraction.lvs:59
+    Elapsed: 0.000s  Memory: 443.00M
+2026-05-30 22:16:51 +0200: Memory Usage (815916K) : Extracting diode_nw2ps_03v3 diode
+"extract_devices" in: diode_extraction.lvs:63
+    Elapsed: 0.000s  Memory: 443.00M
+2026-05-30 22:16:51 +0200: Memory Usage (815916K) : Extracting diode_nw2ps_06v0 diode
+"extract_devices" in: diode_extraction.lvs:67
+    Elapsed: 0.000s  Memory: 443.00M
+2026-05-30 22:16:51 +0200: Memory Usage (815916K) : Extracting diode_pw2dw_03v3 diode
+"extract_devices" in: diode_extraction.lvs:71
+    Elapsed: 0.000s  Memory: 443.00M
+2026-05-30 22:16:51 +0200: Memory Usage (815916K) : Extracting diode_pw2dw_06v0 diode
+"extract_devices" in: diode_extraction.lvs:75
+    Elapsed: 0.000s  Memory: 443.00M
+2026-05-30 22:16:51 +0200: Memory Usage (815916K) : Extracting diode_dw2ps_03v3 diode
+"extract_devices" in: diode_extraction.lvs:79
+    Elapsed: 0.000s  Memory: 443.00M
+2026-05-30 22:16:51 +0200: Memory Usage (815916K) : Extracting diode_dw2ps_06v0 diode
+"extract_devices" in: diode_extraction.lvs:83
+    Elapsed: 0.000s  Memory: 443.00M
+2026-05-30 22:16:51 +0200: Memory Usage (815916K) : Extracting sc_diode diode
+2026-05-30 22:16:51 +0200: Memory Usage (815916K) : Starting RESISTOR EXTRACTION
+"extract_devices" in: res_extraction.lvs:29
+    Elapsed: 0.000s  Memory: 443.00M
+2026-05-30 22:16:51 +0200: Memory Usage (815916K) : Extracting NPLUS_U device
+"extract_devices" in: res_extraction.lvs:33
+    Elapsed: 0.000s  Memory: 443.00M
+2026-05-30 22:16:51 +0200: Memory Usage (815916K) : Extracting NPLUS_U_DW device
+"extract_devices" in: res_extraction.lvs:38
+    Elapsed: 0.010s  Memory: 443.00M
+2026-05-30 22:16:51 +0200: Memory Usage (815916K) : Extracting PPLUS_U device
+"extract_devices" in: res_extraction.lvs:43
+    Elapsed: 0.000s  Memory: 443.00M
+2026-05-30 22:16:51 +0200: Memory Usage (815916K) : Extracting PPLUS_U_DW device
+"extract_devices" in: res_extraction.lvs:48
+    Elapsed: 0.000s  Memory: 443.00M
+2026-05-30 22:16:51 +0200: Memory Usage (815916K) : Extracting NPLUS_S device
+"extract_devices" in: res_extraction.lvs:52
+    Elapsed: 0.000s  Memory: 443.00M
+2026-05-30 22:16:51 +0200: Memory Usage (815916K) : Extracting NPLUS_S_DW device
+"extract_devices" in: res_extraction.lvs:57
+    Elapsed: 0.020s  Memory: 443.00M
+2026-05-30 22:16:51 +0200: Memory Usage (815916K) : Extracting PPLUS_S device
+"extract_devices" in: res_extraction.lvs:62
+    Elapsed: 0.000s  Memory: 443.00M
+2026-05-30 22:16:51 +0200: Memory Usage (815916K) : Extracting PPLUS_S_DW device
+"extract_devices" in: res_extraction.lvs:67
+    Elapsed: 0.000s  Memory: 443.00M
+2026-05-30 22:16:51 +0200: Memory Usage (815916K) : Extracting NWELL device
+"extract_devices" in: res_extraction.lvs:71
+    Elapsed: 0.000s  Memory: 443.00M
+2026-05-30 22:16:51 +0200: Memory Usage (815916K) : Extracting PWELL device
+"extract_devices" in: res_extraction.lvs:79
+    Elapsed: 0.000s  Memory: 443.00M
+2026-05-30 22:16:51 +0200: Memory Usage (815916K) : Extracting NPOLYF_U device
+"extract_devices" in: res_extraction.lvs:83
+    Elapsed: 0.000s  Memory: 443.00M
+2026-05-30 22:16:51 +0200: Memory Usage (815916K) : Extracting NPOLYF_U_DW device
+"extract_devices" in: res_extraction.lvs:88
+    Elapsed: 0.000s  Memory: 443.00M
+2026-05-30 22:16:51 +0200: Memory Usage (815916K) : Extracting PPOLYF_U device
+"extract_devices" in: res_extraction.lvs:92
+    Elapsed: 0.000s  Memory: 443.00M
+2026-05-30 22:16:51 +0200: Memory Usage (815916K) : Extracting PPOLYF_U_DW device
+"extract_devices" in: res_extraction.lvs:97
+    Elapsed: 0.000s  Memory: 443.00M
+2026-05-30 22:16:51 +0200: Memory Usage (815916K) : Extracting NPOLYF_S device
+"extract_devices" in: res_extraction.lvs:101
+    Elapsed: 0.000s  Memory: 443.00M
+2026-05-30 22:16:51 +0200: Memory Usage (815916K) : Extracting NPOLYF_S_DW device
+"extract_devices" in: res_extraction.lvs:106
+    Elapsed: 0.000s  Memory: 443.00M
+2026-05-30 22:16:51 +0200: Memory Usage (815916K) : Extracting PPOLYF_S device
+"extract_devices" in: res_extraction.lvs:110
+    Elapsed: 0.000s  Memory: 443.00M
+2026-05-30 22:16:51 +0200: Memory Usage (815916K) : Extracting PPOLYF_S_DW device
+"extract_devices" in: res_extraction.lvs:122
+    Elapsed: 0.000s  Memory: 443.00M
+2026-05-30 22:16:51 +0200: Memory Usage (815916K) : Extracting PPOLYF_U_1K device
+"extract_devices" in: res_extraction.lvs:127
+    Elapsed: 0.010s  Memory: 443.00M
+2026-05-30 22:16:51 +0200: Memory Usage (815916K) : Extracting PPOLYF_U_DW_1 device
+"extract_devices" in: res_extraction.lvs:132
+    Elapsed: 0.000s  Memory: 443.00M
+2026-05-30 22:16:51 +0200: Memory Usage (815916K) : Extracting PPOLYF_U_1K_6p0 device
+"extract_devices" in: res_extraction.lvs:137
+    Elapsed: 0.010s  Memory: 443.00M
+2026-05-30 22:16:51 +0200: Memory Usage (815916K) : Extracting PPOLYF_U_DW_1K_6p0 device
+"extract_devices" in: res_extraction.lvs:192
+    Elapsed: 0.000s  Memory: 443.00M
+2026-05-30 22:16:51 +0200: Memory Usage (815916K) : Extracting RM1 device
+"extract_devices" in: res_extraction.lvs:197
+    Elapsed: 0.010s  Memory: 443.00M
+2026-05-30 22:16:51 +0200: Memory Usage (815916K) : Extracting RM2 device
+"extract_devices" in: res_extraction.lvs:203
+    Elapsed: 0.000s  Memory: 443.00M
+2026-05-30 22:16:51 +0200: Memory Usage (815916K) : Extracting RM3 device
+"extract_devices" in: res_extraction.lvs:218
+    Elapsed: 0.000s  Memory: 443.00M
+2026-05-30 22:16:51 +0200: Memory Usage (815916K) : Extracting TM11K device
+2026-05-30 22:16:51 +0200: Memory Usage (815916K) : Starting MIMCAP EXTRACTION
+"extract_devices" in: mimcap_extraction.lvs:86
+    Elapsed: 0.000s  Memory: 443.00M
+2026-05-30 22:16:51 +0200: Memory Usage (815916K) : Extracting cap_mim2f0 device
+2026-05-30 22:16:51 +0200: Memory Usage (815916K) : Starting MOSCAP EXTRACTION
+"extract_devices" in: moscap_extraction.lvs:25
+    Elapsed: 0.000s  Memory: 443.00M
+2026-05-30 22:16:51 +0200: Memory Usage (815916K) : Extracting cap_nmos_03v3 device
+"extract_devices" in: moscap_extraction.lvs:30
+    Elapsed: 0.000s  Memory: 443.00M
+2026-05-30 22:16:51 +0200: Memory Usage (815916K) : Extracting cap_nmos_03v3_dn device
+"extract_devices" in: moscap_extraction.lvs:35
+    Elapsed: 0.010s  Memory: 443.00M
+2026-05-30 22:16:51 +0200: Memory Usage (815916K) : Extracting cap_pmos_03v3 device
+"extract_devices" in: moscap_extraction.lvs:40
+    Elapsed: 0.000s  Memory: 443.00M
+2026-05-30 22:16:51 +0200: Memory Usage (815916K) : Extracting cap_pmos_03v3_dn device
+"extract_devices" in: moscap_extraction.lvs:45
+    Elapsed: 0.000s  Memory: 443.00M
+2026-05-30 22:16:51 +0200: Memory Usage (815916K) : Extracting cap_nmos_06v0 device
+"extract_devices" in: moscap_extraction.lvs:50
+    Elapsed: 0.000s  Memory: 443.00M
+2026-05-30 22:16:51 +0200: Memory Usage (815916K) : Extracting cap_nmos_06v0_dn device
+"extract_devices" in: moscap_extraction.lvs:55
+    Elapsed: 0.000s  Memory: 443.00M
+2026-05-30 22:16:51 +0200: Memory Usage (815916K) : Extracting cap_pmos_06v0 device
+"extract_devices" in: moscap_extraction.lvs:60
+    Elapsed: 0.000s  Memory: 443.00M
+"extract_devices" in: moscap_extraction.lvs:64
+    Elapsed: 0.000s  Memory: 443.00M
+2026-05-30 22:16:51 +0200: Memory Usage (815916K) : Extracting cap_pmos_06v0 device
+"extract_devices" in: moscap_extraction.lvs:69
+    Elapsed: 0.000s  Memory: 443.00M
+2026-05-30 22:16:51 +0200: Memory Usage (815916K) : Extracting cap_pmos_03v3_b device
+"extract_devices" in: moscap_extraction.lvs:74
+    Elapsed: 0.000s  Memory: 443.00M
+2026-05-30 22:16:51 +0200: Memory Usage (815916K) : Extracting cap_nmos_06v0_b device
+"extract_devices" in: moscap_extraction.lvs:79
+    Elapsed: 0.010s  Memory: 443.00M
+2026-05-30 22:16:51 +0200: Memory Usage (815916K) : Extracting cap_pmos_06v0_b device
+2026-05-30 22:16:51 +0200: Memory Usage (815916K) : Starting MOS SAB EXTRACTION
+2026-05-30 22:16:51 +0200: Memory Usage (815916K) : Starting PMOS SAB EXTRACTION
+"extract_devices" in: mos_sab_extraction.lvs:30
+    Elapsed: 0.020s  Memory: 443.00M
+2026-05-30 22:16:52 +0200: Memory Usage (815916K) : Extracting 3.3V ESD PMOS transistor outside DNWELL device
+"extract_devices" in: mos_sab_extraction.lvs:35
+    Elapsed: 0.000s  Memory: 443.00M
+2026-05-30 22:16:52 +0200: Memory Usage (815916K) : Extracting 5V ESD PMOS transistor outside DNWELL device
+"extract_devices" in: mos_sab_extraction.lvs:40
+    Elapsed: 0.000s  Memory: 443.00M
+2026-05-30 22:16:52 +0200: Memory Usage (815916K) : Extracting 6V ESD PMOS transistor outside DNWELL device
+"extract_devices" in: mos_sab_extraction.lvs:45
+    Elapsed: 0.000s  Memory: 443.00M
+2026-05-30 22:16:52 +0200: Memory Usage (815916K) : Extracting 3.3V ESD PMOS transistor inside DNWELL device
+"extract_devices" in: mos_sab_extraction.lvs:51
+    Elapsed: 0.000s  Memory: 443.00M
+2026-05-30 22:16:52 +0200: Memory Usage (815916K) : Extracting 5V ESD PMOS transistor inside DNWELL device
+"extract_devices" in: mos_sab_extraction.lvs:57
+    Elapsed: 0.000s  Memory: 443.00M
+2026-05-30 22:16:52 +0200: Memory Usage (815916K) : Extracting 6V ESD PMOS transistor inside DNWELL device
+2026-05-30 22:16:52 +0200: Memory Usage (815916K) : Starting NMOS SAB EXTRACTION
+"extract_devices" in: mos_sab_extraction.lvs:68
+    Elapsed: 0.000s  Memory: 443.00M
+2026-05-30 22:16:52 +0200: Memory Usage (815916K) : Extracting 3.3V ESD NMOS transistor outside DNWELL device
+"extract_devices" in: mos_sab_extraction.lvs:73
+    Elapsed: 0.000s  Memory: 443.00M
+2026-05-30 22:16:52 +0200: Memory Usage (815916K) : Extracting 5V ESD NMOS transistor outside DNWELL device
+"extract_devices" in: mos_sab_extraction.lvs:78
+    Elapsed: 0.010s  Memory: 443.00M
+2026-05-30 22:16:52 +0200: Memory Usage (815916K) : Extracting 6V ESD NMOS transistor outside DNWELL device
+"extract_devices" in: mos_sab_extraction.lvs:83
+    Elapsed: 0.000s  Memory: 443.00M
+2026-05-30 22:16:52 +0200: Memory Usage (815916K) : Extracting 3.3V ESD NMOS transistor inside DNWELL device
+"extract_devices" in: mos_sab_extraction.lvs:89
+    Elapsed: 0.000s  Memory: 443.00M
+2026-05-30 22:16:52 +0200: Memory Usage (815916K) : Extracting 5V ESD NMOS transistor inside DNWELL device
+"extract_devices" in: mos_sab_extraction.lvs:95
+    Elapsed: 0.010s  Memory: 443.00M
+2026-05-30 22:16:52 +0200: Memory Usage (815916K) : Extracting 6V ESD NMOS transistor inside DNWELL device
+"extract_devices" in: efuse_extraction.lvs:23
+    Elapsed: 0.000s  Memory: 443.00M
+2026-05-30 22:16:52 +0200: Memory Usage (815916K) : Starting EFUSE EXTRACTION
+"netlist" in: _lvs_netter.rb:515
+    Elapsed: 0.000s  Memory: 443.00M
+Flatten layout cell (no schematic): nfet$1
+Flatten layout cell (no schematic): pfet
+2026-05-30 22:16:52 +0200: Memory Usage (815916K) : Starting GF180 LVS comparison section
+2026-05-30 22:16:52 +0200: Memory Usage (815916K) : LVS Total Run time 5.818821 seconds
+2026-05-30 22:16:52 +0200: Memory Usage (815916K) : ==========================================
+2026-05-30 22:16:52 +0200: Memory Usage (815916K) : INFO : Congratulations! Netlists match.
+Writing netlist: /foss/designs/encoder/layout/nand3/lvs_results/NAND_klayout1.cir ..
+Writing LVS database: /foss/designs/encoder/layout/nand3/lvs_results/NAND_klayout1.lvsdb ..
+Total elapsed: 6.060s  Memory: 443.00M
+2026-05-30 22:16:52 +0200: Memory Usage (815916K) : ==========================================

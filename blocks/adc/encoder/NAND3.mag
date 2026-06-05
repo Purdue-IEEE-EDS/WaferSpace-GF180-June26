@@ -1,0 +1,63 @@
+magic
+tech gf180mcuD
+magscale 1 5
+timestamp 1779739194
+<< checkpaint >>
+rect -1030 3284 1252 3344
+rect -1030 3224 1756 3284
+rect -1030 3194 2260 3224
+rect -1030 3164 2512 3194
+rect -1030 1918 2764 3164
+rect -1030 1888 3016 1918
+rect -1030 1858 3268 1888
+rect -1030 -1030 3520 1858
+rect -778 -1060 3520 -1030
+rect -526 -1090 3520 -1060
+rect -274 -1120 3520 -1090
+rect -22 -1150 3520 -1120
+rect 230 -1180 3520 -1150
+rect 482 -1210 3520 -1180
+rect 734 -1240 3520 -1210
+rect 986 -1270 3520 -1240
+rect 1238 -1300 3520 -1270
+use pfet_03v3_SSJBXB  XM5
+timestamp 0
+transform 1 0 111 0 1 1157
+box -141 -1187 141 1187
+use nfet_03v3_EY6FH2  XM6
+timestamp 0
+transform 1 0 363 0 1 519
+box -141 -579 141 579
+use pfet_03v3_SSJBXB  XM7
+timestamp 0
+transform 1 0 615 0 1 1097
+box -141 -1187 141 1187
+use nfet_03v3_EY6FH2  XM8
+timestamp 0
+transform 1 0 867 0 1 459
+box -141 -579 141 579
+use pfet_03v3_SSJBXB  XM13
+timestamp 0
+transform 1 0 1119 0 1 1037
+box -141 -1187 141 1187
+use pfet_03v3_SSJBXB  XM14
+timestamp 0
+transform 1 0 1371 0 1 1007
+box -141 -1187 141 1187
+use pfet_03v3_SSJBXB  XM15
+timestamp 0
+transform 1 0 1623 0 1 977
+box -141 -1187 141 1187
+use nfet_03v3_EY6FH2  XM16
+timestamp 0
+transform 1 0 1875 0 1 339
+box -141 -579 141 579
+use nfet_03v3_EY6FH2  XM17
+timestamp 0
+transform 1 0 2127 0 1 309
+box -141 -579 141 579
+use nfet_03v3_EY6FH2  XM18
+timestamp 0
+transform 1 0 2379 0 1 279
+box -141 -579 141 579
+<< end >>

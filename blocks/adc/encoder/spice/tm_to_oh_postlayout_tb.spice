@@ -1,0 +1,102 @@
+** sch_path: /foss/designs/encoder/tb/tm_to_oh_postlayout_tb.sch
+**.subckt tm_to_oh_postlayout_tb
+*+ wl[62],wl[61],wl[60],wl[59],wl[58],wl[57],wl[56],wl[55],wl[54],wl[53],wl[52],wl[51],wl[50],wl[49],wl[48],wl[47],wl[46],wl[45],wl[44],wl[43],wl[42],wl[41],wl[40],wl[39],wl[38],wl[37],wl[36],wl[35],wl[34],wl[33],wl[32],wl[31],wl[30],wl[29],wl[28],wl[27],wl[26],wl[25],wl[24],wl[23],wl[22],wl[21],wl[20],wl[19],wl[18],wl[17],wl[16],wl[15],wl[14],wl[13],wl[12],wl[11],wl[10],wl[9],wl[8],wl[7],wl[6],wl[5],wl[4],wl[3],wl[2],wl[1],wl[0]
+*+ comp[0],comp[1],comp[2],comp[3],comp[4],comp[5],comp[6],comp[7],comp[8],comp[9],comp[10],comp[11],comp[12],comp[13],comp[14],comp[15],comp[16],comp[17],comp[18],comp[19],comp[20],comp[21],comp[22],comp[23],comp[24],comp[25],comp[26],comp[27],comp[28],comp[29],comp[30],comp[31],comp[32],comp[33],comp[34],comp[35],comp[36],comp[37],comp[38],comp[39],comp[40],comp[41],comp[42],comp[43],comp[44],comp[45],comp[46],comp[47],comp[48],comp[49],comp[50],comp[51],comp[52],comp[53],comp[54],comp[55],comp[56],comp[57],comp[58],comp[59],comp[60],comp[61],comp[62]
+*.opin
+*+ wl[62],wl[61],wl[60],wl[59],wl[58],wl[57],wl[56],wl[55],wl[54],wl[53],wl[52],wl[51],wl[50],wl[49],wl[48],wl[47],wl[46],wl[45],wl[44],wl[43],wl[42],wl[41],wl[40],wl[39],wl[38],wl[37],wl[36],wl[35],wl[34],wl[33],wl[32],wl[31],wl[30],wl[29],wl[28],wl[27],wl[26],wl[25],wl[24],wl[23],wl[22],wl[21],wl[20],wl[19],wl[18],wl[17],wl[16],wl[15],wl[14],wl[13],wl[12],wl[11],wl[10],wl[9],wl[8],wl[7],wl[6],wl[5],wl[4],wl[3],wl[2],wl[1],wl[0]
+*.ipin
+*+ comp[0],comp[1],comp[2],comp[3],comp[4],comp[5],comp[6],comp[7],comp[8],comp[9],comp[10],comp[11],comp[12],comp[13],comp[14],comp[15],comp[16],comp[17],comp[18],comp[19],comp[20],comp[21],comp[22],comp[23],comp[24],comp[25],comp[26],comp[27],comp[28],comp[29],comp[30],comp[31],comp[32],comp[33],comp[34],comp[35],comp[36],comp[37],comp[38],comp[39],comp[40],comp[41],comp[42],comp[43],comp[44],comp[45],comp[46],comp[47],comp[48],comp[49],comp[50],comp[51],comp[52],comp[53],comp[54],comp[55],comp[56],comp[57],comp[58],comp[59],comp[60],comp[61],comp[62]
+V1 VDD GND 3.3
+x1 VDD comp[0] comp[1] comp[2] comp[3] comp[4] comp[5] comp[6] comp[7] comp[8] comp[9] comp[10] comp[11] comp[12] comp[13]
++ comp[14] comp[15] comp[16] comp[17] comp[18] comp[19] comp[20] comp[21] comp[22] comp[23] comp[24] comp[25] comp[26] comp[27] comp[28]
++ comp[29] comp[30] comp[31] comp[32] comp[33] comp[34] comp[35] comp[36] comp[37] comp[38] comp[39] comp[40] comp[41] comp[42] comp[43]
++ comp[44] comp[45] comp[46] comp[47] comp[48] comp[49] comp[50] comp[51] comp[52] comp[53] comp[54] comp[55] comp[56] comp[57] comp[58]
++ comp[59] comp[60] comp[61] comp[62] GND wl[62] wl[61] wl[60] wl[59] wl[58] wl[57] wl[56] wl[55] wl[54] wl[53] wl[52] wl[51] wl[50] wl[49]
++ wl[48] wl[47] wl[46] wl[45] wl[44] wl[43] wl[42] wl[41] wl[40] wl[39] wl[38] wl[37] wl[36] wl[35] wl[34] wl[33] wl[32] wl[31] wl[30]
++ wl[29] wl[28] wl[27] wl[26] wl[25] wl[24] wl[23] wl[22] wl[21] wl[20] wl[19] wl[18] wl[17] wl[16] wl[15] wl[14] wl[13] wl[12] wl[11]
++ wl[10] wl[9] wl[8] wl[7] wl[6] wl[5] wl[4] wl[3] wl[2] wl[1] wl[0] tm_to_bin2
+**** begin user architecture code
+
+.include /foss/pdks/gf180mcuD/libs.tech/ngspice/design.ngspice
+.lib /foss/pdks/gf180mcuD/libs.tech/ngspice/sm141064.ngspice ss
+
+
+
+.include /foss/designs/encoder/spice/tm_to_bin2.spice
+V_C0 comp[0] 0 PWL(0 0 0.50n 0 0.51n 3.3)
+V_C1 comp[1] 0 PWL(0 0 1.00n 0 1.01n 3.3)
+V_C2 comp[2] 0 PWL(0 0 1.50n 0 1.51n 3.3)
+V_C3 comp[3] 0 PWL(0 0 2.00n 0 2.01n 3.3)
+V_C4 comp[4] 0 PWL(0 0 2.50n 0 2.51n 3.3)
+V_C5 comp[5] 0 PWL(0 0 3.00n 0 3.01n 3.3)
+V_C6 comp[6] 0 PWL(0 0 3.50n 0 3.51n 3.3)
+V_C7 comp[7] 0 PWL(0 0 4.00n 0 4.01n 3.3)
+V_C8 comp[8] 0 PWL(0 0 4.50n 0 4.51n 3.3)
+V_C9 comp[9] 0 PWL(0 0 5.00n 0 5.01n 3.3)
+V_C10 comp[10] 0 PWL(0 0 5.50n 0 5.51n 3.3)
+V_C11 comp[11] 0 PWL(0 0 6.00n 0 6.01n 3.3)
+V_C12 comp[12] 0 PWL(0 0 6.50n 0 6.51n 3.3)
+V_C13 comp[13] 0 PWL(0 0 7.00n 0 7.01n 3.3)
+V_C14 comp[14] 0 PWL(0 0 7.50n 0 7.51n 3.3)
+V_C15 comp[15] 0 PWL(0 0 8.00n 0 8.01n 3.3)
+V_C16 comp[16] 0 PWL(0 0 8.50n 0 8.51n 3.3)
+V_C17 comp[17] 0 PWL(0 0 9.00n 0 9.01n 3.3)
+V_C18 comp[18] 0 PWL(0 0 9.50n 0 9.51n 3.3)
+V_C19 comp[19] 0 PWL(0 0 10.00n 0 10.01n 3.3)
+V_C20 comp[20] 0 PWL(0 0 10.50n 0 10.51n 3.3)
+V_C21 comp[21] 0 PWL(0 0 11.00n 0 11.01n 3.3)
+V_C22 comp[22] 0 PWL(0 0 11.50n 0 11.51n 3.3)
+V_C23 comp[23] 0 PWL(0 0 12.00n 0 12.01n 3.3)
+V_C24 comp[24] 0 PWL(0 0 12.50n 0 12.51n 3.3)
+V_C25 comp[25] 0 PWL(0 0 13.00n 0 13.01n 3.3)
+V_C26 comp[26] 0 PWL(0 0 13.50n 0 13.51n 3.3)
+V_C27 comp[27] 0 PWL(0 0 14.00n 0 14.01n 3.3)
+V_C28 comp[28] 0 PWL(0 0 14.50n 0 14.51n 3.3)
+V_C29 comp[29] 0 PWL(0 0 15.00n 0 15.01n 3.3)
+V_C30 comp[30] 0 PWL(0 0 15.50n 0 15.51n 3.3)
+V_C31 comp[31] 0 PWL(0 0 16.00n 0 16.01n 3.3)
+V_C32 comp[32] 0 PWL(0 0 16.50n 0 16.51n 3.3)
+V_C33 comp[33] 0 PWL(0 0 17.00n 0 17.01n 3.3)
+V_C34 comp[34] 0 PWL(0 0 17.50n 0 17.51n 3.3)
+V_C35 comp[35] 0 PWL(0 0 18.00n 0 18.01n 3.3)
+V_C36 comp[36] 0 PWL(0 0 18.50n 0 18.51n 3.3)
+V_C37 comp[37] 0 PWL(0 0 19.00n 0 19.01n 3.3)
+V_C38 comp[38] 0 PWL(0 0 19.50n 0 19.51n 3.3)
+V_C39 comp[39] 0 PWL(0 0 20.00n 0 20.01n 3.3)
+V_C40 comp[40] 0 PWL(0 0 20.50n 0 20.51n 3.3)
+V_C41 comp[41] 0 PWL(0 0 21.00n 0 21.01n 3.3)
+V_C42 comp[42] 0 PWL(0 0 21.50n 0 21.51n 3.3)
+V_C43 comp[43] 0 PWL(0 0 22.00n 0 22.01n 3.3)
+V_C44 comp[44] 0 PWL(0 0 22.50n 0 22.51n 3.3)
+V_C45 comp[45] 0 PWL(0 0 23.00n 0 23.01n 3.3)
+V_C46 comp[46] 0 PWL(0 0 23.50n 0 23.51n 3.3)
+V_C47 comp[47] 0 PWL(0 0 24.00n 0 24.01n 3.3)
+V_C48 comp[48] 0 PWL(0 0 24.50n 0 24.51n 3.3)
+V_C49 comp[49] 0 PWL(0 0 25.00n 0 25.01n 3.3)
+V_C50 comp[50] 0 PWL(0 0 25.50n 0 25.51n 3.3)
+V_C51 comp[51] 0 PWL(0 0 26.00n 0 26.01n 3.3)
+V_C52 comp[52] 0 PWL(0 0 26.50n 0 26.51n 3.3)
+V_C53 comp[53] 0 PWL(0 0 27.00n 0 27.01n 3.3)
+V_C54 comp[54] 0 PWL(0 0 27.50n 0 27.51n 3.3)
+V_C55 comp[55] 0 PWL(0 0 28.00n 0 28.01n 3.3)
+V_C56 comp[56] 0 PWL(0 0 28.50n 0 28.51n 3.3)
+V_C57 comp[57] 0 PWL(0 0 29.00n 0 29.01n 3.3)
+V_C58 comp[58] 0 PWL(0 0 29.50n 0 29.51n 3.3)
+V_C59 comp[59] 0 PWL(0 0 30.00n 0 30.01n 3.3)
+V_C60 comp[60] 0 PWL(0 0 30.50n 0 30.51n 3.3)
+V_C61 comp[61] 0 PWL(0 0 31.00n 0 31.01n 3.3)
+V_C62 comp[62] 0 PWL(0 0 31.50n 0 31.51n 3.3)
+
+.tran 10p 6n uic
+
+.control
+  run
+  write full_decoder_test.raw
+.endc
+
+
+**** end user architecture code
+**.ends
+.GLOBAL VDD
+.GLOBAL GND
+.end

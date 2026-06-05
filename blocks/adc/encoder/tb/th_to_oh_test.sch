@@ -13,8 +13,8 @@ ypos2=2
 divy=5
 subdivy=1
 unity=1
-x1=5.0909752e-11
-x2=5.0370731e-09
+x1=3.024688e-10
+x2=1.3682375e-09
 divx=5
 subdivx=1
 xlabmag=1.0
@@ -40,8 +40,8 @@ ypos2=2
 divy=5
 subdivy=1
 unity=1
-x1=5.0909752e-11
-x2=5.0370731e-09
+x1=3.024688e-10
+x2=1.3682375e-09
 divx=5
 subdivx=1
 xlabmag=1.0
@@ -103,7 +103,7 @@ C {code_shown.sym} 1440 -1715 0 0 {name=MODELS only_toplevel=true
 format="tcleval( @value )"
 value="
 .include $::180MCU_MODELS/design.ngspice
-.lib $::180MCU_MODELS/sm141064.ngspice typical
+.lib $::180MCU_MODELS/sm141064.ngspice ss
 "}
 C {code_shown.sym} 1440 -1555 0 0 {name=SPICE only_toplevel=false value="
 V_C0 comp[0] 0 PWL(0 0 0.50n 0 0.51n 3.3)
@@ -207,11 +207,11 @@ C {bus_connect_nolab.sym} 960 -880 0 0 {name=r10}
 C {lab_wire.sym} 510 -1410 0 0 {name=p13 sig_type=std_logic lab=GND}
 C {lab_wire.sym} 740 -1330 0 0 {name=p3 sig_type=std_logic lab=GND}
 C {lab_wire.sym} 740 -1530 0 0 {name=p7 sig_type=std_logic lab=VDD}
-C {launcher.sym} 2220 -900 0 0 {name=h5
-descr="load waves"
-tclcommand="xschem raw_read $netlist_dir/th_to_oh.raw tran"
-}
 C {lab_wire.sym} 970 -1240 0 0 {name=p21 sig_type=std_logic lab=wl[0:62]}
 C {encoder/sym/NAND3.sym} 740 -1430 0 0 {name=x_top2}
 C {encoder/sym/NAND3.sym} 740 -1130 0 0 {name=x1[61:1]}
 C {encoder/sym/NAND3.sym} 740 -840 0 0 {name=x_bot1}
+C {launcher.sym} 2210 -930 0 0 {name=h5
+descr="load waves"
+tclcommand="xschem raw_read $netlist_dir/th_to_oh_test.raw tran"
+}
