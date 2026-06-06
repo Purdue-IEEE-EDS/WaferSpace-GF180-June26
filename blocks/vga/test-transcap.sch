@@ -11,10 +11,13 @@ N 80 -380 280 -360 {lab=vout}
 N 80 -260 250 -320 {lab=GND}
 N 250 -320 330 -320 {lab=GND}
 N 330 -320 360 -320 {lab=GND}
-N 340 -350 340 -320 {lab=GND}
-N 340 -410 340 -350 {lab=GND}
 N 280 -360 360 -440 {lab=vout}
-N 360 -380 360 -320 {lab=GND}
+N 360 -440 380 -440 {lab=vout}
+N 360 -320 380 -320 {lab=GND}
+N 340 -410 380 -380 {lab=#net1}
+N 340 -350 380 -320 {lab=GND}
+N 380 -350 380 -320 {lab=GND}
+N 380 -410 380 -380 {lab=#net1}
 C {code_shown.sym} 10 30 0 0 {name=s1 only_toplevel=false value="
 .include /foss/pdks/gf180mcuD/libs.tech/ngspice/design.ngspice
 .lib /foss/pdks/gf180mcuD/libs.tech/ngspice/sm141064.ngspice typical
@@ -36,7 +39,7 @@ let resistannnnn = 3.3 / imag
 * For a capacitor, Z = 1/(jwC) = V/I -> C = (I/V) * 1/(jw)
 *let resistannnnn = mag((i(v1) / (3.3, 0)) / (0, 6.28 * frequency))
 
-plot resistannnnn ylimit 0 3k
+plot resistannnnn ylimit 0 1meg
 print mean(resistannnnn)
 .endc
 "
@@ -50,7 +53,8 @@ W=1e-6
 L=2.3e-6
 model=ppolyf_u_1k
 spiceprefix=X
-m=1}
+m=1
+spice_ignore=true}
 C {symbols/ppolyf_u_3k.sym} 730 -500 0 0 {name=R2
 W=1e-6
 L=.6e-6
@@ -70,13 +74,15 @@ W=1e-6
 L=7.8e-6
 model=ppolyf_u_1k
 spiceprefix=X
-m=1}
+m=1
+spice_ignore=true}
 C {symbols/ppolyf_u_1k.sym} 870 -380 0 0 {name=R5
 W=1e-6
 L=7.8e-6
 model=ppolyf_u_1k
 spiceprefix=X
-m=1}
+m=1
+spice_ignore=true}
 C {symbols/ppolyf_u_2k.sym} 730 -300 0 0 {name=R_wtf
 W=1e-6
 L=1e-6
@@ -89,7 +95,8 @@ W=1e-6
 L=2.3e-6
 model=ppolyf_u_1k
 spiceprefix=X
-m=1}
+m=1
+spice_ignore=true}
 C {symbols/ppolyf_u_3k.sym} 730 -200 0 0 {name=R7
 W=1e-6
 L=0.8e-6
@@ -102,7 +109,8 @@ W=1e-6
 L=2.9e-6
 model=ppolyf_u_1k
 spiceprefix=X
-m=1}
+m=1
+spice_ignore=true}
 C {symbols/ppolyf_u_3k.sym} 730 -100 0 0 {name=R9
 W=1e-6
 L=1.6e-6
@@ -115,17 +123,47 @@ W=1e-6
 L=5.3e-6
 model=ppolyf_u_1k
 spiceprefix=X
-m=1}
-C {symbols/cap_mim_analog.sym} 360 -410 0 0 {name=C1
+m=1
+spice_ignore=true}
+C {symbols/cap_mim_analog.sym} 480 -180 0 0 {name=C1
 w=1e-6
 l=1e-6
 model=cap_mim_2f0_m4m5_noshield
 spiceprefix=X
-m=1}
+m=1
+spice_ignore=true}
 C {symbols/cap_mim_2f0fF.sym} 310 -180 0 0 {name=C2
 W=1e-6
 L=1e-6
 model=cap_mim_2f0fF
 spiceprefix=X
 m=1
-spice_ignore=false}
+spice_ignore=true}
+C {symbols/pfet_03v3.sym} 360 -410 2 1 {name=M1
+L=0.28u
+W=0.22u
+nf=1
+m=1
+ad="'int((nf+1)/2) * W/nf * 0.18u'"
+pd="'2*int((nf+1)/2) * (W/nf + 0.18u)'"
+as="'int((nf+2)/2) * W/nf * 0.18u'"
+ps="'2*int((nf+2)/2) * (W/nf + 0.18u)'"
+nrd="'0.18u / W'" nrs="'0.18u / W'"
+sa=0 sb=0 sd=0
+model=pfet_03v3
+spiceprefix=X
+}
+C {symbols/pfet_03v3.sym} 360 -350 2 1 {name=M2
+L=0.28u
+W=0.22u
+nf=1
+m=1
+ad="'int((nf+1)/2) * W/nf * 0.18u'"
+pd="'2*int((nf+1)/2) * (W/nf + 0.18u)'"
+as="'int((nf+2)/2) * W/nf * 0.18u'"
+ps="'2*int((nf+2)/2) * (W/nf + 0.18u)'"
+nrd="'0.18u / W'" nrs="'0.18u / W'"
+sa=0 sb=0 sd=0
+model=pfet_03v3
+spiceprefix=X
+}

@@ -13,8 +13,8 @@ ypos2=2
 divy=5
 subdivy=1
 unity=1
-x1=-1.156766e-11
-x2=1.6617281e-11
+x1=2.7445152e-08
+x2=2.9470663e-08
 divx=5
 subdivx=1
 xlabmag=1.0
@@ -24,12 +24,12 @@ unitx=1
 logx=0
 logy=0
 color="15 12 17 4 14 18"
-node="b[0]
-b[1]
-b[2]
-b[3]
-b[4]
-b[5]"}
+node="b_out[0]
+b_out[1]
+b_out[2]
+b_out[3]
+b_out[4]
+b_out[5]"}
 B 2 2140 -1320 2940 -920 {flags=graph
 y1=0
 y2=3.3
@@ -38,8 +38,8 @@ ypos2=2
 divy=5
 subdivy=1
 unity=1
-x1=-1.156766e-11
-x2=1.6617281e-11
+x1=2.7445152e-08
+x2=2.9470663e-08
 divx=5
 subdivx=1
 xlabmag=1.0
@@ -60,8 +60,8 @@ ypos2=2
 divy=5
 subdivy=1
 unity=1
-x1=-1.156766e-11
-x2=1.6617281e-11
+x1=2.7445152e-08
+x2=2.9470663e-08
 divx=5
 subdivx=1
 xlabmag=1.0
@@ -85,8 +85,8 @@ ypos2=2
 divy=5
 subdivy=1
 unity=1
-x1=-1.156766e-11
-x2=1.6617281e-11
+x1=2.7445152e-08
+x2=2.9470663e-08
 divx=5
 subdivx=1
 xlabmag=1.0
@@ -97,6 +97,31 @@ logx=0
 logy=0
 color=12
 node=b_out[0]}
+B 2 3700 -670 4500 -270 {flags=graph
+y1=-0.19
+y2=3.4
+ypos1=0
+ypos2=2
+divy=5
+subdivy=1
+unity=1
+x1=2.7445152e-08
+x2=2.9470663e-08
+divx=5
+subdivx=1
+xlabmag=1.0
+ylabmag=1.0
+dataset=-1
+unitx=1
+logx=0
+logy=0
+color="15 12 17 4 14 18"
+node="b[0]
+b[1]
+b[2]
+b[3]
+b[4]
+b[5]"}
 N 3040 -1460 3040 -1430 {lab=VDD}
 N 3040 -1370 3040 -1350 {lab=GND}
 N 3700 -1660 3770 -1660 {lab=b[0]}
@@ -180,6 +205,12 @@ N 3780 -1770 3780 -1500 {lab=b[5:0]
 bus=true}
 N 3780 -1640 4040 -1640 {lab=b[5:0]
 bus=true}
+N 3990 -1700 4040 -1700 {lab=VDD}
+N 3990 -1680 4040 -1680 {lab=RST}
+N 3990 -1660 4050 -1660 {lab=CLK_PRE}
+N 3990 -1620 4040 -1620 {lab=GND}
+N 4340 -1700 4370 -1700 {lab=b_out[5:0]
+bus=true}
 N 3340 -360 3400 -360 {lab=CLK_EVAL}
 C {code_shown.sym} 1285 -1765 0 0 {name=MODELS only_toplevel=true
 format="tcleval( @value )"
@@ -188,9 +219,9 @@ value="
 .lib $::180MCU_MODELS/sm141064.ngspice typical
 "}
 C {code_shown.sym} 1295 -1605 0 0 {name=SPICE only_toplevel=false value="
-V_PRE CLK_PRE 0 pulse(3.3 0 0p 20p 20p 480p 1000p)
-V_EVAL CLK_EVAL 0 3.3
-V_RST RST 0 pulse(3.3 3.3 0 20p 20p 480p 1000p)
+V_PRE CLK_PRE 0 pulse(3.3 0 0p 10p 10p 240p 500p)
+V_EVAL CLK_EVAL 0 pulse(0 3.3 0 10p 10p 240p 500p)
+V_RST RST 0 pulse(3.3 3.3 0 10p 10p 240p 500p)
 
 V_WL62 wl[62] 0 PWL(0 0 0.000n 0 0.010n 3.3 0.490n 3.3 0.500n 0)
 V_WL61 wl[61] 0 PWL(0 0 0.500n 0 0.510n 3.3 0.990n 3.3 1.000n 0)
@@ -408,6 +439,11 @@ C {lab_wire.sym} 3760 -1580 0 0 {name=p78 sig_type=std_logic lab=b[4]}
 C {lab_wire.sym} 3760 -1620 0 0 {name=p79 sig_type=std_logic lab=b[2]}
 C {lab_wire.sym} 3760 -1560 0 0 {name=p80 sig_type=std_logic lab=b[5]}
 C {lab_wire.sym} 3780 -1720 0 0 {name=p81 sig_type=std_logic lab=b[5:0]}
+C {opin.sym} 4370 -1700 0 0 {name=p421 lab=b_out[5:0]}
+C {lab_wire.sym} 4020 -1700 0 0 {name=p6 sig_type=std_logic lab=VDD}
+C {lab_wire.sym} 4020 -1620 0 0 {name=p7 sig_type=std_logic lab=GND}
+C {ipin.sym} 3990 -1680 0 0 {name=p83 lab=RST}
+C {encoder/sym/dff_encoder.sym} 4190 -1660 0 0 {name=x3[5:0]}
 C {ipin.sym} 3550 -1720 0 0 {name=p1 lab=VDD}
 C {ipin.sym} 3550 -290 0 0 {name=p3 lab=GND}
 C {ipin.sym} 3220 -1020 0 0 {name=p5 lab=wl[62:0]}
@@ -417,10 +453,4 @@ tclcommand="xschem raw_read $netlist_dir/ROM_2G.raw tran"
 }
 C {encoder/sym/ROM2.sym} 3550 -1000 0 0 {name=x1}
 C {lab_wire.sym} 3270 -1640 0 0 {name=p10 sig_type=std_logic lab=CLK_EVAL}
-C {capa-2.sym} 4040 -1610 0 0 {name=C1
-m=1
-value=10000f
-footprint=1206
-device=polarized_capacitor}
-C {gnd.sym} 4040 -1580 0 1 {name=l1 lab=GND
-}
+C {ipin.sym} 4000 -1660 0 0 {name=p12 lab=CLK_PRE}
