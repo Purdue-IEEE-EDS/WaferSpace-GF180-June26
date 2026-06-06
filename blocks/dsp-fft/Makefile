@@ -6,6 +6,7 @@ IVERILOG ?= iverilog
 VVP      ?= vvp
 STA      ?= sta
 OPENROAD ?= openroad
+KLAYOUT    ?= klayout
 
 # ---------------- PDK ----------------
 PDK_ROOT ?= /headless/QucsWorkspace/IHP-Open-PDK
@@ -226,10 +227,11 @@ sim_syn: $(SYN_NET)
 pnr: $(PNR_DEF)
 
 $(PNR_SDC): | $(PNR_DIR)
-	@echo "create_clock -name clk -period $(CLK_PERIOD) [get_ports clk]"   >  $@
-	@echo "set_input_delay  0.1 -clock clk [get_ports {rst}]" >> $@
+	@echo "create_clock -name clk -period $(CLK_PERIOD) [get_ports clk]"   >> $@
 	@echo "set_max_fanout 16 [current_design]"                             >> $@
 	@echo "set_max_transition 1.5 [current_design]"                        >> $@
+	@echo "set_false_path -from [get_ports rst]"                           >> $@
+	@echo "set_false_path -to [get_pins -quiet stages_gen_blk[*].stage/*/RN]" >> $@
 
 $(PNR_SCRIPT): | $(PNR_DIR)
 	@echo "read_lef $(TECH_LEF)"                                           >  $@
@@ -240,6 +242,9 @@ $(PNR_SCRIPT): | $(PNR_DIR)
 	@echo "read_sdc $(PNR_SDC)"                                            >> $@
 	@echo ""                                                               >> $@
 	@echo "initialize_floorplan -utilization 35 -aspect_ratio 1.0 -core_space 10 -site $(SITE_NAME)" >> $@
+	@echo ""                                                               >> $@
+	@echo "insert_tiecells gf180mcu_fd_sc_mcu9t5v0__tiel/ZN -prefix TIE_LOW_"   >> $@
+	@echo "insert_tiecells gf180mcu_fd_sc_mcu9t5v0__tieh/Z -prefix TIE_HIGH_"  >> $@
 	@echo ""                                                               >> $@
 	@echo "make_tracks Metal1 -x_offset 0.24 -x_pitch 0.48 -y_offset 0.28 -y_pitch 0.56" >> $@
 	@echo "make_tracks Metal2 -x_offset 0.28 -x_pitch 0.56 -y_offset 0.24 -y_pitch 0.48" >> $@
@@ -282,7 +287,8 @@ $(PNR_SCRIPT): | $(PNR_DIR)
 	@echo "detailed_placement"                                             >> $@
 	@echo ""                                                               >> $@
 	@echo "global_route -verbose -allow_congestion"                        >> $@
-	@echo "detailed_route -output_drc $(SYN_DIR)/route_drc.rpt -bottom_routing_layer Metal1 -top_routing_layer Metal5" >> $@
+	@echo "set_routing_layers -signal Metal1-Metal5"                       >> $@
+	@echo "detailed_route"   >> $@
 	@echo ""                                                               >> $@
 	@echo "estimate_parasitics -global_routing"                            >> $@
 	@echo "report_checks -path_delay max -slack_max -0.0 -group_count 5"  >> $@
@@ -305,27 +311,20 @@ $(PNR_DEF): $(SYN_NET) $(PNR_SDC) $(PNR_SCRIPT)
 	$(OPENROAD) -exit $(PNR_SCRIPT) 2>&1 | tee $(SYN_DIR)/pnr.log
 
 # ============================================================
-# POST-PNR STA
-# ============================================================
-
-sta_pnr: $(PNR_DEF)
-	mkdir -p $(SYN_DIR)
-	@echo "read_liberty $(LIB_FILE)" > $(STA_PNR_SCRIPT)
-	@echo "read_verilog $(SYN_DIR)/fft_pnr.v" >> $(STA_PNR_SCRIPT)
-	@echo "link_design $(TOP)" >> $(STA_PNR_SCRIPT)
-	@echo "create_clock -period $(CLK_PERIOD) [get_ports clk]" >> $(STA_PNR_SCRIPT)
-	@echo "set_propagated_clock [all_clocks]" >> $(STA_PNR_SCRIPT)
-	@echo "report_checks -path_delay max" >> $(STA_PNR_SCRIPT)
-	@echo "report_wns" >> $(STA_PNR_SCRIPT)
-	@echo "report_tns" >> $(STA_PNR_SCRIPT)
-	$(STA) -exit $(STA_PNR_SCRIPT)
-
-# ============================================================
 # GDS
 # ============================================================
 
-gds: $(PNR_DEF)
-	@echo "GDS step needs an external streaming tool like KLayout or Magic, but DEF is ready at $(PNR_DEF)"
+gds: $(PNR_GDS)
+
+$(PNR_GDS): $(PNR_DEF)
+	$(KLAYOUT) -zz -u \
+	  -rd design_name=fft \
+	  -rd in_def=$(PNR_DEF) \
+	  -rd in_gds=$(LIB_DIR)/gds/$(SCL).gds \
+	  -rd out_gds=$(PNR_GDS) \
+	  -rd seal_gds="" \
+	  -r /openlane/scripts/klayout/def2gds.py
+	@echo "GDS ? $(PNR_GDS)"
 
 # ============================================================
 # CLEAN
