@@ -241,6 +241,9 @@ $(PNR_SCRIPT): | $(PNR_DIR)
 	@echo ""                                                               >> $@
 	@echo "initialize_floorplan -utilization 35 -aspect_ratio 1.0 -core_space 10 -site $(SITE_NAME)" >> $@
 	@echo ""                                                               >> $@
+	@echo "insert_tiecells gf180mcu_fd_sc_mcu9t5v0__tiel_1 -vss_net VSS -tie_low_port Z" >> $@
+	@echo "insert_tiecells gf180mcu_fd_sc_mcu9t5v0__tieh_1 -vdd_net VDD -tie_high_port Z" >> $@
+	@echo ""                                                               >> $@
 	@echo "make_tracks Metal1 -x_offset 0.24 -x_pitch 0.48 -y_offset 0.28 -y_pitch 0.56" >> $@
 	@echo "make_tracks Metal2 -x_offset 0.28 -x_pitch 0.56 -y_offset 0.24 -y_pitch 0.48" >> $@
 	@echo "make_tracks Metal3 -x_offset 0.28 -x_pitch 0.56 -y_offset 0.28 -y_pitch 0.56" >> $@

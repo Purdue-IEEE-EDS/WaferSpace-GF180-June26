@@ -29,7 +29,7 @@ module twiddle_rom #(
         if ((DEPTH == 64) && (BRANCH == 1)) begin : rom_256_1k
         always_ff @(posedge clk) begin
                 case(addr_re)
-                        6'd0: tw_re <= 16'h1000;
+                        6'd0: tw_re = 16'h1000;
                         6'd1: tw_re <= 16'h0ffe;
                         6'd2: tw_re <= 16'h0ffb;
                         6'd3: tw_re <= 16'h0ff4;
@@ -357,7 +357,7 @@ if ((DEPTH == 64) && (BRANCH == 3)) begin : rom_256_3k
                         6'd49: tw_re <= 16'hf1b6;
                         6'd50: tw_re <= 16'hf247;
                         6'd51: tw_re <= 16'hf2ec;
-                        6'd52: tw_re <= 16'hf3a2;
+                        6'd52: tw_re <= 16'hf3a2; 
                         6'd53: tw_re <= 16'hf46a;
                         6'd54: tw_re <= 16'hf542;
                         6'd55: tw_re <= 16'hf629;

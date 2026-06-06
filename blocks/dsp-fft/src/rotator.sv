@@ -60,7 +60,7 @@ module rotator #(parameter BITS = 16, parameter DECIMAL = 8)
         ac_pip <= ac; 
         ad_pip <= ad; 
         bc_pip <= bc; 
-        bd_pip <= bd; 
+        bd_pip <= bd;  
     end
 
     // CLA32 #(.SUB(1)) re(.a(ac_pip), .b(bd_pip), .result(real_out));

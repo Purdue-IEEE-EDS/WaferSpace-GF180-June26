@@ -41,8 +41,7 @@ module fft
         end else begin 
             in_valid_reg <= in_valid;
             out_valid <= val[6]; 
-        end
-        din_re0_reg <= din_re0;
+            din_re0_reg <= din_re0;
         din_re1_reg <= din_re1; 
         din_re2_reg <= din_re2; 
         din_re3_reg <= din_re3; 
@@ -59,6 +58,7 @@ module fft
         dout_im2 <= y_im[6];
         dout_re3 <= z_re[6];
         dout_im3 <= z_im[6];
+        end
     end
 
     // generate 
