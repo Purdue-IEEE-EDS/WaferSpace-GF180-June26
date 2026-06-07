@@ -13,8 +13,8 @@ ypos2=2
 divy=5
 subdivy=1
 unity=1
-x1=1.0481083e-09
-x2=3.5048088e-08
+x1=1.2469436e-08
+x2=2.0185036e-08
 divx=5
 subdivx=1
 xlabmag=1.0
@@ -38,8 +38,8 @@ ypos2=2
 divy=5
 subdivy=1
 unity=1
-x1=1.0481083e-09
-x2=3.5048088e-08
+x1=1.2469436e-08
+x2=2.0185036e-08
 divx=5
 subdivx=1
 xlabmag=1.0
@@ -60,8 +60,8 @@ ypos2=2
 divy=5
 subdivy=1
 unity=1
-x1=1.0481083e-09
-x2=3.5048088e-08
+x1=1.2469436e-08
+x2=2.0185036e-08
 divx=5
 subdivx=1
 xlabmag=1.0
@@ -144,8 +144,8 @@ ypos2=2
 divy=5
 subdivy=1
 unity=1
-x1=1.0481083e-09
-x2=3.5048088e-08
+x1=1.2469436e-08
+x2=2.0185036e-08
 divx=5
 subdivx=1
 xlabmag=1.0
@@ -227,8 +227,8 @@ ypos2=2
 divy=5
 subdivy=1
 unity=1
-x1=1.0481083e-09
-x2=3.5048088e-08
+x1=1.2469436e-08
+x2=2.0185036e-08
 divx=5
 subdivx=1
 xlabmag=1.0
@@ -252,8 +252,8 @@ ypos2=3.7459
 divy=5
 subdivy=1
 unity=1
-x1=1.0481083e-09
-x2=3.5048088e-08
+x1=1.2469436e-08
+x2=2.0185036e-08
 divx=5
 subdivx=1
 xlabmag=1.0
@@ -278,8 +278,8 @@ ypos2=2
 divy=5
 subdivy=1
 unity=1
-x1=1.0481083e-09
-x2=3.5048088e-08
+x1=1.2469436e-08
+x2=2.0185036e-08
 divx=5
 subdivx=1
 xlabmag=1.0
@@ -298,8 +298,8 @@ ypos2=2
 divy=5
 subdivy=1
 unity=1
-x1=1.0481083e-09
-x2=3.5048088e-08
+x1=1.2469436e-08
+x2=2.0185036e-08
 divx=5
 subdivx=1
 xlabmag=1.0
@@ -666,6 +666,7 @@ format="tcleval( @value )"
 value="
 .include $::180MCU_MODELS/design.ngspice
 .lib $::180MCU_MODELS/sm141064.ngspice ss
+.lib $::180MCU_MODELS/sm141064.ngspice res_ss
 "}
 C {code_shown.sym} 2600 -1515 0 0 {name=SPICE only_toplevel=false value="
 V_EVAL CLK_EVAL 0 pulse(0 3.3 0 10p 10p 240p 500p)
@@ -881,7 +882,7 @@ C {lab_wire.sym} 790 -940 0 0 {name=p77 sig_type=std_logic lab=comp[0:62]}
 C {ipin.sym} 1260 -300 0 0 {name=p14 lab=CLK_EVAL}
 C {launcher.sym} 5330 -1580 0 0 {name=h5
 descr="load waves"
-tclcommand="xschem raw_read $netlist_dir/encoder_tb_final.raw tran"
+tclcommand="xschem raw_read $netlist_dir/top_2G.raw tran"
 }
 C {bus_connect_nolab.sym} 1670 -1600 0 0 {name=r1}
 C {bus_connect_nolab.sym} 1670 -1580 0 0 {name=r3}
@@ -945,4 +946,4 @@ spiceprefix=X
 C {lab_wire.sym} 1875 -1420 0 0 {name=p1043 sig_type=std_logic lab=VDD}
 C {lab_wire.sym} 1885 -1270 0 0 {name=p1044 sig_type=std_logic lab=GND}
 C {lab_wire.sym} 1970 -1340 0 0 {name=p86 sig_type=std_logic lab=CLK_SAMPLE}
-C {lab_wire.sym} 1900 -1600 0 0 {name=p87 sig_type=std_logic lab=CLK_SAMPLE}
+C {lab_wire.sym} 1900 -1600 0 0 {name=p87 sig_type=std_logic lab=CLK_EVAL}
