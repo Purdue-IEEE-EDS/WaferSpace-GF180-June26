@@ -217,6 +217,7 @@ format="tcleval( @value )"
 value="
 .include $::180MCU_MODELS/design.ngspice
 .lib $::180MCU_MODELS/sm141064.ngspice typical
+.lib $::180MCU_MODELS/sm141064.ngspice res_typical
 "}
 C {code_shown.sym} 1295 -1605 0 0 {name=SPICE only_toplevel=false value="
 V_PRE CLK_PRE 0 pulse(3.3 0 0p 10p 10p 240p 500p)
