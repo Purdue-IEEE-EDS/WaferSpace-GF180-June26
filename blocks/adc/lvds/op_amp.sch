@@ -12,62 +12,58 @@ N -0 -170 -0 -100 {lab=Vdd}
 N -120 -0 0 -0 {lab=Vdd}
 N -0 -0 120 -0 {lab=Vdd}
 N -0 -100 0 -0 {lab=Vdd}
-N 120 30 120 80 {lab=VdM2}
+N 120 30 120 80 {lab=#net1}
 N -120 30 -120 80 {lab=VdM1}
 N -80 110 80 110 {lab=Vb2}
 N 0 80 0 110 {lab=Vb2}
-N -120 140 -120 230 {lab=vgM1}
-N 120 140 120 220 {lab=VdM4}
-N 120 220 120 230 {lab=VdM4}
+N -120 140 -120 230 {lab=#net2}
+N 120 140 120 220 {lab=#net3}
+N 120 220 120 230 {lab=#net3}
 N 160 260 200 260 {lab=Vin_p}
 N -210 260 -160 260 {lab=Vin_n}
-N 120 290 120 360 {lab=#net1}
-N -120 360 120 360 {lab=#net1}
-N -120 290 -120 360 {lab=#net1}
+N 120 290 120 360 {lab=#net4}
+N -120 360 120 360 {lab=#net4}
+N -120 290 -120 360 {lab=#net4}
 N -120 260 120 260 {lab=Vss}
-N 0 370 -0 390 {lab=#net1}
-N 0 360 0 370 {lab=#net1}
+N 0 370 -0 390 {lab=#net4}
+N 0 360 0 370 {lab=#net4}
 N -160 110 -120 110 {lab=Vdd}
 N -180 110 -160 110 {lab=Vdd}
 N 120 110 200 110 {lab=Vdd}
-N 160 -0 420 0 {lab=VdM4}
-N 420 0 560 0 {lab=VdM4}
-N 360 -0 360 190 {lab=VdM4}
-N 120 190 360 190 {lab=VdM4}
+N 160 -0 420 0 {lab=#net3}
+N 420 0 560 0 {lab=#net3}
+N 360 -0 360 190 {lab=#net3}
+N 120 190 360 190 {lab=#net3}
 N 120 -100 600 -100 {lab=Vdd}
 N 600 -100 600 -30 {lab=Vdd}
 N 600 -100 960 -100 {lab=Vdd}
 N 960 -100 960 -30 {lab=Vdd}
 N 600 -0 960 0 {lab=Vdd}
 N 780 -100 780 -0 {lab=Vdd}
-N 1000 -0 1140 0 {lab=vgM1}
-N 1140 -140 1140 0 {lab=vgM1}
-N -260 -140 1140 -140 {lab=vgM1}
-N -260 -140 -260 200 {lab=vgM1}
-N -260 200 -120 200 {lab=vgM1}
-N 600 30 600 90 {lab=VdM7}
-N 960 30 960 90 {lab=VdM9}
+N 1000 -0 1140 0 {lab=#net2}
+N 1140 -140 1140 0 {lab=#net2}
+N -260 -140 1140 -140 {lab=#net2}
+N -260 -140 -260 200 {lab=#net2}
+N -260 200 -120 200 {lab=#net2}
+N 600 30 600 90 {lab=#net5}
+N 960 30 960 90 {lab=#net6}
 N 640 120 920 120 {lab=Vb1}
 N 780 80 780 120 {lab=Vb1}
 N 960 150 960 200 {lab=Vout}
-N 600 150 600 200 {lab=VgM14}
+N 600 150 600 200 {lab=#net7}
 N 640 230 920 230 {lab=Vb2}
 N 780 200 780 230 {lab=Vb2}
-N 960 260 960 340 {lab=#net2}
-N 600 260 600 340 {lab=#net3}
+N 960 260 960 340 {lab=#net8}
+N 600 260 600 340 {lab=#net9}
 N 960 180 1180 180 {lab=Vout}
-N 640 370 920 370 {lab=VgM14}
-N 780 370 780 560 {lab=VgM14}
-N 460 560 780 560 {lab=VgM14}
-N 460 180 460 560 {lab=VgM14}
-N 460 180 600 180 {lab=VgM14}
-N -260 0 -160 -0 {lab=vgM1}
+N 640 370 920 370 {lab=#net7}
+N 780 370 780 560 {lab=#net7}
+N 460 560 780 560 {lab=#net7}
+N 460 180 460 560 {lab=#net7}
+N 460 180 600 180 {lab=#net7}
+N -260 0 -160 -0 {lab=#net2}
 N -0 450 -0 500 {lab=Vss}
 N 0 240 0 260 {lab=Vss}
-N 120 50 170 50 {lab=VdM2}
-N -160 50 -120 50 {lab=VdM1}
-N 960 60 1000 60 {lab=VdM9}
-N 550 60 600 60 {lab=VdM7}
 N 550 230 600 230 {lab=Vss}
 N 960 230 1060 230 {lab=Vss}
 N 520 120 600 120 {lab=Vdd}
@@ -258,13 +254,6 @@ C {gnd.sym} 960 440 0 0 {name=l3 lab=0}
 C {lab_wire.sym} -180 110 0 0 {name=p9 sig_type=std_logic lab=Vdd}
 C {lab_wire.sym} 0 240 0 0 {name=p10 sig_type=std_logic lab=Vss}
 C {lab_wire.sym} 200 110 0 1 {name=p8 sig_type=std_logic lab=Vdd}
-C {lab_wire.sym} 170 50 0 1 {name=p11 sig_type=std_logic lab=VdM2}
-C {lab_wire.sym} -160 50 0 0 {name=p12 sig_type=std_logic lab=VdM1}
-C {lab_wire.sym} 1000 60 0 1 {name=p13 sig_type=std_logic lab=VdM9}
-C {lab_wire.sym} 550 60 0 0 {name=p14 sig_type=std_logic lab=VdM7}
-C {lab_wire.sym} -260 0 0 0 {name=p15 sig_type=std_logic lab=vgM1}
-C {lab_wire.sym} 360 190 0 1 {name=p16 sig_type=std_logic lab=VdM4}
-C {lab_wire.sym} 780 560 0 1 {name=p18 sig_type=std_logic lab=VgM14}
 C {symbols/pfet_03v3.sym} 620 120 0 1 {name=M8
 L=0.28u
 W=10.5u

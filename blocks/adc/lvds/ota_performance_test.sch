@@ -52,28 +52,34 @@ C {code_shown.sym} 1040 -560 0 0 {name=s1 only_toplevel=false value="
 .param VSS=0
 .param VCM=1.2
 .param VB1=0.0
-.param VB2=1.5
-.param IB=100u
+.param VB2=1.65
 .param CL=10f
+.options temp=27
 
 .control
 save all
 set filetype=ascii
 set wr_singlescale
 set wr_vecnames
+shell rm /foss/designs/trans_testing/ota_testing/ota_ac.txt
+shell rm /foss/designs/trans_testing/ota_testing/ota_tran.txt
 
 op
 
+
 * AC gain
-ac dec 50 1 100G
+ac dec 1000 1 500G
 let vin_diff_ac = v(Vin_p)-v(Vin_n)
 let gain = v(Vout)/vin_diff_ac
-wrdata /foss/designs/trans_testing/ota_testing/ota_ac.txt frequency mag(gain) db(gain) ph(gain)
+wrdata /foss/designs/trans_testing/ota_testing/ota_ac.txt frequency db(gain) real(gain) imag(gain)
+plot v(Vout)
 
 * Transient slew rate
-tran 1p 50n
+tran 1p 100n
 let vin_diff = v(Vin_p)-v(Vin_n)
 let slew = deriv(v(Vout))
+plot v(Vout)
+
 wrdata /foss/designs/trans_testing/ota_testing/ota_tran.txt time v(Vin_p) v(Vin_n) vin_diff v(Vout) slew
 
 .endc
@@ -82,7 +88,7 @@ C {devices/code_shown.sym} 220 -600 0 0 {name=MODELS only_toplevel=true
 format="tcleval( @value )"
 value="
 .include $::180MCU_MODELS/design.ngspice
-.lib $::180MCU_MODELS/sm141064.ngspice typical
+.lib $::180MCU_MODELS/sm141064.ngspice ss
 "}
 C {lab_wire.sym} 300 10 0 1 {name=p1 sig_type=std_logic lab=Vout}
 C {lab_wire.sym} 70 -110 3 1 {name=p2 sig_type=std_logic lab=Vdd}

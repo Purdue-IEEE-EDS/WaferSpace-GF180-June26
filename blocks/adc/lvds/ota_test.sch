@@ -29,7 +29,7 @@ N 140 -767.5 140 -735 {lab=Vss}
 N 200 -260 200 -250 {lab=Vss}
 N 200 -190 200 -180 {lab=Vss}
 N 200 -250 200 -190 {lab=Vss}
-C {code.sym} 770 -880 0 0 {name=s1 only_toplevel=false value="
+C {code.sym} 770 -870 0 0 {name=s1 only_toplevel=false value="
 .param VDD=3.3
 .param VSS=0
 .param VCM=1.2
