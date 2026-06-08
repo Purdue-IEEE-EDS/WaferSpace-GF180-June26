@@ -2,6 +2,7 @@
 `timescale 1ns/1ps
 
 //  2-FF synchroniser + rising-edge detect
+
 module sync_edge (
     input  logic clk,
     input  logic rst_n,

@@ -6,6 +6,7 @@
 //
 // Input: full-width phase (already includes any offset).
 // Output: quarter-wave ROM address + sign for I and Q channels.
+//
 module phase_to_quad #(
     parameter PHASE_W = 32,
     parameter TRUNC_W = 12,
