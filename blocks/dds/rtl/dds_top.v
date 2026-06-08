@@ -1,64 +1,125 @@
 `default_nettype none
 `timescale 1ns/1ps
 
-// DDS top-level
+// DDS top-level.
 //
-// SCLK domain: spi_slave, dds_regmap.
-// CLK domain:  freq_ctrl, phase_accum, dds_datapath.
-// CDC bridge:  sync_edge on all control pins. shadow→active latch on commit.
+// CONFIG comes over SPI and launches on io_update.
+// sync_in relaunches the armed profile with a forced phase reset.
 //
-// io_update commit architecture:
-//   io_upd (sync_edge pulse) → 4 registered commit signals, one per block.
-//   Each commit fans out only to its own block's active registers.
-//   Eliminates the 113-flop fanout that blew STA.
+// Clocking for the 4:1 DDS build:
+//   - clk     = external fast 4x serializer / DAC output clock
+//               intended nominal rate: 500 MHz
+//   - clk_cal = internal divide-by-2 calibration clock
+//               intended nominal rate: 250 MHz
+//   - clk_vec = internal divide-by-4 vector clock
+//               intended nominal rate: 125 MHz
 //
-//   freq_commit, chirp_commit:  gated by ~chirp_active (frozen during ramp)
-//   pow_commit, amp_commit:     always fire (symbols update during carrier)
-//
-//   Commit adds 1 cycle of latency.  start_d and sync_d are delayed by
-//   2 cycles (was 1) to preserve the guarantee that config latches before
-//   start/sync when both arrive on the same external edge.
-
+// Work split:
+//   - clk_vec domain: profile execution, phase generation, 4 parallel DDS lanes
+//   - clk_cal domain: calibration DAC scan engine
+//   - clk_4x domain:  output serialization and DAC pin drive
 module dds_top #(
     parameter PHASE_W     = 32,
     parameter TRUNC_W     = 12,
     parameter UNARY_BITS  = 5,
     parameter BINARY_BITS = 5,
     parameter COUNT_W     = 20,
-    parameter SYM_W       = 2,
+    parameter LANES       = 4,
     parameter DAC_SW_W    = (1 << UNARY_BITS) - 1 + BINARY_BITS,
-    parameter DEVID       = 8'hD5
+    parameter CAL_DAC_N_CELLS = DAC_SW_W,
+    parameter CAL_DAC_CELL_W  = 4,
+    parameter CAL_DAC_SHIFT_CYCLES = 3,
+    parameter integer CLK_DIV1_FREQ_HZ = 500_000_000,
+    parameter integer CAL_CLK_MAX_HZ   = 500_000_000,
+    parameter DEVID       = 8'hD5,
+    parameter [PHASE_W-1:0] TEST_TONE_FTW = 32'h2284_DFCE // MY CHIP MY RULES
 )(
-    // system clock domain
+    // Fast serializer clock. Internally aliased as clk_4x.
+    // Intended nominal rate: 500 MHz.
     input  logic                  clk,
     input  logic                  rst_n,
 
-    // SPI pins
+    // SPI pins (SCLK domain)
     input  logic                  sclk,
     input  logic                  csn,
     input  logic                  mosi,
     output logic                  miso,
 
-    // control pins
+    // External control pins. Internally synchronized into clk_cal/clk_vec.
     input  logic                  io_update,
-    input  logic                  start,
     input  logic                  sync_in,
-    input  logic                  freq_trigger,
-    input  logic                  amp_trigger,
-
-    // modulation data pins
-    input  logic [SYM_W-1:0]      amp_idx,
-    input  logic [SYM_W-1:0]      pow_sel,
-    input  logic                  freq_sel,
 
     // DAC outputs
-    output logic [DAC_SW_W-1:0]  dac_i,
-    output logic [DAC_SW_W-1:0]  dac_q,
+    output logic [DAC_SW_W-1:0]   dac_i,
+    output logic [DAC_SW_W-1:0]   dac_q,
 
-    // status outputs (CLK domain)
-    output logic                  chirp_active,
-    output logic                  chirp_done
+    // Calibration DAC outputs
+    output logic                  cal_clk,
+    output logic                  cal_data,
+    output logic                  cal_load
 );
+
+    localparam integer CLK_CAL_FREQ_HZ = CLK_DIV1_FREQ_HZ / 2;
+
+    initial begin
+        if (LANES != 4)
+            $error("dds_top currently targets the 4-lane serializer build");
+
+        if (CLK_CAL_FREQ_HZ > CAL_CLK_MAX_HZ)
+            $error("dds_top cal clock %0d Hz exceeds analog max %0d Hz",
+                   CLK_CAL_FREQ_HZ, CAL_CLK_MAX_HZ);
+    end
+
+    // ================================================================
+    //  Explicit 4x -> {1x, 1/2x, 1/4x} clock split for the 4:1 serializer
+    //  build.
+    // ================================================================
+    logic clk_div1;
+    logic clk_div2;
+    logic clk_div4;
+    logic clk_4x;
+    logic clk_cal;
+    logic clk_vec;
+
+    clock_divider_4x u_clk_div4 (
+        .clk_in   (clk),
+        .rst_n    (rst_n),
+        .clk_div1 (clk_div1),
+        .clk_div2 (clk_div2),
+        .clk_div4 (clk_div4)
+    );
+
+    assign clk_4x  = clk_div1;
+    assign clk_cal = clk_div2;
+    assign clk_vec = clk_div4;
+
+    // ================================================================
+    //  Reset synchronizers
+    //   - core_rst_n_ser: fast 500 MHz serializer domain
+    //   - core_rst_n_cal: half-rate 250 MHz calibration domain
+    //   - core_rst_n_vec: slow 125 MHz vector domain
+    // ================================================================
+    logic core_rst_n_ser;
+    logic core_rst_n_cal;
+    logic core_rst_n_vec;
+
+    reset_sync u_ser_rst_sync (
+        .clk    (clk_4x),
+        .arst_n (rst_n),
+        .srst_n (core_rst_n_ser)
+    );
+
+    reset_sync u_cal_rst_sync (
+        .clk    (clk_cal),
+        .arst_n (rst_n),
+        .srst_n (core_rst_n_cal)
+    );
+
+    reset_sync u_vec_rst_sync (
+        .clk    (clk_vec),
+        .arst_n (rst_n),
+        .srst_n (core_rst_n_vec)
+    );
 
     // ================================================================
     //  SPI slave (SCLK domain)
@@ -80,319 +141,192 @@ module dds_top #(
     );
 
     // ================================================================
-    //  Register map (SCLK domain, rst_n for power-on reset)
+    //  Register map (SCLK domain)
     // ================================================================
-    logic [PHASE_W-1:0] rf_ftw_a, rf_ftw_b, rf_chirp_step;
+    logic [PHASE_W-1:0] rf_ftw_a, rf_ftw_b, rf_ftw_step;
     logic [COUNT_W-1:0] rf_chirp_n;
     logic [1:0]         rf_mode;
     logic               rf_auto_restart;
-    logic               rf_phase_rst_on_start;
-    logic [15:0]        rf_pow_0, rf_pow_1, rf_pow_2, rf_pow_3;
-    logic [15:0]        rf_amp_0, rf_amp_1, rf_amp_2, rf_amp_3;
+    logic               rf_phase_rst_on_launch;
+    logic [CAL_DAC_N_CELLS*CAL_DAC_CELL_W-1:0] rf_cal_code;
 
-    logic               chirp_done_sticky;
+    logic               cal_busy;
 
     dds_regmap #(
-        .PHASE_W (PHASE_W),
-        .COUNT_W (COUNT_W),
-        .DEVID   (DEVID)
+        .PHASE_W            (PHASE_W),
+        .COUNT_W            (COUNT_W),
+        .DEVID              (DEVID),
+        .CAL_DAC_N_CELLS    (CAL_DAC_N_CELLS),
+        .CAL_DAC_CELL_W     (CAL_DAC_CELL_W)
     ) u_regmap (
-        .sclk               (sclk),
+        .sclk                (sclk),
         .csn                 (csn),
         .rst_n               (rst_n),
         .wr_en               (spi_wr_en),
         .addr                (spi_addr),
         .wdata               (spi_wdata),
         .rdata               (spi_rdata),
-        .chirp_active        (chirp_active),
-        .chirp_done_sticky   (chirp_done_sticky),
+        .cal_busy            (cal_busy),
         .ftw_a               (rf_ftw_a),
         .ftw_b               (rf_ftw_b),
-        .chirp_step          (rf_chirp_step),
+        .ftw_step            (rf_ftw_step),
         .chirp_n             (rf_chirp_n),
         .mode                (rf_mode),
         .auto_restart        (rf_auto_restart),
-        .phase_rst_on_start  (rf_phase_rst_on_start),
-        .pow_0               (rf_pow_0),
-        .pow_1               (rf_pow_1),
-        .pow_2               (rf_pow_2),
-        .pow_3               (rf_pow_3),
-        .amp_0               (rf_amp_0),
-        .amp_1               (rf_amp_1),
-        .amp_2               (rf_amp_2),
-        .amp_3               (rf_amp_3)
+        .phase_rst_on_launch (rf_phase_rst_on_launch),
+        .cal_code            (rf_cal_code)
     );
 
     // ================================================================
-    //  CDC: synchronizers (pin → CLK domain)
+    //  Control-pin synchronizers.
+    // io_update is used in both:
+    //   - clk_cal domain for calibration apply
+    //   - clk_vec domain for DDS profile launch
     // ================================================================
-    logic io_upd, start_s, sync_s, freq_trigger_s, amp_trigger_s;
+    logic io_upd_cal;
+    logic io_upd_vec;
+    logic sync_vec;
 
-    sync_edge u_sync_ioup (.clk(clk), .rst_n(rst_n), .d(io_update),    .rise(io_upd));
-    sync_edge u_sync_start(.clk(clk), .rst_n(rst_n), .d(start),        .rise(start_s));
-    sync_edge u_sync_sync (.clk(clk), .rst_n(rst_n), .d(sync_in),      .rise(sync_s));
-    sync_edge u_sync_ftrig(.clk(clk), .rst_n(rst_n), .d(freq_trigger), .rise(freq_trigger_s));
-    sync_edge u_sync_atrig(.clk(clk), .rst_n(rst_n), .d(amp_trigger),  .rise(amp_trigger_s));
+    sync_edge u_sync_ioup_cal (
+        .clk  (clk_cal),
+        .rst_n(core_rst_n_cal),
+        .d    (io_update),
+        .rise (io_upd_cal)
+    );
 
-    // ================================================================
-    //  Start / sync delay chain (2 stages)
-    //
-    //  Commit registers add 1 cycle to the io_update → active path.
-    //  start_d and sync_d need 2 cycles of delay (was 1) so that
-    //  config is latched before start/sync when both arrive on the
-    //  same external edge.
-    //
-    //  Timeline (same external edge):
-    //    T+3: io_upd fires, start_s fires, sync_s fires
-    //    T+4: commit regs capture io_upd → active config latches
-    //          start_d1 = start_s, sync_d1 = sync_s
-    //    T+5: start_d fires → freq_ctrl sees new config ✓
-    //          sync_d fires → phase_accum resets ✓
-    // ================================================================
-    logic start_d1, start_d;
-    logic sync_d1,  sync_d;
+    sync_edge u_sync_ioup_vec (
+        .clk  (clk_vec),
+        .rst_n(core_rst_n_vec),
+        .d    (io_update),
+        .rise (io_upd_vec)
+    );
 
-    always_ff @(posedge clk or negedge rst_n) begin
-        if (!rst_n) begin
-            start_d1 <= 1'b0;
-            start_d  <= 1'b0;
-            sync_d1  <= 1'b0;
-            sync_d   <= 1'b0;
-        end else begin
-            start_d1 <= start_s;
-            start_d  <= start_d1;
-            sync_d1  <= sync_s;
-            sync_d   <= sync_d1;
-        end
-    end
+    sync_edge u_sync_sync_vec (
+        .clk  (clk_vec),
+        .rst_n(core_rst_n_vec),
+        .d    (sync_in),
+        .rise (sync_vec)
+    );
 
     // ================================================================
-    //  CDC: data pins — double-registered for metastability
+    //  FTW control (clk_vec / 125 MHz block-rate domain)
+    //   - profile normalization
+    //   - normalized profile execution
     // ================================================================
-    logic [SYM_W-1:0] amp_idx_meta, amp_idx_r;
-    logic [SYM_W-1:0] pow_sel_meta, pow_sel_r;
-    logic              freq_sel_meta, freq_sel_r;
+    logic [PHASE_W-1:0] ftw_lane0;
+    logic [PHASE_W-1:0] ftw_step_now;
+    logic               wave_en;
+    logic               phase_reset_req;
 
-    always_ff @(posedge clk or negedge rst_n) begin
-        if (!rst_n) begin
-            amp_idx_meta  <= '0;
-            amp_idx_r     <= '0;
-            pow_sel_meta  <= '0;
-            pow_sel_r     <= '0;
-            freq_sel_meta <= 1'b0;
-            freq_sel_r    <= 1'b0;
-        end else begin
-            amp_idx_meta  <= amp_idx;
-            amp_idx_r     <= amp_idx_meta;
-            pow_sel_meta  <= pow_sel;
-            pow_sel_r     <= pow_sel_meta;
-            freq_sel_meta <= freq_sel;
-            freq_sel_r    <= freq_sel_meta;
-        end
-    end
-
-    // ================================================================
-    //  Per-block commit registers
-    //
-    //  io_upd fans out to 4 FFs only.  Each commit fans out to its
-    //  own block's active registers (~56-64 flops each).
-    // ================================================================
-    logic freq_commit, chirp_commit, pow_commit, amp_commit;
-
-    always_ff @(posedge clk or negedge rst_n) begin
-        if (!rst_n) begin
-            freq_commit  <= 1'b0;
-            chirp_commit <= 1'b0;
-            pow_commit   <= 1'b0;
-            amp_commit   <= 1'b0;
-        end else begin
-            freq_commit  <= io_upd && !chirp_active;
-            chirp_commit <= io_upd && !chirp_active;
-            pow_commit   <= io_upd;
-            amp_commit   <= io_upd;
-        end
-    end
-
-    // ================================================================
-    //  Active registers — freq (FTW_A, FTW_B)
-    // ================================================================
-    logic [PHASE_W-1:0] act_ftw_a, act_ftw_b;
-
-    always_ff @(posedge clk or negedge rst_n) begin
-        if (!rst_n) begin
-            act_ftw_a <= '0;
-            act_ftw_b <= '0;
-        end else if (freq_commit) begin
-            act_ftw_a <= rf_ftw_a;
-            act_ftw_b <= rf_ftw_b;
-        end
-    end
-
-    // ================================================================
-    //  Active registers — chirp (step, N, mode, flags)
-    // ================================================================
-    logic [PHASE_W-1:0] act_chirp_step;
-    logic [PHASE_W-1:0] act_neg_chirp_step;
-    logic [COUNT_W-1:0] act_chirp_n;
-    logic               act_chirp_n_valid;
-    logic [1:0]         act_mode;
-    logic               act_auto_restart;
-    logic               act_phase_rst_on_start;
-
-    always_ff @(posedge clk or negedge rst_n) begin
-        if (!rst_n) begin
-            act_chirp_step         <= '0;
-            act_neg_chirp_step     <= '0;
-            act_chirp_n            <= '0;
-            act_chirp_n_valid      <= 1'b0;
-            act_mode               <= 2'd0;
-            act_auto_restart       <= 1'b0;
-            act_phase_rst_on_start <= 1'b0;
-        end else if (chirp_commit) begin
-            act_chirp_step         <= rf_chirp_step;
-            act_neg_chirp_step     <= -rf_chirp_step;
-            act_chirp_n            <= rf_chirp_n;
-            act_chirp_n_valid      <= (rf_chirp_n != {COUNT_W{1'b0}});
-            act_mode               <= rf_mode;
-            act_auto_restart       <= rf_auto_restart;
-            act_phase_rst_on_start <= rf_phase_rst_on_start;
-        end
-    end
-
-    // ================================================================
-    //  Active registers — POW (phase offset bank)
-    // ================================================================
-    logic [15:0] act_pow_0, act_pow_1, act_pow_2, act_pow_3;
-
-    always_ff @(posedge clk or negedge rst_n) begin
-        if (!rst_n) begin
-            act_pow_0 <= 16'h0;
-            act_pow_1 <= 16'h0;
-            act_pow_2 <= 16'h0;
-            act_pow_3 <= 16'h0;
-        end else if (pow_commit) begin
-            act_pow_0 <= rf_pow_0;
-            act_pow_1 <= rf_pow_1;
-            act_pow_2 <= rf_pow_2;
-            act_pow_3 <= rf_pow_3;
-        end
-    end
-
-    // ================================================================
-    //  Active registers — AMP (amplitude bank)
-    // ================================================================
-    logic [15:0] act_amp_0, act_amp_1, act_amp_2, act_amp_3;
-
-    always_ff @(posedge clk or negedge rst_n) begin
-        if (!rst_n) begin
-            act_amp_0 <= 16'hFFFF;
-            act_amp_1 <= 16'hFFFF;
-            act_amp_2 <= 16'hFFFF;
-            act_amp_3 <= 16'hFFFF;
-        end else if (amp_commit) begin
-            act_amp_0 <= rf_amp_0;
-            act_amp_1 <= rf_amp_1;
-            act_amp_2 <= rf_amp_2;
-            act_amp_3 <= rf_amp_3;
-        end
-    end
-
-    // ================================================================
-    //  Frequency control
-    // ================================================================
-    logic [PHASE_W-1:0] delta_phase;
-    logic [PHASE_W-1:0] fc_dp_s, fc_dp_c;
-    logic               chirp_done_raw;
-
-    freq_ctrl #(
-        .PHASE_W (PHASE_W),
-        .COUNT_W (COUNT_W)
+    ftw_ctrl #(
+        .PHASE_W       (PHASE_W),
+        .COUNT_W       (COUNT_W),
+        .LANES         (LANES),
+        .TEST_TONE_FTW (TEST_TONE_FTW)
     ) u_freq (
-        .clk          (clk),
-        .rst_n        (rst_n),
-        .ftw_a        (act_ftw_a),
-        .ftw_b        (act_ftw_b),
-        .chirp_step   (act_chirp_step),
-        .neg_chirp_step(act_neg_chirp_step),
-        .chirp_n      (act_chirp_n),
-        .chirp_n_valid(act_chirp_n_valid),
-        .mode         (act_mode),
-        .auto_restart (act_auto_restart),
-        .start        (start_d),
-        .trigger      (freq_trigger_s),
-        .freq_sel     (freq_sel_r),
-        .sync_reset   (sync_d),
-        .dp_s         (fc_dp_s),
-        .dp_c         (fc_dp_c),
-        .delta_phase  (delta_phase),
-        .chirp_active (chirp_active),
-        .chirp_done   (chirp_done_raw)
-    );
-
-    always_ff @(posedge clk or negedge rst_n) begin
-        if (!rst_n) begin
-            chirp_done_sticky <= 1'b0;
-        end else begin
-            if (start_d || sync_d)
-                chirp_done_sticky <= 1'b0;
-            else if (chirp_done_raw)
-                chirp_done_sticky <= 1'b1;
-        end
-    end
-
-    assign chirp_done = chirp_done_raw;
-
-    // ================================================================
-    //  Phase accumulator — 4:2 CSA, redundant {dp_s, dp_c} input
-    // ================================================================
-    logic [PHASE_W-1:0] phi_s, phi_c;
-    logic phase_reset;
-
-    assign phase_reset = sync_d || (start_d && act_phase_rst_on_start);
-    phase_accum #(.PHASE_W(PHASE_W)) u_accum (
-        .clk         (clk),
-        .rst_n       (rst_n),
-        .dp_s        (fc_dp_s),
-        .dp_c        (fc_dp_c),
-        .phase_reset (phase_reset),
-        .phi_s       (phi_s),
-        .phi_c       (phi_c)
+        .clk                       (clk_vec),
+        .rst_n                     (core_rst_n_vec),
+        .commit                    (io_upd_vec),
+        .sync                      (sync_vec),
+        .ftw_a                     (rf_ftw_a),
+        .ftw_b                     (rf_ftw_b),
+        .ftw_step                  (rf_ftw_step),
+        .chirp_n                   (rf_chirp_n),
+        .mode                      (rf_mode),
+        .auto_restart              (rf_auto_restart),
+        .phase_rst_on_launch       (rf_phase_rst_on_launch),
+        .out_enable                (wave_en),
+        .phase_reset_req           (phase_reset_req),
+        .ftw_lane0                 (ftw_lane0),
+        .ftw_step_now              (ftw_step_now)
     );
 
     // ================================================================
-    //  POW bank: extract top TRUNC_W bits from 16-bit registers
+    //  Phase vector generation (clk_vec / 125 MHz block-rate domain)
     // ================================================================
-    localparam POW_DEPTH = 1 << SYM_W;
-    logic [POW_DEPTH*TRUNC_W-1:0] pow_bank_trunc;
+    logic [3:0][PHASE_W-1:0] phase_vec;
+    logic [3:0]              phase_valid_vec;
 
-    assign pow_bank_trunc = {
-        act_pow_3[15 -: TRUNC_W],
-        act_pow_2[15 -: TRUNC_W],
-        act_pow_1[15 -: TRUNC_W],
-        act_pow_0[15 -: TRUNC_W]
-    };
+    phase_accum_vec4 #(
+        .PHASE_W (PHASE_W)
+    ) u_accum (
+        .clk            (clk_vec),
+        .rst_n          (core_rst_n_vec),
+        .out_enable     (wave_en),
+        .phase_reset_req(phase_reset_req),
+        .ftw_now        (ftw_lane0),
+        .ftw_step_now   (ftw_step_now),
+        .phase_vec      (phase_vec),
+        .valid_vec      (phase_valid_vec)
+    );
 
     // ================================================================
-    //  DDS datapath
+    //  Parallel DDS datapath (clk_vec / 125 MHz block-rate domain)
     // ================================================================
-    dds_datapath #(
+    logic [LANES-1:0][DAC_SW_W-1:0] dac_i_vec;
+    logic [LANES-1:0][DAC_SW_W-1:0] dac_q_vec;
+
+    dds_datapath_vec #(
         .PHASE_W     (PHASE_W),
         .TRUNC_W     (TRUNC_W),
         .UNARY_BITS  (UNARY_BITS),
         .BINARY_BITS (BINARY_BITS),
-        .SYM_W       (SYM_W)
+        .LANES       (LANES)
     ) u_dp (
-        .clk         (clk),
-        .rst_n       (rst_n),
-        .phi_s       (phi_s),
-        .phi_c       (phi_c),
-        .pow_bank    (pow_bank_trunc),
-        .pow_sel     (pow_sel_r),
-        .amp_bank    ({act_amp_3, act_amp_2, act_amp_1, act_amp_0}),
-        .amp_idx     (amp_idx_r),
-        .amp_trigger (amp_trigger_s),
-        .dac_i       (dac_i),
-        .dac_q       (dac_q)
+        .clk        (clk_vec),
+        .rst_n      (core_rst_n_vec),
+        .phase_vec  (phase_vec),
+        .out_enable (phase_valid_vec[0]),
+        .dac_i_vec  (dac_i_vec),
+        .dac_q_vec  (dac_q_vec)
+    );
+
+    // ================================================================
+    //  Output serialization (clk / 500 MHz fast serial domain)
+    // ================================================================
+    serializer_4to1 #(
+        .WORD_W (DAC_SW_W)
+    ) u_ser_i (
+        .clk_ser (clk_4x),
+        .rst_n   (core_rst_n_ser),
+        .din_vec (dac_i_vec[3:0]),
+        .dout    (dac_i)
+    );
+
+    serializer_4to1 #(
+        .WORD_W (DAC_SW_W)
+    ) u_ser_q (
+        .clk_ser (clk_4x),
+        .rst_n   (core_rst_n_ser),
+        .din_vec (dac_q_vec[3:0]),
+        .dout    (dac_q)
+    );
+
+    // ================================================================
+    //  Calibration path
+    // ================================================================
+    logic [CAL_DAC_N_CELLS*CAL_DAC_CELL_W-1:0] cal_dac_code_live;
+    logic cal_dirty, cal_apply;
+
+    assign cal_dirty = (rf_cal_code != cal_dac_code_live);
+    assign cal_apply = io_upd_cal && !cal_busy && cal_dirty;
+
+    cal_dac_scan #(
+        .N_CELLS      (CAL_DAC_N_CELLS),
+        .CELL_W       (CAL_DAC_CELL_W),
+        .SHIFT_CYCLES (CAL_DAC_SHIFT_CYCLES)
+    ) u_cal_dac_scan (
+        .clk        (clk_cal),
+        .rst_n      (core_rst_n_cal),
+        .start      (cal_apply),
+        .frame_data (rf_cal_code),
+        .busy       (cal_busy),
+        .cal_clk    (cal_clk),
+        .cal_data   (cal_data),
+        .cal_load   (cal_load),
+        .dac_code   (cal_dac_code_live)
     );
 
 endmodule
+
+`default_nettype wire

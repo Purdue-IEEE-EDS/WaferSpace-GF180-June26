@@ -7,32 +7,54 @@ PYTHON   ?= python3
 YOSYS    ?= yosys
 
 # ── PDK  ──────────────────
-PDK_ROOT   ?= /headless/QucsWorkspace/IHP-Open-PDK
+# Default: ciel install.  Override with  make PDK_ROOT=/foss/pdks  (IHP Docker)
+#                                    or  export PDK_ROOT=/your/path
+PDK_ROOT   ?= $(HOME)/.ciel
 SCL        ?= gf180mcu_fd_sc_mcu9t5v0
 CORNER     ?= tt_025C_3v30
 LIB_FILE   = $(PDK_ROOT)/gf180mcuD/libs.ref/$(SCL)/lib/$(SCL)__$(CORNER).lib
 
 # ── Directories ──────────────────────────────────────────────
 RTL_DIR    = rtl
-DDS_DIR    = rtl/dds
-DAC_DIR    = rtl/dac
+FTW_DIR    = rtl/ftw
+PHASE_DIR  = rtl/phase
+DP_DIR     = rtl/datapath
+DAC_DIR    = rtl/cal_dac
+CMN_DIR    = rtl/common
 IF_DIR     = rtl/interface
+SER_DIR    = rtl/serializer
 SIM_DIR    = sim
 SYN_DIR    = syn
 
 # ── Source files ─────────────────────────────────────────────
-DDS_RTL    = $(DDS_DIR)/sine_rom.v        \
-             $(DDS_DIR)/amp_scale.v      \
-             $(DAC_DIR)/mag_to_sw.v       \
-             $(DDS_DIR)/phase_to_quad.v   \
-             $(DDS_DIR)/dds_datapath.v    \
-             $(DDS_DIR)/freq_ctrl.v       \
-	     $(DDS_DIR)/dp_half.v          \
-	     $(DDS_DIR)/step_half.v        \
-             $(DDS_DIR)/phase_accum.v \
-	     $(DDS_DIR)/carry_out.v \
-	     $(DDS_DIR)/seg_timer.v \
-	     $(DDS_DIR)/sync_edge.v     
+FTW_RTL     = $(FTW_DIR)/profile_normalizer.v \
+              $(FTW_DIR)/freq_runner.v  \
+              $(FTW_DIR)/ftw_ctrl.v     \
+              $(FTW_DIR)/seg_timer.v    \
+              $(FTW_DIR)/step_half.v    \
+              $(FTW_DIR)/dp_half.v
+
+PHASE_RTL   = $(PHASE_DIR)/phase_accum_vec4.v
+
+BB_RTL      =
+
+DP_RTL      = $(DP_DIR)/sine_rom.v       \
+              $(DP_DIR)/dac_encoder.v    \
+              $(DP_DIR)/phase_to_quad.v  \
+              $(DP_DIR)/dds_datapath.v   \
+              $(DP_DIR)/dds_datapath_vec.v
+
+SER_RTL     = $(SER_DIR)/serializer_4to1.v
+
+DAC_RTL     = $(DAC_DIR)/cal_dac_chain.v \
+              $(DAC_DIR)/cal_dac_scan.v
+
+COMMON_RTL  = $(CMN_DIR)/carry_out.v     \
+              $(CMN_DIR)/clock_divider_4x.v \
+              $(CMN_DIR)/reset_sync.v    \
+              $(CMN_DIR)/sync_edge.v
+
+DDS_RTL     = $(FTW_RTL) $(PHASE_RTL) $(DP_RTL) $(SER_RTL) $(DAC_RTL) $(COMMON_RTL)
 
 IF_RTL     = $(IF_DIR)/spi_slave.v        \
              $(IF_DIR)/dds_regmap.v
@@ -44,44 +66,70 @@ RTL_ALL    = $(DDS_RTL) $(IF_RTL) $(TOP_RTL)
 FREQ_TB    = $(SIM_DIR)/tb_freq_ctrl.v
 ACCUM_TB   = $(SIM_DIR)/tb_phase_accum.v
 SPI_TB     = $(SIM_DIR)/tb_spi_slave.v
+CAL_DAC_TB = $(SIM_DIR)/tb_cal_dac_chain.v
+CAL_DAC_SCAN_TB = $(SIM_DIR)/tb_cal_dac_scan.v
+CAL_DAC_AMS_TB = $(SIM_DIR)/tb_cal_dac_ams.v
+CAL_DAC_SPI_TB = $(SIM_DIR)/tb_cal_dac_spi.v
+MAIN_DAC_AMS_TB = $(SIM_DIR)/tb_main_dac_ams.v
 TOP_TB     = $(SIM_DIR)/tb_dds_top.v
+USER_E2E_TB = $(SIM_DIR)/tb_dds_user_e2e.v
+WAVE_SCAN_MATCH_TB = $(SIM_DIR)/tb_dds_wave_scan_match.v
 
-LUT_HEX   = sine_lut.hex
+LUT_V     = $(DP_DIR)/sine_lut_init.v
+LUT_HEX   = $(DP_DIR)/sine_lut.hex
 LUT_SCRIPT = scripts/gen_sine_lut.py
 
 SYN_NET    = $(SYN_DIR)/dds_top_syn.v
 SYN_SCRIPT = $(SYN_DIR)/synth.ys
 
-STA        ?= sta
+# STA tool: use standalone 'sta' if found, else fall back to 'openroad'
+STA        ?= $(shell command -v openroad >/dev/null 2>&1 && echo openroad || { command -v sta >/dev/null 2>&1 && echo sta; })
 OPENROAD   ?= openroad
 KLAYOUT    ?= klayout
-CLK_PERIOD ?= 3.2
-CLK_PS     ?= 3200
+
+# Clock plan for the 4:1 DDS build:
+#   clk      = external fast 4x serializer clock at 500 MHz
+#   clk_4x   = internal alias of top-level clk
+#   clk_vec  = internal divide-by-4 vector clock at 125 MHz
+SER_CLK_PERIOD ?= 2.0
+SER_CLK_PS     ?= 2000
+FAST_CLK_NAME  ?= clk_4x
+
+CORE_SYNC_IN_PORTS = io_update sync_in
+CORE_ASYNC_IN_PORTS = rst_n
+CORE_OUT_PORTS = dac_i* dac_q*
+SPI_IN_PORTS   = csn mosi
 STA_SCRIPT = $(SYN_DIR)/sta.tcl
 CELL_VLOG  = $(PDK_ROOT)/gf180mcuD/libs.ref/$(SCL)/verilog/primitives.v \
              $(PDK_ROOT)/gf180mcuD/libs.ref/$(SCL)/verilog/$(SCL).v
 
-.PHONY: all lut lint sim sim_freq sim_accum sim_spi sim_top syn sta sim_syn pnr gds clean
+.PHONY: all lut lut_hex lint sim sim_freq sim_accum sim_spi sim_cal_dac sim_cal_dac_scan sim_cal_dac_ams sim_cal_dac_spi sim_cal_dac_e2e sim_main_dac_ams sim_top sim_user_e2e sim_wave_scan_match wave syn sta sta_buf sim_syn pnr gds clean \
+       $(SYN_SCRIPT) $(STA_SCRIPT) $(STA_BUF_SCRIPT) $(STA_BUF_SDC) $(PNR_SCRIPT) $(PNR_SDC)
 
 all: lut lint sim
 
 # ── LUT generation ───────────────────────────────────────────
 
-lut: $(LUT_HEX)
+lut: $(LUT_V)
+
+$(LUT_V): $(LUT_SCRIPT)
+	$(PYTHON) $(LUT_SCRIPT) $(TRUNC_W) $(MAG_W) $(LUT_V)
+
+lut_hex: $(LUT_HEX)
 
 $(LUT_HEX): $(LUT_SCRIPT)
 	$(PYTHON) $(LUT_SCRIPT) $(TRUNC_W) $(MAG_W) $(LUT_HEX)
 
 # ── Lint ─────────────────────────────────────────────────────
 
-lint: $(RTL_ALL)
+lint: $(LUT_V) $(RTL_ALL)
 	$(IVERILOG) -Wall -g2012 -tnull $(RTL_ALL)
 	@echo "Lint OK"
 
-# ── freq_ctrl unit test ─────────────────────────────────────
+# ── freq_runner unit test ───────────────────────────────────
 
-$(SIM_DIR)/tb_freq_ctrl.vvp: $(DDS_DIR)/freq_ctrl.v $(DDS_DIR)/seg_timer.v $(DDS_DIR)/dp_half.v $(DDS_DIR)/step_half.v $(FREQ_TB)
-	$(IVERILOG) -Wall -g2012 -o $@ $(DDS_DIR)/freq_ctrl.v $(DDS_DIR)/seg_timer.v $(DDS_DIR)/dp_half.v $(DDS_DIR)/step_half.v $(FREQ_TB)
+$(SIM_DIR)/tb_freq_ctrl.vvp: $(FTW_DIR)/freq_runner.v $(FTW_DIR)/seg_timer.v $(FTW_DIR)/dp_half.v $(FTW_DIR)/step_half.v $(FREQ_TB)
+	$(IVERILOG) -Wall -g2012 -o $@ $(FTW_DIR)/freq_runner.v $(FTW_DIR)/seg_timer.v $(FTW_DIR)/dp_half.v $(FTW_DIR)/step_half.v $(FREQ_TB)
 
 sim_freq: $(SIM_DIR)/tb_freq_ctrl.vvp
 	cd $(SIM_DIR) && $(VVP) tb_freq_ctrl.vvp
@@ -89,8 +137,8 @@ sim_freq: $(SIM_DIR)/tb_freq_ctrl.vvp
 
 # ── phase_accum unit test ───────────────────────────────────
 
-$(SIM_DIR)/tb_phase_accum.vvp: $(DDS_DIR)/phase_accum.v $(ACCUM_TB)
-	$(IVERILOG) -Wall -g2012 -o $@ $(DDS_DIR)/phase_accum.v $(ACCUM_TB)
+$(SIM_DIR)/tb_phase_accum.vvp: $(PHASE_DIR)/phase_accum_vec4.v $(ACCUM_TB)
+	$(IVERILOG) -Wall -g2012 -o $@ $(PHASE_DIR)/phase_accum_vec4.v $(ACCUM_TB)
 
 sim_accum: $(SIM_DIR)/tb_phase_accum.vvp
 	cd $(SIM_DIR) && $(VVP) tb_phase_accum.vvp
@@ -105,19 +153,101 @@ sim_spi: $(SIM_DIR)/tb_spi_slave.vvp
 	cd $(SIM_DIR) && $(VVP) tb_spi_slave.vvp
 	@echo "Waveform → $(SIM_DIR)/tb_spi_slave.vcd"
 
+# ── Calibration DAC scan-chain unit test ───────────────────
+
+$(SIM_DIR)/tb_cal_dac_chain.vvp: $(DAC_RTL) $(CAL_DAC_TB)
+	$(IVERILOG) -Wall -g2012 -o $@ $(DAC_RTL) $(CAL_DAC_TB)
+
+sim_cal_dac: $(SIM_DIR)/tb_cal_dac_chain.vvp
+	cd $(SIM_DIR) && $(VVP) tb_cal_dac_chain.vvp
+	@echo "Waveform → $(SIM_DIR)/tb_cal_dac_chain.vcd"
+
+$(SIM_DIR)/tb_cal_dac_scan.vvp: $(DAC_RTL) $(CAL_DAC_SCAN_TB)
+	$(IVERILOG) -Wall -g2012 -o $@ $(DAC_RTL) $(CAL_DAC_SCAN_TB)
+
+sim_cal_dac_scan: $(SIM_DIR)/tb_cal_dac_scan.vvp
+	cd $(SIM_DIR) && $(VVP) tb_cal_dac_scan.vvp
+	@echo "Waveform → $(SIM_DIR)/tb_cal_dac_scan.vcd"
+
+$(SIM_DIR)/tb_cal_dac_ams.vvp: $(LUT_V) $(RTL_ALL) $(CAL_DAC_AMS_TB)
+	$(IVERILOG) -Wall -g2012 -o $@ $(RTL_ALL) $(CAL_DAC_AMS_TB)
+
+sim_cal_dac_ams: $(SIM_DIR)/tb_cal_dac_ams.vvp
+	cd $(SIM_DIR) && $(VVP) tb_cal_dac_ams.vvp
+	@echo "Waveform → $(SIM_DIR)/tb_cal_dac_ams.vcd"
+
+$(SIM_DIR)/tb_main_dac_ams.vvp: $(LUT_V) ams/ams/main_dac_codegen.v $(MAIN_DAC_AMS_TB)
+	$(IVERILOG) -Wall -g2012 -o $@ ams/ams/main_dac_codegen.v $(MAIN_DAC_AMS_TB)
+
+sim_main_dac_ams: $(SIM_DIR)/tb_main_dac_ams.vvp
+	cd $(SIM_DIR) && $(VVP) tb_main_dac_ams.vvp
+	@echo "Waveform → $(SIM_DIR)/tb_main_dac_ams.vcd"
+
+$(SIM_DIR)/tb_cal_dac_spi.vvp: $(LUT_V) $(RTL_ALL) $(CAL_DAC_SPI_TB)
+	$(IVERILOG) -Wall -g2012 -o $@ $(RTL_ALL) $(CAL_DAC_SPI_TB)
+
+sim_cal_dac_spi: $(SIM_DIR)/tb_cal_dac_spi.vvp
+	cd $(SIM_DIR) && $(VVP) tb_cal_dac_spi.vvp
+	@echo "Waveform → $(SIM_DIR)/tb_cal_dac_spi.vcd"
+
+sim_cal_dac_e2e: sim_cal_dac_spi
+
 # ── Top-level integration test ──────────────────────────────
 
-$(SIM_DIR)/tb_dds_top.vvp: $(LUT_HEX) $(RTL_ALL) $(TOP_TB)
+$(SIM_DIR)/tb_dds_top.vvp: $(LUT_V) $(RTL_ALL) $(TOP_TB)
 	$(IVERILOG) -Wall -g2012 -o $@ $(RTL_ALL) $(TOP_TB)
 
 sim_top: $(SIM_DIR)/tb_dds_top.vvp
-	cp $(LUT_HEX) $(SIM_DIR)/
 	cd $(SIM_DIR) && $(VVP) tb_dds_top.vvp
 	@echo "Waveform → $(SIM_DIR)/tb_dds_top.vcd"
 
-# ── All sim ──────────────────────────────────────────────────
+$(SIM_DIR)/tb_dds_user_e2e.vvp: $(LUT_V) $(RTL_ALL) $(USER_E2E_TB)
+	$(IVERILOG) -Wall -g2012 -o $@ $(RTL_ALL) $(USER_E2E_TB)
 
-sim: sim_freq sim_accum sim_spi sim_top
+sim_user_e2e: $(SIM_DIR)/tb_dds_user_e2e.vvp
+	cd $(SIM_DIR) && $(VVP) tb_dds_user_e2e.vvp
+	@echo "Waveform → $(SIM_DIR)/tb_dds_user_e2e.vcd"
+	@echo "CSV      → $(SIM_DIR)/tb_dds_user_e2e_wave.csv"
+
+$(SIM_DIR)/tb_dds_wave_scan_match.vvp: $(LUT_V) $(RTL_ALL) $(WAVE_SCAN_MATCH_TB)
+	$(IVERILOG) -Wall -g2012 -o $@ $(RTL_ALL) $(WAVE_SCAN_MATCH_TB)
+
+sim_wave_scan_match: $(SIM_DIR)/tb_dds_wave_scan_match.vvp
+	cd $(SIM_DIR) && $(VVP) tb_dds_wave_scan_match.vvp
+	@echo "Waveform → $(SIM_DIR)/tb_dds_wave_scan_match.vcd"
+	@echo "CSV      → $(SIM_DIR)/tb_dds_wave_scan_match.csv"
+	$(PYTHON) scripts/wave_scan.py --sample-rate-hz 500000000
+
+wave: sim_wave_scan_match
+
+# ── All sim ──────────────────────────────────────────────────
+#
+# Runs each TB even if a previous one failed, then prints a summary
+# at the end.  Exit code = number of failed TBs.  Individual targets
+# (sim_freq, sim_accum, sim_spi, sim_top) still work standalone.
+
+sim: $(SIM_DIR)/tb_freq_ctrl.vvp $(SIM_DIR)/tb_phase_accum.vvp $(SIM_DIR)/tb_spi_slave.vvp $(SIM_DIR)/tb_cal_dac_chain.vvp $(SIM_DIR)/tb_cal_dac_scan.vvp $(SIM_DIR)/tb_cal_dac_ams.vvp $(SIM_DIR)/tb_cal_dac_spi.vvp $(SIM_DIR)/tb_main_dac_ams.vvp $(SIM_DIR)/tb_dds_top.vvp $(SIM_DIR)/tb_dds_user_e2e.vvp $(SIM_DIR)/tb_dds_wave_scan_match.vvp
+	@pass=0; fail=0; summary=""; \
+	 for tb in tb_freq_ctrl tb_phase_accum tb_spi_slave tb_cal_dac_chain tb_cal_dac_scan tb_cal_dac_ams tb_cal_dac_spi tb_main_dac_ams tb_dds_top tb_dds_user_e2e tb_dds_wave_scan_match; do \
+	     printf "\n================= %s =================\n" $$tb; \
+	     out=$$(cd $(SIM_DIR) && $(VVP) $$tb.vvp 2>&1); \
+	     printf "%s\n" "$$out"; \
+	     if printf "%s" "$$out" | grep -Eq "ALL TESTS PASSED"; then \
+	         summary="$${summary}  PASS  $$tb\n"; \
+	         pass=$$((pass+1)); \
+	     else \
+	         err=$$(printf "%s" "$$out" | grep -oE "FAILED: [0-9]+ error[s]?" | head -1); \
+	         [ -z "$$err" ] && err="no result line"; \
+	         summary="$${summary}  FAIL  $$tb  [$$err]\n"; \
+	         fail=$$((fail+1)); \
+	     fi; \
+	 done; \
+	 printf "\n========================================\n"; \
+	 printf "  Test summary: %d passed, %d failed\n" $$pass $$fail; \
+	 printf "========================================\n"; \
+	 printf "%b" "$$summary"; \
+	 printf "========================================\n"; \
+	 exit $$fail
 
 # ── Synthesis ────────────────────────────────────────────────
 
@@ -173,9 +303,9 @@ $(SYN_SCRIPT): Makefile
 	@echo "dfflibmap -liberty $(LIB_FILE)"                       >> $@
 	@echo ""                                                     >> $@
 	@echo "# ── ABC: single pass, timing-driven ──"             >> $@
-	@echo "# -D $(CLK_PS): delay target (ps) = clock period"    >> $@
+	@echo "# -D $(SER_CLK_PS): delay target (ps) = fast clk period" >> $@
 	@echo "# No -dff: do NOT retime across register boundaries" >> $@
-	@echo "abc -liberty $(LIB_FILE) -D $(CLK_PS)"               >> $@
+	@echo "abc -liberty $(LIB_FILE) -D $(SER_CLK_PS)"           >> $@
 	@echo ""                                                     >> $@
 	@echo "# ── Final cleanup and stats ──"                     >> $@
 	@echo "opt_clean"                                            >> $@
@@ -186,28 +316,45 @@ $(SYN_SCRIPT): Makefile
 	@echo "# ── Write netlist ──"                                >> $@
 	@echo "write_verilog -noattr $(SYN_NET)"                     >> $@
 
-$(SYN_NET): $(RTL_ALL) $(LUT_HEX) $(SYN_SCRIPT)
+$(SYN_NET): $(RTL_ALL) $(LUT_V) $(SYN_SCRIPT)
 	$(YOSYS) -s $(SYN_SCRIPT)
 
 # ── STA ──────────────────────────────────────────────────────
 
-sta: $(SYN_NET) $(STA_SCRIPT)
-	$(STA) -exit -no_splash $(STA_SCRIPT)
+# STA flags: standalone sta accepts -no_splash, openroad does not
+STA_FLAGS  = -exit $(if $(filter sta,$(notdir $(STA))),-no_splash,)
 
-$(STA_SCRIPT): | $(SYN_NET)
+sta: $(SYN_NET) $(STA_SCRIPT)
+	$(STA) $(STA_FLAGS) $(STA_SCRIPT)
+
+$(STA_SCRIPT): $(SYN_NET) Makefile
+ifeq ($(filter sta,$(notdir $(STA))),)
+	@echo "read_lef $(TECH_LEF)"                              >  $@
+	@echo "read_lef $(CELL_LEF)"                              >> $@
+	@echo "read_liberty $(LIB_FILE)"                          >> $@
+else
 	@echo "read_liberty $(LIB_FILE)"                          >  $@
+endif
 	@echo "read_verilog $(SYN_NET)"                           >> $@
 	@echo "link_design dds_top"                               >> $@
-	@echo "create_clock -name clk -period $(CLK_PERIOD) [get_ports clk]" >> $@
+	@echo "create_clock -name $(FAST_CLK_NAME) -period $(SER_CLK_PERIOD) [get_ports clk]" >> $@
 	@echo "create_clock -name sclk -period 20.0 [get_ports sclk]"   >> $@
 	@echo "create_clock -name csn_clk -period 1000.0 [get_ports csn]" >> $@
 	@echo ""                                                  >> $@
-	@echo "# CDC false paths — crossing handled by sync_edge and io_update protocol" >> $@
-	@echo "set_false_path -from [get_clocks sclk]    -to [get_clocks clk]"  >> $@
-	@echo "set_false_path -from [get_clocks clk]     -to [get_clocks sclk]" >> $@
-	@echo "set_false_path -from [get_clocks csn_clk] -to [get_clocks clk]"  >> $@
-	@echo "set_false_path -from [get_clocks csn_clk] -to [get_clocks sclk]" >> $@
-	@echo "set_false_path -from [get_clocks sclk]    -to [get_clocks csn_clk]" >> $@
+	@echo "set_input_delay  0.1 -clock $(FAST_CLK_NAME) [get_ports {$(CORE_SYNC_IN_PORTS)}]" >> $@
+	@echo "set_false_path -from [get_ports {$(CORE_ASYNC_IN_PORTS)}]" >> $@
+	@echo "set_output_delay 0.1 -clock $(FAST_CLK_NAME) [get_ports {$(CORE_OUT_PORTS)}]" >> $@
+	@echo "set_input_delay  2.0 -clock sclk [get_ports {$(SPI_IN_PORTS)}]" >> $@
+	@echo "set_output_delay 2.0 -clock sclk [get_ports {miso}]" >> $@
+	@echo ""                                                  >> $@
+	@echo "set_max_fanout 16 [current_design]"                >> $@
+	@echo "set_max_transition 1.0 [current_design]"           >> $@
+	@echo ""                                                  >> $@
+	@echo "# SPI/CSN are asynchronous to the core clock."     >> $@
+	@echo "set_clock_groups -asynchronous \\"                 >> $@
+	@echo "    -group [get_clocks $(FAST_CLK_NAME)] \\"       >> $@
+	@echo "    -group [get_clocks sclk] \\"                   >> $@
+	@echo "    -group [get_clocks csn_clk]"                   >> $@
 	@echo ""                                                  >> $@
 	@echo "puts \"\n=== WORST PATH (max) ===\""               >> $@
 	@echo "report_checks -path_delay max -fields {fanout capacitance slew} -digits 3" >> $@
@@ -215,11 +362,9 @@ $(STA_SCRIPT): | $(SYN_NET)
 	@echo "puts \"\n=== WORST PATH (min / hold) ===\""        >> $@
 	@echo "report_checks -path_delay min -digits 3"           >> $@
 	@echo ""                                                  >> $@
-	@echo "puts \"\n=== freq_ctrl ===\""                      >> $@
-	@echo "report_checks -path_delay max -through [get_cells u_freq/*] -fields {fanout capacitance slew} -digits 3" >> $@
 	@echo ""                                                  >> $@
-	@echo "puts \"\n=== seg_timer (inside freq_ctrl) ===\""   >> $@
-	@echo "report_checks -path_delay max -through [get_cells u_freq/u_timer/*] -fields {fanout capacitance slew} -digits 3" >> $@
+	@echo "puts \"\n=== freq_runner ===\""                    >> $@
+	@echo "report_checks -path_delay max -through [get_cells u_freq/*] -fields {fanout capacitance slew} -digits 3" >> $@
 	@echo ""                                                  >> $@
 	@echo "puts \"\n=== phase_accum ===\""                    >> $@
 	@echo "report_checks -path_delay max -through [get_cells u_accum/*] -fields {fanout capacitance slew} -digits 3" >> $@
@@ -228,16 +373,117 @@ $(STA_SCRIPT): | $(SYN_NET)
 	@echo "report_checks -path_delay max -through [get_cells u_dp/*] -fields {fanout capacitance slew} -digits 3" >> $@
 	@echo ""                                                  >> $@
 	@echo "puts \"\n=== sine_rom ===\""                       >> $@
-	@echo "report_checks -path_delay max -through [get_cells u_dp/u_rom/*] -fields {fanout capacitance slew} -digits 3" >> $@
+	@echo "report_checks -path_delay max -through [get_cells u_dp/g_lane[0].u_lane/u_rom/*] -fields {fanout capacitance slew} -digits 3" >> $@
 	@echo ""                                                  >> $@
 	@echo "puts \"\n=== SUMMARY ===\""                        >> $@
 	@echo "report_tns"                                        >> $@
 	@echo "report_wns"                                        >> $@
 
+# ── Buffered STA (OpenROAD: buffer insertion + gate sizing) ──
+
+STA_BUF_SCRIPT = $(SYN_DIR)/sta_buf.tcl
+STA_BUF_SDC    = $(SYN_DIR)/sta_buf.sdc
+STA_BUF_NET    = $(SYN_DIR)/dds_top_buf.v
+
+.PHONY: sta_buf
+
+sta_buf: $(SYN_NET) $(STA_BUF_SDC) $(STA_BUF_SCRIPT)
+	$(OPENROAD) -exit $(STA_BUF_SCRIPT) 2>&1 | tee $(SYN_DIR)/sta_buf.log
+
+$(STA_BUF_SDC): $(SYN_NET) Makefile
+	@mkdir -p $(SYN_DIR)
+	@echo "create_clock -name $(FAST_CLK_NAME) -period $(SER_CLK_PERIOD) [get_ports clk]" >  $@
+	@echo "create_clock -name sclk -period 1000.0 [get_ports sclk]"       >> $@
+	@echo "create_clock -name csn_clk -period 1000.0 [get_ports csn]"     >> $@
+	@echo "set_clock_groups -asynchronous \\"                              >> $@
+	@echo "    -group [get_clocks $(FAST_CLK_NAME)] \\"  >> $@
+	@echo "    -group [get_clocks sclk] \\"                                >> $@
+	@echo "    -group [get_clocks csn_clk]"                                >> $@
+	@echo "set_input_delay  0.1 -clock $(FAST_CLK_NAME) [get_ports {$(CORE_SYNC_IN_PORTS)}]" >> $@
+	@echo "set_false_path -from [get_ports {$(CORE_ASYNC_IN_PORTS)}]"      >> $@
+	@echo "set_output_delay 0.1 -clock $(FAST_CLK_NAME) [get_ports {$(CORE_OUT_PORTS)}]" >> $@
+	@echo "set_input_delay  2.0 -clock sclk [get_ports {$(SPI_IN_PORTS)}]" >> $@
+	@echo "set_output_delay 2.0 -clock sclk [get_ports {miso}]"           >> $@
+	@echo "set_max_fanout 16 [current_design]"                             >> $@
+	@echo "set_max_transition 1.0 [current_design]"                        >> $@
+
+$(STA_BUF_SCRIPT): $(SYN_NET) $(STA_BUF_SDC) Makefile
+	@mkdir -p $(SYN_DIR)
+	@echo "read_lef $(TECH_LEF)"                                           >  $@
+	@echo "read_lef $(CELL_LEF)"                                           >> $@
+	@echo "read_liberty $(LIB_FILE)"                                       >> $@
+	@echo "read_verilog $(SYN_NET)"                                        >> $@
+	@echo "link_design dds_top"                                            >> $@
+	@echo "read_sdc $(STA_BUF_SDC)"                                        >> $@
+	@echo ""                                                               >> $@
+	@echo "# Minimal floorplan for wire RC estimation"                     >> $@
+	@echo "initialize_floorplan -utilization 35 -aspect_ratio 1.0 -core_space 10 -site $(SITE_NAME)" >> $@
+	@echo ""                                                               >> $@
+	@echo "make_tracks Metal1 -x_offset 0.24 -x_pitch 0.48 -y_offset 0.28 -y_pitch 0.56" >> $@
+	@echo "make_tracks Metal2 -x_offset 0.28 -x_pitch 0.56 -y_offset 0.24 -y_pitch 0.48" >> $@
+	@echo "make_tracks Metal3 -x_offset 0.28 -x_pitch 0.56 -y_offset 0.28 -y_pitch 0.56" >> $@
+	@echo "make_tracks Metal4 -x_offset 0.28 -x_pitch 0.56 -y_offset 0.28 -y_pitch 0.56" >> $@
+	@echo "make_tracks Metal5 -x_offset 0.28 -x_pitch 0.56 -y_offset 0.28 -y_pitch 0.56" >> $@
+	@echo ""                                                               >> $@
+	@echo "set_routing_layers -signal Metal1-Metal5"                       >> $@
+	@echo "set_wire_rc -signal -layer Metal3"                              >> $@
+	@echo "set_wire_rc -clock -layer Metal4"                               >> $@
+	@echo ""                                                               >> $@
+	@echo "place_pins -hor_layers Metal3 -ver_layers Metal2"               >> $@
+	@echo ""                                                               >> $@
+	@echo "add_global_connection -net VDD -pin_pattern VDD -power"         >> $@
+	@echo "add_global_connection -net VSS -pin_pattern VSS -ground"        >> $@
+	@echo "set_voltage_domain -power VDD -ground VSS"                      >> $@
+	@echo "define_pdn_grid -name core -pins {Metal5}"                      >> $@
+	@echo "add_pdn_stripe -grid core -layer Metal1 -width 0.48 -followpins" >> $@
+	@echo "add_pdn_stripe -grid core -layer Metal4 -width 1.6 -spacing 1.6 -pitch 40.0 -offset 2.0" >> $@
+	@echo "add_pdn_stripe -grid core -layer Metal5 -width 1.6 -spacing 1.6 -pitch 40.0 -offset 2.0" >> $@
+	@echo "add_pdn_connect -layers {Metal1 Metal4}"                        >> $@
+	@echo "add_pdn_connect -layers {Metal4 Metal5}"                        >> $@
+	@echo "pdngen"                                                         >> $@
+	@echo ""                                                               >> $@
+	@echo "# Global placement for parasitic estimation"                    >> $@
+	@echo "global_placement -density 0.45 -pad_left 2 -pad_right 2"       >> $@
+	@echo "estimate_parasitics -placement"                                 >> $@
+	@echo ""                                                               >> $@
+	@echo "# Buffer insertion + gate sizing"                               >> $@
+	@echo ""                                                               >> $@
+	@echo "# Multi-pass repair — pass N+1 picks up paths deprioritized in pass N" >> $@
+	@echo "puts \"\n=== REPAIR PASS 1 ===\""                               >> $@
+	@echo "repair_timing -setup -verbose"                                  >> $@
+	@echo "detailed_placement"                                             >> $@
+	@echo "estimate_parasitics -placement"                                 >> $@
+	@echo ""                                                               >> $@
+	@echo "puts \"\n=== REPAIR PASS 2 ===\""                               >> $@
+	@echo "repair_timing -setup -verbose"                                  >> $@
+	@echo "detailed_placement"                                             >> $@
+	@echo "estimate_parasitics -placement"                                 >> $@
+	@echo ""                                                               >> $@
+	@echo "puts \"\n=== BUFFERED: WORST PATH (max) ===\""                  >> $@
+	@echo "report_checks -path_delay max -fields {fanout capacitance slew} -digits 3" >> $@
+	@echo ""                                                               >> $@
+	@echo "puts \"\n=== BUFFERED: WORST PATH (min / hold) ===\""           >> $@
+	@echo "report_checks -path_delay min -digits 3"                        >> $@
+	@echo ""                                                               >> $@
+	@echo "puts \"\n=== BUFFERED: SUMMARY ===\""                           >> $@
+	@echo "report_tns"                                                     >> $@
+	@echo "report_wns"                                                     >> $@
+	@echo 'puts "\n=== WORST PATHS BY MODULE ==="' >> $@
+	@echo 'foreach inst {u_freq u_accum u_dp u_ser_i} {' >> $@
+	@echo '    puts "\n--- $$inst ---"' >> $@
+	@echo '    report_checks -path_delay max -through [get_pins -hier "$$inst/*"] -fields {slew cap input_pins nets fanout} -digits 3 -group_count 3' >> $@
+	@echo '}' >> $@
+	@echo ""                                                               >> $@
+	@echo "# Write buffered netlist for inspection"                        >> $@
+	@echo "write_verilog $(STA_BUF_NET)"                                   >> $@
+	@echo "puts \"\n=== TIMING SUMMARY ===\""                            >> $@
+	@echo "report_tns"                                                   >> $@
+	@echo "report_wns"                                                   >> $@
+
+	
 # ── Gate-level sim ───────────────────────────────────────────
 
 sim_syn: $(SYN_NET)
-	cp $(LUT_HEX) $(SIM_DIR)/
 	$(IVERILOG) -Wall -g2012 -o $(SIM_DIR)/tb_dds_top_syn.vvp \
 	    $(CELL_VLOG) $(SYN_NET) $(TOP_TB)
 	cd $(SIM_DIR) && $(VVP) tb_dds_top_syn.vvp
@@ -256,20 +502,23 @@ SITE_NAME  ?= GF018hv5v_green_sc9
 
 pnr: $(PNR_DEF)
 
-$(PNR_SDC): | $(SYN_DIR)
-	@echo "create_clock -name clk -period $(CLK_PERIOD) [get_ports clk]"   >  $@
+$(PNR_SDC): $(SYN_NET)
+	@echo "create_clock -name $(FAST_CLK_NAME) -period $(SER_CLK_PERIOD) [get_ports clk]" >  $@
 	@echo "create_clock -name sclk -period 20.0 [get_ports sclk]"         >> $@
+	@echo "create_clock -name csn_clk -period 1000.0 [get_ports csn]"     >> $@
 	@echo "set_clock_groups -asynchronous \\"                              >> $@
-	@echo "    -group [get_clocks clk] \\"                                 >> $@
-	@echo "    -group [get_clocks sclk]"                                   >> $@
-	@echo "set_input_delay  0.1 -clock clk [get_ports {rst_n io_update start sync_in freq_trigger sym_trigger sym_idx* freq_sel}]" >> $@
-	@echo "set_output_delay 0.1 -clock clk [get_ports {dac_i* dac_q* chirp_active chirp_done}]" >> $@
-	@echo "set_input_delay  2.0 -clock sclk [get_ports {csn mosi}]"       >> $@
+	@echo "    -group [get_clocks $(FAST_CLK_NAME)] \\"  >> $@
+	@echo "    -group [get_clocks sclk] \\"                                >> $@
+	@echo "    -group [get_clocks csn_clk]"                                >> $@
+	@echo "set_input_delay  0.1 -clock $(FAST_CLK_NAME) [get_ports {$(CORE_SYNC_IN_PORTS)}]" >> $@
+	@echo "set_false_path -from [get_ports {$(CORE_ASYNC_IN_PORTS)}]"      >> $@
+	@echo "set_output_delay 0.1 -clock $(FAST_CLK_NAME) [get_ports {$(CORE_OUT_PORTS)}]" >> $@
+	@echo "set_input_delay  2.0 -clock sclk [get_ports {$(SPI_IN_PORTS)}]" >> $@
 	@echo "set_output_delay 2.0 -clock sclk [get_ports {miso}]"           >> $@
 	@echo "set_max_fanout 16 [current_design]"                             >> $@
-	@echo "set_max_transition 0.3 [current_design]"                        >> $@
+	@echo "set_max_transition 1.0 [current_design]"                        >> $@
 
-$(PNR_SCRIPT): | $(SYN_DIR)
+$(PNR_SCRIPT): $(SYN_NET)
 	@echo "read_lef $(TECH_LEF)"                                           >  $@
 	@echo "read_lef $(CELL_LEF)"                                           >> $@
 	@echo "read_liberty $(LIB_FILE)"                                       >> $@
@@ -315,6 +564,11 @@ $(PNR_SCRIPT): | $(SYN_DIR)
 	@echo ""                                                               >> $@
 	@echo "estimate_parasitics -placement"                                 >> $@
 	@echo "repair_timing -setup -verbose"                                  >> $@
+	@echo "detailed_placement"                                             >> $@
+	@echo "estimate_parasitics -placement"                                 >> $@
+	@echo "repair_timing -setup -verbose"                                  >> $@
+	@echo "detailed_placement"                                             >> $@
+	@echo "estimate_parasitics -placement"                                 >> $@
 	@echo "repair_timing -hold -verbose"                                   >> $@
 	@echo "detailed_placement"                                             >> $@
 	@echo ""                                                               >> $@
@@ -352,5 +606,5 @@ $(PNR_GDS): $(PNR_DEF)
 # ── Clean ────────────────────────────────────────────────────
 
 clean:
-	rm -f $(LUT_HEX) $(SIM_DIR)/*.vvp $(SIM_DIR)/*.vcd $(SIM_DIR)/sine_lut.hex
+	rm -f $(LUT_V) $(LUT_OLD) $(SIM_DIR)/*.vvp $(SIM_DIR)/*.vcd
 	rm -rf $(SYN_DIR)

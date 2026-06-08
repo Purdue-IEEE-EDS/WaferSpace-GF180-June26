@@ -1,10 +1,10 @@
 `default_nettype none
 `timescale 1ns/1ps
 
-// step_half — 16-bit slice of the step register.
+// step_half — 16-bit slice of the FTW-step register.
 //
 // Priority: load > swap > hold.
-// Load fires at ramp start (chirp_step from SPI).
+// Load fires at ramp start (FTW step value).
 // Swap fires at TRI turnaround (precomputed neg value, no carry chain).
 //
 (* keep_hierarchy = "yes" *)

@@ -2,13 +2,8 @@
 `timescale 1ns/1ps
 
 // dp_half — 16-bit slice of the delta-phase carry-save pair.
-//
-// Contains its own priority mux: seq_load > fire > CSA > hold.
-// With keep_hierarchy, ABC processes each instance independently —
-// it cannot merge select trees across module boundaries.
-//
 // Two instances (lo/hi) partition the 64-FF fanout into 32 each.
-//
+
 (* keep_hierarchy = "yes" *)
 module dp_half #(
     parameter W = 16

@@ -3,7 +3,7 @@
 
 // Phase accumulator — 4:2 carry-save compressor.
 //
-// Inputs: {dp_s, dp_c} redundant delta_phase from freq_ctrl.
+// Inputs: {dp_s, dp_c} redundant lane-0/base FTW from freq_runner.
 // Internal: {phi_s, phi_c} carry-save phase state.
 //
 // Every cycle: phi += dp_s + dp_c  via two cascaded CSA stages.
