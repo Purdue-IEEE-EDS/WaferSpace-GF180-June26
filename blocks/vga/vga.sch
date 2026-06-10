@@ -214,7 +214,7 @@ C {lab_pin.sym} -220 -820 0 1 {name=p9 sig_type=std_logic lab=Vin_n
 }
 C {lab_pin.sym} -60 -540 0 0 {name=p12 sig_type=std_logic lab=VDD
 }
-C {code_shown.sym} 750 240 0 0 {name=s1 only_toplevel=false spice_ignore=false value="
+C {code_shown.sym} 750 240 0 0 {name=s1 only_toplevel=false spice_ignore=true value="
 .include /foss/pdks/gf180mcuD/libs.tech/ngspice/design.ngspice
 .lib /foss/pdks/gf180mcuD/libs.tech/ngspice/sm141064.ngspice typical
 .lib /foss/pdks/gf180mcuD/libs.tech/ngspice/sm141064.ngspice bjt_typical
@@ -268,8 +268,8 @@ set temp = 25
 }
 C {symbols/nfet_03v3.sym} 490 -270 0 0 {name=M6
 L=0.28u
-W=30u
-nf=15
+W=20u
+nf=10
 m=1
 ad="'int((nf+1)/2) * W/nf * 0.18u'"
 pd="'2*int((nf+1)/2) * (W/nf + 0.18u)'"
@@ -282,8 +282,8 @@ spiceprefix=X
 }
 C {symbols/nfet_03v3.sym} 790 -270 0 1 {name=M7
 L=0.28u
-W=30u
-nf=15
+W=20u
+nf=10
 m=1
 ad="'int((nf+1)/2) * W/nf * 0.18u'"
 pd="'2*int((nf+1)/2) * (W/nf + 0.18u)'"
@@ -514,18 +514,18 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {code_shown.sym} 2170 360 0 0 {name=s3 only_toplevel=false spice_ignore=true value="
+C {code_shown.sym} 2170 360 0 0 {name=s3 only_toplevel=false spice_ignore=false value="
 .include /foss/pdks/gf180mcuD/libs.tech/ngspice/design.ngspice
-.lib /foss/pdks/gf180mcuD/libs.tech/ngspice/sm141064.ngspice ss
-.lib /foss/pdks/gf180mcuD/libs.tech/ngspice/sm141064.ngspice bjt_ss
-.lib /foss/pdks/gf180mcuD/libs.tech/ngspice/sm141064.ngspice diode_ss
-.lib /foss/pdks/gf180mcuD/libs.tech/ngspice/sm141064.ngspice res_ss
-.lib /foss/pdks/gf180mcuD/libs.tech/ngspice/sm141064.ngspice mimcap_ss
-.lib /foss/pdks/gf180mcuD/libs.tech/ngspice/sm141064.ngspice moscap_ss
+.lib /foss/pdks/gf180mcuD/libs.tech/ngspice/sm141064.ngspice ff
+.lib /foss/pdks/gf180mcuD/libs.tech/ngspice/sm141064.ngspice bjt_ff
+.lib /foss/pdks/gf180mcuD/libs.tech/ngspice/sm141064.ngspice diode_ff
+.lib /foss/pdks/gf180mcuD/libs.tech/ngspice/sm141064.ngspice res_ff
+.lib /foss/pdks/gf180mcuD/libs.tech/ngspice/sm141064.ngspice mimcap_ff
+.lib /foss/pdks/gf180mcuD/libs.tech/ngspice/sm141064.ngspice moscap_ff
 .option method=gear
 
 .control
-set temp = -25
+set temp = 85
   * 1. Setup the sweep parameters
   let v_ctrl = 0.9
 
@@ -794,7 +794,7 @@ C {lab_pin.sym} 360 -440 1 0 {name=p18 sig_type=std_logic lab=VDD
 C {gnd.sym} 360 -310 0 1 {name=l35 lab=GND}
 C {symbols/ppolyf_u_1k.sym} 330 -330 1 1 {name=R9
 W=1e-6
-L=8e-6
+L=20e-6
 model=ppolyf_u_1k
 spiceprefix=X
 m=1}
@@ -820,7 +820,7 @@ C {lab_pin.sym} 920 -440 3 1 {name=p27 sig_type=std_logic lab=VDD
 C {gnd.sym} 920 -310 0 1 {name=l36 lab=GND}
 C {symbols/ppolyf_u_1k.sym} 890 -330 1 1 {name=R37
 W=1e-6
-L=8e-6
+L=20e-6
 model=ppolyf_u_1k
 spiceprefix=X
 m=1}
@@ -833,13 +833,13 @@ m=1
 spice_ignore=false}
 C {symbols/ppolyf_u_1k.sym} 510 -560 0 0 {name=R6
 W=1e-6
-L=3.1e-6
+L=4.1e-6
 model=ppolyf_u_1k
 spiceprefix=X
 m=1}
 C {symbols/ppolyf_u_1k.sym} 770 -560 0 0 {name=R7
 W=1e-6
-L=3.1e-6
+L=4.1e-6
 model=ppolyf_u_1k
 spiceprefix=X
 m=1}
@@ -885,8 +885,6 @@ spiceprefix=X
 }
 C {gnd.sym} 430 -840 0 0 {name=l20 lab=GND}
 C {lab_pin.sym} 430 -980 0 1 {name=p67 sig_type=std_logic lab=I_bias_g2}
-C {vsource.sym} 640 -190 0 0 {name=V8 value=0 savecurrent=false}
-C {lab_pin.sym} 640 -160 0 1 {name=p68 sig_type=std_logic lab=I_bias_g2}
 C {lab_pin.sym} 250 -780 0 0 {name=p69 sig_type=std_logic lab=IREF4}
 C {isource.sym} -140 -480 0 0 {name=I3 value=100u}
 C {lab_pin.sym} -140 -420 0 0 {name=p71 sig_type=std_logic lab=IREF4}
@@ -983,13 +981,15 @@ C {gnd.sym} 430 -100 0 1 {name=l12 lab=GND}
 C {gnd.sym} 850 -100 0 1 {name=l15 lab=GND}
 C {symbols/ppolyf_u_1k.sym} 390 -330 1 1 {name=R3
 W=1e-6
-L=8e-6
+L=20e-6
 model=ppolyf_u_1k
 spiceprefix=X
 m=1}
 C {symbols/ppolyf_u_1k.sym} 950 -330 1 1 {name=R4
 W=1e-6
-L=8e-6
+L=20e-6
 model=ppolyf_u_1k
 spiceprefix=X
 m=1}
+C {isource.sym} 640 -190 0 0 {name=I1 value=1000u}
+C {gnd.sym} 640 -160 0 1 {name=l16 lab=GND}
