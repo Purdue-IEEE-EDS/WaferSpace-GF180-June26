@@ -12,10 +12,7 @@ module mdc_ram_delay #(
 
     integer i;
 
-<<<<<<< HEAD
-    //Consider fifo buffer? Nvm shift register might be the best
-=======
->>>>>>> 6d726b62fe8734cec27e3098c2b8928a68ea5b9d
+    //Considser fifo buffer? Nvm shift register might be the best
     always_ff @(posedge clk) begin
         shift_reg[0] <= din;
 

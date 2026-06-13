@@ -9,7 +9,7 @@ OPENROAD ?= openroad
 KLAYOUT    ?= klayout
 
 # ---------------- PDK ----------------
-PDK_ROOT ?= /headless/QucsWorkspace/IHP-Open-PDK
+PDK_ROOT ?= $(HOME)/QucsWorkspace/IHP-Open-PDK
 SCL      ?= gf180mcu_fd_sc_mcu9t5v0
 CORNER   ?= tt_025C_3v30
 
