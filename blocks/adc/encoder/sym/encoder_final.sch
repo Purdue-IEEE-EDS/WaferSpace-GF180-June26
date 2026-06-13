@@ -249,7 +249,7 @@ C {lab_wire.sym} 1480 -1670 0 0 {name=p85 sig_type=std_logic lab=VDD}
 C {lab_wire.sym} 1480 -1590 0 0 {name=p86 sig_type=std_logic lab=GND}
 C {lab_wire.sym} 1480 -1630 0 0 {name=p87 sig_type=std_logic lab=CLK_EVAL}
 C {ipin.sym} 1450 -1650 0 0 {name=p88 lab=RST}
-C {encoder/sym/tm_to_bin2.sym} 530 -970 0 0 {name=x1}
-C {encoder/sym/ROM2.sym} 1010 -970 0 0 {name=x2}
-C {encoder/sym/dff_encoder.sym} 1650 -1630 0 0 {name=x4[5:0]}
+C {blocks/adc/encoder/sym/tm_to_bin2.sym} 530 -970 0 0 {name=x1}
+C {blocks/adc/encoder/sym/ROM2.sym} 1010 -970 0 0 {name=x2}
+C {blocks/adc/encoder/sym/dff_encoder.sym} 1650 -1630 0 0 {name=x4[5:0]}
 C {lab_wire.sym} 740 -1610 0 0 {name=p6 sig_type=std_logic lab=CLK_EVAL}
