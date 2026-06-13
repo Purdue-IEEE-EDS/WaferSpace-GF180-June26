@@ -3,8 +3,8 @@ module fft
     input  logic clk, rst,
     input logic in_valid,
 
-    input logic signed [15:0] din_re0, din_re1, din_re2, din_re3,
-    input logic signed [15:0] din_im0, din_im1, din_im2, din_im3, 
+    input logic signed [5:0] din_re0, din_re1, din_re2, din_re3,
+    input logic signed [5:0] din_im0, din_im1, din_im2, din_im3, 
 
     output logic signed [15:0] dout_re0, dout_re1, dout_re2, dout_re3,   
     output logic signed [15:0] dout_im0, dout_im1, dout_im2, dout_im3,
@@ -17,6 +17,7 @@ module fft
     logic in_valid_reg;
 
     logic [8:0] val;
+    logic sync_rst1, sync_rst2; 
 
     logic [15:0] w_re [0:8], w_im [0:8], 
                 x_re [0:8], x_im [0:8], 
@@ -34,21 +35,25 @@ module fft
 
     assign val[0] = in_valid_reg;
 
-    always_ff @(posedge clk, negedge rst) begin 
-        if (!rst) begin 
+    always_ff @(posedge clk, negedge sync_rst2) begin 
+        if (!sync_rst2) begin 
             in_valid_reg <= '0;
             out_valid <= '0; 
         end else begin 
             in_valid_reg <= in_valid;
             out_valid <= val[6]; 
-            din_re0_reg <= din_re0;
-        din_re1_reg <= din_re1; 
-        din_re2_reg <= din_re2; 
-        din_re3_reg <= din_re3; 
-        din_im0_reg <= din_im0;
-        din_im1_reg <= din_im1;
-        din_im2_reg <= din_im2;
-        din_im3_reg <= din_im3; 
+        end
+    end
+
+    always_ff @(posedge clk) begin 
+        din_re0_reg <= {{6{din_re0[5]}}, din_re0, 4'b0};
+        din_re1_reg <= {{6{din_re1[5]}}, din_re1, 4'b0}; 
+        din_re2_reg <= {{6{din_re2[5]}}, din_re2, 4'b0}; 
+        din_re3_reg <= {{6{din_re3[5]}}, din_re3, 4'b0}; 
+        din_im0_reg <= {{6{din_im0[5]}}, din_im0, 4'b0};
+        din_im1_reg <= {{6{din_im1[5]}}, din_im1, 4'b0};
+        din_im2_reg <= {{6{din_im2[5]}}, din_im2, 4'b0};
+        din_im3_reg <= {{6{din_im3[5]}}, din_im3, 4'b0}; 
 
         dout_re0 <= w_re[6];
         dout_im0 <= w_im[6];
@@ -61,11 +66,21 @@ module fft
         end
     end
 
+    always_ff @(posedge clk, negedge rst) begin 
+        if (!rst) begin 
+            sync_rst1 <= '0; 
+            sync_rst2 <= '0; 
+        end else begin 
+            sync_rst1 <= rst; 
+            sync_rst2 <= sync_rst1;
+        end
+    end
+
     // generate 
     //     for (genvar i = 1; i <= 8; i++) begin : stages_gen_blk
     //         mdc_stage #(.CURR_STAGE(i))
     //         stage ( 
-    //             .clk, .rst,
+    //             .clk, .rst(sync_rst2),
     //             .in_valid(val[i-1]), 
     //             .din_re0(w_re[i-1]), .din_re1(x_re[i-1]), .din_re2(y_re[i-1]), .din_re3(z_re[i-1]),
     //             .din_im0(w_im[i-1]), .din_im1(x_im[i-1]), .din_im2(y_im[i-1]), .din_im3(z_im[i-1]), 
@@ -79,7 +94,7 @@ module fft
 
     mdc_stage #(.CURR_STAGE(1))
             stage ( 
-                .clk, .rst,
+                .clk, .rst(sync_rst2),
                 .in_valid(val[0]), 
                 .din_re0(w_re[0]), .din_re1(x_re[0]), .din_re2(y_re[0]), .din_re3(z_re[0]),
                 .din_im0(w_im[0]), .din_im1(x_im[0]), .din_im2(y_im[0]), .din_im3(z_im[0]), 
@@ -93,7 +108,7 @@ module fft
         for (genvar i = 4; i <= 8; i++) begin : stages_gen_blk
             mdc_stage #(.CURR_STAGE(i))
             stage ( 
-                .clk, .rst,
+                .clk, .rst(sync_rst2),
                 .in_valid(val[i-3]), 
                 .din_re0(w_re[i-3]), .din_re1(x_re[i-3]), .din_re2(y_re[i-3]), .din_re3(z_re[i-3]),
                 .din_im0(w_im[i-3]), .din_im1(x_im[i-3]), .din_im2(y_im[i-3]), .din_im3(z_im[i-3]), 
