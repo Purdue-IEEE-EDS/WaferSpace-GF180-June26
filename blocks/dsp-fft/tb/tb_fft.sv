@@ -5,8 +5,8 @@ module tb_fft();
     
     localparam BITS = 16;
 
-    logic signed [BITS-1:0] din_re0, din_re1, din_re2, din_re3;
-    logic signed [BITS-1:0] din_im0, din_im1, din_im2, din_im3; 
+    logic signed [5:0] din_re0, din_re1, din_re2, din_re3;
+    logic signed [5:0] din_im0, din_im1, din_im2, din_im3; 
 
     logic signed [BITS-1:0] dout_re0, dout_re1, dout_re2, dout_re3;  
     logic signed [BITS-1:0] dout_im0, dout_im1, dout_im2, dout_im3;
@@ -17,7 +17,7 @@ module tb_fft();
     reg [31:0] wave [0:511];
     initial begin
         $readmemh("data.mem", wave);
-        vals = '{16'h1234, 16'hfe34, 16'h4589, 16'hc090, 16'h1823, 16'hd451, 16'haabc, 16'h7034, 16'h9076, 16'hb439, 16'h0743, 16'hbdfc, 16'h2349, 16'h8490, 16'hcbfe, 16'h3028};
+        // = '{16'h1234, 16'hfe34, 16'h4589, 16'hc090, 16'h1823, 16'hd451, 16'haabc, 16'h7034, 16'h9076, 16'hb439, 16'h0743, 16'hbdfc, 16'h2349, 16'h8490, 16'hcbfe, 16'h3028};
     end
 
     fft
@@ -66,10 +66,10 @@ module tb_fft();
         in_valid = 1'b1;
 
         for (int i = 0; i < 64; i++) begin
-            // din_re0 = 1<<6; 
-            // din_re1 = 1<<6; 
-            // din_re2 = 1<<6; 
-            // din_re3 = 1<<6; 
+            // din_re0 = 1<<5; 
+            // din_re1 = 1<<5; 
+            // din_re2 = 1<<5; 
+            // din_re3 = 1<<5; 
             // din_im0 = 1'b0;
             // din_im1 = 1'b0;
             // din_im2 = 1'b0;
@@ -84,8 +84,8 @@ module tb_fft();
             // din_im2 = 1'b0;
             // din_im3 = 1'b0; 
 
-            if(i == 0) din_re0 = 16'h10; 
-            else din_re0 = 16'h0; 
+            if(i == 0) din_re0 = 6'h10; 
+            else din_re0 = 6'h0; 
             din_re1 = '0; 
             din_re2 = '0; 
             din_re3 = '0; 

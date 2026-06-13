@@ -317,13 +317,7 @@ $(PNR_DEF): $(SYN_NET) $(PNR_SDC) $(PNR_SCRIPT)
 gds: $(PNR_GDS)
 
 $(PNR_GDS): $(PNR_DEF)
-	$(KLAYOUT) -zz -u \
-	  -rd design_name=fft \
-	  -rd in_def=$(PNR_DEF) \
-	  -rd in_gds=$(LIB_DIR)/gds/$(SCL).gds \
-	  -rd out_gds=$(PNR_GDS) \
-	  -rd seal_gds="" \
-	  -r /openlane/scripts/klayout/def2gds.py
+	$(KLAYOUT) -rd input_lef=$(TECH_LEF),$(CELL_LEF) $(PNR_DEF)
 	@echo "GDS ? $(PNR_GDS)"
 
 # ============================================================

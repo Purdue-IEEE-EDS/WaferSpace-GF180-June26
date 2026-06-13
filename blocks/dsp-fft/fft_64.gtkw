@@ -1,15 +1,15 @@
 [*]
-[*] GTKWave Analyzer v4.0.0-prealpha (8ba24ab) (w)1999-2022 BSI
-[*] Sat May 23 18:17:34 2026
+[*] GTKWave Analyzer v3.3.116 (w)1999-2023 BSI
+[*] Sat Jun 13 00:34:33 2026
 [*]
-[dumpfile] "/foss/designs/WaferSpace-GF180-June26/blocks/dsp-fft/sim/testbench.vcd"
-[dumpfile_mtime] "Sat May 23 18:15:16 2026"
-[dumpfile_size] 4371319
-[savefile] "/foss/designs/WaferSpace-GF180-June26/blocks/dsp-fft/fft_64.gtkw"
+[dumpfile] "/home/ieee-eds/Projects/WaferSpace-GF180-June26/blocks/dsp-fft/sim/testbench.vcd"
+[dumpfile_mtime] "Sat Jun 13 00:30:24 2026"
+[dumpfile_size] 4484546
+[savefile] "/home/ieee-eds/Projects/WaferSpace-GF180-June26/blocks/dsp-fft/fft_64.gtkw"
 [timestart] 0
-[size] 1427 600
-[pos] -1 -1
-*-16.835073 103400 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+[size] 2494 1521
+[pos] -51 -51
+*-16.535074 86400 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
 [markername] AA
 [markername] BB
 [markername] CC
@@ -38,6 +38,7 @@
 [markername] ZZ
 [treeopen] tb_fft.
 [treeopen] tb_fft.DUT.
+[treeopen] tb_fft.DUT.stage.
 [treeopen] tb_fft.DUT.stages_gen_blk[4].
 [treeopen] tb_fft.DUT.stages_gen_blk[5].
 [treeopen] tb_fft.DUT.stages_gen_blk[6].
@@ -46,20 +47,25 @@
 [sst_width] 297
 [signals_width] 234
 [sst_expanded] 1
-[sst_vpaned_height] 279
+[sst_vpaned_height] 850
+@29
+tb_fft.DUT.stage.clk
+@28
+tb_fft.DUT.stage.rst
+tb_fft.DUT.stage.in_valid
 @22
-tb_fft.DUT.din_im0[15:0]
-tb_fft.DUT.din_im1[15:0]
-tb_fft.DUT.din_im2[15:0]
-tb_fft.DUT.din_im3[15:0]
-tb_fft.DUT.din_re0[15:0]
-tb_fft.DUT.din_re1[15:0]
-tb_fft.DUT.din_re2[15:0]
-tb_fft.DUT.din_re3[15:0]
-@201
--
+tb_fft.DUT.stage.din_im0[15:0]
+tb_fft.DUT.stage.din_im1[15:0]
+tb_fft.DUT.stage.din_im2[15:0]
+tb_fft.DUT.stage.din_im3[15:0]
+tb_fft.DUT.stage.din_re0[15:0]
+tb_fft.DUT.stage.din_re1[15:0]
+tb_fft.DUT.stage.din_re2[15:0]
+tb_fft.DUT.stage.din_re3[15:0]
 @200
 -
+@28
+tb_fft.DUT.stage.out_valid
 @22
 tb_fft.DUT.stage.dout_im0[15:0]
 tb_fft.DUT.stage.dout_im1[15:0]
