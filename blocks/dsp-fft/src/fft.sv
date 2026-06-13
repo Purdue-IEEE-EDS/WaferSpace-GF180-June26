@@ -3,8 +3,8 @@ module fft
     input  logic clk, rst,
     input logic in_valid,
 
-    input logic signed [15:0] din_re0, din_re1, din_re2, din_re3,
-    input logic signed [15:0] din_im0, din_im1, din_im2, din_im3, 
+    input logic signed [5:0] din_re0, din_re1, din_re2, din_re3,
+    input logic signed [5:0] din_im0, din_im1, din_im2, din_im3, 
 
     output logic signed [15:0] dout_re0, dout_re1, dout_re2, dout_re3,   
     output logic signed [15:0] dout_im0, dout_im1, dout_im2, dout_im3,
@@ -46,14 +46,14 @@ module fft
     end
 
     always_ff @(posedge clk) begin 
-        din_re0_reg <= din_re0;
-        din_re1_reg <= din_re1; 
-        din_re2_reg <= din_re2; 
-        din_re3_reg <= din_re3; 
-        din_im0_reg <= din_im0;
-        din_im1_reg <= din_im1;
-        din_im2_reg <= din_im2;
-        din_im3_reg <= din_im3; 
+        din_re0_reg <= {{6{din_re0[5]}}, din_re0, 4'b0};
+        din_re1_reg <= {{6{din_re1[5]}}, din_re1, 4'b0}; 
+        din_re2_reg <= {{6{din_re2[5]}}, din_re2, 4'b0}; 
+        din_re3_reg <= {{6{din_re3[5]}}, din_re3, 4'b0}; 
+        din_im0_reg <= {{6{din_im0[5]}}, din_im0, 4'b0};
+        din_im1_reg <= {{6{din_im1[5]}}, din_im1, 4'b0};
+        din_im2_reg <= {{6{din_im2[5]}}, din_im2, 4'b0};
+        din_im3_reg <= {{6{din_im3[5]}}, din_im3, 4'b0}; 
 
         dout_re0 <= w_re[6];
         dout_im0 <= w_im[6];
