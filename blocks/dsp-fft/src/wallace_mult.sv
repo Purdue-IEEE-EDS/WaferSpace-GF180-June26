@@ -84,5 +84,9 @@ module wallace_mult #(
     //assign p = op1 + op2; 
 
     //CLA32 #(.SUB(0)) final_add(.a(op1), .b(op2), .result(p));
+<<<<<<< HEAD
     adder final_add(.a(op1>>>15), .b(op2>>>15), .result(p));
+=======
+    adder final_add(.a(op1>>>12), .b(op2>>>12), .result(p));
+>>>>>>> 6d726b62fe8734cec27e3098c2b8928a68ea5b9d
 endmodule

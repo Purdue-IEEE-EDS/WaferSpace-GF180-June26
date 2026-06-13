@@ -69,6 +69,7 @@ module tb_fft();
         in_valid = 1'b1;
 
         for (int i = 0; i < 16; i++) begin
+
             // din_re0 = 1<<5; 
             // din_re1 = 1<<5; 
             // din_re2 = 1<<5; 
@@ -88,6 +89,7 @@ module tb_fft();
             // din_im3 = 1'b0; 
 
             if(i == 1) din_re0 = 6'h10; 
+
             else din_re0 = 6'h0; 
             din_re1 = '0; 
             din_re2 = '0; 
