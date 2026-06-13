@@ -63,7 +63,7 @@ module fft
         dout_im2 <= y_im[6];
         dout_re3 <= z_re[6];
         dout_im3 <= z_im[6];
-        end
+        
     end
 
     always_ff @(posedge clk, negedge rst) begin 
