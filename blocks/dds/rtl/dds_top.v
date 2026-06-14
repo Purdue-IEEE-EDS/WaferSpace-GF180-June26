@@ -18,17 +18,30 @@
 //   - clk_vec domain: profile execution, phase generation, 4 parallel DDS lanes
 //   - clk_cal domain: calibration DAC scan engine
 //   - clk_4x domain:  output serialization and DAC pin drive
+//
+// Steady-state timing in the default 4:1 build:
+//   - phase_accum_vec4 produces one 4-sample phase block per clk_vec edge.
+//   - dds_datapath_vec adds 8 registered clk_vec stages:
+//       phase_vec sampled on edge N -> dac_{i,q}_vec just after edge N+7
+//       (7 full clk_vec intervals, 56 ns at 125 MHz).
+//   - clk_vec posedges occur on the serializer 3 -> 0 wrap edge, so a ready
+//     vector block is loaded one clk_4x edge later and emitted as lane 0/1/2/3
+//     on the next 4 clk_4x edges.
+//   - End-to-end from phase_vec capture to DAC pins at 500/125 MHz:
+//       lane0 = 58 ns, lane1 = 60 ns, lane2 = 62 ns, lane3 = 64 ns nominal.
 module dds_top #(
-    parameter PHASE_W     = 32,
-    parameter TRUNC_W     = 12,
-    parameter UNARY_BITS  = 5,
-    parameter BINARY_BITS = 5,
-    parameter COUNT_W     = 20,
-    parameter LANES       = 4,
-    parameter DAC_SW_W    = (1 << UNARY_BITS) - 1 + BINARY_BITS,
-    parameter CAL_DAC_N_CELLS = DAC_SW_W,
-    parameter CAL_DAC_CELL_W  = 4,
-    parameter CAL_DAC_SHIFT_CYCLES = 3,
+    parameter int PHASE_W               = 32,
+    parameter int SINE_TRUNC_W          = 14,
+    parameter int SINE_COARSE_W         = 7,
+    parameter int SINE_GUARD_W          = 3,
+    parameter int UNARY_BITS            = 5,
+    parameter int BINARY_BITS           = 5,
+    parameter int COUNT_W               = 20,
+    parameter int LANES                 = 4,
+    parameter int DAC_SW_W              = (1 << UNARY_BITS) - 1 + BINARY_BITS,
+    parameter int CAL_DAC_N_CELLS       = DAC_SW_W,
+    parameter int CAL_DAC_CELL_W        = 4,
+    parameter int CAL_DAC_SHIFT_CYCLES  = 3,
     parameter integer CLK_DIV1_FREQ_HZ = 500_000_000,
     parameter integer CAL_CLK_MAX_HZ   = 500_000_000,
     parameter DEVID       = 8'hD5,
@@ -149,6 +162,9 @@ module dds_top #(
     logic               rf_auto_restart;
     logic               rf_phase_rst_on_launch;
     logic [CAL_DAC_N_CELLS*CAL_DAC_CELL_W-1:0] rf_cal_code;
+    logic               rf_direct_en;
+    logic [DAC_SW_W-1:0] rf_direct_i;
+    logic [DAC_SW_W-1:0] rf_direct_q;
 
     logic               cal_busy;
 
@@ -156,6 +172,7 @@ module dds_top #(
         .PHASE_W            (PHASE_W),
         .COUNT_W            (COUNT_W),
         .DEVID              (DEVID),
+        .DAC_SW_W           (DAC_SW_W),
         .CAL_DAC_N_CELLS    (CAL_DAC_N_CELLS),
         .CAL_DAC_CELL_W     (CAL_DAC_CELL_W)
     ) u_regmap (
@@ -166,7 +183,6 @@ module dds_top #(
         .addr                (spi_addr),
         .wdata               (spi_wdata),
         .rdata               (spi_rdata),
-        .cal_busy            (cal_busy),
         .ftw_a               (rf_ftw_a),
         .ftw_b               (rf_ftw_b),
         .ftw_step            (rf_ftw_step),
@@ -174,7 +190,10 @@ module dds_top #(
         .mode                (rf_mode),
         .auto_restart        (rf_auto_restart),
         .phase_rst_on_launch (rf_phase_rst_on_launch),
-        .cal_code            (rf_cal_code)
+        .cal_code            (rf_cal_code),
+        .direct_en           (rf_direct_en),
+        .direct_i            (rf_direct_i),
+        .direct_q            (rf_direct_q)
     );
 
     // ================================================================
@@ -265,13 +284,20 @@ module dds_top #(
     // ================================================================
     logic [LANES-1:0][DAC_SW_W-1:0] dac_i_vec;
     logic [LANES-1:0][DAC_SW_W-1:0] dac_q_vec;
+    logic [LANES-1:0][DAC_SW_W-1:0] ser_i_vec;
+    logic [LANES-1:0][DAC_SW_W-1:0] ser_q_vec;
+    logic                           direct_en_active;
+    logic [DAC_SW_W-1:0]            direct_i_active;
+    logic [DAC_SW_W-1:0]            direct_q_active;
 
     dds_datapath_vec #(
-        .PHASE_W     (PHASE_W),
-        .TRUNC_W     (TRUNC_W),
-        .UNARY_BITS  (UNARY_BITS),
-        .BINARY_BITS (BINARY_BITS),
-        .LANES       (LANES)
+        .PHASE_W       (PHASE_W),
+        .SINE_TRUNC_W  (SINE_TRUNC_W),
+        .SINE_COARSE_W (SINE_COARSE_W),
+        .SINE_GUARD_W  (SINE_GUARD_W),
+        .UNARY_BITS    (UNARY_BITS),
+        .BINARY_BITS   (BINARY_BITS),
+        .LANES         (LANES)
     ) u_dp (
         .clk        (clk_vec),
         .rst_n      (core_rst_n_vec),
@@ -281,6 +307,26 @@ module dds_top #(
         .dac_q_vec  (dac_q_vec)
     );
 
+    always_ff @(posedge clk_vec or negedge core_rst_n_vec) begin
+        if (!core_rst_n_vec) begin
+            direct_en_active <= 1'b0;
+            direct_i_active  <= {DAC_SW_W{1'b0}};
+            direct_q_active  <= {DAC_SW_W{1'b0}};
+        end else if (io_upd_vec) begin
+            direct_en_active <= rf_direct_en;
+            direct_i_active  <= rf_direct_i;
+            direct_q_active  <= rf_direct_q;
+        end
+    end
+
+    genvar lane_idx;
+    generate
+        for (lane_idx = 0; lane_idx < LANES; lane_idx = lane_idx + 1) begin : g_direct_override
+            assign ser_i_vec[lane_idx] = direct_en_active ? direct_i_active : dac_i_vec[lane_idx];
+            assign ser_q_vec[lane_idx] = direct_en_active ? direct_q_active : dac_q_vec[lane_idx];
+        end
+    endgenerate
+
     // ================================================================
     //  Output serialization (clk / 500 MHz fast serial domain)
     // ================================================================
@@ -289,7 +335,7 @@ module dds_top #(
     ) u_ser_i (
         .clk_ser (clk_4x),
         .rst_n   (core_rst_n_ser),
-        .din_vec (dac_i_vec[3:0]),
+        .din_vec (ser_i_vec[3:0]),
         .dout    (dac_i)
     );
 
@@ -298,13 +344,16 @@ module dds_top #(
     ) u_ser_q (
         .clk_ser (clk_4x),
         .rst_n   (core_rst_n_ser),
-        .din_vec (dac_q_vec[3:0]),
+        .din_vec (ser_q_vec[3:0]),
         .dout    (dac_q)
     );
 
     // ================================================================
     //  Calibration path
     // ================================================================
+    // Default sizing is one 4-bit trim word per 36-bit DAC switch route.
+    // The physical interface remains serial (`cal_clk`, `cal_data`,
+    // `cal_load`); the 36*4-bit buses below are just staged/live state.
     logic [CAL_DAC_N_CELLS*CAL_DAC_CELL_W-1:0] cal_dac_code_live;
     logic cal_dirty, cal_apply;
 

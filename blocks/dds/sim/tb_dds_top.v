@@ -3,14 +3,16 @@
 
 module tb_dds_top;
 
-    localparam PHASE_W     = 32;
-    localparam TRUNC_W     = 12;
-    localparam UNARY_BITS  = 5;
-    localparam BINARY_BITS = 5;
-    localparam COUNT_W     = 20;
-    localparam LANES       = 4;
-    localparam DAC_SW_W    = (1 << UNARY_BITS) - 1 + BINARY_BITS;
-    localparam DEVID       = 8'hD5;
+    localparam PHASE_W        = 32;
+    localparam SINE_TRUNC_W   = 14;
+    localparam SINE_COARSE_W  = 7;
+    localparam SINE_GUARD_W   = 3;
+    localparam UNARY_BITS     = 5;
+    localparam BINARY_BITS    = 5;
+    localparam COUNT_W        = 20;
+    localparam LANES          = 4;
+    localparam DAC_SW_W       = (1 << UNARY_BITS) - 1 + BINARY_BITS;
+    localparam DEVID          = 8'hD5;
     localparam TEST_TONE_FTW = 32'h2284_DFCE;
 
     localparam CLK_P  = 3.2;
@@ -33,11 +35,13 @@ module tb_dds_top;
     always #(CLK_P/2) clk = ~clk;
 
     dds_top #(
-        .PHASE_W(PHASE_W),
-        .TRUNC_W(TRUNC_W),
-        .UNARY_BITS(UNARY_BITS),
-        .BINARY_BITS(BINARY_BITS),
-        .COUNT_W(COUNT_W)
+        .PHASE_W       (PHASE_W),
+        .SINE_TRUNC_W  (SINE_TRUNC_W),
+        .SINE_COARSE_W (SINE_COARSE_W),
+        .SINE_GUARD_W  (SINE_GUARD_W),
+        .UNARY_BITS    (UNARY_BITS),
+        .BINARY_BITS   (BINARY_BITS),
+        .COUNT_W       (COUNT_W)
     ) dut (
         .clk(clk),
         .rst_n(rst_n),
@@ -232,7 +236,6 @@ module tb_dds_top;
     endtask
 
     initial begin
-        logic [7:0] status;
         bit active_seen;
         bit sync_reset_seen;
         bit launch_reset_seen;
@@ -252,14 +255,19 @@ module tb_dds_top;
         $dumpfile("tb_dds_top.vcd");
         $dumpvars(0, tb_dds_top);
 
-        // Test 1: basic SPI readback and default status.
-        $display("--- Test 1: SPI defaults ---");
+        // Test 1: SPI readback is restricted to DEVID.
+        $display("--- Test 1: SPI identity-only readback ---");
         do_reset;
         expect_read8(7'h00, DEVID, "devid");
-        expect_read8(7'h01, 8'h00, "status");
+        expect_read8(7'h01, 8'h00, "status addr reads zero");
+        spi_write32(7'h04, 32'hDEAD_BEEF);
+        spi_write8(7'h20, 8'h03);
+        expect_read8(7'h04, 8'h00, "ftw readback disabled");
+        expect_read8(7'h20, 8'h00, "cal readback disabled");
 
         // Test 2: CW launches on io_update and holds a steady FTW.
         $display("--- Test 2: CW io_update launch ---");
+        do_reset;
         spi_write32(7'h04, 32'h1000_0000);
         spi_write8(7'h02, 8'h00);
         pulse_io_update;
@@ -316,7 +324,6 @@ module tb_dds_top;
         join
         if (!sync_reset_seen)
             fail("sync relaunch never asserted phase_reset_req");
-        expect_read8(7'h01, 8'h00, "status after sync");
 
         // Test 5: SAW exact cycle count from io_update launch.
         $display("--- Test 5: SAW exact cycle count ---");
@@ -573,10 +580,7 @@ module tb_dds_top;
             fail($sformatf("commit+sync ftw_lane0=%08x exp=%08x", dut.u_freq.ftw_lane0, 32'h1800_0000));
         if (chirp_active !== 1'b0)
             fail("commit+sync on CW should remain a steady profile");
-
-        spi_read8(7'h01, status);
-        if (status[1:0] !== 2'b00)
-            fail($sformatf("status[1:0] expected 0, got %b", status[1:0]));
+        expect_read8(7'h02, 8'h00, "ctrl readback disabled");
 
         if (err_count == 0)
             $display("ALL TESTS PASSED");

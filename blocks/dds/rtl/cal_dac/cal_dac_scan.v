@@ -1,6 +1,12 @@
 `default_nettype none
 `timescale 1ns/1ps
 
+// Serial scan wrapper for the calibration-DAC chain.
+//
+// frame_data[(n*CELL_W) +: CELL_W] is the target code for cell n.
+// A start pulse emits one full frame on the 3-wire scan pins as:
+//   cell N_CELLS-1 first ... cell 0 last, LSB-first within each cell word.
+// After N_CELLS*CELL_W shift pulses, cal_load is pulsed to commit all cells.
 module cal_dac_scan #(
     parameter integer N_CELLS      = 1,
     parameter integer CELL_W       = 4,

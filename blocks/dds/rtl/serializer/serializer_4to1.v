@@ -1,6 +1,17 @@
 `default_nettype none
 `timescale 1ns/1ps
 
+// 4:1 block serializer.
+//
+// Timing contract:
+//   - clk_ser is phase-aligned to the vector clock so one 4-edge serializer
+//     block spans exactly one clk_vec period.
+//   - A din_vec block that is already stable at a wrap edge (current lane 3)
+//     is loaded into the bit slices on the next clk_ser edge.
+//   - dout then emits din0, din1, din2, din3 on four successive clk_ser edges.
+//   - Relative to a ready vector block, lane0/lane1/lane2/lane3 appear after
+//     1/2/3/4 clk_ser edges respectively.
+//
 (* keep_hierarchy = "yes" *)
 module serializer_4to1 #(
     parameter int WORD_W = 36

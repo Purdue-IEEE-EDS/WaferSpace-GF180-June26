@@ -3,17 +3,26 @@
 
 module tb_dds_wave_scan_match;
 
-    localparam PHASE_W        = 32;
-    localparam TRUNC_W        = 12;
-    localparam UNARY_BITS     = 5;
-    localparam BINARY_BITS    = 5;
-    localparam COUNT_W        = 20;
-    localparam LANES          = 4;
-    localparam DAC_SW_W       = (1 << UNARY_BITS) - 1 + BINARY_BITS;
-    localparam MAG_W          = UNARY_BITS + BINARY_BITS - 1;
-    localparam ADDR_W         = TRUNC_W - 2;
-    localparam ROM_DEPTH      = 1 << ADDR_W;
-    localparam PIPE_LATENCY   = 11;
+    localparam PHASE_W          = 32;
+    localparam SINE_TRUNC_W     = 14;
+    localparam SINE_COARSE_W    = 7;
+    localparam SINE_GUARD_W     = 3;
+    localparam UNARY_BITS       = 5;
+    localparam BINARY_BITS      = 5;
+    localparam COUNT_W          = 20;
+    localparam LANES            = 4;
+    localparam DAC_SW_W         = (1 << UNARY_BITS) - 1 + BINARY_BITS;
+    localparam MAG_W            = UNARY_BITS + BINARY_BITS - 1;
+    localparam SINE_ADDR_W      = SINE_TRUNC_W - 2;
+    localparam SINE_FRAC_W      = SINE_ADDR_W - SINE_COARSE_W;
+    localparam BASE_W           = MAG_W + SINE_GUARD_W;
+    localparam SLOPE_W          = 8;
+    localparam ROM_DEPTH        = 1 << SINE_COARSE_W;
+    localparam PROD_W           = SLOPE_W + SINE_FRAC_W + 1;
+    localparam ACC_W            = BASE_W + SINE_FRAC_W + 2;
+    // phase_vec sampled on clk_vec edge N reaches dac_{i,q}_vec just after
+    // edge N+7: 8 registered stages, 7 full clk_vec intervals.
+    localparam PIPE_LATENCY     = 8;
     localparam PHASE_BLOCKS   = 16;
     localparam CODE_WARMUP    = 0;
     localparam CODE_SAMPLES   = 1024;
@@ -51,7 +60,10 @@ module tb_dds_wave_scan_match;
     logic [PHASE_W-1:0] scenario_ftw;
     logic [PHASE_W-1:0] scenario_step;
 
-    logic [MAG_W-1:0] rom [0:ROM_DEPTH-1];
+    logic [BASE_W-1:0]         rom_sin_base  [0:ROM_DEPTH-1];
+    logic signed [SLOPE_W-1:0] rom_sin_slope [0:ROM_DEPTH-1];
+    logic [BASE_W-1:0]         rom_cos_base  [0:ROM_DEPTH-1];
+    logic signed [SLOPE_W-1:0] rom_cos_slope [0:ROM_DEPTH-1];
 
     logic [PHASE_W-1:0] exp_phase_base;
     logic [PHASE_W-1:0] exp_ftw_x2, exp_ftw_x3, exp_ftw_x4;
@@ -83,11 +95,13 @@ module tb_dds_wave_scan_match;
     always #(CLK_P/2) clk = ~clk;
 
     dds_top #(
-        .PHASE_W(PHASE_W),
-        .TRUNC_W(TRUNC_W),
-        .UNARY_BITS(UNARY_BITS),
-        .BINARY_BITS(BINARY_BITS),
-        .COUNT_W(COUNT_W)
+        .PHASE_W       (PHASE_W),
+        .SINE_TRUNC_W  (SINE_TRUNC_W),
+        .SINE_COARSE_W (SINE_COARSE_W),
+        .SINE_GUARD_W  (SINE_GUARD_W),
+        .UNARY_BITS    (UNARY_BITS),
+        .BINARY_BITS   (BINARY_BITS),
+        .COUNT_W       (COUNT_W)
     ) dut (
         .clk(clk),
         .rst_n(rst_n),
@@ -105,7 +119,7 @@ module tb_dds_wave_scan_match;
     );
 
     initial begin
-    `include "./rtl/datapath/sine_lut_init.v"
+    `include "./rtl/datapath/sincos_interp_init.v"
     end
 
     assign exp_ftw_x2  = scenario_ftw << 1;
@@ -135,34 +149,93 @@ module tb_dds_wave_scan_match;
     end
     endfunction
 
+    function automatic [BASE_W-1:0] interp_base(
+        input logic [BASE_W-1:0]         base,
+        input logic signed [SLOPE_W-1:0] slope,
+        input logic [SINE_FRAC_W-1:0]    frac
+    );
+        logic signed [SINE_FRAC_W:0] frac_signed;
+        logic signed [PROD_W-1:0]    prod;
+        logic signed [ACC_W-1:0]     prod_acc;
+        logic signed [ACC_W-1:0]     base_acc;
+        logic signed [ACC_W-1:0]     acc;
+        logic signed [ACC_W-1:0]     acc_rounded;
+        logic signed [ACC_W-1:0]     shifted;
+    begin
+        frac_signed = $signed({1'b0, frac});
+        prod        = slope * frac_signed;
+        prod_acc    = prod;
+        base_acc    = $signed({1'b0, base, {SINE_FRAC_W{1'b0}}});
+        acc         = base_acc + prod_acc;
+        acc_rounded = acc + ($signed({{(ACC_W-1){1'b0}}, 1'b1}) <<< (SINE_FRAC_W - 1));
+        shifted     = acc_rounded >>> SINE_FRAC_W;
+
+        if (shifted <= 0)
+            interp_base = '0;
+        else if (shifted[ACC_W-1:BASE_W] != '0)
+            interp_base = {BASE_W{1'b1}};
+        else
+            interp_base = shifted[BASE_W-1:0];
+    end
+    endfunction
+
+    function automatic [MAG_W-1:0] round_sat_mag(
+        input logic [BASE_W-1:0] v
+    );
+        logic [BASE_W:0] vr;
+        logic [BASE_W:0] vs;
+    begin
+        vr = {1'b0, v} + ({{BASE_W{1'b0}}, 1'b1} << (SINE_GUARD_W - 1));
+        vs = vr >> SINE_GUARD_W;
+
+        if (vs[BASE_W:MAG_W] != '0)
+            round_sat_mag = {MAG_W{1'b1}};
+        else
+            round_sat_mag = vs[MAG_W-1:0];
+    end
+    endfunction
+
     function automatic [DAC_SW_W-1:0] phase_to_dac_code(
         input logic [PHASE_W-1:0] phase,
         input logic               q_sel
     );
-        logic [TRUNC_W-1:0] trunc;
-        logic               sign_i;
-        logic               fold;
-        logic [ADDR_W-1:0]  raw_addr;
-        logic [ADDR_W-1:0]  addr;
-        logic               sign;
-        logic [MAG_W-1:0]   mag;
-        logic [DAC_SW_W-1:0] sw_pos;
+        logic [SINE_TRUNC_W-1:0]   trunc;
+        logic [SINE_ADDR_W-1:0]    u;
+        logic [SINE_COARSE_W-1:0]  coarse;
+        logic [SINE_FRAC_W-1:0]    frac;
+        logic                      fold;
+        logic                      sign_i;
+        logic                      sign_q;
+        logic                      sign;
+        logic [BASE_W-1:0]         sin_ext;
+        logic [BASE_W-1:0]         cos_ext;
+        logic [MAG_W-1:0]          sin_mag;
+        logic [MAG_W-1:0]          cos_mag;
+        logic [MAG_W-1:0]          mag;
+        logic [DAC_SW_W-1:0]       sw_pos;
     begin
-        trunc    = phase[PHASE_W-1:PHASE_W-TRUNC_W];
-        sign_i   = trunc[TRUNC_W-1];
-        fold     = trunc[TRUNC_W-2];
-        raw_addr = trunc[ADDR_W-1:0];
+        trunc  = phase[PHASE_W-1:PHASE_W-SINE_TRUNC_W];
+        u      = trunc[SINE_ADDR_W-1:0];
+        coarse = u[SINE_ADDR_W-1:SINE_FRAC_W];
+        frac   = u[SINE_FRAC_W-1:0];
+        fold   = trunc[SINE_TRUNC_W-2];
+        sign_i = trunc[SINE_TRUNC_W-1];
+        sign_q = sign_i ^ fold;
+
+        sin_ext = interp_base(rom_sin_base[coarse], rom_sin_slope[coarse], frac);
+        cos_ext = interp_base(rom_cos_base[coarse], rom_cos_slope[coarse], frac);
+        sin_mag = round_sat_mag(sin_ext);
+        cos_mag = round_sat_mag(cos_ext);
 
         if (!q_sel) begin
-            addr = fold ? ~raw_addr : raw_addr;
+            mag  = fold ? cos_mag : sin_mag;
             sign = sign_i;
         end else begin
-            addr = fold ? raw_addr : ~raw_addr;
-            sign = sign_i ^ fold;
+            mag  = fold ? sin_mag : cos_mag;
+            sign = sign_q;
         end
 
-        mag     = rom[addr];
-        sw_pos  = mag_to_sw(mag);
+        sw_pos = mag_to_sw(mag);
         phase_to_dac_code = sw_pos ^ {DAC_SW_W{sign}};
     end
     endfunction

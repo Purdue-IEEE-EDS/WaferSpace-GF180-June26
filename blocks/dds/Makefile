@@ -1,6 +1,9 @@
 # DDS Modulator — Makefile
-TRUNC_W  ?= 12
-MAG_W    ?= 9
+SINE_TRUNC_W ?= 14
+SINE_COARSE_W ?= 7
+SINE_GUARD_W ?= 3
+SINE_SLOPE_W ?= 8
+MAG_W        ?= 9
 IVERILOG ?= iverilog
 VVP      ?= vvp
 PYTHON   ?= python3
@@ -38,10 +41,11 @@ PHASE_RTL   = $(PHASE_DIR)/phase_accum_vec4.v
 
 BB_RTL      =
 
-DP_RTL      = $(DP_DIR)/sine_rom.v       \
-              $(DP_DIR)/dac_encoder.v    \
-              $(DP_DIR)/phase_to_quad.v  \
-              $(DP_DIR)/dds_datapath.v   \
+DP_RTL      = $(DP_DIR)/phase_to_sincos_interp.v \
+              $(DP_DIR)/sincos_interp_rom.v      \
+              $(DP_DIR)/sincos_interp_mag.v      \
+              $(DP_DIR)/dac_encoder.v            \
+              $(DP_DIR)/dds_datapath.v           \
               $(DP_DIR)/dds_datapath_vec.v
 
 SER_RTL     = $(SER_DIR)/serializer_4to1.v
@@ -66,6 +70,7 @@ RTL_ALL    = $(DDS_RTL) $(IF_RTL) $(TOP_RTL)
 FREQ_TB    = $(SIM_DIR)/tb_freq_ctrl.v
 ACCUM_TB   = $(SIM_DIR)/tb_phase_accum.v
 SPI_TB     = $(SIM_DIR)/tb_spi_slave.v
+SPI_SWEEP_TB = $(SIM_DIR)/tb_dds_spi_sclk_sweep.v
 CAL_DAC_TB = $(SIM_DIR)/tb_cal_dac_chain.v
 CAL_DAC_SCAN_TB = $(SIM_DIR)/tb_cal_dac_scan.v
 CAL_DAC_AMS_TB = $(SIM_DIR)/tb_cal_dac_ams.v
@@ -73,11 +78,12 @@ CAL_DAC_SPI_TB = $(SIM_DIR)/tb_cal_dac_spi.v
 MAIN_DAC_AMS_TB = $(SIM_DIR)/tb_main_dac_ams.v
 TOP_TB     = $(SIM_DIR)/tb_dds_top.v
 USER_E2E_TB = $(SIM_DIR)/tb_dds_user_e2e.v
+DIRECT_BYPASS_TB = $(SIM_DIR)/tb_dds_direct_bypass.v
 WAVE_SCAN_MATCH_TB = $(SIM_DIR)/tb_dds_wave_scan_match.v
 
-LUT_V     = $(DP_DIR)/sine_lut_init.v
-LUT_HEX   = $(DP_DIR)/sine_lut.hex
-LUT_SCRIPT = scripts/gen_sine_lut.py
+LUT_V      = $(DP_DIR)/sincos_interp_init.v
+LUT_HEX    = $(DP_DIR)/sincos_interp.hex
+LUT_SCRIPT = scripts/gen_sincos_interp.py
 
 SYN_NET    = $(SYN_DIR)/dds_top_syn.v
 SYN_SCRIPT = $(SYN_DIR)/synth.ys
@@ -103,7 +109,7 @@ STA_SCRIPT = $(SYN_DIR)/sta.tcl
 CELL_VLOG  = $(PDK_ROOT)/gf180mcuD/libs.ref/$(SCL)/verilog/primitives.v \
              $(PDK_ROOT)/gf180mcuD/libs.ref/$(SCL)/verilog/$(SCL).v
 
-.PHONY: all lut lut_hex lint sim sim_freq sim_accum sim_spi sim_cal_dac sim_cal_dac_scan sim_cal_dac_ams sim_cal_dac_spi sim_cal_dac_e2e sim_main_dac_ams sim_top sim_user_e2e sim_wave_scan_match wave syn sta sta_buf sim_syn pnr gds clean \
+.PHONY: all lut lut_hex lint sim sim_freq sim_accum sim_spi sim_spi_sweep sim_cal_dac sim_cal_dac_scan sim_cal_dac_ams sim_cal_dac_spi sim_cal_dac_e2e sim_main_dac_ams sim_top sim_user_e2e sim_direct_bypass sim_wave_scan_match wave syn sta sta_buf sim_syn pnr gds clean \
        $(SYN_SCRIPT) $(STA_SCRIPT) $(STA_BUF_SCRIPT) $(STA_BUF_SDC) $(PNR_SCRIPT) $(PNR_SDC)
 
 all: lut lint sim
@@ -113,12 +119,12 @@ all: lut lint sim
 lut: $(LUT_V)
 
 $(LUT_V): $(LUT_SCRIPT)
-	$(PYTHON) $(LUT_SCRIPT) $(TRUNC_W) $(MAG_W) $(LUT_V)
+	$(PYTHON) $(LUT_SCRIPT) $(SINE_TRUNC_W) $(MAG_W) $(SINE_COARSE_W) $(SINE_GUARD_W) $(SINE_SLOPE_W) $(LUT_V)
 
 lut_hex: $(LUT_HEX)
 
 $(LUT_HEX): $(LUT_SCRIPT)
-	$(PYTHON) $(LUT_SCRIPT) $(TRUNC_W) $(MAG_W) $(LUT_HEX)
+	$(PYTHON) $(LUT_SCRIPT) $(SINE_TRUNC_W) $(MAG_W) $(SINE_COARSE_W) $(SINE_GUARD_W) $(SINE_SLOPE_W) $(LUT_HEX)
 
 # ── Lint ─────────────────────────────────────────────────────
 
@@ -152,6 +158,13 @@ $(SIM_DIR)/tb_spi_slave.vvp: $(IF_DIR)/spi_slave.v $(SPI_TB)
 sim_spi: $(SIM_DIR)/tb_spi_slave.vvp
 	cd $(SIM_DIR) && $(VVP) tb_spi_slave.vvp
 	@echo "Waveform → $(SIM_DIR)/tb_spi_slave.vcd"
+
+$(SIM_DIR)/tb_dds_spi_sclk_sweep.vvp: $(LUT_V) $(RTL_ALL) $(SPI_SWEEP_TB)
+	$(IVERILOG) -Wall -g2012 -o $@ $(RTL_ALL) $(SPI_SWEEP_TB)
+
+sim_spi_sweep: $(SIM_DIR)/tb_dds_spi_sclk_sweep.vvp
+	cd $(SIM_DIR) && $(VVP) tb_dds_spi_sclk_sweep.vvp
+	@echo "Waveform → $(SIM_DIR)/tb_dds_spi_sclk_sweep.vcd"
 
 # ── Calibration DAC scan-chain unit test ───────────────────
 
@@ -209,6 +222,13 @@ sim_user_e2e: $(SIM_DIR)/tb_dds_user_e2e.vvp
 	@echo "Waveform → $(SIM_DIR)/tb_dds_user_e2e.vcd"
 	@echo "CSV      → $(SIM_DIR)/tb_dds_user_e2e_wave.csv"
 
+$(SIM_DIR)/tb_dds_direct_bypass.vvp: $(LUT_V) $(RTL_ALL) $(DIRECT_BYPASS_TB)
+	$(IVERILOG) -Wall -g2012 -o $@ $(RTL_ALL) $(DIRECT_BYPASS_TB)
+
+sim_direct_bypass: $(SIM_DIR)/tb_dds_direct_bypass.vvp
+	cd $(SIM_DIR) && $(VVP) tb_dds_direct_bypass.vvp
+	@echo "Waveform → $(SIM_DIR)/tb_dds_direct_bypass.vcd"
+
 $(SIM_DIR)/tb_dds_wave_scan_match.vvp: $(LUT_V) $(RTL_ALL) $(WAVE_SCAN_MATCH_TB)
 	$(IVERILOG) -Wall -g2012 -o $@ $(RTL_ALL) $(WAVE_SCAN_MATCH_TB)
 
@@ -216,7 +236,11 @@ sim_wave_scan_match: $(SIM_DIR)/tb_dds_wave_scan_match.vvp
 	cd $(SIM_DIR) && $(VVP) tb_dds_wave_scan_match.vvp
 	@echo "Waveform → $(SIM_DIR)/tb_dds_wave_scan_match.vcd"
 	@echo "CSV      → $(SIM_DIR)/tb_dds_wave_scan_match.csv"
-	$(PYTHON) scripts/wave_scan.py --sample-rate-hz 500000000
+	@if $(PYTHON) -c "import matplotlib" >/dev/null 2>&1; then \
+		$(PYTHON) scripts/wave_scan.py --sample-rate-hz 500000000; \
+	else \
+		echo "Skipping scripts/wave_scan.py (matplotlib not installed)"; \
+	fi
 
 wave: sim_wave_scan_match
 
@@ -226,9 +250,9 @@ wave: sim_wave_scan_match
 # at the end.  Exit code = number of failed TBs.  Individual targets
 # (sim_freq, sim_accum, sim_spi, sim_top) still work standalone.
 
-sim: $(SIM_DIR)/tb_freq_ctrl.vvp $(SIM_DIR)/tb_phase_accum.vvp $(SIM_DIR)/tb_spi_slave.vvp $(SIM_DIR)/tb_cal_dac_chain.vvp $(SIM_DIR)/tb_cal_dac_scan.vvp $(SIM_DIR)/tb_cal_dac_ams.vvp $(SIM_DIR)/tb_cal_dac_spi.vvp $(SIM_DIR)/tb_main_dac_ams.vvp $(SIM_DIR)/tb_dds_top.vvp $(SIM_DIR)/tb_dds_user_e2e.vvp $(SIM_DIR)/tb_dds_wave_scan_match.vvp
+sim: $(SIM_DIR)/tb_freq_ctrl.vvp $(SIM_DIR)/tb_phase_accum.vvp $(SIM_DIR)/tb_spi_slave.vvp $(SIM_DIR)/tb_dds_spi_sclk_sweep.vvp $(SIM_DIR)/tb_cal_dac_chain.vvp $(SIM_DIR)/tb_cal_dac_scan.vvp $(SIM_DIR)/tb_cal_dac_ams.vvp $(SIM_DIR)/tb_cal_dac_spi.vvp $(SIM_DIR)/tb_main_dac_ams.vvp $(SIM_DIR)/tb_dds_top.vvp $(SIM_DIR)/tb_dds_user_e2e.vvp $(SIM_DIR)/tb_dds_direct_bypass.vvp $(SIM_DIR)/tb_dds_wave_scan_match.vvp
 	@pass=0; fail=0; summary=""; \
-	 for tb in tb_freq_ctrl tb_phase_accum tb_spi_slave tb_cal_dac_chain tb_cal_dac_scan tb_cal_dac_ams tb_cal_dac_spi tb_main_dac_ams tb_dds_top tb_dds_user_e2e tb_dds_wave_scan_match; do \
+	 for tb in tb_freq_ctrl tb_phase_accum tb_spi_slave tb_dds_spi_sclk_sweep tb_cal_dac_chain tb_cal_dac_scan tb_cal_dac_ams tb_cal_dac_spi tb_main_dac_ams tb_dds_top tb_dds_user_e2e tb_dds_direct_bypass tb_dds_wave_scan_match; do \
 	     printf "\n================= %s =================\n" $$tb; \
 	     out=$$(cd $(SIM_DIR) && $(VVP) $$tb.vvp 2>&1); \
 	     printf "%s\n" "$$out"; \
@@ -338,6 +362,8 @@ endif
 	@echo "read_verilog $(SYN_NET)"                           >> $@
 	@echo "link_design dds_top"                               >> $@
 	@echo "create_clock -name $(FAST_CLK_NAME) -period $(SER_CLK_PERIOD) [get_ports clk]" >> $@
+	@echo "create_generated_clock -name clk_cal -source [get_ports clk] -divide_by 2 [get_pins u_clk_div4/clk_div2]" >> $@
+	@echo "create_generated_clock -name clk_vec -source [get_ports clk] -divide_by 4 [get_pins u_clk_div4/clk_div4]" >> $@
 	@echo "create_clock -name sclk -period 20.0 [get_ports sclk]"   >> $@
 	@echo "create_clock -name csn_clk -period 1000.0 [get_ports csn]" >> $@
 	@echo ""                                                  >> $@
@@ -372,8 +398,8 @@ endif
 	@echo "puts \"\n=== datapath ===\""                       >> $@
 	@echo "report_checks -path_delay max -through [get_cells u_dp/*] -fields {fanout capacitance slew} -digits 3" >> $@
 	@echo ""                                                  >> $@
-	@echo "puts \"\n=== sine_rom ===\""                       >> $@
-	@echo "report_checks -path_delay max -through [get_cells u_dp/g_lane[0].u_lane/u_rom/*] -fields {fanout capacitance slew} -digits 3" >> $@
+	@echo "puts \"\n=== sincos_interp_rom ===\""              >> $@
+	@echo "report_checks -path_delay max -through [get_cells u_dp/g_lane[0].u_lane/u_sincos_interp/u_interp_rom/*] -fields {fanout capacitance slew} -digits 3" >> $@
 	@echo ""                                                  >> $@
 	@echo "puts \"\n=== SUMMARY ===\""                        >> $@
 	@echo "report_tns"                                        >> $@
@@ -393,6 +419,8 @@ sta_buf: $(SYN_NET) $(STA_BUF_SDC) $(STA_BUF_SCRIPT)
 $(STA_BUF_SDC): $(SYN_NET) Makefile
 	@mkdir -p $(SYN_DIR)
 	@echo "create_clock -name $(FAST_CLK_NAME) -period $(SER_CLK_PERIOD) [get_ports clk]" >  $@
+	@echo "create_generated_clock -name clk_cal -source [get_ports clk] -divide_by 2 [get_pins u_clk_div4/clk_div2]" >> $@
+	@echo "create_generated_clock -name clk_vec -source [get_ports clk] -divide_by 4 [get_pins u_clk_div4/clk_div4]" >> $@
 	@echo "create_clock -name sclk -period 1000.0 [get_ports sclk]"       >> $@
 	@echo "create_clock -name csn_clk -period 1000.0 [get_ports csn]"     >> $@
 	@echo "set_clock_groups -asynchronous \\"                              >> $@
@@ -471,7 +499,12 @@ $(STA_BUF_SCRIPT): $(SYN_NET) $(STA_BUF_SDC) Makefile
 	@echo 'puts "\n=== WORST PATHS BY MODULE ==="' >> $@
 	@echo 'foreach inst {u_freq u_accum u_dp u_ser_i} {' >> $@
 	@echo '    puts "\n--- $$inst ---"' >> $@
-	@echo '    report_checks -path_delay max -through [get_pins -hier "$$inst/*"] -fields {slew cap input_pins nets fanout} -digits 3 -group_count 3' >> $@
+	@echo '    set mod_cells [get_cells -hier "$$inst/*"]' >> $@
+	@echo '    if {[llength $$mod_cells] == 0} {' >> $@
+	@echo '        puts "No cells matched $$inst/*"' >> $@
+	@echo '        continue' >> $@
+	@echo '    }' >> $@
+	@echo '    report_checks -path_delay max -through $$mod_cells -fields {fanout capacitance slew} -digits 3 -group_path_count 3' >> $@
 	@echo '}' >> $@
 	@echo ""                                                               >> $@
 	@echo "# Write buffered netlist for inspection"                        >> $@

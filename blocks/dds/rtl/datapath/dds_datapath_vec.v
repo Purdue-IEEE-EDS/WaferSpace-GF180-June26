@@ -6,14 +6,18 @@
 // Each lane processes one finished phase sample in the slow vector domain.
 // In the intended 4:1 build, this clock runs at 125 MHz while the serializer
 // runs at 500 MHz.
-// The scalar datapath remains the per-lane implementation.
+// The scalar datapath remains the per-lane implementation and contributes
+// 8 registered clk_vec stages per lane:
+//   phase_vec sampled on edge N -> dac_{i,q}_vec valid just after edge N+7.
 module dds_datapath_vec #(
-    parameter PHASE_W     = 32,
-    parameter TRUNC_W     = 12,
-    parameter UNARY_BITS  = 5,
-    parameter BINARY_BITS = 5,
-    parameter LANES       = 1,
-    parameter DAC_SW_W    = (1 << UNARY_BITS) - 1 + BINARY_BITS
+    parameter int PHASE_W        = 32,
+    parameter int SINE_TRUNC_W   = 14,
+    parameter int SINE_COARSE_W  = 7,
+    parameter int SINE_GUARD_W   = 3,
+    parameter int UNARY_BITS     = 5,
+    parameter int BINARY_BITS    = 5,
+    parameter int LANES          = 1,
+    parameter int DAC_SW_W       = (1 << UNARY_BITS) - 1 + BINARY_BITS
 ) (
     input  logic                          clk,
     input  logic                          rst_n,
@@ -33,11 +37,13 @@ module dds_datapath_vec #(
     generate
         for (lane = 0; lane < LANES; lane = lane + 1) begin : g_lane
             dds_datapath #(
-                .PHASE_W     (PHASE_W),
-                .TRUNC_W     (TRUNC_W),
-                .UNARY_BITS  (UNARY_BITS),
-                .BINARY_BITS (BINARY_BITS),
-                .DAC_SW_W    (DAC_SW_W)
+                .PHASE_W       (PHASE_W),
+                .SINE_TRUNC_W  (SINE_TRUNC_W),
+                .SINE_COARSE_W (SINE_COARSE_W),
+                .SINE_GUARD_W  (SINE_GUARD_W),
+                .UNARY_BITS    (UNARY_BITS),
+                .BINARY_BITS   (BINARY_BITS),
+                .DAC_SW_W      (DAC_SW_W)
             ) u_lane (
                 .clk        (clk),
                 .rst_n      (rst_n),

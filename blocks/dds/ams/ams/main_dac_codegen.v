@@ -16,8 +16,9 @@
 `include "rtl/cal_dac/cal_dac_chain.v"
 `include "rtl/cal_dac/cal_dac_scan.v"
 `include "rtl/datapath/dac_encoder.v"
-`include "rtl/datapath/phase_to_quad.v"
-`include "rtl/datapath/sine_rom.v"
+`include "rtl/datapath/phase_to_sincos_interp.v"
+`include "rtl/datapath/sincos_interp_rom.v"
+`include "rtl/datapath/sincos_interp_mag.v"
 `include "rtl/datapath/dds_datapath.v"
 `include "rtl/datapath/dds_datapath_vec.v"
 `include "rtl/serializer/serializer_4to1.v"
@@ -40,7 +41,9 @@
 // intentionally minimal so AMS runs reach a live waveform quickly.
 module main_dac_codegen #(
     parameter integer PHASE_W      = 32,
-    parameter integer TRUNC_W      = 12,
+    parameter integer SINE_TRUNC_W = 14,
+    parameter integer SINE_COARSE_W = 7,
+    parameter integer SINE_GUARD_W = 3,
     parameter integer UNARY_BITS   = 5,
     parameter integer BINARY_BITS  = 5,
     parameter integer COUNT_W      = 20,
@@ -126,11 +129,13 @@ module main_dac_codegen #(
     assign dac_q_n = ~dac_q_sw;
 
     dds_top #(
-        .PHASE_W     (PHASE_W),
-        .TRUNC_W     (TRUNC_W),
-        .UNARY_BITS  (UNARY_BITS),
-        .BINARY_BITS (BINARY_BITS),
-        .COUNT_W     (COUNT_W)
+        .PHASE_W       (PHASE_W),
+        .SINE_TRUNC_W  (SINE_TRUNC_W),
+        .SINE_COARSE_W (SINE_COARSE_W),
+        .SINE_GUARD_W  (SINE_GUARD_W),
+        .UNARY_BITS    (UNARY_BITS),
+        .BINARY_BITS   (BINARY_BITS),
+        .COUNT_W       (COUNT_W)
     ) dut (
         .clk          (clk),
         .rst_n        (rst_n),

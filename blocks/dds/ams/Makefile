@@ -2,8 +2,10 @@
 PYTHON ?= python3
 AMS_DIR := $(abspath $(dir $(lastword $(MAKEFILE_LIST))))
 ROOT_DIR := $(abspath $(AMS_DIR)/..)
-TRUNC_W ?= 12
-MAG_W   ?= 9
+SINE_TRUNC_W ?= 14
+SINE_COARSE_W ?= 7
+SINE_GUARD_W ?= 3
+MAG_W         ?= 9
 
 all: cal_dac_codegen main_dac_codegen
 

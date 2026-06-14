@@ -12,20 +12,35 @@
 //
 // Address map (little-endian byte order):
 //   0x00       DEVID        R    hardcoded
-//   0x01       STATUS       R    {5'b0, cal_busy, 2'b0}
-//   0x02       CTRL         R/W  {4'b0, phase_rst_on_launch, auto_restart, mode[1:0]}
+//   0x02       CTRL         W    {4'b0, phase_rst_on_launch, auto_restart, mode[1:0]}
 //                                 mode=3 selects the fixed test-tone profile
-//   0x04-0x07  FTW_A        R/W  ftw_a[31:0]
-//   0x08-0x0B  FTW_B        R/W  ftw_b[31:0]
-//   0x0C-0x0F  FTW_STEP     R/W  ftw_step[31:0]
-//   0x10-0x12  CHIRP_N      R/W  chirp_n[COUNT_W-1:0]  (3 bytes, upper bits zero)
+//   0x04-0x07  FTW_A        W    ftw_a[31:0]
+//   0x08-0x0B  FTW_B        W    ftw_b[31:0]
+//   0x0C-0x0F  FTW_STEP     W    ftw_step[31:0]
+//   0x10-0x12  CHIRP_N      W    chirp_n[COUNT_W-1:0]  (3 bytes, upper bits zero)
 //                                 whole-vector segment length in fabric blocks
-//   0x20...     CAL_DAC[n]   R/W  one 4-bit shadow word per cell, zero-extended
+//   0x20...     CAL_DAC[n]   W    one 4-bit shadow word per cell, low nibble only
+//                                 address = 0x20 + n, so with 36 cells:
+//                                 0x20 -> cell 0, ... 0x43 -> cell 35
+//   0x44-0x48  DIRECT_I      W    raw DAC I switch word [35:0], LSB-first bytes
+//   0x49-0x4D  DIRECT_Q      W    raw DAC Q switch word [35:0], LSB-first bytes
+//   0x4E       DIRECT_CTRL   W    bit[0]=direct_en
+//
+// SPI front-end format from spi_slave:
+//   command byte = {R/W, ADDR[6:0]}
+//   write byte   = DATA[7:0]
+//
+// Example calibration write:
+//   command 0x24, data 0x0D  -> write trim code 4'hD into cell 4
+//
+// SPI readback is intentionally restricted to DEVID. All non-DEVID
+// addresses return 0x00.
 
 module dds_regmap #(
     parameter PHASE_W       = 32,
     parameter COUNT_W       = 20,
     parameter DEVID         = 8'hD5,
+    parameter DAC_SW_W      = 36,
     parameter CAL_DAC_N_CELLS = 36,
     parameter CAL_DAC_CELL_W  = 4,
     parameter [CAL_DAC_CELL_W-1:0] CAL_DAC_RESET_CODE = {1'b1, {(CAL_DAC_CELL_W-1){1'b0}}}
@@ -40,9 +55,6 @@ module dds_regmap #(
     input  logic [7:0]  wdata,
     output logic [7:0]  rdata,
 
-    // status inputs (CLK domain — synchronised here for readback)
-    input  logic        cal_busy,
-
     // register outputs (committed bank)
     output logic [PHASE_W-1:0]  ftw_a,
     output logic [PHASE_W-1:0]  ftw_b,
@@ -51,27 +63,30 @@ module dds_regmap #(
     output logic [1:0]          mode,
     output logic                auto_restart,
     output logic                phase_rst_on_launch,
-    output logic [CAL_DAC_N_CELLS*CAL_DAC_CELL_W-1:0] cal_code
+    output logic [CAL_DAC_N_CELLS*CAL_DAC_CELL_W-1:0] cal_code,
+    output logic                direct_en,
+    output logic [DAC_SW_W-1:0] direct_i,
+    output logic [DAC_SW_W-1:0] direct_q
 );
 
     localparam logic [6:0] CAL_DAC_BASE_ADDR = 7'h20;
+    localparam logic [6:0] DIRECT_I_BASE_ADDR = 7'h44;
+    localparam logic [6:0] DIRECT_Q_BASE_ADDR = 7'h49;
+    localparam logic [6:0] DIRECT_CTRL_ADDR   = 7'h4E;
+    localparam integer DIRECT_TOP_W = DAC_SW_W - 32;
 
-    //  status synchronizer (CLK -> SCLK, 2-FF)
-    logic [1:0] cb_sync;
-
-    always_ff @(posedge sclk or negedge rst_n) begin
-        if (!rst_n) begin
-            cb_sync <= 2'b0;
-        end else begin
-            cb_sync <= {cb_sync[0], cal_busy};
-        end
+    initial begin
+        if (DAC_SW_W < 33 || DAC_SW_W > 40)
+            $error("dds_regmap direct DAC register packing assumes 33-40 switch bits, got %0d",
+                   DAC_SW_W);
     end
-
-    logic cal_busy_s;
-    assign cal_busy_s = cb_sync[1];
 
     // ----------------------------------------------------------------
     //  working bank — SPI byte writes (posedge sclk, async rst_n)
+    //   - CAL_DAC writes stage one 4-bit word per cell at 0x20 + cell_idx
+    //   - only wdata[3:0] is consumed for CAL_DAC writes
+    //   - CSn rising snapshots the whole staged frame into cal_code
+    //   - io_update later launches that committed frame into the scan chain
     // ----------------------------------------------------------------
     logic [PHASE_W-1:0] w_ftw_a, w_ftw_b, w_ftw_step;
     logic [COUNT_W-1:0] w_chirp_n;
@@ -79,6 +94,9 @@ module dds_regmap #(
     logic               w_auto_restart;
     logic               w_phase_rst_on_launch;
     logic [CAL_DAC_N_CELLS*CAL_DAC_CELL_W-1:0] w_cal_code;
+    logic               w_direct_en;
+    logic [DAC_SW_W-1:0] w_direct_i;
+    logic [DAC_SW_W-1:0] w_direct_q;
     integer idx;
 
     always_ff @(posedge sclk or negedge rst_n) begin
@@ -90,6 +108,9 @@ module dds_regmap #(
             w_mode               <= 2'd0;
             w_auto_restart       <= 1'b0;
             w_phase_rst_on_launch <= 1'b0;
+            w_direct_en          <= 1'b0;
+            w_direct_i           <= {DAC_SW_W{1'b0}};
+            w_direct_q           <= {DAC_SW_W{1'b0}};
             for (idx = 0; idx < CAL_DAC_N_CELLS; idx = idx + 1)
                 w_cal_code[(idx*CAL_DAC_CELL_W) +: CAL_DAC_CELL_W] <= CAL_DAC_RESET_CODE;
         end else if (wr_en) begin
@@ -118,6 +139,17 @@ module dds_regmap #(
                     7'h10: w_chirp_n[ 7: 0] <= wdata;
                     7'h11: w_chirp_n[15: 8] <= wdata;
                     7'h12: w_chirp_n[COUNT_W-1:16] <= wdata[COUNT_W-1-16:0];
+                    DIRECT_I_BASE_ADDR + 7'd0: w_direct_i[7:0]   <= wdata;
+                    DIRECT_I_BASE_ADDR + 7'd1: w_direct_i[15:8]  <= wdata;
+                    DIRECT_I_BASE_ADDR + 7'd2: w_direct_i[23:16] <= wdata;
+                    DIRECT_I_BASE_ADDR + 7'd3: w_direct_i[31:24] <= wdata;
+                    DIRECT_I_BASE_ADDR + 7'd4: w_direct_i[DAC_SW_W-1:32] <= wdata[DIRECT_TOP_W-1:0];
+                    DIRECT_Q_BASE_ADDR + 7'd0: w_direct_q[7:0]   <= wdata;
+                    DIRECT_Q_BASE_ADDR + 7'd1: w_direct_q[15:8]  <= wdata;
+                    DIRECT_Q_BASE_ADDR + 7'd2: w_direct_q[23:16] <= wdata;
+                    DIRECT_Q_BASE_ADDR + 7'd3: w_direct_q[31:24] <= wdata;
+                    DIRECT_Q_BASE_ADDR + 7'd4: w_direct_q[DAC_SW_W-1:32] <= wdata[DIRECT_TOP_W-1:0];
+                    DIRECT_CTRL_ADDR: w_direct_en <= wdata[0];
                     default: ;
                 endcase
             end
@@ -136,6 +168,9 @@ module dds_regmap #(
             mode               <= 2'd0;
             auto_restart       <= 1'b0;
             phase_rst_on_launch <= 1'b0;
+            direct_en          <= 1'b0;
+            direct_i           <= {DAC_SW_W{1'b0}};
+            direct_q           <= {DAC_SW_W{1'b0}};
             for (idx = 0; idx < CAL_DAC_N_CELLS; idx = idx + 1)
                 cal_code[(idx*CAL_DAC_CELL_W) +: CAL_DAC_CELL_W] <= CAL_DAC_RESET_CODE;
         end else begin
@@ -147,47 +182,13 @@ module dds_regmap #(
             auto_restart       <= w_auto_restart;
             phase_rst_on_launch <= w_phase_rst_on_launch;
             cal_code           <= w_cal_code;
+            direct_en          <= w_direct_en;
+            direct_i           <= w_direct_i;
+            direct_q           <= w_direct_q;
         end
     end
 
-    // ----------------------------------------------------------------
-    //  read mux (SPI read-back)
-    // ----------------------------------------------------------------
-    function [7:0] read_mux;
-        input [6:0] a;
-        integer cal_idx;
-    begin
-        if (a >= CAL_DAC_BASE_ADDR && a < CAL_DAC_BASE_ADDR + CAL_DAC_N_CELLS) begin
-            cal_idx = a - CAL_DAC_BASE_ADDR;
-            read_mux = {{(8-CAL_DAC_CELL_W){1'b0}},
-                        w_cal_code[(cal_idx*CAL_DAC_CELL_W) +: CAL_DAC_CELL_W]};
-        end else begin
-            case (a)
-                7'h00: read_mux = DEVID[7:0];
-                7'h01: read_mux = {5'b0, cal_busy_s, 2'b00};
-                7'h02: read_mux = {4'b0, w_phase_rst_on_launch, w_auto_restart, w_mode};
-                7'h04: read_mux = w_ftw_a[ 7: 0];
-                7'h05: read_mux = w_ftw_a[15: 8];
-                7'h06: read_mux = w_ftw_a[23:16];
-                7'h07: read_mux = w_ftw_a[31:24];
-                7'h08: read_mux = w_ftw_b[ 7: 0];
-                7'h09: read_mux = w_ftw_b[15: 8];
-                7'h0A: read_mux = w_ftw_b[23:16];
-                7'h0B: read_mux = w_ftw_b[31:24];
-                7'h0C: read_mux = w_ftw_step[ 7: 0];
-                7'h0D: read_mux = w_ftw_step[15: 8];
-                7'h0E: read_mux = w_ftw_step[23:16];
-                7'h0F: read_mux = w_ftw_step[31:24];
-                7'h10: read_mux = w_chirp_n[ 7: 0];
-                7'h11: read_mux = w_chirp_n[15: 8];
-                7'h12: read_mux = {{(24-COUNT_W){1'b0}}, w_chirp_n[COUNT_W-1:16]};
-                default: read_mux = 8'h00;
-            endcase
-        end
-    end
-    endfunction
-
-    assign rdata = read_mux(addr);
+    assign rdata = (addr == 7'h00) ? DEVID[7:0] : 8'h00;
 
 endmodule
 

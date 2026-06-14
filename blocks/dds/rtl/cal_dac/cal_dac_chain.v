@@ -15,6 +15,9 @@ module cal_dac_cell #(
 
     logic [CELL_W-1:0] shift_reg;
 
+    // Two-stage storage model:
+    //   - shift_reg shifts serial scan data on cal_clk
+    //   - dac_code updates only on load and represents the cell's applied trim
     always_ff @(posedge cal_clk or negedge rst_n) begin
         if (!rst_n)
             shift_reg <= RESET_CODE;
@@ -41,6 +44,10 @@ endmodule
 //
 // To load a full frame, shift words for cells N_CELLS-1 down to 0,
 // each word LSB-first, then pulse load.
+//
+// This is intentionally a 3-wire serial interface, not a parallel
+// 4*N_CELLS top-level route bundle. The wide dac_code bus is only the
+// internal/behavioral view of the per-cell trim state after load.
 module cal_dac_chain #(
     parameter integer N_CELLS = 1,
     parameter integer CELL_W  = 4,

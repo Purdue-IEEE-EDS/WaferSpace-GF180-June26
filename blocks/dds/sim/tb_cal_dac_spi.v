@@ -1,23 +1,26 @@
 `default_nettype none
 `timescale 1ns/1ps
 
-// Top-level black-box calibration E2E.
+// Top-level calibration E2E.
 //
 // Scope:
 //   - Drives only dds_top pins.
-//   - Uses SPI readback and STATUS polling only.
+//   - Uses SPI writes plus io_update to program calibration state.
+//   - SPI readback is used only for DEVID and zero-on-other-address checks.
 //   - Starts from power-up reset.
 module tb_cal_dac_spi;
 
-    localparam int PHASE_W      = 32;
-    localparam int TRUNC_W      = 12;
-    localparam int UNARY_BITS   = 5;
-    localparam int BINARY_BITS  = 5;
-    localparam int COUNT_W      = 20;
-    localparam int CAL_CELLS    = 36;
-    localparam int CAL_CELL_W   = 4;
-    localparam int CAL_BASE     = 7'h20;
-    localparam int STATUS_ADDR  = 7'h01;
+    localparam int PHASE_W        = 32;
+    localparam int SINE_TRUNC_W   = 14;
+    localparam int SINE_COARSE_W  = 7;
+    localparam int SINE_GUARD_W   = 3;
+    localparam int UNARY_BITS     = 5;
+    localparam int BINARY_BITS    = 5;
+    localparam int COUNT_W        = 20;
+    localparam int CAL_CELLS      = 36;
+    localparam int CAL_CELL_W     = 4;
+    localparam int CAL_BASE       = 7'h20;
+    localparam logic [7:0] DEVID = 8'hD5;
     localparam logic [CAL_CELL_W-1:0] MID = 4'b1000;
 
     localparam real CLK_P  = 3.2;
@@ -26,7 +29,7 @@ module tb_cal_dac_spi;
     logic clk = 1'b0;
     logic rst_n;
     logic sclk, csn, mosi, miso;
-    logic io_update, start_pin, sync_in;
+    logic io_update, sync_in;
     logic [35:0] dac_i, dac_q;
 
     int pass_n = 0;
@@ -36,7 +39,9 @@ module tb_cal_dac_spi;
 
     dds_top #(
         .PHASE_W         (PHASE_W),
-        .TRUNC_W         (TRUNC_W),
+        .SINE_TRUNC_W    (SINE_TRUNC_W),
+        .SINE_COARSE_W   (SINE_COARSE_W),
+        .SINE_GUARD_W    (SINE_GUARD_W),
         .UNARY_BITS      (UNARY_BITS),
         .BINARY_BITS     (BINARY_BITS),
         .COUNT_W         (COUNT_W),
@@ -147,43 +152,59 @@ module tb_cal_dac_spi;
     end
     endtask
 
-    function automatic bit status_busy(input [7:0] status);
+    task automatic expect_committed_code(input int idx, input logic [CAL_CELL_W-1:0] exp,
+                                         input string label);
+        logic [CAL_CELL_W-1:0] got;
     begin
-        return status[2];
+        got = dut.rf_cal_code[(idx * CAL_CELL_W) +: CAL_CELL_W];
+        if (got !== exp)
+            fail($sformatf("%s: committed %0h exp %0h at cell %0d", label, got, exp, idx));
+        else
+            pass(label);
     end
-    endfunction
+    endtask
+
+    task automatic expect_live_code(input int idx, input logic [CAL_CELL_W-1:0] exp,
+                                    input string label);
+        logic [CAL_CELL_W-1:0] got;
+    begin
+        got = dut.u_cal_dac_scan.dac_code[(idx * CAL_CELL_W) +: CAL_CELL_W];
+        if (got !== exp)
+            fail($sformatf("%s: live %0h exp %0h at cell %0d", label, got, exp, idx));
+        else
+            pass(label);
+    end
+    endtask
 
     task automatic wait_busy_seen_and_clear(input string label);
-        logic [7:0] status;
         bit saw_busy;
         int k;
     begin
         saw_busy = 1'b0;
-        for (k = 0; k < 20; k++) begin
-            spi_read8(STATUS_ADDR, status);
-            if (status_busy(status))
+        for (k = 0; k < 1024; k++) begin
+            @(posedge dut.clk_cal);
+            #1;
+            if (dut.cal_busy)
                 saw_busy = 1'b1;
-            if (saw_busy && !status_busy(status)) begin
+            if (saw_busy && !dut.cal_busy) begin
                 pass(label);
                 return;
             end
-            clk_wait(4);
         end
         fail($sformatf("%s: busy did not assert and clear", label));
     end
     endtask
 
     task automatic expect_no_busy_window(input int polls, input string label);
-        logic [7:0] status;
         int k;
     begin
         for (k = 0; k < polls; k++) begin
-            spi_read8(STATUS_ADDR, status);
-            if (status_busy(status)) begin
+            @(posedge dut.clk_cal);
+            #1;
+            if (dut.cal_busy) begin
                 fail($sformatf("%s: busy asserted unexpectedly", label));
                 return;
             end
-            clk_wait(6);
         end
         pass(label);
     end
@@ -198,7 +219,6 @@ module tb_cal_dac_spi;
         csn        = 1'b1;
         mosi       = 1'b0;
         io_update  = 1'b0;
-        start_pin  = 1'b0;
         sync_in    = 1'b0;
 
         clk_wait(4);
@@ -206,31 +226,46 @@ module tb_cal_dac_spi;
         clk_wait(4);
 
         $display("\n=== 1. Power-up defaults ===");
-        spi_read8_expect(STATUS_ADDR, 8'h00, "status reset");
-        spi_read8_expect(CAL_BASE + 0, {4'h0, MID}, "cell0 reset shadow");
-        spi_read8_expect(CAL_BASE + 1, {4'h0, MID}, "cell1 reset shadow");
-        spi_read8_expect(CAL_BASE + 4, {4'h0, MID}, "cell4 reset shadow");
+        spi_read8_expect(7'h00, DEVID, "devid");
+        spi_read8_expect(CAL_BASE + 0, 8'h00, "cell0 readback disabled");
+        spi_read8_expect(CAL_BASE + 1, 8'h00, "cell1 readback disabled");
+        spi_read8_expect(CAL_BASE + 4, 8'h00, "cell4 readback disabled");
+        expect_committed_code(0, MID, "cell0 committed reset");
+        expect_committed_code(1, MID, "cell1 committed reset");
+        expect_committed_code(4, MID, "cell4 committed reset");
+        expect_live_code(0, MID, "cell0 live reset");
+        expect_live_code(1, MID, "cell1 live reset");
+        expect_live_code(4, MID, "cell4 live reset");
 
         $display("\n=== 2. Writes stage until io_update ===");
         spi_write8(CAL_BASE + 1, 8'h03);
         spi_write8(CAL_BASE + 4, 8'h0D);
-        spi_read8_expect(CAL_BASE + 1, 8'h03, "cell1 staged readback");
-        spi_read8_expect(CAL_BASE + 4, 8'h0D, "cell4 staged readback");
+        spi_read8_expect(CAL_BASE + 1, 8'h00, "cell1 readback remains disabled");
+        spi_read8_expect(CAL_BASE + 4, 8'h00, "cell4 readback remains disabled");
+        expect_committed_code(1, 4'h3, "cell1 committed staged");
+        expect_committed_code(4, 4'hD, "cell4 committed staged");
+        expect_live_code(1, MID, "cell1 live unchanged before apply");
+        expect_live_code(4, MID, "cell4 live unchanged before apply");
         expect_no_busy_window(4, "no scan before io_update");
 
         $display("\n=== 3. io_update launches one apply ===");
         pulse_io_update;
         wait_busy_seen_and_clear("first apply");
-        spi_read8_expect(CAL_BASE + 1, 8'h03, "cell1 retained after apply");
-        spi_read8_expect(CAL_BASE + 4, 8'h0D, "cell4 retained after apply");
+        expect_live_code(1, 4'h3, "cell1 live applied");
+        expect_live_code(4, 4'hD, "cell4 live applied");
 
         $display("\n=== 4. Later nth-group update preserves prior groups ===");
         spi_write8(CAL_BASE + 2, 8'h06);
-        spi_read8_expect(CAL_BASE + 1, 8'h03, "cell1 shadow preserved");
-        spi_read8_expect(CAL_BASE + 2, 8'h06, "cell2 staged readback");
-        spi_read8_expect(CAL_BASE + 4, 8'h0D, "cell4 shadow preserved");
+        spi_read8_expect(CAL_BASE + 2, 8'h00, "cell2 readback remains disabled");
+        expect_committed_code(1, 4'h3, "cell1 committed preserved");
+        expect_committed_code(2, 4'h6, "cell2 committed staged");
+        expect_committed_code(4, 4'hD, "cell4 committed preserved");
+        expect_live_code(1, 4'h3, "cell1 live preserved");
+        expect_live_code(2, MID, "cell2 live unchanged before apply");
+        expect_live_code(4, 4'hD, "cell4 live preserved");
         pulse_io_update;
         wait_busy_seen_and_clear("second apply");
+        expect_live_code(2, 4'h6, "cell2 live applied");
 
         $display("\n=== 5. io_update with no calibration change does not rescan ===");
         pulse_io_update;

@@ -7,3 +7,4 @@ syn/
 *.vcd
 sim/wave_scan_match_analysis
 sim/*.csv
+*.pyc

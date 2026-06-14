@@ -4,14 +4,22 @@
 // User-facing E2E TB for the io_update-launched DDS top-level.
 module tb_dds_user_e2e;
 
-    localparam PHASE_W      = 32;
-    localparam TRUNC_W      = 12;
-    localparam UNARY_BITS   = 5;
-    localparam BINARY_BITS  = 5;
-    localparam COUNT_W      = 20;
-    localparam LANES        = 4;
-    localparam DAC_SW_W     = (1 << UNARY_BITS) - 1 + BINARY_BITS;
+    localparam PHASE_W        = 32;
+    localparam SINE_TRUNC_W   = 14;
+    localparam SINE_COARSE_W  = 7;
+    localparam SINE_GUARD_W   = 3;
+    localparam UNARY_BITS     = 5;
+    localparam BINARY_BITS    = 5;
+    localparam COUNT_W        = 20;
+    localparam LANES          = 4;
+    localparam DAC_SW_W       = (1 << UNARY_BITS) - 1 + BINARY_BITS;
+    localparam DEVID          = 8'hD5;
     localparam TEST_TONE_FTW = 32'h2284_DFCE;
+    localparam [6:0] DIRECT_I_BASE_ADDR = 7'h44;
+    localparam [6:0] DIRECT_Q_BASE_ADDR = 7'h49;
+    localparam [6:0] DIRECT_CTRL_ADDR   = 7'h4E;
+    localparam [DAC_SW_W-1:0] DIRECT_I_CODE = 36'h123456789;
+    localparam [DAC_SW_W-1:0] DIRECT_Q_CODE = 36'h2A5A55AA5;
 
     localparam CLK_P        = 3.2;
     localparam SCLK_P       = 20.0;
@@ -33,11 +41,13 @@ module tb_dds_user_e2e;
     always #(CLK_P/2) clk = ~clk;
 
     dds_top #(
-        .PHASE_W(PHASE_W),
-        .TRUNC_W(TRUNC_W),
-        .UNARY_BITS(UNARY_BITS),
-        .BINARY_BITS(BINARY_BITS),
-        .COUNT_W(COUNT_W)
+        .PHASE_W       (PHASE_W),
+        .SINE_TRUNC_W  (SINE_TRUNC_W),
+        .SINE_COARSE_W (SINE_COARSE_W),
+        .SINE_GUARD_W  (SINE_GUARD_W),
+        .UNARY_BITS    (UNARY_BITS),
+        .BINARY_BITS   (BINARY_BITS),
+        .COUNT_W       (COUNT_W)
     ) dut (
         .clk(clk),
         .rst_n(rst_n),
@@ -131,6 +141,21 @@ module tb_dds_user_e2e;
     end
     endtask
 
+    task automatic spi_write36(input [6:0] addr, input [DAC_SW_W-1:0] val);
+    begin
+        csn = 1'b0; #(SCLK_P/2);
+        spi_send_byte({1'b0, addr});
+        spi_send_byte(val[7:0]);
+        spi_send_byte(val[15:8]);
+        spi_send_byte(val[23:16]);
+        spi_send_byte(val[31:24]);
+        spi_send_byte({4'h0, val[35:32]});
+        #(SCLK_P/2);
+        csn = 1'b1;
+        #(SCLK_P);
+    end
+    endtask
+
     task automatic spi_write8(input [6:0] addr, input [7:0] val);
     begin
         csn = 1'b0; #(SCLK_P/2);
@@ -150,6 +175,15 @@ module tb_dds_user_e2e;
         #(SCLK_P/2);
         csn = 1'b1;
         #(SCLK_P);
+    end
+    endtask
+
+    task automatic expect_read8(input [6:0] addr, input [7:0] exp, input string label);
+        logic [7:0] got;
+    begin
+        spi_read8(addr, got);
+        if (got !== exp)
+            fail_msg($sformatf("%s: read %02h exp %02h at %02h", label, got, exp, addr));
     end
     endtask
 
@@ -270,7 +304,6 @@ module tb_dds_user_e2e;
     end
 
     initial begin
-        logic [7:0] status;
         int first_i;
         int first_q;
         bit differs;
@@ -284,9 +317,8 @@ module tb_dds_user_e2e;
         do_power_cycle_reset;
         if (dac_i !== MIDSCALE_SW || dac_q !== MIDSCALE_SW)
             fail_msg("power-up outputs should hold midscale");
-        spi_read8(7'h01, status);
-        if (status !== 8'h00)
-            fail_msg($sformatf("power-up STATUS=%02h exp 00", status));
+        expect_read8(7'h00, DEVID, "devid");
+        expect_read8(7'h01, 8'h00, "non-devid readback is zero");
 
         // Test 2: basic CW startup on io_update only.
         $display("--- E2E Test 2: basic CW startup ---");
@@ -312,15 +344,32 @@ module tb_dds_user_e2e;
         if (!differs)
             fail_msg("live io_update did not change the waveform trace");
 
-        // Test 4: zero frequency edge case.
-        $display("--- E2E Test 4: zero frequency ---");
+        // Test 4: direct raw DAC override.
+        $display("--- E2E Test 4: direct DAC override ---");
+        spi_write36(DIRECT_I_BASE_ADDR, DIRECT_I_CODE);
+        spi_write36(DIRECT_Q_BASE_ADDR, DIRECT_Q_CODE);
+        spi_write8(DIRECT_CTRL_ADDR, 8'h01);
+        expect_motion(16, "direct override staged");
+        pulse_io_update;
+        clk_wait(8);
+        if (dac_i !== DIRECT_I_CODE || dac_q !== DIRECT_Q_CODE)
+            fail_msg($sformatf("direct override output i=%09h q=%09h exp_i=%09h exp_q=%09h",
+                               dac_i, dac_q, DIRECT_I_CODE, DIRECT_Q_CODE));
+        expect_stable(16, "direct override hold");
+        spi_write8(DIRECT_CTRL_ADDR, 8'h00);
+        pulse_io_update;
+        clk_wait(16);
+        expect_motion(32, "direct override release");
+
+        // Test 5: zero frequency edge case.
+        $display("--- E2E Test 5: zero frequency ---");
         spi_write32(7'h04, 32'd0);
         pulse_io_update;
         clk_wait(48);
         expect_stable(16, "zero frequency");
 
-        // Test 5: sync relaunch reproduces the launch epoch.
-        $display("--- E2E Test 5: sync relaunch ---");
+        // Test 6: sync relaunch reproduces the launch epoch.
+        $display("--- E2E Test 6: sync relaunch ---");
         spi_write32(7'h04, 32'h0800_0000);
         spi_write8(7'h02, 8'h08);
         pulse_io_update;
@@ -337,8 +386,8 @@ module tb_dds_user_e2e;
             end
         end
 
-        // Test 6: TEST mode auto-launch.
-        $display("--- E2E Test 6: TEST mode ---");
+        // Test 7: TEST mode auto-launch.
+        $display("--- E2E Test 7: TEST mode ---");
         spi_write8(7'h02, 8'h03);
         pulse_io_update;
         clk_wait(48);
@@ -346,8 +395,8 @@ module tb_dds_user_e2e;
         if (dut.u_freq.ftw_lane0 !== TEST_TONE_FTW)
             fail_msg($sformatf("TEST ftw_lane0=%08x exp=%08x", dut.u_freq.ftw_lane0, TEST_TONE_FTW));
 
-        // Test 7: abrupt finite-to-steady takeover works via io_update alone.
-        $display("--- E2E Test 7: SAW to TEST takeover ---");
+        // Test 8: abrupt finite-to-steady takeover works via io_update alone.
+        $display("--- E2E Test 8: SAW to TEST takeover ---");
         do_power_cycle_reset;
         spi_write32(7'h04, 32'd1000);
         spi_write32(7'h08, 32'd7000);
@@ -370,8 +419,8 @@ module tb_dds_user_e2e;
         if (dut.u_freq.ftw_lane0 !== TEST_TONE_FTW)
             fail_msg($sformatf("SAW to TEST ftw_lane0=%08x exp=%08x", dut.u_freq.ftw_lane0, TEST_TONE_FTW));
 
-        // Test 8: sync relaunch reproduces the TEST launch epoch.
-        $display("--- E2E Test 8: TEST sync relaunch ---");
+        // Test 9: sync relaunch reproduces the TEST launch epoch.
+        $display("--- E2E Test 9: TEST sync relaunch ---");
         do_power_cycle_reset;
         spi_write8(7'h02, 8'h03);
         pulse_io_update;
@@ -390,8 +439,8 @@ module tb_dds_user_e2e;
         if (dut.u_freq.ftw_lane0 !== TEST_TONE_FTW)
             fail_msg($sformatf("TEST sync ftw_lane0=%08x exp=%08x", dut.u_freq.ftw_lane0, TEST_TONE_FTW));
 
-        // Test 9: coincident io_update + sync prefer the newly committed profile.
-        $display("--- E2E Test 9: io_update + sync precedence ---");
+        // Test 10: coincident io_update + sync prefer the newly committed profile.
+        $display("--- E2E Test 10: io_update + sync precedence ---");
         do_power_cycle_reset;
         spi_write32(7'h04, 32'h0400_0000);
         spi_write8(7'h02, 8'h00);
@@ -412,23 +461,26 @@ module tb_dds_user_e2e;
             fail_msg($sformatf("io_update + sync ftw_lane0=%08x exp=%08x", dut.u_freq.ftw_lane0, 32'h1800_0000));
         expect_motion(24, "io_update + sync overlap");
 
-        // Test 10: STATUS keeps chirp bits at zero and calibration busy still works.
-        $display("--- E2E Test 10: status behavior ---");
-        spi_read8(7'h01, status);
-        if (status[1:0] !== 2'b00)
-            fail_msg($sformatf("STATUS chirp bits should be 0, got %b", status[1:0]));
+        // Test 11: only DEVID reads back; calibration still launches on io_update.
+        $display("--- E2E Test 11: identity-only readback + cal apply ---");
+        expect_read8(7'h02, 8'h00, "ctrl readback disabled");
         spi_write8(7'h20, 8'h03);
+        expect_read8(7'h20, 8'h00, "cal readback disabled");
+        if (dut.u_cal_dac_scan.dac_code[3:0] !== 4'h8)
+            fail_msg($sformatf("pre-apply cal code=%0h exp 8", dut.u_cal_dac_scan.dac_code[3:0]));
         pulse_io_update;
         saw_busy = 1'b0;
-        for (i = 0; i < 16; i = i + 1) begin
-            spi_read8(7'h01, status);
-            if (status[2])
+        for (i = 0; i < 1024; i = i + 1) begin
+            @(posedge dut.clk_cal); #1;
+            if (dut.cal_busy)
                 saw_busy = 1'b1;
-            clk_wait(2);
+            if (saw_busy && !dut.cal_busy)
+                i = 1024;
         end
         if (!saw_busy)
-            fail_msg("calibration busy never surfaced in STATUS");
-        expect_motion(24, "status/cal update");
+            fail_msg("calibration busy never asserted");
+        if (dut.u_cal_dac_scan.dac_code[3:0] !== 4'h3)
+            fail_msg($sformatf("post-apply cal code=%0h exp 3", dut.u_cal_dac_scan.dac_code[3:0]));
 
         if (err_count == 0)
             $display("ALL TESTS PASSED");
