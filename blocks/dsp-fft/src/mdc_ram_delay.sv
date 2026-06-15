@@ -3,7 +3,7 @@ module mdc_ram_delay #(
     parameter int DELAY_STAGES = 64,
     parameter int ADDR_WIDTH = $clog2(DELAY_STAGES)
 )(
-    input  logic clk, rst, 
+    input  logic clk,
     input  logic [DATA_WIDTH-1:0] din,
     output logic [DATA_WIDTH-1:0] dout
 );
@@ -12,7 +12,6 @@ module mdc_ram_delay #(
 
     integer i;
 
-    //Considser fifo buffer? Nvm shift register might be the best
     always_ff @(posedge clk) begin
         shift_reg[0] <= din;
 

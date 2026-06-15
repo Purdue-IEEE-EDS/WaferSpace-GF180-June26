@@ -4,7 +4,7 @@ module twiddle_rom #(
     parameter int BRANCH = 1,
     parameter int ADDR_W = $clog2(DEPTH)
 )(
-    input  logic clk, rst,
+    input  logic clk,
     input logic in_valid, 
     output logic signed [BITS-1:0] tw_re,
     output logic signed [BITS-1:0] tw_im

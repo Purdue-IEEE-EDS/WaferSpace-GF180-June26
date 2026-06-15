@@ -1,5 +1,5 @@
 (* keep_hierarchy *)
-module adder #(parameter SUB = 0)
+module adder #(parameter SUB = 0) 
 (
     input logic [15:0] a, b,
     output logic [15:0] result

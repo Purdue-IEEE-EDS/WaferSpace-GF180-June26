@@ -2,8 +2,7 @@
 
 module r2 #(parameter BITS=16)
 (
-    input logic clk, rst,
-    input logic mode, 
+    input logic clk,
     input logic signed  [BITS-1:0] a_in_real, a_in_imag, b_in_real, b_in_imag,
     output logic signed [BITS-1:0] a_out_real, a_out_imag, b_out_real, b_out_imag
 );

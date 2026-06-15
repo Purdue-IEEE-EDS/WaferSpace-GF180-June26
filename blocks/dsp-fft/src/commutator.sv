@@ -3,7 +3,7 @@ module commutator #(
     parameter WIDTH = 16
 )
 (
-    input logic clk, rst,
+    input logic clk,
     input logic select, 
     input logic [WIDTH-1:0] up_in, low_in, 
     output logic [WIDTH-1:0] up_out, low_out
@@ -19,8 +19,8 @@ module commutator #(
         select_pip2 <= select;
     end
 
-    mdc_ram_delay #(.DATA_WIDTH(WIDTH), .DELAY_STAGES(DELAY)) delay1(.clk, .rst, .din(low_in), .dout(low_in_del));
-    mdc_ram_delay #(.DATA_WIDTH(WIDTH), .DELAY_STAGES(DELAY)) delay2(.clk, .rst, .din(branch1_sel), .dout(up_out));
+    mdc_ram_delay #(.DATA_WIDTH(WIDTH), .DELAY_STAGES(DELAY)) delay1(.clk, .din(low_in), .dout(low_in_del));
+    mdc_ram_delay #(.DATA_WIDTH(WIDTH), .DELAY_STAGES(DELAY)) delay2(.clk, .din(branch1_sel), .dout(up_out));
 
     always_comb begin
         branch1_sel = select_pip1 ? low_in_del : up_in_del;

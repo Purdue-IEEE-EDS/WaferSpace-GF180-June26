@@ -91,7 +91,7 @@ module fft
     //     end
     // endgenerate
 
-    mdc_stage #(.CURR_STAGE(1))
+    mdc_stage #(.CURR_STAGE(1), .BITS(10))
             stage ( 
                 .clk, .rst(sync_rst2),
                 .in_valid(val[0]), 
@@ -105,7 +105,8 @@ module fft
 
     generate 
         for (genvar i = 4; i <= 8; i++) begin : stages_gen_blk
-            mdc_stage #(.CURR_STAGE(i))
+            localparam NUM_BITS = 7 + i; 
+            mdc_stage #(.CURR_STAGE(i), .BITS(NUM_BITS))
             stage ( 
                 .clk, .rst(sync_rst2),
                 .in_valid(val[i-3]), 

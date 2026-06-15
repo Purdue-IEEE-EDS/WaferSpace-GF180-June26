@@ -2,12 +2,14 @@
 
 module rotator #(parameter BITS = 16, parameter DECIMAL = 8) 
 (
-    input logic clk, rst, 
-    input logic signed [BITS-1:0] real_in, imag_in, real_tw, imag_tw,
+    input logic clk,
+    input logic signed [BITS-1:0] real_in, imag_in, 
+    input logic signed [15:0] real_tw, imag_tw,
     output logic signed [BITS-1:0] real_out, imag_out
 );
 
-    logic signed [BITS-1:0] a, b, c, d, sum1, sum2, sum1_pip, sum2_pip;
+    logic signed [BITS-1:0] a, b;
+    logic signed [15:0] c, d;
     logic signed [BITS-1:0] ac, bd, bc, ad, ac_pip, bd_pip, ad_pip, bc_pip;
 
     always_ff @(posedge clk) begin 
@@ -18,7 +20,7 @@ module rotator #(parameter BITS = 16, parameter DECIMAL = 8)
     end
 
     wallace_mult #(
-     .W(16)
+     .W(BITS)
     ) mult1(
         .clk,
         .a(a),
@@ -27,7 +29,7 @@ module rotator #(parameter BITS = 16, parameter DECIMAL = 8)
     );
 
     wallace_mult #(
-     .W(16)
+     .W(BITS)
     ) mult2(
         .clk,
         .a(b),
@@ -36,7 +38,7 @@ module rotator #(parameter BITS = 16, parameter DECIMAL = 8)
     );
 
     wallace_mult #(
-     .W(16)
+     .W(BITS)
     ) mult3(
         .clk,
         .a(b),
@@ -45,7 +47,7 @@ module rotator #(parameter BITS = 16, parameter DECIMAL = 8)
     );
 
     wallace_mult #(
-     .W(16)
+     .W(BITS)
     ) mult4(
         .clk,
         .a(a),
