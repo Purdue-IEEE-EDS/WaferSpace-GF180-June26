@@ -6,32 +6,19 @@ S {}
 F {}
 E {}
 N 437.5 -258.75 437.5 -238.75 {lab=0}
-N 335 -675 335 -632.5 {lab=0}
-N 230 -675 230 -635 {lab=0}
-N 425 -675 425 -630 {lab=0}
+N 400 -675 400 -635 {lab=0}
 N 510 -675 510 -630 {lab=0}
-N 230 -767.5 230 -735 {lab=Vdd}
-N 335 -760 335 -735 {lab=Vb1}
-N 425 -760 425 -735 {lab=Vb2}
+N 400 -767.5 400 -735 {lab=Vdd}
 N 510 -760 510 -735 {lab=Vin_n}
 N 610 -672.5 610 -627.5 {lab=0}
 N 610 -757.5 610 -732.5 {lab=Vin_p}
 N 390 -320 490 -320 {lab=Vout}
 N 200 -430 200 -380 {lab=Vdd}
-N 200 -180 200 -120 {lab=Vss}
-N 20 -350 90 -350 {lab=Vb1}
-N 20 -330 90 -330 {lab=Vb2}
-N 30 -310 90 -310 {lab=Vin_p}
-N 20 -310 30 -310 {lab=Vin_p}
-N 20 -290 90 -290 {lab=Vin_n}
-N 140 -675 140 -635 {lab=0}
-N 140 -767.5 140 -735 {lab=Vss}
-N 200 -260 200 -250 {lab=Vss}
-N 200 -190 200 -180 {lab=Vss}
-N 200 -250 200 -190 {lab=Vss}
+N 30 -320 90 -320 {lab=Vin_p}
+N 20 -320 30 -320 {lab=Vin_p}
+N 20 -340 90 -340 {lab=Vin_n}
 C {code.sym} 770 -870 0 0 {name=s1 only_toplevel=false value="
 .param VDD=3.3
-.param VSS=0
 .param VCM=1.2
 .param VB1=0
 .param VB2=0
@@ -232,29 +219,17 @@ value="
 .include $::180MCU_MODELS/design.ngspice
 .lib $::180MCU_MODELS/sm141064.ngspice typical
 "}
-C {vsource.sym} 230 -705 0 0 {name=V1 value=\{VDD\} savecurrent=false}
-C {vsource.sym} 335 -705 0 0 {name=V2 value=\{VB1\} savecurrent=false}
-C {vsource.sym} 425 -705 0 0 {name=V3 value=\{VB2\} savecurrent=false}
+C {vsource.sym} 400 -705 0 0 {name=V1 value=\{VDD\} savecurrent=false}
 C {vsource.sym} 510 -705 0 0 {name=V4 value=\{VCM\} savecurrent=false}
-C {gnd.sym} 230 -635 0 0 {name=l2 lab=0}
-C {gnd.sym} 335 -632.5 0 0 {name=l3 lab=0}
-C {gnd.sym} 425 -630 0 0 {name=l4 lab=0}
+C {gnd.sym} 400 -635 0 0 {name=l2 lab=0}
 C {gnd.sym} 510 -630 0 0 {name=l5 lab=0}
-C {lab_wire.sym} 230 -767.5 0 0 {name=p6 sig_type=std_logic lab=Vdd}
+C {lab_wire.sym} 400 -767.5 0 0 {name=p6 sig_type=std_logic lab=Vdd}
 C {vsource.sym} 610 -702.5 0 0 {name=V5 value=\{VCM\} savecurrent=false}
 C {gnd.sym} 610 -627.5 0 0 {name=l6 lab=0}
-C {lab_wire.sym} 335 -760 0 0 {name=p7 sig_type=std_logic lab=Vb1}
-C {lab_wire.sym} 425 -760 0 0 {name=p8 sig_type=std_logic lab=Vb2}
 C {lab_wire.sym} 510 -757.5 0 0 {name=p9 sig_type=std_logic lab=Vin_n}
 C {lab_wire.sym} 610 -757.5 0 0 {name=p10 sig_type=std_logic lab=Vin_p}
 C {op_amp.sym} 240 -320 0 0 {name=x1}
 C {lab_wire.sym} 490 -320 0 1 {name=p1 sig_type=std_logic lab=Vout}
 C {lab_wire.sym} 200 -430 3 1 {name=p2 sig_type=std_logic lab=Vdd}
-C {lab_wire.sym} 200 -120 3 0 {name=p3 sig_type=std_logic lab=Vss}
-C {vsource.sym} 140 -705 0 0 {name=V6 value=\{VSS\} savecurrent=false}
-C {gnd.sym} 140 -635 0 0 {name=l7 lab=0}
-C {lab_wire.sym} 140 -767.5 0 0 {name=p4 sig_type=std_logic lab=Vss}
-C {lab_wire.sym} 20 -350 0 0 {name=p5 sig_type=std_logic lab=Vb1}
-C {lab_wire.sym} 20 -330 0 0 {name=p11 sig_type=std_logic lab=Vb2}
-C {lab_wire.sym} 20 -310 0 0 {name=p12 sig_type=std_logic lab=Vin_p}
-C {lab_wire.sym} 20 -290 0 0 {name=p13 sig_type=std_logic lab=Vin_n}
+C {lab_wire.sym} 20 -320 0 0 {name=p12 sig_type=std_logic lab=Vin_p}
+C {lab_wire.sym} 20 -340 0 0 {name=p13 sig_type=std_logic lab=Vin_n}
