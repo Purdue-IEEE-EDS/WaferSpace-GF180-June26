@@ -3,14 +3,14 @@ module wallace_mult #(
     parameter DECIMAL = 12
 )(
     input logic clk, 
-    input  logic signed [15:0] a,
+    input  logic signed [W-1:0] a,
     input  logic signed [15:0] b,
     output logic signed [W-1:0] p
 ); 
 
-    logic [31:0] partial [0:15];
+    logic [W+15:0] partial [0:15];
 
-    logic [31:0] partial0, partial1, partial2, partial3, partial4, partial5, partial6, partial7, partial8, partial9, partial10, partial11, partial12, partial13, partial14, partial15;
+    logic [W+15:0] partial0, partial1, partial2, partial3, partial4, partial5, partial6, partial7, partial8, partial9, partial10, partial11, partial12, partial13, partial14, partial15;
 
     always_comb begin
         partial0 = partial[0];
@@ -39,32 +39,31 @@ module wallace_mult #(
 
         // 2. Rows 0 through 14 (Standard Baugh-Wooley Rows)
         for (int i = 0; i < 15; i++) begin
-            partial[i] = {~(a[15] & b[i]), (a[14:0] & {15{b[i]}})} << i;
+            partial[i] = {~(a[W-1] & b[i]), (a[W-2:0] & {(W-1){b[i]}})} << i;
         end
 
         // 4. Row 15 (The Sign Row - Negative Weight)
-        for (int j = 0; j < 16; j++) begin
-            partial[15] = {(a[15] & b[15]), ~(a[14:0] & {15{b[15]}})}<<15;
-        end
+        partial[15] = {(a[W-1] & b[15]), ~(a[W-2:0] & {(W-1){b[15]}})}<<15;
 
-        partial[15][31] = 1'b1;
-        partial[0][16] = 1'b1;
+        partial[15][W+15] = 1'b1;
+        partial[0][15] = 1'b1;
+        partial[15][W-1] = 1'b1; 
     end
 
-    logic [31:0] partial_pip [0:15];
+    logic [W+15:0] partial_pip [0:15];
     always_ff @(posedge clk) begin
         for (int i = 0; i < 16; i++) begin
             partial_pip[i] <= partial[i];
         end
     end
 
-    logic [31:0] s10, s11, s12, s13, s14, s15, s16, s17, s18, s19;
-    logic [31:0] s20, s21, s22, s23, s24, s25;
-    logic [31:0] s30, s31, s32, s33;
-    logic [31:0] s40, s41, s42, s43;
-    logic [31:0] s50, s51;
-    logic [31:0] s60, s61;
-    logic [31:0] op1, op2;
+    logic [W+15:0] s10, s11, s12, s13, s14, s15, s16, s17, s18, s19;
+    logic [W+15:0] s20, s21, s22, s23, s24, s25;
+    logic [W+15:0] s30, s31, s32, s33;
+    logic [W+15:0] s40, s41, s42, s43;
+    logic [W+15:0] s50, s51;
+    logic [W+15:0] s60, s61;
+    logic [W+15:0] op1, op2;
 
     carry_save_adder #(.WIDTH(32)) csa_s1_0(.a(partial_pip[0]), .b(partial_pip[1]), .cin(partial_pip[2]), .s(s10), .cout(s11));
     carry_save_adder #(.WIDTH(32)) csa_s1_1(.a(partial_pip[3]), .b(partial_pip[4]), .cin(partial_pip[5]), .s(s12), .cout(s13));
@@ -79,7 +78,7 @@ module wallace_mult #(
     carry_save_adder #(.WIDTH(32)) csa_s3_1(.a(s18), .b(s19<<1), .cin(s20), .s(s30), .cout(s31));
     carry_save_adder #(.WIDTH(32)) csa_s3_2(.a(s21<<1), .b(s22), .cin(s23<<1), .s(s32), .cout(s33));
 
-    logic [31:0] s24_pip, s25_pip, s30_pip, s31_pip, s32_pip, s33_pip; 
+    logic [W+15:0] s24_pip, s25_pip, s30_pip, s31_pip, s32_pip, s33_pip; 
 
     always_ff @(posedge clk) begin 
         s24_pip <= s24;

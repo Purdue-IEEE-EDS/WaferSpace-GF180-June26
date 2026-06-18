@@ -231,7 +231,6 @@ $(PNR_SDC): | $(PNR_DIR)
 	@echo "set_max_fanout 16 [current_design]"                             >> $@
 	@echo "set_max_transition 1.5 [current_design]"                        >> $@
 	@echo "set_false_path -from [get_ports rst]"                           >> $@
-	@echo "set_false_path -to [get_pins -quiet stages_gen_blk[*].stage/*/RN]" >> $@
 
 $(PNR_SCRIPT): | $(PNR_DIR)
 	@echo "read_lef $(TECH_LEF)"                                           >  $@

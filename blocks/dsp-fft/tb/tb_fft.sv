@@ -88,7 +88,7 @@ module tb_fft();
             // din_im2 = 1'b0;
             // din_im3 = 1'b0; 
 
-            if(i == 1) din_re0 = 6'h10; 
+            if(i == 0) din_re0 = 6'h10; 
 
             else din_re0 = 6'h0; 
             din_re1 = '0; 
