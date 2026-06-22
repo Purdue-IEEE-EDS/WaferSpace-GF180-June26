@@ -1,4 +1,4 @@
-(* keep_hierarchy *)
+(* keep_hierarchy = "yes" *)
 module adder #(parameter SUB = 0) 
 (
     input logic [15:0] a, b,

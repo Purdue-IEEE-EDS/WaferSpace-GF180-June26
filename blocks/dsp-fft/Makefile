@@ -26,6 +26,8 @@ SITE_NAME  ?= GF018hv5v_green_sc9
 
 CLK_PERIOD ?= 6.25
 CLK_PS     ?= 6250
+ADC_CLK_PERIOD ?= 1.5625
+ADC_PS ?= 1562.5
 
 # ---------------- Directories ----------------
 RTL_DIR = src
@@ -48,7 +50,6 @@ RTL = \
 	$(RTL_DIR)/CLA32.sv \
 	$(RTL_DIR)/full_adder_cla.sv \
 	$(RTL_DIR)/wallace_mult.sv \
-	$(RTL_DIR)/full_adder.sv \
 	$(RTL_DIR)/half_adder.sv \
 	$(RTL_DIR)/carry_save_adder.sv \
 	$(RTL_DIR)/commutator.sv \
@@ -67,6 +68,8 @@ PNR_SCRIPT   = $(PNR_DIR)/pnr.tcl
 PNR_SDC      = $(PNR_DIR)/fft.sdc
 PNR_DEF      = $(PNR_DIR)/fft_pnr.def
 PNR_GDS      = $(PNR_DIR)/fft.gds
+PNR_NET      = $(SYN_DIR)/fft_pnr.v
+PNR_SYN_VVP  = $(SIM_DIR)/tb_fft_pnr.vvp
 
 SYN_SCRIPT   = $(SYN_DIR)/synth.ys
 STA_SCRIPT   = $(SYN_DIR)/sta.tcl
@@ -99,7 +102,6 @@ $(STAGE_VVP): $(RTL) $(TB_STAGE)
 		$(RTL_DIR)/full_adder_cla.sv \
 		$(RTL_DIR)/twiddle_rom.sv \
 		$(RTL_DIR)/wallace_mult.sv \
-		$(RTL_DIR)/full_adder.sv \
 		$(RTL_DIR)/half_adder.sv \
 		$(RTL_DIR)/carry_save_adder.sv \
 		$(RTL_DIR)/commutator.sv \
@@ -130,13 +132,14 @@ $(SYN_SCRIPT): $(RTL)
 	@echo "proc"                                                 >> $@
 	@echo ""                                                     >> $@
 	@echo "# ── FLATTEN — dont preserve module boundaries ──"     >> $@
+	@echo "flatten"                              >> $@
 	@echo ""                                                     >> $@
 	@echo "opt_clean"                                            >> $@
 	@echo "# ── Coarse optimisation ──"                         >> $@
 	@echo "opt_expr"                                             >> $@
 	@echo "opt_clean"                                            >> $@
 	@echo "check"                                                >> $@
-	@echo "opt -nodffe -nosdff"                                  >> $@
+	@echo "opt"                                  >> $@
 	@echo "wreduce"                                              >> $@
 	@echo "peepopt"                                              >> $@
 	@echo "opt_clean"                                            >> $@
@@ -152,6 +155,10 @@ $(SYN_SCRIPT): $(RTL)
 	@echo "opt -fast -full"                                      >> $@
 	@echo "memory_map"                                           >> $@
 	@echo "opt -full"                                            >> $@
+	@echo "opt_expr"                                             >> $@
+	@echo "opt_reduce" >> $@
+	@echo "opt_merge"  >> $@
+	@echo "opt_clean"  >> $@
 	@echo ""                                                     >> $@
 	@echo "# ── Technology mapping ──"                           >> $@
 	@echo "techmap"                                              >> $@
@@ -159,6 +166,9 @@ $(SYN_SCRIPT): $(RTL)
 	@echo "opt -fast"                                            >> $@
 	@echo ""                                                     >> $@
 	@echo "opt_clean"                                            >> $@
+	@echo "opt_reduce" >> $@
+	@echo "opt_merge"  >> $@
+	@echo "opt_clean"  >> $@
 	@echo "# ── Hierarchy check before ABC ──"                  >> $@
 	@echo "# ── Pre-ABC hierarchy ──"                          >> $@
 	@echo "ls"                                                   >> $@
@@ -172,7 +182,8 @@ $(SYN_SCRIPT): $(RTL)
 	@echo "abc -liberty $(LIB_FILE) -D $(CLK_PS) "               >> $@
 	@echo ""                                                     >> $@
 	@echo "# ── Final cleanup and stats ──"                     >> $@
-	@echo "opt_clean"                                            >> $@
+	@echo "opt_clean -purge"                                            >> $@
+	@echo "clean -purge"                                            >> $@
 	@echo "stat -liberty $(LIB_FILE)"                            >> $@
 	@echo "# ── Final hierarchy ──"                             >> $@
 	@echo "ls"                                                   >> $@
@@ -181,9 +192,9 @@ $(SYN_SCRIPT): $(RTL)
 	@echo "write_verilog -noattr $(SYN_NET)"                     >> $@
 
 $(SYN_NET): $(RTL) $(SYN_SCRIPT)
-	$(YOSYS) -s $(SYN_SCRIPT)
+	$(YOSYS) -s $(SYN_SCRIPT) 2>&1 | tee syn/syn.log
 
-syn: $(SYN_NET)
+syn: $(SYN_NET) 
 
 # ============================================================
 # STA 
@@ -219,6 +230,14 @@ sim_syn: $(SYN_NET)
 		$(SYN_NET) \
 		$(TB_FFT)
 	cd $(SIM_DIR) && $(VVP) tb_fft_syn.vvp
+
+sim_pnr: $(PNR_NET)
+	mkdir -p $(SIM_DIR)
+	$(IVERILOG) -g2012 -o $(PNR_SYN_VVP) \
+		$(CELL_VLOG) \
+		$(PNR_NET) \
+		$(TB_FFT)
+	cd $(SIM_DIR) && $(VVP) tb_fft_pnr.vvp
 
 # ============================================================
 # PNR (OpenROAD)
@@ -290,8 +309,8 @@ $(PNR_SCRIPT): | $(PNR_DIR)
 	@echo "detailed_route"   >> $@
 	@echo ""                                                               >> $@
 	@echo "estimate_parasitics -global_routing"                            >> $@
-	@echo "report_checks -path_delay max -slack_max -0.0 -group_count 5"  >> $@
-	@echo "report_checks -path_delay min -slack_max -0.0 -group_count 5"  >> $@
+	@echo "report_checks -path_delay max -group_path_count 5"  >> $@
+	@echo "report_checks -path_delay min -group_path_count 5"  >> $@
 	@echo "report_tns"                                                     >> $@
 	@echo "report_wns"                                                     >> $@
 	@echo "report_clock_skew"                                              >> $@

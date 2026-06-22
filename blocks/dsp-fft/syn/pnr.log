@@ -1,0 +1,1350 @@
+OpenROAD 26Q2-254-g61932e897 
+Features included (+) or not (-): +GPU +GUI +Python
+This program is licensed under the BSD-3 license. See the LICENSE file for details.
+Components of this program may be licensed under more restrictive licenses which must be honored.
+[INFO ODB-0388] unsupported LEF58_EOLENCLOSURE property for layer Via1 :"
+  	EOLENCLOSURE 0.34 0.06 ;"
+[INFO ODB-0388] unsupported LEF58_EOLENCLOSURE property for layer Via2 :" EOLENCLOSURE 0.34 0.06 ; "
+[INFO ODB-0388] unsupported LEF58_EOLENCLOSURE property for layer Via3 :" EOLENCLOSURE 0.34 0.06 ; "
+[INFO ODB-0388] unsupported LEF58_EOLENCLOSURE property for layer Via4 :" EOLENCLOSURE 0.34 0.06 ; "
+[INFO ODB-0227] LEF file: /foss/pdks/gf180mcuD/libs.ref/gf180mcu_fd_sc_mcu9t5v0/techlef/gf180mcu_fd_sc_mcu9t5v0__max.tlef, created 15 layers, 56 vias
+[WARNING ODB-0220] WARNING (LEFPARS-2008): NOWIREEXTENSIONATPIN statement is obsolete in version 5.6 or later.
+The NOWIREEXTENSIONATPIN statement will be ignored. See file /foss/pdks/gf180mcuD/libs.ref/gf180mcu_fd_sc_mcu9t5v0/lef/gf180mcu_fd_sc_mcu9t5v0.lef at line 2.
+
+[INFO ODB-0227] LEF file: /foss/pdks/gf180mcuD/libs.ref/gf180mcu_fd_sc_mcu9t5v0/lef/gf180mcu_fd_sc_mcu9t5v0.lef, created 229 library cells
+[INFO IFP-0107] Defining die area using utilization: 35.00% and aspect ratio: 1.
+[WARNING IFP-0028] Core area lower left (10.000, 10.000) snapped to (10.080, 10.080).
+[INFO IFP-0001] Added 407 rows of 3670 site GF018hv5v_green_sc9.
+[INFO IFP-0100] Die BBox:  (  0.000  0.000 ) ( 2075.420 2075.420 ) um
+[INFO IFP-0101] Core BBox: ( 10.080 10.080 ) ( 2065.280 2061.360 ) um
+[INFO IFP-0102] Core area:                      4215790.656 um^2
+[INFO IFP-0103] Total instances area:           1478663.827 um^2
+[INFO IFP-0104] Effective utilization:                0.351
+[INFO IFP-0105] Number of instances:                  36813
+[INFO IFP-0030] Inserted 55 tiecells using gf180mcu_fd_sc_mcu9t5v0__tiel/ZN.
+[INFO IFP-0030] Inserted 33 tiecells using gf180mcu_fd_sc_mcu9t5v0__tieh/Z.
+Found 0 macro blocks.
+Using 2 tracks default min distance between IO pins.
+[INFO PPL-0001] Number of available slots 7404
+[INFO PPL-0002] Number of I/O             180
+[INFO PPL-0003] Number of I/O w/sink      180
+[INFO PPL-0004] Number of I/O w/o sink    0
+[INFO PPL-0005] Slots per section         200
+[INFO PPL-0008] Successfully assigned pins to sections.
+[INFO PPL-0012] I/O nets HPWL: 196119.30 um.
+[INFO PDN-0001] Inserting grid: core
+[INFO GPL-0001] ---- Initialize GPL Main Data Structures
+[INFO GPL-0002] DBU: 2000
+[INFO GPL-0003] SiteSize: (  0.560  5.040 ) um
+[INFO GPL-0004] CoreBBox: ( 10.080 10.080 ) ( 2065.280 2061.360 ) um
+[INFO GPL-0036] Movable instances area:     1896254.842 um^2
+[INFO GPL-0037] Total instances area:       1896254.842 um^2
+[INFO GPL-0035] Pin density area adjust:    169120.506 um^2
+[INFO GPL-0032] ---- Initialize Region: Top-level
+[INFO GPL-0006] Number of instances:             36901
+[INFO GPL-0007] Movable instances:               36901
+[INFO GPL-0008] Fixed instances:                     0
+[INFO GPL-0009] Dummy instances:                     0
+[INFO GPL-0010] Number of nets:                  36952
+[INFO GPL-0011] Number of pins:                 116785
+[INFO GPL-0012] Die BBox:  (  0.000  0.000 ) ( 2075.420 2075.420 ) um
+[INFO GPL-0013] Core BBox: ( 10.080 10.080 ) ( 2065.280 2061.360 ) um
+[INFO GPL-0016] Core area:                  4215790.656 um^2
+[INFO GPL-0014] Region name: top-level.
+[INFO GPL-0015] Region area:                4215790.656 um^2
+[INFO GPL-0017] Fixed instances area:            0.000 um^2
+[INFO GPL-0018] Movable instances area:     2065375.347 um^2
+[INFO GPL-0019] Utilization:                    48.991 %
+[INFO GPL-0020] Standard cells area:        2065375.347 um^2
+[INFO GPL-0021] Large instances area:            0.000 um^2
+[INFO GPL-0005] ---- Execute Conjugate Gradient Initial Placement.
+[INFO GPL-0051] Source of initial instance position counters:
+	Odb location = 0	Core center = 36901	Region center = 0
+[InitialPlace]  Iter: 1 conjugate gradient residual: 0.00912464 HPWL: 2283438400
+[InitialPlace]  Iter: 2 conjugate gradient residual: 0.01010939 HPWL: 1658284957
+[InitialPlace]  Iter: 3 conjugate gradient residual: 0.01248531 HPWL: 1667532323
+[InitialPlace]  Iter: 4 conjugate gradient residual: 0.01086830 HPWL: 1662632485
+[InitialPlace]  Iter: 5 conjugate gradient residual: 0.02256241 HPWL: 1661349397
+[InitialPlace]  Iter: 6 conjugate gradient residual: 0.00910150 HPWL: 1676971553
+[InitialPlace]  Iter: 7 conjugate gradient residual: 0.01432071 HPWL: 1673929068
+[InitialPlace]  Iter: 8 conjugate gradient residual: 0.00840227 HPWL: 1669866929
+[InitialPlace]  Iter: 9 conjugate gradient residual: 0.01356525 HPWL: 1667387691
+[InitialPlace]  Iter: 10 conjugate gradient residual: 0.00866949 HPWL: 1661885787
+[InitialPlace]  Iter: 11 conjugate gradient residual: 0.01009823 HPWL: 1658721442
+[InitialPlace]  Iter: 12 conjugate gradient residual: 0.01512927 HPWL: 1658031292
+[InitialPlace]  Iter: 13 conjugate gradient residual: 0.00848311 HPWL: 1644409591
+[InitialPlace]  Iter: 14 conjugate gradient residual: 0.04360747 HPWL: 1642168292
+[InitialPlace]  Iter: 15 conjugate gradient residual: 0.00815960 HPWL: 1617093499
+[InitialPlace]  Iter: 16 conjugate gradient residual: 0.00988269 HPWL: 1605431591
+[InitialPlace]  Iter: 17 conjugate gradient residual: 0.01109852 HPWL: 1602727430
+[InitialPlace]  Iter: 18 conjugate gradient residual: 0.00879174 HPWL: 1597989304
+[InitialPlace]  Iter: 19 conjugate gradient residual: 0.01138819 HPWL: 1593921292
+[InitialPlace]  Iter: 20 conjugate gradient residual: 0.00805627 HPWL: 1589009196
+[INFO GPL-0033] ---- Initialize Nesterov Region: Top-level
+[WARNING GPL-0302] Target density 0.4500 is too low for the available free area.
+Automatically adjusting to uniform density 0.4900.
+[INFO GPL-0023] Placement target density:       0.4900
+[INFO GPL-0024] Movable insts average area:     55.971 um^2
+[INFO GPL-0025] Ideal bin area:                114.226 um^2
+[INFO GPL-0026] Ideal bin count:                 36907
+[INFO GPL-0027] Total bin area:             4215790.656 um^2
+[INFO GPL-0028] Bin count (X, Y):         128 ,    128
+[INFO GPL-0029] Bin size (W * H):      16.056 * 16.026 um
+[INFO GPL-0030] Number of bins:                  16384
+[INFO GPL-0007] ---- Execute Nesterov Global Placement.
+[INFO GPL-0031] HPWL: Half-Perimeter Wirelength
+Iteration | Overflow |     HPWL (um) |  HPWL(%) |   Penalty | Group
+---------------------------------------------------------------
+        0 |   0.9933 |  2.080221e+05 |   +0.00% |  1.05e-17 |      
+       10 |   0.9845 |  2.771443e+05 |  +33.23% |  1.68e-17 |      
+       20 |   0.9802 |  2.756377e+05 |   -0.54% |  2.73e-17 |      
+       30 |   0.9784 |  2.757405e+05 |   +0.04% |  4.44e-17 |      
+       40 |   0.9774 |  2.750976e+05 |   -0.23% |  7.23e-17 |      
+       50 |   0.9773 |  2.745551e+05 |   -0.20% |  1.18e-16 |      
+       60 |   0.9778 |  2.759315e+05 |   +0.50% |  1.92e-16 |      
+       70 |   0.9779 |  2.796197e+05 |   +1.34% |  3.12e-16 |      
+       80 |   0.9783 |  2.837878e+05 |   +1.49% |  5.08e-16 |      
+       90 |   0.9785 |  2.856685e+05 |   +0.66% |  8.27e-16 |      
+      100 |   0.9792 |  2.839720e+05 |   -0.59% |  1.35e-15 |      
+      110 |   0.9791 |  2.794476e+05 |   -1.59% |  2.19e-15 |      
+      120 |   0.9791 |  2.740600e+05 |   -1.93% |  3.57e-15 |      
+      130 |   0.9788 |  2.695405e+05 |   -1.65% |  5.82e-15 |      
+      140 |   0.9784 |  2.669744e+05 |   -0.95% |  9.48e-15 |      
+      150 |   0.9762 |  2.674810e+05 |   +0.19% |  1.54e-14 |      
+      160 |   0.9728 |  2.728589e+05 |   +2.01% |  2.51e-14 |      
+      170 |   0.9677 |  2.866279e+05 |   +5.05% |  4.08e-14 |      
+      180 |   0.9609 |  3.137425e+05 |   +9.46% |  6.61e-14 |      
+      190 |   0.9499 |  3.601337e+05 |  +14.79% |  1.07e-13 |      
+      200 |   0.9321 |  4.264374e+05 |  +18.41% |  1.71e-13 |      
+      210 |   0.9070 |  5.134107e+05 |  +20.40% |  2.74e-13 |      
+      220 |   0.8738 |  6.347480e+05 |  +23.63% |  4.35e-13 |      
+      230 |   0.8391 |  7.906283e+05 |  +24.56% |  6.85e-13 |      
+      240 |   0.8043 |  9.278203e+05 |  +17.35% |  1.08e-12 |      
+      250 |   0.7699 |  1.058286e+06 |  +14.06% |  1.71e-12 |      
+      260 |   0.7340 |  1.170504e+06 |  +10.60% |  2.72e-12 |      
+      270 |   0.6978 |  1.247743e+06 |   +6.60% |  4.35e-12 |      
+      280 |   0.6632 |  1.276848e+06 |   +2.33% |  7.04e-12 |      
+      290 |   0.6248 |  1.280941e+06 |   +0.32% |  1.15e-11 |      
+      300 |   0.5779 |  1.344651e+06 |   +4.97% |  1.84e-11 |      
+      310 |   0.5376 |  1.407809e+06 |   +4.70% |  2.96e-11 |      
+      320 |   0.4946 |  1.371341e+06 |   -2.59% |  4.81e-11 |      
+      330 |   0.4488 |  1.387713e+06 |   +1.19% |  7.79e-11 |      
+      340 |   0.4081 |  1.531756e+06 |  +10.38% |  1.23e-10 |      
+      350 |   0.3887 |  1.415670e+06 |   -7.58% |  2.00e-10 |      
+      360 |   0.3433 |  1.501637e+06 |   +6.07% |  3.16e-10 |      
+      370 |   0.3184 |  1.389946e+06 |   -7.44% |  4.65e-10 |      
+      380 |   0.2898 |  1.419936e+06 |   +2.16% |  6.76e-10 |      
+      390 |   0.2612 |  1.406479e+06 |   -0.95% |  9.89e-10 |      
+      400 |   0.2390 |  1.375716e+06 |   -2.19% |  1.45e-09 |      
+      410 |   0.2158 |  1.348614e+06 |   -1.97% |  2.14e-09 |      
+      420 |   0.1941 |  1.335144e+06 |   -1.00% |  3.14e-09 |      
+      430 |   0.1734 |  1.324682e+06 |   -0.78% |  4.63e-09 |      
+      440 |   0.1551 |  1.321553e+06 |   -0.24% |  6.82e-09 |      
+      450 |   0.1379 |  1.321268e+06 |   -0.02% |  1.00e-08 |      
+      460 |   0.1227 |  1.321879e+06 |   +0.05% |  1.48e-08 |      
+      470 |   0.1073 |  1.324038e+06 |   +0.16% |  2.18e-08 |      
+      476 |   0.0994 |  1.326091e+06 |          |  2.86e-08 |      
+---------------------------------------------------------------
+[INFO GPL-1001] Global placement finished at iteration 476
+[INFO GPL-1002] Placed Cell Area            2065375.3471
+[INFO GPL-1003] Available Free Area         4215790.6560
+[INFO GPL-1004] Minimum Feasible Density        0.4900 (cell_area / free_area)
+[INFO GPL-1006]   Suggested Target Densities:
+[INFO GPL-1007]     - For 90% usage of free space: 0.5443
+[INFO GPL-1008]     - For 80% usage of free space: 0.6124
+[INFO GPL-1009]     - For 50% usage of free space: 0.9798
+[INFO GPL-1014] Final placement area: 2065375.35 (+0.00%)
+[INFO DPL-0006] Core area: 4215790.66 um^2, Instances area: 1479657.31 um^2, Utilization: 35.1%
+[INFO DPL-0005] Diamond search max displacement: +/- 500 sites horizontally, +/- 100 rows vertically.
+[INFO DPL-1101] Legalizing using diamond search.
+Movements Summary
+---------------------------------------
+Total cells:                   36901
+Diamond Move Success:          36901 (100.00%)
+Diamond Move Failure:              0
+Rip-up and replace Success:        0 (  0.00% of diamond failures)
+Rip-up and replace Failure:        0
+Total Placement Failures:          0
+---------------------------------------
+Placement Analysis
+---------------------------------
+total displacement     113393.9 u
+average displacement        3.1 u
+max displacement           12.8 u
+original HPWL         1327781.8 u
+legalized HPWL        1415037.7 u
+delta HPWL                    7 %
+
+[INFO CTS-0050] Root buffer is gf180mcu_fd_sc_mcu9t5v0__clkbuf_8.
+[INFO CTS-0051] Sink buffer is gf180mcu_fd_sc_mcu9t5v0__clkbuf_8.
+[INFO CTS-0052] The following clock buffers will be used for CTS:
+                    gf180mcu_fd_sc_mcu9t5v0__clkbuf_2
+                    gf180mcu_fd_sc_mcu9t5v0__clkbuf_4
+                    gf180mcu_fd_sc_mcu9t5v0__clkbuf_8
+[INFO CTS-0049] Characterization buffer is gf180mcu_fd_sc_mcu9t5v0__clkbuf_8.
+[INFO CTS-0007] Net "clk" found for clock "clk".
+[INFO CTS-0010]  Clock net "clk" has 10378 sinks.
+[INFO CTS-0008] TritonCTS found 1 clock nets.
+[INFO CTS-0097] Characterization used 3 buffer(s) types.
+[INFO CTS-0201] 0 blockages from hard placement blockages and placed macros will be used.
+[INFO CTS-0027] Generating H-Tree topology for net clk.
+[INFO CTS-0028]  Total number of sinks: 10378.
+[INFO CTS-0090]  Sinks will be clustered based on buffer max cap.
+[INFO CTS-0030]  Number of static layers: 0.
+[INFO CTS-0020]  Wire segment unit: 50400  dbu (25 um).
+[INFO CTS-0206] Best clustering solution was found from clustering size of 16 and clustering diameter of 50.
+[INFO CTS-0019]  Total number of sinks after clustering: 297.
+[INFO CTS-0024]  Normalized sink region: [(1.19102, 2.16841), (79.9551, 80.6612)].
+[INFO CTS-0025]     Width:  78.7640.
+[INFO CTS-0026]     Height: 78.4928.
+ Level 1
+    Direction: Horizontal
+    Sinks per sub-region: 149
+    Sub-region size: 39.3820 X 78.4928
+[INFO CTS-0034]     Segment length (rounded): 20.
+ Level 2
+    Direction: Vertical
+    Sinks per sub-region: 75
+    Sub-region size: 39.3820 X 39.2464
+[INFO CTS-0034]     Segment length (rounded): 20.
+ Level 3
+    Direction: Horizontal
+    Sinks per sub-region: 38
+    Sub-region size: 19.6910 X 39.2464
+[INFO CTS-0034]     Segment length (rounded): 10.
+ Level 4
+    Direction: Vertical
+    Sinks per sub-region: 19
+    Sub-region size: 19.6910 X 19.6232
+[INFO CTS-0034]     Segment length (rounded): 10.
+ Level 5
+    Direction: Horizontal
+    Sinks per sub-region: 10
+    Sub-region size: 9.8455 X 19.6232
+[INFO CTS-0034]     Segment length (rounded): 4.
+[INFO CTS-0032]  Stop criterion found. Max number of sinks is 15.
+[INFO CTS-0035]  Number of sinks covered: 297.
+[INFO CTS-0018]     Created 342 clock buffers.
+[INFO CTS-0012]     Minimum number of buffers in the clock path: 5.
+[INFO CTS-0013]     Maximum number of buffers in the clock path: 5.
+[INFO CTS-0015]     Created 342 clock nets.
+[INFO CTS-0016]     Fanout distribution for the current clock = 7:4, 8:6, 9:11, 10:6, 11:2, 12:3, 13:1, 31:8, 32:14, 33:31, 34:68, 35:53, 36:54, 37:47, 38:19, 39:2..
+[INFO CTS-0017]     Max level of the clock tree: 5.
+[INFO CTS-0098] Clock net "clk"
+[INFO CTS-0099]  Sinks 10632
+[INFO CTS-0100]  Leaf buffers 297
+[INFO CTS-0101]  Average sink wire length 2914.96 um
+[INFO CTS-0102]  Path depth 4 - 5
+[INFO CTS-0207]  Dummy loads inserted 254
+[INFO RSZ-0058] Using max wire length 22438um.
+[INFO DPL-0006] Core area: 4215790.66 um^2, Instances area: 1511996.37 um^2, Utilization: 35.9%
+[INFO DPL-0005] Diamond search max displacement: +/- 500 sites horizontally, +/- 100 rows vertically.
+[INFO DPL-1101] Legalizing using diamond search.
+Movements Summary
+---------------------------------------
+Total cells:                   37497
+Diamond Move Success:          37497 (100.00%)
+Diamond Move Failure:              0
+Rip-up and replace Success:        0 (  0.00% of diamond failures)
+Rip-up and replace Failure:        0
+Total Placement Failures:          0
+---------------------------------------
+Placement Analysis
+---------------------------------
+total displacement       3748.4 u
+average displacement        0.1 u
+max displacement           15.9 u
+original HPWL         1520168.9 u
+legalized HPWL        1521657.1 u
+delta HPWL                    0 %
+
+[INFO RSZ-0100] Repair move sequence: UnbufferMove SizeUpMove SwapPinsMove BufferMove CloneMove SplitLoadMove 
+[INFO RSZ-0094] Found 53 endpoints with setup violations.
+[INFO RSZ-0099] Repairing 53 out of 53 (100.00%) violating endpoints...
+   Iter   | Removed | Resized | Inserted | Cloned |  Pin  |   Area   |    WNS   |   StTNS    |   EnTNS    |  Viol  |  Worst  
+          | Buffers |  Gates  | Buffers  |  Gates | Swaps |          |          |            |            | Endpts | St/EnPt 
+------------------------------------------------------------------------------------------------------------------------------
+       0* |       0 |       0 |        0 |      0 |     0 |    +0.0% |   -0.835 |       -0.9 |      -35.2 |     53 | _30635_/RN
+       2* |       0 |       1 |        0 |      0 |     0 |    +0.0% |   -0.036 |       -0.1 |       -0.1 |     53 | _34381_/D
+       3* |       0 |       1 |        0 |      0 |     0 |    +0.0% |   -0.036 |       -0.1 |       -0.1 |     53 | _34381_/D
+       4* |       0 |       1 |        0 |      0 |     0 |    +0.0% |   -0.036 |       -0.1 |       -0.1 |     53 | _34381_/D
+       5* |       0 |       1 |        0 |      0 |     0 |    +0.0% |   -0.036 |       -0.1 |       -0.1 |     53 | _34381_/D
+       6* |       0 |       1 |        0 |      0 |     0 |    +0.0% |   -0.036 |       -0.1 |       -0.1 |     53 | _34381_/D
+       7* |       0 |       1 |        0 |      0 |     0 |    +0.0% |   -0.036 |       -0.1 |       -0.1 |     53 | _34381_/D
+       8* |       0 |       1 |        0 |      0 |     0 |    +0.0% |   -0.036 |       -0.1 |       -0.1 |     53 | _34381_/D
+       9* |       0 |       1 |        0 |      0 |     0 |    +0.0% |   -0.036 |       -0.1 |       -0.1 |     53 | _34381_/D
+      10* |       0 |       1 |        0 |      0 |     0 |    +0.0% |   -0.036 |       -0.1 |       -0.1 |     53 | _34381_/D
+      10* |       0 |       1 |        0 |      0 |     0 |    +0.0% |   -0.036 |       -0.1 |       -0.1 |     53 | _34381_/D
+      11* |       0 |       1 |        0 |      0 |     0 |    +0.0% |   -0.036 |       -0.1 |       -0.1 |     53 | _34381_/D
+      12* |       0 |       1 |        0 |      0 |     0 |    +0.0% |   -0.036 |       -0.1 |       -0.1 |     53 | _34381_/D
+      13* |       0 |       1 |        0 |      0 |     0 |    +0.0% |   -0.036 |       -0.1 |       -0.1 |     53 | _34381_/D
+      14* |       0 |       1 |        0 |      0 |     0 |    +0.0% |   -0.036 |       -0.1 |       -0.1 |     53 | _34381_/D
+      15* |       0 |       1 |        0 |      0 |     0 |    +0.0% |   -0.036 |       -0.1 |       -0.1 |     53 | _34381_/D
+      16* |       0 |       1 |        0 |      0 |     0 |    +0.0% |   -0.036 |       -0.1 |       -0.1 |     53 | _34381_/D
+      17* |       0 |       1 |        0 |      0 |     0 |    +0.0% |   -0.036 |       -0.1 |       -0.1 |     53 | _34381_/D
+      18* |       0 |       1 |        0 |      0 |     0 |    +0.0% |   -0.036 |       -0.1 |       -0.1 |     53 | _34381_/D
+      19* |       0 |       1 |        0 |      0 |     0 |    +0.0% |   -0.036 |       -0.1 |       -0.1 |     53 | _34381_/D
+      20* |       0 |       1 |        0 |      0 |     0 |    +0.0% |   -0.036 |       -0.1 |       -0.1 |     53 | _34381_/D
+      20* |       0 |       1 |        0 |      0 |     0 |    +0.0% |   -0.036 |       -0.1 |       -0.1 |     53 | _34381_/D
+      21* |       0 |       1 |        0 |      0 |     0 |    +0.0% |   -0.036 |       -0.1 |       -0.1 |     53 | _34381_/D
+      22* |       0 |       1 |        0 |      0 |     0 |    +0.0% |   -0.036 |       -0.1 |       -0.1 |     53 | _34381_/D
+      23* |       0 |       1 |        0 |      0 |     0 |    +0.0% |   -0.036 |       -0.1 |       -0.1 |     53 | _34381_/D
+      24* |       0 |       1 |        0 |      0 |     0 |    +0.0% |   -0.036 |       -0.1 |       -0.1 |     53 | _34381_/D
+      25* |       0 |       1 |        0 |      0 |     0 |    +0.0% |   -0.036 |       -0.1 |       -0.1 |     53 | _34381_/D
+      26* |       0 |       1 |        0 |      0 |     0 |    +0.0% |   -0.036 |       -0.1 |       -0.1 |     53 | _34381_/D
+      27* |       0 |       1 |        0 |      0 |     0 |    +0.0% |   -0.036 |       -0.1 |       -0.1 |     53 | _34381_/D
+      28* |       0 |       1 |        0 |      0 |     0 |    +0.0% |   -0.036 |       -0.1 |       -0.1 |     53 | _34381_/D
+      29* |       0 |       1 |        0 |      0 |     0 |    +0.0% |   -0.036 |       -0.1 |       -0.1 |     53 | _34381_/D
+      30* |       0 |       1 |        0 |      0 |     0 |    +0.0% |   -0.036 |       -0.1 |       -0.1 |     53 | _34381_/D
+      30* |       0 |       1 |        0 |      0 |     0 |    +0.0% |   -0.036 |       -0.1 |       -0.1 |     53 | _34381_/D
+      31* |       0 |       1 |        0 |      0 |     0 |    +0.0% |   -0.036 |       -0.1 |       -0.1 |     53 | _34381_/D
+      32* |       0 |       1 |        0 |      0 |     0 |    +0.0% |   -0.036 |       -0.1 |       -0.1 |     53 | _34381_/D
+      33* |       0 |       1 |        0 |      0 |     0 |    +0.0% |   -0.036 |       -0.1 |       -0.1 |     53 | _34381_/D
+      34* |       0 |       1 |        0 |      0 |     0 |    +0.0% |   -0.036 |       -0.1 |       -0.1 |     53 | _34381_/D
+      35* |       0 |       1 |        0 |      0 |     0 |    +0.0% |   -0.036 |       -0.1 |       -0.1 |     53 | _34381_/D
+      36* |       0 |       1 |        0 |      0 |     0 |    +0.0% |   -0.036 |       -0.1 |       -0.1 |     53 | _34381_/D
+      37* |       0 |       1 |        0 |      0 |     0 |    +0.0% |   -0.036 |       -0.1 |       -0.1 |     53 | _34381_/D
+      38* |       0 |       1 |        0 |      0 |     0 |    +0.0% |   -0.036 |       -0.1 |       -0.1 |     53 | _34381_/D
+      39* |       0 |       1 |        0 |      0 |     0 |    +0.0% |   -0.036 |       -0.1 |       -0.1 |     53 | _34381_/D
+      40* |       0 |       1 |        0 |      0 |     0 |    +0.0% |   -0.036 |       -0.1 |       -0.1 |     53 | _34381_/D
+      40* |       0 |       1 |        0 |      0 |     0 |    +0.0% |   -0.036 |       -0.1 |       -0.1 |     53 | _34381_/D
+      41* |       0 |       1 |        0 |      0 |     0 |    +0.0% |   -0.036 |       -0.1 |       -0.1 |     53 | _34381_/D
+      42* |       0 |       1 |        0 |      0 |     0 |    +0.0% |   -0.036 |       -0.1 |       -0.1 |     53 | _34381_/D
+      43* |       0 |       1 |        0 |      0 |     0 |    +0.0% |   -0.036 |       -0.1 |       -0.1 |     53 | _34381_/D
+      44* |       0 |       1 |        0 |      0 |     0 |    +0.0% |   -0.036 |       -0.1 |       -0.1 |     53 | _34381_/D
+      45* |       0 |       1 |        0 |      0 |     0 |    +0.0% |   -0.036 |       -0.1 |       -0.1 |     53 | _34381_/D
+      46* |       0 |       1 |        0 |      0 |     0 |    +0.0% |   -0.036 |       -0.1 |       -0.1 |     53 | _34381_/D
+      47* |       0 |       1 |        0 |      0 |     0 |    +0.0% |   -0.036 |       -0.1 |       -0.1 |     53 | _34381_/D
+      48* |       0 |       1 |        0 |      0 |     0 |    +0.0% |   -0.036 |       -0.1 |       -0.1 |     53 | _34381_/D
+      49* |       0 |       1 |        0 |      0 |     0 |    +0.0% |   -0.036 |       -0.1 |       -0.1 |     53 | _34381_/D
+      50* |       0 |       1 |        0 |      0 |     0 |    +0.0% |   -0.036 |       -0.1 |       -0.1 |     53 | _34381_/D
+      50* |       0 |       1 |        0 |      0 |     0 |    +0.0% |   -0.036 |       -0.1 |       -0.1 |     53 | _34381_/D
+      51* |       0 |       1 |        0 |      0 |     0 |    +0.0% |   -0.036 |       -0.1 |       -0.1 |     53 | _34381_/D
+      53* |       0 |       2 |        0 |      0 |     0 |    +0.0% |   -0.025 |       -0.0 |       -0.0 |     53 | _33834_/D
+      55* |       0 |       3 |        0 |      0 |     0 |    +0.0% |    0.090 |        0.0 |        0.0 |     53 | _33898_/D
+      56* |       0 |       3 |        0 |      0 |     0 |    +0.0% |    0.090 |        0.0 |        0.0 |     53 | _33898_/D
+      56* |       0 |       3 |        0 |      0 |     0 |    +0.0% |    0.090 |        0.0 |        0.0 |     53 | _33898_/D
+    final |       0 |       3 |        0 |      0 |     0 |    +0.0% |    0.090 |        0.0 |        0.0 |      0 | _33898_/D
+------------------------------------------------------------------------------------------------------------------------------
+[INFO RSZ-0051] Resized 3 instances: 3 up, 0 up match, 0 down, 0 VT
+[INFO RSZ-0033] No hold violations found.
+[INFO DPL-0006] Core area: 4215790.66 um^2, Instances area: 1512013.31 um^2, Utilization: 35.9%
+[INFO DPL-0005] Diamond search max displacement: +/- 500 sites horizontally, +/- 100 rows vertically.
+[INFO DPL-1101] Legalizing using diamond search.
+Movements Summary
+---------------------------------------
+Total cells:                   37497
+Diamond Move Success:          37497 (100.00%)
+Diamond Move Failure:              0
+Rip-up and replace Success:        0 (  0.00% of diamond failures)
+Rip-up and replace Failure:        0
+Total Placement Failures:          0
+---------------------------------------
+Placement Analysis
+---------------------------------
+total displacement          1.1 u
+average displacement        0.0 u
+max displacement            1.1 u
+original HPWL         1521658.8 u
+legalized HPWL        1521658.8 u
+delta HPWL                    0 %
+
+[INFO GRT-0020] Min routing layer: Metal1
+[INFO GRT-0021] Max routing layer: Metal5
+[INFO GRT-0022] Global adjustment: 0%
+[INFO GRT-0023] Grid origin: (0, 0)
+[INFO GRT-0088] Layer Metal1  Track-Pitch = 0.5600  line-2-Via Pitch: 0.4750
+[INFO GRT-0088] Layer Metal2  Track-Pitch = 0.5600  line-2-Via Pitch: 0.5600
+[INFO GRT-0088] Layer Metal3  Track-Pitch = 0.5600  line-2-Via Pitch: 0.5600
+[INFO GRT-0088] Layer Metal4  Track-Pitch = 0.5600  line-2-Via Pitch: 0.5600
+[INFO GRT-0088] Layer Metal5  Track-Pitch = 0.5600  line-2-Via Pitch: 0.8200
+[INFO GRT-0003] Macros: 0
+[INFO GRT-0004] Blockages: 513876
+[INFO GRT-0019] Found 343 clock nets.
+[WARNING GRT-0281] Net zero_ has a large fanout of 1444 terminals.
+[INFO GRT-0001] Minimum degree: 2
+[INFO GRT-0002] Maximum degree: 1444
+
+[INFO GRT-0053] Routing resources analysis:
+          Routing      Original      Derated      Resource
+Layer     Direction    Resources     Resources    Reduction (%)
+---------------------------------------------------------------
+Metal1     Horizontal     363345        363345          0.00%
+Metal2     Vertical       846192        846192          0.00%
+Metal3     Horizontal     886248        886248          0.00%
+Metal4     Vertical       831969        831969          0.00%
+Metal5     Horizontal     832132        832132          0.00%
+---------------------------------------------------------------
+
+[INFO GRT-0197] Via related to pin nodes: 145010
+[INFO GRT-0198] Via related Steiner nodes: 4144
+[INFO GRT-0199] Via filling finished.
+[INFO GRT-0111] Final number of vias: 183035
+[INFO GRT-0112] Final usage 3D: 766553
+
+[INFO GRT-0096] Final congestion report:
+Layer         Resource        Demand        Usage (%)    Max H / Max V / Total Overflow
+---------------------------------------------------------------------------------------
+Metal1          363345         35002            9.63%             0 /  0 /  0
+Metal2          846192        115135           13.61%             0 /  0 /  0
+Metal3          886248         66550            7.51%             0 /  0 /  0
+Metal4          831969           179            0.02%             0 /  0 /  0
+Metal5          832132           582            0.07%             0 /  0 /  0
+---------------------------------------------------------------------------------------
+Total          3759886        217448            5.78%             0 /  0 /  0
+
+[INFO GRT-0018] Total wirelength: 2594046 um
+[INFO GRT-0014] Routed nets: 36829
+[INFO GRT-0303] Global routing runtime = 00:00:03
+[INFO DRT-0149] Reading tech and libs.
+[WARNING DRT-0349] LEF58_ENCLOSURE with no CUTCLASS is not supported. Skipping for layer Via1
+[WARNING DRT-0349] LEF58_ENCLOSURE with no CUTCLASS is not supported. Skipping for layer Via1
+[WARNING DRT-0349] LEF58_ENCLOSURE with no CUTCLASS is not supported. Skipping for layer Via2
+[WARNING DRT-0349] LEF58_ENCLOSURE with no CUTCLASS is not supported. Skipping for layer Via2
+[WARNING DRT-0349] LEF58_ENCLOSURE with no CUTCLASS is not supported. Skipping for layer Via3
+[WARNING DRT-0349] LEF58_ENCLOSURE with no CUTCLASS is not supported. Skipping for layer Via3
+[WARNING DRT-0349] LEF58_ENCLOSURE with no CUTCLASS is not supported. Skipping for layer Via4
+[WARNING DRT-0349] LEF58_ENCLOSURE with no CUTCLASS is not supported. Skipping for layer Via4
+
+Units:                2000
+Number of layers:     11
+Number of macros:     229
+Number of vias:       60
+Number of viarulegen: 16
+
+[INFO DRT-0150] Reading design.
+[WARNING DRT-0120] Large net zero_ has 1444 pins which may impact routing performance. Consider optimization.
+
+Design:                   fft
+Die area:                 ( 0 0 ) ( 4150840 4150840 )
+Number of track patterns: 10
+Number of DEF vias:       0
+Number of components:     37497
+Number of terminals:      182
+Number of snets:          2
+Number of nets:           37294
+
+[INFO DRT-0167] List of default vias:
+  Layer Via1
+    default via: Via1_HV
+  Layer Via2
+    default via: Via2_VH
+  Layer Via3
+    default via: Via3_HV
+  Layer Via4
+    default via: Via4_VH
+[INFO DRT-0162] Library cell analysis.
+[INFO DRT-0163] Instance analysis.
+[INFO DRT-0164] Number of unique instances = 80.
+[INFO DRT-0168] Init region query.
+[INFO DRT-0024]   Complete Poly2.
+[INFO DRT-0024]   Complete CON.
+[INFO DRT-0024]   Complete Metal1.
+[INFO DRT-0024]   Complete Via1.
+[INFO DRT-0024]   Complete Metal2.
+[INFO DRT-0024]   Complete Via2.
+[INFO DRT-0024]   Complete Metal3.
+[INFO DRT-0024]   Complete Via3.
+[INFO DRT-0024]   Complete Metal4.
+[INFO DRT-0024]   Complete Via4.
+[INFO DRT-0024]   Complete Metal5.
+[INFO DRT-0033] Poly2 shape region query size = 0.
+[INFO DRT-0033] CON shape region query size = 0.
+[INFO DRT-0033] Metal1 shape region query size = 1032902.
+[INFO DRT-0033] Via1 shape region query size = 63648.
+[INFO DRT-0033] Metal2 shape region query size = 42612.
+[INFO DRT-0033] Via2 shape region query size = 63648.
+[INFO DRT-0033] Metal3 shape region query size = 42432.
+[INFO DRT-0033] Via3 shape region query size = 63648.
+[INFO DRT-0033] Metal4 shape region query size = 26728.
+[INFO DRT-0033] Via4 shape region query size = 48672.
+[INFO DRT-0033] Metal5 shape region query size = 5616.
+[INFO DRT-0165] Start pin access.
+[INFO DRT-0078]   Complete 592 pins.
+[INFO DRT-0081]   Complete 80 unique inst patterns.
+[INFO DRT-0082]   Complete 10000 groups.
+[INFO DRT-0082]   Complete 20000 groups.
+[INFO DRT-0084]   Complete 25873 groups.
+#scanned instances     = 37497
+#unique  instances     = 80
+#stdCellGenAp          = 1822
+#stdCellValidPlanarAp  = 0
+#stdCellValidViaAp     = 1574
+#stdCellPinNoAp        = 0
+#stdCellPinCnt         = 117455
+#instTermValidViaApCnt = 0
+#macroGenAp            = 0
+#macroValidPlanarAp    = 0
+#macroValidViaAp       = 0
+#macroNoAp             = 0
+[INFO DRT-0166] Complete pin access.
+[INFO DRT-0267] cpu time = 00:02:41, elapsed time = 00:02:41, memory = 864.16 (MB), peak = 893.74 (MB)
+[INFO DRT-0156] guideIn read 100000 guides.
+[INFO DRT-0156] guideIn read 200000 guides.
+
+[INFO DRT-0157] Number of guides:     228394
+
+[INFO DRT-0169] Post process guides.
+[INFO DRT-0176] GCELLGRID X 0 DO 247 STEP 16800 ;
+[INFO DRT-0177] GCELLGRID Y 0 DO 247 STEP 16800 ;
+[INFO DRT-0026]   Complete 100000 origin guides.
+[INFO DRT-0026]   Complete 200000 origin guides.
+[INFO DRT-0028]   Complete Poly2.
+[INFO DRT-0028]   Complete CON.
+[INFO DRT-0028]   Complete Metal1.
+[INFO DRT-0028]   Complete Via1.
+[INFO DRT-0028]   Complete Metal2.
+[INFO DRT-0028]   Complete Via2.
+[INFO DRT-0028]   Complete Metal3.
+[INFO DRT-0028]   Complete Via3.
+[INFO DRT-0028]   Complete Metal4.
+[INFO DRT-0028]   Complete Via4.
+[INFO DRT-0028]   Complete Metal5.
+[INFO DRT-0178] Init guide query.
+[INFO DRT-0035]   Complete Poly2 (guide).
+[INFO DRT-0035]   Complete CON (guide).
+[INFO DRT-0035]   Complete Metal1 (guide).
+[INFO DRT-0035]   Complete Via1 (guide).
+[INFO DRT-0035]   Complete Metal2 (guide).
+[INFO DRT-0035]   Complete Via2 (guide).
+[INFO DRT-0035]   Complete Metal3 (guide).
+[INFO DRT-0035]   Complete Via3 (guide).
+[INFO DRT-0035]   Complete Metal4 (guide).
+[INFO DRT-0035]   Complete Via4 (guide).
+[INFO DRT-0035]   Complete Metal5 (guide).
+[INFO DRT-0036] Poly2 guide region query size = 0.
+[INFO DRT-0036] CON guide region query size = 0.
+[INFO DRT-0036] Metal1 guide region query size = 98876.
+[INFO DRT-0036] Via1 guide region query size = 0.
+[INFO DRT-0036] Metal2 guide region query size = 64169.
+[INFO DRT-0036] Via2 guide region query size = 0.
+[INFO DRT-0036] Metal3 guide region query size = 16281.
+[INFO DRT-0036] Via3 guide region query size = 0.
+[INFO DRT-0036] Metal4 guide region query size = 24.
+[INFO DRT-0036] Via4 guide region query size = 0.
+[INFO DRT-0036] Metal5 guide region query size = 11.
+[INFO DRT-0179] Init gr pin query.
+[INFO DRT-0267] cpu time = 00:00:02, elapsed time = 00:00:02, memory = 951.53 (MB), peak = 951.53 (MB)
+[INFO DRT-0245] skipped writing guide updates to database.
+[INFO DRT-0181] Start track assignment.
+[INFO DRT-0184] Done with 64193 vertical wires in 5 frboxes and 115168 horizontal wires in 5 frboxes.
+[INFO DRT-0186] Done with 10427 vertical wires in 5 frboxes and 23119 horizontal wires in 5 frboxes.
+[INFO DRT-0182] Complete track assignment.
+[INFO DRT-0267] cpu time = 00:00:17, elapsed time = 00:00:18, memory = 1268.41 (MB), peak = 1268.41 (MB)
+[INFO DRT-0187] Start routing data preparation.
+[INFO DRT-0267] cpu time = 00:00:00, elapsed time = 00:00:00, memory = 1268.53 (MB), peak = 1268.53 (MB)
+[INFO DRT-0194] Start detail routing.
+[INFO DRT-0195] Start 0th optimization iteration.
+    Completing 10% with 0 violations.
+    elapsed time = 00:00:42, memory = 1271.03 (MB).
+    Completing 20% with 0 violations.
+    elapsed time = 00:01:35, memory = 1554.03 (MB).
+    Completing 30% with 2386 violations.
+    elapsed time = 00:02:18, memory = 1724.41 (MB).
+    Completing 40% with 2386 violations.
+    elapsed time = 00:03:06, memory = 1724.41 (MB).
+    Completing 50% with 2386 violations.
+    elapsed time = 00:03:53, memory = 1724.41 (MB).
+    Completing 60% with 4593 violations.
+    elapsed time = 00:04:47, memory = 1728.78 (MB).
+    Completing 70% with 4593 violations.
+    elapsed time = 00:05:47, memory = 1728.78 (MB).
+    Completing 80% with 6669 violations.
+    elapsed time = 00:06:33, memory = 1740.28 (MB).
+    Completing 90% with 6669 violations.
+    elapsed time = 00:07:25, memory = 1740.28 (MB).
+    Completing 100% with 8676 violations.
+    elapsed time = 00:08:09, memory = 1740.41 (MB).
+[INFO DRT-0199]   Number of violations = 11597.
+Viol/Layer      Metal1   Via1 Metal2 Metal3 Metal5
+Cut Spacing          0      8      0      0      0
+Metal Spacing     2674      0    281     12      4
+NS Metal            11      0      1      0      0
+Recheck           1313      0   1452    152      4
+Short             3895     38   1648     60     44
+[INFO DRT-0267] cpu time = 00:08:12, elapsed time = 00:08:11, memory = 1740.66 (MB), peak = 1740.66 (MB)
+Total wire length = 1854304 um.
+Total wire length on LAYER Metal1 = 208220 um.
+Total wire length on LAYER Metal2 = 1047291 um.
+Total wire length on LAYER Metal3 = 592336 um.
+Total wire length on LAYER Metal4 = 1673 um.
+Total wire length on LAYER Metal5 = 4782 um.
+Total number of vias = 223833.
+Up-via summary (total 223833):
+
+-----------------
+  Poly2         0
+ Metal1    163781
+ Metal2     59944
+ Metal3        86
+ Metal4        22
+-----------------
+       223833
+
+
+[INFO DRT-0195] Start 1st optimization iteration.
+    Completing 10% with 11597 violations.
+    elapsed time = 00:00:30, memory = 1740.66 (MB).
+    Completing 20% with 11597 violations.
+    elapsed time = 00:01:02, memory = 1740.66 (MB).
+    Completing 30% with 9143 violations.
+    elapsed time = 00:01:33, memory = 1740.66 (MB).
+    Completing 40% with 9143 violations.
+    elapsed time = 00:02:07, memory = 1740.66 (MB).
+    Completing 50% with 9143 violations.
+    elapsed time = 00:02:40, memory = 1740.66 (MB).
+    Completing 60% with 6140 violations.
+    elapsed time = 00:03:13, memory = 1740.66 (MB).
+    Completing 70% with 6140 violations.
+    elapsed time = 00:03:45, memory = 1740.66 (MB).
+    Completing 80% with 3238 violations.
+    elapsed time = 00:04:18, memory = 1740.66 (MB).
+    Completing 90% with 3238 violations.
+    elapsed time = 00:04:52, memory = 1740.66 (MB).
+    Completing 100% with 491 violations.
+    elapsed time = 00:05:23, memory = 1740.66 (MB).
+[INFO DRT-0199]   Number of violations = 491.
+Viol/Layer      Metal1 Metal2 Metal3 Metal5
+Metal Spacing       19     66      0      0
+NS Metal             0      3      0      0
+Short               86    306     10      1
+[INFO DRT-0267] cpu time = 00:05:25, elapsed time = 00:05:25, memory = 1749.41 (MB), peak = 1749.41 (MB)
+Total wire length = 1838391 um.
+Total wire length on LAYER Metal1 = 198166 um.
+Total wire length on LAYER Metal2 = 1035326 um.
+Total wire length on LAYER Metal3 = 598300 um.
+Total wire length on LAYER Metal4 = 1888 um.
+Total wire length on LAYER Metal5 = 4709 um.
+Total number of vias = 220858.
+Up-via summary (total 220858):
+
+-----------------
+  Poly2         0
+ Metal1    159352
+ Metal2     61310
+ Metal3       152
+ Metal4        44
+-----------------
+       220858
+
+
+[INFO DRT-0195] Start 2nd optimization iteration.
+    Completing 10% with 491 violations.
+    elapsed time = 00:00:05, memory = 1749.41 (MB).
+    Completing 20% with 491 violations.
+    elapsed time = 00:00:11, memory = 1749.41 (MB).
+    Completing 30% with 409 violations.
+    elapsed time = 00:00:17, memory = 1749.41 (MB).
+    Completing 40% with 409 violations.
+    elapsed time = 00:00:28, memory = 1749.41 (MB).
+    Completing 50% with 409 violations.
+    elapsed time = 00:00:36, memory = 1749.41 (MB).
+    Completing 60% with 315 violations.
+    elapsed time = 00:00:44, memory = 1749.41 (MB).
+    Completing 70% with 315 violations.
+    elapsed time = 00:00:50, memory = 1749.41 (MB).
+    Completing 80% with 237 violations.
+    elapsed time = 00:01:02, memory = 1749.41 (MB).
+    Completing 90% with 237 violations.
+    elapsed time = 00:01:10, memory = 1749.41 (MB).
+    Completing 100% with 171 violations.
+    elapsed time = 00:01:16, memory = 1749.41 (MB).
+[INFO DRT-0199]   Number of violations = 171.
+Viol/Layer      Metal1 Metal2 Metal3
+Metal Spacing        0     21      0
+Short               27    121      2
+[INFO DRT-0267] cpu time = 00:01:18, elapsed time = 00:01:17, memory = 1749.41 (MB), peak = 1749.41 (MB)
+Total wire length = 1837952 um.
+Total wire length on LAYER Metal1 = 198001 um.
+Total wire length on LAYER Metal2 = 1034987 um.
+Total wire length on LAYER Metal3 = 598296 um.
+Total wire length on LAYER Metal4 = 1971 um.
+Total wire length on LAYER Metal5 = 4695 um.
+Total number of vias = 220771.
+Up-via summary (total 220771):
+
+-----------------
+  Poly2         0
+ Metal1    159259
+ Metal2     61294
+ Metal3       174
+ Metal4        44
+-----------------
+       220771
+
+
+[INFO DRT-0195] Start 3rd optimization iteration.
+    Completing 10% with 171 violations.
+    elapsed time = 00:00:01, memory = 1749.41 (MB).
+    Completing 20% with 171 violations.
+    elapsed time = 00:00:02, memory = 1749.41 (MB).
+    Completing 30% with 120 violations.
+    elapsed time = 00:00:04, memory = 1749.41 (MB).
+    Completing 40% with 120 violations.
+    elapsed time = 00:00:06, memory = 1749.41 (MB).
+    Completing 50% with 120 violations.
+    elapsed time = 00:00:10, memory = 1749.41 (MB).
+    Completing 60% with 59 violations.
+    elapsed time = 00:00:11, memory = 1749.41 (MB).
+    Completing 70% with 59 violations.
+    elapsed time = 00:00:13, memory = 1749.41 (MB).
+    Completing 80% with 36 violations.
+    elapsed time = 00:00:14, memory = 1749.41 (MB).
+    Completing 90% with 36 violations.
+    elapsed time = 00:00:17, memory = 1749.41 (MB).
+    Completing 100% with 1 violations.
+    elapsed time = 00:00:17, memory = 1749.41 (MB).
+[INFO DRT-0199]   Number of violations = 1.
+Viol/Layer      Metal2
+Short                1
+[INFO DRT-0267] cpu time = 00:00:16, elapsed time = 00:00:18, memory = 1749.41 (MB), peak = 1749.41 (MB)
+Total wire length = 1837905 um.
+Total wire length on LAYER Metal1 = 197401 um.
+Total wire length on LAYER Metal2 = 1033317 um.
+Total wire length on LAYER Metal3 = 599098 um.
+Total wire length on LAYER Metal4 = 3361 um.
+Total wire length on LAYER Metal5 = 4726 um.
+Total number of vias = 221091.
+Up-via summary (total 221091):
+
+-----------------
+  Poly2         0
+ Metal1    159192
+ Metal2     61569
+ Metal3       284
+ Metal4        46
+-----------------
+       221091
+
+
+[INFO DRT-0195] Start 4th guides tiles iteration.
+    Completing 100% with 0 violations.
+    elapsed time = 00:00:00, memory = 1749.41 (MB).
+[INFO DRT-0199]   Number of violations = 0.
+[INFO DRT-0267] cpu time = 00:00:00, elapsed time = 00:00:00, memory = 1749.41 (MB), peak = 1749.41 (MB)
+Total wire length = 1837906 um.
+Total wire length on LAYER Metal1 = 197396 um.
+Total wire length on LAYER Metal2 = 1033253 um.
+Total wire length on LAYER Metal3 = 599103 um.
+Total wire length on LAYER Metal4 = 3427 um.
+Total wire length on LAYER Metal5 = 4726 um.
+Total number of vias = 221087.
+Up-via summary (total 221087):
+
+-----------------
+  Poly2         0
+ Metal1    159190
+ Metal2     61567
+ Metal3       284
+ Metal4        46
+-----------------
+       221087
+
+
+[WARNING DRT-0290] Warning: no DRC report specified, skipped writing DRC report
+[INFO DRT-0198] Complete detail routing.
+Total wire length = 1837906 um.
+Total wire length on LAYER Metal1 = 197396 um.
+Total wire length on LAYER Metal2 = 1033253 um.
+Total wire length on LAYER Metal3 = 599103 um.
+Total wire length on LAYER Metal4 = 3427 um.
+Total wire length on LAYER Metal5 = 4726 um.
+Total number of vias = 221087.
+Up-via summary (total 221087):
+
+-----------------
+  Poly2         0
+ Metal1    159190
+ Metal2     61567
+ Metal3       284
+ Metal4        46
+-----------------
+       221087
+
+
+[INFO DRT-0267] cpu time = 00:15:14, elapsed time = 00:15:13, memory = 1749.41 (MB), peak = 1749.41 (MB)
+
+[INFO DRT-0180] Post processing.
+Startpoint: _29858_ (rising edge-triggered flip-flop clocked by clk)
+Endpoint: _30635_ (recovery check against rising-edge clock clk)
+Path Group: asynchronous
+Path Type: max
+
+  Delay    Time   Description
+---------------------------------------------------------
+   0.00    0.00   clock clk (rise edge)
+   2.07    2.07   clock network delay (propagated)
+   0.00    2.07 ^ _29858_/CLK (gf180mcu_fd_sc_mcu9t5v0__dffrnq_2)
+   2.78    4.85 ^ _29858_/Q (gf180mcu_fd_sc_mcu9t5v0__dffrnq_2)
+   0.22    5.07 ^ _30635_/RN (gf180mcu_fd_sc_mcu9t5v0__dffrnq_1)
+           5.07   data arrival time
+
+   6.25    6.25   clock clk (rise edge)
+   1.94    8.19   clock network delay (propagated)
+   0.00    8.19   clock reconvergence pessimism
+           8.19 ^ _30635_/CLK (gf180mcu_fd_sc_mcu9t5v0__dffrnq_1)
+  -0.81    7.38   library recovery time
+           7.38   data required time
+---------------------------------------------------------
+           7.38   data required time
+          -5.07   data arrival time
+---------------------------------------------------------
+           2.31   slack (MET)
+
+
+Startpoint: _29858_ (rising edge-triggered flip-flop clocked by clk)
+Endpoint: _30636_ (recovery check against rising-edge clock clk)
+Path Group: asynchronous
+Path Type: max
+
+  Delay    Time   Description
+---------------------------------------------------------
+   0.00    0.00   clock clk (rise edge)
+   2.07    2.07   clock network delay (propagated)
+   0.00    2.07 ^ _29858_/CLK (gf180mcu_fd_sc_mcu9t5v0__dffrnq_2)
+   2.78    4.85 ^ _29858_/Q (gf180mcu_fd_sc_mcu9t5v0__dffrnq_2)
+   0.22    5.07 ^ _30636_/RN (gf180mcu_fd_sc_mcu9t5v0__dffrnq_1)
+           5.07   data arrival time
+
+   6.25    6.25   clock clk (rise edge)
+   1.94    8.19   clock network delay (propagated)
+   0.00    8.19   clock reconvergence pessimism
+           8.19 ^ _30636_/CLK (gf180mcu_fd_sc_mcu9t5v0__dffrnq_1)
+  -0.81    7.38   library recovery time
+           7.38   data required time
+---------------------------------------------------------
+           7.38   data required time
+          -5.07   data arrival time
+---------------------------------------------------------
+           2.31   slack (MET)
+
+
+Startpoint: _29858_ (rising edge-triggered flip-flop clocked by clk)
+Endpoint: _30637_ (recovery check against rising-edge clock clk)
+Path Group: asynchronous
+Path Type: max
+
+  Delay    Time   Description
+---------------------------------------------------------
+   0.00    0.00   clock clk (rise edge)
+   2.07    2.07   clock network delay (propagated)
+   0.00    2.07 ^ _29858_/CLK (gf180mcu_fd_sc_mcu9t5v0__dffrnq_2)
+   2.78    4.85 ^ _29858_/Q (gf180mcu_fd_sc_mcu9t5v0__dffrnq_2)
+   0.22    5.07 ^ _30637_/RN (gf180mcu_fd_sc_mcu9t5v0__dffrnq_1)
+           5.07   data arrival time
+
+   6.25    6.25   clock clk (rise edge)
+   2.06    8.31   clock network delay (propagated)
+   0.00    8.31   clock reconvergence pessimism
+           8.31 ^ _30637_/CLK (gf180mcu_fd_sc_mcu9t5v0__dffrnq_1)
+  -0.81    7.50   library recovery time
+           7.50   data required time
+---------------------------------------------------------
+           7.50   data required time
+          -5.07   data arrival time
+---------------------------------------------------------
+           2.43   slack (MET)
+
+
+Startpoint: _29858_ (rising edge-triggered flip-flop clocked by clk)
+Endpoint: _30638_ (recovery check against rising-edge clock clk)
+Path Group: asynchronous
+Path Type: max
+
+  Delay    Time   Description
+---------------------------------------------------------
+   0.00    0.00   clock clk (rise edge)
+   2.07    2.07   clock network delay (propagated)
+   0.00    2.07 ^ _29858_/CLK (gf180mcu_fd_sc_mcu9t5v0__dffrnq_2)
+   2.78    4.85 ^ _29858_/Q (gf180mcu_fd_sc_mcu9t5v0__dffrnq_2)
+   0.22    5.07 ^ _30638_/RN (gf180mcu_fd_sc_mcu9t5v0__dffrnq_1)
+           5.07   data arrival time
+
+   6.25    6.25   clock clk (rise edge)
+   2.06    8.31   clock network delay (propagated)
+   0.00    8.31   clock reconvergence pessimism
+           8.31 ^ _30638_/CLK (gf180mcu_fd_sc_mcu9t5v0__dffrnq_1)
+  -0.81    7.50   library recovery time
+           7.50   data required time
+---------------------------------------------------------
+           7.50   data required time
+          -5.07   data arrival time
+---------------------------------------------------------
+           2.43   slack (MET)
+
+
+Startpoint: _29858_ (rising edge-triggered flip-flop clocked by clk)
+Endpoint: _30640_ (recovery check against rising-edge clock clk)
+Path Group: asynchronous
+Path Type: max
+
+  Delay    Time   Description
+---------------------------------------------------------
+   0.00    0.00   clock clk (rise edge)
+   2.07    2.07   clock network delay (propagated)
+   0.00    2.07 ^ _29858_/CLK (gf180mcu_fd_sc_mcu9t5v0__dffrnq_2)
+   2.78    4.85 ^ _29858_/Q (gf180mcu_fd_sc_mcu9t5v0__dffrnq_2)
+   0.22    5.07 ^ _30640_/RN (gf180mcu_fd_sc_mcu9t5v0__dffrnq_1)
+           5.07   data arrival time
+
+   6.25    6.25   clock clk (rise edge)
+   2.06    8.31   clock network delay (propagated)
+   0.00    8.31   clock reconvergence pessimism
+           8.31 ^ _30640_/CLK (gf180mcu_fd_sc_mcu9t5v0__dffrnq_1)
+  -0.81    7.50   library recovery time
+           7.50   data required time
+---------------------------------------------------------
+           7.50   data required time
+          -5.07   data arrival time
+---------------------------------------------------------
+           2.43   slack (MET)
+
+
+Startpoint: _29782_ (rising edge-triggered flip-flop clocked by clk)
+Endpoint: _33898_ (rising edge-triggered flip-flop clocked by clk)
+Path Group: clk
+Path Type: max
+
+  Delay    Time   Description
+---------------------------------------------------------
+   0.00    0.00   clock clk (rise edge)
+   1.96    1.96   clock network delay (propagated)
+   0.00    1.96 ^ _29782_/CLK (gf180mcu_fd_sc_mcu9t5v0__dffq_1)
+   1.78    3.74 ^ _29782_/Q (gf180mcu_fd_sc_mcu9t5v0__dffq_1)
+   0.77    4.51 ^ _20266_/Z (gf180mcu_fd_sc_mcu9t5v0__xor2_1)
+   0.68    5.19 ^ _20268_/Z (gf180mcu_fd_sc_mcu9t5v0__xor2_1)
+   0.75    5.94 ^ _20279_/Z (gf180mcu_fd_sc_mcu9t5v0__xor2_1)
+   0.71    6.65 ^ _21243_/Z (gf180mcu_fd_sc_mcu9t5v0__xor2_1)
+   1.19    7.84 ^ _21742_/Z (gf180mcu_fd_sc_mcu9t5v0__xor3_1)
+   0.00    7.84 ^ _33898_/D (gf180mcu_fd_sc_mcu9t5v0__dffq_1)
+           7.84   data arrival time
+
+   6.25    6.25   clock clk (rise edge)
+   1.97    8.22   clock network delay (propagated)
+   0.00    8.22   clock reconvergence pessimism
+           8.22 ^ _33898_/CLK (gf180mcu_fd_sc_mcu9t5v0__dffq_1)
+  -0.30    7.92   library setup time
+           7.92   data required time
+---------------------------------------------------------
+           7.92   data required time
+          -7.84   data arrival time
+---------------------------------------------------------
+           0.08   slack (MET)
+
+
+Startpoint: _35511_ (rising edge-triggered flip-flop clocked by clk)
+Endpoint: _33834_ (rising edge-triggered flip-flop clocked by clk)
+Path Group: clk
+Path Type: max
+
+  Delay    Time   Description
+---------------------------------------------------------
+   0.00    0.00   clock clk (rise edge)
+   1.96    1.96   clock network delay (propagated)
+   0.00    1.96 ^ _35511_/CLK (gf180mcu_fd_sc_mcu9t5v0__dffq_1)
+   1.90    3.86 ^ _35511_/Q (gf180mcu_fd_sc_mcu9t5v0__dffq_1)
+   0.60    4.46 ^ _26508_/Z (gf180mcu_fd_sc_mcu9t5v0__xor2_1)
+   0.28    4.74 v _26516_/ZN (gf180mcu_fd_sc_mcu9t5v0__aoi21_1)
+   1.53    6.27 v _26522_/Z (gf180mcu_fd_sc_mcu9t5v0__xor3_1)
+   0.69    6.96 v _26524_/Z (gf180mcu_fd_sc_mcu9t5v0__xor2_1)
+   0.55    7.51 v _26525_/Z (gf180mcu_fd_sc_mcu9t5v0__or2_1)
+   0.25    7.77 ^ _26526_/ZN (gf180mcu_fd_sc_mcu9t5v0__oai21_1)
+   0.00    7.77 ^ _33834_/D (gf180mcu_fd_sc_mcu9t5v0__dffq_1)
+           7.77   data arrival time
+
+   6.25    6.25   clock clk (rise edge)
+   1.96    8.21   clock network delay (propagated)
+   0.00    8.21   clock reconvergence pessimism
+           8.21 ^ _33834_/CLK (gf180mcu_fd_sc_mcu9t5v0__dffq_1)
+  -0.29    7.93   library setup time
+           7.93   data required time
+---------------------------------------------------------
+           7.93   data required time
+          -7.77   data arrival time
+---------------------------------------------------------
+           0.16   slack (MET)
+
+
+Startpoint: _29744_ (rising edge-triggered flip-flop clocked by clk)
+Endpoint: _34381_ (rising edge-triggered flip-flop clocked by clk)
+Path Group: clk
+Path Type: max
+
+  Delay    Time   Description
+---------------------------------------------------------
+   0.00    0.00   clock clk (rise edge)
+   1.97    1.97   clock network delay (propagated)
+   0.00    1.97 ^ _29744_/CLK (gf180mcu_fd_sc_mcu9t5v0__dffq_1)
+   1.79    3.76 ^ _29744_/Q (gf180mcu_fd_sc_mcu9t5v0__dffq_1)
+   0.61    4.37 ^ _14800_/Z (gf180mcu_fd_sc_mcu9t5v0__and2_1)
+   0.34    4.71 v _14816_/ZN (gf180mcu_fd_sc_mcu9t5v0__aoi21_1)
+   1.53    6.24 v _14822_/Z (gf180mcu_fd_sc_mcu9t5v0__xor3_1)
+   0.65    6.90 v _14834_/Z (gf180mcu_fd_sc_mcu9t5v0__xor2_1)
+   0.49    7.39 ^ _14835_/ZN (gf180mcu_fd_sc_mcu9t5v0__aoi21_1)
+   0.34    7.73 ^ _14836_/Z (gf180mcu_fd_sc_mcu9t5v0__or2_1)
+   0.00    7.73 ^ _34381_/D (gf180mcu_fd_sc_mcu9t5v0__dffq_1)
+           7.73   data arrival time
+
+   6.25    6.25   clock clk (rise edge)
+   1.97    8.22   clock network delay (propagated)
+   0.00    8.22   clock reconvergence pessimism
+           8.22 ^ _34381_/CLK (gf180mcu_fd_sc_mcu9t5v0__dffq_1)
+  -0.25    7.97   library setup time
+           7.97   data required time
+---------------------------------------------------------
+           7.97   data required time
+          -7.73   data arrival time
+---------------------------------------------------------
+           0.23   slack (MET)
+
+
+Startpoint: _29744_ (rising edge-triggered flip-flop clocked by clk)
+Endpoint: _32998_ (rising edge-triggered flip-flop clocked by clk)
+Path Group: clk
+Path Type: max
+
+  Delay    Time   Description
+---------------------------------------------------------
+   0.00    0.00   clock clk (rise edge)
+   1.97    1.97   clock network delay (propagated)
+   0.00    1.97 ^ _29744_/CLK (gf180mcu_fd_sc_mcu9t5v0__dffq_1)
+   1.79    3.76 ^ _29744_/Q (gf180mcu_fd_sc_mcu9t5v0__dffq_1)
+   0.61    4.37 ^ _14800_/Z (gf180mcu_fd_sc_mcu9t5v0__and2_1)
+   0.34    4.71 v _14816_/ZN (gf180mcu_fd_sc_mcu9t5v0__aoi21_1)
+   1.53    6.24 v _14822_/Z (gf180mcu_fd_sc_mcu9t5v0__xor3_1)
+   0.65    6.90 v _14834_/Z (gf180mcu_fd_sc_mcu9t5v0__xor2_1)
+   0.55    7.45 v _15215_/Z (gf180mcu_fd_sc_mcu9t5v0__and3_1)
+   0.24    7.69 ^ _15216_/ZN (gf180mcu_fd_sc_mcu9t5v0__nor2_1)
+   0.00    7.69 ^ _32998_/D (gf180mcu_fd_sc_mcu9t5v0__dffq_1)
+           7.69   data arrival time
+
+   6.25    6.25   clock clk (rise edge)
+   1.97    8.22   clock network delay (propagated)
+   0.00    8.22   clock reconvergence pessimism
+           8.22 ^ _32998_/CLK (gf180mcu_fd_sc_mcu9t5v0__dffq_1)
+  -0.28    7.94   library setup time
+           7.94   data required time
+---------------------------------------------------------
+           7.94   data required time
+          -7.69   data arrival time
+---------------------------------------------------------
+           0.25   slack (MET)
+
+
+Startpoint: _29779_ (rising edge-triggered flip-flop clocked by clk)
+Endpoint: _33895_ (rising edge-triggered flip-flop clocked by clk)
+Path Group: clk
+Path Type: max
+
+  Delay    Time   Description
+---------------------------------------------------------
+   0.00    0.00   clock clk (rise edge)
+   1.96    1.96   clock network delay (propagated)
+   0.00    1.96 ^ _29779_/CLK (gf180mcu_fd_sc_mcu9t5v0__dffq_1)
+   1.73    3.69 ^ _29779_/Q (gf180mcu_fd_sc_mcu9t5v0__dffq_1)
+   0.69    4.37 ^ _20437_/Z (gf180mcu_fd_sc_mcu9t5v0__xor2_1)
+   0.65    5.02 ^ _20452_/ZN (gf180mcu_fd_sc_mcu9t5v0__xnor2_1)
+   1.43    6.45 ^ _20492_/Z (gf180mcu_fd_sc_mcu9t5v0__xor3_1)
+   1.20    7.66 ^ _21241_/Z (gf180mcu_fd_sc_mcu9t5v0__xor3_1)
+   0.00    7.66 ^ _33895_/D (gf180mcu_fd_sc_mcu9t5v0__dffq_1)
+           7.66   data arrival time
+
+   6.25    6.25   clock clk (rise edge)
+   1.97    8.22   clock network delay (propagated)
+   0.00    8.22   clock reconvergence pessimism
+           8.22 ^ _33895_/CLK (gf180mcu_fd_sc_mcu9t5v0__dffq_1)
+  -0.30    7.92   library setup time
+           7.92   data required time
+---------------------------------------------------------
+           7.92   data required time
+          -7.66   data arrival time
+---------------------------------------------------------
+           0.26   slack (MET)
+
+
+Startpoint: _29858_ (rising edge-triggered flip-flop clocked by clk)
+Endpoint: _29988_ (removal check against rising-edge clock clk)
+Path Group: asynchronous
+Path Type: min
+
+  Delay    Time   Description
+---------------------------------------------------------
+   0.00    0.00   clock clk (rise edge)
+   2.07    2.07   clock network delay (propagated)
+   0.00    2.07 ^ _29858_/CLK (gf180mcu_fd_sc_mcu9t5v0__dffrnq_2)
+   2.78    4.85 ^ _29858_/Q (gf180mcu_fd_sc_mcu9t5v0__dffrnq_2)
+   0.01    4.86 ^ _29988_/RN (gf180mcu_fd_sc_mcu9t5v0__dffrnq_1)
+           4.86   data arrival time
+
+   0.00    0.00   clock clk (rise edge)
+   2.08    2.08   clock network delay (propagated)
+   0.00    2.08   clock reconvergence pessimism
+           2.08 ^ _29988_/CLK (gf180mcu_fd_sc_mcu9t5v0__dffrnq_1)
+   1.13    3.21   library removal time
+           3.21   data required time
+---------------------------------------------------------
+           3.21   data required time
+          -4.86   data arrival time
+---------------------------------------------------------
+           1.66   slack (MET)
+
+
+Startpoint: _29858_ (rising edge-triggered flip-flop clocked by clk)
+Endpoint: _30012_ (removal check against rising-edge clock clk)
+Path Group: asynchronous
+Path Type: min
+
+  Delay    Time   Description
+---------------------------------------------------------
+   0.00    0.00   clock clk (rise edge)
+   2.07    2.07   clock network delay (propagated)
+   0.00    2.07 ^ _29858_/CLK (gf180mcu_fd_sc_mcu9t5v0__dffrnq_2)
+   2.78    4.85 ^ _29858_/Q (gf180mcu_fd_sc_mcu9t5v0__dffrnq_2)
+   0.01    4.86 ^ _30012_/RN (gf180mcu_fd_sc_mcu9t5v0__dffrnq_1)
+           4.86   data arrival time
+
+   0.00    0.00   clock clk (rise edge)
+   2.08    2.08   clock network delay (propagated)
+   0.00    2.08   clock reconvergence pessimism
+           2.08 ^ _30012_/CLK (gf180mcu_fd_sc_mcu9t5v0__dffrnq_1)
+   1.13    3.21   library removal time
+           3.21   data required time
+---------------------------------------------------------
+           3.21   data required time
+          -4.86   data arrival time
+---------------------------------------------------------
+           1.66   slack (MET)
+
+
+Startpoint: _29858_ (rising edge-triggered flip-flop clocked by clk)
+Endpoint: _30011_ (removal check against rising-edge clock clk)
+Path Group: asynchronous
+Path Type: min
+
+  Delay    Time   Description
+---------------------------------------------------------
+   0.00    0.00   clock clk (rise edge)
+   2.07    2.07   clock network delay (propagated)
+   0.00    2.07 ^ _29858_/CLK (gf180mcu_fd_sc_mcu9t5v0__dffrnq_2)
+   2.78    4.85 ^ _29858_/Q (gf180mcu_fd_sc_mcu9t5v0__dffrnq_2)
+   0.01    4.86 ^ _30011_/RN (gf180mcu_fd_sc_mcu9t5v0__dffrnq_1)
+           4.86   data arrival time
+
+   0.00    0.00   clock clk (rise edge)
+   2.08    2.08   clock network delay (propagated)
+   0.00    2.08   clock reconvergence pessimism
+           2.08 ^ _30011_/CLK (gf180mcu_fd_sc_mcu9t5v0__dffrnq_1)
+   1.13    3.21   library removal time
+           3.21   data required time
+---------------------------------------------------------
+           3.21   data required time
+          -4.86   data arrival time
+---------------------------------------------------------
+           1.66   slack (MET)
+
+
+Startpoint: _29858_ (rising edge-triggered flip-flop clocked by clk)
+Endpoint: _29987_ (removal check against rising-edge clock clk)
+Path Group: asynchronous
+Path Type: min
+
+  Delay    Time   Description
+---------------------------------------------------------
+   0.00    0.00   clock clk (rise edge)
+   2.07    2.07   clock network delay (propagated)
+   0.00    2.07 ^ _29858_/CLK (gf180mcu_fd_sc_mcu9t5v0__dffrnq_2)
+   2.78    4.85 ^ _29858_/Q (gf180mcu_fd_sc_mcu9t5v0__dffrnq_2)
+   0.01    4.86 ^ _29987_/RN (gf180mcu_fd_sc_mcu9t5v0__dffrnq_1)
+           4.86   data arrival time
+
+   0.00    0.00   clock clk (rise edge)
+   2.07    2.07   clock network delay (propagated)
+   0.00    2.07   clock reconvergence pessimism
+           2.07 ^ _29987_/CLK (gf180mcu_fd_sc_mcu9t5v0__dffrnq_1)
+   1.13    3.20   library removal time
+           3.20   data required time
+---------------------------------------------------------
+           3.20   data required time
+          -4.86   data arrival time
+---------------------------------------------------------
+           1.66   slack (MET)
+
+
+Startpoint: _29858_ (rising edge-triggered flip-flop clocked by clk)
+Endpoint: _32681_ (removal check against rising-edge clock clk)
+Path Group: asynchronous
+Path Type: min
+
+  Delay    Time   Description
+---------------------------------------------------------
+   0.00    0.00   clock clk (rise edge)
+   2.07    2.07   clock network delay (propagated)
+   0.00    2.07 ^ _29858_/CLK (gf180mcu_fd_sc_mcu9t5v0__dffrnq_2)
+   2.78    4.85 ^ _29858_/Q (gf180mcu_fd_sc_mcu9t5v0__dffrnq_2)
+   0.03    4.88 ^ _32681_/RN (gf180mcu_fd_sc_mcu9t5v0__dffrnq_1)
+           4.88   data arrival time
+
+   0.00    0.00   clock clk (rise edge)
+   2.07    2.07   clock network delay (propagated)
+   0.00    2.07   clock reconvergence pessimism
+           2.07 ^ _32681_/CLK (gf180mcu_fd_sc_mcu9t5v0__dffrnq_1)
+   1.13    3.20   library removal time
+           3.20   data required time
+---------------------------------------------------------
+           3.20   data required time
+          -4.88   data arrival time
+---------------------------------------------------------
+           1.68   slack (MET)
+
+
+Startpoint: stages_gen_blk[4].stage.genblk1.even_stage.top_comm/_469_
+            (rising edge-triggered flip-flop clocked by clk)
+Endpoint: stages_gen_blk[4].stage.genblk1.even_stage.top_comm/_445_
+          (rising edge-triggered flip-flop clocked by clk)
+Path Group: clk
+Path Type: min
+
+  Delay    Time   Description
+---------------------------------------------------------
+   0.00    0.00   clock clk (rise edge)
+   1.93    1.93   clock network delay (propagated)
+   0.00    1.93 ^ stages_gen_blk[4].stage.genblk1.even_stage.top_comm/_469_/CLK (gf180mcu_fd_sc_mcu9t5v0__dffq_1)
+   0.87    2.80 v stages_gen_blk[4].stage.genblk1.even_stage.top_comm/_469_/Q (gf180mcu_fd_sc_mcu9t5v0__dffq_1)
+   0.00    2.80 v stages_gen_blk[4].stage.genblk1.even_stage.top_comm/_445_/D (gf180mcu_fd_sc_mcu9t5v0__dffq_1)
+           2.80   data arrival time
+
+   0.00    0.00   clock clk (rise edge)
+   2.07    2.07   clock network delay (propagated)
+   0.00    2.07   clock reconvergence pessimism
+           2.07 ^ stages_gen_blk[4].stage.genblk1.even_stage.top_comm/_445_/CLK (gf180mcu_fd_sc_mcu9t5v0__dffq_1)
+   0.20    2.27   library hold time
+           2.27   data required time
+---------------------------------------------------------
+           2.27   data required time
+          -2.80   data arrival time
+---------------------------------------------------------
+           0.53   slack (MET)
+
+
+Startpoint: stages_gen_blk[4].stage.genblk1.even_stage.top_comm/_131_
+            (rising edge-triggered flip-flop clocked by clk)
+Endpoint: stages_gen_blk[4].stage.genblk1.even_stage.top_comm/_107_
+          (rising edge-triggered flip-flop clocked by clk)
+Path Group: clk
+Path Type: min
+
+  Delay    Time   Description
+---------------------------------------------------------
+   0.00    0.00   clock clk (rise edge)
+   1.93    1.93   clock network delay (propagated)
+   0.00    1.93 ^ stages_gen_blk[4].stage.genblk1.even_stage.top_comm/_131_/CLK (gf180mcu_fd_sc_mcu9t5v0__dffq_1)
+   0.87    2.80 v stages_gen_blk[4].stage.genblk1.even_stage.top_comm/_131_/Q (gf180mcu_fd_sc_mcu9t5v0__dffq_1)
+   0.00    2.80 v stages_gen_blk[4].stage.genblk1.even_stage.top_comm/_107_/D (gf180mcu_fd_sc_mcu9t5v0__dffq_1)
+           2.80   data arrival time
+
+   0.00    0.00   clock clk (rise edge)
+   2.07    2.07   clock network delay (propagated)
+   0.00    2.07   clock reconvergence pessimism
+           2.07 ^ stages_gen_blk[4].stage.genblk1.even_stage.top_comm/_107_/CLK (gf180mcu_fd_sc_mcu9t5v0__dffq_1)
+   0.20    2.27   library hold time
+           2.27   data required time
+---------------------------------------------------------
+           2.27   data required time
+          -2.80   data arrival time
+---------------------------------------------------------
+           0.54   slack (MET)
+
+
+Startpoint: _30788_ (rising edge-triggered flip-flop clocked by clk)
+Endpoint: _30764_ (rising edge-triggered flip-flop clocked by clk)
+Path Group: clk
+Path Type: min
+
+  Delay    Time   Description
+---------------------------------------------------------
+   0.00    0.00   clock clk (rise edge)
+   1.93    1.93   clock network delay (propagated)
+   0.00    1.93 ^ _30788_/CLK (gf180mcu_fd_sc_mcu9t5v0__dffq_1)
+   0.87    2.80 v _30788_/Q (gf180mcu_fd_sc_mcu9t5v0__dffq_1)
+   0.00    2.80 v _30764_/D (gf180mcu_fd_sc_mcu9t5v0__dffq_1)
+           2.80   data arrival time
+
+   0.00    0.00   clock clk (rise edge)
+   2.07    2.07   clock network delay (propagated)
+   0.00    2.07   clock reconvergence pessimism
+           2.07 ^ _30764_/CLK (gf180mcu_fd_sc_mcu9t5v0__dffq_1)
+   0.20    2.27   library hold time
+           2.27   data required time
+---------------------------------------------------------
+           2.27   data required time
+          -2.80   data arrival time
+---------------------------------------------------------
+           0.54   slack (MET)
+
+
+Startpoint: stages_gen_blk[4].stage.genblk1.even_stage.top_comm/_422_
+            (rising edge-triggered flip-flop clocked by clk)
+Endpoint: stages_gen_blk[4].stage.genblk1.even_stage.top_comm/_398_
+          (rising edge-triggered flip-flop clocked by clk)
+Path Group: clk
+Path Type: min
+
+  Delay    Time   Description
+---------------------------------------------------------
+   0.00    0.00   clock clk (rise edge)
+   1.93    1.93   clock network delay (propagated)
+   0.00    1.93 ^ stages_gen_blk[4].stage.genblk1.even_stage.top_comm/_422_/CLK (gf180mcu_fd_sc_mcu9t5v0__dffq_1)
+   0.87    2.80 v stages_gen_blk[4].stage.genblk1.even_stage.top_comm/_422_/Q (gf180mcu_fd_sc_mcu9t5v0__dffq_1)
+   0.00    2.80 v stages_gen_blk[4].stage.genblk1.even_stage.top_comm/_398_/D (gf180mcu_fd_sc_mcu9t5v0__dffq_1)
+           2.80   data arrival time
+
+   0.00    0.00   clock clk (rise edge)
+   2.07    2.07   clock network delay (propagated)
+   0.00    2.07   clock reconvergence pessimism
+           2.07 ^ stages_gen_blk[4].stage.genblk1.even_stage.top_comm/_398_/CLK (gf180mcu_fd_sc_mcu9t5v0__dffq_1)
+   0.20    2.26   library hold time
+           2.26   data required time
+---------------------------------------------------------
+           2.26   data required time
+          -2.80   data arrival time
+---------------------------------------------------------
+           0.54   slack (MET)
+
+
+Startpoint: _30787_ (rising edge-triggered flip-flop clocked by clk)
+Endpoint: _30763_ (rising edge-triggered flip-flop clocked by clk)
+Path Group: clk
+Path Type: min
+
+  Delay    Time   Description
+---------------------------------------------------------
+   0.00    0.00   clock clk (rise edge)
+   1.93    1.93   clock network delay (propagated)
+   0.00    1.93 ^ _30787_/CLK (gf180mcu_fd_sc_mcu9t5v0__dffq_1)
+   0.87    2.80 v _30787_/Q (gf180mcu_fd_sc_mcu9t5v0__dffq_1)
+   0.00    2.80 v _30763_/D (gf180mcu_fd_sc_mcu9t5v0__dffq_1)
+           2.80   data arrival time
+
+   0.00    0.00   clock clk (rise edge)
+   2.07    2.07   clock network delay (propagated)
+   0.00    2.07   clock reconvergence pessimism
+           2.07 ^ _30763_/CLK (gf180mcu_fd_sc_mcu9t5v0__dffq_1)
+   0.20    2.27   library hold time
+           2.27   data required time
+---------------------------------------------------------
+           2.27   data required time
+          -2.80   data arrival time
+---------------------------------------------------------
+           0.54   slack (MET)
+
+
+tns max 0.00
+wns max 0.00
+Clock clk
+   2.08 source latency _35167_/CLK ^
+  -1.93 target latency _30110_/CLK ^
+   0.00 CRPR
+--------------
+   0.15 setup skew
+
+Design area 1512013 um^2 36% utilization.

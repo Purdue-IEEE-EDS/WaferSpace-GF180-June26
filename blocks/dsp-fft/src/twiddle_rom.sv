@@ -93,6 +93,7 @@ module twiddle_rom #(
                         6'd61: tw_re <= 16'h096a;
                         6'd62: tw_re <= 16'h0647;
                         6'd63: tw_re <= 16'h0324;
+                        default: tw_re <= 16'h7fff; 
                 endcase
 
 
@@ -161,6 +162,7 @@ module twiddle_rom #(
                         6'd61: tw_im <= 16'h8059;
                         6'd62: tw_im <= 16'h8028;
                         6'd63: tw_im <= 16'h800a;
+                        default: tw_im <= 16'h0000; 
                 endcase
         end
 end
@@ -231,6 +233,7 @@ if ((DEPTH == 64) && (BRANCH == 2)) begin : rom_256_2k
                         6'd61: tw_re <= 16'h8163;
                         6'd62: tw_re <= 16'h809e;
                         6'd63: tw_re <= 16'h8028;
+                        default: tw_re <= 16'h7fff; 
                 endcase
 
 
@@ -299,6 +302,7 @@ if ((DEPTH == 64) && (BRANCH == 2)) begin : rom_256_2k
                         6'd61: tw_im <= 16'hed38;
                         6'd62: tw_im <= 16'hf375;
                         6'd63: tw_im <= 16'hf9b9;
+                        default: tw_im <= 16'h0000; 
                 endcase
         end
 end
@@ -369,6 +373,7 @@ if ((DEPTH == 64) && (BRANCH == 3)) begin : rom_256_3k
                         6'd61: tw_re <= 16'he3f5;
                         6'd62: tw_re <= 16'hed38;
                         6'd63: tw_re <= 16'hf696;
+                        default: tw_re <= 16'h7fff; 
                 endcase
 
 
@@ -437,6 +442,7 @@ if ((DEPTH == 64) && (BRANCH == 3)) begin : rom_256_3k
                         6'd61: tw_im <= 16'h7ce3;
                         6'd62: tw_im <= 16'h7e9d;
                         6'd63: tw_im <= 16'h7fa7;
+                        default: tw_im <= 16'h0000; 
                 endcase
         end
 end
@@ -459,6 +465,7 @@ if ((DEPTH == 16) && (BRANCH == 1)) begin : rom_64_1k
                         4'd13: tw_re <= 16'h2528;
                         4'd14: tw_re <= 16'h18f8;
                         4'd15: tw_re <= 16'h0c8b;
+                        default: tw_re <= 16'h7fff; 
                 endcase
 
 
@@ -479,6 +486,7 @@ if ((DEPTH == 16) && (BRANCH == 1)) begin : rom_64_1k
                         4'd13: tw_im <= 16'h8583;
                         4'd14: tw_im <= 16'h8276;
                         4'd15: tw_im <= 16'h809e;
+                        default: tw_im <= 16'h0000; 
                 endcase
         end
 end
@@ -501,6 +509,7 @@ if ((DEPTH == 16) && (BRANCH == 2)) begin : rom_64_2k
                         4'd13: tw_re <= 16'h9593;
                         4'd14: tw_re <= 16'h89bf;
                         4'd15: tw_re <= 16'h8276;
+                        default: tw_re <= 16'h7fff; 
                 endcase
 
 
@@ -521,6 +530,7 @@ if ((DEPTH == 16) && (BRANCH == 2)) begin : rom_64_2k
                         4'd13: tw_im <= 16'hb8e4;
                         4'd14: tw_im <= 16'hcf05;
                         4'd15: tw_im <= 16'he708;
+                        default: tw_im <= 16'h0000; 
                 endcase
         end
 end
@@ -543,6 +553,7 @@ if ((DEPTH == 16) && (BRANCH == 3)) begin : rom_64_3k
                         4'd13: tw_re <= 16'h9d0e;
                         4'd14: tw_re <= 16'hb8e4;
                         4'd15: tw_re <= 16'hdad8;
+                        default: tw_re <= 16'h7fff; 
                 endcase
 
 
@@ -563,6 +574,7 @@ if ((DEPTH == 16) && (BRANCH == 3)) begin : rom_64_3k
                         4'd13: tw_im <= 16'h5133;
                         4'd14: tw_im <= 16'h6a6d;
                         4'd15: tw_im <= 16'h7a7d;
+                        default: tw_im <= 16'h0000; 
                 endcase
         end
 end
@@ -573,6 +585,7 @@ if ((DEPTH == 4) && (BRANCH == 1)) begin : rom_16_1k
                         2'd1: tw_re <= 16'h7641;
                         2'd2: tw_re <= 16'h5a82;
                         2'd3: tw_re <= 16'h30fb;
+                        default: tw_re <= 16'h7fff; 
                 endcase
 
 
@@ -581,6 +594,7 @@ if ((DEPTH == 4) && (BRANCH == 1)) begin : rom_16_1k
                         2'd1: tw_im <= 16'hcf05;
                         2'd2: tw_im <= 16'ha57e;
                         2'd3: tw_im <= 16'h89bf;
+                        default: tw_im <= 16'h0000; 
                 endcase
         end
 end
@@ -591,6 +605,7 @@ if ((DEPTH == 4) && (BRANCH == 2)) begin : rom_16_2k
                         2'd1: tw_re <= 16'h5a82;
                         2'd2: tw_re <= 16'h0000;
                         2'd3: tw_re <= 16'ha57e;
+                        default: tw_re <= 16'h7fff; 
                 endcase
 
 
@@ -599,6 +614,7 @@ if ((DEPTH == 4) && (BRANCH == 2)) begin : rom_16_2k
                         2'd1: tw_im <= 16'ha57e;
                         2'd2: tw_im <= 16'h8000;
                         2'd3: tw_im <= 16'ha57e;
+                        default: tw_im <= 16'h0000; 
                 endcase
         end
 end
@@ -609,6 +625,7 @@ if ((DEPTH == 4) && (BRANCH == 3)) begin : rom_16_3k
                         2'd1: tw_re <= 16'h30fb;
                         2'd2: tw_re <= 16'ha57e;
                         2'd3: tw_re <= 16'h89bf;
+                        default: tw_re <= 16'h7fff; 
                 endcase
 
 
@@ -617,6 +634,7 @@ if ((DEPTH == 4) && (BRANCH == 3)) begin : rom_16_3k
                         2'd1: tw_im <= 16'h89bf;
                         2'd2: tw_im <= 16'ha57e;
                         2'd3: tw_im <= 16'h30fb;
+                        default: tw_im <= 16'h0000; 
                 endcase
         end
 end

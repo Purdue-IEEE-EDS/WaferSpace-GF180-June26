@@ -1,3 +1,4 @@
+(* keep_hierarchy = "yes" *)
 module CLA4(
     input logic [3:0] a,
     input logic [3:0] b, 

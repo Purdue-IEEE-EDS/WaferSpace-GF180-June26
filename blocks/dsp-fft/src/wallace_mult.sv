@@ -3,9 +3,9 @@ module wallace_mult #(
     parameter DECIMAL = 12
 )(
     input logic clk, 
-    input  logic signed [W-1:0] a,
-    input  logic signed [15:0] b,
-    output logic signed [W-1:0] p
+    input  logic [W-1:0] a,
+    input  logic [15:0] b,
+    output logic [W-1:0] p
 ); 
 
     logic [W+15:0] partial [0:15];
@@ -34,7 +34,7 @@ module wallace_mult #(
     always_comb begin
         // 1. Default initialization to prevent latches
         for (int i = 0; i < 16; i++) begin
-            partial[i] = 32'b0;
+            partial[i] = '0;
         end
 
         // 2. Rows 0 through 14 (Standard Baugh-Wooley Rows)

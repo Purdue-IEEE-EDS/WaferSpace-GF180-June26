@@ -4,7 +4,7 @@ module mdc_ram_delay #(
     parameter int ADDR_WIDTH = $clog2(DELAY_STAGES)
 )(
     input  logic clk,
-    input  logic [DATA_WIDTH-1:0] din,
+    input  logic [DATA_WIDTH-1:0] din, 
     output logic [DATA_WIDTH-1:0] dout
 );
 

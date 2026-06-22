@@ -70,14 +70,14 @@ module tb_fft();
 
         for (int i = 0; i < 16; i++) begin
 
-            // din_re0 = 6'h20; 
-            // din_re1 = 6'h20; 
-            // din_re2 = 6'h20; 
-            // din_re3 = 6'h20; 
-            // din_im0 = 1'b0;
-            // din_im1 = 1'b0;
-            // din_im2 = 1'b0;
-            // din_im3 = 1'b0; 
+            din_re0 = 6'h10; 
+            din_re1 = 6'h10; 
+            din_re2 = 6'h10; 
+            din_re3 = 6'h10; 
+            din_im0 = 1'b0;
+            din_im1 = 1'b0;
+            din_im2 = 1'b0;
+            din_im3 = 1'b0; 
 
             // din_re0 = wave[i]; 
             // din_re1 = wave[i+128]; 
@@ -88,16 +88,16 @@ module tb_fft();
             // din_im2 = 1'b0;
             // din_im3 = 1'b0; 
 
-            if(i == 0) din_re0 = 6'h10; 
+            // if(i == 0) din_re0 = 6'h10; 
 
-            else din_re0 = 6'h0; 
-            din_re1 = '0; 
-            din_re2 = '0; 
-            din_re3 = '0; 
-            din_im0 = 1'b0;
-            din_im1 = 1'b0;
-            din_im2 = 1'b0;
-            din_im3 = 1'b0;
+            // else din_re0 = 6'h0; 
+            // din_re1 = '0; 
+            // din_re2 = '0; 
+            // din_re3 = '0; 
+            // din_im0 = 1'b0;
+            // din_im1 = 1'b0;
+            // din_im2 = 1'b0;
+            // din_im3 = 1'b0;
 
             // din_re0 = '0; 
             // din_re1 = '0; 

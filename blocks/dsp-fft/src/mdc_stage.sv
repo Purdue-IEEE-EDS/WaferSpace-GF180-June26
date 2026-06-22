@@ -3,24 +3,25 @@ module mdc_stage #(BITS = 16, STAGES = 8, CURR_STAGE = 1)
 ( 
     input logic clk, rst,
     input logic in_valid, 
-    input logic signed [BITS-1:0] din_re0, din_re1, din_re2, din_re3,
-    input logic signed [BITS-1:0] din_im0, din_im1, din_im2, din_im3, 
+    input logic [BITS-1:0] din_re0, din_re1, din_re2, din_re3,
+    input logic [BITS-1:0] din_im0, din_im1, din_im2, din_im3, 
 
-    output logic signed [BITS:0] dout_re0, dout_re1, dout_re2, dout_re3,   
-    output logic signed [BITS:0] dout_im0, dout_im1, dout_im2, dout_im3, 
+    output logic [BITS:0] dout_re0, dout_re1, dout_re2, dout_re3,   
+    output logic [BITS:0] dout_im0, dout_im1, dout_im2, dout_im3, 
     output logic out_valid
 );
 
+    logic [BITS:0] bf_out_re0, bf_out_re1, bf_out_re2, bf_out_re3;
+    logic [BITS:0] bf_out_im0, bf_out_im1, bf_out_im2, bf_out_im3; 
+
 generate
-    logic signed [BITS:0] bf_out_re0, bf_out_re1, bf_out_re2, bf_out_re3;
-    logic signed [BITS:0] bf_out_im0, bf_out_im1, bf_out_im2, bf_out_im3; 
 
     if (CURR_STAGE == 1) begin : stage1
 
-        logic signed [BITS:0] bf_out_re0_pip, bf_out_re1_pip, bf_out_re2_pip, bf_out_re3_pip;
-        logic signed [BITS:0] bf_out_im0_pip, bf_out_im1_pip, bf_out_im2_pip, bf_out_im3_pip; 
+        logic [BITS:0] bf_out_re0_pip, bf_out_re1_pip, bf_out_re2_pip, bf_out_re3_pip;
+        logic [BITS:0] bf_out_im0_pip, bf_out_im1_pip, bf_out_im2_pip, bf_out_im3_pip; 
 
-        logic signed [BITS:0] rot_out_re, rot_out_im; 
+        logic [BITS:0] rot_out_re, rot_out_im; 
 
         logic val;
 
@@ -56,14 +57,14 @@ generate
             bf_out_im3_pip <= bf_out_im3; 
         end
 
-        r2 #(.BITS(16))
+        r2 #(.BITS(BITS))
         butterfly1(
             .clk, 
             .a_in_real(din_re0), .a_in_imag(din_im0), .b_in_real(din_re1), .b_in_imag(din_im1),
             .a_out_real(bf_out_re0), .a_out_imag(bf_out_im0), .b_out_real(bf_out_re1), .b_out_imag(bf_out_im1)
         );
 
-        r2 #(.BITS(16))
+        r2 #(.BITS(BITS))
         butterfly2(
             .clk, 
             .a_in_real(din_re2), .a_in_imag(din_im2), .b_in_real(din_re3), .b_in_imag(din_im3),
@@ -79,15 +80,15 @@ generate
     end 
     else if ((CURR_STAGE == 2) || (CURR_STAGE == 4) || (CURR_STAGE == 6)) begin : even_stage
 
-        logic signed [15:0] real_tw1, imag_tw1, real_tw2, imag_tw2, real_tw3, imag_tw3;
-        logic signed [15:0] real_tw1_pip, imag_tw1_pip, real_tw2_pip, imag_tw2_pip, real_tw3_pip, imag_tw3_pip;
+        logic [15:0] real_tw1, imag_tw1, real_tw2, imag_tw2, real_tw3, imag_tw3;
+        logic [15:0] real_tw1_pip, imag_tw1_pip, real_tw2_pip, imag_tw2_pip, real_tw3_pip, imag_tw3_pip;
 
-        logic signed [BITS:0] bf_out_re0_pip, bf_out_re1_pip, bf_out_re2_pip, bf_out_re3_pip;
-        logic signed [BITS:0] bf_out_im0_pip, bf_out_im1_pip, bf_out_im2_pip, bf_out_im3_pip; 
-        logic signed [2*BITS:0] comm0, comm1, comm2, comm3;
+        logic [BITS:0] bf_out_re0_pip, bf_out_re1_pip, bf_out_re2_pip, bf_out_re3_pip;
+        logic [BITS:0] bf_out_im0_pip, bf_out_im1_pip, bf_out_im2_pip, bf_out_im3_pip; 
+        logic [2*BITS+1:0] comm0, comm1, comm2, comm3;
 
-        logic signed [BITS:0] rot1_out_re, rot2_out_re, rot3_out_re; 
-        logic signed [BITS:0] rot1_out_im, rot2_out_im, rot3_out_im; 
+        logic [BITS:0] rot1_out_re, rot2_out_re, rot3_out_re; 
+        logic [BITS:0] rot1_out_im, rot2_out_im, rot3_out_im; 
 
         localparam DELAY = (1<<(7-CURR_STAGE)) + 8;
         logic [DELAY-1:0] val; 
@@ -116,7 +117,7 @@ generate
         logic [STAGES-CURR_STAGE-1:0] count1; 
         logic sel;
         logic [5:0] s; 
-        logic [31:0] top_out_pip [0:5];
+        logic [2*BITS+1:0] top_out_pip [0:5];
 
         always_ff @(posedge clk) begin 
             s <= {s[4:0], count1[STAGES-CURR_STAGE-1]};
@@ -141,14 +142,14 @@ generate
             comm3 <= {rot3_out_re, rot3_out_im};
         end
 
-        r2 #(.BITS(16))
+        r2 #(.BITS(BITS))
         butterfly1(
             .clk, 
             .a_in_real(din_re0), .a_in_imag(din_im0), .b_in_real(din_re1), .b_in_imag(din_im1),
             .a_out_real(bf_out_re0), .a_out_imag(bf_out_im0), .b_out_real(bf_out_re1), .b_out_imag(bf_out_im1)
         );
 
-        r2 #(.BITS(16))
+        r2 #(.BITS(BITS))
         butterfly2(
             .clk,   
             .a_in_real(din_re2), .a_in_imag(din_im2), .b_in_real(din_re3), .b_in_imag(din_im3),
@@ -168,13 +169,13 @@ generate
 
     end
     else if ((CURR_STAGE == 3) || (CURR_STAGE == 5) || (CURR_STAGE == 7)) begin : odd_stage   
-        logic signed [BITS:0] bf_out_re0_pip, bf_out_re1_pip, bf_out_re2_pip, bf_out_re3_pip;
-        logic signed [BITS:0] bf_out_im0_pip, bf_out_im1_pip, bf_out_im2_pip, bf_out_im3_pip; 
-        logic signed [2*BITS+1:0] comm0, comm1, comm2, comm3;
-        logic signed [2*BITS+1:0] comm0_out, comm1_out, comm2_out, comm3_out;
-        logic signed [2*BITS+1:0] comm0_out_pip, comm1_out_pip, comm2_out_pip, comm3_out_pip;
+        logic [BITS:0] bf_out_re0_pip, bf_out_re1_pip, bf_out_re2_pip, bf_out_re3_pip;
+        logic [BITS:0] bf_out_im0_pip, bf_out_im1_pip, bf_out_im2_pip, bf_out_im3_pip; 
+        logic [2*BITS+1:0] comm0, comm1, comm2, comm3;
+        logic [2*BITS+1:0] comm0_out, comm1_out, comm2_out, comm3_out;
+        logic [2*BITS+1:0] comm0_out_pip, comm1_out_pip, comm2_out_pip, comm3_out_pip;
 
-        logic signed [BITS:0] rot_in_re, rot_in_im, rot_out_re, rot_out_im; 
+        logic [BITS:0] rot_in_re, rot_in_im, rot_out_re, rot_out_im; 
 
         localparam DELAY = (1<<(STAGES-CURR_STAGE-1)) + 5;
         logic [DELAY-1:0] val; 
@@ -203,7 +204,7 @@ generate
         logic [STAGES-CURR_STAGE-1:0] count1; 
         logic sel;
         logic [5:0] s; 
-        logic [31:0] top_out_pip [0:5];
+        logic [2*BITS+1:0] top_out_pip [0:5];
 
         always_ff @(posedge clk) begin 
             s <= {s[4:0], count1[STAGES-CURR_STAGE-1]};
@@ -240,21 +241,21 @@ generate
             comm3 <= {bf_out_re3_pip, bf_out_im3_pip};
         end
         
-        r2 #(.BITS(16))
+        r2 #(.BITS(BITS))
         butterfly1(
             .clk,
             .a_in_real(din_re0), .a_in_imag(din_im0), .b_in_real(din_re1), .b_in_imag(din_im1),
             .a_out_real(bf_out_re0), .a_out_imag(bf_out_im0), .b_out_real(bf_out_re1), .b_out_imag(bf_out_im1)
         );
 
-        r2 #(.BITS(16))
+        r2 #(.BITS(BITS))
         butterfly2(
             .clk,
             .a_in_real(din_re2), .a_in_imag(din_im2), .b_in_real(din_re3), .b_in_imag(din_im3),
             .a_out_real(bf_out_re2), .a_out_imag(bf_out_im2), .b_out_real(bf_out_re3), .b_out_imag(bf_out_im3)
         );
 
-        triv_rotator #(.BITS(16)) 
+        triv_rotator #(.BITS(BITS+1)) 
         triv_rot(
             .clk,
             .real_in(comm3_out[2*BITS+1:BITS+1]), .imag_in(comm3_out[BITS:0]),
@@ -275,14 +276,14 @@ generate
             end
         end
 
-        r2 #(.BITS(16))
+        r2 #(.BITS(BITS))
         butterfly1(
             .clk,
             .a_in_real(din_re0), .a_in_imag(din_im0), .b_in_real(din_re1), .b_in_imag(din_im1),
             .a_out_real(bf_out_re0), .a_out_imag(bf_out_im0), .b_out_real(bf_out_re1), .b_out_imag(bf_out_im1)
         );
 
-        r2 #(.BITS(16))
+        r2 #(.BITS(BITS))
         butterfly2(
             .clk,
             .a_in_real(din_re2), .a_in_imag(din_im2), .b_in_real(din_re3), .b_in_imag(din_im3),
