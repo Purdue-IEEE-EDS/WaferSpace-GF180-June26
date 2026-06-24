@@ -11,16 +11,15 @@ N 280 -437.5 280 -405 {lab=Vdd}
 N 390 -440 390 -415 {lab=Vin_n}
 N 280 -172.5 280 -127.5 {lab=0}
 N 280 -257.5 280 -232.5 {lab=Vin_p}
-N 260 10 300 10 {lab=Vout}
-N 70 -110 70 -50 {lab=Vdd}
-N -90 10 -40 10 {lab=Vin_p}
-N -90 -10 -40 -10 {lab=Vin_n}
-N 280 10 280 50 {lab=Vout}
-N 280 110 280 140 {lab=0}
-N -170 30 -50 30 {lab=#net1}
-N -50 30 -40 30 {lab=#net1}
-N -260 30 -230 30 {lab=0}
-C {op_amp.sym} 110 10 0 0 {name=x1}
+N 30 -240 70 -240 {lab=Vout}
+N -330 -240 -270 -240 {lab=Vdd}
+N -320 -200 -270 -200 {lab=Vin_p}
+N 50 -240 50 -200 {lab=Vout}
+N 50 -140 50 -110 {lab=0}
+N -400 -180 -280 -180 {lab=#net1}
+N -280 -180 -270 -180 {lab=#net1}
+N -490 -180 -460 -180 {lab=0}
+N -320 -220 -270 -220 {lab=Vin_n}
 C {vsource.sym} 280 -375 0 0 {name=V1 value=\{VDD\} savecurrent=false}
 C {vsource.sym} 390 -385 0 0 {name=V4 value="DC \{VCM\} AC -0.5 PULSE(\{VCM+50m\} \{VCM-50m\} 1n 10p 10p 20n 50n)" savecurrent=false}
 C {gnd.sym} 280 -305 0 0 {name=l2 lab=0}
@@ -36,8 +35,8 @@ C {code_shown.sym} 1040 -560 0 0 {name=s1 only_toplevel=false value="
 .param VCM=1.2
 .param VB1=0.0
 .param VB2=1.65
-.param CL=10f
-.options temp=27
+.param CL=100f
+.options temp=125
 
 .control
 save all
@@ -70,17 +69,18 @@ C {devices/code_shown.sym} 220 -600 0 0 {name=MODELS only_toplevel=true
 format="tcleval( @value )"
 value="
 .include $::180MCU_MODELS/design.ngspice
-.lib $::180MCU_MODELS/sm141064.ngspice typical
+.lib $::180MCU_MODELS/sm141064.ngspice ss
 "}
-C {lab_wire.sym} 300 10 0 1 {name=p1 sig_type=std_logic lab=Vout}
-C {lab_wire.sym} 70 -110 3 1 {name=p2 sig_type=std_logic lab=Vdd}
-C {lab_wire.sym} -90 10 0 0 {name=p12 sig_type=std_logic lab=Vin_p}
-C {lab_wire.sym} -90 -10 0 0 {name=p13 sig_type=std_logic lab=Vin_n}
-C {capa.sym} 280 80 0 0 {name=C1
+C {lab_wire.sym} 70 -240 0 1 {name=p1 sig_type=std_logic lab=Vout}
+C {lab_wire.sym} -330 -240 0 0 {name=p2 sig_type=std_logic lab=Vdd}
+C {lab_wire.sym} -320 -200 0 0 {name=p12 sig_type=std_logic lab=Vin_p}
+C {capa.sym} 50 -170 0 0 {name=C1
 m=1
 value=\{CL\}
 footprint=1206
 device="ceramic capacitor"}
-C {gnd.sym} 280 140 0 0 {name=l1 lab=0}
-C {isource.sym} -200 30 1 0 {name=I0 value=100u}
-C {gnd.sym} -260 30 0 0 {name=l3 lab=0}
+C {gnd.sym} 50 -110 0 0 {name=l1 lab=0}
+C {isource.sym} -430 -180 1 0 {name=I0 value=100u}
+C {gnd.sym} -490 -180 0 0 {name=l3 lab=0}
+C {lvds_rec_v3.sym} -120 -210 0 0 {name=x2}
+C {lab_wire.sym} -320 -220 0 0 {name=p3 sig_type=std_logic lab=Vin_n}
