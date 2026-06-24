@@ -6,10 +6,6 @@ S {}
 F {}
 E {}
 P 4 1 290 -660 {}
-N -100 -500 -100 -470 {lab=VDD}
-N -100 -410 -100 -380 {lab=GND}
-N 170 70 250 70 {lab=Vin_n}
-N 20 70 50 70 {lab=GND}
 N 680 -730 680 -670 {lab=VDD}
 N 680 -670 990 -670 {lab=VDD}
 N 400 -670 680 -670 {lab=VDD}
@@ -78,8 +74,6 @@ N 1460 -590 1640 -590 {lab=#net4}
 N 1460 -590 1460 -510 {lab=#net4}
 N 2230 -590 2380 -590 {lab=#net5}
 N 2380 -590 2380 -510 {lab=#net5}
-N 170 -30 250 -30 {lab=Vin}
-N 20 -30 50 -30 {lab=GND}
 N 680 -900 680 -880 {lab=GND}
 N 310 -1010 340 -1010 {lab=GND}
 N 380 -1060 380 -1040 {lab=VDD}
@@ -144,10 +138,6 @@ N 1280 -210 1280 -110 {lab=#net12}
 N 1250 -240 1280 -240 {lab=GND}
 N 1280 -360 1280 -270 {lab=#net2}
 N 1140 -360 1280 -360 {lab=#net2}
-N 1620 -40 1780 -40 {lab=Vf_n}
-N 1650 0 1710 0 {lab=GND}
-N 2020 -40 2180 -40 {lab=Vf}
-N 2050 0 2110 0 {lab=GND}
 N 1360 -900 1360 -880 {lab=GND}
 N 990 -1010 1020 -1010 {lab=GND}
 N 1060 -1060 1060 -1040 {lab=VDD}
@@ -247,72 +237,11 @@ N 3360 -420 3420 -420 {lab=#net17}
 N 3420 -420 3420 -380 {lab=#net17}
 N 3900 -470 3900 -440 {lab=GND}
 N 3900 -440 4040 -440 {lab=GND}
-N -300 -260 -100 -260 {lab=Vcp}
-N -260 -300 -260 -260 {lab=Vcp}
-N -520 -260 -360 -260 {lab=#net18}
-N -480 -300 -480 -260 {lab=#net18}
-N -740 -260 -580 -260 {lab=#net19}
-N -700 -300 -700 -260 {lab=#net19}
-N -960 -260 -800 -260 {lab=#net20}
-N -920 -300 -920 -260 {lab=#net20}
-N -1040 -160 -970 -160 {lab=#net21}
-N -1010 -160 -1010 -120 {lab=#net21}
-N -910 -160 -750 -160 {lab=#net22}
-N -790 -160 -790 -120 {lab=#net22}
-N -690 -160 -530 -160 {lab=#net23}
-N -570 -160 -570 -120 {lab=#net23}
-N -470 -160 -310 -160 {lab=#net24}
-N -350 -160 -350 -120 {lab=#net24}
-N -990 -220 -220 -220 {lab=GND}
-N -990 -240 -990 -90 {lab=GND}
-N -940 -330 -940 -220 {lab=GND}
-N -940 -220 -940 -180 {lab=GND}
-N -770 -220 -770 -90 {lab=GND}
-N -770 -240 -770 -220 {lab=GND}
-N -720 -330 -720 -220 {lab=GND}
-N -720 -220 -720 -180 {lab=GND}
-N -550 -220 -550 -90 {lab=GND}
-N -550 -240 -550 -220 {lab=GND}
-N -500 -330 -500 -220 {lab=GND}
-N -500 -220 -500 -180 {lab=GND}
-N -330 -220 -330 -90 {lab=GND}
-N -330 -240 -330 -220 {lab=GND}
-N -280 -330 -280 -220 {lab=GND}
-N -280 -220 -280 -180 {lab=GND}
-N -1040 -260 -1020 -260 {lab=#net21}
-N -1040 -260 -1040 -160 {lab=#net21}
-N -250 -180 -250 -160 {lab=GND}
-N -280 -180 -250 -180 {lab=GND}
-N -1160 -540 -1160 -510 {lab=Vcp_0}
-N -1160 -450 -1160 -420 {lab=GND}
-N -1080 -540 -1080 -510 {lab=Vcp_1}
-N -1080 -450 -1080 -420 {lab=GND}
-N -1000 -540 -1000 -510 {lab=Vcp_2}
-N -1000 -450 -1000 -420 {lab=GND}
-N -920 -540 -920 -510 {lab=Vcp_3}
-N -920 -450 -920 -420 {lab=GND}
-N -840 -540 -840 -510 {lab=Vcp_4}
-N -840 -450 -840 -420 {lab=GND}
-N -760 -540 -760 -510 {lab=Vcp_5}
-N -760 -450 -760 -420 {lab=GND}
-N -680 -540 -680 -510 {lab=Vcp_6}
-N -680 -450 -680 -420 {lab=GND}
-N -600 -540 -600 -510 {lab=Vcp_7}
-N -600 -450 -600 -420 {lab=GND}
-N -160 -200 -160 -170 {lab=GND}
 N 220 -210 390 -210 {lab=#net25}
 N 450 -210 880 -210 {lab=#net26}
 N 940 -210 1140 -210 {lab=#net27}
 N 690 -150 910 -190 {lab=GND}
 N 420 -190 690 -150 {lab=GND}
-N 1480 -70 1580 -70 {lab=Vout_buf}
-N 1580 -40 1580 -10 {lab=Vf_n}
-N 1580 -10 1620 -10 {lab=Vf_n}
-N 1620 -40 1620 -10 {lab=Vf_n}
-N 1880 -70 1980 -70 {lab=Vout_n_buf}
-N 1980 -40 1980 -10 {lab=Vf}
-N 1980 -10 2020 -10 {lab=Vf}
-N 2020 -40 2020 -10 {lab=Vf}
 N 350 -440 350 -410 {lab=#net1}
 N 470 -440 470 -410 {lab=Vin1}
 N 380 -390 440 -390 {lab=GND}
@@ -349,16 +278,52 @@ N 1000 -510 1140 -510 {lab=#net2}
 N 2240 -510 2380 -510 {lab=#net5}
 N 2060 -460 2060 -380 {lab=Vout_n_buf}
 N 1800 -460 1800 -380 {lab=Vout_buf}
-C {vsource.sym} -100 -440 0 0 {name=V1 value=3.3 savecurrent=false}
-C {gnd.sym} -100 -380 0 0 {name=l3 lab=GND}
+N -190 -250 -90 -250 {lab=Vcp}
+N -410 -250 -250 -250 {lab=#net9}
+N -630 -250 -470 -250 {lab=#net10}
+N -590 -290 -590 -250 {lab=#net10}
+N -850 -250 -690 -250 {lab=#net11}
+N -810 -290 -810 -250 {lab=#net11}
+N -930 -150 -860 -150 {lab=#net12}
+N -900 -150 -900 -110 {lab=#net12}
+N -800 -150 -640 -150 {lab=#net13}
+N -680 -150 -680 -110 {lab=#net13}
+N -580 -150 -420 -150 {lab=#net14}
+N -460 -150 -460 -110 {lab=#net14}
+N -360 -150 -200 -150 {lab=#net15}
+N -240 -150 -240 -110 {lab=#net15}
+N -880 -210 -110 -210 {lab=GND}
+N -880 -230 -880 -80 {lab=GND}
+N -830 -320 -830 -210 {lab=GND}
+N -830 -210 -830 -170 {lab=GND}
+N -660 -210 -660 -80 {lab=GND}
+N -660 -230 -660 -210 {lab=GND}
+N -610 -320 -610 -210 {lab=GND}
+N -610 -210 -610 -170 {lab=GND}
+N -440 -210 -440 -80 {lab=GND}
+N -440 -230 -440 -210 {lab=GND}
+N -390 -210 -390 -170 {lab=GND}
+N -220 -210 -220 -80 {lab=GND}
+N -220 -230 -220 -210 {lab=GND}
+N -170 -210 -170 -170 {lab=GND}
+N -930 -250 -910 -250 {lab=#net12}
+N -930 -250 -930 -150 {lab=#net12}
+N -140 -170 -140 -150 {lab=GND}
+N -170 -170 -140 -170 {lab=GND}
+N 1750 -960 1910 -960 {lab=Vf_n}
+N 1780 -920 1840 -920 {lab=GND}
+N 2150 -960 2310 -960 {lab=Vf}
+N 2180 -920 2240 -920 {lab=GND}
+N 1610 -990 1710 -990 {lab=Vout_buf}
+N 1710 -960 1710 -930 {lab=Vf_n}
+N 1710 -930 1750 -930 {lab=Vf_n}
+N 1750 -960 1750 -930 {lab=Vf_n}
+N 2010 -990 2110 -990 {lab=Vout_n_buf}
+N 2110 -960 2110 -930 {lab=Vf}
+N 2110 -930 2150 -930 {lab=Vf}
+N 2150 -960 2150 -930 {lab=Vf}
 C {lab_pin.sym} 410 -480 3 0 {name=p3 sig_type=std_logic lab=Vcp
 
-}
-C {vsource.sym} 80 70 1 0 {name=V6 value="dc 1.65 ac 20m 180" savecurrent=false}
-C {gnd.sym} 20 70 1 0 {name=l10 lab=GND}
-C {lab_pin.sym} 200 70 1 0 {name=p9 sig_type=std_logic lab=Vin_n
-}
-C {lab_pin.sym} -100 -500 0 0 {name=p12 sig_type=std_logic lab=VDD
 }
 C {symbols/nfet_03v3.sym} 540 -360 0 0 {name=M5
 L=0.28u
@@ -388,15 +353,9 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_pin.sym} 680 -730 0 0 {name=p14 sig_type=std_logic lab=VDD
-}
 C {lab_pin.sym} 590 -510 2 0 {name=p15 sig_type=std_logic lab=Vin1
 }
 C {lab_pin.sym} 790 -510 0 0 {name=p2 sig_type=std_logic lab=Vin_n1
-}
-C {lab_pin.sym} 1180 -240 0 1 {name=p10 sig_type=std_logic lab=Vin_n
-}
-C {lab_pin.sym} 180 -240 0 0 {name=p5 sig_type=std_logic lab=Vin
 }
 C {gnd.sym} 1110 -240 1 0 {name=l4 lab=GND}
 C {lab_pin.sym} 610 -280 0 0 {name=p13 sig_type=std_logic lab=VBB
@@ -639,20 +598,6 @@ spiceprefix=X
 }
 C {gnd.sym} 1990 -170 3 1 {name=l21 lab=GND}
 C {gnd.sym} 1930 -140 0 0 {name=l22 lab=GND}
-C {vsource.sym} 80 -30 1 0 {name=V7 value="dc 1.65 ac 20m 0" savecurrent=false}
-C {gnd.sym} 20 -30 1 0 {name=l23 lab=GND}
-C {lab_pin.sym} 200 -30 1 0 {name=p29 sig_type=std_logic lab=Vin
-}
-C {res.sym} 140 -30 3 0 {name=R14
-value=50
-footprint=1206
-device=resistor
-m=1}
-C {res.sym} 140 70 3 0 {name=R13
-value=50
-footprint=1206
-device=resistor
-m=1}
 C {symbols/pfet_03v3.sym} 580 -1130 0 1 {name=M21
 L=0.28u
 W=20u
@@ -863,8 +808,6 @@ spiceprefix=X
 C {lab_pin.sym} 3580 -640 1 0 {name=p4 sig_type=std_logic lab=VDD
 }
 C {gnd.sym} 3580 -300 0 0 {name=l45 lab=GND}
-C {lab_pin.sym} 4100 -500 2 0 {name=p11 sig_type=std_logic lab=Vout_s
-}
 C {symbols/nfet_03v3.sym} 3460 -490 0 0 {name=M_inv1n
 L=0.28u
 W=24u
@@ -1012,40 +955,6 @@ spiceprefix=X
 }
 C {gnd.sym} 1250 -240 1 0 {name=l40 lab=GND}
 C {lab_pin.sym} 1320 -240 0 1 {name=p42 sig_type=std_logic lab=Vf_n}
-C {lab_pin.sym} 1480 -70 0 0 {name=p43 sig_type=std_logic lab=Vout_buf}
-C {symbols/nfet_03v3.sym} 1680 -20 1 0 {name=M39
-L=0.56u
-W=20u
-nf=10
-m=1
-ad="'int((nf+1)/2) * W/nf * 0.18u'"
-pd="'2*int((nf+1)/2) * (W/nf + 0.18u)'"
-as="'int((nf+2)/2) * W/nf * 0.18u'"
-ps="'2*int((nf+2)/2) * (W/nf + 0.18u)'"
-nrd="'0.18u / W'" nrs="'0.18u / W'"
-sa=0 sb=0 sd=0
-model=nfet_03v3
-spiceprefix=X
-}
-C {gnd.sym} 1680 0 0 0 {name=l48 lab=GND}
-C {lab_pin.sym} 1780 -40 0 1 {name=p44 sig_type=std_logic lab=Vf_n}
-C {lab_pin.sym} 1880 -70 0 0 {name=p45 sig_type=std_logic lab=Vout_n_buf}
-C {symbols/nfet_03v3.sym} 2080 -20 1 0 {name=M40
-L=0.56u
-W=20u
-nf=10
-m=1
-ad="'int((nf+1)/2) * W/nf * 0.18u'"
-pd="'2*int((nf+1)/2) * (W/nf + 0.18u)'"
-as="'int((nf+2)/2) * W/nf * 0.18u'"
-ps="'2*int((nf+2)/2) * (W/nf + 0.18u)'"
-nrd="'0.18u / W'" nrs="'0.18u / W'"
-sa=0 sb=0 sd=0
-model=nfet_03v3
-spiceprefix=X
-}
-C {gnd.sym} 2080 0 0 0 {name=l50 lab=GND}
-C {lab_pin.sym} 2180 -40 0 1 {name=p46 sig_type=std_logic lab=Vf}
 C {symbols/pfet_03v3.sym} 1260 -1130 0 1 {name=M37
 L=0.28u
 W=20u
@@ -1146,7 +1055,6 @@ model=nfet_03v3
 spiceprefix=X
 }
 C {gnd.sym} 750 -80 3 1 {name=l52 lab=GND}
-C {gnd.sym} 690 -50 0 0 {name=l53 lab=GND}
 C {vsource.sym} 3820 -330 0 0 {name=V_bias value="dc 2.4" savecurrent=false spice_ignore=true}
 C {symbols/pfet_03v3.sym} 3380 -590 0 1 {name=Mmir1l
 L=0.28u
@@ -1218,148 +1126,6 @@ value=100f
 footprint=1206
 device=polarized_capacitor}
 C {gnd.sym} 4040 -440 0 0 {name=l46 lab=GND}
-C {lab_pin.sym} -100 -260 2 0 {name=p1 sig_type=std_logic lab=Vcp
-
-}
-C {symbols/ppolyf_u_1k.sym} -330 -260 1 1 {name=R16
-W=1e-6
-L=1e-6
-model=ppolyf_u_1k
-spiceprefix=X
-m=1}
-C {symbols/ppolyf_u_1k.sym} -260 -330 2 1 {name=R20
-W=1e-6
-L=2.2e-6
-model=ppolyf_u_1k
-spiceprefix=X
-m=1}
-C {symbols/ppolyf_u_1k.sym} -550 -260 1 1 {name=R21
-W=1e-6
-L=1e-6
-model=ppolyf_u_1k
-spiceprefix=X
-m=1}
-C {symbols/ppolyf_u_1k.sym} -480 -330 2 1 {name=R22
-W=1e-6
-L=2.2e-6
-model=ppolyf_u_1k
-spiceprefix=X
-m=1}
-C {symbols/ppolyf_u_1k.sym} -770 -260 1 1 {name=R23
-W=1e-6
-L=1e-6
-model=ppolyf_u_1k
-spiceprefix=X
-m=1}
-C {symbols/ppolyf_u_1k.sym} -700 -330 2 1 {name=R24
-W=1e-6
-L=2.2e-6
-model=ppolyf_u_1k
-spiceprefix=X
-m=1}
-C {symbols/ppolyf_u_1k.sym} -990 -260 1 1 {name=R25
-W=1e-6
-L=1e-6
-model=ppolyf_u_1k
-spiceprefix=X
-m=1}
-C {symbols/ppolyf_u_1k.sym} -920 -330 2 1 {name=R26
-W=1e-6
-L=2.2e-6
-model=ppolyf_u_1k
-spiceprefix=X
-m=1}
-C {symbols/ppolyf_u_1k.sym} -940 -160 3 1 {name=R27
-W=1e-6
-L=1e-6
-model=ppolyf_u_1k
-spiceprefix=X
-m=1}
-C {symbols/ppolyf_u_1k.sym} -1010 -90 0 1 {name=R28
-W=1e-6
-L=2.2e-6
-model=ppolyf_u_1k
-spiceprefix=X
-m=1}
-C {symbols/ppolyf_u_1k.sym} -720 -160 3 1 {name=R29
-W=1e-6
-L=1e-6
-model=ppolyf_u_1k
-spiceprefix=X
-m=1}
-C {symbols/ppolyf_u_1k.sym} -790 -90 0 1 {name=R30
-W=1e-6
-L=2.2e-6
-model=ppolyf_u_1k
-spiceprefix=X
-m=1}
-C {symbols/ppolyf_u_1k.sym} -500 -160 3 1 {name=R31
-W=1e-6
-L=1e-6
-model=ppolyf_u_1k
-spiceprefix=X
-m=1}
-C {symbols/ppolyf_u_1k.sym} -570 -90 0 1 {name=R32
-W=1e-6
-L=2.2e-6
-model=ppolyf_u_1k
-spiceprefix=X
-m=1}
-C {symbols/ppolyf_u_1k.sym} -280 -160 3 1 {name=R33
-W=1e-6
-L=2.2e-6
-model=ppolyf_u_1k
-spiceprefix=X
-m=1}
-C {symbols/ppolyf_u_1k.sym} -350 -90 0 1 {name=R34
-W=1e-6
-L=2.2e-6
-model=ppolyf_u_1k
-spiceprefix=X
-m=1}
-C {gnd.sym} -220 -220 3 0 {name=l5 lab=GND}
-C {lab_pin.sym} -350 -60 2 0 {name=p30 sig_type=std_logic lab=Vcp_0}
-C {lab_pin.sym} -570 -60 2 0 {name=p31 sig_type=std_logic lab=Vcp_1}
-C {lab_pin.sym} -790 -60 2 0 {name=p32 sig_type=std_logic lab=Vcp_2}
-C {lab_pin.sym} -1010 -60 2 0 {name=p33 sig_type=std_logic lab=Vcp_3}
-C {lab_pin.sym} -920 -360 2 0 {name=p34 sig_type=std_logic lab=Vcp_4}
-C {lab_pin.sym} -700 -360 2 0 {name=p50 sig_type=std_logic lab=Vcp_5}
-C {lab_pin.sym} -480 -360 2 0 {name=p51 sig_type=std_logic lab=Vcp_6}
-C {lab_pin.sym} -260 -360 2 0 {name=p52 sig_type=std_logic lab=Vcp_7}
-C {vsource.sym} -1160 -480 0 0 {name=V10 value=3.3 savecurrent=false}
-C {gnd.sym} -1160 -420 0 0 {name=l6 lab=GND}
-C {lab_pin.sym} -1160 -540 0 0 {name=p53 sig_type=std_logic lab=Vcp_0
-}
-C {vsource.sym} -1080 -480 0 0 {name=V11 value=3.3 savecurrent=false}
-C {gnd.sym} -1080 -420 0 0 {name=l24 lab=GND}
-C {lab_pin.sym} -1080 -540 0 0 {name=p54 sig_type=std_logic lab=Vcp_1
-}
-C {vsource.sym} -1000 -480 0 0 {name=V4 value=3.3 savecurrent=false}
-C {gnd.sym} -1000 -420 0 0 {name=l25 lab=GND}
-C {lab_pin.sym} -1000 -540 0 0 {name=p55 sig_type=std_logic lab=Vcp_2
-}
-C {vsource.sym} -920 -480 0 0 {name=V13 value=3.3 savecurrent=false}
-C {gnd.sym} -920 -420 0 0 {name=l26 lab=GND}
-C {lab_pin.sym} -920 -540 0 0 {name=p56 sig_type=std_logic lab=Vcp_3
-}
-C {vsource.sym} -840 -480 0 0 {name=V14 value=3.3 savecurrent=false}
-C {gnd.sym} -840 -420 0 0 {name=l27 lab=GND}
-C {lab_pin.sym} -840 -540 0 0 {name=p57 sig_type=std_logic lab=Vcp_4
-}
-C {vsource.sym} -760 -480 0 0 {name=V15 value=3.3 savecurrent=false}
-C {gnd.sym} -760 -420 0 0 {name=l28 lab=GND}
-C {lab_pin.sym} -760 -540 0 0 {name=p58 sig_type=std_logic lab=Vcp_5
-}
-C {vsource.sym} -680 -480 0 0 {name=V16 value=3.3 savecurrent=false}
-C {gnd.sym} -680 -420 0 0 {name=l54 lab=GND}
-C {lab_pin.sym} -680 -540 0 0 {name=p59 sig_type=std_logic lab=Vcp_6
-}
-C {vsource.sym} -600 -480 0 0 {name=V17 value=3.3 savecurrent=false}
-C {gnd.sym} -600 -420 0 0 {name=l55 lab=GND}
-C {lab_pin.sym} -600 -540 0 0 {name=p60 sig_type=std_logic lab=Vcp_7
-}
-C {vsource.sym} -160 -230 0 0 {name=V3 value=0 savecurrent=false}
-C {gnd.sym} -160 -170 0 0 {name=l56 lab=GND}
 C {symbols/ppolyf_u_1k.sym} 420 -210 1 1 {name=R35
 W=1e-6
 L=2.3e-6
@@ -1372,34 +1138,6 @@ L=2.3e-6
 model=ppolyf_u_1k
 spiceprefix=X
 m=1}
-C {symbols/nfet_03v3.sym} 1600 -40 0 1 {name=M15
-L=0.28u
-W=5u
-nf=5
-m=1
-ad="'int((nf+1)/2) * W/nf * 0.18u'"
-pd="'2*int((nf+1)/2) * (W/nf + 0.18u)'"
-as="'int((nf+2)/2) * W/nf * 0.18u'"
-ps="'2*int((nf+2)/2) * (W/nf + 0.18u)'"
-nrd="'0.18u / W'" nrs="'0.18u / W'"
-sa=0 sb=0 sd=0
-model=nfet_03v3
-spiceprefix=X
-}
-C {symbols/nfet_03v3.sym} 2000 -40 0 1 {name=M18
-L=0.28u
-W=5u
-nf=5
-m=1
-ad="'int((nf+1)/2) * W/nf * 0.18u'"
-pd="'2*int((nf+1)/2) * (W/nf + 0.18u)'"
-as="'int((nf+2)/2) * W/nf * 0.18u'"
-ps="'2*int((nf+2)/2) * (W/nf + 0.18u)'"
-nrd="'0.18u / W'" nrs="'0.18u / W'"
-sa=0 sb=0 sd=0
-model=nfet_03v3
-spiceprefix=X
-}
 C {symbols/ppolyf_u_1k.sym} 380 -410 1 1 {name=R5
 W=1e-6
 L=7.8e-6
@@ -1562,3 +1300,168 @@ L=5.3e-6
 model=ppolyf_u_1k
 spiceprefix=X
 m=1}
+C {lab_pin.sym} -90 -250 2 0 {name=p28 sig_type=std_logic lab=Vcp
+
+}
+C {symbols/ppolyf_u_1k.sym} -220 -250 1 1 {name=R39
+W=1e-6
+L=1e-6
+model=ppolyf_u_1k
+spiceprefix=X
+m=1}
+C {symbols/ppolyf_u_1k.sym} -440 -250 1 1 {name=R40
+W=1e-6
+L=1e-6
+model=ppolyf_u_1k
+spiceprefix=X
+m=1}
+C {symbols/ppolyf_u_1k.sym} -660 -250 1 1 {name=R41
+W=1e-6
+L=1e-6
+model=ppolyf_u_1k
+spiceprefix=X
+m=1}
+C {symbols/ppolyf_u_1k.sym} -590 -320 2 1 {name=R42
+W=1e-6
+L=2.2e-6
+model=ppolyf_u_1k
+spiceprefix=X
+m=1}
+C {symbols/ppolyf_u_1k.sym} -880 -250 1 1 {name=R43
+W=1e-6
+L=1e-6
+model=ppolyf_u_1k
+spiceprefix=X
+m=1}
+C {symbols/ppolyf_u_1k.sym} -810 -320 2 1 {name=R44
+W=1e-6
+L=2.2e-6
+model=ppolyf_u_1k
+spiceprefix=X
+m=1}
+C {symbols/ppolyf_u_1k.sym} -830 -150 3 1 {name=R45
+W=1e-6
+L=1e-6
+model=ppolyf_u_1k
+spiceprefix=X
+m=1}
+C {symbols/ppolyf_u_1k.sym} -900 -80 0 1 {name=R46
+W=1e-6
+L=2.2e-6
+model=ppolyf_u_1k
+spiceprefix=X
+m=1}
+C {symbols/ppolyf_u_1k.sym} -610 -150 3 1 {name=R47
+W=1e-6
+L=1e-6
+model=ppolyf_u_1k
+spiceprefix=X
+m=1}
+C {symbols/ppolyf_u_1k.sym} -680 -80 0 1 {name=R48
+W=1e-6
+L=2.2e-6
+model=ppolyf_u_1k
+spiceprefix=X
+m=1}
+C {symbols/ppolyf_u_1k.sym} -390 -150 3 1 {name=R49
+W=1e-6
+L=1e-6
+model=ppolyf_u_1k
+spiceprefix=X
+m=1}
+C {symbols/ppolyf_u_1k.sym} -460 -80 0 1 {name=R50
+W=1e-6
+L=2.2e-6
+model=ppolyf_u_1k
+spiceprefix=X
+m=1}
+C {symbols/ppolyf_u_1k.sym} -170 -150 3 1 {name=R51
+W=1e-6
+L=2.2e-6
+model=ppolyf_u_1k
+spiceprefix=X
+m=1}
+C {symbols/ppolyf_u_1k.sym} -240 -80 0 1 {name=R52
+W=1e-6
+L=2.2e-6
+model=ppolyf_u_1k
+spiceprefix=X
+m=1}
+C {gnd.sym} -110 -210 3 0 {name=l37 lab=GND}
+C {ipin.sym} -240 -50 2 0 {name=p61 lab=Vcp_0}
+C {ipin.sym} -460 -50 2 0 {name=p62 lab=Vcp_1}
+C {ipin.sym} -680 -50 2 0 {name=p63 lab=Vcp_2}
+C {ipin.sym} -900 -50 2 0 {name=p64 lab=Vcp_3}
+C {ipin.sym} -810 -350 2 0 {name=p65 lab=Vcp_4}
+C {ipin.sym} -590 -350 2 0 {name=p66 lab=Vcp_5}
+C {ipin.sym} 180 -240 0 0 {name=p1 lab=Vin
+}
+C {ipin.sym} 1180 -240 0 1 {name=p5 lab=Vin_n
+}
+C {lab_pin.sym} 1610 -990 0 0 {name=p9 sig_type=std_logic lab=Vout_buf}
+C {symbols/nfet_03v3.sym} 1810 -940 1 0 {name=M19
+L=0.56u
+W=20u
+nf=10
+m=1
+ad="'int((nf+1)/2) * W/nf * 0.18u'"
+pd="'2*int((nf+1)/2) * (W/nf + 0.18u)'"
+as="'int((nf+2)/2) * W/nf * 0.18u'"
+ps="'2*int((nf+2)/2) * (W/nf + 0.18u)'"
+nrd="'0.18u / W'" nrs="'0.18u / W'"
+sa=0 sb=0 sd=0
+model=nfet_03v3
+spiceprefix=X
+}
+C {gnd.sym} 1810 -920 0 0 {name=l3 lab=GND}
+C {lab_pin.sym} 1910 -960 0 1 {name=p10 sig_type=std_logic lab=Vf_n}
+C {lab_pin.sym} 2010 -990 0 0 {name=p12 sig_type=std_logic lab=Vout_n_buf}
+C {symbols/nfet_03v3.sym} 2210 -940 1 0 {name=M20
+L=0.56u
+W=20u
+nf=10
+m=1
+ad="'int((nf+1)/2) * W/nf * 0.18u'"
+pd="'2*int((nf+1)/2) * (W/nf + 0.18u)'"
+as="'int((nf+2)/2) * W/nf * 0.18u'"
+ps="'2*int((nf+2)/2) * (W/nf + 0.18u)'"
+nrd="'0.18u / W'" nrs="'0.18u / W'"
+sa=0 sb=0 sd=0
+model=nfet_03v3
+spiceprefix=X
+}
+C {gnd.sym} 2210 -920 0 0 {name=l5 lab=GND}
+C {lab_pin.sym} 2310 -960 0 1 {name=p29 sig_type=std_logic lab=Vf}
+C {symbols/nfet_03v3.sym} 1730 -960 0 1 {name=M30
+L=0.28u
+W=0.88u
+nf=1
+m=1
+ad="'int((nf+1)/2) * W/nf * 0.18u'"
+pd="'2*int((nf+1)/2) * (W/nf + 0.18u)'"
+as="'int((nf+2)/2) * W/nf * 0.18u'"
+ps="'2*int((nf+2)/2) * (W/nf + 0.18u)'"
+nrd="'0.18u / W'" nrs="'0.18u / W'"
+sa=0 sb=0 sd=0
+model=nfet_03v3
+spiceprefix=X
+}
+C {symbols/nfet_03v3.sym} 2130 -960 0 1 {name=M31
+L=0.28u
+W=0.88u
+nf=1
+m=1
+ad="'int((nf+1)/2) * W/nf * 0.18u'"
+pd="'2*int((nf+1)/2) * (W/nf + 0.18u)'"
+as="'int((nf+2)/2) * W/nf * 0.18u'"
+ps="'2*int((nf+2)/2) * (W/nf + 0.18u)'"
+nrd="'0.18u / W'" nrs="'0.18u / W'"
+sa=0 sb=0 sd=0
+model=nfet_03v3
+spiceprefix=X
+}
+C {ipin.sym} 680 -730 2 0 {name=p30 lab=VDD}
+C {opin.sym} 4100 -500 0 0 {name=p14 lab=Vout_s
+}
+C {ipin.sym} 690 -50 0 1 {name=p11 lab=GND
+}
