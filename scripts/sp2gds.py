@@ -220,6 +220,7 @@ def place_nfet_pfet_03v3(lib, cv, ly, top, c, nl_inds):
         "w_gate": width / nfingers,
         "l_gate": length,
         "nf": nfingers,
+        "gate_con_pos": "top",  # work around klayout bug where it's actually "alternating" by default
         "con_bet_fin": False if nfingers == 1 else True,  # Disabling allows width to reach minimum @ 0.22u and fixes a KLayout bug where pmos has zero initial bbox (disappears initially).
         "lbl": False
     }
