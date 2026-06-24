@@ -31,10 +31,10 @@ ac lin 727 20meg 1.5G
 let imag = mag(i(v1))
 
 * For a resistor, Z = V/I
-* let resistannnnn = 3.3 / imag
+* let resistannnnn = (3.3 / 2) / imag
 
 * For a capacitor, Z = 1/(jwC) = V/I -> C = (I/V) * 1/(jw)
-let resistannnnn = mag((i(v1) / (3.3, 0)) / (0, 6.28 * frequency))
+let resistannnnn = mag((i(v1) / (3.3 / 2, 0)) / (0, 6.28 * frequency))
 
 plot resistannnnn ylimit 0 10f
 print mean(resistannnnn)
