@@ -5,13 +5,20 @@ V {}
 S {}
 F {}
 E {}
-N 550 -1425 550 -1405 {lab=Vdd}
+T {Master IREF=10uA} -113.75 -748.75 0 0 0.2 0.2 {}
 N 425 -570 425 -550 {lab=0}
 N 330 -575 330 -555 {lab=0}
 N 330 -645 330 -635 {lab=#net1}
 N 425 -640 425 -630 {lab=#net2}
-N 425 -730 425 -700 {lab=Vout1N}
-N 330 -730 330 -705 {lab=Vout1P}
+N 425 -730 425 -700 {lab=VOUT_N}
+N 330 -730 330 -705 {lab=VOUT_P}
+N 487.5 -1212.5 487.5 -1192.5 {lab=Vdd}
+N 276.25 -1178.75 375 -1178.75 {lab=Vdd}
+N 328.75 -1178.75 328.75 -1176.25 {lab=Vdd}
+N 375 -1178.75 375 -1176.25 {lab=Vdd}
+N 277.5 -1178.75 277.5 -1175 {lab=Vdd}
+N 375 -1180 375 -1178.75 {lab=Vdd}
+N 287.5 -1186.25 287.5 -1178.75 {lab=Vdd}
 C {simulator_commands_shown.sym} 630 -1475 0 0 {name=COMMANDS1
 simulator=ngspice
 only_toplevel=false 
@@ -44,14 +51,6 @@ C {code_shown.sym} 390 -1515 0 0 {name=s1 only_toplevel=false value="
 .op
 .save all
 "}
-C {code_shown.sym} 390 -1615 0 0 {name=s2 only_toplevel=false value=
-"
-.include /headless/QucsWorkspace/IHP-Open-PDK/gf180mcuD/libs.tech/ngspice/design.ngspice typical
-.lib /headless/QucsWorkspace/IHP-Open-PDK/gf180mcuD/libs.tech/ngspice/sm141064.ngspice typical
-"}
-C {gnd.sym} 550 -1345 0 0 {name=l4 lab=0}
-C {vsource.sym} 550 -1375 0 0 {name=Vdd value=3.3 savecurrent=true}
-C {lab_pin.sym} 550 -1425 1 0 {name=p13 sig_type=std_logic lab=Vdd}
 C {res.sym} 330 -675 0 0 {name=R3
 value=100
 footprint=1206
@@ -69,8 +68,8 @@ C {vsource.sym} 330 -605 0 0 {name=Vl1 value=0.0 savecurrent=true
 }
 C {vsource.sym} 425 -600 0 0 {name=Vl2 value=0.0 savecurrent=true
 }
-C {lab_pin.sym} 330 -730 0 1 {name=p18 sig_type=std_logic lab=Vout1P}
-C {lab_pin.sym} 425 -730 0 1 {name=p19 sig_type=std_logic lab=Vout1N}
+C {lab_pin.sym} 330 -730 0 1 {name=p18 sig_type=std_logic lab=VOUT_P}
+C {lab_pin.sym} 425 -730 0 1 {name=p19 sig_type=std_logic lab=VOUT_N}
 C {lab_pin.sym} -253.75 -912.5 2 0 {name=p2 sig_type=std_logic lab=pulseP
 value="DC 3.3"
 }
@@ -92,19 +91,55 @@ C {lab_pin.sym} -148.75 -972.5 2 0 {name=p42 sig_type=std_logic lab=VB3bufN
 value="DC 3.3"
 }
 C {lab_pin.sym} -253.75 -972.5 2 0 {name=p7 sig_type=std_logic lab=VB3bufP}
-C {cellv9/dac_cell_10ua_v9.sym} -25 -630 0 0 {name=x1}
-C {lab_pin.sym} -125 -580 2 1 {name=p6 sig_type=std_logic lab=Vdd}
-C {lab_pin.sym} -125 -680 2 1 {name=p9 sig_type=std_logic lab=VB3bufP}
-C {lab_pin.sym} -125 -660 2 1 {name=p10 sig_type=std_logic lab=VB3bufN}
-C {lab_pin.sym} 135 -660 0 1 {name=p11 sig_type=std_logic lab=Vout1N}
-C {lab_pin.sym} 135 -680 0 1 {name=p12 sig_type=std_logic lab=Vout1P}
-C {iref/dac_iref.sym} 135 -937.5 0 0 {name=x4}
-C {lab_pin.sym} 35 -957.5 2 1 {name=p14 sig_type=std_logic lab=Vdd}
-C {lab_pin.sym} 235 -957.5 0 1 {name=p15 sig_type=std_logic lab=VPCas}
-C {lab_pin.sym} 235 -937.5 0 1 {name=p16 sig_type=std_logic lab=VNMir}
-C {lab_pin.sym} 235 -917.5 0 1 {name=p17 sig_type=std_logic lab=VNCas}
-C {lab_pin.sym} -125 -600 2 1 {name=p20 sig_type=std_logic lab=VNMir}
-C {lab_pin.sym} -125 -620 2 1 {name=p22 sig_type=std_logic lab=VNCas}
-C {lab_pin.sym} -125 -640 2 1 {name=p23 sig_type=std_logic lab=VPCas}
-C {ammeter.sym} 105 -680 3 0 {name=VB3P savecurrent=true spice_ignore=0}
-C {ammeter.sym} 105 -660 3 0 {name=VB3N savecurrent=true spice_ignore=0}
+C {lab_pin.sym} 103.75 -911.25 2 1 {name=p303 sig_type=std_logic lab=pulseP}
+C {lab_pin.sym} 103.75 -891.25 2 1 {name=p304 sig_type=std_logic lab=pulseN}
+C {cellv9/dac_cell_10ua_v9.sym} 203.75 -871.25 0 0 {name=x1}
+C {lab_pin.sym} 103.75 -831.25 2 1 {name=p305 sig_type=std_logic lab=Vdd}
+C {lab_pin.sym} 103.75 -851.25 2 1 {name=p306 sig_type=std_logic lab=IREF0}
+C {lab_pin.sym} 103.75 -871.25 2 1 {name=p308 sig_type=std_logic lab=VCAS}
+C {lab_pin.sym} 363.75 -891.25 0 1 {name=p337 sig_type=std_logic lab=VOUT_N}
+C {lab_pin.sym} 363.75 -911.25 0 1 {name=p338 sig_type=std_logic lab=VOUT_P}
+C {ammeter.sym} 333.75 -911.25 3 0 {name=VB0P savecurrent=true spice_ignore=0}
+C {ammeter.sym} 333.75 -891.25 3 0 {name=VB0N savecurrent=true spice_ignore=0}
+C {iref/dac_iref.sym} -128.75 -638.75 0 0 {name=x6}
+C {lab_pin.sym} -228.75 -648.75 2 1 {name=p128 sig_type=std_logic lab=Vdd}
+C {lab_pin.sym} -28.75 -648.75 0 1 {name=p129 sig_type=std_logic lab=VCAS}
+C {lab_pin.sym} -28.75 -628.75 0 1 {name=p130 sig_type=std_logic lab=IREF[35..0]}
+C {isource.sym} -130 -773.75 0 0 {name=Iref2 value="DC 10uA AC 0"}
+C {gnd.sym} -130 -743.75 0 0 {name=l1 lab=0}
+C {lab_pin.sym} -130 -803.75 2 1 {name=p5 sig_type=std_logic lab=IREF_MASTER_10UA}
+C {lab_pin.sym} -228.75 -628.75 0 0 {name=p12 sig_type=std_logic lab=IREF_MASTER_10UA}
+C {code_shown.sym} 642.5 -1005 0 0 {name=s3 only_toplevel=false value=
+"
+.include /foss/pdks/gf180mcuD/libs.tech/ngspice/design.ngspice typical
+.lib /foss/pdks/gf180mcuD/libs.tech/ngspice/sm141064.ngspice typical
+.lib /foss/pdks/gf180mcuD/libs.tech/ngspice/sm141064.ngspice res_typical
+.lib /foss/pdks/gf180mcuD/libs.tech/ngspice/sm141064.ngspice mimcap_typical
+"}
+C {gnd.sym} 487.5 -1072.5 0 0 {name=l4 lab=0}
+C {vsource.sym} 487.5 -1102.5 0 0 {name=Vdd value=3.3 savecurrent=true}
+C {lab_pin.sym} 487.5 -1212.5 1 0 {name=p13 sig_type=std_logic lab=Vdd}
+C {res.sym} 487.5 -1162.5 0 0 {name=R1
+value=2
+footprint=1206
+device=resistor
+m=1}
+C {capa.sym} 277.5 -1148.75 0 0 {name=C1
+m=1
+value=0.1u
+footprint=1206
+device="ceramic capacitor"}
+C {gnd.sym} 277.5 -1118.75 0 0 {name=l2 lab=0}
+C {capa.sym} 328.75 -1148.75 0 0 {name=C2
+m=1
+value=1p
+footprint=1206
+device="ceramic capacitor"}
+C {gnd.sym} 328.75 -1118.75 0 0 {name=l3 lab=0}
+C {capa.sym} 375 -1148.75 0 0 {name=C3
+m=1
+value=1p
+footprint=1206
+device="ceramic capacitor"}
+C {gnd.sym} 375 -1118.75 0 0 {name=l5 lab=0}
+C {lab_pin.sym} 287.5 -1186.25 1 0 {name=p26 sig_type=std_logic lab=Vdd}

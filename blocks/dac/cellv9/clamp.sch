@@ -161,3 +161,14 @@ C=1pF}
 C {gnd.sym} 597.5 62.5 0 0 {name=Data2 lab=0
 value="PULSE(3.3 0 \{clk*0.5\} 30ps 30ps \{clk*1\} \{clk*2\})"
 }
+C {lab_pin.sym} 226.25 202.5 0 1 {name=p2 sig_type=std_logic lab=FB}
+C {symbols/cap_mim_analog.sym} 226.25 232.5 0 0 {name=C8
+W=10e-6
+L=5e-6
+model=cap_mim_2f0_m3m4_noshield
+spiceprefix=X
+m=8
+C=1pF}
+C {gnd.sym} 226.25 262.5 0 0 {name=Data3 lab=0
+value="PULSE(3.3 0 \{clk*0.5\} 30ps 30ps \{clk*1\} \{clk*2\})"
+}

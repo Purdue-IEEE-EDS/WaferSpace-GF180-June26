@@ -545,3 +545,10 @@ spiceprefix=X
 C {gnd.sym} 120 12.5 0 0 {name=l2 lab=0}
 C {lab_pin.sym} 80 -17.5 0 0 {name=p24 sig_type=std_logic lab=IB10}
 C {gnd.sym} 120 -17.5 3 1 {name=l18 lab=0}
+C {code_shown.sym} 150 -625 0 0 {name=s3 only_toplevel=false value=
+"
+.include /foss/pdks/gf180mcuD/libs.tech/ngspice/design.ngspice typical
+.lib /foss/pdks/gf180mcuD/libs.tech/ngspice/sm141064.ngspice typical
+.lib /foss/pdks/gf180mcuD/libs.tech/ngspice/sm141064.ngspice res_typical
+.lib /foss/pdks/gf180mcuD/libs.tech/ngspice/sm141064.ngspice mimcap_typical
+"}

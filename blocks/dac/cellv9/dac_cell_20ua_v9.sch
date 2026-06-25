@@ -5,8 +5,6 @@ V {}
 S {}
 F {}
 E {}
-T {10uA local mirror} 2020 778.75 0 0 0.25 0.25 {}
-T {10uA} 2487.5 822.5 0 0 0.25 0.25 {}
 N 1277.5 930 1277.5 960 {lab=VxP}
 N 1347.5 835 1422.5 835 {lab=Vcx}
 N 1277.5 835 1347.5 835 {lab=Vcx}
@@ -56,17 +54,17 @@ N 1372.5 1102.5 1372.5 1182.5 {lab=VoutN}
 N 1327.5 1162.5 1327.5 1182.5 {lab=VoutP}
 N 1277.5 1072.5 1277.5 1097.5 {lab=VoutP}
 N 1277.5 1035 1277.5 1050 {lab=VoutP}
-N 1738.75 1131.25 1738.75 1146.25 {lab=VcbRef}
+N 1748.75 981.25 1748.75 996.25 {lab=VCB_REF}
 N 1422.5 930 1422.5 960 {lab=VxN}
 N 1422.5 1035 1422.5 1040 {lab=VoutN}
-N 1738.75 986.25 1738.75 1051.25 {lab=VcbP}
-N 1738.75 1051.25 1858.75 1051.25 {lab=VcbP}
-N 1858.75 976.25 1858.75 1051.25 {lab=VcbP}
-N 1863.75 823.75 1863.75 878.75 {lab=VcbN}
-N 1863.75 878.75 1863.75 883.75 {lab=VcbN}
-N 1743.75 813.75 1743.75 878.75 {lab=VcbN}
-N 1743.75 878.75 1743.75 883.75 {lab=VcbN}
-N 1743.75 883.75 1863.75 883.75 {lab=VcbN}
+N 1881.25 836.25 1881.25 901.25 {lab=VcbP}
+N 1761.25 901.25 1881.25 901.25 {lab=VcbP}
+N 1761.25 826.25 1761.25 901.25 {lab=VcbP}
+N 1873.75 673.75 1873.75 728.75 {lab=VcbN}
+N 1873.75 728.75 1873.75 733.75 {lab=VcbN}
+N 1753.75 663.75 1753.75 728.75 {lab=VcbN}
+N 1753.75 728.75 1753.75 733.75 {lab=VcbN}
+N 1753.75 733.75 1873.75 733.75 {lab=VcbN}
 N 630 810 635 810 {lab=0}
 N 630 650 630 670 {lab=#net3}
 N 630 755 630 780 {lab=Vg1P}
@@ -169,44 +167,6 @@ N 1347.5 783.75 1347.5 815 {lab=Vcx}
 N 1347.5 815 1347.5 835 {lab=Vcx}
 N 382.5 790 390 790 {lab=VinNDr}
 N 382.5 700 390 700 {lab=VinPDr}
-N 2156.25 872.5 2156.25 897.5 {lab=#net7}
-N 2196.25 722.5 2256.25 722.5 {lab=VPMir}
-N 2156.25 752.5 2156.25 762.5 {lab=VPMir}
-N 2196.25 722.5 2196.25 762.5 {lab=VPMir}
-N 2156.25 957.5 2156.25 987.5 {lab=0}
-N 2156.25 762.5 2156.25 812.5 {lab=VPMir}
-N 2196.25 637.5 2256.25 637.5 {lab=VPCas}
-N 2156.25 667.5 2156.25 692.5 {lab=#net8}
-N 2156.25 762.5 2196.25 762.5 {lab=VPMir}
-N 2156.25 582.5 2156.25 608.75 {lab=Vdd}
-N 2352.5 792.5 2352.5 812.5 {lab=#net9}
-N 2352.5 872.5 2352.5 897.5 {lab=#net10}
-N 2352.5 957.5 2352.5 987.5 {lab=0}
-N 2352.5 717.5 2352.5 732.5 {lab=Vdd}
-N 2392.5 762.5 2392.5 792.5 {lab=#net9}
-N 2352.5 792.5 2392.5 792.5 {lab=#net9}
-N 2390 762.5 2392.5 762.5 {lab=#net9}
-N 2477.5 717.5 2477.5 732.5 {lab=Vdd}
-N 2477.5 860 2517.5 860 {lab=IB10}
-N 2477.5 860 2477.5 861.25 {lab=IB10}
-N 2477.5 791.25 2477.5 860 {lab=IB10}
-N 2515 890 2517.5 890 {lab=IB10}
-N 2352.5 762.5 2356.25 762.5 {lab=Vdd}
-N 2473.75 762.5 2477.5 762.5 {lab=Vdd}
-N 2476.25 890 2481.25 890 {lab=0}
-N 2517.5 860 2517.5 890 {lab=IB10}
-N 2517.5 890 2542.5 890 {lab=IB10}
-N 2392.5 842.5 2392.5 873.75 {lab=VNMir}
-N 2392.5 873.75 2392.5 881.25 {lab=VNMir}
-N 2196.25 842.5 2196.25 881.25 {lab=VNMir}
-N 2392.5 927.5 2392.5 965 {lab=VNCas}
-N 2196.25 927.5 2196.25 965 {lab=VNCas}
-N 2477.5 920 2477.5 951.25 {lab=0}
-N 2477.5 951.25 2477.5 952.5 {lab=0}
-N 2392.5 762.5 2437.5 762.5 {lab=#net9}
-N 2351.25 717.5 2477.5 717.5 {lab=Vdd}
-N 2196.25 881.25 2392.5 881.25 {lab=VNMir}
-N 2196.25 965 2392.5 965 {lab=VNCas}
 C {param.sym} 592.5 505 0 0 {name=s8 value="cmLw=0.4u"
 }
 C {param.sym} 592.5 485 0 0 {name=s10 value="cmHw=0.5u"
@@ -369,24 +329,24 @@ spiceprefix=X
 C {lab_pin.sym} 1282.5 1142.5 0 1 {name=p76 sig_type=std_logic lab=Vdd}
 C {lab_wire.sym} 1167.5 1052.5 0 0 {name=p78 sig_type=std_logic lab=Vdd}
 C {lab_wire.sym} 1532.5 1052.5 0 0 {name=p79 sig_type=std_logic lab=Vdd}
-C {gnd.sym} 1738.75 1206.25 0 0 {name=l8 lab=0}
-C {vsource.sym} 1738.75 1176.25 0 0 {name=VcbRef3 value=\{Vcbias\} savecurrent=true}
-C {lab_pin.sym} 1738.75 1131.25 0 1 {name=p82 sig_type=std_logic lab=VcbRef}
+C {gnd.sym} 1748.75 1056.25 0 0 {name=l8 lab=0}
+C {vsource.sym} 1748.75 1026.25 0 0 {name=VcbRef3 value=\{Vcbias\} savecurrent=true}
+C {lab_pin.sym} 1748.75 981.25 0 1 {name=p82 sig_type=std_logic lab=VCB_REF}
 C {lab_pin.sym} 1462.5 1005 2 0 {name=p83 sig_type=std_logic lab=VcbN}
-C {param.sym} 1733.75 1118.75 0 0 {name=s3 value="VcBias=0.78"
+C {param.sym} 1743.75 968.75 0 0 {name=s3 value="VcBias=0.78"
 }
 C {lab_pin.sym} 1347.5 810 2 1 {name=p86 sig_type=std_logic lab=Vcx}
 C {lab_pin.sym} 1277.5 952.5 2 1 {name=p87 sig_type=std_logic lab=VxP}
 C {lab_pin.sym} 1422.5 952.5 0 0 {name=p88 sig_type=std_logic lab=VxN}
-C {lab_pin.sym} 1858.75 976.25 2 0 {name=p89 sig_type=std_logic lab=VcbP}
-C {lab_pin.sym} 1738.75 936.25 0 0 {name=p90 sig_type=std_logic lab=Vdd}
-C {lab_pin.sym} 1738.75 956.25 2 1 {name=p91 sig_type=std_logic lab=VcbRef}
+C {lab_pin.sym} 1761.25 826.25 2 1 {name=p89 sig_type=std_logic lab=VcbP}
+C {lab_pin.sym} 1881.25 786.25 0 1 {name=p90 sig_type=std_logic lab=Vdd}
+C {lab_pin.sym} 1881.25 806.25 2 0 {name=p91 sig_type=std_logic lab=VCB_REF}
 C {lab_pin.sym} 1237.5 1005 0 0 {name=p92 sig_type=std_logic lab=VcbP}
-C {lab_pin.sym} 1743.75 813.75 0 0 {name=p93 sig_type=std_logic lab=VcbN}
-C {lab_pin.sym} 1863.75 773.75 2 0 {name=p94 sig_type=std_logic lab=Vdd}
-C {lab_pin.sym} 1863.75 793.75 0 1 {name=p95 sig_type=std_logic lab=VcbRef}
-C {cellv9/ota5_ab_buf_v1.sym} 1758.75 1106.25 0 0 {name=x3}
-C {cellv9/ota5_ab_buf_v1.sym} 1843.75 943.75 0 1 {name=x4}
+C {lab_pin.sym} 1753.75 663.75 0 0 {name=p93 sig_type=std_logic lab=VcbN}
+C {lab_pin.sym} 1873.75 623.75 2 0 {name=p94 sig_type=std_logic lab=Vdd}
+C {lab_pin.sym} 1873.75 643.75 0 1 {name=p95 sig_type=std_logic lab=VCB_REF}
+C {cellv9/ota5_ab_buf_v1.sym} 1861.25 956.25 0 1 {name=x3}
+C {cellv9/ota5_ab_buf_v1.sym} 1853.75 793.75 0 1 {name=x4}
 C {symbols/pfet_03v3.sym} 610 605 0 0 {name=M39
 L=0.28u
 W=\{cmHw\}
@@ -565,10 +525,9 @@ C {opin.sym} 612.5 296.25 0 0 {name=p80 lab=VoutP}
 C {opin.sym} 615 321.25 0 0 {name=p81 lab=VoutN}
 C {ipin.sym} 570 296.25 0 0 {name=p84 lab=VinP}
 C {ipin.sym} 572.5 323.75 0 0 {name=p85 lab=VinN}
-C {ipin.sym} 572.5 421.25 0 0 {name=p129 lab=Vdd}
-C {ipin.sym} 572.5 348.75 0 0 {name=p130 lab=VPCas}
-C {ipin.sym} 572.5 376.25 0 0 {name=p131 lab=VNCas}
-C {ipin.sym} 572.5 398.75 0 0 {name=p60 lab=VNMir}
+C {ipin.sym} 572.5 391.25 0 0 {name=p129 lab=Vdd}
+C {ipin.sym} 572.5 348.75 0 0 {name=p130 lab=VCAS_IN}
+C {ipin.sym} 572.5 368.75 0 0 {name=p60 lab=IREF_10UA}
 C {symbols/pfet_03v3.sym} 1256.25 613.75 0 0 {name=M9
 L=\{casL\}
 W=\{casW\}
@@ -630,11 +589,11 @@ spiceprefix=X
 }
 C {lab_pin.sym} 1416.25 613.75 0 1 {name=p33 sig_type=std_logic lab=Vdd}
 C {lab_pin.sym} 1416.25 693.75 0 1 {name=p34 sig_type=std_logic lab=Vdd}
-C {lab_pin.sym} 1376.25 693.75 2 1 {name=p35 sig_type=std_logic lab=VPMir}
-C {lab_pin.sym} 1376.25 613.75 2 1 {name=p36 sig_type=std_logic lab=VPCas}
+C {lab_pin.sym} 1376.25 693.75 2 1 {name=p35 sig_type=std_logic lab=VS_MIR}
+C {lab_pin.sym} 1376.25 613.75 2 1 {name=p36 sig_type=std_logic lab=VS_CAS}
 C {lab_pin.sym} 1416.25 548.75 2 1 {name=p37 sig_type=std_logic lab=Vdd}
-C {lab_pin.sym} 1236.25 613.75 2 1 {name=p2 sig_type=std_logic lab=VPCas}
-C {lab_pin.sym} 1236.25 693.75 2 1 {name=p3 sig_type=std_logic lab=VPMir}
+C {lab_pin.sym} 1236.25 613.75 2 1 {name=p2 sig_type=std_logic lab=VS_CAS}
+C {lab_pin.sym} 1236.25 693.75 2 1 {name=p3 sig_type=std_logic lab=VS_MIR}
 C {ammeter.sym} 292.5 790 3 0 {name=VinN savecurrent=true spice_ignore=0}
 C {common/cmos_buf.sym} 202.5 800 0 0 {name=x5}
 C {lab_pin.sym} 162.5 780 2 1 {name=p7 sig_type=std_logic lab=VinN}
@@ -645,8 +604,8 @@ C {common/cmos_buf.sym} 202.5 710 0 0 {name=x2}
 C {lab_pin.sym} 162.5 690 2 1 {name=p10 sig_type=std_logic lab=VinP}
 C {lab_pin.sym} 162.5 710 2 1 {name=p11 sig_type=std_logic lab=Vdd}
 C {lab_pin.sym} 390 700 0 1 {name=p12 sig_type=std_logic lab=VinPDr}
-C {lab_pin.sym} 1863.75 753.75 2 0 {name=p20 sig_type=std_logic lab=IB10}
-C {lab_pin.sym} 1738.75 916.25 0 0 {name=p21 sig_type=std_logic lab=IB10}
+C {lab_pin.sym} 1873.75 603.75 2 0 {name=p20 sig_type=std_logic lab=VB_10UA}
+C {lab_pin.sym} 1881.25 766.25 0 1 {name=p21 sig_type=std_logic lab=VB_10UA}
 C {symbols/ppolyf_u_1k.sym} 352.5 700 3 0 {name=R3
 W=1e-6
 L=1e-6
@@ -661,172 +620,18 @@ model=ppolyf_u_1k
 spiceprefix=X
 m=1}
 C {lab_wire.sym} 352.5 720 2 0 {name=p24 sig_type=std_logic lab=Vdd}
-C {param.sym} 2110 492.5 0 0 {name=s6 value="casW=4u"
+C {param.sym} 2130 602.5 0 0 {name=s6 value="casW=4u"
 }
-C {param.sym} 2112.5 467.5 0 0 {name=s7 value="mirW=4u"
+C {param.sym} 2132.5 577.5 0 0 {name=s7 value="mirW=4u"
 }
-C {param.sym} 2112.5 445 0 0 {name=s9 value="mirL=1u"
+C {param.sym} 2132.5 555 0 0 {name=s9 value="mirL=1u"
 }
-C {param.sym} 2115 515 0 0 {name=s12 value="casL=1u"
+C {param.sym} 2135 625 0 0 {name=s12 value="casL=1u"
 }
-C {gnd.sym} 2156.25 842.5 1 1 {name=l17 lab=0}
-C {symbols/nfet_03v3.sym} 2176.25 842.5 0 1 {name=M1
-L=1u
-W=2u
-nf=1
-m=1
-ad="'int((nf+1)/2) * W/nf * 0.18u'"
-pd="'2*int((nf+1)/2) * (W/nf + 0.18u)'"
-as="'int((nf+2)/2) * W/nf * 0.18u'"
-ps="'2*int((nf+2)/2) * (W/nf + 0.18u)'"
-nrd="'0.18u / W'" nrs="'0.18u / W'"
-sa=0 sb=0 sd=0
-model=nfet_03v3
-spiceprefix=X
-}
-C {symbols/pfet_03v3.sym} 2176.25 722.5 0 1 {name=M4
-L=\{mirL\}
-W=\{mirW\}
-nf=1
-m=1
-ad="'int((nf+1)/2) * W/nf * 0.18u'"
-pd="'2*int((nf+1)/2) * (W/nf + 0.18u)'"
-as="'int((nf+2)/2) * W/nf * 0.18u'"
-ps="'2*int((nf+2)/2) * (W/nf + 0.18u)'"
-nrd="'0.18u / W'" nrs="'0.18u / W'"
-sa=0 sb=0 sd=0
-model=pfet_03v3
-spiceprefix=X
-}
-C {lab_pin.sym} 2156.25 722.5 0 0 {name=p22 sig_type=std_logic lab=Vdd}
-C {gnd.sym} 2156.25 927.5 1 1 {name=l18 lab=0}
-C {symbols/nfet_03v3.sym} 2176.25 927.5 0 1 {name=M5
-L=1u
-W=2u
-nf=1
-m=1
-ad="'int((nf+1)/2) * W/nf * 0.18u'"
-pd="'2*int((nf+1)/2) * (W/nf + 0.18u)'"
-as="'int((nf+2)/2) * W/nf * 0.18u'"
-ps="'2*int((nf+2)/2) * (W/nf + 0.18u)'"
-nrd="'0.18u / W'" nrs="'0.18u / W'"
-sa=0 sb=0 sd=0
-model=nfet_03v3
-spiceprefix=X
-}
-C {gnd.sym} 2156.25 987.5 0 1 {name=l19 lab=0}
-C {symbols/pfet_03v3.sym} 2176.25 637.5 0 1 {name=M6
-L=\{casL\}
-W=\{casW\}
-nf=1
-m=1
-ad="'int((nf+1)/2) * W/nf * 0.18u'"
-pd="'2*int((nf+1)/2) * (W/nf + 0.18u)'"
-as="'int((nf+2)/2) * W/nf * 0.18u'"
-ps="'2*int((nf+2)/2) * (W/nf + 0.18u)'"
-nrd="'0.18u / W'" nrs="'0.18u / W'"
-sa=0 sb=0 sd=0
-model=pfet_03v3
-spiceprefix=X
-}
-C {lab_pin.sym} 2156.25 637.5 0 0 {name=p25 sig_type=std_logic lab=Vdd}
-C {gnd.sym} 2221.25 782.5 0 1 {name=l20 lab=0}
-C {lab_pin.sym} 2156.25 582.5 1 0 {name=p26 sig_type=std_logic lab=Vdd}
-C {lab_pin.sym} 2196.25 927.5 0 1 {name=p27 sig_type=std_logic lab=VNCas}
-C {lab_pin.sym} 2196.25 842.5 0 1 {name=p30 sig_type=std_logic lab=VNMir}
-C {lab_pin.sym} 2255 722.5 2 0 {name=p31 sig_type=std_logic lab=VPMir}
-C {lab_pin.sym} 2256.25 637.5 2 0 {name=p38 sig_type=std_logic lab=VPCas}
-C {gnd.sym} 2352.5 842.5 1 1 {name=l21 lab=0}
-C {symbols/nfet_03v3.sym} 2372.5 842.5 0 1 {name=M7
-L=1u
-W=2u
-nf=1
-m=1
-ad="'int((nf+1)/2) * W/nf * 0.18u'"
-pd="'2*int((nf+1)/2) * (W/nf + 0.18u)'"
-as="'int((nf+2)/2) * W/nf * 0.18u'"
-ps="'2*int((nf+2)/2) * (W/nf + 0.18u)'"
-nrd="'0.18u / W'" nrs="'0.18u / W'"
-sa=0 sb=0 sd=0
-model=nfet_03v3
-spiceprefix=X
-}
-C {gnd.sym} 2352.5 927.5 1 1 {name=l22 lab=0}
-C {symbols/nfet_03v3.sym} 2372.5 927.5 0 1 {name=M8
-L=1u
-W=2u
-nf=1
-m=1
-ad="'int((nf+1)/2) * W/nf * 0.18u'"
-pd="'2*int((nf+1)/2) * (W/nf + 0.18u)'"
-as="'int((nf+2)/2) * W/nf * 0.18u'"
-ps="'2*int((nf+2)/2) * (W/nf + 0.18u)'"
-nrd="'0.18u / W'" nrs="'0.18u / W'"
-sa=0 sb=0 sd=0
-model=nfet_03v3
-spiceprefix=X
-}
-C {gnd.sym} 2352.5 987.5 0 1 {name=l24 lab=0}
-C {lab_pin.sym} 2392.5 927.5 0 1 {name=p39 sig_type=std_logic lab=VNCas}
-C {lab_pin.sym} 2392.5 842.5 0 1 {name=p40 sig_type=std_logic lab=VNMir}
-C {symbols/pfet_03v3.sym} 2372.5 762.5 0 1 {name=M13
-L=1u
-W=8u
-nf=1
-m=1
-ad="'int((nf+1)/2) * W/nf * 0.18u'"
-pd="'2*int((nf+1)/2) * (W/nf + 0.18u)'"
-as="'int((nf+2)/2) * W/nf * 0.18u'"
-ps="'2*int((nf+2)/2) * (W/nf + 0.18u)'"
-nrd="'0.18u / W'" nrs="'0.18u / W'"
-sa=0 sb=0 sd=0
-model=pfet_03v3
-spiceprefix=X
-}
-C {lab_pin.sym} 2352.5 717.5 1 0 {name=p42 sig_type=std_logic lab=Vdd}
-C {symbols/pfet_03v3.sym} 2457.5 762.5 0 0 {name=M14
-L=1u
-W=8u
-nf=1
-m=1
-ad="'int((nf+1)/2) * W/nf * 0.18u'"
-pd="'2*int((nf+1)/2) * (W/nf + 0.18u)'"
-as="'int((nf+2)/2) * W/nf * 0.18u'"
-ps="'2*int((nf+2)/2) * (W/nf + 0.18u)'"
-nrd="'0.18u / W'" nrs="'0.18u / W'"
-sa=0 sb=0 sd=0
-model=pfet_03v3
-spiceprefix=X
-}
-C {symbols/nfet_03v3.sym} 2497.5 890 0 1 {name=M15
-L=1u
-W=8u
-nf=1
-m=1
-ad="'int((nf+1)/2) * W/nf * 0.18u'"
-pd="'2*int((nf+1)/2) * (W/nf + 0.18u)'"
-as="'int((nf+2)/2) * W/nf * 0.18u'"
-ps="'2*int((nf+2)/2) * (W/nf + 0.18u)'"
-nrd="'0.18u / W'" nrs="'0.18u / W'"
-sa=0 sb=0 sd=0
-model=nfet_03v3
-spiceprefix=X
-}
-C {gnd.sym} 2477.5 952.5 0 1 {name=l25 lab=0}
-C {lab_pin.sym} 2542.5 890 2 0 {name=p43 sig_type=std_logic lab=IB10}
-C {lab_pin.sym} 2352.5 762.5 0 0 {name=p44 sig_type=std_logic lab=Vdd}
-C {lab_pin.sym} 2476.25 762.5 2 0 {name=p45 sig_type=std_logic lab=Vdd}
-C {gnd.sym} 2476.25 890 1 1 {name=l26 lab=0}
-C {gnd.sym} 2531.25 950 0 1 {name=l27 lab=0}
-C {symbols/cap_mim_analog.sym} 2221.25 752.5 0 0 {name=C4
-W=25e-6
-L=20e-6
-model=cap_mim_2f0_m3m4_noshield
-spiceprefix=X
-m=1}
-C {symbols/cap_mim_analog.sym} 2531.25 920 0 0 {name=C3
-W=25e-6
-L=20e-6
-model=cap_mim_2f0_m3m4_noshield
-spiceprefix=X
-m=1}
+C {cellv9/cell_iref.sym} 2227.5 687.5 0 0 {name=x6}
+C {lab_pin.sym} 2127.5 707.5 0 0 {name=p1 sig_type=std_logic lab=Vdd}
+C {lab_pin.sym} 2327.5 707.5 2 0 {name=p13 sig_type=std_logic lab=VB_10UA}
+C {lab_pin.sym} 2127.5 687.5 0 0 {name=p22 sig_type=std_logic lab=IREF_10UA}
+C {lab_pin.sym} 2127.5 667.5 0 0 {name=p14 sig_type=std_logic lab=VCAS_IN}
+C {lab_pin.sym} 2327.5 667.5 2 0 {name=p54 sig_type=std_logic lab=VS_CAS}
+C {lab_pin.sym} 2327.5 687.5 2 0 {name=p55 sig_type=std_logic lab=VS_MIR}
