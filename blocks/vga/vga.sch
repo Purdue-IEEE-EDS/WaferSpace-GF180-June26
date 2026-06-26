@@ -248,6 +248,15 @@ N 1390 -1010 1390 -920 {lab=GND}
 N 1380 -920 1390 -920 {lab=GND}
 N 1300 -1010 1340 -1010 {lab=Vbn}
 N 1300 -850 1340 -850 {lab=Vbn}
+N 550 -560 730 -560 {lab=Vbp}
+N 630 -560 630 -520 {lab=Vbp}
+N 510 -520 540 -520 {lab=Vout_buf}
+N 600 -520 640 -520 {lab=Vbp}
+N 740 -520 770 -520 {lab=Vout_n_buf}
+N 640 -520 680 -520 {lab=Vbp}
+N 570 -540 710 -540 {lab=GND}
+N 510 -590 510 -560 {lab=VDD}
+N 770 -590 770 -560 {lab=VDD}
 C {vsource.sym} -380 -700 0 1 {name=V1 value=3.3 savecurrent=false}
 C {gnd.sym} -380 -640 0 0 {name=l3 lab=GND}
 C {vsource.sym} -220 -700 0 1 {name=V6 value="dc 1.65 ac 10m 180" savecurrent=false}
@@ -289,7 +298,7 @@ set temp = 85
     
     * 4. Calculate Differential Gain in dB
     * Formula: 20 * log10(|Vout_diff| / |Vin_diff|)
-    let vout_mag = mag(v(vout_buf2) - v(vout_n_buf2))
+    let vout_mag = mag(v(vout_buf) - v(vout_n_buf))
     *let vout_mag = mag(v(vout_s))
     let vin_mag = mag(v(vin) - v(vin_n))
     let g_val = 20 * log10(vout_mag / vin_mag)
@@ -310,8 +319,8 @@ set temp = 85
 }
 C {symbols/nfet_03v3.sym} 490 -270 0 0 {name=M6
 L=0.56u
-W=24u
-nf=6
+W=16u
+nf=4
 m=1
 ad="'int((nf+1)/2) * W/nf * 0.18u'"
 pd="'2*int((nf+1)/2) * (W/nf + 0.18u)'"
@@ -324,8 +333,8 @@ spiceprefix=X
 }
 C {symbols/nfet_03v3.sym} 790 -270 0 1 {name=M7
 L=0.56u
-W=24u
-nf=6
+W=16u
+nf=4
 m=1
 ad="'int((nf+1)/2) * W/nf * 0.18u'"
 pd="'2*int((nf+1)/2) * (W/nf + 0.18u)'"
@@ -426,7 +435,7 @@ alter @v7[sin] = [ 1.65 $&amp $&freq 0 0 180 ]
 * alter @v8[sin] = [ 1.65 $&postamp $&freq 0 0 180 ]
 
 tran $&tstep $&tfin
-plot v(vout_s) v(vout_buf) v(vout_n_buf) v(vin) v(vin_n) xlimit $&plotst $&tfin
+plot v(vout_s) v(vout_buf) v(vout_n_buf) v(vin) v(vin_n) xlimit $&plotst $&tfin ylimit 1.4 2.4
 * plot v(vf) v(vf_n) v(vbb) v(vbb2)
 
 * let abc = v(vout_s)
@@ -434,6 +443,8 @@ plot v(vout_s) v(vout_buf) v(vout_n_buf) v(vin) v(vin_n) xlimit $&plotst $&tfin
 
 let pwr = -1 * v1#branch * vdd
 plot pwr ylimit 0 60m
+
+print mean(v5#branch)
 .endc
 "
 }
@@ -450,7 +461,7 @@ C {code_shown.sym} 2170 360 0 0 {name=s3 only_toplevel=false spice_ignore=true v
 .control
 set temp = 85
   * 1. Setup the sweep parameters
-  let v_ctrl = 0
+  let v_ctrl = 3.3
 
   let f_start = 1
   let f_stop = 3.2G
@@ -466,7 +477,7 @@ set temp = 85
   * Formula: 20 * log10(|Vout_diff| / |Vin_diff|)
   let vin_mag = mag(v(vin) - v(vin_n))
   let vout_s_mag = mag(v(vout_s))
-  let vout_buf_mag = mag(v(vout_buf2) - v(vout_n_buf2))
+  let vout_buf_mag = mag(v(vout_buf) - v(vout_n_buf))
   let vout_s_gain = 20 * log10(vout_s_mag / vin_mag)
   let vout_buf_gain = 20 * log10(vout_buf_mag / vin_mag)
 
@@ -634,8 +645,8 @@ C {lab_pin.sym} 360 -400 3 0 {name=p17 sig_type=std_logic lab=Vcp
 }
 C {symbols/pfet_03v3.sym} 360 -420 3 0 {name=M13
 L=0.56u
-W=8u
-nf=2
+W=12u
+nf=3
 m=1
 ad="'int((nf+1)/2) * W/nf * 0.18u'"
 pd="'2*int((nf+1)/2) * (W/nf + 0.18u)'"
@@ -649,19 +660,13 @@ spiceprefix=X
 C {lab_pin.sym} 360 -440 1 0 {name=p18 sig_type=std_logic lab=VDD
 }
 C {gnd.sym} 360 -310 0 1 {name=l35 lab=GND}
-C {symbols/ppolyf_u_1k.sym} 330 -330 1 1 {name=R9
-W=1e-6
-L=3e-6
-model=ppolyf_u_1k
-spiceprefix=X
-m=1}
 C {lab_pin.sym} 920 -400 1 1 {name=p26 sig_type=std_logic lab=Vcp
 
 }
 C {symbols/pfet_03v3.sym} 920 -420 1 1 {name=M14
 L=0.56u
-W=8u
-nf=2
+W=12u
+nf=3
 m=1
 ad="'int((nf+1)/2) * W/nf * 0.18u'"
 pd="'2*int((nf+1)/2) * (W/nf + 0.18u)'"
@@ -675,22 +680,16 @@ spiceprefix=X
 C {lab_pin.sym} 920 -440 3 1 {name=p27 sig_type=std_logic lab=VDD
 }
 C {gnd.sym} 920 -310 0 1 {name=l36 lab=GND}
-C {symbols/ppolyf_u_1k.sym} 890 -330 1 1 {name=R37
-W=1e-6
-L=3e-6
-model=ppolyf_u_1k
-spiceprefix=X
-m=1}
-C {symbols/ppolyf_u_1k.sym} 350 -560 0 0 {name=R8
+C {symbols/ppolyf_u.sym} 350 -560 0 0 {name=R8
 W=1e-6
 L=6e-6
-model=ppolyf_u_1k
+model=ppolyf_u
 spiceprefix=X
 m=1}
-C {symbols/ppolyf_u_1k.sym} 940 -560 0 0 {name=R10
+C {symbols/ppolyf_u.sym} 940 -560 0 0 {name=R10
 W=1e-6
 L=6e-6
-model=ppolyf_u_1k
+model=ppolyf_u
 spiceprefix=X
 m=1}
 C {symbols/ppolyf_u.sym} 430 -120 1 1 {name=R1
@@ -709,33 +708,7 @@ m=1
 spice_ignore=true}
 C {gnd.sym} 430 -100 0 1 {name=l12 lab=GND}
 C {gnd.sym} 850 -100 0 1 {name=l15 lab=GND}
-C {symbols/ppolyf_u_1k.sym} 390 -330 1 1 {name=R3
-W=1e-6
-L=3e-6
-model=ppolyf_u_1k
-spiceprefix=X
-m=1}
-C {symbols/ppolyf_u_1k.sym} 950 -330 1 1 {name=R4
-W=1e-6
-L=3e-6
-model=ppolyf_u_1k
-spiceprefix=X
-m=1}
 C {lab_wire.sym} 640 -220 0 0 {name=p14 sig_type=std_logic lab=Ibias}
-C {symbols/ppolyf_u_1k.sym} 770 -560 0 0 {name=R5
-W=1e-6
-L=3e-6
-model=ppolyf_u_1k
-spiceprefix=X
-m=1}
-C {symbols/ppolyf_u_1k.sym} 510 -560 0 0 {name=R6
-W=1e-6
-L=3e-6
-model=ppolyf_u_1k
-spiceprefix=X
-m=1}
-C {gnd.sym} 490 -560 0 1 {name=l16 lab=GND}
-C {gnd.sym} 750 -560 0 1 {name=l17 lab=GND}
 C {symbols/cap_nmos_03v3.sym} 140 -430 1 0 {name=C4
 W=2u
 L=1u
@@ -853,8 +826,8 @@ spiceprefix=X
 }
 C {symbols/nfet_03v3.sym} 1620 -270 0 0 {name=M21
 L=0.56u
-W=24u
-nf=6
+W=16u
+nf=4
 m=1
 ad="'int((nf+1)/2) * W/nf * 0.18u'"
 pd="'2*int((nf+1)/2) * (W/nf + 0.18u)'"
@@ -867,8 +840,8 @@ spiceprefix=X
 }
 C {symbols/nfet_03v3.sym} 1920 -270 0 1 {name=M24
 L=0.56u
-W=24u
-nf=6
+W=16u
+nf=4
 m=1
 ad="'int((nf+1)/2) * W/nf * 0.18u'"
 pd="'2*int((nf+1)/2) * (W/nf + 0.18u)'"
@@ -1156,8 +1129,8 @@ spice_ignore=false}
 C {vsource.sym} 860 -770 0 1 {name=V2 value=0 savecurrent=false}
 C {symbols/nfet_03v3.sym} 1160 -850 0 0 {name=M17
 L=0.56u
-W=24u
-nf=6
+W=32u
+nf=8
 m=1
 ad="'int((nf+1)/2) * W/nf * 0.18u'"
 pd="'2*int((nf+1)/2) * (W/nf + 0.18u)'"
@@ -1190,8 +1163,8 @@ C {lab_wire.sym} 1180 -920 2 0 {name=p15 sig_type=std_logic lab=GND}
 C {lab_wire.sym} 1180 -1040 0 0 {name=p16 sig_type=std_logic lab=Ibias2}
 C {symbols/nfet_03v3.sym} 1360 -850 0 0 {name=M22
 L=0.56u
-W=24u
-nf=6
+W=32u
+nf=8
 m=1
 ad="'int((nf+1)/2) * W/nf * 0.18u'"
 pd="'2*int((nf+1)/2) * (W/nf + 0.18u)'"
@@ -1222,3 +1195,71 @@ spiceprefix=X
 C {vsource.sym} 1380 -950 0 1 {name=V12 value=0 savecurrent=false}
 C {lab_wire.sym} 1380 -920 2 0 {name=p43 sig_type=std_logic lab=GND}
 C {lab_wire.sym} 1380 -1040 0 0 {name=p44 sig_type=std_logic lab=Ibias4}
+C {symbols/pfet_03v3.sym} 530 -560 0 1 {name=M29
+L=0.56u
+W=40u
+nf=10
+m=1
+ad="'int((nf+1)/2) * W/nf * 0.18u'"
+pd="'2*int((nf+1)/2) * (W/nf + 0.18u)'"
+as="'int((nf+2)/2) * W/nf * 0.18u'"
+ps="'2*int((nf+2)/2) * (W/nf + 0.18u)'"
+nrd="'0.18u / W'" nrs="'0.18u / W'"
+sa=0 sb=0 sd=0
+model=pfet_03v3
+spiceprefix=X
+}
+C {symbols/pfet_03v3.sym} 750 -560 0 0 {name=M30
+L=0.56u
+W=40u
+nf=10
+m=1
+ad="'int((nf+1)/2) * W/nf * 0.18u'"
+pd="'2*int((nf+1)/2) * (W/nf + 0.18u)'"
+as="'int((nf+2)/2) * W/nf * 0.18u'"
+ps="'2*int((nf+2)/2) * (W/nf + 0.18u)'"
+nrd="'0.18u / W'" nrs="'0.18u / W'"
+sa=0 sb=0 sd=0
+model=pfet_03v3
+spiceprefix=X
+}
+C {symbols/ppolyf_u_1k.sym} 570 -520 1 0 {name=R5
+W=1e-6
+L=9e-6
+model=ppolyf_u_1k
+spiceprefix=X
+m=1
+spice_ignore=true}
+C {symbols/ppolyf_u_1k.sym} 710 -520 3 1 {name=R6
+W=1e-6
+L=9e-6
+model=ppolyf_u_1k
+spiceprefix=X
+m=1
+spice_ignore=true}
+C {gnd.sym} 650 -540 0 0 {name=l16 lab=GND}
+C {lab_wire.sym} 650 -560 0 1 {name=p67 sig_type=std_logic lab=Vbp}
+C {symbols/ppolyf_u_1k.sym} 330 -330 3 0 {name=R3
+W=1e-6
+L=3e-6
+model=ppolyf_u_1k
+spiceprefix=X
+m=1}
+C {symbols/ppolyf_u_1k.sym} 390 -330 3 0 {name=R4
+W=1e-6
+L=3e-6
+model=ppolyf_u_1k
+spiceprefix=X
+m=1}
+C {symbols/ppolyf_u_1k.sym} 950 -330 1 1 {name=R9
+W=1e-6
+L=3e-6
+model=ppolyf_u_1k
+spiceprefix=X
+m=1}
+C {symbols/ppolyf_u_1k.sym} 890 -330 1 1 {name=R37
+W=1e-6
+L=3e-6
+model=ppolyf_u_1k
+spiceprefix=X
+m=1}
