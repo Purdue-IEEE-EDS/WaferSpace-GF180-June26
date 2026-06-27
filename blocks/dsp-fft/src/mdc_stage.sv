@@ -1,4 +1,3 @@
-`timescale 1 ns / 1ps 
 module mdc_stage #(BITS = 16, STAGES = 8, CURR_STAGE = 1)
 ( 
     input logic clk, rst,

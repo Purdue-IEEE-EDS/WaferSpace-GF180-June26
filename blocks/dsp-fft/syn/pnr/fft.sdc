@@ -1,4 +1,5 @@
-create_clock -name clk -period 6.25 [get_ports clk]
+create_clock -name adc_clk -period 1.5625 [get_ports adc_clk]
+create_generated_clock -name clk -source [get_ports adc_clk] -divide_by 4 [get_pins divider/_4_/Q ]
 set_max_fanout 16 [current_design]
 set_max_transition 1.5 [current_design]
 set_false_path -from [get_ports rst]

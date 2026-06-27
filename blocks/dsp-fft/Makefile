@@ -39,6 +39,7 @@ PNR_DIR = $(SYN_DIR)/pnr
 # ---------------- RTL ----------------
 RTL = \
 	$(RTL_DIR)/fft.sv \
+	$(RTL_DIR)/mdc_fft.sv \
 	$(RTL_DIR)/mdc_stage.sv \
 	$(RTL_DIR)/mdc_ram_delay.sv \
 	$(RTL_DIR)/r2.sv \
@@ -53,6 +54,10 @@ RTL = \
 	$(RTL_DIR)/half_adder.sv \
 	$(RTL_DIR)/carry_save_adder.sv \
 	$(RTL_DIR)/commutator.sv \
+	$(RTL_DIR)/reorder.sv \
+	$(RTL_DIR)/parallel_to_serial.sv \
+	$(RTL_DIR)/serial_to_parallel.sv \
+	$(RTL_DIR)/clk_divider.sv \
 	$(RTL_DIR)/twiddle_rom.sv 
 
 TB_FFT   = $(TB_DIR)/tb_fft.sv
@@ -131,6 +136,7 @@ $(SYN_SCRIPT): $(RTL)
 	@echo "# ── Behavioral → structural ──"                     >> $@
 	@echo "proc"                                                 >> $@
 	@echo ""                                                     >> $@
+	@echo "opt" >> $@
 	@echo "# ── FLATTEN — dont preserve module boundaries ──"     >> $@
 	@echo "flatten"                              >> $@
 	@echo ""                                                     >> $@
@@ -207,7 +213,11 @@ $(STA_SCRIPT): | $(SYN_DIR)
 	@echo "read_liberty $(LIB_FILE)"                           >  $@
 	@echo "read_verilog $(SYN_NET)"                            >> $@
 	@echo "link_design $(TOP)"                                >> $@
-	@echo "create_clock -name clk -period $(CLK_PERIOD) [get_ports clk]" >> $@
+	@echo "create_clock -name adc_clk -period $(ADC_CLK_PERIOD) [get_ports adc_clk]" >> $@
+	@echo "create_generated_clock -name clk -source [get_ports adc_clk] -divide_by 4 [get_pins divider/_4_/Q ]" >> $@
+	@echo "get_clocks" >> $@
+	@echo "set_false_path -from [get_ports rst]"              >> $@
+	@echo "set_false_path -from [get_cells _36579_ ]"              >> $@
 	@echo ""                                                  >> $@
 	@echo "puts \"\n=== WORST PATH (max) ===\""               >> $@
 	@echo "report_checks -path_delay max -group_count 10 -fields {fanout capacitance slew} -digits 3" >> $@
@@ -246,7 +256,8 @@ sim_pnr: $(PNR_NET)
 pnr: $(PNR_DEF)
 
 $(PNR_SDC): | $(PNR_DIR)
-	@echo "create_clock -name clk -period $(CLK_PERIOD) [get_ports clk]"   >> $@
+	@echo "create_clock -name adc_clk -period $(ADC_CLK_PERIOD) [get_ports adc_clk]"   >> $@
+	@echo "create_generated_clock -name clk -source [get_ports adc_clk] -divide_by 4 [get_pins divider/_4_/Q ]" >> $@
 	@echo "set_max_fanout 16 [current_design]"                             >> $@
 	@echo "set_max_transition 1.5 [current_design]"                        >> $@
 	@echo "set_false_path -from [get_ports rst]"                           >> $@

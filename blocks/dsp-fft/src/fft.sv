@@ -1,69 +1,16 @@
 module fft
 (
-    input  logic clk, rst,
-    input logic in_valid,
+    input  logic adc_clk, rst,
+    input logic valid_in, 
 
-    input logic signed [5:0] din_re0, din_re1, din_re2, din_re3,
-    input logic signed [5:0] din_im0, din_im1, din_im2, din_im3, 
+    input logic signed [5:0] din_re, din_im,
+    output logic signed [15:0] dout_re, dout_im, 
 
-    output logic signed [15:0] dout_re0, dout_re1, dout_re2, dout_re3,   
-    output logic signed [15:0] dout_im0, dout_im1, dout_im2, dout_im3,
-
-    output logic out_valid
+    output logic valid_out
 ); 
-    
-    logic signed [15:0] din_re0_reg, din_re1_reg, din_re2_reg, din_re3_reg;
-    logic signed [15:0] din_im0_reg, din_im1_reg, din_im2_reg, din_im3_reg; 
-    logic in_valid_reg;
 
-    logic [8:0] val;
+    logic clk; 
     logic sync_rst1, sync_rst2; 
-
-    logic [15:0] w_re [0:8], w_im [0:8], 
-                x_re [0:8], x_im [0:8], 
-                y_re [0:8], y_im [0:8], 
-                z_re [0:8], z_im [0:8];
-
-    assign w_re[0] = din_re0_reg;
-    assign w_im[0] = din_im0_reg;
-    assign x_re[0] = din_re1_reg;
-    assign x_im[0] = din_im1_reg;
-    assign y_re[0] = din_re2_reg;
-    assign y_im[0] = din_im2_reg;
-    assign z_re[0] = din_re3_reg;
-    assign z_im[0] = din_im3_reg;
-
-    assign val[0] = in_valid_reg;
-
-    always_ff @(posedge clk, negedge sync_rst2) begin 
-        if (!sync_rst2) begin 
-            in_valid_reg <= '0;
-            out_valid <= '0; 
-        end else begin 
-            in_valid_reg <= in_valid;
-            out_valid <= val[6]; 
-        end
-    end
-
-    always_ff @(posedge clk) begin 
-        din_re0_reg <= {{6{din_re0[5]}}, din_re0, 4'b0};
-        din_re1_reg <= {{6{din_re1[5]}}, din_re1, 4'b0}; 
-        din_re2_reg <= {{6{din_re2[5]}}, din_re2, 4'b0}; 
-        din_re3_reg <= {{6{din_re3[5]}}, din_re3, 4'b0}; 
-        din_im0_reg <= {{6{din_im0[5]}}, din_im0, 4'b0};
-        din_im1_reg <= {{6{din_im1[5]}}, din_im1, 4'b0};
-        din_im2_reg <= {{6{din_im2[5]}}, din_im2, 4'b0};
-        din_im3_reg <= {{6{din_im3[5]}}, din_im3, 4'b0}; 
-
-        dout_re0 <= w_re[6];
-        dout_im0 <= w_im[6];
-        dout_re1 <= x_re[6];
-        dout_im1 <= x_im[6];
-        dout_re2 <= y_re[6];
-        dout_im2 <= y_im[6];
-        dout_re3 <= z_re[6];
-        dout_im3 <= z_im[6];
-    end
 
     always_ff @(posedge clk, negedge rst) begin 
         if (!rst) begin 
@@ -71,53 +18,82 @@ module fft
             sync_rst2 <= '0; 
         end else begin 
             sync_rst1 <= rst; 
-            sync_rst2 <= sync_rst1;
+            sync_rst2 <= sync_rst1; 
         end
     end
 
-    // generate 
-    //     for (genvar i = 1; i <= 8; i++) begin : stages_gen_blk
-    //         mdc_stage #(.CURR_STAGE(i))
-    //         stage ( 
-    //             .clk, .rst(sync_rst2),
-    //             .in_valid(val[i-1]), 
-    //             .din_re0(w_re[i-1]), .din_re1(x_re[i-1]), .din_re2(y_re[i-1]), .din_re3(z_re[i-1]),
-    //             .din_im0(w_im[i-1]), .din_im1(x_im[i-1]), .din_im2(y_im[i-1]), .din_im3(z_im[i-1]), 
+    clk_divider divider(
+    .adc_clk, 
+    .rst,    
+    .clk   
+    );
 
-    //             .dout_re0(w_re[i]), .dout_re1(x_re[i]), .dout_re2(y_re[i]), .dout_re3(z_re[i]),   
-    //             .dout_im0(w_im[i]), .dout_im1(x_im[i]), .dout_im2(y_im[i]), .dout_im3(z_im[i]), 
-    //             .out_valid(val[i])
-    //         );
-    //     end
-    // endgenerate
+    logic [5:0] pdata_re0, pdata_re1, pdata_re2, pdata_re3;
+    logic [5:0] pdata_im0, pdata_im1, pdata_im2, pdata_im3;
 
-    mdc_stage #(.CURR_STAGE(1), .BITS(10))
-            stage ( 
-                .clk, .rst(sync_rst2),
-                .in_valid(val[0]), 
-                .din_re0(w_re[0]), .din_re1(x_re[0]), .din_re2(y_re[0]), .din_re3(z_re[0]),
-                .din_im0(w_im[0]), .din_im1(x_im[0]), .din_im2(y_im[0]), .din_im3(z_im[0]), 
+    logic stp_val, reorder_val, fft_val; 
 
-                .dout_re0(w_re[1]), .dout_re1(x_re[1]), .dout_re2(y_re[1]), .dout_re3(z_re[1]),   
-                .dout_im0(w_im[1]), .dout_im1(x_im[1]), .dout_im2(y_im[1]), .dout_im3(z_im[1]), 
-                .out_valid(val[1])
-            );
+    serial_to_parallel stp_re(
+    .valid_in(valid_in),
+    .clk(adc_clk), .rst,
+    .din(din_re), 
+    .dout0(pdata_re0), .dout1(pdata_re1), .dout2(pdata_re2), .dout3(pdata_re3),
+    .valid_out(stp_val));
 
-    generate 
-        for (genvar i = 4; i <= 8; i++) begin : stages_gen_blk
-            localparam NUM_BITS = 7 + i; 
-            mdc_stage #(.CURR_STAGE(i), .BITS(NUM_BITS))
-            stage ( 
-                .clk, .rst(sync_rst2),
-                .in_valid(val[i-3]), 
-                .din_re0(w_re[i-3]), .din_re1(x_re[i-3]), .din_re2(y_re[i-3]), .din_re3(z_re[i-3]),
-                .din_im0(w_im[i-3]), .din_im1(x_im[i-3]), .din_im2(y_im[i-3]), .din_im3(z_im[i-3]), 
+    serial_to_parallel stp_im(
+    .valid_in(valid_in),
+    .clk(adc_clk), .rst,
+    .din(din_im), 
+    .dout0(pdata_im0), .dout1(pdata_im1), .dout2(pdata_im2), .dout3(pdata_im3));
 
-                .dout_re0(w_re[i-2]), .dout_re1(x_re[i-2]), .dout_re2(y_re[i-2]), .dout_re3(z_re[i-2]),   
-                .dout_im0(w_im[i-2]), .dout_im1(x_im[i-2]), .dout_im2(y_im[i-2]), .dout_im3(z_im[i-2]), 
-                .out_valid(val[i-2])
-            );
-        end
-    endgenerate
+    logic [5:0] fft_re0, fft_re1, fft_re2, fft_re3;
+    logic [5:0] fft_im0, fft_im1, fft_im2, fft_im3;
+    
+    reorder
+    input_buffer (
+        .clk, .rst(sync_rst2),   // 160 MHz Parallel Clock
+        .valid_in(stp_val),   // High when valid serial-de-interleaved data arrives
+        
+        .din_re0(pdata_re0), .din_re1(pdata_re1), .din_re2(pdata_re2), .din_re3(pdata_re3),
+        .din_im0(pdata_im0), .din_im1(pdata_im1), .din_im2(pdata_im2), .din_im3(pdata_im3), 
+
+        .valid_out(reorder_val),
+        .din_re0_r(fft_re0), .din_re1_r(fft_re2), .din_re2_r(fft_re1), .din_re3_r(fft_re3),
+        .din_im0_r(fft_im0), .din_im1_r(fft_im2), .din_im2_r(fft_im1), .din_im3_r(fft_im3) 
+    );
+
+    logic signed [15:0] dout_re0, dout_re1, dout_re2, dout_re3;   
+    logic signed [15:0] dout_im0, dout_im1, dout_im2, dout_im3;
+
+    mdc_fft
+    fft_core(
+        .clk, .rst(sync_rst2),
+        .in_valid(reorder_val),
+
+        .din_re0(fft_re0+6'd32), .din_re1(fft_re1+6'd32), .din_re2(fft_re2+6'd32), .din_re3(fft_re3+6'd32),
+        .din_im0(fft_im0+6'd32), .din_im1(fft_im1+6'd32), .din_im2(fft_im2+6'd32), .din_im3(fft_im3+6'd32), 
+
+        .dout_re0, .dout_re1, .dout_re2, .dout_re3,   
+        .dout_im0, .dout_im1, .dout_im2, .dout_im3,
+
+        .out_valid(fft_val)
+    ); 
+
+    parallel_to_serial pts_re(
+        .adc_clk, .rst, //640 mhz
+        .valid_in(fft_val),
+        .dout(dout_re), 
+        .din0(dout_re0), .din1(dout_re1), .din2(dout_re2), .din3(dout_re3),
+        .valid_out(valid_out)
+    );
+
+    parallel_to_serial pts_im(
+        .adc_clk, .rst, //640 mhz
+        .valid_in(fft_val),
+        .dout(dout_im), 
+        .din0(dout_im0), .din1(dout_im1), .din2(dout_im2), .din3(dout_im3),
+        .valid_out()
+    );
+
     
 endmodule

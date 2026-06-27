@@ -1,0 +1,55 @@
+[*]
+[*] GTKWave Analyzer v4.0.0-prealpha (8ba24ab) (w)1999-2022 BSI
+[*] Mon Jun 22 02:40:13 2026
+[*]
+[dumpfile] "/foss/designs/WaferSpace-GF180-June26/blocks/dsp-fft/testbench.vcd"
+[dumpfile_mtime] "Mon Jun 22 02:38:25 2026"
+[dumpfile_size] 9051
+[savefile] "/foss/designs/WaferSpace-GF180-June26/blocks/dsp-fft/reorder.gtkw"
+[timestart] 22700
+[size] 1427 600
+[pos] -1 -1
+*-16.470259 100300 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+[markername] AA
+[markername] BB
+[markername] CC
+[markername] DD
+[markername] EE
+[markername] FF
+[markername] GG
+[markername] HH
+[markername] II
+[markername] JJ
+[markername] KK
+[markername] LL
+[markername] MM
+[markername] NN
+[markername] OO
+[markername] PP
+[markername] QQ
+[markername] RR
+[markername] SS
+[markername] TT
+[markername] UU
+[markername] VV
+[markername] WW
+[markername] XX
+[markername] YY
+[markername] ZZ
+[treeopen] tb_reorder.
+[sst_width] 297
+[signals_width] 142
+[sst_expanded] 1
+[sst_vpaned_height] 149
+@22
+tb_reorder.DUT.din_re0[5:0]
+tb_reorder.DUT.din_re1[5:0]
+tb_reorder.DUT.din_re2[5:0]
+tb_reorder.DUT.din_re3[5:0]
+tb_reorder.DUT.din_re0_r[5:0]
+tb_reorder.DUT.din_re1_r[5:0]
+tb_reorder.DUT.din_re2_r[5:0]
+@23
+tb_reorder.DUT.din_re3_r[5:0]
+[pattern_trace] 1
+[pattern_trace] 0
