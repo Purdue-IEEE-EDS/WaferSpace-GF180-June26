@@ -265,7 +265,7 @@ C {lab_pin.sym} -220 -820 0 1 {name=p9 sig_type=std_logic lab=Vin_n
 }
 C {lab_pin.sym} -380 -760 0 0 {name=p12 sig_type=std_logic lab=VDD
 }
-C {code_shown.sym} 750 240 0 0 {name=s1 only_toplevel=false spice_ignore=false value="
+C {code_shown.sym} 750 240 0 0 {name=s1 only_toplevel=false spice_ignore=true value="
 .include /foss/pdks/gf180mcuD/libs.tech/ngspice/design.ngspice
 .lib /foss/pdks/gf180mcuD/libs.tech/ngspice/sm141064.ngspice typical
 .lib /foss/pdks/gf180mcuD/libs.tech/ngspice/sm141064.ngspice bjt_typical
