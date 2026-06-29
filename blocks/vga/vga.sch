@@ -376,6 +376,20 @@ N 1420 -1010 1430 -1010 {lab=GND}
 N 1430 -1010 1430 -920 {lab=GND}
 N 1420 -920 1430 -920 {lab=GND}
 N 1020 -850 1100 -850 {lab=Vbn}
+N 2100 -720 2260 -720 {lab=Vf_n}
+N 2500 -720 2660 -720 {lab=Vf}
+N 1960 -750 2060 -750 {lab=Vout_buf3}
+N 2060 -720 2060 -690 {lab=Vf_n}
+N 2060 -690 2100 -690 {lab=Vf_n}
+N 2100 -720 2100 -690 {lab=Vf_n}
+N 2360 -750 2460 -750 {lab=Vout_n_buf3}
+N 2460 -720 2460 -690 {lab=Vf}
+N 2460 -690 2500 -690 {lab=Vf}
+N 2500 -720 2500 -690 {lab=Vf}
+N 1440 -270 1440 -180 {lab=#net18}
+N 1440 -150 1470 -150 {lab=GND}
+N 2080 -270 2080 -180 {lab=#net19}
+N 2050 -150 2080 -150 {lab=GND}
 C {vsource.sym} -380 -700 0 1 {name=V1 value=3.3 savecurrent=false}
 C {gnd.sym} -380 -640 0 0 {name=l3 lab=GND}
 C {vsource.sym} -220 -700 0 1 {name=V6 value="dc 1.65 ac 10m 180" savecurrent=false}
@@ -477,8 +491,8 @@ C {lab_pin.sym} 130 -150 0 0 {name=p23 sig_type=std_logic lab=Vin
 C {gnd.sym} 1060 -150 1 0 {name=l13 lab=GND}
 C {symbols/nfet_03v3.sym} 150 -150 0 0 {name=M8
 L=0.56u
-W=8u
-nf=2
+W=12u
+nf=3
 m=1
 ad="'int((nf+1)/2) * W/nf * 0.18u'"
 pd="'2*int((nf+1)/2) * (W/nf + 0.18u)'"
@@ -491,8 +505,8 @@ spiceprefix=X
 }
 C {symbols/nfet_03v3.sym} 1110 -150 0 1 {name=M10
 L=0.56u
-W=8u
-nf=2
+W=12u
+nf=3
 m=1
 ad="'int((nf+1)/2) * W/nf * 0.18u'"
 pd="'2*int((nf+1)/2) * (W/nf + 0.18u)'"
@@ -521,7 +535,7 @@ device=resistor
 m=1}
 C {gnd.sym} 330 -560 0 1 {name=l43 lab=GND}
 C {gnd.sym} 920 -560 0 1 {name=l44 lab=GND}
-C {code_shown.sym} -750 190 0 0 {name=s2 only_toplevel=false spice_ignore=true value="
+C {code_shown.sym} -750 190 0 0 {name=s2 only_toplevel=false spice_ignore=false value="
 .include /foss/pdks/gf180mcuD/libs.tech/ngspice/design.ngspice
 .lib /foss/pdks/gf180mcuD/libs.tech/ngspice/sm141064.ngspice typical
 .lib /foss/pdks/gf180mcuD/libs.tech/ngspice/sm141064.ngspice bjt_typical
@@ -554,7 +568,7 @@ alter @v7[sin] = [ 1.65 $&amp $&freq 0 0 180 ]
 * alter @v8[sin] = [ 1.65 $&postamp $&freq 0 0 180 ]
 
 tran $&tstep $&tfin
-plot v(vout_s) v(vout_buf) v(vout_n_buf) v(vin) v(vin_n) xlimit $&plotst $&tfin ylimit 1.4 2.4
+plot v(vout_s) v(vout_buf) v(vout_n_buf) v(vout_buf2) v(vout_n_buf2) v(vout_buf3) v(vout_n_buf3) v(vin) v(vin_n) xlimit $&plotst $&tfin ylimit 1.4 2.4
 * plot v(vf) v(vf_n) v(vbb) v(vbb2)
 
 * let abc = v(vout_s)
@@ -567,7 +581,7 @@ print mean(v5#branch)
 .endc
 "
 }
-C {code_shown.sym} 2170 360 0 0 {name=s3 only_toplevel=false spice_ignore=false value="
+C {code_shown.sym} 2170 360 0 0 {name=s3 only_toplevel=false spice_ignore=true value="
 .include /foss/pdks/gf180mcuD/libs.tech/ngspice/design.ngspice
 .lib /foss/pdks/gf180mcuD/libs.tech/ngspice/sm141064.ngspice ff
 .lib /foss/pdks/gf180mcuD/libs.tech/ngspice/sm141064.ngspice bjt_ff
@@ -1594,8 +1608,8 @@ C {lab_pin.sym} 2460 -150 0 0 {name=p71 sig_type=std_logic lab=Vout_buf2
 C {gnd.sym} 3390 -150 1 0 {name=l21 lab=GND}
 C {symbols/nfet_03v3.sym} 2480 -150 0 0 {name=M33
 L=0.56u
-W=8u
-nf=2
+W=12u
+nf=3
 m=1
 ad="'int((nf+1)/2) * W/nf * 0.18u'"
 pd="'2*int((nf+1)/2) * (W/nf + 0.18u)'"
@@ -1608,8 +1622,8 @@ spiceprefix=X
 }
 C {symbols/nfet_03v3.sym} 3440 -150 0 1 {name=M34
 L=0.56u
-W=8u
-nf=2
+W=12u
+nf=3
 m=1
 ad="'int((nf+1)/2) * W/nf * 0.18u'"
 pd="'2*int((nf+1)/2) * (W/nf + 0.18u)'"
@@ -1807,3 +1821,83 @@ spiceprefix=X
 C {vsource.sym} 1420 -950 0 1 {name=V20 value=0 savecurrent=false}
 C {lab_wire.sym} 1420 -920 2 0 {name=p86 sig_type=std_logic lab=GND}
 C {lab_wire.sym} 1420 -1040 0 1 {name=p87 sig_type=std_logic lab=Ibias5}
+C {lab_pin.sym} 1960 -750 0 0 {name=p88 sig_type=std_logic lab=Vout_buf3}
+C {lab_pin.sym} 2260 -720 0 1 {name=p89 sig_type=std_logic lab=Vf_n}
+C {lab_pin.sym} 2360 -750 0 0 {name=p90 sig_type=std_logic lab=Vout_n_buf3}
+C {lab_pin.sym} 2660 -720 0 1 {name=p91 sig_type=std_logic lab=Vf}
+C {symbols/nfet_03v3.sym} 2080 -720 0 1 {name=M54
+L=0.28u
+W=0.22u
+nf=1
+m=1
+ad="'int((nf+1)/2) * W/nf * 0.18u'"
+pd="'2*int((nf+1)/2) * (W/nf + 0.18u)'"
+as="'int((nf+2)/2) * W/nf * 0.18u'"
+ps="'2*int((nf+2)/2) * (W/nf + 0.18u)'"
+nrd="'0.18u / W'" nrs="'0.18u / W'"
+sa=0 sb=0 sd=0
+model=nfet_03v3
+spiceprefix=X
+}
+C {symbols/nfet_03v3.sym} 2480 -720 0 1 {name=M55
+L=0.28u
+W=0.22u
+nf=1
+m=1
+ad="'int((nf+1)/2) * W/nf * 0.18u'"
+pd="'2*int((nf+1)/2) * (W/nf + 0.18u)'"
+as="'int((nf+2)/2) * W/nf * 0.18u'"
+ps="'2*int((nf+2)/2) * (W/nf + 0.18u)'"
+nrd="'0.18u / W'" nrs="'0.18u / W'"
+sa=0 sb=0 sd=0
+model=nfet_03v3
+spiceprefix=X
+}
+C {lab_pin.sym} 1400 -150 0 0 {name=p92 sig_type=std_logic lab=Vf_n
+}
+C {symbols/nfet_03v3.sym} 1420 -150 0 0 {name=M56
+L=0.56u
+W=4u
+nf=1
+m=1
+ad="'int((nf+1)/2) * W/nf * 0.18u'"
+pd="'2*int((nf+1)/2) * (W/nf + 0.18u)'"
+as="'int((nf+2)/2) * W/nf * 0.18u'"
+ps="'2*int((nf+2)/2) * (W/nf + 0.18u)'"
+nrd="'0.18u / W'" nrs="'0.18u / W'"
+sa=0 sb=0 sd=0
+model=nfet_03v3
+spiceprefix=X
+}
+C {gnd.sym} 1470 -150 3 1 {name=l41 lab=GND}
+C {lab_pin.sym} 2120 -150 0 1 {name=p93 sig_type=std_logic lab=Vf
+}
+C {symbols/nfet_03v3.sym} 2100 -150 0 1 {name=M57
+L=0.56u
+W=4u
+nf=1
+m=1
+ad="'int((nf+1)/2) * W/nf * 0.18u'"
+pd="'2*int((nf+1)/2) * (W/nf + 0.18u)'"
+as="'int((nf+2)/2) * W/nf * 0.18u'"
+ps="'2*int((nf+2)/2) * (W/nf + 0.18u)'"
+nrd="'0.18u / W'" nrs="'0.18u / W'"
+sa=0 sb=0 sd=0
+model=nfet_03v3
+spiceprefix=X
+}
+C {gnd.sym} 2050 -150 1 0 {name=l42 lab=GND}
+C {symbols/cap_nmos_03v3.sym} 2160 -690 0 0 {name=C8
+W=4e-6
+L=4e-6
+model=cap_nmos_03v3
+spiceprefix=X
+m=1}
+C {symbols/cap_nmos_03v3.sym} 2560 -690 0 0 {name=C9
+W=4e-6
+L=4e-6
+model=cap_nmos_03v3
+spiceprefix=X
+m=1}
+C {lab_wire.sym} 2160 -660 2 0 {name=p94 sig_type=std_logic lab=GND}
+C {lab_wire.sym} 2560 -660 2 0 {name=p95 sig_type=std_logic lab=GND}
