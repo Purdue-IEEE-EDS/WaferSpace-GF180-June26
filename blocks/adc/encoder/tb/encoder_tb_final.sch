@@ -6,15 +6,15 @@ S {}
 F {}
 E {}
 B 2 4230 -1440 5030 -940 {flags=graph
-y1=-0.032
+y1=-0.061
 y2=3.4
 ypos1=0
 ypos2=2
 divy=5
 subdivy=1
 unity=1
-x1=2e-14
-x2=3.4e-08
+x1=1.2469436e-08
+x2=2.0185036e-08
 divx=5
 subdivx=1
 xlabmag=1.0
@@ -31,15 +31,15 @@ b_out[3]
 b_out[4]
 b_out[5]"}
 B 2 5030 -940 5830 -540 {flags=graph
-y1=-0.14
+y1=1.110223e-16
 y2=3.3
 ypos1=0
 ypos2=2
 divy=5
 subdivy=1
 unity=1
-x1=2e-14
-x2=3.4e-08
+x1=1.2469436e-08
+x2=2.0185036e-08
 divx=5
 subdivx=1
 xlabmag=1.0
@@ -60,8 +60,8 @@ ypos2=2
 divy=5
 subdivy=1
 unity=1
-x1=2e-14
-x2=3.4e-08
+x1=1.2469436e-08
+x2=2.0185036e-08
 divx=5
 subdivx=1
 xlabmag=1.0
@@ -137,15 +137,15 @@ comp[2]
 comp[1]
 comp[0]"}
 B 2 4230 -940 5030 -540 {flags=graph
-y1=-0.088
-y2=3.5
+y1=-0.14
+y2=3.7
 ypos1=0
 ypos2=2
 divy=5
 subdivy=1
 unity=1
-x1=2e-14
-x2=3.4e-08
+x1=1.2469436e-08
+x2=2.0185036e-08
 divx=5
 subdivx=1
 xlabmag=1.0
@@ -220,15 +220,15 @@ wl[2]
 wl[1]
 wl[0]"}
 B 2 5030 -540 5830 -140 {flags=graph
-y1=-0.052
+y1=-0.049
 y2=3.4
 ypos1=0
 ypos2=2
 divy=5
 subdivy=1
 unity=1
-x1=2e-14
-x2=3.4e-08
+x1=1.2469436e-08
+x2=2.0185036e-08
 divx=5
 subdivx=1
 xlabmag=1.0
@@ -252,8 +252,8 @@ ypos2=3.7459
 divy=5
 subdivy=1
 unity=1
-x1=2e-14
-x2=3.4e-08
+x1=1.2469436e-08
+x2=2.0185036e-08
 divx=5
 subdivx=1
 xlabmag=1.0
@@ -271,15 +271,15 @@ b_out[4]
 b_out[5]"
 digital=1}
 B 2 6500 -1440 7300 -940 {flags=graph
-y1=-0.7172
-y2=2.7138
+y1=-0.031
+y2=3.4
 ypos1=0
 ypos2=2
 divy=5
 subdivy=1
 unity=1
-x1=2e-14
-x2=3.4e-08
+x1=1.2469436e-08
+x2=2.0185036e-08
 divx=5
 subdivx=1
 xlabmag=1.0
@@ -298,8 +298,8 @@ ypos2=2
 divy=5
 subdivy=1
 unity=1
-x1=2e-14
-x2=3.4e-08
+x1=1.2469436e-08
+x2=2.0185036e-08
 divx=5
 subdivx=1
 xlabmag=1.0
@@ -549,8 +549,8 @@ V_C62 comp[62] 0 PWL(0 0 13.740n 0 13.750n 3.3)
  write top_2G.raw
 .endc} 3360 130 0 0 0.4 0.4 {}
 T {testbench last 15ns} 3480 20 0 0 1 1 {}
-N 1740 -940 1740 -910 {lab=VDD}
-N 1740 -850 1740 -830 {lab=GND}
+N 1840 -1140 1840 -1110 {lab=VDD}
+N 1840 -1050 1840 -1030 {lab=GND}
 N 790 -920 820 -920 {lab=GND}
 N 790 -960 820 -960 {lab=VDD}
 N 1600 -1600 1670 -1600 {lab=b[0]}
@@ -646,19 +646,27 @@ N 2240 -1640 2330 -1640 {lab=b_out[5:0]
 bus=true}
 N 2270 -1640 2270 -1570 {lab=b_out[5:0]
 bus=true}
-N 1830 -1290 1870 -1290 {lab=#net5}
-N 1830 -1270 1870 -1270 {lab=#net5}
-N 1830 -1250 1870 -1250 {lab=#net5}
-N 2170 -1290 2210 -1290 {lab=#net5}
-C {vsource.sym} 1740 -880 0 0 {name=V1 value=3.3 savecurrent=false}
-C {vdd.sym} 1740 -940 0 0 {name=l3 lab=VDD}
-C {gnd.sym} 1740 -830 0 1 {name=l4 lab=GND
+N 1760 -1420 1760 -1340 {lab=CLK_EVAL}
+N 1760 -1420 1830 -1420 {lab=CLK_EVAL}
+N 1760 -1340 1760 -1270 {lab=CLK_EVAL}
+N 1760 -1270 1830 -1270 {lab=CLK_EVAL}
+N 1870 -1390 1870 -1300 {lab=CLK_SAMPLE}
+N 1870 -1340 1980 -1340 {lab=CLK_SAMPLE}
+N 1870 -1240 1870 -1220 {lab=GND}
+N 1870 -1470 1870 -1450 {lab=VDD}
+N 1720 -1340 1760 -1340 {lab=CLK_EVAL}
+N 1865 -1420 1880 -1420 {lab=VDD}
+N 1870 -1270 1890 -1270 {lab=GND}
+C {vsource.sym} 1840 -1080 0 0 {name=V1 value=3.3 savecurrent=false}
+C {vdd.sym} 1840 -1140 0 0 {name=l3 lab=VDD}
+C {gnd.sym} 1840 -1030 0 1 {name=l4 lab=GND
 }
 C {code_shown.sym} 5270 -1525 0 0 {name=MODELS only_toplevel=true
 format="tcleval( @value )"
 value="
 .include $::180MCU_MODELS/design.ngspice
 .lib $::180MCU_MODELS/sm141064.ngspice ss
+.lib $::180MCU_MODELS/sm141064.ngspice res_ss
 "}
 C {code_shown.sym} 2600 -1515 0 0 {name=SPICE only_toplevel=false value="
 V_EVAL CLK_EVAL 0 pulse(0 3.3 0 10p 10p 240p 500p)
@@ -874,7 +882,7 @@ C {lab_wire.sym} 790 -940 0 0 {name=p77 sig_type=std_logic lab=comp[0:62]}
 C {ipin.sym} 1260 -300 0 0 {name=p14 lab=CLK_EVAL}
 C {launcher.sym} 5330 -1580 0 0 {name=h5
 descr="load waves"
-tclcommand="xschem raw_read $netlist_dir/encoder_tb_final.raw tran"
+tclcommand="xschem raw_read $netlist_dir/top_2G.raw tran"
 }
 C {bus_connect_nolab.sym} 1670 -1600 0 0 {name=r1}
 C {bus_connect_nolab.sym} 1670 -1580 0 0 {name=r3}
@@ -904,9 +912,38 @@ value=20f
 footprint=1206
 device="ceramic capacitor"}
 C {lab_wire.sym} 2310 -1640 0 0 {name=p84 sig_type=std_logic lab=b_out[5:0]}
-C {lab_wire.sym} 1845 -1270 0 0 {name=p86 sig_type=std_logic lab=CLK_EVAL}
-C {lab_wire.sym} 1845 -1290 0 0 {name=p1040 sig_type=std_logic lab=VDD}
-C {lab_wire.sym} 1855 -1250 0 0 {name=p1041 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 2200 -1290 0 0 {name=p87 sig_type=std_logic lab=CLK_SAMPLE}
-C {lab_wire.sym} 1900 -1600 0 0 {name=p85 sig_type=std_logic lab=CLK_SAMPLE}
-C {encoder/sym/cascade_inv.sym} 2020 -1270 0 0 {name=x3}
+C {lab_wire.sym} 1730 -1340 0 0 {name=p85 sig_type=std_logic lab=CLK_EVAL}
+C {lab_wire.sym} 1870 -1470 0 0 {name=p1040 sig_type=std_logic lab=VDD}
+C {lab_wire.sym} 1870 -1230 0 0 {name=p1041 sig_type=std_logic lab=GND}
+C {symbols/pfet_03v3.sym} 1850 -1420 0 0 {name=M431
+L=0.28u
+W=0.22u
+nf=1
+m=10
+ad="'int((nf+1)/2) * W/nf * 0.18u'"
+pd="'2*int((nf+1)/2) * (W/nf + 0.18u)'"
+as="'int((nf+2)/2) * W/nf * 0.18u'"
+ps="'2*int((nf+2)/2) * (W/nf + 0.18u)'"
+nrd="'0.18u / W'" nrs="'0.18u / W'"
+sa=0 sb=0 sd=0
+model=pfet_03v3
+spiceprefix=X
+}
+C {symbols/nfet_03v3.sym} 1850 -1270 0 0 {name=M432
+L=0.28u
+W=0.22u
+nf=1
+m=5
+ad="'int((nf+1)/2) * W/nf * 0.18u'"
+pd="'2*int((nf+1)/2) * (W/nf + 0.18u)'"
+as="'int((nf+2)/2) * W/nf * 0.18u'"
+ps="'2*int((nf+2)/2) * (W/nf + 0.18u)'"
+nrd="'0.18u / W'" nrs="'0.18u / W'"
+sa=0 sb=0 sd=0
+model=nfet_03v3
+spiceprefix=X
+}
+C {lab_wire.sym} 1875 -1420 0 0 {name=p1043 sig_type=std_logic lab=VDD}
+C {lab_wire.sym} 1885 -1270 0 0 {name=p1044 sig_type=std_logic lab=GND}
+C {lab_wire.sym} 1970 -1340 0 0 {name=p86 sig_type=std_logic lab=CLK_SAMPLE}
+C {lab_wire.sym} 1900 -1600 0 0 {name=p87 sig_type=std_logic lab=CLK_EVAL}
