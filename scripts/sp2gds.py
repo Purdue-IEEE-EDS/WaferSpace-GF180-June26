@@ -1,16 +1,38 @@
-import os
 import re
 import pya
 import bisect
 
-# TODO: Maybe running "File -> Refresh Libraries" fixes the pfet issue
+# Currently, the script DOES NOT cover:
+# * Well and Metal resistors
+# * BJTs
+# * Diodes
+# * Hierarchical Layouts (ask Eileen)
+# * Anything 5/6V
+# * 3-T(erminal) Transistors will be laid out as 4-T Transistors.
+
+# If you want to see the specific configuration we are on, this is it:
+# https://gf180mcu-pdk.readthedocs.io/en/latest/analog/layout/inter_specs/inter_specs_3_43.html
+# ^ However, the MIMcaps are 2.0fF/um^2 instead of 1.5fF/um^2.
+
+# Additionally here are the sheet resistances for resistors:
+# https://gf180mcu-pdk.readthedocs.io/en/latest/analog/spice/elec_specs/elec_specs_5_1.html
+
+# Here are the basic DRC rules, which may be outdated:
+# https://gf180mcu-pdk.readthedocs.io/en/latest/physical_verification/design_manual/drm_07_02.html
+
+# If you want varactors, see this discussion:
+# https://web.open-source-silicon.dev/t/8998736/u016em8l91b-are-nmoscaps-realized-as-poly-over-n-tap-inside-
+# However, in our experience, this may be false.
+
+# Other errata: Grid spacing might need to be 0.001um instead of 0.005um, but this can cause OFFGRID violations.
+#               Instead you may create your layout with 0.005um and port it to 0.001um later.
 
 
 # --- Configuration ---
 # Must be in a function because other functions are used
 #  as part of the configuration variables.
 def init_cfg():
-    global PDK_LIB_NAME, SCALE_FACTOR, SI_MULTIPLIERS, SKIP_SPICE_IGNORE, DEVICE_MAP, PRINT_PDKS, PRINT_PCELLS
+    global PDK_LIB_NAME, SCALE_FACTOR, SI_MULTIPLIERS, SKIP_SPICE_IGNORE, PARAM_ALIASES, DEVICE_MAP, PRINT_PDKS, PRINT_PCELLS
 
     # Returned from calling 'pya.Library.library_names()'.
     # See below for debugging options.
@@ -27,32 +49,63 @@ def init_cfg():
 
     # Skip placing devices with the parameter "spice_ignore=true".
     SKIP_SPICE_IGNORE = True
+    
+    # Add aliases for parameter names. First item in each list is the
+    # "canonical name" used by the script, and other items are aliases.
+    # *** Write the parameter names in ALL LOWERCASE! ***
+    PARAM_ALIASES = [
+        ["m", "mult"]  # Device multiplicity, lookup with 'm'.
+    ]
 
-    # Map each schematic symbol to either a placing function
+    # Map each schematic model to either a placing function
     #  or an Exception to raise one upon parsing the symbol.
-    # Symbols not mapped are ignored.
+    # *** Write the model names in ALL LOWERCASE! ***
     DEVICE_MAP = {
-        "ppolyf_u_1k.sym": place_npolyf_ppolyf,
-        "pfet_03v3.sym": place_nfet_pfet_03v3,
-        "nfet_03v3.sym": place_nfet_pfet_03v3,
-        "cap_mim_2f0fF.sym": gen_place_warn("SPICE model for cap_mim_2f0fF may differ from intended model cap_mim_2f0_m4m5_noshield.", place_cap_mim_1f5fF),
-        "cap_mim_analog.sym": place_cap_mim_1f5fF,
-        "ppolyf_u.sym": place_npolyf_ppolyf,
-        "ppolyf_s.sym": place_npolyf_ppolyf,
-        "npolyf_u.sym": place_npolyf_ppolyf,
-        "npolyf_s.sym": place_npolyf_ppolyf,
-        "cap_nmos_03v3.sym": place_cap_nmos_pmos_03v3,
-        "cap_nmos_03v3_b.sym": place_cap_nmos_pmos_03v3,
-        "cap_pmos_03v3.sym": place_cap_nmos_pmos_03v3,
-        "cap_pmos_03v3_b.sym": place_cap_nmos_pmos_03v3,
-    
-        "res.sym": gen_place_warn("Ideal component: res.sym", place_pass),
-        "capa-2.sym": gen_place_warn("Ideal component: capa-2.sym", place_pass),
-    
-        "ppolyf_u_3k.sym": ValueError("Can't use ppolyf_u_3k in WaferSpace tapeout"),
-        "ppolyf_u_2k.sym": ValueError("Can't use ppolyf_u_2k in WaferSpace tapeout"),
-        "cap_mim_1f5fF.sym": ValueError("Can't use cap_mim_1f5fF in WaferSpace tapeout"),
-        "cap_mim_1f0fF.sym": ValueError("Can't use cap_mim_1f0fF in WaferSpace tapeout")
+        # MOSFET
+        "pfet_03v3": place_nfet_pfet_03v3,
+        "nfet_03v3": place_nfet_pfet_03v3,
+
+        # MIMcap (Connects between Metal4 and Metal5 in WaferSpace tapeout)
+        "cap_mim_2f0ff": gen_place_warn("SPICE model for cap_mim_2f0fF **may** differ from intended model cap_mim_2f0_m4m5_noshield.", place_cap_mim),
+        "cap_mim_2f0_m4m5_noshield": place_cap_mim,
+
+        # MOScap
+        "cap_nmos_03v3": place_cap_nmos_pmos_03v3,
+        "cap_nmos_03v3_b": place_cap_nmos_pmos_03v3,
+        "cap_pmos_03v3": place_cap_nmos_pmos_03v3,
+        "cap_pmos_03v3_b": place_cap_nmos_pmos_03v3,
+
+        # Hi-Res Polyres
+        "ppolyf_u_1k": place_npolyf_ppolyf,
+
+        # Lo-Res Polyres
+        "ppolyf_u": place_npolyf_ppolyf,
+        "ppolyf_s": place_npolyf_ppolyf,
+        "npolyf_u": place_npolyf_ppolyf,
+        "npolyf_s": place_npolyf_ppolyf,
+
+        # Diffusion res
+        "pplus_u": place_nplus_pplus,
+        "pplus_s": place_nplus_pplus,
+        "nplus_u": place_nplus_pplus,
+        "nplus_s": place_nplus_pplus,
+
+        # Component jail
+        "ppolyf_u_3k": ValueError("Can't use ppolyf_u_3k in WaferSpace tapeout"),
+        "ppolyf_u_2k": ValueError("Can't use ppolyf_u_2k in WaferSpace tapeout"),
+        "cap_mim_1f5ff": ValueError("Can't use cap_mim_1f5fF in WaferSpace tapeout"),
+        "cap_mim_1f0ff": ValueError("Can't use cap_mim_1f0fF in WaferSpace tapeout"),
+        "cap_mim_1f5_m2m3_noshield": ValueError("Use cap_mim_2f0_m4m5_noshield as model for cap_mim_analog."),
+        "cap_mim_1f0_m2m3_noshield": ValueError("Use cap_mim_2f0_m4m5_noshield as model for cap_mim_analog."),
+        "cap_mim_2f0_m2m3_noshield": ValueError("Use cap_mim_2f0_m4m5_noshield as model for cap_mim_analog."),
+        "cap_mim_1f5_m3m4_noshield": ValueError("Use cap_mim_2f0_m4m5_noshield as model for cap_mim_analog."),
+        "cap_mim_1f0_m3m4_noshield": ValueError("Use cap_mim_2f0_m4m5_noshield as model for cap_mim_analog."),
+        "cap_mim_2f0_m3m4_noshield": ValueError("Use cap_mim_2f0_m4m5_noshield as model for cap_mim_analog."),
+        "cap_mim_1f5_m4m5_noshield": ValueError("Use cap_mim_2f0_m4m5_noshield as model for cap_mim_analog."),
+        "cap_mim_1f0_m4m5_noshield": ValueError("Use cap_mim_2f0_m4m5_noshield as model for cap_mim_analog."),
+        "cap_mim_1f5_m5m6_noshield": ValueError("Use cap_mim_2f0_m4m5_noshield as model for cap_mim_analog."),
+        "cap_mim_1f0_m5m6_noshield": ValueError("Use cap_mim_2f0_m4m5_noshield as model for cap_mim_analog."),
+        "cap_mim_2f0_m5m6_noshield": ValueError("Use cap_mim_2f0_m4m5_noshield as model for cap_mim_analog.")
     }
 
     # Debug: Print available PDKs, then exit.
@@ -126,6 +179,15 @@ def get_line_number(newline_indices, i):
     return bisect.bisect_left(newline_indices, i)
 
 
+def get_param_alias_map(param_aliases):
+    # Generate a map that maps each parameter
+    # alias to its canonical name.
+    param_alias_map = dict()
+    for pl in param_aliases:
+        param_alias_map.update({p: pl[0] for p in pl[1:]})
+    return param_alias_map
+
+
 def parse_si_value(value, *, si_match_expr = re.compile(r"([+-]?\d+(?:\.\d+)?(?:e[+-]?\d+)?)\s*([a-zµ]+)?")):
     if not isinstance(value, str):
         return value
@@ -146,16 +208,18 @@ def parse_si_value(value, *, si_match_expr = re.compile(r"([+-]?\d+(?:\.\d+)?(?:
     return number * suffix
 
 
-def parse_props(props, *, prop_match_expr = re.compile(r"""(?P<key>[^=]*)=\s*(?P<value>"(?:[^"\\]|\\.)*"|'(?:[^'\\]|\\.)*'|\S*)""")):
-    props = props.strip().lower()
+def parse_params(params, param_alias_map = {}, *, param_match_expr = re.compile(r"""(?P<key>[^=]*)=\s*(?P<value>"(?:[^"\\]|\\.)*"|'(?:[^'\\]|\\.)*'|\S*)""")):
+    params = params.strip().lower()  # Case-insensitive like SPICE
     parsed = dict()
     i = 0
-    while i < len(props):
-        m = prop_match_expr.match(props, i)
+    while i < len(params):
+        m = param_match_expr.match(params, i)
         if m is None:
-            print(f"Warning: Extra data at end of properties: {props[i:]}")
+            print(f"Warning: Extra data at end of parameters: {params[i:]}")
             break
-        parsed[m.group("key").strip()] = m.group("value").strip()
+        k = m.group("key").strip()
+        # Use param_alias_map to canonicalize parameter names
+        parsed[param_alias_map.get(k, k)] = m.group("value").strip()
         i = m.end()
     return parsed
 
@@ -163,38 +227,38 @@ def parse_props(props, *, prop_match_expr = re.compile(r"""(?P<key>[^=]*)=\s*(?P
 # --- Placing functions ---
 def gen_place_warn(msg, place_func):
     def place_warn(lib, cv, ly, top, c, nl_inds):
-        print(f"Warning: Line {get_line_number(nl_inds, c['spice_loc'])}: {msg}")
+        print(f"Warning: Line {get_line_number(nl_inds, c["spice_loc"])}: {msg}")
         return place_func(lib, cv, ly, top, c, nl_inds)
     return place_warn
 
 
 def gen_place_err(err_t, msg):
     def place_err(lib, cv, ly, top, c, nl_inds):
-        raise err_t(f"Line {get_line_number(nl_inds, c['spice_loc'])}: {msg}")
+        raise err_t(f"Line {get_line_number(nl_inds, c["spice_loc"])}: {msg}")
         return 0
     return place_err
 
 
 def place_pass(lib, cv, ly, top, c, nl_inds):
-    # print(f"Skipping: {c['sym']}")
+    print(f"Skipping unmatched device model: {c["params"]["model"]}")
     return 0
 
 
 def place_npolyf_ppolyf(lib, cv, ly, top, c, nl_inds):
-    pcell_name = c["props"]["model"] \
+    pcell_name = c["params"]["model"] \
                     .replace("1k", "high_Rs") \
                     .replace("2k", "high_Rs") \
                     .replace("3k", "high_Rs") \
                     + "_resistor"
-    width = parse_si_value(c["props"]["w"]) * 1e6
-    length = parse_si_value(c["props"]["l"]) * 1e6
+    width = parse_si_value(c["params"]["w"]) * 1e6
+    length = parse_si_value(c["params"]["l"]) * 1e6
     params = {
         "deepnwell": False,
         "pcmpgr": False,
         "w_res": width,
         "l_res": length,
         "array_x": 1,
-        "array_y": int(c["props"]["m"]),
+        "array_y": int(c["params"]["m"]),
         "lbl": False
     }
     if "high_Rs" in pcell_name:
@@ -202,16 +266,16 @@ def place_npolyf_ppolyf(lib, cv, ly, top, c, nl_inds):
     cell = ly.create_cell(pcell_name, lib.name(), params)
     pos = pya.Vector(pya.DVector(c["x"], -c["y"]) * SCALE_FACTOR)
     inst = top.insert(pya.CellInstArray(cell, pos))
-    inst.set_property(99, c["props"]["name"])  # User property for SPICE name
-    print(f"Created a new resistor {c["props"]["name"]}.")
+    inst.set_property(99, c["params"]["name"])  # User property for SPICE name
+    print(f"Created a new resistor {c["params"]["name"]}.")
     return 1
 
 
 def place_nfet_pfet_03v3(lib, cv, ly, top, c, nl_inds):
-    pcell_name = "nfet" if c["props"]["model"] == "nfet_03v3" else "pfet"
-    width = parse_si_value(c["props"]["w"]) * 1e6
-    length = parse_si_value(c["props"]["l"]) * 1e6
-    nfingers = int(c["props"]["nf"])
+    pcell_name = "nfet" if c["params"]["model"] == "nfet_03v3" else "pfet"
+    width = parse_si_value(c["params"]["w"]) * 1e6
+    length = parse_si_value(c["params"]["l"]) * 1e6
+    nfingers = int(c["params"]["nf"])
     params = {
         "deepnwell": False,
         "pcmpgr": False,
@@ -226,18 +290,17 @@ def place_nfet_pfet_03v3(lib, cv, ly, top, c, nl_inds):
     }
     cell = ly.create_cell(pcell_name, lib.name(), params)
     pos = pya.Vector(pya.DVector(c["x"], -c["y"]) * SCALE_FACTOR)
-    for _ in range(int(c["props"]["m"])):
+    for _ in range(int(c["params"]["m"])):
         inst = top.insert(pya.CellInstArray(cell, pos))
-        inst.set_property(99, c["props"]["name"])  # User property for SPICE name
-        print(f"Created a new transistor {c["props"]["name"]}.")
+        inst.set_property(99, c["params"]["name"])  # User property for SPICE name
+        print(f"Created a new transistor {c["params"]["name"]}.")
         pos += pya.Vector(pya.DVector(width, -length) * SCALE_FACTOR * 3)
-    return int(c["props"]["m"])
+    return int(c["params"]["m"])
 
 
-def place_cap_mim_1f5fF(lib, cv, ly, top, c, nl_inds):
-    # ref: https://gf180mcu-pdk.readthedocs.io/en/latest/analog/layout/inter_specs/inter_specs_3_43.html
-    width = parse_si_value(c["props"]["w"]) * 1e6
-    length = parse_si_value(c["props"]["l"]) * 1e6
+def place_cap_mim(lib, cv, ly, top, c, nl_inds):
+    width = parse_si_value(c["params"]["w"]) * 1e6
+    length = parse_si_value(c["params"]["l"]) * 1e6
     params = {
         "mim_option": "MIM-B",  # Use MIM-B option
         "metal_level": "M5",  # Between M4 and M5
@@ -247,18 +310,18 @@ def place_cap_mim_1f5fF(lib, cv, ly, top, c, nl_inds):
     }
     cell = ly.create_cell("cap_mim", lib.name(), params)
     pos = pya.Vector(pya.DVector(c["x"], -c["y"]) * SCALE_FACTOR)
-    for _ in range(int(c["props"]["m"])):
+    for _ in range(int(c["params"]["m"])):
         inst = top.insert(pya.CellInstArray(cell, pos))
-        inst.set_property(99, c["props"]["name"])  # User property for SPICE name
-        print(f"Created a new mimcap {c["props"]["name"]}.")
+        inst.set_property(99, c["params"]["name"])  # User property for SPICE name
+        print(f"Created a new mimcap {c["params"]["name"]}.")
         pos += pya.Vector(pya.DVector(width, -length) * SCALE_FACTOR * 3)
-    return int(c["props"]["m"])
+    return int(c["params"]["m"])
 
 
 def place_cap_nmos_pmos_03v3(lib, cv, ly, top, c, nl_inds):
-    pcell_name = c["props"]["model"].replace("_03v3", "")
-    width = parse_si_value(c["props"]["w"]) * 1e6
-    length = parse_si_value(c["props"]["l"]) * 1e6
+    pcell_name = c["params"]["model"].replace("_03v3", "")
+    width = parse_si_value(c["params"]["w"]) * 1e6
+    length = parse_si_value(c["params"]["l"]) * 1e6
     params = {
         "volt": "3.3V",
         "lc": width,
@@ -270,12 +333,44 @@ def place_cap_nmos_pmos_03v3(lib, cv, ly, top, c, nl_inds):
         params["pcmpgr"] = False
     cell = ly.create_cell(pcell_name, lib.name(), params)
     pos = pya.Vector(pya.DVector(c["x"], -c["y"]) * SCALE_FACTOR)
-    for _ in range(int(c["props"]["m"])):
+    for _ in range(int(c["params"]["m"])):
         inst = top.insert(pya.CellInstArray(cell, pos))
-        inst.set_property(99, c["props"]["name"])  # User property for SPICE name
-        print(f"Created a new transistor {c["props"]["name"]}.")
+        inst.set_property(99, c["params"]["name"])  # User property for SPICE name
+        print(f"Created a new moscap {c["params"]["name"]}.")
         pos += pya.Vector(pya.DVector(width, -length) * SCALE_FACTOR * 3)
-    return int(c["props"]["m"])
+    return int(c["params"]["m"])
+
+
+def place_nplus_pplus(lib, cv, ly, top, c, nl_inds):
+    pcell_name = c["params"]["model"] + "_resistor"
+    width = parse_si_value(c["params"]["w"]) * 1e6
+    length = parse_si_value(c["params"]["l"]) * 1e6
+    params = {
+        "deepnwell": False,
+        "pcmpgr": False,
+        "w_res": width,
+        "l_res": length,
+        "array_x": 1,
+        "array_y": int(c["params"]["m"]),
+        "lbl": False
+    }
+    cell = ly.create_cell(pcell_name, lib.name(), params)
+    pos = pya.Vector(pya.DVector(c["x"], -c["y"]) * SCALE_FACTOR)
+    inst = top.insert(pya.CellInstArray(cell, pos))
+    inst.set_property(99, c["params"]["name"])  # User property for SPICE name
+    print(f"Created a new resistor {c["params"]["name"]}.")
+    return 1
+
+
+# How to create a new place function:
+# 1. Copy an existing function from above, modify it to suit your needs. The parameters are
+#    "library", "cellview", "layout", "toplevel", (see KLayout docs)
+#    "component" (see Line 411), "newline_indices" (see Line 167).
+#  The return value is how many devices you created for this schematic symbol.
+# 2. Add the relevant SPICE model name to DEVICE_MAP.
+
+# In KLayout you can enable "Show parameter names" in
+# [any PCell] -> [press Q] -> Instance Properties -> Options -> 'Show parameter names'.
 
 
 # --- Main ---
@@ -290,27 +385,29 @@ def run_import():
     cv = get_or_create_cellview()
     ly = cv.layout()
     top = get_or_create_top(ly)
-    if ly.dbu != 0.005:
-        # # Efabless says to use 0.005um for gf180mcu.
-        print("Warning: Layout database units are not 0.005um!")
+    # This may not be the case anymore.
+    # if ly.dbu != 0.005:
+    #     # Efabless says to use 0.005um for gf180mcu.
+    #    print("Warning: Layout database units are not 0.005um!")
 
     # 2. Choose file
-    netlist_path = pya.FileDialog.ask_open_file_name("Choose Netlist", '.', "SPICE (*.spice *.sch)")
+    netlist_path = pya.FileDialog.ask_open_file_name("Choose Netlist", ".", "SPICE (*.spice *.sch *)")
     if not netlist_path:
         print("No file selected. Exiting.")
         return
 
     # 3. Parse devices
     print("Parsing devices...")
-    with open(netlist_path, 'r') as f:
+    with open(netlist_path, "r") as f:
         f_content = f.read()
 
     nl_inds = get_newline_indices(f_content)
+    param_alias_map = get_param_alias_map(PARAM_ALIASES)
 
     components = []
-    comp_regex = re.compile(r"C \{(?P<sym>[^}]*)\} (?P<x>-?[0-9]+) (?P<y>-?[0-9]+) (?P<b>-?[0-9]+) (?P<h>-?[0-9]+) \{(?P<props>[^}]*)\}")
+    comp_regex = re.compile(r"C \{(?P<sym>[^}]*)\} (?P<x>-?[0-9]+) (?P<y>-?[0-9]+) (?P<b>-?[0-9]+) (?P<h>-?[0-9]+) \{(?P<params>[^}]*)\}")
     next_line = lambda content, pos: content.find("\n", pos) + 1
-    map_sym = lambda sym: DEVICE_MAP.get(os.path.basename(sym), place_pass)
+    map_model = lambda model: DEVICE_MAP.get(model, place_pass)
 
     i = 0
     while True:
@@ -318,7 +415,7 @@ def run_import():
         j = i
         try:
             # Lines containing components start with 'C'
-            if not f_content.startswith('C ', i):
+            if not f_content.startswith("C ", i):
                 continue
 
             m = comp_regex.match(f_content, i)
@@ -328,22 +425,22 @@ def run_import():
                 "y": parse_si_value(m.group("y")),
                 "b": parse_si_value(m.group("b")),
                 "h": parse_si_value(m.group("h")),
-                "props": parse_props(m.group("props")),
+                "params": parse_params(m.group("params"), param_alias_map),
                 "spice_loc": i
             }
-
-            # Quick hack to fix old gf180 fets' old multiplicity parameter
-            if "mult" in c["props"]:
-                c["props"]["m"] = c["props"]["mult"]
-
             j = m.end()
 
+            # Only add devices with a 'model' parameter (aka PDK devices)
+            if "model" not in c["params"]:
+                print(f"Warning: Line {get_line_number(nl_inds, i)}: Skipping potentially ideal symbol: {c["sym"]}")
+                continue
+
             # If desired, skip devices with spice_ignore=true
-            if SKIP_SPICE_IGNORE and c["props"].get("spice_ignore", "false") == "true":
+            if SKIP_SPICE_IGNORE and c["params"].get("spice_ignore", "false") == "true":
                 continue
 
             # Detect and raise parse-time errors
-            place_func = map_sym(c["sym"])
+            place_func = map_model(c["params"]["model"])
             if isinstance(place_func, Exception):
                 place_func.add_note(f"(Line {get_line_number(nl_inds, i)})")
                 raise place_func
@@ -359,7 +456,7 @@ def run_import():
     print("Placing devices... This will take ~30s per unique device.")
     i = 0
     for c in components:
-        i += map_sym(c['sym'])(lib, cv, ly, top, c, nl_inds)
+        i += map_model(c["params"]["model"])(lib, cv, ly, top, c, nl_inds)
 
     # 5. Inform user that import finished
     print(f"Import complete. Placed {i} devices.")
