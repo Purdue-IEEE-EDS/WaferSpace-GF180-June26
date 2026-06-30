@@ -9,10 +9,10 @@ module fft
     output logic valid_out
 ); 
 
-    logic clk; 
-    logic sync_rst1, sync_rst2; 
+    logic fft_clk; 
+    (* keep *) logic sync_rst1, sync_rst2; 
 
-    always_ff @(posedge clk, negedge rst) begin 
+    always_ff @(posedge fft_clk, negedge rst) begin 
         if (!rst) begin 
             sync_rst1 <= '0; 
             sync_rst2 <= '0; 
@@ -25,7 +25,7 @@ module fft
     clk_divider divider(
     .adc_clk, 
     .rst,    
-    .clk   
+    .clk(fft_clk) 
     );
 
     logic [5:0] pdata_re0, pdata_re1, pdata_re2, pdata_re3;
@@ -50,16 +50,25 @@ module fft
     logic [5:0] fft_im0, fft_im1, fft_im2, fft_im3;
     
     reorder
-    input_buffer (
-        .clk, .rst(sync_rst2),   // 160 MHz Parallel Clock
+    reorder_re (
+        .clk(fft_clk), .rst(sync_rst2),   // 160 MHz Parallel Clock
         .valid_in(stp_val),   // High when valid serial-de-interleaved data arrives
         
-        .din_re0(pdata_re0), .din_re1(pdata_re1), .din_re2(pdata_re2), .din_re3(pdata_re3),
-        .din_im0(pdata_im0), .din_im1(pdata_im1), .din_im2(pdata_im2), .din_im3(pdata_im3), 
+        .din0(pdata_re0), .din1(pdata_re1), .din2(pdata_re2), .din3(pdata_re3),
 
         .valid_out(reorder_val),
-        .din_re0_r(fft_re0), .din_re1_r(fft_re2), .din_re2_r(fft_re1), .din_re3_r(fft_re3),
-        .din_im0_r(fft_im0), .din_im1_r(fft_im2), .din_im2_r(fft_im1), .din_im3_r(fft_im3) 
+        .dout0(fft_re0), .dout1(fft_re2), .dout2(fft_re1), .dout3(fft_re3)
+    );
+
+    reorder
+    reorder_im (
+        .clk(fft_clk), .rst(sync_rst2),   // 160 MHz Parallel Clock
+        .valid_in(stp_val),   // High when valid serial-de-interleaved data arrives
+        
+        .din0(pdata_im0), .din1(pdata_im1), .din2(pdata_im2), .din3(pdata_im3),
+
+        .valid_out(),
+        .dout0(fft_im0), .dout1(fft_im2), .dout2(fft_im1), .dout3(fft_im3)
     );
 
     logic signed [15:0] dout_re0, dout_re1, dout_re2, dout_re3;   
@@ -67,11 +76,11 @@ module fft
 
     mdc_fft
     fft_core(
-        .clk, .rst(sync_rst2),
+        .clk(fft_clk), .rst(sync_rst2),
         .in_valid(reorder_val),
 
-        .din_re0(fft_re0+6'd32), .din_re1(fft_re1+6'd32), .din_re2(fft_re2+6'd32), .din_re3(fft_re3+6'd32),
-        .din_im0(fft_im0+6'd32), .din_im1(fft_im1+6'd32), .din_im2(fft_im2+6'd32), .din_im3(fft_im3+6'd32), 
+        .din_re0(fft_re0+6'd32), .din_re1(fft_re2+6'd32), .din_re2(fft_re1+6'd32), .din_re3(fft_re3+6'd32),
+        .din_im0(fft_im0+6'd32), .din_im1(fft_im2+6'd32), .din_im2(fft_im1+6'd32), .din_im3(fft_im3+6'd32), 
 
         .dout_re0, .dout_re1, .dout_re2, .dout_re3,   
         .dout_im0, .dout_im1, .dout_im2, .dout_im3,
@@ -79,21 +88,60 @@ module fft
         .out_valid(fft_val)
     ); 
 
+    logic [15:0] re0, re1, re2, re3, im0, im1, im2, im3; 
+
+    always_ff @(posedge fft_clk) begin 
+        re0 <= dout_re0;
+        re1 <= dout_re1; 
+        re2 <= dout_re2; 
+        re3 <= dout_re3; 
+
+        im0 <= dout_im0; 
+        im1 <= dout_im1; 
+        im2 <= dout_im2; 
+        im3 <= dout_im3; 
+    end
+
+    logic pts_val, pts_val_sync1;
+    (* keep *) (* dont_touch = "true" *) logic pts_val_sync2; 
+    (* keep *) (* dont_touch = "true" *) logic pts_val_sync2_cpy; 
+
+    always_ff @(posedge fft_clk, negedge sync_rst2) begin 
+        if (!sync_rst2) pts_val <= '0; 
+        else pts_val <= fft_val; 
+    end
+
+    always_ff @(posedge adc_clk) begin 
+        if (!rst) begin 
+            pts_val_sync1 <= '0; 
+            pts_val_sync2 <= '0; 
+        end else begin 
+            pts_val_sync1 <= pts_val; 
+            pts_val_sync2 <= pts_val_sync1; 
+        end
+    end
+
+    always_ff @(posedge adc_clk) begin 
+        if (!rst) begin 
+            pts_val_sync2_cpy <= '0; 
+        end else begin  
+            pts_val_sync2_cpy <= pts_val_sync1; 
+        end
+    end
+
     parallel_to_serial pts_re(
-        .adc_clk, .rst, //640 mhz
-        .valid_in(fft_val),
+        .adc_clk, .fft_clk, .rst, //640 mhz
+        .valid_in(pts_val_sync2),
         .dout(dout_re), 
-        .din0(dout_re0), .din1(dout_re1), .din2(dout_re2), .din3(dout_re3),
+        .din0(re0), .din1(re1), .din2(re2), .din3(re3),
         .valid_out(valid_out)
     );
 
     parallel_to_serial pts_im(
-        .adc_clk, .rst, //640 mhz
-        .valid_in(fft_val),
+        .adc_clk, .fft_clk, .rst, //640 mhz
+        .valid_in(pts_val_sync2_cpy),
         .dout(dout_im), 
-        .din0(dout_im0), .din1(dout_im1), .din2(dout_im2), .din3(dout_im3),
+        .din0(im0), .din1(im1), .din2(im2), .din3(im3),
         .valid_out()
     );
-
-    
 endmodule

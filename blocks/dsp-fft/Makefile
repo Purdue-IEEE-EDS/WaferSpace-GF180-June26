@@ -55,6 +55,7 @@ RTL = \
 	$(RTL_DIR)/carry_save_adder.sv \
 	$(RTL_DIR)/commutator.sv \
 	$(RTL_DIR)/reorder.sv \
+	$(RTL_DIR)/reorder_lane.sv \
 	$(RTL_DIR)/parallel_to_serial.sv \
 	$(RTL_DIR)/serial_to_parallel.sv \
 	$(RTL_DIR)/clk_divider.sv \
@@ -214,11 +215,12 @@ $(STA_SCRIPT): | $(SYN_DIR)
 	@echo "read_verilog $(SYN_NET)"                            >> $@
 	@echo "link_design $(TOP)"                                >> $@
 	@echo "create_clock -name adc_clk -period $(ADC_CLK_PERIOD) [get_ports adc_clk]" >> $@
-	@echo "create_generated_clock -name clk -source [get_ports adc_clk] -divide_by 4 [get_pins divider/_4_/Q ]" >> $@
+	@echo "create_generated_clock -name fft_clk -source [get_ports adc_clk] -divide_by 4 [get_pins divider/_5_/Q ]" >> $@
 	@echo "get_clocks" >> $@
-	@echo "set_false_path -from [get_ports rst]"              >> $@
-	@echo "set_false_path -from [get_cells _36579_ ]"              >> $@
+	@echo "set_false_path -from [get pins _35590_/Q ]"
 	@echo ""                                                  >> $@
+	@echo "set_multicycle_path -setup 2 -from [get_clocks fft_clk] -to [get_clocks adc_clk]" >> $@
+	@echo "set_multicycle_path -hold 1 -from [get_clocks fft_clk] -to [get_clocks adc_clk]" >> $@
 	@echo "puts \"\n=== WORST PATH (max) ===\""               >> $@
 	@echo "report_checks -path_delay max -group_count 10 -fields {fanout capacitance slew} -digits 3" >> $@
 	@echo ""                                                  >> $@
@@ -257,10 +259,11 @@ pnr: $(PNR_DEF)
 
 $(PNR_SDC): | $(PNR_DIR)
 	@echo "create_clock -name adc_clk -period $(ADC_CLK_PERIOD) [get_ports adc_clk]"   >> $@
-	@echo "create_generated_clock -name clk -source [get_ports adc_clk] -divide_by 4 [get_pins divider/_4_/Q ]" >> $@
+	@echo "create_generated_clock -name fft_clk -source [get_ports adc_clk] -divide_by 4 [get_pins divider/_5_/Q ]" >> $@
+	@echo "set_multicycle_path -setup 2 -from [get_clocks fft_clk] -to [get_clocks adc_clk]" >> $@
+	@echo "set_multicycle_path -hold 1 -from [get_clocks fft_clk] -to [get_clocks adc_clk]" >> $@
 	@echo "set_max_fanout 16 [current_design]"                             >> $@
 	@echo "set_max_transition 1.5 [current_design]"                        >> $@
-	@echo "set_false_path -from [get_ports rst]"                           >> $@
 
 $(PNR_SCRIPT): | $(PNR_DIR)
 	@echo "read_lef $(TECH_LEF)"                                           >  $@
@@ -320,8 +323,8 @@ $(PNR_SCRIPT): | $(PNR_DIR)
 	@echo "detailed_route"   >> $@
 	@echo ""                                                               >> $@
 	@echo "estimate_parasitics -global_routing"                            >> $@
-	@echo "report_checks -path_delay max -group_path_count 5"  >> $@
-	@echo "report_checks -path_delay min -group_path_count 5"  >> $@
+	@echo "report_checks -path_delay max -fields {cap trans net fanout input_pin} -group_path_count 5"  >> $@
+	@echo "report_checks -path_delay min -fields {cap trans net fanout input_pin} -group_path_count 5"  >> $@
 	@echo "report_tns"                                                     >> $@
 	@echo "report_wns"                                                     >> $@
 	@echo "report_clock_skew"                                              >> $@

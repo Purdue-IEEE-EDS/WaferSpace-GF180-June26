@@ -21,6 +21,14 @@ module clk_divider(
         end
     end
 
-    assign clk = clk_reg[1];
+    // assign clk = clk_reg[1];
+
+    always_ff @(posedge adc_clk) begin 
+        if (!rst) begin 
+            clk <= '0; 
+        end else begin 
+            clk <= clk_reg[1];
+        end
+    end
 
 endmodule

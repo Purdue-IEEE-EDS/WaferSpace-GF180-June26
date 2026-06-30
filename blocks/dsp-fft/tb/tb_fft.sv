@@ -50,11 +50,13 @@ module tb_fft();
         valid_in = 1'b1; 
 
         for (int i = 0; i < 64; i++) begin 
-            din_re = 5'd0; 
+            din_re = i; 
+            din_im = 63-i;
             @(negedge adc_clk);
         end
         //repeat (64) @(negedge adc_clk);
-
+        din_re='0;
+        din_im='0; 
         valid_in = 1'b0; 
 
         repeat (1024) @(negedge adc_clk);

@@ -2,11 +2,11 @@ read_liberty /foss/pdks/gf180mcuD/libs.ref/gf180mcu_fd_sc_mcu9t5v0/lib/gf180mcu_
 read_verilog syn/fft_syn.v
 link_design fft
 create_clock -name adc_clk -period 1.5625 [get_ports adc_clk]
-create_generated_clock -name clk -source [get_ports adc_clk] -divide_by 4 [get_pins divider/_4_/Q ]
+create_generated_clock -name fft_clk -source [get_ports adc_clk] -divide_by 4 [get_pins divider/_5_/Q ]
 get_clocks
-set_false_path -from [get_ports rst]
-set_false_path -from [get_cells _36579_ ]
 
+set_multicycle_path -setup 2 -from [get_clocks fft_clk] -to [get_clocks adc_clk]
+set_multicycle_path -hold 1 -from [get_clocks fft_clk] -to [get_clocks adc_clk]
 puts "
 === WORST PATH (max) ==="
 report_checks -path_delay max -group_count 10 -fields {fanout capacitance slew} -digits 3

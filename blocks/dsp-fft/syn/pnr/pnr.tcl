@@ -55,8 +55,8 @@ set_routing_layers -signal Metal1-Metal5
 detailed_route
 
 estimate_parasitics -global_routing
-report_checks -path_delay max -group_path_count 5
-report_checks -path_delay min -group_path_count 5
+report_checks -path_delay max -fields {cap trans net fanout input_pin} -group_path_count 5
+report_checks -path_delay min -fields {cap trans net fanout input_pin} -group_path_count 5
 report_tns
 report_wns
 report_clock_skew
