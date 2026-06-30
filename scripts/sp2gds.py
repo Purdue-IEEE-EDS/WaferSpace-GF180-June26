@@ -331,6 +331,11 @@ def run_import():
                 "props": parse_props(m.group("props")),
                 "spice_loc": i
             }
+
+            # Quick hack to fix old gf180 fets' old multiplicity parameter
+            if "mult" in c["props"]:
+                c["props"]["m"] = c["props"]["mult"]
+
             j = m.end()
 
             # If desired, skip devices with spice_ignore=true
