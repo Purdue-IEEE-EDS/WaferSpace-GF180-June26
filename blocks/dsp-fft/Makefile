@@ -57,9 +57,12 @@ RTL = \
 	$(RTL_DIR)/reorder.sv \
 	$(RTL_DIR)/reorder_lane.sv \
 	$(RTL_DIR)/parallel_to_serial.sv \
+	$(RTL_DIR)/parallel_to_serial16.sv \
 	$(RTL_DIR)/serial_to_parallel.sv \
+	$(RTL_DIR)/serial_to_parallel16.sv \
 	$(RTL_DIR)/clk_divider.sv \
-	$(RTL_DIR)/twiddle_rom.sv 
+	$(RTL_DIR)/twiddle_rom.sv \
+	$(RTL_DIR)/ring_counter.sv
 
 TB_FFT   = $(TB_DIR)/tb_fft.sv
 TB_STAGE = $(TB_DIR)/tb_mdc_stage.sv
@@ -217,7 +220,7 @@ $(STA_SCRIPT): | $(SYN_DIR)
 	@echo "create_clock -name adc_clk -period $(ADC_CLK_PERIOD) [get_ports adc_clk]" >> $@
 	@echo "create_generated_clock -name fft_clk -source [get_ports adc_clk] -divide_by 4 [get_pins divider/_5_/Q ]" >> $@
 	@echo "get_clocks" >> $@
-	@echo "set_false_path -from [get pins _35590_/Q ]"
+	@echo "set_false_path -from [get pins _34148_/Q ]"
 	@echo ""                                                  >> $@
 	@echo "set_multicycle_path -setup 2 -from [get_clocks fft_clk] -to [get_clocks adc_clk]" >> $@
 	@echo "set_multicycle_path -hold 1 -from [get_clocks fft_clk] -to [get_clocks adc_clk]" >> $@
@@ -260,8 +263,8 @@ pnr: $(PNR_DEF)
 $(PNR_SDC): | $(PNR_DIR)
 	@echo "create_clock -name adc_clk -period $(ADC_CLK_PERIOD) [get_ports adc_clk]"   >> $@
 	@echo "create_generated_clock -name fft_clk -source [get_ports adc_clk] -divide_by 4 [get_pins divider/_5_/Q ]" >> $@
-	@echo "set_multicycle_path -setup 2 -from [get_clocks fft_clk] -to [get_clocks adc_clk]" >> $@
-	@echo "set_multicycle_path -hold 1 -from [get_clocks fft_clk] -to [get_clocks adc_clk]" >> $@
+	@echo "set_multicycle_path -setup 4 -from [get_clocks fft_clk] -to [get_clocks adc_clk]" >> $@
+	@echo "set_multicycle_path -hold 3 -from [get_clocks fft_clk] -to [get_clocks adc_clk]" >> $@
 	@echo "set_max_fanout 16 [current_design]"                             >> $@
 	@echo "set_max_transition 1.5 [current_design]"                        >> $@
 
@@ -273,7 +276,7 @@ $(PNR_SCRIPT): | $(PNR_DIR)
 	@echo "link_design $(TOP)"                                             >> $@
 	@echo "read_sdc $(PNR_SDC)"                                            >> $@
 	@echo ""                                                               >> $@
-	@echo "initialize_floorplan -utilization 35 -aspect_ratio 1.0 -core_space 10 -site $(SITE_NAME)" >> $@
+	@echo "initialize_floorplan -utilization 60 -aspect_ratio 2.0 -core_space 0 -site $(SITE_NAME)" >> $@
 	@echo ""                                                               >> $@
 	@echo "insert_tiecells gf180mcu_fd_sc_mcu9t5v0__tiel/ZN -prefix TIE_LOW_"   >> $@
 	@echo "insert_tiecells gf180mcu_fd_sc_mcu9t5v0__tieh/Z -prefix TIE_HIGH_"  >> $@
@@ -301,7 +304,7 @@ $(PNR_SCRIPT): | $(PNR_DIR)
 	@echo "add_pdn_connect -layers {Metal4 Metal5}"                        >> $@
 	@echo "pdngen"                                                         >> $@
 	@echo ""                                                               >> $@
-	@echo "global_placement -density 0.45 -pad_left 2 -pad_right 2"        >> $@
+	@echo "global_placement -timing_driven -density 0.40 -pad_left 2 -pad_right 2"        >> $@
 	@echo "estimate_parasitics -placement"                                 >> $@
 	@echo "# repair_design"                                                  >> $@
 	@echo "detailed_placement"                                             >> $@
@@ -323,8 +326,8 @@ $(PNR_SCRIPT): | $(PNR_DIR)
 	@echo "detailed_route"   >> $@
 	@echo ""                                                               >> $@
 	@echo "estimate_parasitics -global_routing"                            >> $@
-	@echo "report_checks -path_delay max -fields {cap trans net fanout input_pin} -group_path_count 5"  >> $@
-	@echo "report_checks -path_delay min -fields {cap trans net fanout input_pin} -group_path_count 5"  >> $@
+	@echo "report_checks -path_delay max -fields {cap trans net fanout input_pin} -group_path_count 10"  >> $@
+	@echo "report_checks -path_delay min -fields {cap trans net fanout input_pin} -group_path_count 10"  >> $@
 	@echo "report_tns"                                                     >> $@
 	@echo "report_wns"                                                     >> $@
 	@echo "report_clock_skew"                                              >> $@

@@ -5,7 +5,7 @@ read_verilog syn/fft_syn.v
 link_design fft
 read_sdc syn/pnr/fft.sdc
 
-initialize_floorplan -utilization 35 -aspect_ratio 1.0 -core_space 10 -site GF018hv5v_green_sc9
+initialize_floorplan -utilization 60 -aspect_ratio 2.0 -core_space 0 -site GF018hv5v_green_sc9
 
 insert_tiecells gf180mcu_fd_sc_mcu9t5v0__tiel/ZN -prefix TIE_LOW_
 insert_tiecells gf180mcu_fd_sc_mcu9t5v0__tieh/Z -prefix TIE_HIGH_
@@ -33,7 +33,7 @@ add_pdn_connect -layers {Metal1 Metal4}
 add_pdn_connect -layers {Metal4 Metal5}
 pdngen
 
-global_placement -density 0.45 -pad_left 2 -pad_right 2
+global_placement -timing_driven -density 0.40 -pad_left 2 -pad_right 2
 estimate_parasitics -placement
 # repair_design
 detailed_placement
@@ -55,8 +55,8 @@ set_routing_layers -signal Metal1-Metal5
 detailed_route
 
 estimate_parasitics -global_routing
-report_checks -path_delay max -fields {cap trans net fanout input_pin} -group_path_count 5
-report_checks -path_delay min -fields {cap trans net fanout input_pin} -group_path_count 5
+report_checks -path_delay max -fields {cap trans net fanout input_pin} -group_path_count 10
+report_checks -path_delay min -fields {cap trans net fanout input_pin} -group_path_count 10
 report_tns
 report_wns
 report_clock_skew

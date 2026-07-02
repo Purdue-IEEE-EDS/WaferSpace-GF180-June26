@@ -1,6 +1,6 @@
 create_clock -name adc_clk -period 1.5625 [get_ports adc_clk]
 create_generated_clock -name fft_clk -source [get_ports adc_clk] -divide_by 4 [get_pins divider/_5_/Q ]
-set_multicycle_path -setup 2 -from [get_clocks fft_clk] -to [get_clocks adc_clk]
-set_multicycle_path -hold 1 -from [get_clocks fft_clk] -to [get_clocks adc_clk]
+set_multicycle_path -setup 4 -from [get_clocks fft_clk] -to [get_clocks adc_clk]
+set_multicycle_path -hold 3 -from [get_clocks fft_clk] -to [get_clocks adc_clk]
 set_max_fanout 16 [current_design]
 set_max_transition 1.5 [current_design]
