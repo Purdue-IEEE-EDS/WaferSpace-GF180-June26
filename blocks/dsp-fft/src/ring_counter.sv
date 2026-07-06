@@ -1,5 +1,6 @@
+(* keep_hierarchy = "yes" *)
 module ring_counter (
-    input logic clk, rst, 
+    input logic clk, rst,  
     output logic count
 );
     logic [3:0] ring_count;
@@ -9,4 +10,16 @@ module ring_counter (
     end
 
     assign count = ring_count[0];
+
+    // logic [1:0] counter; 
+
+    // always_ff @(posedge clk) begin 
+    //     if (!rst) counter <= '0; 
+    //     else counter <= counter + 1'b1; 
+    // end
+
+    // always_ff @(posedge clk) begin 
+    //     if (!rst) count <= '0; 
+    //     else count <= (counter == '0);
+    // end
 endmodule

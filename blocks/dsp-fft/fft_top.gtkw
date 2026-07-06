@@ -1,15 +1,15 @@
 [*]
 [*] GTKWave Analyzer v4.0.0-prealpha (8ba24ab) (w)1999-2022 BSI
-[*] Wed Jul  1 01:36:03 2026
+[*] Fri Jul  3 17:40:04 2026
 [*]
 [dumpfile] "/foss/designs/WaferSpace-GF180-June26/blocks/dsp-fft/sim/testbench.vcd"
-[dumpfile_mtime] "Wed Jul  1 01:35:34 2026"
-[dumpfile_size] 2763928
+[dumpfile_mtime] "Fri Jul  3 17:38:15 2026"
+[dumpfile_size] 4102938
 [savefile] "/foss/designs/WaferSpace-GF180-June26/blocks/dsp-fft/fft_top.gtkw"
-[timestart] 2656
+[timestart] 2066
 [size] 1427 600
 [pos] -1 -1
-*-6.395711 2882 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+*-6.695711 2215 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
 [markername] AA
 [markername] BB
 [markername] CC
@@ -38,6 +38,7 @@
 [markername] ZZ
 [treeopen] tb_fft.
 [treeopen] tb_fft.DUT.
+[treeopen] tb_fft.DUT.pts_im.
 [sst_width] 297
 [signals_width] 166
 [sst_expanded] 1
@@ -47,15 +48,10 @@
 -
 @22
 tb_fft.DUT.stp_re.din[5:0]
-@28
-tb_fft.DUT.stp_re.valid_in
-@22
 tb_fft.DUT.stp_re.dout0[5:0]
 tb_fft.DUT.stp_re.dout1[5:0]
 tb_fft.DUT.stp_re.dout2[5:0]
 tb_fft.DUT.stp_re.dout3[5:0]
-@28
-tb_fft.DUT.stp_re.valid_out
 @200
 -
 @28
@@ -71,12 +67,14 @@ tb_fft.DUT.fft_core.dout_re2[15:0]
 tb_fft.DUT.fft_core.dout_re3[15:0]
 @28
 tb_fft.DUT.fft_core.out_valid
+@29
+tb_fft.DUT.pts_im.pts0.pulse0
 @200
 -
 @28
 tb_fft.DUT.pts_re.adc_clk
 tb_fft.DUT.pts_re.valid_out
-@23
+@22
 tb_fft.DUT.pts_re.dout[7:0]
 [pattern_trace] 1
 [pattern_trace] 0

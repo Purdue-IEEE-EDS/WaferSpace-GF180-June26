@@ -55,7 +55,6 @@ RTL = \
 	$(RTL_DIR)/carry_save_adder.sv \
 	$(RTL_DIR)/commutator.sv \
 	$(RTL_DIR)/reorder.sv \
-	$(RTL_DIR)/reorder_lane.sv \
 	$(RTL_DIR)/parallel_to_serial.sv \
 	$(RTL_DIR)/parallel_to_serial16.sv \
 	$(RTL_DIR)/serial_to_parallel.sv \
@@ -265,6 +264,14 @@ $(PNR_SDC): | $(PNR_DIR)
 	@echo "create_generated_clock -name fft_clk -source [get_ports adc_clk] -divide_by 4 [get_pins divider/_5_/Q ]" >> $@
 	@echo "set_multicycle_path -setup 4 -from [get_clocks fft_clk] -to [get_clocks adc_clk]" >> $@
 	@echo "set_multicycle_path -hold 3 -from [get_clocks fft_clk] -to [get_clocks adc_clk]" >> $@
+	@echo "set_multicycle_path 3 -setup -from [get_pins stp_im/genblk1[*].stp/*/CLK] -to [get_clocks fft_clk]" >> $@
+	@echo "set_multicycle_path 2 -hold  -from [get_pins stp_im/genblk1[*].stp/*/CLK] -to [get_clocks fft_clk]" >> $@ 
+	@echo "set_multicycle_path 3 -setup -from [get_pins stp_re/genblk1[*].stp/*/CLK] -to [get_clocks fft_clk]" >> $@
+	@echo "set_multicycle_path 2 -hold  -from [get_pins stp_re/genblk1[*].stp/*/CLK] -to [get_clocks fft_clk]" >> $@ 
+	@echo "set_multicycle_path 3 -setup -from [get_pins stp_im/stp0/*/CLK] -to [get_clocks fft_clk]" >> $@
+	@echo "set_multicycle_path 2 -hold  -from [get_pins stp_im/stp0/*/CLK] -to [get_clocks fft_clk]" >> $@ 
+	@echo "set_multicycle_path 3 -setup -from [get_pins stp_re/stp0/*/CLK] -to [get_clocks fft_clk]" >> $@
+	@echo "set_multicycle_path 2 -hold  -from [get_pins stp_re/stp0/*/CLK] -to [get_clocks fft_clk]" >> $@ 
 	@echo "set_max_fanout 16 [current_design]"                             >> $@
 	@echo "set_max_transition 1.5 [current_design]"                        >> $@
 
@@ -276,7 +283,7 @@ $(PNR_SCRIPT): | $(PNR_DIR)
 	@echo "link_design $(TOP)"                                             >> $@
 	@echo "read_sdc $(PNR_SDC)"                                            >> $@
 	@echo ""                                                               >> $@
-	@echo "initialize_floorplan -utilization 60 -aspect_ratio 2.0 -core_space 0 -site $(SITE_NAME)" >> $@
+	@echo "initialize_floorplan -utilization 55 -aspect_ratio 1.5 -core_space 10 -site $(SITE_NAME)" >> $@
 	@echo ""                                                               >> $@
 	@echo "insert_tiecells gf180mcu_fd_sc_mcu9t5v0__tiel/ZN -prefix TIE_LOW_"   >> $@
 	@echo "insert_tiecells gf180mcu_fd_sc_mcu9t5v0__tieh/Z -prefix TIE_HIGH_"  >> $@
@@ -304,16 +311,16 @@ $(PNR_SCRIPT): | $(PNR_DIR)
 	@echo "add_pdn_connect -layers {Metal4 Metal5}"                        >> $@
 	@echo "pdngen"                                                         >> $@
 	@echo ""                                                               >> $@
-	@echo "global_placement -timing_driven -density 0.40 -pad_left 2 -pad_right 2"        >> $@
+	@echo "global_placement -timing_driven -density 0.45 -pad_left 2 -pad_right 2"        >> $@
 	@echo "estimate_parasitics -placement"                                 >> $@
-	@echo "# repair_design"                                                  >> $@
+	@echo "repair_design"                                                  >> $@
 	@echo "detailed_placement"                                             >> $@
 	@echo "estimate_parasitics -placement"                                 >> $@
 	@echo "check_placement"                                                >> $@
 	@echo ""                                                               >> $@
 	@echo "clock_tree_synthesis -root_buf $(SCL)__clkbuf_8 -buf_list {$(SCL)__clkbuf_2 $(SCL)__clkbuf_4 $(SCL)__clkbuf_8} -sink_clustering_enable" >> $@
 	@echo "set_propagated_clock [all_clocks]"                              >> $@
-	@echo "repair_clock_nets"                                              >> $@
+	@echo "repair_clock_nets -max_wire_length 1000"                                              >> $@
 	@echo "detailed_placement"                                             >> $@
 	@echo ""                                                               >> $@
 	@echo "estimate_parasitics -placement"                                 >> $@
@@ -323,15 +330,21 @@ $(PNR_SCRIPT): | $(PNR_DIR)
 	@echo ""                                                               >> $@
 	@echo "global_route -verbose -allow_congestion"                        >> $@
 	@echo "set_routing_layers -signal Metal1-Metal5"                       >> $@
-	@echo "detailed_route"   >> $@
+	@echo "detailed_route"                                                 >> $@
 	@echo ""                                                               >> $@
-	@echo "estimate_parasitics -global_routing"                            >> $@
-	@echo "report_checks -path_delay max -fields {cap trans net fanout input_pin} -group_path_count 10"  >> $@
-	@echo "report_checks -path_delay min -fields {cap trans net fanout input_pin} -group_path_count 10"  >> $@
+	@echo "estimate_parasitics -placement"                                 >> $@
+	@echo "repair_timing -setup -setup_margin 0.05 -verbose"               >> $@
+	@echo "repair_timing -hold -hold_margin 0.05 -verbose"                 >> $@
+	@echo "repair_timing -setup -skip_buffering -verbose"                  >> $@
+	@echo "detailed_placement"                                             >> $@
+	@echo "detailed_route"                               >> $@
+	@echo "report_checks -path_delay max -fields {cap net fanout input_pin} -group_path_count 10"  >> $@
+	@echo "report_checks -path_delay min -fields {cap net fanout input_pin} -group_path_count 10"  >> $@
 	@echo "report_tns"                                                     >> $@
 	@echo "report_wns"                                                     >> $@
 	@echo "report_clock_skew"                                              >> $@
 	@echo "report_design_area"                                             >> $@
+	@echo "report_power"                                             >> $@
 	@echo ""                                                               >> $@
 	@echo "write_def $(PNR_DEF)"                                           >> $@
 	@echo "write_verilog $(SYN_DIR)/fft_pnr.v"                             >> $@

@@ -37,26 +37,31 @@ module tb_fft();
         .valid_out
     ); 
 
+    logic [5:0] k;
+
     initial begin
 	    $dumpfile("testbench.vcd");
     	$dumpvars(0,DUT);
         
         valid_in = 1'b0; 
         din_re = 6'd0; 
-        din_im = 6'd32; 
+        din_im = 6'h20; 
 
         reset_dut; 
 
+        repeat (1) @(negedge adc_clk);
         valid_in = 1'b1; 
 
-        for (int i = 0; i < 64; i++) begin 
-            din_re = i; 
-            din_im = 63-i;
+        for (int i = 0; i < 128; i++) begin 
+            // k = i & 6'h3f; 
+            // din_re = k; 
+            // din_im = 63-k;
             @(negedge adc_clk);
         end
         //repeat (64) @(negedge adc_clk);
         din_re='0;
         din_im='0; 
+        repeat (5) @(negedge adc_clk);
         valid_in = 1'b0; 
 
         repeat (1024) @(negedge adc_clk);

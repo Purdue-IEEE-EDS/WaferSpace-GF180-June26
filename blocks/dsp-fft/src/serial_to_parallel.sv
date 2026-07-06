@@ -5,34 +5,34 @@ module serial_to_parallel (
     output logic [3:0] dout
 );
 
-    logic [3:0] shift_reg, shift_reg_del, shift_reg_del2;   
-    logic load0, load1, load2, load3; 
+    logic [3:0] shift_reg, shift_reg_del, shift_reg_del2;
+    logic load0, load1, load2, load3;
+    logic load0_p, load1_p, load2_p, load3_p;
 
-    (* keep_hierarchy = "yes" *) ring_counter rc1 (.clk, .rst, .count(load0));
-    (* keep_hierarchy = "yes" *) ring_counter rc2 (.clk, .rst, .count(load1));
-    (* keep_hierarchy = "yes" *) ring_counter rc3 (.clk, .rst, .count(load2));
-    (* keep_hierarchy = "yes" *) ring_counter rc4 (.clk, .rst, .count(load3));
+    always_ff @(posedge clk) begin
+        load0 <= load0_p;
+        load1 <= load1_p;
+        load2 <= load2_p;
+        load3 <= load3_p;
+    end
 
-    always_ff @(posedge clk) begin 
+    (* keep_hierarchy = "yes" *) ring_counter rc1 (.clk, .rst, .count(load0_p));
+    (* keep_hierarchy = "yes" *) ring_counter rc2 (.clk, .rst, .count(load1_p));
+    (* keep_hierarchy = "yes" *) ring_counter rc3 (.clk, .rst, .count(load2_p));
+    (* keep_hierarchy = "yes" *) ring_counter rc4 (.clk, .rst, .count(load3_p));
+
+    always_ff @(posedge clk) begin
         shift_reg[3] <= shift_reg[2];
         shift_reg[2] <= shift_reg[1];
         shift_reg[1] <= shift_reg[0];
         shift_reg[0] <= din;
     end
 
-    always_ff @(posedge clk) begin 
-        if (load0) begin 
-            dout[0] <= shift_reg[3];
-        end 
-        if (load1) begin
-            dout[1] <= shift_reg[2];
-        end 
-        if (load2) begin
-            dout[2] <= shift_reg[1];
-        end
-        if (load3) begin 
-            dout[3] <= shift_reg[0];
-        end
+    always_ff @(posedge clk) begin
+        if (load0) dout[0] <= shift_reg[3];
+        if (load1) dout[1] <= shift_reg[2];
+        if (load2) dout[2] <= shift_reg[1];
+        if (load3) dout[3] <= shift_reg[0];
     end
 
 

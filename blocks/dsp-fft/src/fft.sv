@@ -48,7 +48,7 @@ module fft
 
     (* keep *) logic valid_in_reg1, valid_in_reg2; 
 
-    always_ff @(posedge fft_clk) begin 
+    always_ff @(posedge fft_clk, negedge sync_rst2) begin 
         if (!sync_rst2) begin 
             valid_in_reg1 <= '0;
             valid_in_reg2 <= '0; 
