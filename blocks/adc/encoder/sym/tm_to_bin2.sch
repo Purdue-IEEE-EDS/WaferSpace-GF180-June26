@@ -73,6 +73,6 @@ C {lab_wire.sym} 630 -930 0 0 {name=p13 sig_type=std_logic lab=GND}
 C {lab_wire.sym} 1090 -760 0 0 {name=p21 sig_type=std_logic lab=wl[0:62]}
 C {ipin.sym} 860 -1049.743656265541 0 0 {name=p3 lab=VDD}
 C {ipin.sym} 860 -852.2436562655409 0 0 {name=p7 lab=GND}
-C {encoder/sym/NAND3.sym} 860 -950 0 0 {name=x_top1}
-C {encoder/sym/NAND3.sym} 860 -650 0 0 {name=x1[61:1]}
-C {encoder/sym/NAND3.sym} 860 -360 0 0 {name=x_bot2}
+C {sym/NAND3.sym} 860 -950 0 0 {name=x1}
+C {sym/NAND3.sym} 860 -650 0 0 {name=x2[61:1]}
+C {sym/NAND3.sym} 860 -360 0 0 {name=x3}
