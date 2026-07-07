@@ -13,8 +13,8 @@ ypos2=2
 divy=5
 subdivy=1
 unity=1
-x1=1.2841876e-08
-x2=1.4488877e-08
+x1=3.5195174e-10
+x2=2.173405e-09
 divx=5
 subdivx=1
 xlabmag=1.0
@@ -38,8 +38,8 @@ ypos2=2
 divy=5
 subdivy=1
 unity=1
-x1=1.2841876e-08
-x2=1.4488877e-08
+x1=3.5195174e-10
+x2=2.173405e-09
 divx=5
 subdivx=1
 xlabmag=1.0
@@ -60,8 +60,8 @@ ypos2=2
 divy=5
 subdivy=1
 unity=1
-x1=1.2841876e-08
-x2=1.4488877e-08
+x1=3.5195174e-10
+x2=2.173405e-09
 divx=5
 subdivx=1
 xlabmag=1.0
@@ -78,15 +78,15 @@ wl[59]
 wl[58]
 wl[57]"}
 B 2 2140 -480 2940 -80 {flags=graph
-y1=0
-y2=3.3
+y1=1.32
+y2=4.62
 ypos1=0
 ypos2=2
 divy=5
 subdivy=1
 unity=1
-x1=1.2841876e-08
-x2=1.4488877e-08
+x1=3.5195174e-10
+x2=2.173405e-09
 divx=5
 subdivx=1
 xlabmag=1.0
@@ -105,8 +105,8 @@ ypos2=2
 divy=5
 subdivy=1
 unity=1
-x1=1.2841876e-08
-x2=1.4488877e-08
+x1=3.5195174e-10
+x2=2.173405e-09
 divx=5
 subdivx=1
 xlabmag=1.0
@@ -255,7 +255,9 @@ V_WL35 wl[35] 0 PWL(0 0 14.500n 0 14.510n 3.3 14.990n 3.3 15.000n 0)
 V_WL34 wl[34] 0 PWL(0 0 15.000n 0 15.010n 3.3 15.490n 3.3 15.500n 0)
 V_WL33 wl[33] 0 PWL(0 0 15.500n 0 15.510n 3.3 15.990n 3.3 16.000n 0)
 V_WL32 wl[32] 0 PWL(0 0 16.000n 0 16.010n 3.3 16.490n 3.3 16.500n 0)
-V_WL31 wl[31] 0 PWL(0 0 16.500n 0 16.510n 3.3 16.990n 3.3 17.000n 0)
+
+V_WL31 wl[31] 0 PWL(0 0 0.500n 0 0.510n 3.3 16.990n 3.3 17.000n 0)
+
 V_WL30 wl[30] 0 PWL(0 0 17.000n 0 17.010n 3.3 17.490n 3.3 17.500n 0)
 V_WL29 wl[29] 0 PWL(0 0 17.500n 0 17.510n 3.3 17.990n 3.3 18.000n 0)
 V_WL28 wl[28] 0 PWL(0 0 18.000n 0 18.010n 3.3 18.490n 3.3 18.500n 0)
@@ -446,7 +448,7 @@ C {opin.sym} 4370 -1700 0 0 {name=p421 lab=b_out[5:0]}
 C {lab_wire.sym} 4020 -1700 0 0 {name=p6 sig_type=std_logic lab=VDD}
 C {lab_wire.sym} 4020 -1620 0 0 {name=p7 sig_type=std_logic lab=GND}
 C {ipin.sym} 3990 -1680 0 0 {name=p83 lab=RST}
-C {encoder/sym/dff_encoder.sym} 4190 -1660 0 0 {name=x3[5:0]}
+C {blocks/adc/encoder/sym/dff_encoder.sym} 4190 -1660 0 0 {name=x3[5:0]}
 C {ipin.sym} 3550 -1720 0 0 {name=p1 lab=VDD}
 C {ipin.sym} 3550 -290 0 0 {name=p3 lab=GND}
 C {ipin.sym} 3220 -1020 0 0 {name=p5 lab=wl[62:0]}
@@ -454,6 +456,6 @@ C {launcher.sym} 2230 -1350 0 0 {name=h5
 descr="load waves"
 tclcommand="xschem raw_read $netlist_dir/ROM_2G.raw tran"
 }
-C {encoder/sym/ROM2.sym} 3550 -1000 0 0 {name=x1}
+C {blocks/adc/encoder/sym/ROM2.sym} 3550 -1000 0 0 {name=x1}
 C {lab_wire.sym} 3990 -1660 0 0 {name=p10 sig_type=std_logic lab=CLK_EVAL}
 C {ipin.sym} 3240 -1640 0 0 {name=p12 lab=CLK_PRE}

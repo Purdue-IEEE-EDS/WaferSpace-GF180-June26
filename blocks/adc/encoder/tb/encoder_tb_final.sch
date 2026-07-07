@@ -13,8 +13,8 @@ ypos2=2
 divy=5
 subdivy=1
 unity=1
-x1=1.8934063e-09
-x2=6.7252413e-09
+x1=1.65181e-09
+x2=6.4836453e-09
 divx=5
 subdivx=1
 xlabmag=1.0
@@ -38,8 +38,8 @@ ypos2=2
 divy=5
 subdivy=1
 unity=1
-x1=1.8934063e-09
-x2=6.7252413e-09
+x1=1.65181e-09
+x2=6.4836453e-09
 divx=5
 subdivx=1
 xlabmag=1.0
@@ -60,8 +60,8 @@ ypos2=2
 divy=5
 subdivy=1
 unity=1
-x1=1.8934063e-09
-x2=6.7252413e-09
+x1=1.65181e-09
+x2=6.4836453e-09
 divx=5
 subdivx=1
 xlabmag=1.0
@@ -144,8 +144,8 @@ ypos2=2
 divy=5
 subdivy=1
 unity=1
-x1=1.8934063e-09
-x2=6.7252413e-09
+x1=1.65181e-09
+x2=6.4836453e-09
 divx=5
 subdivx=1
 xlabmag=1.0
@@ -227,8 +227,8 @@ ypos2=2
 divy=5
 subdivy=1
 unity=1
-x1=1.8934063e-09
-x2=6.7252413e-09
+x1=1.65181e-09
+x2=6.4836453e-09
 divx=5
 subdivx=1
 xlabmag=1.0
@@ -252,8 +252,8 @@ ypos2=3.7459
 divy=5
 subdivy=1
 unity=1
-x1=1.8934063e-09
-x2=6.7252413e-09
+x1=1.65181e-09
+x2=6.4836453e-09
 divx=5
 subdivx=1
 xlabmag=1.0
@@ -278,8 +278,8 @@ ypos2=2
 divy=5
 subdivy=1
 unity=1
-x1=1.8934063e-09
-x2=6.7252413e-09
+x1=1.65181e-09
+x2=6.4836453e-09
 divx=5
 subdivx=1
 xlabmag=1.0
@@ -291,15 +291,15 @@ logy=0
 color=12
 node=b_out[0]}
 B 2 6500 -940 7300 -540 {flags=graph
-y1=-0.039
-y2=3.4
+y1=-0.7268
+y2=2.7122
 ypos1=0
 ypos2=2
 divy=5
 subdivy=1
 unity=1
-x1=1.8934063e-09
-x2=6.7252413e-09
+x1=1.65181e-09
+x2=6.4836453e-09
 divx=5
 subdivx=1
 xlabmag=1.0
@@ -561,13 +561,11 @@ N 1600 -1520 1670 -1520 {lab=b[4]}
 N 1600 -1500 1670 -1500 {lab=b[5]}
 N 1450 -1660 1450 -1630 {lab=VDD}
 N 1450 -250 1450 -230 {lab=GND}
-N 1260 -1580 1300 -1580 {lab=CLK_EVAL}
 N 1160 -1550 1160 -300 {lab=wl[62:0]
 bus=true}
 N 1120 -960 1160 -960 {lab=wl[62:0]
 bus=true}
 N 1170 -1560 1300 -1560 {lab=wl[0]}
-N 1140 -1580 1260 -1580 {lab=CLK_EVAL}
 N 1170 -1540 1300 -1540 {lab=wl[1]}
 N 1170 -1520 1300 -1520 {lab=wl[2]}
 N 1170 -1500 1300 -1500 {lab=wl[3]}
@@ -598,7 +596,6 @@ N 1170 -1020 1300 -1020 {lab=wl[27]}
 N 1170 -1000 1300 -1000 {lab=wl[28]}
 N 1170 -980 1300 -980 {lab=wl[29]}
 N 1170 -960 1300 -960 {lab=wl[30]}
-N 1170 -940 1300 -940 {lab=wl[31]}
 N 1170 -920 1300 -920 {lab=wl[32]}
 N 1170 -900 1300 -900 {lab=wl[33]}
 N 1170 -880 1300 -880 {lab=wl[34]}
@@ -632,7 +629,6 @@ N 1170 -340 1300 -340 {lab=wl[61]}
 N 1170 -320 1300 -320 {lab=wl[62]}
 N 710 -940 820 -940 {lab=comp[0:62]
 bus=true}
-N 1240 -300 1300 -300 {lab=CLK_EVAL}
 N 1680 -1710 1680 -1440 {lab=b[5:0]
 bus=true}
 N 1680 -1580 1940 -1580 {lab=b[5:0]
@@ -657,6 +653,10 @@ N 1870 -1470 1870 -1450 {lab=VDD}
 N 1720 -1340 1760 -1340 {lab=CLK_EVAL}
 N 1865 -1420 1880 -1420 {lab=VDD}
 N 1870 -1270 1890 -1270 {lab=GND}
+N 1170 -940 1300 -940 {lab=comp[31]}
+N 1130 -900 1170 -940 {lab=comp[31]}
+N 730 -930 730 -900 {lab=comp[31]}
+N 730 -900 1130 -900 {lab=comp[31]}
 C {vsource.sym} 1840 -1080 0 0 {name=V1 value=3.3 savecurrent=false}
 C {vdd.sym} 1840 -1140 0 0 {name=l3 lab=VDD}
 C {gnd.sym} 1840 -1030 0 1 {name=l4 lab=GND
@@ -793,7 +793,6 @@ C {bus_connect_nolab.sym} 1160 -1010 0 0 {name=r34}
 C {bus_connect_nolab.sym} 1160 -990 0 0 {name=r35}
 C {bus_connect_nolab.sym} 1160 -970 0 0 {name=r36}
 C {bus_connect_nolab.sym} 1160 -950 0 0 {name=r37}
-C {bus_connect_nolab.sym} 1160 -930 0 0 {name=r38}
 C {bus_connect_nolab.sym} 1160 -910 0 0 {name=r39}
 C {bus_connect_nolab.sym} 1160 -890 0 0 {name=r40}
 C {bus_connect_nolab.sym} 1160 -870 0 0 {name=r41}
@@ -846,7 +845,6 @@ C {lab_wire.sym} 1240 -1020 0 0 {name=p41 sig_type=std_logic lab=wl[27]}
 C {lab_wire.sym} 1240 -1000 0 0 {name=p42 sig_type=std_logic lab=wl[28]}
 C {lab_wire.sym} 1240 -980 0 0 {name=p43 sig_type=std_logic lab=wl[29]}
 C {lab_wire.sym} 1240 -960 0 0 {name=p44 sig_type=std_logic lab=wl[30]}
-C {lab_wire.sym} 1240 -940 0 0 {name=p45 sig_type=std_logic lab=wl[31]}
 C {lab_wire.sym} 1240 -920 0 0 {name=p46 sig_type=std_logic lab=wl[32]}
 C {lab_wire.sym} 1240 -900 0 0 {name=p47 sig_type=std_logic lab=wl[33]}
 C {lab_wire.sym} 1240 -880 0 0 {name=p48 sig_type=std_logic lab=wl[34]}
@@ -879,7 +877,7 @@ C {lab_wire.sym} 1240 -360 0 0 {name=p74 sig_type=std_logic lab=wl[60]}
 C {lab_wire.sym} 1240 -340 0 0 {name=p75 sig_type=std_logic lab=wl[61]}
 C {lab_wire.sym} 1240 -320 0 0 {name=p76 sig_type=std_logic lab=wl[62]}
 C {lab_wire.sym} 790 -940 0 0 {name=p77 sig_type=std_logic lab=comp[0:62]}
-C {ipin.sym} 1260 -300 0 0 {name=p14 lab=CLK_EVAL}
+C {ipin.sym} 1720 -1340 0 0 {name=p14 lab=CLK_EVAL}
 C {bus_connect_nolab.sym} 1670 -1600 0 0 {name=r1}
 C {bus_connect_nolab.sym} 1670 -1580 0 0 {name=r3}
 C {bus_connect_nolab.sym} 1670 -1560 0 0 {name=r4}
@@ -896,7 +894,6 @@ C {lab_wire.sym} 1680 -1660 0 0 {name=p81 sig_type=std_logic lab=b[5:0]}
 C {opin.sym} 2330 -1640 0 0 {name=p421 lab=b_out[5:0]}
 C {lab_wire.sym} 1920 -1640 0 0 {name=p6 sig_type=std_logic lab=VDD}
 C {lab_wire.sym} 1920 -1560 0 0 {name=p7 sig_type=std_logic lab=GND}
-C {lab_wire.sym} 1160 -1580 0 0 {name=p82 sig_type=std_logic lab=CLK_EVAL}
 C {ipin.sym} 1890 -1620 0 0 {name=p83 lab=RST}
 C {lab_wire.sym} 2270 -1470 0 0 {name=p10 sig_type=std_logic lab=GND}
 C {capa.sym} 2270 -1540 0 0 {name=C9[5:0]
@@ -905,7 +902,6 @@ value=20f
 footprint=1206
 device="ceramic capacitor"}
 C {lab_wire.sym} 2310 -1640 0 0 {name=p84 sig_type=std_logic lab=b_out[5:0]}
-C {lab_wire.sym} 1730 -1340 0 0 {name=p85 sig_type=std_logic lab=CLK_EVAL}
 C {lab_wire.sym} 1870 -1470 0 0 {name=p1040 sig_type=std_logic lab=VDD}
 C {lab_wire.sym} 1870 -1230 0 0 {name=p1041 sig_type=std_logic lab=GND}
 C {symbols/pfet_03v3.sym} 1850 -1420 0 0 {name=M431
@@ -939,11 +935,13 @@ spiceprefix=X
 C {lab_wire.sym} 1875 -1420 0 0 {name=p1043 sig_type=std_logic lab=VDD}
 C {lab_wire.sym} 1885 -1270 0 0 {name=p1044 sig_type=std_logic lab=GND}
 C {lab_wire.sym} 1970 -1340 0 0 {name=p86 sig_type=std_logic lab=CLK_SAMPLE}
-C {lab_wire.sym} 1900 -1600 0 0 {name=p87 sig_type=std_logic lab=CLK_SAMPLE}
 C {sym/ROM2.sym} 1450 -940 0 0 {name=x3}
 C {sym/tm_to_bin2.sym} 970 -940 0 0 {name=x1}
 C {sym/dff_encoder.sym} 2090 -1600 0 0 {name=x3[5:0]}
 C {launcher.sym} 5230 -1680 0 0 {name=h5
 descr="load waves"
-tclcommand="xschem raw_read $netlist_dir/encoder_tb_final.raw tran"
+tclcommand="xschem raw_read $netlist_dir/top_1p5G.raw tran"
 }
+C {lab_wire.sym} 1000 -900 2 1 {name=p88 sig_type=std_logic lab=comp[31]}
+C {bus_connect_nolab.sym} 720 -940 2 1 {name=r38}
+C {lab_wire.sym} 1890 -1600 2 1 {name=p45 sig_type=std_logic lab=CLK_SAMPLE}
