@@ -5,7 +5,7 @@ read_verilog syn/fft_syn.v
 link_design fft
 read_sdc syn/pnr/fft.sdc
 
-initialize_floorplan -utilization 55 -aspect_ratio 1.5 -core_space 10 -site GF018hv5v_green_sc9
+initialize_floorplan -utilization 60 -aspect_ratio 1.5 -core_space 10 -site GF018hv5v_green_sc9
 
 insert_tiecells gf180mcu_fd_sc_mcu9t5v0__tiel/ZN -prefix TIE_LOW_
 insert_tiecells gf180mcu_fd_sc_mcu9t5v0__tieh/Z -prefix TIE_HIGH_

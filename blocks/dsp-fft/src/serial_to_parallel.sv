@@ -35,7 +35,6 @@ module serial_to_parallel (
         if (load3) dout[3] <= shift_reg[0];
     end
 
-
     // logic [3:0] shift_reg, shift_reg_del, shift_reg_del2; 
     // logic valid_in_reg; 
 

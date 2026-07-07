@@ -53,14 +53,12 @@ module tb_fft();
         valid_in = 1'b1; 
 
         for (int i = 0; i < 128; i++) begin 
-            // k = i & 6'h3f; 
-            // din_re = k; 
-            // din_im = 63-k;
+            k = i & 6'h3f; 
+            din_re = k; 
+            din_im = 63-k;
             @(negedge adc_clk);
         end
-        //repeat (64) @(negedge adc_clk);
-        din_re='0;
-        din_im='0; 
+        //repeat (64) @(negedge adc_clk); 
         repeat (5) @(negedge adc_clk);
         valid_in = 1'b0; 
 

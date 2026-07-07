@@ -13297,8 +13297,8 @@ ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__s
 ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffsnq_1".
 ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffsnq_2".
 ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffsnq_4".
-ABC: Library "gf180mcu_fd_sc_mcu9t5v0__tt_025C_3v30" from "/foss/pdks/gf180mcuD/libs.ref/gf180mcu_fd_sc_mcu9t5v0/lib/gf180mcu_fd_sc_mcu9t5v0__tt_025C_3v30.lib" has 145 cells (84 skipped: 48 seq; 15 tri-state; 21 no func; 0 dont_use; 0 with 2 outputs; 0 with 3+ outputs).  Time =     0.31 sec
-ABC: Memory =   29.99 MB. Time =     0.31 sec
+ABC: Library "gf180mcu_fd_sc_mcu9t5v0__tt_025C_3v30" from "/foss/pdks/gf180mcuD/libs.ref/gf180mcu_fd_sc_mcu9t5v0/lib/gf180mcu_fd_sc_mcu9t5v0__tt_025C_3v30.lib" has 145 cells (84 skipped: 48 seq; 15 tri-state; 21 no func; 0 dont_use; 0 with 2 outputs; 0 with 3+ outputs).  Time =     0.30 sec
+ABC: Memory =   29.99 MB. Time =     0.30 sec
 ABC: Warning: Detected 6 multi-output cells (for example, "gf180mcu_fd_sc_mcu9t5v0__addf_1").
 ABC: + strash 
 ABC: + &get -n 
@@ -13335,7 +13335,254 @@ ABC: abc 01> empty
 ABC: abc 01> source <abc-temp-dir>/abc.script
 ABC: + read_blif <abc-temp-dir>/input.blif 
 ABC: + read_lib -w /foss/pdks/gf180mcuD/libs.ref/gf180mcu_fd_sc_mcu9t5v0/lib/gf180mcu_fd_sc_mcu9t5v0__tt_025C_3v30.lib 
-ABC: Parsing finished successfully.  Parsing time =     0.20 sec
+ABC: Parsing finished successfully.  Parsing time =     0.19 sec
+ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__antenna" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__bufz_1".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__bufz_2".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__bufz_3".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__bufz_4".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__bufz_8".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__bufz_12".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__bufz_16".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffnq_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffnq_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffnq_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffnrnq_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffnrnq_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffnrnq_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffnrsnq_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffnrsnq_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffnrsnq_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffnsnq_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffnsnq_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffnsnq_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffq_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffq_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffq_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffrnq_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffrnq_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffrnq_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffrsnq_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffrsnq_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffrsnq_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffsnq_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffsnq_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffsnq_4".
+ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__endcap" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__fill_1" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__fill_2" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__fill_4" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__fill_8" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__fill_16" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__fill_32" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__fill_64" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__fillcap_4" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__fillcap_8" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__fillcap_16" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__fillcap_32" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__fillcap_64" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__filltie" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__hold".
+ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__icgtn_1" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__icgtn_2" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__icgtn_4" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__icgtp_1" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__icgtp_2" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__icgtp_4" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__invz_1".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__invz_2".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__invz_3".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__invz_4".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__invz_8".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__invz_12".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__invz_16".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__latq_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__latq_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__latq_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__latrnq_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__latrnq_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__latrnq_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__latrsnq_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__latrsnq_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__latrsnq_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__latsnq_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__latsnq_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__latsnq_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffq_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffq_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffq_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffrnq_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffrnq_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffrnq_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffrsnq_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffrsnq_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffrsnq_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffsnq_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffsnq_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffsnq_4".
+ABC: Library "gf180mcu_fd_sc_mcu9t5v0__tt_025C_3v30" from "/foss/pdks/gf180mcuD/libs.ref/gf180mcu_fd_sc_mcu9t5v0/lib/gf180mcu_fd_sc_mcu9t5v0__tt_025C_3v30.lib" has 145 cells (84 skipped: 48 seq; 15 tri-state; 21 no func; 0 dont_use; 0 with 2 outputs; 0 with 3+ outputs).  Time =     0.28 sec
+ABC: Memory =   29.99 MB. Time =     0.28 sec
+ABC: Warning: Detected 6 multi-output cells (for example, "gf180mcu_fd_sc_mcu9t5v0__addf_1").
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &fraig -x 
+ABC: + &put 
+ABC: + scorr 
+ABC: Warning: The network is combinational (run "fraig" or "fraig_sweep").
+ABC: + dc2 
+ABC: + dretime 
+ABC: + retime -o -D 6250 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &dch -f 
+ABC: + &nf -D 6250 
+ABC: + &put 
+ABC: + write_blif <abc-temp-dir>/output.blif 
+ABC: 
+ABC: YOSYS_ABC_DONE 
+
+58.2.2. Re-integrating ABC results.
+ABC RESULTS:   gf180mcu_fd_sc_mcu9t5v0__and2_1 cells:        6
+ABC RESULTS:        internal signals:        1
+ABC RESULTS:           input signals:        7
+ABC RESULTS:          output signals:        6
+Removing temp directory.
+
+58.3. Extracting gate netlist of module `\parallel_to_serial' to `<abc-temp-dir>/input.blif'..
+
+58.3.1. Executed ABC.
+Extracted 4 gates and 16 wires to a netlist network with 11 inputs and 4 outputs.
+Running ABC script: <abc-temp-dir>/abc.script
+ABC: UC Berkeley, ABC 1.01 (compiled Apr 16 2026 21:01:18)
+ABC: abc 01> empty
+ABC: abc 01> source <abc-temp-dir>/abc.script
+ABC: + read_blif <abc-temp-dir>/input.blif 
+ABC: + read_lib -w /foss/pdks/gf180mcuD/libs.ref/gf180mcu_fd_sc_mcu9t5v0/lib/gf180mcu_fd_sc_mcu9t5v0__tt_025C_3v30.lib 
+ABC: Parsing finished successfully.  Parsing time =     0.19 sec
+ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__antenna" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__bufz_1".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__bufz_2".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__bufz_3".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__bufz_4".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__bufz_8".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__bufz_12".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__bufz_16".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffnq_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffnq_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffnq_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffnrnq_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffnrnq_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffnrnq_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffnrsnq_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffnrsnq_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffnrsnq_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffnsnq_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffnsnq_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffnsnq_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffq_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffq_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffq_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffrnq_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffrnq_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffrnq_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffrsnq_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffrsnq_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffrsnq_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffsnq_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffsnq_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffsnq_4".
+ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__endcap" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__fill_1" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__fill_2" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__fill_4" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__fill_8" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__fill_16" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__fill_32" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__fill_64" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__fillcap_4" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__fillcap_8" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__fillcap_16" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__fillcap_32" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__fillcap_64" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__filltie" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__hold".
+ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__icgtn_1" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__icgtn_2" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__icgtn_4" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__icgtp_1" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__icgtp_2" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__icgtp_4" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__invz_1".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__invz_2".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__invz_3".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__invz_4".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__invz_8".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__invz_12".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__invz_16".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__latq_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__latq_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__latq_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__latrnq_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__latrnq_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__latrnq_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__latrsnq_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__latrsnq_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__latrsnq_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__latsnq_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__latsnq_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__latsnq_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffq_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffq_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffq_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffrnq_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffrnq_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffrnq_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffrsnq_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffrsnq_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffrsnq_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffsnq_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffsnq_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffsnq_4".
+ABC: Library "gf180mcu_fd_sc_mcu9t5v0__tt_025C_3v30" from "/foss/pdks/gf180mcuD/libs.ref/gf180mcu_fd_sc_mcu9t5v0/lib/gf180mcu_fd_sc_mcu9t5v0__tt_025C_3v30.lib" has 145 cells (84 skipped: 48 seq; 15 tri-state; 21 no func; 0 dont_use; 0 with 2 outputs; 0 with 3+ outputs).  Time =     0.28 sec
+ABC: Memory =   29.99 MB. Time =     0.28 sec
+ABC: Warning: Detected 6 multi-output cells (for example, "gf180mcu_fd_sc_mcu9t5v0__addf_1").
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &fraig -x 
+ABC: + &put 
+ABC: + scorr 
+ABC: Warning: The network is combinational (run "fraig" or "fraig_sweep").
+ABC: + dc2 
+ABC: + dretime 
+ABC: + retime -o -D 6250 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &dch -f 
+ABC: + &nf -D 6250 
+ABC: + &put 
+ABC: + write_blif <abc-temp-dir>/output.blif 
+ABC: 
+ABC: YOSYS_ABC_DONE 
+
+58.3.2. Re-integrating ABC results.
+ABC RESULTS:   gf180mcu_fd_sc_mcu9t5v0__and2_1 cells:        1
+ABC RESULTS:   gf180mcu_fd_sc_mcu9t5v0__mux2_1 cells:        3
+ABC RESULTS:        internal signals:        1
+ABC RESULTS:           input signals:       11
+ABC RESULTS:          output signals:        4
+Removing temp directory.
+
+58.4. Extracting gate netlist of module `$paramod$6f2118a93a4b2eff145201252edbfd25258eb856\commutator' to `<abc-temp-dir>/input.blif'..
+
+58.4.1. Executed ABC.
+Extracted 12 gates and 25 wires to a netlist network with 13 inputs and 12 outputs.
+Running ABC script: <abc-temp-dir>/abc.script
+ABC: UC Berkeley, ABC 1.01 (compiled Apr 16 2026 21:01:18)
+ABC: abc 01> empty
+ABC: abc 01> source <abc-temp-dir>/abc.script
+ABC: + read_blif <abc-temp-dir>/input.blif 
+ABC: + read_lib -w /foss/pdks/gf180mcuD/libs.ref/gf180mcu_fd_sc_mcu9t5v0/lib/gf180mcu_fd_sc_mcu9t5v0__tt_025C_3v30.lib 
+ABC: Parsing finished successfully.  Parsing time =     0.19 sec
 ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__antenna" without logic function.
 ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__bufz_1".
 ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__bufz_2".
@@ -13441,24 +13688,24 @@ ABC: + write_blif <abc-temp-dir>/output.blif
 ABC: 
 ABC: YOSYS_ABC_DONE 
 
-58.2.2. Re-integrating ABC results.
-ABC RESULTS:   gf180mcu_fd_sc_mcu9t5v0__and2_1 cells:        6
-ABC RESULTS:        internal signals:        1
-ABC RESULTS:           input signals:        7
-ABC RESULTS:          output signals:        6
+58.4.2. Re-integrating ABC results.
+ABC RESULTS:   gf180mcu_fd_sc_mcu9t5v0__mux2_1 cells:       12
+ABC RESULTS:        internal signals:        0
+ABC RESULTS:           input signals:       13
+ABC RESULTS:          output signals:       12
 Removing temp directory.
 
-58.3. Extracting gate netlist of module `\parallel_to_serial' to `<abc-temp-dir>/input.blif'..
+58.5. Extracting gate netlist of module `$paramod\adder\SUB=s32'00000000000000000000000000000001' to `<abc-temp-dir>/input.blif'..
 
-58.3.1. Executed ABC.
-Extracted 4 gates and 16 wires to a netlist network with 11 inputs and 4 outputs.
+58.5.1. Executed ABC.
+Extracted 28 gates and 50 wires to a netlist network with 22 inputs and 19 outputs.
 Running ABC script: <abc-temp-dir>/abc.script
 ABC: UC Berkeley, ABC 1.01 (compiled Apr 16 2026 21:01:18)
 ABC: abc 01> empty
 ABC: abc 01> source <abc-temp-dir>/abc.script
 ABC: + read_blif <abc-temp-dir>/input.blif 
 ABC: + read_lib -w /foss/pdks/gf180mcuD/libs.ref/gf180mcu_fd_sc_mcu9t5v0/lib/gf180mcu_fd_sc_mcu9t5v0__tt_025C_3v30.lib 
-ABC: Parsing finished successfully.  Parsing time =     0.20 sec
+ABC: Parsing finished successfully.  Parsing time =     0.19 sec
 ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__antenna" without logic function.
 ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__bufz_1".
 ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__bufz_2".
@@ -13543,8 +13790,8 @@ ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__s
 ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffsnq_1".
 ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffsnq_2".
 ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffsnq_4".
-ABC: Library "gf180mcu_fd_sc_mcu9t5v0__tt_025C_3v30" from "/foss/pdks/gf180mcuD/libs.ref/gf180mcu_fd_sc_mcu9t5v0/lib/gf180mcu_fd_sc_mcu9t5v0__tt_025C_3v30.lib" has 145 cells (84 skipped: 48 seq; 15 tri-state; 21 no func; 0 dont_use; 0 with 2 outputs; 0 with 3+ outputs).  Time =     0.30 sec
-ABC: Memory =   29.99 MB. Time =     0.30 sec
+ABC: Library "gf180mcu_fd_sc_mcu9t5v0__tt_025C_3v30" from "/foss/pdks/gf180mcuD/libs.ref/gf180mcu_fd_sc_mcu9t5v0/lib/gf180mcu_fd_sc_mcu9t5v0__tt_025C_3v30.lib" has 145 cells (84 skipped: 48 seq; 15 tri-state; 21 no func; 0 dont_use; 0 with 2 outputs; 0 with 3+ outputs).  Time =     0.28 sec
+ABC: Memory =   29.99 MB. Time =     0.28 sec
 ABC: Warning: Detected 6 multi-output cells (for example, "gf180mcu_fd_sc_mcu9t5v0__addf_1").
 ABC: + strash 
 ABC: + &get -n 
@@ -13564,18 +13811,144 @@ ABC: + write_blif <abc-temp-dir>/output.blif
 ABC: 
 ABC: YOSYS_ABC_DONE 
 
-58.3.2. Re-integrating ABC results.
-ABC RESULTS:   gf180mcu_fd_sc_mcu9t5v0__and2_1 cells:        1
-ABC RESULTS:   gf180mcu_fd_sc_mcu9t5v0__mux2_1 cells:        3
-ABC RESULTS:        internal signals:        1
-ABC RESULTS:           input signals:       11
-ABC RESULTS:          output signals:        4
+58.5.2. Re-integrating ABC results.
+ABC RESULTS:   gf180mcu_fd_sc_mcu9t5v0__aoi21_1 cells:        1
+ABC RESULTS:   gf180mcu_fd_sc_mcu9t5v0__clkinv_1 cells:       18
+ABC RESULTS:   gf180mcu_fd_sc_mcu9t5v0__nand2_1 cells:        1
+ABC RESULTS:   gf180mcu_fd_sc_mcu9t5v0__oai21_1 cells:        1
+ABC RESULTS:   gf180mcu_fd_sc_mcu9t5v0__or2_1 cells:        2
+ABC RESULTS:        internal signals:        9
+ABC RESULTS:           input signals:       22
+ABC RESULTS:          output signals:       19
 Removing temp directory.
 
-58.4. Extracting gate netlist of module `$paramod$6f2118a93a4b2eff145201252edbfd25258eb856\commutator' to `<abc-temp-dir>/input.blif'..
+58.6. Extracting gate netlist of module `$paramod$3ff990c55cd90cf4a9e17ef17923c8c0e53807c5\commutator' to `<abc-temp-dir>/input.blif'..
 
-58.4.1. Executed ABC.
-Extracted 12 gates and 25 wires to a netlist network with 13 inputs and 12 outputs.
+58.6.1. Executed ABC.
+Extracted 60 gates and 121 wires to a netlist network with 61 inputs and 60 outputs.
+Running ABC script: <abc-temp-dir>/abc.script
+ABC: UC Berkeley, ABC 1.01 (compiled Apr 16 2026 21:01:18)
+ABC: abc 01> empty
+ABC: abc 01> source <abc-temp-dir>/abc.script
+ABC: + read_blif <abc-temp-dir>/input.blif 
+ABC: + read_lib -w /foss/pdks/gf180mcuD/libs.ref/gf180mcu_fd_sc_mcu9t5v0/lib/gf180mcu_fd_sc_mcu9t5v0__tt_025C_3v30.lib 
+ABC: Parsing finished successfully.  Parsing time =     0.19 sec
+ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__antenna" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__bufz_1".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__bufz_2".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__bufz_3".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__bufz_4".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__bufz_8".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__bufz_12".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__bufz_16".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffnq_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffnq_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffnq_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffnrnq_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffnrnq_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffnrnq_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffnrsnq_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffnrsnq_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffnrsnq_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffnsnq_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffnsnq_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffnsnq_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffq_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffq_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffq_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffrnq_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffrnq_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffrnq_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffrsnq_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffrsnq_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffrsnq_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffsnq_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffsnq_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffsnq_4".
+ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__endcap" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__fill_1" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__fill_2" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__fill_4" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__fill_8" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__fill_16" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__fill_32" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__fill_64" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__fillcap_4" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__fillcap_8" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__fillcap_16" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__fillcap_32" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__fillcap_64" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__filltie" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__hold".
+ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__icgtn_1" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__icgtn_2" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__icgtn_4" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__icgtp_1" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__icgtp_2" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__icgtp_4" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__invz_1".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__invz_2".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__invz_3".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__invz_4".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__invz_8".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__invz_12".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__invz_16".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__latq_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__latq_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__latq_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__latrnq_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__latrnq_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__latrnq_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__latrsnq_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__latrsnq_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__latrsnq_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__latsnq_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__latsnq_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__latsnq_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffq_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffq_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffq_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffrnq_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffrnq_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffrnq_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffrsnq_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffrsnq_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffrsnq_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffsnq_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffsnq_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffsnq_4".
+ABC: Library "gf180mcu_fd_sc_mcu9t5v0__tt_025C_3v30" from "/foss/pdks/gf180mcuD/libs.ref/gf180mcu_fd_sc_mcu9t5v0/lib/gf180mcu_fd_sc_mcu9t5v0__tt_025C_3v30.lib" has 145 cells (84 skipped: 48 seq; 15 tri-state; 21 no func; 0 dont_use; 0 with 2 outputs; 0 with 3+ outputs).  Time =     0.28 sec
+ABC: Memory =   29.99 MB. Time =     0.28 sec
+ABC: Warning: Detected 6 multi-output cells (for example, "gf180mcu_fd_sc_mcu9t5v0__addf_1").
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &fraig -x 
+ABC: + &put 
+ABC: + scorr 
+ABC: Warning: The network is combinational (run "fraig" or "fraig_sweep").
+ABC: + dc2 
+ABC: + dretime 
+ABC: + retime -o -D 6250 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &dch -f 
+ABC: + &nf -D 6250 
+ABC: + &put 
+ABC: + write_blif <abc-temp-dir>/output.blif 
+ABC: 
+ABC: YOSYS_ABC_DONE 
+
+58.6.2. Re-integrating ABC results.
+ABC RESULTS:   gf180mcu_fd_sc_mcu9t5v0__mux2_1 cells:       60
+ABC RESULTS:        internal signals:        0
+ABC RESULTS:           input signals:       61
+ABC RESULTS:          output signals:       60
+Removing temp directory.
+
+58.7. Extracting gate netlist of module `$paramod$20a722f352e8f93bf98d2dfcf26537a1faf8d57c\commutator' to `<abc-temp-dir>/input.blif'..
+
+58.7.1. Executed ABC.
+Extracted 52 gates and 105 wires to a netlist network with 53 inputs and 52 outputs.
 Running ABC script: <abc-temp-dir>/abc.script
 ABC: UC Berkeley, ABC 1.01 (compiled Apr 16 2026 21:01:18)
 ABC: abc 01> empty
@@ -13667,381 +14040,8 @@ ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__s
 ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffsnq_1".
 ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffsnq_2".
 ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffsnq_4".
-ABC: Library "gf180mcu_fd_sc_mcu9t5v0__tt_025C_3v30" from "/foss/pdks/gf180mcuD/libs.ref/gf180mcu_fd_sc_mcu9t5v0/lib/gf180mcu_fd_sc_mcu9t5v0__tt_025C_3v30.lib" has 145 cells (84 skipped: 48 seq; 15 tri-state; 21 no func; 0 dont_use; 0 with 2 outputs; 0 with 3+ outputs).  Time =     0.32 sec
-ABC: Memory =   29.99 MB. Time =     0.32 sec
-ABC: Warning: Detected 6 multi-output cells (for example, "gf180mcu_fd_sc_mcu9t5v0__addf_1").
-ABC: + strash 
-ABC: + &get -n 
-ABC: + &fraig -x 
-ABC: + &put 
-ABC: + scorr 
-ABC: Warning: The network is combinational (run "fraig" or "fraig_sweep").
-ABC: + dc2 
-ABC: + dretime 
-ABC: + retime -o -D 6250 
-ABC: + strash 
-ABC: + &get -n 
-ABC: + &dch -f 
-ABC: + &nf -D 6250 
-ABC: + &put 
-ABC: + write_blif <abc-temp-dir>/output.blif 
-ABC: 
-ABC: YOSYS_ABC_DONE 
-
-58.4.2. Re-integrating ABC results.
-ABC RESULTS:   gf180mcu_fd_sc_mcu9t5v0__mux2_1 cells:       12
-ABC RESULTS:        internal signals:        0
-ABC RESULTS:           input signals:       13
-ABC RESULTS:          output signals:       12
-Removing temp directory.
-
-58.5. Extracting gate netlist of module `$paramod\adder\SUB=s32'00000000000000000000000000000001' to `<abc-temp-dir>/input.blif'..
-
-58.5.1. Executed ABC.
-Extracted 28 gates and 50 wires to a netlist network with 22 inputs and 19 outputs.
-Running ABC script: <abc-temp-dir>/abc.script
-ABC: UC Berkeley, ABC 1.01 (compiled Apr 16 2026 21:01:18)
-ABC: abc 01> empty
-ABC: abc 01> source <abc-temp-dir>/abc.script
-ABC: + read_blif <abc-temp-dir>/input.blif 
-ABC: + read_lib -w /foss/pdks/gf180mcuD/libs.ref/gf180mcu_fd_sc_mcu9t5v0/lib/gf180mcu_fd_sc_mcu9t5v0__tt_025C_3v30.lib 
-ABC: Parsing finished successfully.  Parsing time =     0.20 sec
-ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__antenna" without logic function.
-ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__bufz_1".
-ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__bufz_2".
-ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__bufz_3".
-ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__bufz_4".
-ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__bufz_8".
-ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__bufz_12".
-ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__bufz_16".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffnq_1".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffnq_2".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffnq_4".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffnrnq_1".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffnrnq_2".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffnrnq_4".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffnrsnq_1".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffnrsnq_2".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffnrsnq_4".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffnsnq_1".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffnsnq_2".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffnsnq_4".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffq_1".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffq_2".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffq_4".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffrnq_1".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffrnq_2".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffrnq_4".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffrsnq_1".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffrsnq_2".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffrsnq_4".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffsnq_1".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffsnq_2".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffsnq_4".
-ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__endcap" without logic function.
-ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__fill_1" without logic function.
-ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__fill_2" without logic function.
-ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__fill_4" without logic function.
-ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__fill_8" without logic function.
-ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__fill_16" without logic function.
-ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__fill_32" without logic function.
-ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__fill_64" without logic function.
-ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__fillcap_4" without logic function.
-ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__fillcap_8" without logic function.
-ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__fillcap_16" without logic function.
-ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__fillcap_32" without logic function.
-ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__fillcap_64" without logic function.
-ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__filltie" without logic function.
-ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__hold".
-ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__icgtn_1" without logic function.
-ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__icgtn_2" without logic function.
-ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__icgtn_4" without logic function.
-ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__icgtp_1" without logic function.
-ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__icgtp_2" without logic function.
-ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__icgtp_4" without logic function.
-ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__invz_1".
-ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__invz_2".
-ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__invz_3".
-ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__invz_4".
-ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__invz_8".
-ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__invz_12".
-ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__invz_16".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__latq_1".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__latq_2".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__latq_4".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__latrnq_1".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__latrnq_2".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__latrnq_4".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__latrsnq_1".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__latrsnq_2".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__latrsnq_4".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__latsnq_1".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__latsnq_2".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__latsnq_4".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffq_1".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffq_2".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffq_4".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffrnq_1".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffrnq_2".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffrnq_4".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffrsnq_1".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffrsnq_2".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffrsnq_4".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffsnq_1".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffsnq_2".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffsnq_4".
 ABC: Library "gf180mcu_fd_sc_mcu9t5v0__tt_025C_3v30" from "/foss/pdks/gf180mcuD/libs.ref/gf180mcu_fd_sc_mcu9t5v0/lib/gf180mcu_fd_sc_mcu9t5v0__tt_025C_3v30.lib" has 145 cells (84 skipped: 48 seq; 15 tri-state; 21 no func; 0 dont_use; 0 with 2 outputs; 0 with 3+ outputs).  Time =     0.31 sec
 ABC: Memory =   29.99 MB. Time =     0.31 sec
-ABC: Warning: Detected 6 multi-output cells (for example, "gf180mcu_fd_sc_mcu9t5v0__addf_1").
-ABC: + strash 
-ABC: + &get -n 
-ABC: + &fraig -x 
-ABC: + &put 
-ABC: + scorr 
-ABC: Warning: The network is combinational (run "fraig" or "fraig_sweep").
-ABC: + dc2 
-ABC: + dretime 
-ABC: + retime -o -D 6250 
-ABC: + strash 
-ABC: + &get -n 
-ABC: + &dch -f 
-ABC: + &nf -D 6250 
-ABC: + &put 
-ABC: + write_blif <abc-temp-dir>/output.blif 
-ABC: 
-ABC: YOSYS_ABC_DONE 
-
-58.5.2. Re-integrating ABC results.
-ABC RESULTS:   gf180mcu_fd_sc_mcu9t5v0__aoi21_1 cells:        1
-ABC RESULTS:   gf180mcu_fd_sc_mcu9t5v0__clkinv_1 cells:       18
-ABC RESULTS:   gf180mcu_fd_sc_mcu9t5v0__nand2_1 cells:        1
-ABC RESULTS:   gf180mcu_fd_sc_mcu9t5v0__oai21_1 cells:        1
-ABC RESULTS:   gf180mcu_fd_sc_mcu9t5v0__or2_1 cells:        2
-ABC RESULTS:        internal signals:        9
-ABC RESULTS:           input signals:       22
-ABC RESULTS:          output signals:       19
-Removing temp directory.
-
-58.6. Extracting gate netlist of module `$paramod$3ff990c55cd90cf4a9e17ef17923c8c0e53807c5\commutator' to `<abc-temp-dir>/input.blif'..
-
-58.6.1. Executed ABC.
-Extracted 60 gates and 121 wires to a netlist network with 61 inputs and 60 outputs.
-Running ABC script: <abc-temp-dir>/abc.script
-ABC: UC Berkeley, ABC 1.01 (compiled Apr 16 2026 21:01:18)
-ABC: abc 01> empty
-ABC: abc 01> source <abc-temp-dir>/abc.script
-ABC: + read_blif <abc-temp-dir>/input.blif 
-ABC: + read_lib -w /foss/pdks/gf180mcuD/libs.ref/gf180mcu_fd_sc_mcu9t5v0/lib/gf180mcu_fd_sc_mcu9t5v0__tt_025C_3v30.lib 
-ABC: Parsing finished successfully.  Parsing time =     0.21 sec
-ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__antenna" without logic function.
-ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__bufz_1".
-ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__bufz_2".
-ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__bufz_3".
-ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__bufz_4".
-ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__bufz_8".
-ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__bufz_12".
-ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__bufz_16".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffnq_1".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffnq_2".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffnq_4".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffnrnq_1".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffnrnq_2".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffnrnq_4".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffnrsnq_1".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffnrsnq_2".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffnrsnq_4".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffnsnq_1".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffnsnq_2".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffnsnq_4".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffq_1".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffq_2".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffq_4".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffrnq_1".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffrnq_2".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffrnq_4".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffrsnq_1".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffrsnq_2".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffrsnq_4".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffsnq_1".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffsnq_2".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffsnq_4".
-ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__endcap" without logic function.
-ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__fill_1" without logic function.
-ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__fill_2" without logic function.
-ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__fill_4" without logic function.
-ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__fill_8" without logic function.
-ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__fill_16" without logic function.
-ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__fill_32" without logic function.
-ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__fill_64" without logic function.
-ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__fillcap_4" without logic function.
-ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__fillcap_8" without logic function.
-ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__fillcap_16" without logic function.
-ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__fillcap_32" without logic function.
-ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__fillcap_64" without logic function.
-ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__filltie" without logic function.
-ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__hold".
-ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__icgtn_1" without logic function.
-ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__icgtn_2" without logic function.
-ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__icgtn_4" without logic function.
-ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__icgtp_1" without logic function.
-ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__icgtp_2" without logic function.
-ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__icgtp_4" without logic function.
-ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__invz_1".
-ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__invz_2".
-ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__invz_3".
-ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__invz_4".
-ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__invz_8".
-ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__invz_12".
-ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__invz_16".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__latq_1".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__latq_2".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__latq_4".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__latrnq_1".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__latrnq_2".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__latrnq_4".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__latrsnq_1".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__latrsnq_2".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__latrsnq_4".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__latsnq_1".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__latsnq_2".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__latsnq_4".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffq_1".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffq_2".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffq_4".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffrnq_1".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffrnq_2".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffrnq_4".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffrsnq_1".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffrsnq_2".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffrsnq_4".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffsnq_1".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffsnq_2".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffsnq_4".
-ABC: Library "gf180mcu_fd_sc_mcu9t5v0__tt_025C_3v30" from "/foss/pdks/gf180mcuD/libs.ref/gf180mcu_fd_sc_mcu9t5v0/lib/gf180mcu_fd_sc_mcu9t5v0__tt_025C_3v30.lib" has 145 cells (84 skipped: 48 seq; 15 tri-state; 21 no func; 0 dont_use; 0 with 2 outputs; 0 with 3+ outputs).  Time =     0.32 sec
-ABC: Memory =   29.99 MB. Time =     0.32 sec
-ABC: Warning: Detected 6 multi-output cells (for example, "gf180mcu_fd_sc_mcu9t5v0__addf_1").
-ABC: + strash 
-ABC: + &get -n 
-ABC: + &fraig -x 
-ABC: + &put 
-ABC: + scorr 
-ABC: Warning: The network is combinational (run "fraig" or "fraig_sweep").
-ABC: + dc2 
-ABC: + dretime 
-ABC: + retime -o -D 6250 
-ABC: + strash 
-ABC: + &get -n 
-ABC: + &dch -f 
-ABC: + &nf -D 6250 
-ABC: + &put 
-ABC: + write_blif <abc-temp-dir>/output.blif 
-ABC: 
-ABC: YOSYS_ABC_DONE 
-
-58.6.2. Re-integrating ABC results.
-ABC RESULTS:   gf180mcu_fd_sc_mcu9t5v0__mux2_1 cells:       60
-ABC RESULTS:        internal signals:        0
-ABC RESULTS:           input signals:       61
-ABC RESULTS:          output signals:       60
-Removing temp directory.
-
-58.7. Extracting gate netlist of module `$paramod$20a722f352e8f93bf98d2dfcf26537a1faf8d57c\commutator' to `<abc-temp-dir>/input.blif'..
-
-58.7.1. Executed ABC.
-Extracted 52 gates and 105 wires to a netlist network with 53 inputs and 52 outputs.
-Running ABC script: <abc-temp-dir>/abc.script
-ABC: UC Berkeley, ABC 1.01 (compiled Apr 16 2026 21:01:18)
-ABC: abc 01> empty
-ABC: abc 01> source <abc-temp-dir>/abc.script
-ABC: + read_blif <abc-temp-dir>/input.blif 
-ABC: + read_lib -w /foss/pdks/gf180mcuD/libs.ref/gf180mcu_fd_sc_mcu9t5v0/lib/gf180mcu_fd_sc_mcu9t5v0__tt_025C_3v30.lib 
-ABC: Parsing finished successfully.  Parsing time =     0.20 sec
-ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__antenna" without logic function.
-ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__bufz_1".
-ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__bufz_2".
-ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__bufz_3".
-ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__bufz_4".
-ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__bufz_8".
-ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__bufz_12".
-ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__bufz_16".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffnq_1".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffnq_2".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffnq_4".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffnrnq_1".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffnrnq_2".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffnrnq_4".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffnrsnq_1".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffnrsnq_2".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffnrsnq_4".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffnsnq_1".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffnsnq_2".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffnsnq_4".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffq_1".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffq_2".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffq_4".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffrnq_1".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffrnq_2".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffrnq_4".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffrsnq_1".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffrsnq_2".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffrsnq_4".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffsnq_1".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffsnq_2".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffsnq_4".
-ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__endcap" without logic function.
-ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__fill_1" without logic function.
-ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__fill_2" without logic function.
-ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__fill_4" without logic function.
-ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__fill_8" without logic function.
-ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__fill_16" without logic function.
-ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__fill_32" without logic function.
-ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__fill_64" without logic function.
-ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__fillcap_4" without logic function.
-ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__fillcap_8" without logic function.
-ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__fillcap_16" without logic function.
-ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__fillcap_32" without logic function.
-ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__fillcap_64" without logic function.
-ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__filltie" without logic function.
-ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__hold".
-ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__icgtn_1" without logic function.
-ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__icgtn_2" without logic function.
-ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__icgtn_4" without logic function.
-ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__icgtp_1" without logic function.
-ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__icgtp_2" without logic function.
-ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__icgtp_4" without logic function.
-ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__invz_1".
-ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__invz_2".
-ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__invz_3".
-ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__invz_4".
-ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__invz_8".
-ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__invz_12".
-ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__invz_16".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__latq_1".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__latq_2".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__latq_4".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__latrnq_1".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__latrnq_2".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__latrnq_4".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__latrsnq_1".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__latrsnq_2".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__latrsnq_4".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__latsnq_1".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__latsnq_2".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__latsnq_4".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffq_1".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffq_2".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffq_4".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffrnq_1".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffrnq_2".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffrnq_4".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffrsnq_1".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffrsnq_2".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffrsnq_4".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffsnq_1".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffsnq_2".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffsnq_4".
-ABC: Library "gf180mcu_fd_sc_mcu9t5v0__tt_025C_3v30" from "/foss/pdks/gf180mcuD/libs.ref/gf180mcu_fd_sc_mcu9t5v0/lib/gf180mcu_fd_sc_mcu9t5v0__tt_025C_3v30.lib" has 145 cells (84 skipped: 48 seq; 15 tri-state; 21 no func; 0 dont_use; 0 with 2 outputs; 0 with 3+ outputs).  Time =     0.29 sec
-ABC: Memory =   29.99 MB. Time =     0.29 sec
 ABC: Warning: Detected 6 multi-output cells (for example, "gf180mcu_fd_sc_mcu9t5v0__addf_1").
 ABC: + strash 
 ABC: + &get -n 
@@ -14163,8 +14163,8 @@ ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__s
 ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffsnq_1".
 ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffsnq_2".
 ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffsnq_4".
-ABC: Library "gf180mcu_fd_sc_mcu9t5v0__tt_025C_3v30" from "/foss/pdks/gf180mcuD/libs.ref/gf180mcu_fd_sc_mcu9t5v0/lib/gf180mcu_fd_sc_mcu9t5v0__tt_025C_3v30.lib" has 145 cells (84 skipped: 48 seq; 15 tri-state; 21 no func; 0 dont_use; 0 with 2 outputs; 0 with 3+ outputs).  Time =     0.29 sec
-ABC: Memory =   29.99 MB. Time =     0.29 sec
+ABC: Library "gf180mcu_fd_sc_mcu9t5v0__tt_025C_3v30" from "/foss/pdks/gf180mcuD/libs.ref/gf180mcu_fd_sc_mcu9t5v0/lib/gf180mcu_fd_sc_mcu9t5v0__tt_025C_3v30.lib" has 145 cells (84 skipped: 48 seq; 15 tri-state; 21 no func; 0 dont_use; 0 with 2 outputs; 0 with 3+ outputs).  Time =     0.27 sec
+ABC: Memory =   29.99 MB. Time =     0.27 sec
 ABC: Warning: Detected 6 multi-output cells (for example, "gf180mcu_fd_sc_mcu9t5v0__addf_1").
 ABC: + strash 
 ABC: + &get -n 
@@ -14203,7 +14203,7 @@ ABC: abc 01> empty
 ABC: abc 01> source <abc-temp-dir>/abc.script
 ABC: + read_blif <abc-temp-dir>/input.blif 
 ABC: + read_lib -w /foss/pdks/gf180mcuD/libs.ref/gf180mcu_fd_sc_mcu9t5v0/lib/gf180mcu_fd_sc_mcu9t5v0__tt_025C_3v30.lib 
-ABC: Parsing finished successfully.  Parsing time =     0.22 sec
+ABC: Parsing finished successfully.  Parsing time =     0.19 sec
 ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__antenna" without logic function.
 ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__bufz_1".
 ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__bufz_2".
@@ -14288,8 +14288,8 @@ ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__s
 ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffsnq_1".
 ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffsnq_2".
 ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffsnq_4".
-ABC: Library "gf180mcu_fd_sc_mcu9t5v0__tt_025C_3v30" from "/foss/pdks/gf180mcuD/libs.ref/gf180mcu_fd_sc_mcu9t5v0/lib/gf180mcu_fd_sc_mcu9t5v0__tt_025C_3v30.lib" has 145 cells (84 skipped: 48 seq; 15 tri-state; 21 no func; 0 dont_use; 0 with 2 outputs; 0 with 3+ outputs).  Time =     0.32 sec
-ABC: Memory =   29.99 MB. Time =     0.32 sec
+ABC: Library "gf180mcu_fd_sc_mcu9t5v0__tt_025C_3v30" from "/foss/pdks/gf180mcuD/libs.ref/gf180mcu_fd_sc_mcu9t5v0/lib/gf180mcu_fd_sc_mcu9t5v0__tt_025C_3v30.lib" has 145 cells (84 skipped: 48 seq; 15 tri-state; 21 no func; 0 dont_use; 0 with 2 outputs; 0 with 3+ outputs).  Time =     0.27 sec
+ABC: Memory =   29.99 MB. Time =     0.27 sec
 ABC: Warning: Detected 6 multi-output cells (for example, "gf180mcu_fd_sc_mcu9t5v0__addf_1").
 ABC: + strash 
 ABC: + &get -n 
@@ -14328,7 +14328,7 @@ ABC: abc 01> empty
 ABC: abc 01> source <abc-temp-dir>/abc.script
 ABC: + read_blif <abc-temp-dir>/input.blif 
 ABC: + read_lib -w /foss/pdks/gf180mcuD/libs.ref/gf180mcu_fd_sc_mcu9t5v0/lib/gf180mcu_fd_sc_mcu9t5v0__tt_025C_3v30.lib 
-ABC: Parsing finished successfully.  Parsing time =     0.21 sec
+ABC: Parsing finished successfully.  Parsing time =     0.19 sec
 ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__antenna" without logic function.
 ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__bufz_1".
 ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__bufz_2".
@@ -14413,8 +14413,8 @@ ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__s
 ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffsnq_1".
 ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffsnq_2".
 ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffsnq_4".
-ABC: Library "gf180mcu_fd_sc_mcu9t5v0__tt_025C_3v30" from "/foss/pdks/gf180mcuD/libs.ref/gf180mcu_fd_sc_mcu9t5v0/lib/gf180mcu_fd_sc_mcu9t5v0__tt_025C_3v30.lib" has 145 cells (84 skipped: 48 seq; 15 tri-state; 21 no func; 0 dont_use; 0 with 2 outputs; 0 with 3+ outputs).  Time =     0.31 sec
-ABC: Memory =   29.99 MB. Time =     0.31 sec
+ABC: Library "gf180mcu_fd_sc_mcu9t5v0__tt_025C_3v30" from "/foss/pdks/gf180mcuD/libs.ref/gf180mcu_fd_sc_mcu9t5v0/lib/gf180mcu_fd_sc_mcu9t5v0__tt_025C_3v30.lib" has 145 cells (84 skipped: 48 seq; 15 tri-state; 21 no func; 0 dont_use; 0 with 2 outputs; 0 with 3+ outputs).  Time =     0.28 sec
+ABC: Memory =   29.99 MB. Time =     0.28 sec
 ABC: Warning: Detected 6 multi-output cells (for example, "gf180mcu_fd_sc_mcu9t5v0__addf_1").
 ABC: + strash 
 ABC: + &get -n 
@@ -14445,6 +14445,129 @@ Removing temp directory.
 
 58.11.1. Executed ABC.
 Extracted 12 gates and 25 wires to a netlist network with 13 inputs and 12 outputs.
+Running ABC script: <abc-temp-dir>/abc.script
+ABC: UC Berkeley, ABC 1.01 (compiled Apr 16 2026 21:01:18)
+ABC: abc 01> empty
+ABC: abc 01> source <abc-temp-dir>/abc.script
+ABC: + read_blif <abc-temp-dir>/input.blif 
+ABC: + read_lib -w /foss/pdks/gf180mcuD/libs.ref/gf180mcu_fd_sc_mcu9t5v0/lib/gf180mcu_fd_sc_mcu9t5v0__tt_025C_3v30.lib 
+ABC: Parsing finished successfully.  Parsing time =     0.19 sec
+ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__antenna" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__bufz_1".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__bufz_2".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__bufz_3".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__bufz_4".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__bufz_8".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__bufz_12".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__bufz_16".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffnq_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffnq_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffnq_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffnrnq_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffnrnq_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffnrnq_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffnrsnq_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffnrsnq_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffnrsnq_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffnsnq_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffnsnq_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffnsnq_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffq_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffq_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffq_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffrnq_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffrnq_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffrnq_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffrsnq_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffrsnq_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffrsnq_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffsnq_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffsnq_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffsnq_4".
+ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__endcap" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__fill_1" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__fill_2" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__fill_4" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__fill_8" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__fill_16" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__fill_32" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__fill_64" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__fillcap_4" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__fillcap_8" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__fillcap_16" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__fillcap_32" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__fillcap_64" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__filltie" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__hold".
+ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__icgtn_1" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__icgtn_2" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__icgtn_4" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__icgtp_1" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__icgtp_2" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__icgtp_4" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__invz_1".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__invz_2".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__invz_3".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__invz_4".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__invz_8".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__invz_12".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__invz_16".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__latq_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__latq_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__latq_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__latrnq_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__latrnq_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__latrnq_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__latrsnq_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__latrsnq_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__latrsnq_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__latsnq_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__latsnq_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__latsnq_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffq_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffq_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffq_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffrnq_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffrnq_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffrnq_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffrsnq_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffrsnq_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffrsnq_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffsnq_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffsnq_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffsnq_4".
+ABC: Library "gf180mcu_fd_sc_mcu9t5v0__tt_025C_3v30" from "/foss/pdks/gf180mcuD/libs.ref/gf180mcu_fd_sc_mcu9t5v0/lib/gf180mcu_fd_sc_mcu9t5v0__tt_025C_3v30.lib" has 145 cells (84 skipped: 48 seq; 15 tri-state; 21 no func; 0 dont_use; 0 with 2 outputs; 0 with 3+ outputs).  Time =     0.27 sec
+ABC: Memory =   29.99 MB. Time =     0.27 sec
+ABC: Warning: Detected 6 multi-output cells (for example, "gf180mcu_fd_sc_mcu9t5v0__addf_1").
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &fraig -x 
+ABC: + &put 
+ABC: + scorr 
+ABC: Warning: The network is combinational (run "fraig" or "fraig_sweep").
+ABC: + dc2 
+ABC: + dretime 
+ABC: + retime -o -D 6250 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &dch -f 
+ABC: + &nf -D 6250 
+ABC: + &put 
+ABC: + write_blif <abc-temp-dir>/output.blif 
+ABC: 
+ABC: YOSYS_ABC_DONE 
+
+58.11.2. Re-integrating ABC results.
+ABC RESULTS:   gf180mcu_fd_sc_mcu9t5v0__mux2_1 cells:       12
+ABC RESULTS:        internal signals:        0
+ABC RESULTS:           input signals:       13
+ABC RESULTS:          output signals:       12
+Removing temp directory.
+
+58.12. Extracting gate netlist of module `\CLA4' to `<abc-temp-dir>/input.blif'..
+
+58.12.1. Executed ABC.
+Extracted 24 gates and 33 wires to a netlist network with 9 inputs and 5 outputs.
 Running ABC script: <abc-temp-dir>/abc.script
 ABC: UC Berkeley, ABC 1.01 (compiled Apr 16 2026 21:01:18)
 ABC: abc 01> empty
@@ -14536,131 +14659,8 @@ ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__s
 ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffsnq_1".
 ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffsnq_2".
 ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffsnq_4".
-ABC: Library "gf180mcu_fd_sc_mcu9t5v0__tt_025C_3v30" from "/foss/pdks/gf180mcuD/libs.ref/gf180mcu_fd_sc_mcu9t5v0/lib/gf180mcu_fd_sc_mcu9t5v0__tt_025C_3v30.lib" has 145 cells (84 skipped: 48 seq; 15 tri-state; 21 no func; 0 dont_use; 0 with 2 outputs; 0 with 3+ outputs).  Time =     0.30 sec
-ABC: Memory =   29.99 MB. Time =     0.30 sec
-ABC: Warning: Detected 6 multi-output cells (for example, "gf180mcu_fd_sc_mcu9t5v0__addf_1").
-ABC: + strash 
-ABC: + &get -n 
-ABC: + &fraig -x 
-ABC: + &put 
-ABC: + scorr 
-ABC: Warning: The network is combinational (run "fraig" or "fraig_sweep").
-ABC: + dc2 
-ABC: + dretime 
-ABC: + retime -o -D 6250 
-ABC: + strash 
-ABC: + &get -n 
-ABC: + &dch -f 
-ABC: + &nf -D 6250 
-ABC: + &put 
-ABC: + write_blif <abc-temp-dir>/output.blif 
-ABC: 
-ABC: YOSYS_ABC_DONE 
-
-58.11.2. Re-integrating ABC results.
-ABC RESULTS:   gf180mcu_fd_sc_mcu9t5v0__mux2_1 cells:       12
-ABC RESULTS:        internal signals:        0
-ABC RESULTS:           input signals:       13
-ABC RESULTS:          output signals:       12
-Removing temp directory.
-
-58.12. Extracting gate netlist of module `\CLA4' to `<abc-temp-dir>/input.blif'..
-
-58.12.1. Executed ABC.
-Extracted 24 gates and 33 wires to a netlist network with 9 inputs and 5 outputs.
-Running ABC script: <abc-temp-dir>/abc.script
-ABC: UC Berkeley, ABC 1.01 (compiled Apr 16 2026 21:01:18)
-ABC: abc 01> empty
-ABC: abc 01> source <abc-temp-dir>/abc.script
-ABC: + read_blif <abc-temp-dir>/input.blif 
-ABC: + read_lib -w /foss/pdks/gf180mcuD/libs.ref/gf180mcu_fd_sc_mcu9t5v0/lib/gf180mcu_fd_sc_mcu9t5v0__tt_025C_3v30.lib 
-ABC: Parsing finished successfully.  Parsing time =     0.21 sec
-ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__antenna" without logic function.
-ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__bufz_1".
-ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__bufz_2".
-ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__bufz_3".
-ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__bufz_4".
-ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__bufz_8".
-ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__bufz_12".
-ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__bufz_16".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffnq_1".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffnq_2".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffnq_4".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffnrnq_1".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffnrnq_2".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffnrnq_4".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffnrsnq_1".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffnrsnq_2".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffnrsnq_4".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffnsnq_1".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffnsnq_2".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffnsnq_4".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffq_1".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffq_2".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffq_4".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffrnq_1".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffrnq_2".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffrnq_4".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffrsnq_1".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffrsnq_2".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffrsnq_4".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffsnq_1".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffsnq_2".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffsnq_4".
-ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__endcap" without logic function.
-ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__fill_1" without logic function.
-ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__fill_2" without logic function.
-ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__fill_4" without logic function.
-ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__fill_8" without logic function.
-ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__fill_16" without logic function.
-ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__fill_32" without logic function.
-ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__fill_64" without logic function.
-ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__fillcap_4" without logic function.
-ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__fillcap_8" without logic function.
-ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__fillcap_16" without logic function.
-ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__fillcap_32" without logic function.
-ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__fillcap_64" without logic function.
-ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__filltie" without logic function.
-ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__hold".
-ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__icgtn_1" without logic function.
-ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__icgtn_2" without logic function.
-ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__icgtn_4" without logic function.
-ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__icgtp_1" without logic function.
-ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__icgtp_2" without logic function.
-ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__icgtp_4" without logic function.
-ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__invz_1".
-ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__invz_2".
-ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__invz_3".
-ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__invz_4".
-ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__invz_8".
-ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__invz_12".
-ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__invz_16".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__latq_1".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__latq_2".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__latq_4".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__latrnq_1".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__latrnq_2".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__latrnq_4".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__latrsnq_1".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__latrsnq_2".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__latrsnq_4".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__latsnq_1".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__latsnq_2".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__latsnq_4".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffq_1".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffq_2".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffq_4".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffrnq_1".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffrnq_2".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffrnq_4".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffrsnq_1".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffrsnq_2".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffrsnq_4".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffsnq_1".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffsnq_2".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffsnq_4".
-ABC: Library "gf180mcu_fd_sc_mcu9t5v0__tt_025C_3v30" from "/foss/pdks/gf180mcuD/libs.ref/gf180mcu_fd_sc_mcu9t5v0/lib/gf180mcu_fd_sc_mcu9t5v0__tt_025C_3v30.lib" has 145 cells (84 skipped: 48 seq; 15 tri-state; 21 no func; 0 dont_use; 0 with 2 outputs; 0 with 3+ outputs).  Time =     0.29 sec
-ABC: Memory =   29.99 MB. Time =     0.29 sec
+ABC: Library "gf180mcu_fd_sc_mcu9t5v0__tt_025C_3v30" from "/foss/pdks/gf180mcuD/libs.ref/gf180mcu_fd_sc_mcu9t5v0/lib/gf180mcu_fd_sc_mcu9t5v0__tt_025C_3v30.lib" has 145 cells (84 skipped: 48 seq; 15 tri-state; 21 no func; 0 dont_use; 0 with 2 outputs; 0 with 3+ outputs).  Time =     0.28 sec
+ABC: Memory =   29.99 MB. Time =     0.28 sec
 ABC: Warning: Detected 6 multi-output cells (for example, "gf180mcu_fd_sc_mcu9t5v0__addf_1").
 ABC: + strash 
 ABC: + &get -n 
@@ -14788,8 +14788,8 @@ ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__s
 ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffsnq_1".
 ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffsnq_2".
 ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffsnq_4".
-ABC: Library "gf180mcu_fd_sc_mcu9t5v0__tt_025C_3v30" from "/foss/pdks/gf180mcuD/libs.ref/gf180mcu_fd_sc_mcu9t5v0/lib/gf180mcu_fd_sc_mcu9t5v0__tt_025C_3v30.lib" has 145 cells (84 skipped: 48 seq; 15 tri-state; 21 no func; 0 dont_use; 0 with 2 outputs; 0 with 3+ outputs).  Time =     0.32 sec
-ABC: Memory =   29.99 MB. Time =     0.32 sec
+ABC: Library "gf180mcu_fd_sc_mcu9t5v0__tt_025C_3v30" from "/foss/pdks/gf180mcuD/libs.ref/gf180mcu_fd_sc_mcu9t5v0/lib/gf180mcu_fd_sc_mcu9t5v0__tt_025C_3v30.lib" has 145 cells (84 skipped: 48 seq; 15 tri-state; 21 no func; 0 dont_use; 0 with 2 outputs; 0 with 3+ outputs).  Time =     0.29 sec
+ABC: Memory =   29.99 MB. Time =     0.29 sec
 ABC: Warning: Detected 6 multi-output cells (for example, "gf180mcu_fd_sc_mcu9t5v0__addf_1").
 ABC: + strash 
 ABC: + &get -n 
@@ -14828,7 +14828,7 @@ ABC: abc 01> empty
 ABC: abc 01> source <abc-temp-dir>/abc.script
 ABC: + read_blif <abc-temp-dir>/input.blif 
 ABC: + read_lib -w /foss/pdks/gf180mcuD/libs.ref/gf180mcu_fd_sc_mcu9t5v0/lib/gf180mcu_fd_sc_mcu9t5v0__tt_025C_3v30.lib 
-ABC: Parsing finished successfully.  Parsing time =     0.23 sec
+ABC: Parsing finished successfully.  Parsing time =     0.19 sec
 ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__antenna" without logic function.
 ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__bufz_1".
 ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__bufz_2".
@@ -14913,8 +14913,8 @@ ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__s
 ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffsnq_1".
 ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffsnq_2".
 ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffsnq_4".
-ABC: Library "gf180mcu_fd_sc_mcu9t5v0__tt_025C_3v30" from "/foss/pdks/gf180mcuD/libs.ref/gf180mcu_fd_sc_mcu9t5v0/lib/gf180mcu_fd_sc_mcu9t5v0__tt_025C_3v30.lib" has 145 cells (84 skipped: 48 seq; 15 tri-state; 21 no func; 0 dont_use; 0 with 2 outputs; 0 with 3+ outputs).  Time =     0.33 sec
-ABC: Memory =   29.99 MB. Time =     0.33 sec
+ABC: Library "gf180mcu_fd_sc_mcu9t5v0__tt_025C_3v30" from "/foss/pdks/gf180mcuD/libs.ref/gf180mcu_fd_sc_mcu9t5v0/lib/gf180mcu_fd_sc_mcu9t5v0__tt_025C_3v30.lib" has 145 cells (84 skipped: 48 seq; 15 tri-state; 21 no func; 0 dont_use; 0 with 2 outputs; 0 with 3+ outputs).  Time =     0.27 sec
+ABC: Memory =   29.99 MB. Time =     0.27 sec
 ABC: Warning: Detected 6 multi-output cells (for example, "gf180mcu_fd_sc_mcu9t5v0__addf_1").
 ABC: + strash 
 ABC: + &get -n 
@@ -15036,8 +15036,8 @@ ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__s
 ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffsnq_1".
 ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffsnq_2".
 ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffsnq_4".
-ABC: Library "gf180mcu_fd_sc_mcu9t5v0__tt_025C_3v30" from "/foss/pdks/gf180mcuD/libs.ref/gf180mcu_fd_sc_mcu9t5v0/lib/gf180mcu_fd_sc_mcu9t5v0__tt_025C_3v30.lib" has 145 cells (84 skipped: 48 seq; 15 tri-state; 21 no func; 0 dont_use; 0 with 2 outputs; 0 with 3+ outputs).  Time =     0.31 sec
-ABC: Memory =   29.99 MB. Time =     0.31 sec
+ABC: Library "gf180mcu_fd_sc_mcu9t5v0__tt_025C_3v30" from "/foss/pdks/gf180mcuD/libs.ref/gf180mcu_fd_sc_mcu9t5v0/lib/gf180mcu_fd_sc_mcu9t5v0__tt_025C_3v30.lib" has 145 cells (84 skipped: 48 seq; 15 tri-state; 21 no func; 0 dont_use; 0 with 2 outputs; 0 with 3+ outputs).  Time =     0.29 sec
+ABC: Memory =   29.99 MB. Time =     0.29 sec
 ABC: Warning: Detected 6 multi-output cells (for example, "gf180mcu_fd_sc_mcu9t5v0__addf_1").
 ABC: + strash 
 ABC: + &get -n 
@@ -15076,7 +15076,7 @@ ABC: abc 01> empty
 ABC: abc 01> source <abc-temp-dir>/abc.script
 ABC: + read_blif <abc-temp-dir>/input.blif 
 ABC: + read_lib -w /foss/pdks/gf180mcuD/libs.ref/gf180mcu_fd_sc_mcu9t5v0/lib/gf180mcu_fd_sc_mcu9t5v0__tt_025C_3v30.lib 
-ABC: Parsing finished successfully.  Parsing time =     0.22 sec
+ABC: Parsing finished successfully.  Parsing time =     0.19 sec
 ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__antenna" without logic function.
 ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__bufz_1".
 ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__bufz_2".
@@ -15161,8 +15161,8 @@ ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__s
 ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffsnq_1".
 ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffsnq_2".
 ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffsnq_4".
-ABC: Library "gf180mcu_fd_sc_mcu9t5v0__tt_025C_3v30" from "/foss/pdks/gf180mcuD/libs.ref/gf180mcu_fd_sc_mcu9t5v0/lib/gf180mcu_fd_sc_mcu9t5v0__tt_025C_3v30.lib" has 145 cells (84 skipped: 48 seq; 15 tri-state; 21 no func; 0 dont_use; 0 with 2 outputs; 0 with 3+ outputs).  Time =     0.32 sec
-ABC: Memory =   29.99 MB. Time =     0.32 sec
+ABC: Library "gf180mcu_fd_sc_mcu9t5v0__tt_025C_3v30" from "/foss/pdks/gf180mcuD/libs.ref/gf180mcu_fd_sc_mcu9t5v0/lib/gf180mcu_fd_sc_mcu9t5v0__tt_025C_3v30.lib" has 145 cells (84 skipped: 48 seq; 15 tri-state; 21 no func; 0 dont_use; 0 with 2 outputs; 0 with 3+ outputs).  Time =     0.27 sec
+ABC: Memory =   29.99 MB. Time =     0.27 sec
 ABC: Warning: Detected 6 multi-output cells (for example, "gf180mcu_fd_sc_mcu9t5v0__addf_1").
 ABC: + strash 
 ABC: + &get -n 
@@ -15284,8 +15284,8 @@ ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__s
 ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffsnq_1".
 ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffsnq_2".
 ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffsnq_4".
-ABC: Library "gf180mcu_fd_sc_mcu9t5v0__tt_025C_3v30" from "/foss/pdks/gf180mcuD/libs.ref/gf180mcu_fd_sc_mcu9t5v0/lib/gf180mcu_fd_sc_mcu9t5v0__tt_025C_3v30.lib" has 145 cells (84 skipped: 48 seq; 15 tri-state; 21 no func; 0 dont_use; 0 with 2 outputs; 0 with 3+ outputs).  Time =     0.33 sec
-ABC: Memory =   29.99 MB. Time =     0.33 sec
+ABC: Library "gf180mcu_fd_sc_mcu9t5v0__tt_025C_3v30" from "/foss/pdks/gf180mcuD/libs.ref/gf180mcu_fd_sc_mcu9t5v0/lib/gf180mcu_fd_sc_mcu9t5v0__tt_025C_3v30.lib" has 145 cells (84 skipped: 48 seq; 15 tri-state; 21 no func; 0 dont_use; 0 with 2 outputs; 0 with 3+ outputs).  Time =     0.31 sec
+ABC: Memory =   29.99 MB. Time =     0.31 sec
 ABC: Warning: Detected 6 multi-output cells (for example, "gf180mcu_fd_sc_mcu9t5v0__addf_1").
 ABC: + strash 
 ABC: + &get -n 
@@ -15322,7 +15322,139 @@ ABC: abc 01> empty
 ABC: abc 01> source <abc-temp-dir>/abc.script
 ABC: + read_blif <abc-temp-dir>/input.blif 
 ABC: + read_lib -w /foss/pdks/gf180mcuD/libs.ref/gf180mcu_fd_sc_mcu9t5v0/lib/gf180mcu_fd_sc_mcu9t5v0__tt_025C_3v30.lib 
-ABC: Parsing finished successfully.  Parsing time =     0.20 sec
+ABC: Parsing finished successfully.  Parsing time =     0.22 sec
+ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__antenna" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__bufz_1".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__bufz_2".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__bufz_3".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__bufz_4".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__bufz_8".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__bufz_12".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__bufz_16".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffnq_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffnq_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffnq_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffnrnq_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffnrnq_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffnrnq_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffnrsnq_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffnrsnq_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffnrsnq_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffnsnq_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffnsnq_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffnsnq_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffq_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffq_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffq_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffrnq_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffrnq_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffrnq_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffrsnq_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffrsnq_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffrsnq_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffsnq_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffsnq_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffsnq_4".
+ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__endcap" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__fill_1" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__fill_2" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__fill_4" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__fill_8" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__fill_16" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__fill_32" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__fill_64" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__fillcap_4" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__fillcap_8" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__fillcap_16" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__fillcap_32" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__fillcap_64" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__filltie" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__hold".
+ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__icgtn_1" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__icgtn_2" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__icgtn_4" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__icgtp_1" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__icgtp_2" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__icgtp_4" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__invz_1".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__invz_2".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__invz_3".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__invz_4".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__invz_8".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__invz_12".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__invz_16".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__latq_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__latq_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__latq_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__latrnq_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__latrnq_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__latrnq_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__latrsnq_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__latrsnq_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__latrsnq_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__latsnq_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__latsnq_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__latsnq_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffq_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffq_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffq_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffrnq_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffrnq_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffrnq_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffrsnq_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffrsnq_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffrsnq_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffsnq_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffsnq_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffsnq_4".
+ABC: Library "gf180mcu_fd_sc_mcu9t5v0__tt_025C_3v30" from "/foss/pdks/gf180mcuD/libs.ref/gf180mcu_fd_sc_mcu9t5v0/lib/gf180mcu_fd_sc_mcu9t5v0__tt_025C_3v30.lib" has 145 cells (84 skipped: 48 seq; 15 tri-state; 21 no func; 0 dont_use; 0 with 2 outputs; 0 with 3+ outputs).  Time =     0.30 sec
+ABC: Memory =   29.99 MB. Time =     0.30 sec
+ABC: Warning: Detected 6 multi-output cells (for example, "gf180mcu_fd_sc_mcu9t5v0__addf_1").
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &fraig -x 
+ABC: + &put 
+ABC: + scorr 
+ABC: Warning: The network is combinational (run "fraig" or "fraig_sweep").
+ABC: + dc2 
+ABC: + dretime 
+ABC: + retime -o -D 6250 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &dch -f 
+ABC: + &nf -D 6250 
+ABC: + &put 
+ABC: + write_blif <abc-temp-dir>/output.blif 
+ABC: 
+ABC: YOSYS_ABC_DONE 
+
+58.18.2. Re-integrating ABC results.
+ABC RESULTS:   gf180mcu_fd_sc_mcu9t5v0__and2_1 cells:        1
+ABC RESULTS:   gf180mcu_fd_sc_mcu9t5v0__buf_1 cells:        1
+ABC RESULTS:   gf180mcu_fd_sc_mcu9t5v0__clkinv_1 cells:        1
+ABC RESULTS:        internal signals:       13
+ABC RESULTS:           input signals:        3
+ABC RESULTS:          output signals:        3
+Removing temp directory.
+
+58.19. Extracting gate netlist of module `\serial_to_parallel16' to `<abc-temp-dir>/input.blif'..
+Don't call ABC as there is nothing to map.
+
+58.19.1. Executed ABC.
+Extracted 0 gates and 0 wires to a netlist network with 0 inputs and 0 outputs.
+Removing temp directory.
+
+58.20. Extracting gate netlist of module `\fft' to `<abc-temp-dir>/input.blif'..
+
+58.20.1. Executed ABC.
+Extracted 17839 gates and 22549 wires to a netlist network with 4708 inputs and 5164 outputs.
+Running ABC script: <abc-temp-dir>/abc.script
+ABC: UC Berkeley, ABC 1.01 (compiled Apr 16 2026 21:01:18)
+ABC: abc 01> empty
+ABC: abc 01> source <abc-temp-dir>/abc.script
+ABC: + read_blif <abc-temp-dir>/input.blif 
+ABC: + read_lib -w /foss/pdks/gf180mcuD/libs.ref/gf180mcu_fd_sc_mcu9t5v0/lib/gf180mcu_fd_sc_mcu9t5v0__tt_025C_3v30.lib 
+ABC: Parsing finished successfully.  Parsing time =     0.22 sec
 ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__antenna" without logic function.
 ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__bufz_1".
 ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__bufz_2".
@@ -15409,138 +15541,6 @@ ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__s
 ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffsnq_4".
 ABC: Library "gf180mcu_fd_sc_mcu9t5v0__tt_025C_3v30" from "/foss/pdks/gf180mcuD/libs.ref/gf180mcu_fd_sc_mcu9t5v0/lib/gf180mcu_fd_sc_mcu9t5v0__tt_025C_3v30.lib" has 145 cells (84 skipped: 48 seq; 15 tri-state; 21 no func; 0 dont_use; 0 with 2 outputs; 0 with 3+ outputs).  Time =     0.31 sec
 ABC: Memory =   29.99 MB. Time =     0.31 sec
-ABC: Warning: Detected 6 multi-output cells (for example, "gf180mcu_fd_sc_mcu9t5v0__addf_1").
-ABC: + strash 
-ABC: + &get -n 
-ABC: + &fraig -x 
-ABC: + &put 
-ABC: + scorr 
-ABC: Warning: The network is combinational (run "fraig" or "fraig_sweep").
-ABC: + dc2 
-ABC: + dretime 
-ABC: + retime -o -D 6250 
-ABC: + strash 
-ABC: + &get -n 
-ABC: + &dch -f 
-ABC: + &nf -D 6250 
-ABC: + &put 
-ABC: + write_blif <abc-temp-dir>/output.blif 
-ABC: 
-ABC: YOSYS_ABC_DONE 
-
-58.18.2. Re-integrating ABC results.
-ABC RESULTS:   gf180mcu_fd_sc_mcu9t5v0__and2_1 cells:        1
-ABC RESULTS:   gf180mcu_fd_sc_mcu9t5v0__buf_1 cells:        1
-ABC RESULTS:   gf180mcu_fd_sc_mcu9t5v0__clkinv_1 cells:        1
-ABC RESULTS:        internal signals:       13
-ABC RESULTS:           input signals:        3
-ABC RESULTS:          output signals:        3
-Removing temp directory.
-
-58.19. Extracting gate netlist of module `\serial_to_parallel16' to `<abc-temp-dir>/input.blif'..
-Don't call ABC as there is nothing to map.
-
-58.19.1. Executed ABC.
-Extracted 0 gates and 0 wires to a netlist network with 0 inputs and 0 outputs.
-Removing temp directory.
-
-58.20. Extracting gate netlist of module `\fft' to `<abc-temp-dir>/input.blif'..
-
-58.20.1. Executed ABC.
-Extracted 17839 gates and 22549 wires to a netlist network with 4708 inputs and 5164 outputs.
-Running ABC script: <abc-temp-dir>/abc.script
-ABC: UC Berkeley, ABC 1.01 (compiled Apr 16 2026 21:01:18)
-ABC: abc 01> empty
-ABC: abc 01> source <abc-temp-dir>/abc.script
-ABC: + read_blif <abc-temp-dir>/input.blif 
-ABC: + read_lib -w /foss/pdks/gf180mcuD/libs.ref/gf180mcu_fd_sc_mcu9t5v0/lib/gf180mcu_fd_sc_mcu9t5v0__tt_025C_3v30.lib 
-ABC: Parsing finished successfully.  Parsing time =     0.21 sec
-ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__antenna" without logic function.
-ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__bufz_1".
-ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__bufz_2".
-ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__bufz_3".
-ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__bufz_4".
-ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__bufz_8".
-ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__bufz_12".
-ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__bufz_16".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffnq_1".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffnq_2".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffnq_4".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffnrnq_1".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffnrnq_2".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffnrnq_4".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffnrsnq_1".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffnrsnq_2".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffnrsnq_4".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffnsnq_1".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffnsnq_2".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffnsnq_4".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffq_1".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffq_2".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffq_4".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffrnq_1".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffrnq_2".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffrnq_4".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffrsnq_1".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffrsnq_2".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffrsnq_4".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffsnq_1".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffsnq_2".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__dffsnq_4".
-ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__endcap" without logic function.
-ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__fill_1" without logic function.
-ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__fill_2" without logic function.
-ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__fill_4" without logic function.
-ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__fill_8" without logic function.
-ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__fill_16" without logic function.
-ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__fill_32" without logic function.
-ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__fill_64" without logic function.
-ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__fillcap_4" without logic function.
-ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__fillcap_8" without logic function.
-ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__fillcap_16" without logic function.
-ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__fillcap_32" without logic function.
-ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__fillcap_64" without logic function.
-ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__filltie" without logic function.
-ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__hold".
-ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__icgtn_1" without logic function.
-ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__icgtn_2" without logic function.
-ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__icgtn_4" without logic function.
-ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__icgtp_1" without logic function.
-ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__icgtp_2" without logic function.
-ABC: Scl_LibertyReadGenlib() skipped cell "gf180mcu_fd_sc_mcu9t5v0__icgtp_4" without logic function.
-ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__invz_1".
-ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__invz_2".
-ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__invz_3".
-ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__invz_4".
-ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__invz_8".
-ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__invz_12".
-ABC: Scl_LibertyReadGenlib() skipped three-state cell "gf180mcu_fd_sc_mcu9t5v0__invz_16".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__latq_1".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__latq_2".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__latq_4".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__latrnq_1".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__latrnq_2".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__latrnq_4".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__latrsnq_1".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__latrsnq_2".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__latrsnq_4".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__latsnq_1".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__latsnq_2".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__latsnq_4".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffq_1".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffq_2".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffq_4".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffrnq_1".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffrnq_2".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffrnq_4".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffrsnq_1".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffrsnq_2".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffrsnq_4".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffsnq_1".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffsnq_2".
-ABC: Scl_LibertyReadGenlib() skipped sequential cell "gf180mcu_fd_sc_mcu9t5v0__sdffsnq_4".
-ABC: Library "gf180mcu_fd_sc_mcu9t5v0__tt_025C_3v30" from "/foss/pdks/gf180mcuD/libs.ref/gf180mcu_fd_sc_mcu9t5v0/lib/gf180mcu_fd_sc_mcu9t5v0__tt_025C_3v30.lib" has 145 cells (84 skipped: 48 seq; 15 tri-state; 21 no func; 0 dont_use; 0 with 2 outputs; 0 with 3+ outputs).  Time =     0.29 sec
-ABC: Memory =   29.99 MB. Time =     0.29 sec
 ABC: Warning: Detected 6 multi-output cells (for example, "gf180mcu_fd_sc_mcu9t5v0__addf_1").
 ABC: + strash 
 ABC: + &get -n 
@@ -16197,6 +16197,6 @@ Dumping module `\serial_to_parallel'.
 Dumping module `\serial_to_parallel16'.
 
 Warnings: 57 unique messages, 88 total
-End of script. Logfile hash: 08a72f0328, time: 47.82s, user: 48.73s, system: 4.06s, MEM: 493.48 MB peak
+End of script. Logfile hash: 3636443076, time: 46.70s, user: 45.68s, system: 4.07s, MEM: 494.73 MB peak
 Yosys 0.64 (git sha1 6d2c445ae, g++ 13.3.0-6ubuntu2~24.04.1 -fPIC -O3)
-Time spent: 23% 37x opt_clean (13 sec), 19% 38x opt_expr (11 sec), ...
+Time spent: 23% 37x opt_clean (12 sec), 18% 38x opt_expr (10 sec), ...

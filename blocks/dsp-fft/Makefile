@@ -219,7 +219,7 @@ $(STA_SCRIPT): | $(SYN_DIR)
 	@echo "create_clock -name adc_clk -period $(ADC_CLK_PERIOD) [get_ports adc_clk]" >> $@
 	@echo "create_generated_clock -name fft_clk -source [get_ports adc_clk] -divide_by 4 [get_pins divider/_5_/Q ]" >> $@
 	@echo "get_clocks" >> $@
-	@echo "set_false_path -from [get pins _34148_/Q ]"
+	@echo "set_false_path -from [get pins _34924_/CLK ]"
 	@echo ""                                                  >> $@
 	@echo "set_multicycle_path -setup 2 -from [get_clocks fft_clk] -to [get_clocks adc_clk]" >> $@
 	@echo "set_multicycle_path -hold 1 -from [get_clocks fft_clk] -to [get_clocks adc_clk]" >> $@
@@ -283,7 +283,7 @@ $(PNR_SCRIPT): | $(PNR_DIR)
 	@echo "link_design $(TOP)"                                             >> $@
 	@echo "read_sdc $(PNR_SDC)"                                            >> $@
 	@echo ""                                                               >> $@
-	@echo "initialize_floorplan -utilization 55 -aspect_ratio 1.5 -core_space 10 -site $(SITE_NAME)" >> $@
+	@echo "initialize_floorplan -utilization 60 -aspect_ratio 1.5 -core_space 10 -site $(SITE_NAME)" >> $@
 	@echo ""                                                               >> $@
 	@echo "insert_tiecells gf180mcu_fd_sc_mcu9t5v0__tiel/ZN -prefix TIE_LOW_"   >> $@
 	@echo "insert_tiecells gf180mcu_fd_sc_mcu9t5v0__tieh/Z -prefix TIE_HIGH_"  >> $@
