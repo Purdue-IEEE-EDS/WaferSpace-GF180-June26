@@ -56,6 +56,17 @@ module tb_dds_wave_scan_match;
     logic                sclk, csn, mosi, miso;
     logic                io_update, sync_in;
     logic [DAC_SW_W-1:0] dac_i, dac_q;
+    logic [2:0]          dds_spi_clk;
+    logic [PHASE_W-1:0]  dds_ftw_a, dds_ftw_b, dds_ftw_step;
+    logic [COUNT_W-1:0]  dds_chirp_n;
+    logic [1:0]          dds_mode;
+    logic                dds_auto_restart;
+    logic                dds_phase_rst_on_launch;
+    logic [DAC_SW_W*4-1:0] dds_cal_code;
+    logic                dds_direct_en;
+    logic [DAC_SW_W-1:0] dds_direct_i, dds_direct_q;
+    logic                pll_clk;
+    logic [10:0]         pll_config;
 
     logic [PHASE_W-1:0] scenario_ftw;
     logic [PHASE_W-1:0] scenario_step;
@@ -94,6 +105,34 @@ module tb_dds_wave_scan_match;
 
     always #(CLK_P/2) clk = ~clk;
 
+    spi_slave #(
+        .PHASE_W            (PHASE_W),
+        .COUNT_W            (COUNT_W),
+        .DAC_SW_W           (DAC_SW_W),
+        .CAL_DAC_N_CELLS    (DAC_SW_W),
+        .CAL_DAC_CELL_W     (4)
+    ) u_spi (
+        .sclk                    (sclk),
+        .csn                     (csn),
+        .rst_n                   (rst_n),
+        .mosi                    (mosi),
+        .miso                    (miso),
+        .dds_spi_clk             (dds_spi_clk),
+        .dds_ftw_a               (dds_ftw_a),
+        .dds_ftw_b               (dds_ftw_b),
+        .dds_ftw_step            (dds_ftw_step),
+        .dds_chirp_n             (dds_chirp_n),
+        .dds_mode                (dds_mode),
+        .dds_auto_restart        (dds_auto_restart),
+        .dds_phase_rst_on_launch (dds_phase_rst_on_launch),
+        .dds_cal_code            (dds_cal_code),
+        .dds_direct_en           (dds_direct_en),
+        .dds_direct_i            (dds_direct_i),
+        .dds_direct_q            (dds_direct_q),
+        .pll_clk                 (pll_clk),
+        .pll_config              (pll_config)
+    );
+
     dds_top #(
         .PHASE_W       (PHASE_W),
         .SINE_TRUNC_W  (SINE_TRUNC_W),
@@ -103,19 +142,27 @@ module tb_dds_wave_scan_match;
         .BINARY_BITS   (BINARY_BITS),
         .COUNT_W       (COUNT_W)
     ) dut (
-        .clk(clk),
-        .rst_n(rst_n),
-        .sclk(sclk),
-        .csn(csn),
-        .mosi(mosi),
-        .miso(miso),
-        .io_update(io_update),
-        .sync_in(sync_in),
-        .dac_i(dac_i),
-        .dac_q(dac_q),
-        .cal_clk(),
-        .cal_data(),
-        .cal_load()
+        .clk                     (clk),
+        .rst_n                   (rst_n),
+        .dds_spi_clk             (dds_spi_clk),
+        .dds_ftw_a               (dds_ftw_a),
+        .dds_ftw_b               (dds_ftw_b),
+        .dds_ftw_step            (dds_ftw_step),
+        .dds_chirp_n             (dds_chirp_n),
+        .dds_mode                (dds_mode),
+        .dds_auto_restart        (dds_auto_restart),
+        .dds_phase_rst_on_launch (dds_phase_rst_on_launch),
+        .dds_cal_code            (dds_cal_code),
+        .dds_direct_en           (dds_direct_en),
+        .dds_direct_i            (dds_direct_i),
+        .dds_direct_q            (dds_direct_q),
+        .io_update               (io_update),
+        .sync_in                 (sync_in),
+        .dac_i                   (dac_i),
+        .dac_q                   (dac_q),
+        .cal_clk                 (),
+        .cal_data                (),
+        .cal_load                ()
     );
 
     initial begin
@@ -427,8 +474,8 @@ module tb_dds_wave_scan_match;
         scenario_step = {PHASE_W{1'b0}};
 
         do_reset;
-        spi_write32(7'h04, ftw);
-        spi_write8(7'h02, 8'h08); // CW + phase reset on launch
+        spi_write32(7'h02, ftw);
+        spi_write8(7'h01, 8'h08); // CW + phase reset on launch
         pulse_io_update;
 
         wait_for_wave_enable(wave_seen);

@@ -15,9 +15,9 @@ module tb_dds_user_e2e;
     localparam DAC_SW_W       = (1 << UNARY_BITS) - 1 + BINARY_BITS;
     localparam DEVID          = 8'hD5;
     localparam TEST_TONE_FTW = 32'h2284_DFCE;
-    localparam [6:0] DIRECT_I_BASE_ADDR = 7'h44;
-    localparam [6:0] DIRECT_Q_BASE_ADDR = 7'h49;
-    localparam [6:0] DIRECT_CTRL_ADDR   = 7'h4E;
+    localparam [6:0] DIRECT_I_BASE_ADDR = 7'h11;
+    localparam [6:0] DIRECT_Q_BASE_ADDR = 7'h16;
+    localparam [6:0] DIRECT_CTRL_ADDR   = 7'h1B;
     localparam [DAC_SW_W-1:0] DIRECT_I_CODE = 36'h123456789;
     localparam [DAC_SW_W-1:0] DIRECT_Q_CODE = 36'h2A5A55AA5;
 
@@ -37,8 +37,48 @@ module tb_dds_user_e2e;
     logic                sclk, csn, mosi, miso;
     logic                io_update, sync_in;
     logic [DAC_SW_W-1:0] dac_i, dac_q;
+    logic [2:0]          dds_spi_clk;
+    logic [PHASE_W-1:0]  dds_ftw_a, dds_ftw_b, dds_ftw_step;
+    logic [COUNT_W-1:0]  dds_chirp_n;
+    logic [1:0]          dds_mode;
+    logic                dds_auto_restart;
+    logic                dds_phase_rst_on_launch;
+    logic [DAC_SW_W*4-1:0] dds_cal_code;
+    logic                dds_direct_en;
+    logic [DAC_SW_W-1:0] dds_direct_i, dds_direct_q;
+    logic                pll_clk;
+    logic [10:0]         pll_config;
 
     always #(CLK_P/2) clk = ~clk;
+
+    spi_slave #(
+        .PHASE_W            (PHASE_W),
+        .COUNT_W            (COUNT_W),
+        .DEVID              (DEVID),
+        .DAC_SW_W           (DAC_SW_W),
+        .CAL_DAC_N_CELLS    (DAC_SW_W),
+        .CAL_DAC_CELL_W     (4)
+    ) u_spi (
+        .sclk                    (sclk),
+        .csn                     (csn),
+        .rst_n                   (rst_n),
+        .mosi                    (mosi),
+        .miso                    (miso),
+        .dds_spi_clk             (dds_spi_clk),
+        .dds_ftw_a               (dds_ftw_a),
+        .dds_ftw_b               (dds_ftw_b),
+        .dds_ftw_step            (dds_ftw_step),
+        .dds_chirp_n             (dds_chirp_n),
+        .dds_mode                (dds_mode),
+        .dds_auto_restart        (dds_auto_restart),
+        .dds_phase_rst_on_launch (dds_phase_rst_on_launch),
+        .dds_cal_code            (dds_cal_code),
+        .dds_direct_en           (dds_direct_en),
+        .dds_direct_i            (dds_direct_i),
+        .dds_direct_q            (dds_direct_q),
+        .pll_clk                 (pll_clk),
+        .pll_config              (pll_config)
+    );
 
     dds_top #(
         .PHASE_W       (PHASE_W),
@@ -49,19 +89,27 @@ module tb_dds_user_e2e;
         .BINARY_BITS   (BINARY_BITS),
         .COUNT_W       (COUNT_W)
     ) dut (
-        .clk(clk),
-        .rst_n(rst_n),
-        .sclk(sclk),
-        .csn(csn),
-        .mosi(mosi),
-        .miso(miso),
-        .io_update(io_update),
-        .sync_in(sync_in),
-        .dac_i(dac_i),
-        .dac_q(dac_q),
-        .cal_clk(),
-        .cal_data(),
-        .cal_load()
+        .clk                     (clk),
+        .rst_n                   (rst_n),
+        .dds_spi_clk             (dds_spi_clk),
+        .dds_ftw_a               (dds_ftw_a),
+        .dds_ftw_b               (dds_ftw_b),
+        .dds_ftw_step            (dds_ftw_step),
+        .dds_chirp_n             (dds_chirp_n),
+        .dds_mode                (dds_mode),
+        .dds_auto_restart        (dds_auto_restart),
+        .dds_phase_rst_on_launch (dds_phase_rst_on_launch),
+        .dds_cal_code            (dds_cal_code),
+        .dds_direct_en           (dds_direct_en),
+        .dds_direct_i            (dds_direct_i),
+        .dds_direct_q            (dds_direct_q),
+        .io_update               (io_update),
+        .sync_in                 (sync_in),
+        .dac_i                   (dac_i),
+        .dac_q                   (dac_q),
+        .cal_clk                 (),
+        .cal_data                (),
+        .cal_load                ()
     );
 
     int err_count = 0;
@@ -322,8 +370,8 @@ module tb_dds_user_e2e;
 
         // Test 2: basic CW startup on io_update only.
         $display("--- E2E Test 2: basic CW startup ---");
-        spi_write32(7'h04, 32'h1000_0000);
-        spi_write8(7'h02, 8'h00);
+        spi_write32(7'h02, 32'h1000_0000);
+        spi_write8(7'h01, 8'h00);
         pulse_io_update;
         clk_wait(48);
         if (dac_i === MIDSCALE_SW && dac_q === MIDSCALE_SW)
@@ -333,7 +381,7 @@ module tb_dds_user_e2e;
         // Test 3: live frequency change while running.
         $display("--- E2E Test 3: live frequency change ---");
         capture_iq(16, first_i, first_q);
-        spi_write32(7'h04, 32'h1800_0000);
+        spi_write32(7'h02, 32'h1800_0000);
         pulse_io_update;
         clk_wait(40);
         capture_iq_2(16);
@@ -363,15 +411,15 @@ module tb_dds_user_e2e;
 
         // Test 5: zero frequency edge case.
         $display("--- E2E Test 5: zero frequency ---");
-        spi_write32(7'h04, 32'd0);
+        spi_write32(7'h02, 32'd0);
         pulse_io_update;
         clk_wait(48);
         expect_stable(16, "zero frequency");
 
         // Test 6: sync relaunch reproduces the launch epoch.
         $display("--- E2E Test 6: sync relaunch ---");
-        spi_write32(7'h04, 32'h0800_0000);
-        spi_write8(7'h02, 8'h08);
+        spi_write32(7'h02, 32'h0800_0000);
+        spi_write8(7'h01, 8'h08);
         pulse_io_update;
         clk_wait(48);
         capture_iq(12, first_i, first_q);
@@ -388,7 +436,7 @@ module tb_dds_user_e2e;
 
         // Test 7: TEST mode auto-launch.
         $display("--- E2E Test 7: TEST mode ---");
-        spi_write8(7'h02, 8'h03);
+        spi_write8(7'h01, 8'h03);
         pulse_io_update;
         clk_wait(48);
         expect_motion(32, "TEST mode");
@@ -398,14 +446,14 @@ module tb_dds_user_e2e;
         // Test 8: abrupt finite-to-steady takeover works via io_update alone.
         $display("--- E2E Test 8: SAW to TEST takeover ---");
         do_power_cycle_reset;
-        spi_write32(7'h04, 32'd1000);
-        spi_write32(7'h08, 32'd7000);
-        spi_write32(7'h0C, 32'd1000);
-        spi_write8(7'h02, 8'h01);
+        spi_write32(7'h02, 32'd1000);
+        spi_write32(7'h06, 32'd7000);
+        spi_write32(7'h0A, 32'd1000);
+        spi_write8(7'h01, 8'h01);
         pulse_io_update;
         clk_wait(48);
         capture_iq(12, first_i, first_q);
-        spi_write8(7'h02, 8'h03);
+        spi_write8(7'h01, 8'h03);
         pulse_io_update;
         clk_wait(48);
         capture_iq_2(12);
@@ -422,7 +470,7 @@ module tb_dds_user_e2e;
         // Test 9: sync relaunch reproduces the TEST launch epoch.
         $display("--- E2E Test 9: TEST sync relaunch ---");
         do_power_cycle_reset;
-        spi_write8(7'h02, 8'h03);
+        spi_write8(7'h01, 8'h03);
         pulse_io_update;
         clk_wait(48);
         capture_iq(12, first_i, first_q);
@@ -442,12 +490,12 @@ module tb_dds_user_e2e;
         // Test 10: coincident io_update + sync prefer the newly committed profile.
         $display("--- E2E Test 10: io_update + sync precedence ---");
         do_power_cycle_reset;
-        spi_write32(7'h04, 32'h0400_0000);
-        spi_write8(7'h02, 8'h00);
+        spi_write32(7'h02, 32'h0400_0000);
+        spi_write8(7'h01, 8'h00);
         pulse_io_update;
         clk_wait(48);
         capture_iq(12, first_i, first_q);
-        spi_write32(7'h04, 32'h1800_0000);
+        spi_write32(7'h02, 32'h1800_0000);
         pulse_io_update_and_sync;
         clk_wait(48);
         capture_iq_2(12);
@@ -463,9 +511,9 @@ module tb_dds_user_e2e;
 
         // Test 11: only DEVID reads back; calibration still launches on io_update.
         $display("--- E2E Test 11: identity-only readback + cal apply ---");
-        expect_read8(7'h02, 8'h00, "ctrl readback disabled");
-        spi_write8(7'h20, 8'h03);
-        expect_read8(7'h20, 8'h00, "cal readback disabled");
+        expect_read8(7'h01, 8'h00, "ctrl readback disabled");
+        spi_write8(7'h1C, 8'h03);
+        expect_read8(7'h1C, 8'h00, "cal readback disabled");
         if (dut.u_cal_dac_scan.dac_code[3:0] !== 4'h8)
             fail_msg($sformatf("pre-apply cal code=%0h exp 8", dut.u_cal_dac_scan.dac_code[3:0]));
         pulse_io_update;

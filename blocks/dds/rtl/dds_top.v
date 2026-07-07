@@ -3,7 +3,7 @@
 
 // DDS top-level.
 //
-// CONFIG comes over SPI and launches on io_update.
+// CONFIG comes from the chip-level SPI bundle and launches on io_update.
 // sync_in relaunches the armed profile with a forced phase reset.
 //
 // Clocking for the 4:1 DDS build:
@@ -52,11 +52,20 @@ module dds_top #(
     input  logic                  clk,
     input  logic                  rst_n,
 
-    // SPI pins (SCLK domain)
-    input  logic                  sclk,
-    input  logic                  csn,
-    input  logic                  mosi,
-    output logic                  miso,
+    // DDS config bundle from the chip-level SPI block. These signals are
+    // committed in the SPI SCLK domain and synchronized locally below.
+    input  logic [2:0]            dds_spi_clk,
+    input  logic [PHASE_W-1:0]    dds_ftw_a,
+    input  logic [PHASE_W-1:0]    dds_ftw_b,
+    input  logic [PHASE_W-1:0]    dds_ftw_step,
+    input  logic [COUNT_W-1:0]    dds_chirp_n,
+    input  logic [1:0]            dds_mode,
+    input  logic                  dds_auto_restart,
+    input  logic                  dds_phase_rst_on_launch,
+    input  logic [CAL_DAC_N_CELLS*CAL_DAC_CELL_W-1:0] dds_cal_code,
+    input  logic                  dds_direct_en,
+    input  logic [DAC_SW_W-1:0]   dds_direct_i,
+    input  logic [DAC_SW_W-1:0]   dds_direct_q,
 
     // External control pins. Internally synchronized into clk_cal/clk_vec.
     input  logic                  io_update,
@@ -135,66 +144,84 @@ module dds_top #(
     );
 
     // ================================================================
-    //  SPI slave (SCLK domain)
+    //  SPI config bundle synchronization into DDS clock domains.
     // ================================================================
-    logic        spi_wr_en, spi_rd_en;
-    logic [6:0]  spi_addr;
-    logic [7:0]  spi_wdata, spi_rdata;
+    logic [2:0]         dds_spi_clk_vec_meta, dds_spi_clk_vec;
+    logic [PHASE_W-1:0] dds_ftw_a_vec_meta, dds_ftw_a_vec;
+    logic [PHASE_W-1:0] dds_ftw_b_vec_meta, dds_ftw_b_vec;
+    logic [PHASE_W-1:0] dds_ftw_step_vec_meta, dds_ftw_step_vec;
+    logic [COUNT_W-1:0] dds_chirp_n_vec_meta, dds_chirp_n_vec;
+    logic [1:0]         dds_mode_vec_meta, dds_mode_vec;
+    logic               dds_auto_restart_vec_meta, dds_auto_restart_vec;
+    logic               dds_phase_rst_on_launch_vec_meta, dds_phase_rst_on_launch_vec;
+    logic               dds_direct_en_vec_meta, dds_direct_en_vec;
+    logic [DAC_SW_W-1:0] dds_direct_i_vec_meta, dds_direct_i_vec;
+    logic [DAC_SW_W-1:0] dds_direct_q_vec_meta, dds_direct_q_vec;
 
-    spi_slave u_spi (
-        .sclk  (sclk),
-        .csn   (csn),
-        .mosi  (mosi),
-        .miso  (miso),
-        .wr_en (spi_wr_en),
-        .rd_en (spi_rd_en),
-        .addr  (spi_addr),
-        .wdata (spi_wdata),
-        .rdata (spi_rdata)
-    );
+    logic [CAL_DAC_N_CELLS*CAL_DAC_CELL_W-1:0] dds_cal_code_cal_meta;
+    logic [CAL_DAC_N_CELLS*CAL_DAC_CELL_W-1:0] dds_cal_code_cal;
 
-    // ================================================================
-    //  Register map (SCLK domain)
-    // ================================================================
-    logic [PHASE_W-1:0] rf_ftw_a, rf_ftw_b, rf_ftw_step;
-    logic [COUNT_W-1:0] rf_chirp_n;
-    logic [1:0]         rf_mode;
-    logic               rf_auto_restart;
-    logic               rf_phase_rst_on_launch;
-    logic [CAL_DAC_N_CELLS*CAL_DAC_CELL_W-1:0] rf_cal_code;
-    logic               rf_direct_en;
-    logic [DAC_SW_W-1:0] rf_direct_i;
-    logic [DAC_SW_W-1:0] rf_direct_q;
+    always_ff @(posedge clk_vec or negedge core_rst_n_vec) begin
+        if (!core_rst_n_vec) begin
+            dds_spi_clk_vec_meta             <= 3'b000;
+            dds_spi_clk_vec                  <= 3'b000;
+            dds_ftw_a_vec_meta               <= {PHASE_W{1'b0}};
+            dds_ftw_a_vec                    <= {PHASE_W{1'b0}};
+            dds_ftw_b_vec_meta               <= {PHASE_W{1'b0}};
+            dds_ftw_b_vec                    <= {PHASE_W{1'b0}};
+            dds_ftw_step_vec_meta            <= {PHASE_W{1'b0}};
+            dds_ftw_step_vec                 <= {PHASE_W{1'b0}};
+            dds_chirp_n_vec_meta             <= {COUNT_W{1'b0}};
+            dds_chirp_n_vec                  <= {COUNT_W{1'b0}};
+            dds_mode_vec_meta                <= 2'b00;
+            dds_mode_vec                     <= 2'b00;
+            dds_auto_restart_vec_meta        <= 1'b0;
+            dds_auto_restart_vec             <= 1'b0;
+            dds_phase_rst_on_launch_vec_meta <= 1'b0;
+            dds_phase_rst_on_launch_vec      <= 1'b0;
+            dds_direct_en_vec_meta           <= 1'b0;
+            dds_direct_en_vec                <= 1'b0;
+            dds_direct_i_vec_meta            <= {DAC_SW_W{1'b0}};
+            dds_direct_i_vec                 <= {DAC_SW_W{1'b0}};
+            dds_direct_q_vec_meta            <= {DAC_SW_W{1'b0}};
+            dds_direct_q_vec                 <= {DAC_SW_W{1'b0}};
+        end else begin
+            dds_spi_clk_vec_meta             <= dds_spi_clk;
+            dds_spi_clk_vec                  <= dds_spi_clk_vec_meta;
+            dds_ftw_a_vec_meta               <= dds_ftw_a;
+            dds_ftw_a_vec                    <= dds_ftw_a_vec_meta;
+            dds_ftw_b_vec_meta               <= dds_ftw_b;
+            dds_ftw_b_vec                    <= dds_ftw_b_vec_meta;
+            dds_ftw_step_vec_meta            <= dds_ftw_step;
+            dds_ftw_step_vec                 <= dds_ftw_step_vec_meta;
+            dds_chirp_n_vec_meta             <= dds_chirp_n;
+            dds_chirp_n_vec                  <= dds_chirp_n_vec_meta;
+            dds_mode_vec_meta                <= dds_mode;
+            dds_mode_vec                     <= dds_mode_vec_meta;
+            dds_auto_restart_vec_meta        <= dds_auto_restart;
+            dds_auto_restart_vec             <= dds_auto_restart_vec_meta;
+            dds_phase_rst_on_launch_vec_meta <= dds_phase_rst_on_launch;
+            dds_phase_rst_on_launch_vec      <= dds_phase_rst_on_launch_vec_meta;
+            dds_direct_en_vec_meta           <= dds_direct_en;
+            dds_direct_en_vec                <= dds_direct_en_vec_meta;
+            dds_direct_i_vec_meta            <= dds_direct_i;
+            dds_direct_i_vec                 <= dds_direct_i_vec_meta;
+            dds_direct_q_vec_meta            <= dds_direct_q;
+            dds_direct_q_vec                 <= dds_direct_q_vec_meta;
+        end
+    end
+
+    always_ff @(posedge clk_cal or negedge core_rst_n_cal) begin
+        if (!core_rst_n_cal) begin
+            dds_cal_code_cal_meta <= {CAL_DAC_N_CELLS*CAL_DAC_CELL_W{1'b0}};
+            dds_cal_code_cal      <= {CAL_DAC_N_CELLS*CAL_DAC_CELL_W{1'b0}};
+        end else begin
+            dds_cal_code_cal_meta <= dds_cal_code;
+            dds_cal_code_cal      <= dds_cal_code_cal_meta;
+        end
+    end
 
     logic               cal_busy;
-
-    dds_regmap #(
-        .PHASE_W            (PHASE_W),
-        .COUNT_W            (COUNT_W),
-        .DEVID              (DEVID),
-        .DAC_SW_W           (DAC_SW_W),
-        .CAL_DAC_N_CELLS    (CAL_DAC_N_CELLS),
-        .CAL_DAC_CELL_W     (CAL_DAC_CELL_W)
-    ) u_regmap (
-        .sclk                (sclk),
-        .csn                 (csn),
-        .rst_n               (rst_n),
-        .wr_en               (spi_wr_en),
-        .addr                (spi_addr),
-        .wdata               (spi_wdata),
-        .rdata               (spi_rdata),
-        .ftw_a               (rf_ftw_a),
-        .ftw_b               (rf_ftw_b),
-        .ftw_step            (rf_ftw_step),
-        .chirp_n             (rf_chirp_n),
-        .mode                (rf_mode),
-        .auto_restart        (rf_auto_restart),
-        .phase_rst_on_launch (rf_phase_rst_on_launch),
-        .cal_code            (rf_cal_code),
-        .direct_en           (rf_direct_en),
-        .direct_i            (rf_direct_i),
-        .direct_q            (rf_direct_q)
-    );
 
     // ================================================================
     //  Control-pin synchronizers.
@@ -247,13 +274,13 @@ module dds_top #(
         .rst_n                     (core_rst_n_vec),
         .commit                    (io_upd_vec),
         .sync                      (sync_vec),
-        .ftw_a                     (rf_ftw_a),
-        .ftw_b                     (rf_ftw_b),
-        .ftw_step                  (rf_ftw_step),
-        .chirp_n                   (rf_chirp_n),
-        .mode                      (rf_mode),
-        .auto_restart              (rf_auto_restart),
-        .phase_rst_on_launch       (rf_phase_rst_on_launch),
+        .ftw_a                     (dds_ftw_a_vec),
+        .ftw_b                     (dds_ftw_b_vec),
+        .ftw_step                  (dds_ftw_step_vec),
+        .chirp_n                   (dds_chirp_n_vec),
+        .mode                      (dds_mode_vec),
+        .auto_restart              (dds_auto_restart_vec),
+        .phase_rst_on_launch       (dds_phase_rst_on_launch_vec),
         .out_enable                (wave_en),
         .phase_reset_req           (phase_reset_req),
         .ftw_lane0                 (ftw_lane0),
@@ -313,9 +340,9 @@ module dds_top #(
             direct_i_active  <= {DAC_SW_W{1'b0}};
             direct_q_active  <= {DAC_SW_W{1'b0}};
         end else if (io_upd_vec) begin
-            direct_en_active <= rf_direct_en;
-            direct_i_active  <= rf_direct_i;
-            direct_q_active  <= rf_direct_q;
+            direct_en_active <= dds_direct_en_vec;
+            direct_i_active  <= dds_direct_i_vec;
+            direct_q_active  <= dds_direct_q_vec;
         end
     end
 
@@ -357,7 +384,7 @@ module dds_top #(
     logic [CAL_DAC_N_CELLS*CAL_DAC_CELL_W-1:0] cal_dac_code_live;
     logic cal_dirty, cal_apply;
 
-    assign cal_dirty = (rf_cal_code != cal_dac_code_live);
+    assign cal_dirty = (dds_cal_code_cal != cal_dac_code_live);
     assign cal_apply = io_upd_cal && !cal_busy && cal_dirty;
 
     cal_dac_scan #(
@@ -368,7 +395,7 @@ module dds_top #(
         .clk        (clk_cal),
         .rst_n      (core_rst_n_cal),
         .start      (cal_apply),
-        .frame_data (rf_cal_code),
+        .frame_data (dds_cal_code_cal),
         .busy       (cal_busy),
         .cal_clk    (cal_clk),
         .cal_data   (cal_data),

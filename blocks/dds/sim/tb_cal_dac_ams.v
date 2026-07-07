@@ -18,7 +18,7 @@ module tb_cal_dac_ams;
     localparam int COUNT_W        = 20;
     localparam int CAL_CELLS      = 1;
     localparam int CAL_CELL_W     = 4;
-    localparam int CAL_BASE       = 7'h20;
+    localparam int CAL_BASE       = 7'h1C;
     localparam logic [7:0] DEVID = 8'hD5;
     localparam logic [CAL_CELL_W-1:0] MID = 4'b1000;
     localparam logic [CAL_CELL_W-1:0] USER_CODE_A = 4'h3;
@@ -44,11 +44,50 @@ module tb_cal_dac_ams;
     logic cal_clk;
     logic cal_data;
     logic cal_load;
+    logic [2:0] dds_spi_clk;
+    logic [PHASE_W-1:0] dds_ftw_a, dds_ftw_b, dds_ftw_step;
+    logic [COUNT_W-1:0] dds_chirp_n;
+    logic [1:0] dds_mode;
+    logic dds_auto_restart;
+    logic dds_phase_rst_on_launch;
+    logic [CAL_CELLS*CAL_CELL_W-1:0] dds_cal_code;
+    logic dds_direct_en;
+    logic [35:0] dds_direct_i, dds_direct_q;
+    logic pll_clk;
+    logic [10:0] pll_config;
 
     int cal_shift_pulses;
     int cal_load_high_cycles;
 
     always #(CLK_PERIOD_NS / 2.0) clk = ~clk;
+
+    spi_slave #(
+        .PHASE_W            (PHASE_W),
+        .COUNT_W            (COUNT_W),
+        .DAC_SW_W           (36),
+        .CAL_DAC_N_CELLS    (CAL_CELLS),
+        .CAL_DAC_CELL_W     (CAL_CELL_W)
+    ) u_spi (
+        .sclk                    (sclk),
+        .csn                     (csn),
+        .rst_n                   (rst_n),
+        .mosi                    (mosi),
+        .miso                    (miso),
+        .dds_spi_clk             (dds_spi_clk),
+        .dds_ftw_a               (dds_ftw_a),
+        .dds_ftw_b               (dds_ftw_b),
+        .dds_ftw_step            (dds_ftw_step),
+        .dds_chirp_n             (dds_chirp_n),
+        .dds_mode                (dds_mode),
+        .dds_auto_restart        (dds_auto_restart),
+        .dds_phase_rst_on_launch (dds_phase_rst_on_launch),
+        .dds_cal_code            (dds_cal_code),
+        .dds_direct_en           (dds_direct_en),
+        .dds_direct_i            (dds_direct_i),
+        .dds_direct_q            (dds_direct_q),
+        .pll_clk                 (pll_clk),
+        .pll_config              (pll_config)
+    );
 
     dds_top #(
         .PHASE_W              (PHASE_W),
@@ -62,19 +101,27 @@ module tb_cal_dac_ams;
         .CAL_DAC_CELL_W       (CAL_CELL_W),
         .CAL_DAC_SHIFT_CYCLES (2)
     ) dut (
-        .clk          (clk),
-        .rst_n        (rst_n),
-        .sclk         (sclk),
-        .csn          (csn),
-        .mosi         (mosi),
-        .miso         (miso),
-        .io_update    (io_update),
-        .sync_in      (sync_in),
-        .dac_i        (dac_i),
-        .dac_q        (dac_q),
-        .cal_clk      (cal_clk),
-        .cal_data     (cal_data),
-        .cal_load     (cal_load)
+        .clk                     (clk),
+        .rst_n                   (rst_n),
+        .dds_spi_clk             (dds_spi_clk),
+        .dds_ftw_a               (dds_ftw_a),
+        .dds_ftw_b               (dds_ftw_b),
+        .dds_ftw_step            (dds_ftw_step),
+        .dds_chirp_n             (dds_chirp_n),
+        .dds_mode                (dds_mode),
+        .dds_auto_restart        (dds_auto_restart),
+        .dds_phase_rst_on_launch (dds_phase_rst_on_launch),
+        .dds_cal_code            (dds_cal_code),
+        .dds_direct_en           (dds_direct_en),
+        .dds_direct_i            (dds_direct_i),
+        .dds_direct_q            (dds_direct_q),
+        .io_update               (io_update),
+        .sync_in                 (sync_in),
+        .dac_i                   (dac_i),
+        .dac_q                   (dac_q),
+        .cal_clk                 (cal_clk),
+        .cal_data                (cal_data),
+        .cal_load                (cal_load)
     );
 
     task automatic expect_committed_code(
@@ -83,7 +130,7 @@ module tb_cal_dac_ams;
     );
         logic [CAL_CELL_W-1:0] got;
     begin
-        got = dut.rf_cal_code[CAL_CELL_W-1:0];
+        got = u_spi.dds_cal_code[CAL_CELL_W-1:0];
         if (got !== exp)
             $fatal(1, "%s: committed %0h exp %0h", label, got, exp);
     end

@@ -2,7 +2,7 @@
 `timescale 1ns/1ps
 
 // Adapted from charkster/spi_slave_verilog (BSD-2-Clause).
-// SPI slave with byte-addressable local bus.
+// SPI byte engine plus chip register map wrapper.
 //
 // SPI Mode 0 (CPOL=0, CPHA=0). All logic in SCLK domain.
 // CSn high = async reset (slave deselected).
@@ -11,10 +11,101 @@
 // Address auto-increments after each data byte.
 // Write: R/W=0. Read: R/W=1, MISO returns rdata MSB-first.
 //
+// spi_slave is the chip-facing block: SPI pins in, decoded register
+// bundles out. spi_slave_core is the protocol-only byte-addressed local
+// bus engine kept separate so the shifter/addressing behavior stays easy
+// to test.
+
+module spi_slave #(
+    parameter PHASE_W         = 32,
+    parameter COUNT_W         = 20,
+    parameter DEVID           = 8'hD5,
+    parameter DAC_SW_W        = 36,
+    parameter CAL_DAC_N_CELLS = 36,
+    parameter CAL_DAC_CELL_W  = 4,
+    parameter [CAL_DAC_CELL_W-1:0] CAL_DAC_RESET_CODE = {1'b1, {(CAL_DAC_CELL_W-1){1'b0}}}
+)(
+    input  logic        sclk,
+    input  logic        csn,
+    input  logic        rst_n,
+    input  logic        mosi,
+    output logic        miso,
+
+    // DDS bundle from the SPI register map.
+    output logic [2:0]          dds_spi_clk,
+    output logic [PHASE_W-1:0]  dds_ftw_a,
+    output logic [PHASE_W-1:0]  dds_ftw_b,
+    output logic [PHASE_W-1:0]  dds_ftw_step,
+    output logic [COUNT_W-1:0]  dds_chirp_n,
+    output logic [1:0]          dds_mode,
+    output logic                dds_auto_restart,
+    output logic                dds_phase_rst_on_launch,
+    output logic [CAL_DAC_N_CELLS*CAL_DAC_CELL_W-1:0] dds_cal_code,
+    output logic                dds_direct_en,
+    output logic [DAC_SW_W-1:0] dds_direct_i,
+    output logic [DAC_SW_W-1:0] dds_direct_q,
+
+    // PLL bundle from the SPI register map.
+    output logic                pll_clk,
+    output logic [10:0]         pll_config
+);
+
+    logic        wr_en;
+    logic        rd_en;
+    logic [6:0]  addr;
+    logic [7:0]  wdata;
+    logic [7:0]  rdata;
+
+    spi_slave_core u_core (
+        .sclk  (sclk),
+        .csn   (csn),
+        .mosi  (mosi),
+        .miso  (miso),
+        .wr_en (wr_en),
+        .rd_en (rd_en),
+        .addr  (addr),
+        .wdata (wdata),
+        .rdata (rdata)
+    );
+
+    dds_regmap #(
+        .PHASE_W            (PHASE_W),
+        .COUNT_W            (COUNT_W),
+        .DEVID              (DEVID),
+        .DAC_SW_W           (DAC_SW_W),
+        .CAL_DAC_N_CELLS    (CAL_DAC_N_CELLS),
+        .CAL_DAC_CELL_W     (CAL_DAC_CELL_W),
+        .CAL_DAC_RESET_CODE (CAL_DAC_RESET_CODE)
+    ) u_regmap (
+        .sclk                (sclk),
+        .csn                 (csn),
+        .rst_n               (rst_n),
+        .wr_en               (wr_en),
+        .addr                (addr),
+        .wdata               (wdata),
+        .rdata               (rdata),
+        .dds_spi_clk             (dds_spi_clk),
+        .dds_ftw_a               (dds_ftw_a),
+        .dds_ftw_b               (dds_ftw_b),
+        .dds_ftw_step            (dds_ftw_step),
+        .dds_chirp_n             (dds_chirp_n),
+        .dds_mode                (dds_mode),
+        .dds_auto_restart        (dds_auto_restart),
+        .dds_phase_rst_on_launch (dds_phase_rst_on_launch),
+        .dds_cal_code            (dds_cal_code),
+        .dds_direct_en           (dds_direct_en),
+        .dds_direct_i            (dds_direct_i),
+        .dds_direct_q            (dds_direct_q),
+        .pll_clk                 (pll_clk),
+        .pll_config              (pll_config)
+    );
+
+endmodule
+
 // wr_en and wdata are combinational — the external register file
 // must sample them on posedge sclk. addr is registered and holds
 // the correct (pre-increment) value when wr_en is high.
-module spi_slave (
+module spi_slave_core (
     input  logic       sclk,
     input  logic       csn,
     input  logic       mosi,

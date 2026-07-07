@@ -21,11 +21,11 @@ module tb_dds_direct_bypass;
     localparam LANES          = 4;
     localparam DAC_SW_W       = (1 << UNARY_BITS) - 1 + BINARY_BITS;
 
-    localparam [6:0] CTRL_ADDR          = 7'h02;
-    localparam [6:0] FTW_A_ADDR         = 7'h04;
-    localparam [6:0] DIRECT_I_BASE_ADDR = 7'h44;
-    localparam [6:0] DIRECT_Q_BASE_ADDR = 7'h49;
-    localparam [6:0] DIRECT_CTRL_ADDR   = 7'h4E;
+    localparam [6:0] CTRL_ADDR          = 7'h01;
+    localparam [6:0] FTW_A_ADDR         = 7'h02;
+    localparam [6:0] DIRECT_I_BASE_ADDR = 7'h11;
+    localparam [6:0] DIRECT_Q_BASE_ADDR = 7'h16;
+    localparam [6:0] DIRECT_CTRL_ADDR   = 7'h1B;
 
     localparam [31:0] FTW_BG_A = 32'h1000_0000;
     localparam [31:0] FTW_BG_B = 32'h1800_0000;
@@ -51,10 +51,49 @@ module tb_dds_direct_bypass;
     logic sclk, csn, mosi, miso;
     logic io_update, sync_in;
     logic [DAC_SW_W-1:0] dac_i, dac_q;
+    logic [2:0] dds_spi_clk;
+    logic [PHASE_W-1:0] dds_ftw_a, dds_ftw_b, dds_ftw_step;
+    logic [COUNT_W-1:0] dds_chirp_n;
+    logic [1:0] dds_mode;
+    logic dds_auto_restart;
+    logic dds_phase_rst_on_launch;
+    logic [DAC_SW_W*4-1:0] dds_cal_code;
+    logic dds_direct_en;
+    logic [DAC_SW_W-1:0] dds_direct_i, dds_direct_q;
+    logic pll_clk;
+    logic [10:0] pll_config;
 
     int err_count = 0;
 
     always #(CLK_P/2) clk = ~clk;
+
+    spi_slave #(
+        .PHASE_W            (PHASE_W),
+        .COUNT_W            (COUNT_W),
+        .DAC_SW_W           (DAC_SW_W),
+        .CAL_DAC_N_CELLS    (DAC_SW_W),
+        .CAL_DAC_CELL_W     (4)
+    ) u_spi (
+        .sclk                    (sclk),
+        .csn                     (csn),
+        .rst_n                   (rst_n),
+        .mosi                    (mosi),
+        .miso                    (miso),
+        .dds_spi_clk             (dds_spi_clk),
+        .dds_ftw_a               (dds_ftw_a),
+        .dds_ftw_b               (dds_ftw_b),
+        .dds_ftw_step            (dds_ftw_step),
+        .dds_chirp_n             (dds_chirp_n),
+        .dds_mode                (dds_mode),
+        .dds_auto_restart        (dds_auto_restart),
+        .dds_phase_rst_on_launch (dds_phase_rst_on_launch),
+        .dds_cal_code            (dds_cal_code),
+        .dds_direct_en           (dds_direct_en),
+        .dds_direct_i            (dds_direct_i),
+        .dds_direct_q            (dds_direct_q),
+        .pll_clk                 (pll_clk),
+        .pll_config              (pll_config)
+    );
 
     dds_top #(
         .PHASE_W       (PHASE_W),
@@ -65,19 +104,27 @@ module tb_dds_direct_bypass;
         .BINARY_BITS   (BINARY_BITS),
         .COUNT_W       (COUNT_W)
     ) dut (
-        .clk(clk),
-        .rst_n(rst_n),
-        .sclk(sclk),
-        .csn(csn),
-        .mosi(mosi),
-        .miso(miso),
-        .io_update(io_update),
-        .sync_in(sync_in),
-        .dac_i(dac_i),
-        .dac_q(dac_q),
-        .cal_clk(),
-        .cal_data(),
-        .cal_load()
+        .clk                     (clk),
+        .rst_n                   (rst_n),
+        .dds_spi_clk             (dds_spi_clk),
+        .dds_ftw_a               (dds_ftw_a),
+        .dds_ftw_b               (dds_ftw_b),
+        .dds_ftw_step            (dds_ftw_step),
+        .dds_chirp_n             (dds_chirp_n),
+        .dds_mode                (dds_mode),
+        .dds_auto_restart        (dds_auto_restart),
+        .dds_phase_rst_on_launch (dds_phase_rst_on_launch),
+        .dds_cal_code            (dds_cal_code),
+        .dds_direct_en           (dds_direct_en),
+        .dds_direct_i            (dds_direct_i),
+        .dds_direct_q            (dds_direct_q),
+        .io_update               (io_update),
+        .sync_in                 (sync_in),
+        .dac_i                   (dac_i),
+        .dac_q                   (dac_q),
+        .cal_clk                 (),
+        .cal_data                (),
+        .cal_load                ()
     );
 
     task automatic fail_msg(input string msg);

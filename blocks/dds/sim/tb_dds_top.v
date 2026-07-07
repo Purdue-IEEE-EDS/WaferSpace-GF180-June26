@@ -31,8 +31,48 @@ module tb_dds_top;
     logic                 sclk, csn, mosi, miso;
     logic                 io_update, sync_in;
     logic [DAC_SW_W-1:0]  dac_i, dac_q;
+    logic [2:0]           dds_spi_clk;
+    logic [PHASE_W-1:0]   dds_ftw_a, dds_ftw_b, dds_ftw_step;
+    logic [COUNT_W-1:0]   dds_chirp_n;
+    logic [1:0]           dds_mode;
+    logic                 dds_auto_restart;
+    logic                 dds_phase_rst_on_launch;
+    logic [DAC_SW_W*4-1:0] dds_cal_code;
+    logic                 dds_direct_en;
+    logic [DAC_SW_W-1:0]  dds_direct_i, dds_direct_q;
+    logic                 pll_clk;
+    logic [10:0]          pll_config;
 
     always #(CLK_P/2) clk = ~clk;
+
+    spi_slave #(
+        .PHASE_W            (PHASE_W),
+        .COUNT_W            (COUNT_W),
+        .DEVID              (DEVID),
+        .DAC_SW_W           (DAC_SW_W),
+        .CAL_DAC_N_CELLS    (DAC_SW_W),
+        .CAL_DAC_CELL_W     (4)
+    ) u_spi (
+        .sclk                    (sclk),
+        .csn                     (csn),
+        .rst_n                   (rst_n),
+        .mosi                    (mosi),
+        .miso                    (miso),
+        .dds_spi_clk             (dds_spi_clk),
+        .dds_ftw_a               (dds_ftw_a),
+        .dds_ftw_b               (dds_ftw_b),
+        .dds_ftw_step            (dds_ftw_step),
+        .dds_chirp_n             (dds_chirp_n),
+        .dds_mode                (dds_mode),
+        .dds_auto_restart        (dds_auto_restart),
+        .dds_phase_rst_on_launch (dds_phase_rst_on_launch),
+        .dds_cal_code            (dds_cal_code),
+        .dds_direct_en           (dds_direct_en),
+        .dds_direct_i            (dds_direct_i),
+        .dds_direct_q            (dds_direct_q),
+        .pll_clk                 (pll_clk),
+        .pll_config              (pll_config)
+    );
 
     dds_top #(
         .PHASE_W       (PHASE_W),
@@ -43,19 +83,27 @@ module tb_dds_top;
         .BINARY_BITS   (BINARY_BITS),
         .COUNT_W       (COUNT_W)
     ) dut (
-        .clk(clk),
-        .rst_n(rst_n),
-        .sclk(sclk),
-        .csn(csn),
-        .mosi(mosi),
-        .miso(miso),
-        .io_update(io_update),
-        .sync_in(sync_in),
-        .dac_i(dac_i),
-        .dac_q(dac_q),
-        .cal_clk(),
-        .cal_data(),
-        .cal_load()
+        .clk                     (clk),
+        .rst_n                   (rst_n),
+        .dds_spi_clk             (dds_spi_clk),
+        .dds_ftw_a               (dds_ftw_a),
+        .dds_ftw_b               (dds_ftw_b),
+        .dds_ftw_step            (dds_ftw_step),
+        .dds_chirp_n             (dds_chirp_n),
+        .dds_mode                (dds_mode),
+        .dds_auto_restart        (dds_auto_restart),
+        .dds_phase_rst_on_launch (dds_phase_rst_on_launch),
+        .dds_cal_code            (dds_cal_code),
+        .dds_direct_en           (dds_direct_en),
+        .dds_direct_i            (dds_direct_i),
+        .dds_direct_q            (dds_direct_q),
+        .io_update               (io_update),
+        .sync_in                 (sync_in),
+        .dac_i                   (dac_i),
+        .dac_q                   (dac_q),
+        .cal_clk                 (),
+        .cal_data                (),
+        .cal_load                ()
     );
 
     wire chirp_active = dut.u_freq.run_active;
@@ -259,17 +307,27 @@ module tb_dds_top;
         $display("--- Test 1: SPI identity-only readback ---");
         do_reset;
         expect_read8(7'h00, DEVID, "devid");
-        expect_read8(7'h01, 8'h00, "status addr reads zero");
-        spi_write32(7'h04, 32'hDEAD_BEEF);
-        spi_write8(7'h20, 8'h03);
-        expect_read8(7'h04, 8'h00, "ftw readback disabled");
-        expect_read8(7'h20, 8'h00, "cal readback disabled");
+        expect_read8(7'h01, 8'h00, "ctrl addr reads zero");
+        spi_write32(7'h02, 32'hDEAD_BEEF);
+        spi_write8(7'h1C, 8'h03);
+        expect_read8(7'h02, 8'h00, "ftw readback disabled");
+        expect_read8(7'h1C, 8'h00, "cal readback disabled");
+        if (u_spi.dds_spi_clk !== 3'b000 || u_spi.pll_config[5:3] !== 3'b000 ||
+            u_spi.pll_config[8:6] !== 3'b000 || u_spi.pll_clk !== 1'b0 ||
+            u_spi.pll_config[10] !== 1'b1)
+            fail("PLL_CFG reset decode mismatch");
+        spi_write8(7'h40, 8'h95); // dds_spi_clk=5, pll_config[5:3]=2, pll_config[7:6]=2
+        spi_write8(7'h41, 8'h03); // pll_config[8]=1, pll_clk=1, pll_config[10]=0
+        if (u_spi.dds_spi_clk !== 3'd5 || u_spi.pll_config[5:3] !== 3'd2 ||
+            u_spi.pll_config[8:6] !== 3'd6 || u_spi.pll_clk !== 1'b1 ||
+            u_spi.pll_config[10] !== 1'b0)
+            fail("PLL_CFG write did not decode to named ports");
 
         // Test 2: CW launches on io_update and holds a steady FTW.
         $display("--- Test 2: CW io_update launch ---");
         do_reset;
-        spi_write32(7'h04, 32'h1000_0000);
-        spi_write8(7'h02, 8'h00);
+        spi_write32(7'h02, 32'h1000_0000);
+        spi_write8(7'h01, 8'h00);
         pulse_io_update;
         vec_wait(3);
         clk_wait(48);
@@ -282,7 +340,7 @@ module tb_dds_top;
 
         // Test 3: phase_rst_on_launch reduces phase epoch on relaunch.
         $display("--- Test 3: phase reset on launch ---");
-        spi_write8(7'h02, 8'h08);
+        spi_write8(7'h01, 8'h08);
         launch_reset_seen = 1'b0;
         phi_after = {PHASE_W{1'b1}};
         fork
@@ -328,11 +386,11 @@ module tb_dds_top;
         // Test 5: SAW exact cycle count from io_update launch.
         $display("--- Test 5: SAW exact cycle count ---");
         do_reset;
-        spi_write32(7'h04, 32'd1000);
-        spi_write32(7'h08, 32'd9000);
-        spi_write32(7'h0C, 32'd1000);
-        spi_write24(7'h10, 24'd8);
-        spi_write8(7'h02, 8'h01);
+        spi_write32(7'h02, 32'd1000);
+        spi_write32(7'h06, 32'd9000);
+        spi_write32(7'h0A, 32'd1000);
+        spi_write24(7'h0E, 24'd8);
+        spi_write8(7'h01, 8'h01);
         active_count = 0;
         dp_first = '0;
         dp_done  = '0;
@@ -368,17 +426,17 @@ module tb_dds_top;
         // Test 6: io_update overrides an active finite run.
         $display("--- Test 6: active override ---");
         do_reset;
-        spi_write32(7'h04, 32'd100);
-        spi_write32(7'h08, 32'd10100);
-        spi_write32(7'h0C, 32'd100);
-        spi_write24(7'h10, 24'd100);
-        spi_write8(7'h02, 8'h01);
+        spi_write32(7'h02, 32'd100);
+        spi_write32(7'h06, 32'd10100);
+        spi_write32(7'h0A, 32'd100);
+        spi_write24(7'h0E, 24'd100);
+        spi_write8(7'h01, 8'h01);
         pulse_io_update;
         vec_wait(4);
         if (!chirp_active)
             fail("long SAW never became active before override");
-        spi_write32(7'h04, 32'd777);
-        spi_write8(7'h02, 8'h00);
+        spi_write32(7'h02, 32'd777);
+        spi_write8(7'h01, 8'h00);
         pulse_io_update;
         vec_wait(3);
         if (chirp_active)
@@ -389,11 +447,11 @@ module tb_dds_top;
         // Test 7: TRI turnaround sequence stays exact.
         $display("--- Test 7: TRI turnaround ---");
         do_reset;
-        spi_write32(7'h04, 32'd100);
-        spi_write32(7'h08, 32'd400);
-        spi_write32(7'h0C, 32'd25);
-        spi_write24(7'h10, 24'd3);
-        spi_write8(7'h02, 8'h02);
+        spi_write32(7'h02, 32'd100);
+        spi_write32(7'h06, 32'd400);
+        spi_write32(7'h0A, 32'd25);
+        spi_write24(7'h0E, 24'd3);
+        spi_write8(7'h01, 8'h02);
         active_seen = 1'b0;
         tri_idx = 0;
         fork
@@ -429,7 +487,7 @@ module tb_dds_top;
         // Test 8: TEST mode is a steady auto-launch profile.
         $display("--- Test 8: TEST mode ---");
         do_reset;
-        spi_write8(7'h02, 8'h03);
+        spi_write8(7'h01, 8'h03);
         pulse_io_update;
         vec_wait(3);
         clk_wait(40);
@@ -452,11 +510,11 @@ module tb_dds_top;
         // Test 9: one-cycle SAW terminates cleanly and lands on FTW_B.
         $display("--- Test 9: SAW N=1 ---");
         do_reset;
-        spi_write32(7'h04, 32'd500);
-        spi_write32(7'h08, 32'd900);
-        spi_write32(7'h0C, 32'd400);
-        spi_write24(7'h10, 24'd1);
-        spi_write8(7'h02, 8'h01);
+        spi_write32(7'h02, 32'd500);
+        spi_write32(7'h06, 32'd900);
+        spi_write32(7'h0A, 32'd400);
+        spi_write24(7'h0E, 24'd1);
+        spi_write8(7'h01, 8'h01);
         active_count = 0;
         dp_first = '0;
         dp_done  = '0;
@@ -495,11 +553,11 @@ module tb_dds_top;
         // Test 10: repeating TRI stays bounded and emits multiple done pulses.
         $display("--- Test 10: TRI repeat ---");
         do_reset;
-        spi_write32(7'h04, 32'd100);
-        spi_write32(7'h08, 32'd400);
-        spi_write32(7'h0C, 32'd25);
-        spi_write24(7'h10, 24'd3);
-        spi_write8(7'h02, 8'h06);
+        spi_write32(7'h02, 32'd100);
+        spi_write32(7'h06, 32'd400);
+        spi_write32(7'h0A, 32'd25);
+        spi_write24(7'h0E, 24'd3);
+        spi_write8(7'h01, 8'h06);
         active_seen = 1'b0;
         range_violation = 1'b0;
         done_count = 0;
@@ -532,11 +590,11 @@ module tb_dds_top;
         // Test 11: overriding a descending TRI with TEST aborts cleanly.
         $display("--- Test 11: descending TRI override to TEST ---");
         do_reset;
-        spi_write32(7'h04, 32'd100);
-        spi_write32(7'h08, 32'd400);
-        spi_write32(7'h0C, 32'd25);
-        spi_write24(7'h10, 24'd3);
-        spi_write8(7'h02, 8'h02);
+        spi_write32(7'h02, 32'd100);
+        spi_write32(7'h06, 32'd400);
+        spi_write32(7'h0A, 32'd25);
+        spi_write24(7'h0E, 24'd3);
+        spi_write8(7'h01, 8'h02);
         dir_seen = 1'b0;
         fork
             begin
@@ -554,7 +612,7 @@ module tb_dds_top;
         join
         if (!dir_seen)
             fail("TRI never reached descending leg before override");
-        spi_write8(7'h02, 8'h03);
+        spi_write8(7'h01, 8'h03);
         pulse_io_update;
         vec_wait(3);
         if (chirp_active)
@@ -567,20 +625,20 @@ module tb_dds_top;
         // Test 12: coincident io_update and sync launch the new profile.
         $display("--- Test 12: commit + sync precedence ---");
         do_reset;
-        spi_write32(7'h04, 32'h0400_0000);
-        spi_write8(7'h02, 8'h00);
+        spi_write32(7'h02, 32'h0400_0000);
+        spi_write8(7'h01, 8'h00);
         pulse_io_update;
         vec_wait(3);
         if (dut.u_freq.ftw_lane0 !== 32'h0400_0000)
             fail($sformatf("baseline CW ftw_lane0=%08x exp=%08x", dut.u_freq.ftw_lane0, 32'h0400_0000));
-        spi_write32(7'h04, 32'h1800_0000);
+        spi_write32(7'h02, 32'h1800_0000);
         pulse_io_update_and_sync;
         vec_wait(3);
         if (dut.u_freq.ftw_lane0 !== 32'h1800_0000)
             fail($sformatf("commit+sync ftw_lane0=%08x exp=%08x", dut.u_freq.ftw_lane0, 32'h1800_0000));
         if (chirp_active !== 1'b0)
             fail("commit+sync on CW should remain a steady profile");
-        expect_read8(7'h02, 8'h00, "ctrl readback disabled");
+        expect_read8(7'h01, 8'h00, "ctrl readback disabled");
 
         if (err_count == 0)
             $display("ALL TESTS PASSED");

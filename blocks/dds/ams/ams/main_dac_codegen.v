@@ -22,8 +22,8 @@
 `include "rtl/datapath/dds_datapath.v"
 `include "rtl/datapath/dds_datapath_vec.v"
 `include "rtl/serializer/serializer_4to1.v"
-`include "rtl/interface/spi_slave.v"
-`include "rtl/interface/dds_regmap.v"
+`include "rtl/spi/spi_slave.v"
+`include "rtl/spi/dds_regmap.v"
 /* verilator lint_off PINMISSING */
 `include "rtl/dds_top.v"
 /* verilator lint_on PINMISSING */
@@ -31,7 +31,7 @@
 
 // AMS wrapper for the main DDS DAC path.
 //
-// The wrapper self-programs dds_top through its public pins:
+// The wrapper self-programs the chip-level SPI block:
 //   - writes only CTRL over SPI
 //   - selects TEST mode
 //   - pulses io_update only; dds_top launches TEST mode internally
@@ -80,7 +80,7 @@ module main_dac_codegen #(
 
     function automatic logic [6:0] cfg_addr(input logic [CFG_IDX_W-1:0] idx);
         begin
-            cfg_addr = 7'h02;
+            cfg_addr = 7'h01;
         end
     endfunction
 
@@ -122,11 +122,50 @@ module main_dac_codegen #(
     wire  [DAC_SW_W-1:0]     dac_i_sw;
     wire  [DAC_SW_W-1:0]     dac_q_sw;
     logic cal_clk, cal_data, cal_load;
+    logic [2:0] dds_spi_clk;
+    logic [PHASE_W-1:0] dds_ftw_a, dds_ftw_b, dds_ftw_step;
+    logic [COUNT_W-1:0] dds_chirp_n;
+    logic [1:0] dds_mode;
+    logic dds_auto_restart;
+    logic dds_phase_rst_on_launch;
+    logic [DAC_SW_W*4-1:0] dds_cal_code;
+    logic dds_direct_en;
+    logic [DAC_SW_W-1:0] dds_direct_i, dds_direct_q;
+    logic pll_clk;
+    logic [10:0] pll_config;
 
     assign dac_i_p = dac_i_sw;
     assign dac_i_n = ~dac_i_sw;
     assign dac_q_p = dac_q_sw;
     assign dac_q_n = ~dac_q_sw;
+
+    spi_slave #(
+        .PHASE_W            (PHASE_W),
+        .COUNT_W            (COUNT_W),
+        .DAC_SW_W           (DAC_SW_W),
+        .CAL_DAC_N_CELLS    (DAC_SW_W),
+        .CAL_DAC_CELL_W     (4)
+    ) u_spi (
+        .sclk                    (sclk),
+        .csn                     (csn),
+        .rst_n                   (rst_n),
+        .mosi                    (mosi),
+        .miso                    (miso),
+        .dds_spi_clk             (dds_spi_clk),
+        .dds_ftw_a               (dds_ftw_a),
+        .dds_ftw_b               (dds_ftw_b),
+        .dds_ftw_step            (dds_ftw_step),
+        .dds_chirp_n             (dds_chirp_n),
+        .dds_mode                (dds_mode),
+        .dds_auto_restart        (dds_auto_restart),
+        .dds_phase_rst_on_launch (dds_phase_rst_on_launch),
+        .dds_cal_code            (dds_cal_code),
+        .dds_direct_en           (dds_direct_en),
+        .dds_direct_i            (dds_direct_i),
+        .dds_direct_q            (dds_direct_q),
+        .pll_clk                 (pll_clk),
+        .pll_config              (pll_config)
+    );
 
     dds_top #(
         .PHASE_W       (PHASE_W),
@@ -137,19 +176,27 @@ module main_dac_codegen #(
         .BINARY_BITS   (BINARY_BITS),
         .COUNT_W       (COUNT_W)
     ) dut (
-        .clk          (clk),
-        .rst_n        (rst_n),
-        .sclk         (sclk),
-        .csn          (csn),
-        .mosi         (mosi),
-        .miso         (miso),
-        .io_update    (io_update),
-        .sync_in      (sync_in),
-        .dac_i        (dac_i_sw),
-        .dac_q        (dac_q_sw),
-        .cal_clk      (cal_clk),
-        .cal_data     (cal_data),
-        .cal_load     (cal_load)
+        .clk                     (clk),
+        .rst_n                   (rst_n),
+        .dds_spi_clk             (dds_spi_clk),
+        .dds_ftw_a               (dds_ftw_a),
+        .dds_ftw_b               (dds_ftw_b),
+        .dds_ftw_step            (dds_ftw_step),
+        .dds_chirp_n             (dds_chirp_n),
+        .dds_mode                (dds_mode),
+        .dds_auto_restart        (dds_auto_restart),
+        .dds_phase_rst_on_launch (dds_phase_rst_on_launch),
+        .dds_cal_code            (dds_cal_code),
+        .dds_direct_en           (dds_direct_en),
+        .dds_direct_i            (dds_direct_i),
+        .dds_direct_q            (dds_direct_q),
+        .io_update               (io_update),
+        .sync_in                 (sync_in),
+        .dac_i                   (dac_i_sw),
+        .dac_q                   (dac_q_sw),
+        .cal_clk                 (cal_clk),
+        .cal_data                (cal_data),
+        .cal_load                (cal_load)
     );
 
     always_ff @(negedge clk) begin

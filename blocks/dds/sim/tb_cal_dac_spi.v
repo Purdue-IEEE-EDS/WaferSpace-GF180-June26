@@ -19,7 +19,7 @@ module tb_cal_dac_spi;
     localparam int COUNT_W        = 20;
     localparam int CAL_CELLS      = 36;
     localparam int CAL_CELL_W     = 4;
-    localparam int CAL_BASE       = 7'h20;
+    localparam int CAL_BASE       = 7'h1C;
     localparam logic [7:0] DEVID = 8'hD5;
     localparam logic [CAL_CELL_W-1:0] MID = 4'b1000;
 
@@ -31,11 +31,50 @@ module tb_cal_dac_spi;
     logic sclk, csn, mosi, miso;
     logic io_update, sync_in;
     logic [35:0] dac_i, dac_q;
+    logic [2:0] dds_spi_clk;
+    logic [PHASE_W-1:0] dds_ftw_a, dds_ftw_b, dds_ftw_step;
+    logic [COUNT_W-1:0] dds_chirp_n;
+    logic [1:0] dds_mode;
+    logic dds_auto_restart;
+    logic dds_phase_rst_on_launch;
+    logic [CAL_CELLS*CAL_CELL_W-1:0] dds_cal_code;
+    logic dds_direct_en;
+    logic [35:0] dds_direct_i, dds_direct_q;
+    logic pll_clk;
+    logic [10:0] pll_config;
 
     int pass_n = 0;
     int fail_n = 0;
 
     always #(CLK_P/2) clk = ~clk;
+
+    spi_slave #(
+        .PHASE_W            (PHASE_W),
+        .COUNT_W            (COUNT_W),
+        .DAC_SW_W           (36),
+        .CAL_DAC_N_CELLS    (CAL_CELLS),
+        .CAL_DAC_CELL_W     (CAL_CELL_W)
+    ) u_spi (
+        .sclk                    (sclk),
+        .csn                     (csn),
+        .rst_n                   (rst_n),
+        .mosi                    (mosi),
+        .miso                    (miso),
+        .dds_spi_clk             (dds_spi_clk),
+        .dds_ftw_a               (dds_ftw_a),
+        .dds_ftw_b               (dds_ftw_b),
+        .dds_ftw_step            (dds_ftw_step),
+        .dds_chirp_n             (dds_chirp_n),
+        .dds_mode                (dds_mode),
+        .dds_auto_restart        (dds_auto_restart),
+        .dds_phase_rst_on_launch (dds_phase_rst_on_launch),
+        .dds_cal_code            (dds_cal_code),
+        .dds_direct_en           (dds_direct_en),
+        .dds_direct_i            (dds_direct_i),
+        .dds_direct_q            (dds_direct_q),
+        .pll_clk                 (pll_clk),
+        .pll_config              (pll_config)
+    );
 
     dds_top #(
         .PHASE_W         (PHASE_W),
@@ -47,19 +86,27 @@ module tb_cal_dac_spi;
         .COUNT_W         (COUNT_W),
         .CAL_DAC_N_CELLS (CAL_CELLS)
     ) dut (
-        .clk          (clk),
-        .rst_n        (rst_n),
-        .sclk         (sclk),
-        .csn          (csn),
-        .mosi         (mosi),
-        .miso         (miso),
-        .io_update    (io_update),
-        .sync_in      (sync_in),
-        .dac_i        (dac_i),
-        .dac_q        (dac_q),
-        .cal_clk      (),
-        .cal_data     (),
-        .cal_load     ()
+        .clk                     (clk),
+        .rst_n                   (rst_n),
+        .dds_spi_clk             (dds_spi_clk),
+        .dds_ftw_a               (dds_ftw_a),
+        .dds_ftw_b               (dds_ftw_b),
+        .dds_ftw_step            (dds_ftw_step),
+        .dds_chirp_n             (dds_chirp_n),
+        .dds_mode                (dds_mode),
+        .dds_auto_restart        (dds_auto_restart),
+        .dds_phase_rst_on_launch (dds_phase_rst_on_launch),
+        .dds_cal_code            (dds_cal_code),
+        .dds_direct_en           (dds_direct_en),
+        .dds_direct_i            (dds_direct_i),
+        .dds_direct_q            (dds_direct_q),
+        .io_update               (io_update),
+        .sync_in                 (sync_in),
+        .dac_i                   (dac_i),
+        .dac_q                   (dac_q),
+        .cal_clk                 (),
+        .cal_data                (),
+        .cal_load                ()
     );
 
     task automatic pass(input string msg);
@@ -156,7 +203,7 @@ module tb_cal_dac_spi;
                                          input string label);
         logic [CAL_CELL_W-1:0] got;
     begin
-        got = dut.rf_cal_code[(idx * CAL_CELL_W) +: CAL_CELL_W];
+        got = u_spi.dds_cal_code[(idx * CAL_CELL_W) +: CAL_CELL_W];
         if (got !== exp)
             fail($sformatf("%s: committed %0h exp %0h at cell %0d", label, got, exp, idx));
         else

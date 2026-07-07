@@ -18,7 +18,7 @@ module tb_dds_spi_sclk_sweep;
     localparam real CLK_P = 3.2;
 
     localparam int NUM_CASES = 6;
-    localparam int BURST_BYTES = 17;
+    localparam int BURST_BYTES = 16;
 
     logic                 clk = 1'b0;
     logic                 rst_n;
@@ -30,6 +30,17 @@ module tb_dds_spi_sclk_sweep;
     logic                 sync_in;
     logic [DAC_SW_W-1:0]  dac_i;
     logic [DAC_SW_W-1:0]  dac_q;
+    logic [2:0]           dds_spi_clk;
+    logic [PHASE_W-1:0]   dds_ftw_a, dds_ftw_b, dds_ftw_step;
+    logic [COUNT_W-1:0]   dds_chirp_n;
+    logic [1:0]           dds_mode;
+    logic                 dds_auto_restart;
+    logic                 dds_phase_rst_on_launch;
+    logic [DAC_SW_W*4-1:0] dds_cal_code;
+    logic                 dds_direct_en;
+    logic [DAC_SW_W-1:0]  dds_direct_i, dds_direct_q;
+    logic                 pll_clk;
+    logic [10:0]          pll_config;
 
     real sclk_p;
 
@@ -40,6 +51,35 @@ module tb_dds_spi_sclk_sweep;
 
     always #(CLK_P/2.0) clk = ~clk;
 
+    spi_slave #(
+        .PHASE_W            (PHASE_W),
+        .COUNT_W            (COUNT_W),
+        .DEVID              (DEVID),
+        .DAC_SW_W           (DAC_SW_W),
+        .CAL_DAC_N_CELLS    (DAC_SW_W),
+        .CAL_DAC_CELL_W     (4)
+    ) u_spi (
+        .sclk                    (sclk),
+        .csn                     (csn),
+        .rst_n                   (rst_n),
+        .mosi                    (mosi),
+        .miso                    (miso),
+        .dds_spi_clk             (dds_spi_clk),
+        .dds_ftw_a               (dds_ftw_a),
+        .dds_ftw_b               (dds_ftw_b),
+        .dds_ftw_step            (dds_ftw_step),
+        .dds_chirp_n             (dds_chirp_n),
+        .dds_mode                (dds_mode),
+        .dds_auto_restart        (dds_auto_restart),
+        .dds_phase_rst_on_launch (dds_phase_rst_on_launch),
+        .dds_cal_code            (dds_cal_code),
+        .dds_direct_en           (dds_direct_en),
+        .dds_direct_i            (dds_direct_i),
+        .dds_direct_q            (dds_direct_q),
+        .pll_clk                 (pll_clk),
+        .pll_config              (pll_config)
+    );
+
     dds_top #(
         .PHASE_W       (PHASE_W),
         .SINE_TRUNC_W  (SINE_TRUNC_W),
@@ -49,19 +89,27 @@ module tb_dds_spi_sclk_sweep;
         .BINARY_BITS   (BINARY_BITS),
         .COUNT_W       (COUNT_W)
     ) dut (
-        .clk      (clk),
-        .rst_n    (rst_n),
-        .sclk     (sclk),
-        .csn      (csn),
-        .mosi     (mosi),
-        .miso     (miso),
-        .io_update(io_update),
-        .sync_in  (sync_in),
-        .dac_i    (dac_i),
-        .dac_q    (dac_q),
-        .cal_clk  (),
-        .cal_data (),
-        .cal_load ()
+        .clk                     (clk),
+        .rst_n                   (rst_n),
+        .dds_spi_clk             (dds_spi_clk),
+        .dds_ftw_a               (dds_ftw_a),
+        .dds_ftw_b               (dds_ftw_b),
+        .dds_ftw_step            (dds_ftw_step),
+        .dds_chirp_n             (dds_chirp_n),
+        .dds_mode                (dds_mode),
+        .dds_auto_restart        (dds_auto_restart),
+        .dds_phase_rst_on_launch (dds_phase_rst_on_launch),
+        .dds_cal_code            (dds_cal_code),
+        .dds_direct_en           (dds_direct_en),
+        .dds_direct_i            (dds_direct_i),
+        .dds_direct_q            (dds_direct_q),
+        .io_update               (io_update),
+        .sync_in                 (sync_in),
+        .dac_i                   (dac_i),
+        .dac_q                   (dac_q),
+        .cal_clk                 (),
+        .cal_data                (),
+        .cal_load                ()
     );
 
     function automatic real case_sclk_period(input int idx);
@@ -282,6 +330,14 @@ module tb_dds_spi_sclk_sweep;
     end
     endtask
 
+    task automatic wait_dds_bundle_sync;
+    begin
+        // SPI commits on CSn, then dds_top brings the DDS bundle into clk_vec
+        // with explicit 2FF synchronizers before ftw_ctrl sees it.
+        vec_wait(3);
+    end
+    endtask
+
     task automatic do_reset;
     begin
         rst_n      = 1'b0;
@@ -305,22 +361,21 @@ module tb_dds_spi_sclk_sweep;
                                         input logic [COUNT_W-1:0] chirp_n);
     begin
         tx_buf[0]  = ctrl;
-        tx_buf[1]  = 8'h5A;
-        tx_buf[2]  = ftw_a[7:0];
-        tx_buf[3]  = ftw_a[15:8];
-        tx_buf[4]  = ftw_a[23:16];
-        tx_buf[5]  = ftw_a[31:24];
-        tx_buf[6]  = ftw_b[7:0];
-        tx_buf[7]  = ftw_b[15:8];
-        tx_buf[8]  = ftw_b[23:16];
-        tx_buf[9]  = ftw_b[31:24];
-        tx_buf[10] = ftw_step[7:0];
-        tx_buf[11] = ftw_step[15:8];
-        tx_buf[12] = ftw_step[23:16];
-        tx_buf[13] = ftw_step[31:24];
-        tx_buf[14] = chirp_n[7:0];
-        tx_buf[15] = chirp_n[15:8];
-        tx_buf[16] = {4'hA, chirp_n[19:16]};
+        tx_buf[1]  = ftw_a[7:0];
+        tx_buf[2]  = ftw_a[15:8];
+        tx_buf[3]  = ftw_a[23:16];
+        tx_buf[4]  = ftw_a[31:24];
+        tx_buf[5]  = ftw_b[7:0];
+        tx_buf[6]  = ftw_b[15:8];
+        tx_buf[7]  = ftw_b[23:16];
+        tx_buf[8]  = ftw_b[31:24];
+        tx_buf[9]  = ftw_step[7:0];
+        tx_buf[10] = ftw_step[15:8];
+        tx_buf[11] = ftw_step[23:16];
+        tx_buf[12] = ftw_step[31:24];
+        tx_buf[13] = chirp_n[7:0];
+        tx_buf[14] = chirp_n[15:8];
+        tx_buf[15] = {4'hA, chirp_n[19:16]};
     end
     endtask
 
@@ -333,13 +388,13 @@ module tb_dds_spi_sclk_sweep;
                                             input logic [31:0] ftw_step_exp,
                                             input logic [COUNT_W-1:0] chirp_n_exp);
     begin
-        expect2(dut.rf_mode, mode_exp, $sformatf("%s committed mode", tag));
-        expect1(dut.rf_auto_restart, auto_restart_exp, $sformatf("%s committed auto_restart", tag));
-        expect1(dut.rf_phase_rst_on_launch, phase_rst_exp, $sformatf("%s committed phase_rst", tag));
-        expect32(dut.rf_ftw_a, ftw_a_exp, $sformatf("%s committed ftw_a", tag));
-        expect32(dut.rf_ftw_b, ftw_b_exp, $sformatf("%s committed ftw_b", tag));
-        expect32(dut.rf_ftw_step, ftw_step_exp, $sformatf("%s committed ftw_step", tag));
-        expect20(dut.rf_chirp_n, chirp_n_exp, $sformatf("%s committed chirp_n", tag));
+        expect2(u_spi.dds_mode, mode_exp, $sformatf("%s committed mode", tag));
+        expect1(u_spi.dds_auto_restart, auto_restart_exp, $sformatf("%s committed auto_restart", tag));
+        expect1(u_spi.dds_phase_rst_on_launch, phase_rst_exp, $sformatf("%s committed phase_rst", tag));
+        expect32(u_spi.dds_ftw_a, ftw_a_exp, $sformatf("%s committed ftw_a", tag));
+        expect32(u_spi.dds_ftw_b, ftw_b_exp, $sformatf("%s committed ftw_b", tag));
+        expect32(u_spi.dds_ftw_step, ftw_step_exp, $sformatf("%s committed ftw_step", tag));
+        expect20(u_spi.dds_chirp_n, chirp_n_exp, $sformatf("%s committed chirp_n", tag));
     end
     endtask
 
@@ -403,10 +458,12 @@ module tb_dds_spi_sclk_sweep;
         spi_read8(7'h00, devid);
         expect32({24'h0, devid}, {24'h0, DEVID}, $sformatf("case %0d devid read", idx));
 
-        spi_write_burst(7'h02, BURST_BYTES);
+        spi_write_burst(7'h01, BURST_BYTES);
 
         expect_committed_profile($sformatf("case %0d", idx), mode_exp, auto_restart_exp,
                                  phase_rst_exp, ftw_a_exp, ftw_b_exp, ftw_step_exp, chirp_n_exp);
+
+        wait_dds_bundle_sync();
 
         expect2(dut.u_freq.norm_shape, shape_exp, $sformatf("case %0d normalized shape", idx));
         expect1(dut.u_freq.norm_loop_en, loop_exp, $sformatf("case %0d normalized loop", idx));
@@ -471,7 +528,7 @@ module tb_dds_spi_sclk_sweep;
         $display("\n=== Negative case 1: io_update before csn rise ===");
 
         load_profile_payload(old_ctrl, old_ftw_a, old_ftw_b, old_ftw_step, old_chirp_n);
-        spi_write_burst(7'h02, BURST_BYTES);
+        spi_write_burst(7'h01, BURST_BYTES);
         pulse_io_update();
         vec_wait(4);
 
@@ -484,7 +541,7 @@ module tb_dds_spi_sclk_sweep;
                               old_chirp_n);
 
         load_profile_payload(new_ctrl, new_ftw_a, new_ftw_b, new_ftw_step, new_chirp_n);
-        spi_write_burst_with_mid_update(7'h02, BURST_BYTES, 5);
+        spi_write_burst_with_mid_update(7'h01, BURST_BYTES, 5);
         vec_wait(4);
 
         expect_committed_profile("midburst committed new", new_mode, new_auto_restart,
@@ -550,7 +607,7 @@ module tb_dds_spi_sclk_sweep;
         $display("\n=== Negative case 2: split transactions can launch partial bank ===");
 
         load_profile_payload(old_ctrl, old_ftw_a, old_ftw_b, old_ftw_step, old_chirp_n);
-        spi_write_burst(7'h02, BURST_BYTES);
+        spi_write_burst(7'h01, BURST_BYTES);
         pulse_io_update();
         vec_wait(4);
 
@@ -566,7 +623,7 @@ module tb_dds_spi_sclk_sweep;
         tx_buf[1] = new_ftw_a[15:8];
         tx_buf[2] = new_ftw_a[23:16];
         tx_buf[3] = new_ftw_a[31:24];
-        spi_write_burst(7'h04, 4);
+        spi_write_burst(7'h02, 4);
 
         expect_committed_profile("split committed mixed", old_mode, old_auto_restart,
                                  old_phase_rst, new_ftw_a, old_ftw_b, old_ftw_step, old_chirp_n);
@@ -586,18 +643,18 @@ module tb_dds_spi_sclk_sweep;
         tx_buf[1] = new_ftw_b[15:8];
         tx_buf[2] = new_ftw_b[23:16];
         tx_buf[3] = new_ftw_b[31:24];
-        spi_write_burst(7'h08, 4);
+        spi_write_burst(7'h06, 4);
 
         tx_buf[0] = new_ftw_step[7:0];
         tx_buf[1] = new_ftw_step[15:8];
         tx_buf[2] = new_ftw_step[23:16];
         tx_buf[3] = new_ftw_step[31:24];
-        spi_write_burst(7'h0C, 4);
+        spi_write_burst(7'h0A, 4);
 
         tx_buf[0] = new_chirp_n[7:0];
         tx_buf[1] = new_chirp_n[15:8];
         tx_buf[2] = {4'hA, new_chirp_n[19:16]};
-        spi_write_burst(7'h10, 3);
+        spi_write_burst(7'h0E, 3);
 
         expect_committed_profile("split committed full", new_mode, new_auto_restart,
                                  new_phase_rst, new_ftw_a, new_ftw_b, new_ftw_step, new_chirp_n);

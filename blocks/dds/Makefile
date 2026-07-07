@@ -24,7 +24,7 @@ PHASE_DIR  = rtl/phase
 DP_DIR     = rtl/datapath
 DAC_DIR    = rtl/cal_dac
 CMN_DIR    = rtl/common
-IF_DIR     = rtl/interface
+SPI_DIR    = rtl/spi
 SER_DIR    = rtl/serializer
 SIM_DIR    = sim
 SYN_DIR    = syn
@@ -60,12 +60,12 @@ COMMON_RTL  = $(CMN_DIR)/carry_out.v     \
 
 DDS_RTL     = $(FTW_RTL) $(PHASE_RTL) $(DP_RTL) $(SER_RTL) $(DAC_RTL) $(COMMON_RTL)
 
-IF_RTL     = $(IF_DIR)/spi_slave.v        \
-             $(IF_DIR)/dds_regmap.v
+SPI_RTL    = $(SPI_DIR)/spi_slave.v        \
+             $(SPI_DIR)/dds_regmap.v
 
 TOP_RTL    = $(RTL_DIR)/dds_top.v
 
-RTL_ALL    = $(DDS_RTL) $(IF_RTL) $(TOP_RTL)
+RTL_ALL    = $(DDS_RTL) $(SPI_RTL) $(TOP_RTL)
 
 FREQ_TB    = $(SIM_DIR)/tb_freq_ctrl.v
 ACCUM_TB   = $(SIM_DIR)/tb_phase_accum.v
@@ -101,10 +101,10 @@ SER_CLK_PERIOD ?= 2.0
 SER_CLK_PS     ?= 2000
 FAST_CLK_NAME  ?= clk_4x
 
+DDS_CFG_IN_PORTS = dds_spi_clk dds_ftw_a* dds_ftw_b* dds_ftw_step* dds_chirp_n* dds_mode* dds_auto_restart dds_phase_rst_on_launch dds_cal_code* dds_direct_en dds_direct_i* dds_direct_q*
 CORE_SYNC_IN_PORTS = io_update sync_in
-CORE_ASYNC_IN_PORTS = rst_n
-CORE_OUT_PORTS = dac_i* dac_q*
-SPI_IN_PORTS   = csn mosi
+CORE_ASYNC_IN_PORTS = rst_n $(DDS_CFG_IN_PORTS)
+CORE_OUT_PORTS = dac_i* dac_q* cal_clk cal_data cal_load
 STA_SCRIPT = $(SYN_DIR)/sta.tcl
 CELL_VLOG  = $(PDK_ROOT)/gf180mcuD/libs.ref/$(SCL)/verilog/primitives.v \
              $(PDK_ROOT)/gf180mcuD/libs.ref/$(SCL)/verilog/$(SCL).v
@@ -152,8 +152,8 @@ sim_accum: $(SIM_DIR)/tb_phase_accum.vvp
 
 # ── SPI slave unit test ─────────────────────────────────────
 
-$(SIM_DIR)/tb_spi_slave.vvp: $(IF_DIR)/spi_slave.v $(SPI_TB)
-	$(IVERILOG) -Wall -g2012 -o $@ $(IF_DIR)/spi_slave.v $(SPI_TB)
+$(SIM_DIR)/tb_spi_slave.vvp: $(SPI_DIR)/spi_slave.v $(SPI_DIR)/dds_regmap.v $(SPI_TB)
+	$(IVERILOG) -Wall -g2012 -o $@ $(SPI_DIR)/spi_slave.v $(SPI_DIR)/dds_regmap.v $(SPI_TB)
 
 sim_spi: $(SIM_DIR)/tb_spi_slave.vvp
 	cd $(SIM_DIR) && $(VVP) tb_spi_slave.vvp
@@ -364,23 +364,14 @@ endif
 	@echo "create_clock -name $(FAST_CLK_NAME) -period $(SER_CLK_PERIOD) [get_ports clk]" >> $@
 	@echo "create_generated_clock -name clk_cal -source [get_ports clk] -divide_by 2 [get_pins u_clk_div4/clk_div2]" >> $@
 	@echo "create_generated_clock -name clk_vec -source [get_ports clk] -divide_by 4 [get_pins u_clk_div4/clk_div4]" >> $@
-	@echo "create_clock -name sclk -period 20.0 [get_ports sclk]"   >> $@
-	@echo "create_clock -name csn_clk -period 1000.0 [get_ports csn]" >> $@
 	@echo ""                                                  >> $@
 	@echo "set_input_delay  0.1 -clock $(FAST_CLK_NAME) [get_ports {$(CORE_SYNC_IN_PORTS)}]" >> $@
+	@echo "# DDS config bundle comes from the external SPI block and is synchronized inside dds_top." >> $@
 	@echo "set_false_path -from [get_ports {$(CORE_ASYNC_IN_PORTS)}]" >> $@
 	@echo "set_output_delay 0.1 -clock $(FAST_CLK_NAME) [get_ports {$(CORE_OUT_PORTS)}]" >> $@
-	@echo "set_input_delay  2.0 -clock sclk [get_ports {$(SPI_IN_PORTS)}]" >> $@
-	@echo "set_output_delay 2.0 -clock sclk [get_ports {miso}]" >> $@
 	@echo ""                                                  >> $@
 	@echo "set_max_fanout 16 [current_design]"                >> $@
 	@echo "set_max_transition 1.0 [current_design]"           >> $@
-	@echo ""                                                  >> $@
-	@echo "# SPI/CSN are asynchronous to the core clock."     >> $@
-	@echo "set_clock_groups -asynchronous \\"                 >> $@
-	@echo "    -group [get_clocks $(FAST_CLK_NAME)] \\"       >> $@
-	@echo "    -group [get_clocks sclk] \\"                   >> $@
-	@echo "    -group [get_clocks csn_clk]"                   >> $@
 	@echo ""                                                  >> $@
 	@echo "puts \"\n=== WORST PATH (max) ===\""               >> $@
 	@echo "report_checks -path_delay max -fields {fanout capacitance slew} -digits 3" >> $@
@@ -421,17 +412,10 @@ $(STA_BUF_SDC): $(SYN_NET) Makefile
 	@echo "create_clock -name $(FAST_CLK_NAME) -period $(SER_CLK_PERIOD) [get_ports clk]" >  $@
 	@echo "create_generated_clock -name clk_cal -source [get_ports clk] -divide_by 2 [get_pins u_clk_div4/clk_div2]" >> $@
 	@echo "create_generated_clock -name clk_vec -source [get_ports clk] -divide_by 4 [get_pins u_clk_div4/clk_div4]" >> $@
-	@echo "create_clock -name sclk -period 1000.0 [get_ports sclk]"       >> $@
-	@echo "create_clock -name csn_clk -period 1000.0 [get_ports csn]"     >> $@
-	@echo "set_clock_groups -asynchronous \\"                              >> $@
-	@echo "    -group [get_clocks $(FAST_CLK_NAME)] \\"  >> $@
-	@echo "    -group [get_clocks sclk] \\"                                >> $@
-	@echo "    -group [get_clocks csn_clk]"                                >> $@
 	@echo "set_input_delay  0.1 -clock $(FAST_CLK_NAME) [get_ports {$(CORE_SYNC_IN_PORTS)}]" >> $@
+	@echo "# DDS config bundle comes from the external SPI block and is synchronized inside dds_top." >> $@
 	@echo "set_false_path -from [get_ports {$(CORE_ASYNC_IN_PORTS)}]"      >> $@
 	@echo "set_output_delay 0.1 -clock $(FAST_CLK_NAME) [get_ports {$(CORE_OUT_PORTS)}]" >> $@
-	@echo "set_input_delay  2.0 -clock sclk [get_ports {$(SPI_IN_PORTS)}]" >> $@
-	@echo "set_output_delay 2.0 -clock sclk [get_ports {miso}]"           >> $@
 	@echo "set_max_fanout 16 [current_design]"                             >> $@
 	@echo "set_max_transition 1.0 [current_design]"                        >> $@
 
@@ -537,17 +521,10 @@ pnr: $(PNR_DEF)
 
 $(PNR_SDC): $(SYN_NET)
 	@echo "create_clock -name $(FAST_CLK_NAME) -period $(SER_CLK_PERIOD) [get_ports clk]" >  $@
-	@echo "create_clock -name sclk -period 20.0 [get_ports sclk]"         >> $@
-	@echo "create_clock -name csn_clk -period 1000.0 [get_ports csn]"     >> $@
-	@echo "set_clock_groups -asynchronous \\"                              >> $@
-	@echo "    -group [get_clocks $(FAST_CLK_NAME)] \\"  >> $@
-	@echo "    -group [get_clocks sclk] \\"                                >> $@
-	@echo "    -group [get_clocks csn_clk]"                                >> $@
 	@echo "set_input_delay  0.1 -clock $(FAST_CLK_NAME) [get_ports {$(CORE_SYNC_IN_PORTS)}]" >> $@
+	@echo "# DDS config bundle comes from the external SPI block and is synchronized inside dds_top." >> $@
 	@echo "set_false_path -from [get_ports {$(CORE_ASYNC_IN_PORTS)}]"      >> $@
 	@echo "set_output_delay 0.1 -clock $(FAST_CLK_NAME) [get_ports {$(CORE_OUT_PORTS)}]" >> $@
-	@echo "set_input_delay  2.0 -clock sclk [get_ports {$(SPI_IN_PORTS)}]" >> $@
-	@echo "set_output_delay 2.0 -clock sclk [get_ports {miso}]"           >> $@
 	@echo "set_max_fanout 16 [current_design]"                             >> $@
 	@echo "set_max_transition 1.0 [current_design]"                        >> $@
 
