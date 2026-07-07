@@ -4150,7 +4150,7 @@ sa=0 sb=0 sd=0
 model=pfet_03v3
 spiceprefix=X
 lab=invp}
-C {symbols/nfet_03v3.sym} 3730 -5520 3 0 {name=M7
+C {symbols/nfet_03v3.sym} 3730 -5520 1 1 {name=M7
 L=0.28u
 W=0.44u
 nf=1
@@ -4181,7 +4181,7 @@ sa=0 sb=0 sd=0
 model=pfet_03v3
 spiceprefix=X
 lab=invp}
-C {symbols/nfet_03v3.sym} 4150 -5520 3 0 {name=M9
+C {symbols/nfet_03v3.sym} 4150 -5520 1 1 {name=M9
 L=0.28u
 W=0.44u
 nf=1
@@ -4217,7 +4217,7 @@ sa=0 sb=0 sd=0
 model=pfet_03v3
 spiceprefix=X
 lab=invp}
-C {symbols/nfet_03v3.sym} 4530 -5520 3 0 {name=M11
+C {symbols/nfet_03v3.sym} 4530 -5520 1 1 {name=M11
 L=0.28u
 W=0.44u
 nf=1
@@ -4250,7 +4250,7 @@ sa=0 sb=0 sd=0
 model=pfet_03v3
 spiceprefix=X
 lab=invp}
-C {symbols/nfet_03v3.sym} 4910 -5520 3 0 {name=M13
+C {symbols/nfet_03v3.sym} 4910 -5520 1 1 {name=M13
 L=0.28u
 W=0.44u
 nf=1
@@ -4283,7 +4283,7 @@ sa=0 sb=0 sd=0
 model=pfet_03v3
 spiceprefix=X
 lab=invp}
-C {symbols/nfet_03v3.sym} 5250 -5520 3 0 {name=M15
+C {symbols/nfet_03v3.sym} 5250 -5520 1 1 {name=M15
 L=0.28u
 W=0.44u
 nf=1
@@ -4316,7 +4316,7 @@ sa=0 sb=0 sd=0
 model=pfet_03v3
 spiceprefix=X
 lab=invp}
-C {symbols/nfet_03v3.sym} 3730 -5180 3 0 {name=M17
+C {symbols/nfet_03v3.sym} 3730 -5180 1 1 {name=M17
 L=0.28u
 W=0.44u
 nf=1
@@ -4347,7 +4347,7 @@ sa=0 sb=0 sd=0
 model=pfet_03v3
 spiceprefix=X
 lab=invp}
-C {symbols/nfet_03v3.sym} 4150 -5180 3 0 {name=M19
+C {symbols/nfet_03v3.sym} 4150 -5180 1 1 {name=M19
 L=0.28u
 W=0.44u
 nf=1
@@ -4384,7 +4384,7 @@ sa=0 sb=0 sd=0
 model=pfet_03v3
 spiceprefix=X
 lab=invp}
-C {symbols/nfet_03v3.sym} 4530 -5180 3 0 {name=M21
+C {symbols/nfet_03v3.sym} 4530 -5180 1 1 {name=M21
 L=0.28u
 W=0.44u
 nf=1
@@ -4418,7 +4418,7 @@ sa=0 sb=0 sd=0
 model=pfet_03v3
 spiceprefix=X
 lab=invp}
-C {symbols/nfet_03v3.sym} 4910 -5180 3 0 {name=M23
+C {symbols/nfet_03v3.sym} 4910 -5180 1 1 {name=M23
 L=0.28u
 W=0.44u
 nf=1
@@ -4452,7 +4452,7 @@ sa=0 sb=0 sd=0
 model=pfet_03v3
 spiceprefix=X
 lab=invp}
-C {symbols/nfet_03v3.sym} 5250 -5180 3 0 {name=M25
+C {symbols/nfet_03v3.sym} 5250 -5180 1 1 {name=M25
 L=0.28u
 W=0.44u
 nf=1
