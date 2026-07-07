@@ -3,7 +3,7 @@
  <description/>
  <original-file/>
  <generator>drc: script='/foss/pdks/ciel/gf180mcu/versions/b344c97eacc2aaf8e14ae7e43e2e9dc0871de2c0/gf180mcuD/libs.tech/klayout/tech/drc/gf180mcu.drc'</generator>
- <top-cell>inv</top-cell>
+ <top-cell>TOP</top-cell>
  <tags>
  </tags>
  <categories>
@@ -1048,6 +1048,12 @@
   <category>
    <name>mdiode_ACUTE</name>
    <description>ACUTE : non 45 degree angle mdiode</description>
+   <categories>
+   </categories>
+  </category>
+  <category>
+   <name>DBU</name>
+   <description>DBU : The design database unit must be 0.001</description>
    <categories>
    </categories>
   </category>
@@ -4759,7 +4765,7 @@
  </categories>
  <cells>
   <cell>
-   <name>inv</name>
+   <name>TOP</name>
    <variant/>
    <layout-name/>
    <references>
@@ -4769,98 +4775,158 @@
  <items>
   <item>
    <tags/>
-   <category>'PL.8'</category>
-   <cell>inv</cell>
+   <category>DBU</category>
+   <cell>TOP</cell>
    <visited>false</visited>
    <multiplicity>1</multiplicity>
    <comment/>
    <image/>
    <values>
-    <value>polygon: (-1.98,0.01;-1.98,8.1;1.82,8.1;1.82,0.01)</value>
+    <value>polygon: (52.66,57.55;52.66,157.34;93.4,157.34;93.4,57.55)</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'PL.8'</category>
+   <cell>TOP</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (52.66,57.55;52.66,157.34;93.4,157.34;93.4,57.55)</value>
    </values>
   </item>
   <item>
    <tags/>
    <category>'M1.4'</category>
-   <cell>inv</cell>
+   <cell>TOP</cell>
    <visited>false</visited>
    <multiplicity>1</multiplicity>
    <comment/>
    <image/>
    <values>
-    <value>polygon: (-1.98,0.01;-1.98,8.1;1.82,8.1;1.82,0.01)</value>
+    <value>polygon: (52.66,57.55;52.66,157.34;93.4,157.34;93.4,57.55)</value>
    </values>
   </item>
   <item>
    <tags/>
    <category>'M2.4'</category>
-   <cell>inv</cell>
+   <cell>TOP</cell>
    <visited>false</visited>
    <multiplicity>1</multiplicity>
    <comment/>
    <image/>
    <values>
-    <value>polygon: (-1.98,0.01;-1.98,8.1;1.82,8.1;1.82,0.01)</value>
+    <value>polygon: (52.66,57.55;52.66,157.34;93.4,157.34;93.4,57.55)</value>
    </values>
   </item>
   <item>
    <tags/>
    <category>'M3.4'</category>
-   <cell>inv</cell>
+   <cell>TOP</cell>
    <visited>false</visited>
    <multiplicity>1</multiplicity>
    <comment/>
    <image/>
    <values>
-    <value>polygon: (-1.98,0.01;-1.98,8.1;1.82,8.1;1.82,0.01)</value>
+    <value>polygon: (52.66,57.55;52.66,157.34;93.4,157.34;93.4,57.55)</value>
    </values>
   </item>
   <item>
    <tags/>
    <category>'M4.4'</category>
-   <cell>inv</cell>
+   <cell>TOP</cell>
    <visited>false</visited>
    <multiplicity>1</multiplicity>
    <comment/>
    <image/>
    <values>
-    <value>polygon: (-1.98,0.01;-1.98,8.1;1.82,8.1;1.82,0.01)</value>
+    <value>polygon: (52.66,57.55;52.66,157.34;93.4,157.34;93.4,57.55)</value>
    </values>
   </item>
   <item>
    <tags/>
    <category>'M5.4'</category>
-   <cell>inv</cell>
+   <cell>TOP</cell>
    <visited>false</visited>
    <multiplicity>1</multiplicity>
    <comment/>
    <image/>
    <values>
-    <value>polygon: (-1.98,0.01;-1.98,8.1;1.82,8.1;1.82,0.01)</value>
+    <value>polygon: (52.66,57.55;52.66,157.34;93.4,157.34;93.4,57.55)</value>
    </values>
   </item>
   <item>
    <tags/>
    <category>'MT.3'</category>
-   <cell>inv</cell>
+   <cell>TOP</cell>
    <visited>false</visited>
    <multiplicity>1</multiplicity>
    <comment/>
    <image/>
    <values>
-    <value>polygon: (-1.98,0.01;-1.98,8.1;1.82,8.1;1.82,0.01)</value>
+    <value>polygon: (52.66,57.55;52.66,157.34;93.4,157.34;93.4,57.55)</value>
    </values>
   </item>
   <item>
    <tags/>
-   <category>'DF.16_LV'</category>
-   <cell>inv</cell>
+   <category>'NW.2b_LV'</category>
+   <cell>TOP</cell>
    <visited>false</visited>
    <multiplicity>1</multiplicity>
    <comment/>
    <image/>
    <values>
-    <value>edge-pair: (0.68,2.39;1.12,2.39)/(1.212,2.81;0.588,2.81)</value>
+    <value>polygon: (54.65,71.77;53.265,71.96;54.48,71.96;55.865,71.77)</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'NW.2b_LV'</category>
+   <cell>TOP</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (56.67,61.645;56.47,63.03;56.47,64.225;56.67,62.84)</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'NW.2b_LV'</category>
+   <cell>TOP</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (56.67,62.84;55.285,63.03;56.47,63.03;57.855,62.84)</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'NW.2b_LV'</category>
+   <cell>TOP</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (54.65,70.57;54.48,71.96;54.48,73.16;54.65,71.77)</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'NW.2b_LV'</category>
+   <cell>TOP</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (72.87,66.16;73.89,66.63;76.01,66.63;74.69,66.16)</value>
    </values>
   </item>
  </items>
