@@ -11,7 +11,7 @@ N 410 200 430 200 {lab=nbias}
 N 410 160 410 200 {lab=nbias}
 N 410 160 470 160 {lab=nbias}
 N 650 190 650 210 {lab=vss}
-N 650 110 650 130 {lab=vcm}
+N 650 110 650 130 {lab=nbias}
 C {title.sym} 20 -40 0 0 {name=l2 author="Pranav Vadde"}
 C {iopin.sym} 210 100 0 0 {name=pvdd lab=vdd}
 C {iopin.sym} 210 130 0 0 {name=pvss lab=vss}

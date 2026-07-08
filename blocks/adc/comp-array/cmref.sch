@@ -10,13 +10,40 @@ N 140 150 140 170 {lab=vcm}
 N 140 130 140 150 {lab=vcm}
 N 140 50 140 70 {lab=vcm_p}
 N 330 2570 330 2600 {lab=nd}
-N 690 510 690 540 {lab=taild}
-N 590 510 690 510 {lab=taild}
-N 690 510 790 510 {lab=taild}
-N 790 410 790 450 {lab=vctr}
-N 590 410 590 450 {lab=n1}
-N 70 350 70 370 {lab=#net1}
+N 690 660 690 690 {lab=taild}
+N 590 660 690 660 {lab=taild}
+N 690 660 790 660 {lab=taild}
+N 790 560 790 600 {lab=vctr}
+N 590 560 590 600 {lab=#net1}
+N 70 350 70 370 {lab=vss}
 N 70 270 70 290 {lab=vcm}
+N 1080 660 1080 700 {lab=#net2}
+N 1040 660 1080 660 {lab=#net2}
+N 1200 650 1200 680 {lab=vdd}
+N 1080 600 1080 630 {lab=vdd}
+N 1200 820 1200 850 {lab=vss}
+N 1080 680 1160 680 {lab=#net2}
+N 750 600 790 600 {lab=vctr}
+N 750 600 750 630 {lab=vctr}
+N 630 530 630 560 {lab=#net1}
+N 590 560 630 560 {lab=#net1}
+N 630 530 750 530 {lab=#net1}
+N 790 500 790 530 {lab=vdd}
+N 590 500 590 530 {lab=vdd}
+N 790 580 1200 580 {lab=vctr}
+N 590 500 790 500 {lab=vdd}
+N 590 720 650 720 {lab=nd}
+N 590 690 590 720 {lab=nd}
+N 550 690 590 690 {lab=nd}
+N 550 720 550 750 {lab=vss}
+N 690 720 690 750 {lab=vss}
+N 550 750 690 750 {lab=vss}
+N 650 720 650 730 {lab=nd}
+N 960 820 1160 820 {lab=nd}
+N 1040 630 1040 660 {lab=#net2}
+N 650 730 1040 730 {lab=nd}
+N 960 730 960 820 {lab=nd}
+N 1080 730 1080 760 {lab=vss}
 C {title.sym} -220 -50 0 0 {name=l2 author="Pranav Vadde"}
 C {iopin.sym} -130 70 0 0 {name=pvdd lab=vdd}
 C {iopin.sym} -130 100 0 0 {name=pvss lab=vss}
@@ -345,7 +372,7 @@ m=1}
 C {lab_wire.sym} 310 2540 0 0 {name=pb42 sig_type=std_logic lab=vss}
 C {lab_wire.sym} 330 2600 0 0 {name=p12 sig_type=std_logic lab=nd
 }
-C {symbols/nfet_03v3.sym} 550 90 0 0 {name=Mnd
+C {symbols/nfet_03v3.sym} 570 720 0 1 {name=Mnd
 L=2u
 W=16u
 nf=4
@@ -359,15 +386,11 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 570 90 0 1 {name=p16 sig_type=std_logic lab=vss
+C {lab_wire.sym} 620 750 0 0 {name=p17 sig_type=std_logic lab=vss
 }
-C {lab_wire.sym} 570 120 0 1 {name=p17 sig_type=std_logic lab=vss
+C {lab_wire.sym} 1040 730 0 0 {name=p13 sig_type=std_logic lab=nd
 }
-C {lab_wire.sym} 570 60 0 0 {name=p13 sig_type=std_logic lab=nd
-}
-C {lab_wire.sym} 530 90 0 0 {name=p14 sig_type=std_logic lab=nd
-}
-C {symbols/nfet_03v3.sym} 550 190 0 0 {name=Mnmir
+C {symbols/nfet_03v3.sym} 1060 730 0 0 {name=Mnmir
 L=2u
 W=16u
 nf=4
@@ -381,15 +404,9 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 570 190 0 1 {name=p15 sig_type=std_logic lab=vss
+C {lab_wire.sym} 1080 760 2 0 {name=p18 sig_type=std_logic lab=vss
 }
-C {lab_wire.sym} 570 220 0 1 {name=p18 sig_type=std_logic lab=vss
-}
-C {lab_wire.sym} 570 160 0 0 {name=p19 sig_type=std_logic lab=pp
-}
-C {lab_wire.sym} 530 190 0 0 {name=p20 sig_type=std_logic lab=nd
-}
-C {symbols/pfet_03v3.sym} 550 280 0 0 {name=Mpd
+C {symbols/pfet_03v3.sym} 1060 630 0 0 {name=Mpd
 L=2u
 W=32u
 nf=4
@@ -403,15 +420,7 @@ sa=0 sb=0 sd=0
 model=pfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 570 280 0 1 {name=p21 sig_type=std_logic lab=vdd
-}
-C {lab_wire.sym} 570 250 0 1 {name=p22 sig_type=std_logic lab=vdd
-}
-C {lab_wire.sym} 530 280 0 0 {name=p23 sig_type=std_logic lab=pp
-}
-C {lab_wire.sym} 570 310 0 0 {name=p24 sig_type=std_logic lab=pp
-}
-C {symbols/pfet_03v3.sym} 740 90 0 0 {name=Msc
+C {symbols/pfet_03v3.sym} 1180 680 0 0 {name=Msc
 L=2u
 W=32u
 nf=4
@@ -425,15 +434,11 @@ sa=0 sb=0 sd=0
 model=pfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 760 90 0 1 {name=p25 sig_type=std_logic lab=vdd
+C {lab_wire.sym} 1200 650 0 1 {name=p26 sig_type=std_logic lab=vdd
 }
-C {lab_wire.sym} 760 60 0 1 {name=p26 sig_type=std_logic lab=vdd
+C {lab_wire.sym} 1200 710 2 0 {name=p28 sig_type=std_logic lab=vrefp
 }
-C {lab_wire.sym} 720 90 0 0 {name=p27 sig_type=std_logic lab=pp
-}
-C {lab_wire.sym} 760 120 0 0 {name=p28 sig_type=std_logic lab=vrefp
-}
-C {symbols/nfet_03v3.sym} 740 190 0 0 {name=Msink
+C {symbols/nfet_03v3.sym} 1180 820 0 0 {name=Msink
 L=2u
 W=16u
 nf=4
@@ -447,15 +452,11 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 760 190 0 1 {name=Msink1 sig_type=std_logic lab=vss
+C {lab_wire.sym} 1200 850 2 0 {name=Msink2 sig_type=std_logic lab=vss
 }
-C {lab_wire.sym} 760 220 0 1 {name=Msink2 sig_type=std_logic lab=vss
+C {lab_wire.sym} 1200 790 0 1 {name=Msink3 sig_type=std_logic lab=vrefn
 }
-C {lab_wire.sym} 760 160 0 0 {name=Msink3 sig_type=std_logic lab=vrefn
-}
-C {lab_wire.sym} 720 190 0 0 {name=Msink4 sig_type=std_logic lab=nd
-}
-C {symbols/nfet_03v3.sym} 670 570 0 0 {name=Msink5
+C {symbols/nfet_03v3.sym} 670 720 0 0 {name=Msink5
 L=2u
 W=16u
 nf=4
@@ -469,13 +470,7 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 690 570 0 1 {name=Msink6 sig_type=std_logic lab=vss
-}
-C {lab_wire.sym} 690 600 0 1 {name=Msink7 sig_type=std_logic lab=vss
-}
-C {lab_wire.sym} 650 570 0 0 {name=Msink9 sig_type=std_logic lab=nd
-}
-C {symbols/nfet_03v3.sym} 570 480 0 0 {name=Min1
+C {symbols/nfet_03v3.sym} 570 630 0 0 {name=Min1
 L=2u
 W=20u
 nf=4
@@ -489,13 +484,13 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 590 480 0 1 {name=Msink10 sig_type=std_logic lab=vss
+C {lab_wire.sym} 590 630 0 1 {name=Msink10 sig_type=std_logic lab=vss
 }
-C {lab_wire.sym} 550 480 0 0 {name=Msink12 sig_type=std_logic lab=vcm
+C {lab_wire.sym} 550 630 0 0 {name=Msink12 sig_type=std_logic lab=vcm
 }
-C {lab_wire.sym} 700 510 0 0 {name=Msink8 sig_type=std_logic lab=taild
+C {lab_wire.sym} 700 660 0 0 {name=Msink8 sig_type=std_logic lab=taild
 }
-C {symbols/nfet_03v3.sym} 770 480 0 0 {name=Min2
+C {symbols/nfet_03v3.sym} 770 630 0 0 {name=Min2
 L=2u
 W=20u
 nf=4
@@ -509,11 +504,11 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 790 480 0 1 {name=Msink11 sig_type=std_logic lab=vss
+C {lab_wire.sym} 790 630 0 1 {name=Msink11 sig_type=std_logic lab=vss
 }
-C {lab_wire.sym} 750 480 0 0 {name=Msink13 sig_type=std_logic lab=vctr
+C {lab_wire.sym} 1200 580 0 1 {name=Msink13 sig_type=std_logic lab=vctr
 }
-C {symbols/pfet_03v3.sym} 770 380 0 0 {name=Mld2
+C {symbols/pfet_03v3.sym} 770 530 0 0 {name=Mld2
 L=2u
 W=20u
 nf=4
@@ -527,15 +522,7 @@ sa=0 sb=0 sd=0
 model=pfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 790 380 0 1 {name=p29 sig_type=std_logic lab=vdd
-}
-C {lab_wire.sym} 790 350 0 1 {name=p30 sig_type=std_logic lab=vdd
-}
-C {lab_wire.sym} 750 380 0 0 {name=p31 sig_type=std_logic lab=n1
-}
-C {lab_wire.sym} 790 430 0 0 {name=Msink14 sig_type=std_logic lab=vctr
-}
-C {symbols/pfet_03v3.sym} 570 380 0 0 {name=Mld1
+C {symbols/pfet_03v3.sym} 610 530 0 1 {name=Mld1
 L=2u
 W=20u
 nf=4
@@ -549,14 +536,7 @@ sa=0 sb=0 sd=0
 model=pfet_03v3
 spiceprefix=X
 }
-C {lab_wire.sym} 590 380 0 1 {name=p32 sig_type=std_logic lab=vdd
-}
-C {lab_wire.sym} 590 350 0 1 {name=p33 sig_type=std_logic lab=vdd
-}
-C {lab_wire.sym} 550 380 0 0 {name=p34 sig_type=std_logic lab=n1
-}
-C {lab_wire.sym} 590 430 0 0 {name=Msink15 sig_type=std_logic lab=n1
-
+C {lab_wire.sym} 690 500 0 0 {name=p33 sig_type=std_logic lab=vdd
 }
 C {symbols/cap_nmos_03v3_b.sym} 70 320 0 0 {name=C1
 W=16e-6
@@ -567,4 +547,8 @@ m=1}
 C {lab_wire.sym} 70 270 0 0 {name=p35 sig_type=std_logic lab=vcm
 }
 C {lab_wire.sym} 70 370 0 0 {name=p36 sig_type=std_logic lab=vss
+}
+C {lab_wire.sym} 1080 600 0 1 {name=p14 sig_type=std_logic lab=vdd
+}
+C {lab_wire.sym} 550 690 0 0 {name=p19 sig_type=std_logic lab=nd
 }

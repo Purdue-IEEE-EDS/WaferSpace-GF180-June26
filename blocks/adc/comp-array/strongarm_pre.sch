@@ -18,7 +18,6 @@ m=1}
 C {iopin.sym} -20 40 0 0 {name=p5 lab=vss}
 C {lab_wire.sym} 170 -50 0 0 {name=p31 sig_type=std_logic lab=inp}
 C {lab_wire.sym} 170 10 0 0 {name=p6 sig_type=std_logic lab=outp}
-C {lab_wire.sym} 560 440 0 0 {name=p7 sig_type=std_logic lab=vcm_p}
 C {lab_wire.sym} 150 -20 0 0 {name=p8 sig_type=std_logic lab=vss}
 C {symbols/ppolyf_u_3k.sym} 330 -10 0 0 {name=R2
 W=1e-6

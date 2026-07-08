@@ -57,18 +57,18 @@ N 940 820 940 870 {lab=#net6}
 N 920 890 970 890 {lab=#net10}
 N 900 910 970 910 {lab=#net9}
 N 2060 170 2120 170 {lab=q[0]}
-N 2060 260 2120 260 {lab=q[0]}
-N 2060 350 2120 350 {lab=q[0]}
-N 2060 440 2120 440 {lab=q[0]}
-N 2060 530 2120 530 {lab=q[0]}
-N 2060 620 2120 620 {lab=q[0]}
-N 2060 710 2120 710 {lab=q[0]}
-N 2060 800 2120 800 {lab=q[0]}
-N 2060 890 2120 890 {lab=q[0]}
-N 2060 980 2120 980 {lab=q[0]}
-N 2060 1070 2120 1070 {lab=q[0]}
-N 2060 1160 2120 1160 {lab=q[0]}
-N 2060 1250 2120 1250 {lab=q[0]}
+N 2060 260 2120 260 {lab=q[1]}
+N 2060 350 2120 350 {lab=q[2]}
+N 2060 440 2120 440 {lab=q[3]}
+N 2060 530 2120 530 {lab=q[4]}
+N 2060 620 2120 620 {lab=q[5]}
+N 2060 710 2120 710 {lab=q[6]}
+N 2060 800 2120 800 {lab=q[7]}
+N 2060 890 2120 890 {lab=q[8]}
+N 2060 980 2120 980 {lab=q[9]}
+N 2060 1070 2120 1070 {lab=q[10]}
+N 2060 1160 2120 1160 {lab=q[11]}
+N 2060 1250 2120 1250 {lab=q[12]}
 N 1330 150 1330 400 {lab=#net7}
 N 1330 150 1760 150 {lab=#net7}
 N 1330 420 1350 420 {lab=#net8}
@@ -149,12 +149,12 @@ N 1270 740 1550 740 {lab=#net28}
 N 1550 740 1550 780 {lab=#net28}
 N 1550 780 1760 780 {lab=#net28}
 C {title.sym} -80 -10 0 0 {name=l2 author="Pranav Vadde"}
-C {/headless/eda/designs/gf180_flash_adc/bias.sym} -100 490 0 0 {name=x1}
+C {blocks/adc/comp-array/bias.sym} -100 490 0 0 {name=x1}
 C {lab_wire.sym} -230 480 0 0 {name=p13 sig_type=std_logic lab=vdd}
 C {lab_wire.sym} -230 500 0 0 {name=p1 sig_type=std_logic lab=vss}
 C {lab_wire.sym} 20 490 0 1 {name=p2 sig_type=std_logic lab=nbias
 }
-C {/headless/eda/designs/gf180_flash_adc/cmref.sym} -100 620 0 0 {name=x2}
+C {blocks/adc/comp-array/cmref.sym} -100 620 0 0 {name=x2}
 C {lab_wire.sym} 50 580 0 1 {name=p3 sig_type=std_logic lab=vdd
 }
 C {lab_wire.sym} 50 640 0 1 {name=p6 sig_type=std_logic lab=vctr
@@ -162,7 +162,7 @@ C {lab_wire.sym} 50 640 0 1 {name=p6 sig_type=std_logic lab=vctr
 C {lab_wire.sym} -250 590 0 0 {name=p7 sig_type=std_logic lab=vcm_p}
 C {lab_wire.sym} -250 610 0 0 {name=p8 sig_type=std_logic lab=vcm_n}
 C {lab_wire.sym} -250 650 0 0 {name=p9 sig_type=std_logic lab=vss}
-C {/headless/eda/designs/gf180_flash_adc/ladder.sym} 290 610 0 0 {name=x3}
+C {blocks/adc/comp-array/ladder.sym} 290 610 0 0 {name=x3}
 C {lab_wire.sym} 440 610 0 1 {name=p10 sig_type=std_logic lab=vctr
 }
 C {lab_wire.sym} 140 770 0 0 {name=p4 sig_type=std_logic lab=vss}
@@ -199,7 +199,7 @@ C {lab_wire.sym} 440 750 0 1 {name=p25 sig_type=std_logic lab=tap16
 }
 C {lab_wire.sym} 440 770 0 1 {name=p26 sig_type=std_logic lab=tap17
 }
-C {/headless/eda/designs/gf180_flash_adc/preamp.sym} 710 470 0 0 {name=x4}
+C {blocks/adc/comp-array/preamp.sym} 710 470 0 0 {name=x4}
 C {lab_wire.sym} 860 440 0 1 {name=p27 sig_type=std_logic lab=vdd
 }
 C {lab_wire.sym} 560 500 0 0 {name=p28 sig_type=std_logic lab=vss}
@@ -208,7 +208,7 @@ C {lab_wire.sym} 560 480 0 0 {name=p29 sig_type=std_logic lab=nbias
 C {lab_wire.sym} 560 460 0 0 {name=p30 sig_type=std_logic lab=tap8
 }
 C {lab_wire.sym} 560 440 0 0 {name=p31 sig_type=std_logic lab=vcm_p}
-C {/headless/eda/designs/gf180_flash_adc/preamp.sym} 710 600 0 0 {name=x5}
+C {blocks/adc/comp-array/preamp.sym} 710 600 0 0 {name=x5}
 C {lab_wire.sym} 860 570 0 1 {name=p32 sig_type=std_logic lab=vdd
 }
 C {lab_wire.sym} 560 630 0 0 {name=p33 sig_type=std_logic lab=vss}
@@ -217,7 +217,7 @@ C {lab_wire.sym} 560 610 0 0 {name=p34 sig_type=std_logic lab=nbias
 C {lab_wire.sym} 560 590 0 0 {name=p35 sig_type=std_logic lab=vctr
 }
 C {lab_wire.sym} 560 570 0 0 {name=p36 sig_type=std_logic lab=vcm_p}
-C {/headless/eda/designs/gf180_flash_adc/preamp.sym} 710 730 0 0 {name=x6}
+C {blocks/adc/comp-array/preamp.sym} 710 730 0 0 {name=x6}
 C {lab_wire.sym} 860 700 0 1 {name=p37 sig_type=std_logic lab=vdd
 }
 C {lab_wire.sym} 560 760 0 0 {name=p38 sig_type=std_logic lab=vss}
@@ -226,7 +226,7 @@ C {lab_wire.sym} 560 740 0 0 {name=p39 sig_type=std_logic lab=nbias
 C {lab_wire.sym} 560 720 0 0 {name=p40 sig_type=std_logic lab=tap10
 }
 C {lab_wire.sym} 560 700 0 0 {name=p41 sig_type=std_logic lab=vcm_p}
-C {/headless/eda/designs/gf180_flash_adc/preamp.sym} 710 860 0 0 {name=x7}
+C {blocks/adc/comp-array/preamp.sym} 710 860 0 0 {name=x7}
 C {lab_wire.sym} 860 830 0 1 {name=p42 sig_type=std_logic lab=vdd
 }
 C {lab_wire.sym} 560 890 0 0 {name=p43 sig_type=std_logic lab=vss}
@@ -235,10 +235,10 @@ C {lab_wire.sym} 560 870 0 0 {name=p44 sig_type=std_logic lab=nbias
 C {lab_wire.sym} 560 850 0 0 {name=p45 sig_type=std_logic lab=tap11
 }
 C {lab_wire.sym} 560 830 0 0 {name=p46 sig_type=std_logic lab=vcm_p}
-C {/headless/eda/designs/gf180_flash_adc/interp4.sym} 1120 510 0 0 {name=x8}
+C {blocks/adc/comp-array/interp4.sym} 1120 510 0 0 {name=x8}
 C {lab_wire.sym} 970 550 0 0 {name=p47 sig_type=std_logic lab=vss}
-C {/headless/eda/designs/gf180_flash_adc/interp4.sym} 1120 710 0 0 {name=x9}
-C {/headless/eda/designs/gf180_flash_adc/interp4.sym} 1120 910 0 0 {name=x10}
+C {blocks/adc/comp-array/interp4.sym} 1120 710 0 0 {name=x9}
+C {blocks/adc/comp-array/interp4.sym} 1120 910 0 0 {name=x10}
 C {iopin.sym} -230 730 0 0 {name=pvdd lab=vdd}
 C {iopin.sym} -230 750 0 0 {name=pvss lab=vss}
 C {ipin.sym} -170 800 0 0 {name=p48 lab=vcm_p}
@@ -246,8 +246,8 @@ C {ipin.sym} -170 820 0 0 {name=p49 lab=vcm_n}
 C {lab_wire.sym} 970 750 0 0 {name=p50 sig_type=std_logic lab=vss}
 C {lab_wire.sym} 970 950 0 0 {name=p51 sig_type=std_logic lab=vss}
 C {ipin.sym} -170 860 0 0 {name=p52 lab=clk}
-C {/headless/eda/designs/gf180_flash_adc/strongarm.sym} 1910 180 0 0 {name=x11}
-C {/headless/eda/designs/gf180_flash_adc/strongarm.sym} 1910 270 0 0 {name=x12}
+C {blocks/adc/comp-array/strongarm.sym} 1910 180 0 0 {name=x11}
+C {blocks/adc/comp-array/strongarm.sym} 1910 270 0 0 {name=x12}
 C {lab_wire.sym} 1760 300 0 0 {name=p53 sig_type=std_logic lab=vss}
 C {lab_wire.sym} 1760 210 0 0 {name=p54 sig_type=std_logic lab=vss}
 C {lab_wire.sym} 1760 190 0 0 {name=p56 sig_type=std_logic lab=clk}
@@ -255,47 +255,47 @@ C {lab_wire.sym} 2060 150 0 1 {name=p57 sig_type=std_logic lab=vdd}
 C {lab_wire.sym} 2060 240 0 1 {name=p58 sig_type=std_logic lab=vdd}
 C {lab_wire.sym} 2120 170 0 1 {name=p59 sig_type=std_logic lab=q[0]}
 C {lab_wire.sym} 2120 260 0 1 {name=p60 sig_type=std_logic lab=q[1]}
-C {/headless/eda/designs/gf180_flash_adc/strongarm.sym} 1910 360 0 0 {name=x13}
-C {/headless/eda/designs/gf180_flash_adc/strongarm.sym} 1910 450 0 0 {name=x14}
+C {blocks/adc/comp-array/strongarm.sym} 1910 360 0 0 {name=x13}
+C {blocks/adc/comp-array/strongarm.sym} 1910 450 0 0 {name=x14}
 C {lab_wire.sym} 1760 480 0 0 {name=p61 sig_type=std_logic lab=vss}
 C {lab_wire.sym} 1760 390 0 0 {name=p62 sig_type=std_logic lab=vss}
 C {lab_wire.sym} 2060 330 0 1 {name=p65 sig_type=std_logic lab=vdd}
 C {lab_wire.sym} 2060 420 0 1 {name=p66 sig_type=std_logic lab=vdd}
 C {lab_wire.sym} 2120 350 0 1 {name=p67 sig_type=std_logic lab=q[2]}
 C {lab_wire.sym} 2120 440 0 1 {name=p68 sig_type=std_logic lab=q[3]}
-C {/headless/eda/designs/gf180_flash_adc/strongarm.sym} 1910 540 0 0 {name=x15}
-C {/headless/eda/designs/gf180_flash_adc/strongarm.sym} 1910 630 0 0 {name=x16}
+C {blocks/adc/comp-array/strongarm.sym} 1910 540 0 0 {name=x15}
+C {blocks/adc/comp-array/strongarm.sym} 1910 630 0 0 {name=x16}
 C {lab_wire.sym} 1760 660 0 0 {name=p69 sig_type=std_logic lab=vss}
 C {lab_wire.sym} 1760 570 0 0 {name=p70 sig_type=std_logic lab=vss}
 C {lab_wire.sym} 2060 510 0 1 {name=p73 sig_type=std_logic lab=vdd}
 C {lab_wire.sym} 2060 600 0 1 {name=p74 sig_type=std_logic lab=vdd}
 C {lab_wire.sym} 2120 530 0 1 {name=p75 sig_type=std_logic lab=q[4]}
 C {lab_wire.sym} 2120 620 0 1 {name=p76 sig_type=std_logic lab=q[5]}
-C {/headless/eda/designs/gf180_flash_adc/strongarm.sym} 1910 720 0 0 {name=x17}
-C {/headless/eda/designs/gf180_flash_adc/strongarm.sym} 1910 810 0 0 {name=x18}
+C {blocks/adc/comp-array/strongarm.sym} 1910 720 0 0 {name=x17}
+C {blocks/adc/comp-array/strongarm.sym} 1910 810 0 0 {name=x18}
 C {lab_wire.sym} 1760 840 0 0 {name=p77 sig_type=std_logic lab=vss}
 C {lab_wire.sym} 1760 750 0 0 {name=p78 sig_type=std_logic lab=vss}
 C {lab_wire.sym} 2060 690 0 1 {name=p81 sig_type=std_logic lab=vdd}
 C {lab_wire.sym} 2060 780 0 1 {name=p82 sig_type=std_logic lab=vdd}
 C {lab_wire.sym} 2120 710 0 1 {name=p83 sig_type=std_logic lab=q[6]}
 C {lab_wire.sym} 2120 800 0 1 {name=p84 sig_type=std_logic lab=q[7]}
-C {/headless/eda/designs/gf180_flash_adc/strongarm.sym} 1910 900 0 0 {name=x19}
-C {/headless/eda/designs/gf180_flash_adc/strongarm.sym} 1910 990 0 0 {name=x20}
+C {blocks/adc/comp-array/strongarm.sym} 1910 900 0 0 {name=x19}
+C {blocks/adc/comp-array/strongarm.sym} 1910 990 0 0 {name=x20}
 C {lab_wire.sym} 1760 1020 0 0 {name=p85 sig_type=std_logic lab=vss}
 C {lab_wire.sym} 1760 930 0 0 {name=p86 sig_type=std_logic lab=vss}
 C {lab_wire.sym} 2060 870 0 1 {name=p89 sig_type=std_logic lab=vdd}
 C {lab_wire.sym} 2060 960 0 1 {name=p90 sig_type=std_logic lab=vdd}
 C {lab_wire.sym} 2120 890 0 1 {name=p91 sig_type=std_logic lab=q[8]}
 C {lab_wire.sym} 2120 980 0 1 {name=p92 sig_type=std_logic lab=q[9]}
-C {/headless/eda/designs/gf180_flash_adc/strongarm.sym} 1910 1080 0 0 {name=x21}
-C {/headless/eda/designs/gf180_flash_adc/strongarm.sym} 1910 1170 0 0 {name=x22}
+C {blocks/adc/comp-array/strongarm.sym} 1910 1080 0 0 {name=x21}
+C {blocks/adc/comp-array/strongarm.sym} 1910 1170 0 0 {name=x22}
 C {lab_wire.sym} 1760 1200 0 0 {name=p93 sig_type=std_logic lab=vss}
 C {lab_wire.sym} 1760 1110 0 0 {name=p94 sig_type=std_logic lab=vss}
 C {lab_wire.sym} 2060 1050 0 1 {name=p97 sig_type=std_logic lab=vdd}
 C {lab_wire.sym} 2060 1140 0 1 {name=p98 sig_type=std_logic lab=vdd}
 C {lab_wire.sym} 2120 1070 0 1 {name=p99 sig_type=std_logic lab=q[10]}
 C {lab_wire.sym} 2120 1160 0 1 {name=p100 sig_type=std_logic lab=q[11]}
-C {/headless/eda/designs/gf180_flash_adc/strongarm.sym} 1910 1260 0 0 {name=x23}
+C {blocks/adc/comp-array/strongarm.sym} 1910 1260 0 0 {name=x23}
 C {lab_wire.sym} 1760 1290 0 0 {name=p101 sig_type=std_logic lab=vss}
 C {lab_wire.sym} 1760 1270 0 0 {name=p102 sig_type=std_logic lab=clk}
 C {lab_wire.sym} 2060 1230 0 1 {name=p103 sig_type=std_logic lab=vdd}
