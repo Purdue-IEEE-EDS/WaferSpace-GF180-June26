@@ -61,7 +61,8 @@ RTL = \
 	$(RTL_DIR)/serial_to_parallel16.sv \
 	$(RTL_DIR)/clk_divider.sv \
 	$(RTL_DIR)/twiddle_rom.sv \
-	$(RTL_DIR)/ring_counter.sv
+	$(RTL_DIR)/ring_counter.sv \
+	$(RTL_DIR)/splitnets.sv
 
 TB_FFT   = $(TB_DIR)/tb_fft.sv
 TB_STAGE = $(TB_DIR)/tb_mdc_stage.sv
@@ -283,7 +284,7 @@ $(PNR_SCRIPT): | $(PNR_DIR)
 	@echo "link_design $(TOP)"                                             >> $@
 	@echo "read_sdc $(PNR_SDC)"                                            >> $@
 	@echo ""                                                               >> $@
-	@echo "initialize_floorplan -utilization 60 -aspect_ratio 1.5 -core_space 10 -site $(SITE_NAME)" >> $@
+	@echo "initialize_floorplan -utilization 55 -aspect_ratio 1.5 -core_space 10 -site $(SITE_NAME)" >> $@
 	@echo ""                                                               >> $@
 	@echo "insert_tiecells gf180mcu_fd_sc_mcu9t5v0__tiel/ZN -prefix TIE_LOW_"   >> $@
 	@echo "insert_tiecells gf180mcu_fd_sc_mcu9t5v0__tieh/Z -prefix TIE_HIGH_"  >> $@
@@ -294,6 +295,10 @@ $(PNR_SCRIPT): | $(PNR_DIR)
 	@echo "make_tracks Metal4 -x_offset 0.28 -x_pitch 0.56 -y_offset 0.28 -y_pitch 0.56" >> $@
 	@echo "make_tracks Metal5 -x_offset 0.28 -x_pitch 0.56 -y_offset 0.28 -y_pitch 0.56" >> $@
 	@echo ""                                                               >> $@
+	@echo "set_io_pin_constraint -pin_names {din_re din_im} -region right" >> $@
+	@echo "set_io_pin_constraint -pin_names {valid_in} -region bottom"     >> $@
+	@echo "set_io_pin_constraint -pin_names {clk rst}  -region left"        >> $@
+	@echo "set_io_pin_constraint -pin_names {dout_re dout_im valid_out} -region top" >> $@
 	@echo "set_routing_layers -signal Metal1-Metal5"                       >> $@
 	@echo "set_wire_rc -signal -layer Metal3"                              >> $@
 	@echo "set_wire_rc -clock -layer Metal4"                               >> $@
@@ -324,7 +329,7 @@ $(PNR_SCRIPT): | $(PNR_DIR)
 	@echo "detailed_placement"                                             >> $@
 	@echo ""                                                               >> $@
 	@echo "estimate_parasitics -placement"                                 >> $@
-	@echo "repair_timing -setup -setup_margin 0.05 -verbose"               >> $@
+	@echo "repair_timing -setup -setup_margin 0.05 -repair_tns 100 -max_passes 5 -verbose"               >> $@
 	@echo "repair_timing -hold -hold_margin 0.05 -verbose"                 >> $@
 	@echo "detailed_placement"                                             >> $@
 	@echo ""                                                               >> $@

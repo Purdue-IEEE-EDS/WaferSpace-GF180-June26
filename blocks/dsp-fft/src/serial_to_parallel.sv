@@ -9,12 +9,14 @@ module serial_to_parallel (
     logic load0, load1, load2, load3;
     logic load0_p, load1_p, load2_p, load3_p;
 
-    always_ff @(posedge clk) begin
-        load0 <= load0_p;
-        load1 <= load1_p;
-        load2 <= load2_p;
-        load3 <= load3_p;
-    end
+    // always_ff @(posedge clk) begin
+    //     load0 <= load0_p;
+    //     load1 <= load1_p;
+    //     load2 <= load2_p;
+    //     load3 <= load3_p;
+    // end
+
+    splitnets split (.clk, .din({load0_p, load0_p, load0_p, load0_p}), .dout({load0, load1, load2, load3}));
 
     (* keep_hierarchy = "yes" *) ring_counter rc1 (.clk, .rst, .count(load0_p));
     (* keep_hierarchy = "yes" *) ring_counter rc2 (.clk, .rst, .count(load1_p));

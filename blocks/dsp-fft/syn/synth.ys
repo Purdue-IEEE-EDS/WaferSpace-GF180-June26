@@ -1,6 +1,6 @@
 # ── Read RTL ──
 read_liberty -lib /foss/pdks/gf180mcuD/libs.ref/gf180mcu_fd_sc_mcu9t5v0/lib/gf180mcu_fd_sc_mcu9t5v0__tt_025C_3v30.lib
-read_verilog -sv src/fft.sv src/mdc_fft.sv src/mdc_stage.sv src/mdc_ram_delay.sv src/r2.sv src/rotator.sv src/triv_rotator.sv src/adder.sv src/CLA4.sv src/CLA16.sv src/CLA32.sv src/full_adder_cla.sv src/wallace_mult.sv src/half_adder.sv src/carry_save_adder.sv src/commutator.sv src/reorder.sv src/parallel_to_serial.sv src/parallel_to_serial16.sv src/serial_to_parallel.sv src/serial_to_parallel16.sv src/clk_divider.sv src/twiddle_rom.sv src/ring_counter.sv
+read_verilog -sv src/fft.sv src/mdc_fft.sv src/mdc_stage.sv src/mdc_ram_delay.sv src/r2.sv src/rotator.sv src/triv_rotator.sv src/adder.sv src/CLA4.sv src/CLA16.sv src/CLA32.sv src/full_adder_cla.sv src/wallace_mult.sv src/half_adder.sv src/carry_save_adder.sv src/commutator.sv src/reorder.sv src/parallel_to_serial.sv src/parallel_to_serial16.sv src/serial_to_parallel.sv src/serial_to_parallel16.sv src/clk_divider.sv src/twiddle_rom.sv src/ring_counter.sv src/splitnets.sv
 
 # ── Elaborate hierarchy ──
 hierarchy -top fft -check

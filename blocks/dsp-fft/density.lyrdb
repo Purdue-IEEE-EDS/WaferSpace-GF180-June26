@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <report-database>
  <description>GF180 DENSITY DRC Run Report at</description>
- <original-file>/foss/designs/WaferSpace-GF180-June26/blocks/dsp-fft/fft.gds</original-file>
+ <original-file>/foss/designs/WaferSpace-GF180-June26/blocks/dsp-fft/fft_610.gds</original-file>
  <generator>drc: script='/foss/pdks/gf180mcuD/libs.tech/klayout/tech/macros/gf180mcu_drc.lydrc'</generator>
  <top-cell>fft</top-cell>
  <tags>
@@ -88,7 +88,7 @@
    <comment/>
    <image/>
    <values>
-    <value>polygon: (0,0;0,2079.75;1393.165,2079.75;1393.165,0)</value>
+    <value>polygon: (0,0;0,2048.575;1372.38,2048.575;1372.38,0)</value>
    </values>
   </item>
   <item>
@@ -100,7 +100,7 @@
    <comment/>
    <image/>
    <values>
-    <value>polygon: (0,0;0,2079.75;1393.165,2079.75;1393.165,0)</value>
+    <value>polygon: (0,0;0,2048.575;1372.38,2048.575;1372.38,0)</value>
    </values>
   </item>
   <item>
@@ -112,7 +112,7 @@
    <comment/>
    <image/>
    <values>
-    <value>polygon: (0,0;0,2079.75;1393.165,2079.75;1393.165,0)</value>
+    <value>polygon: (0,0;0,2048.575;1372.38,2048.575;1372.38,0)</value>
    </values>
   </item>
   <item>
@@ -124,7 +124,7 @@
    <comment/>
    <image/>
    <values>
-    <value>polygon: (0,0;0,2079.75;1393.165,2079.75;1393.165,0)</value>
+    <value>polygon: (0,0;0,2048.575;1372.38,2048.575;1372.38,0)</value>
    </values>
   </item>
   <item>
@@ -136,7 +136,7 @@
    <comment/>
    <image/>
    <values>
-    <value>polygon: (0,0;0,2079.75;1393.165,2079.75;1393.165,0)</value>
+    <value>polygon: (0,0;0,2048.575;1372.38,2048.575;1372.38,0)</value>
    </values>
   </item>
   <item>
@@ -148,7 +148,7 @@
    <comment/>
    <image/>
    <values>
-    <value>polygon: (0,0;0,2079.75;1393.165,2079.75;1393.165,0)</value>
+    <value>polygon: (0,0;0,2048.575;1372.38,2048.575;1372.38,0)</value>
    </values>
   </item>
   <item>
@@ -160,7 +160,7 @@
    <comment/>
    <image/>
    <values>
-    <value>polygon: (0,0;0,2079.75;1393.165,2079.75;1393.165,0)</value>
+    <value>polygon: (0,0;0,2048.575;1372.38,2048.575;1372.38,0)</value>
    </values>
   </item>
   <item>
@@ -172,7 +172,7 @@
    <comment/>
    <image/>
    <values>
-    <value>polygon: (0,0;0,2079.75;1393.165,2079.75;1393.165,0)</value>
+    <value>polygon: (0,0;0,2048.575;1372.38,2048.575;1372.38,0)</value>
    </values>
   </item>
  </items>

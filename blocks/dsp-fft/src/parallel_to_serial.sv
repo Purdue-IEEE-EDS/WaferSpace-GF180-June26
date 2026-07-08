@@ -34,12 +34,14 @@ module parallel_to_serial(
     //     end
     // end
 
-    always_ff @(posedge adc_clk) begin  
-        pulse0 <= pulse0_p; 
-        pulse1 <= pulse1_p; 
-        pulse2 <= pulse2_p; 
-        pulse3 <= pulse3_p; 
-    end
+    // always_ff @(posedge adc_clk) begin  
+    //     pulse0 <= pulse0_p; 
+    //     pulse1 <= pulse1_p; 
+    //     pulse2 <= pulse2_p; 
+    //     pulse3 <= pulse3_p; 
+    // end
+
+    splitnets split (.clk(adc_clk), .din({pulse0_p, pulse0_p, pulse0_p, pulse0_p}), .dout({pulse0, pulse1, pulse2, pulse3}));
 
     (* keep *) ring_counter rc0 (.clk(adc_clk), .rst, .count(pulse0_p));
     (* keep *) ring_counter rc1 (.clk(adc_clk), .rst, .count(pulse1_p));

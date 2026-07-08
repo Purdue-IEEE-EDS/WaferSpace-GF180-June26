@@ -16,6 +16,10 @@ make_tracks Metal3 -x_offset 0.28 -x_pitch 0.56 -y_offset 0.28 -y_pitch 0.56
 make_tracks Metal4 -x_offset 0.28 -x_pitch 0.56 -y_offset 0.28 -y_pitch 0.56
 make_tracks Metal5 -x_offset 0.28 -x_pitch 0.56 -y_offset 0.28 -y_pitch 0.56
 
+set_io_pin_constraint -pin_names {din_re din_im} -region right
+set_io_pin_constraint -pin_names {valid_in} -region bottom
+set_io_pin_constraint -pin_names {clk rst}  -region left
+set_io_pin_constraint -pin_names {dout_re dout_im valid_out} -region top
 set_routing_layers -signal Metal1-Metal5
 set_wire_rc -signal -layer Metal3
 set_wire_rc -clock -layer Metal4
@@ -46,7 +50,7 @@ repair_clock_nets -max_wire_length 1000
 detailed_placement
 
 estimate_parasitics -placement
-repair_timing -setup -setup_margin 0.05 -verbose
+repair_timing -setup -setup_margin 0.05 -repair_tns 100 -max_passes 5 -verbose
 repair_timing -hold -hold_margin 0.05 -verbose
 detailed_placement
 
