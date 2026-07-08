@@ -219,15 +219,15 @@ N 2970 -650 2970 -590 {lab=VDD}
 N 2960 -590 3270 -590 {lab=VDD}
 N 2680 -590 2960 -590 {lab=VDD}
 N 2680 -530 2680 -510 {lab=#net15}
-N 2840 -530 2840 -490 {lab=Vout_s}
-N 3100 -530 3100 -500 {lab=Vout_n_buf3}
+N 2840 -530 2840 -490 {lab=Vout}
+N 3100 -530 3100 -500 {lab=Vout_n}
 N 3270 -530 3270 -510 {lab=#net16}
-N 2840 -490 2840 -430 {lab=Vout_s}
-N 3100 -500 3100 -430 {lab=Vout_n_buf3}
-N 2840 -430 2870 -430 {lab=Vout_s}
-N 3070 -430 3100 -430 {lab=Vout_n_buf3}
-N 2840 -430 2840 -380 {lab=Vout_s}
-N 3100 -430 3100 -380 {lab=Vout_n_buf3}
+N 2840 -490 2840 -430 {lab=Vout}
+N 3100 -500 3100 -430 {lab=Vout_n}
+N 2840 -430 2870 -430 {lab=Vout}
+N 3070 -430 3100 -430 {lab=Vout_n}
+N 2840 -430 2840 -380 {lab=Vout}
+N 3100 -430 3100 -380 {lab=Vout_n}
 N 2500 -270 2500 -180 {lab=#net15}
 N 2500 -270 2800 -270 {lab=#net15}
 N 3420 -270 3420 -180 {lab=#net16}
@@ -240,32 +240,32 @@ N 2500 -510 2680 -510 {lab=#net15}
 N 2500 -510 2500 -430 {lab=#net15}
 N 3270 -510 3420 -510 {lab=#net16}
 N 3420 -510 3420 -430 {lab=#net16}
-N 2440 -500 3100 -500 {lab=Vout_n_buf3}
-N 2440 -500 2440 -430 {lab=Vout_n_buf3}
-N 2840 -490 3480 -490 {lab=Vout_s}
-N 3480 -490 3480 -430 {lab=Vout_s}
+N 2440 -500 3100 -500 {lab=Vout_n}
+N 2440 -500 2440 -430 {lab=Vout_n}
+N 2840 -490 3480 -490 {lab=Vout}
+N 3480 -490 3480 -430 {lab=Vout}
 N 2500 -430 2500 -270 {lab=#net15}
 N 3420 -430 3420 -270 {lab=#net16}
-N 2720 -430 2840 -430 {lab=Vout_s}
-N 2720 -440 2720 -430 {lab=Vout_s}
+N 2720 -430 2840 -430 {lab=Vout}
+N 2720 -440 2720 -430 {lab=Vout}
 N 2500 -430 2660 -430 {lab=#net15}
 N 2660 -440 2660 -430 {lab=#net15}
 N 2630 -360 2630 -330 {lab=#net15}
-N 2750 -360 2750 -330 {lab=Vout_s}
+N 2750 -360 2750 -330 {lab=Vout}
 N 2660 -310 2720 -310 {lab=GND}
-N 2750 -430 2750 -360 {lab=Vout_s}
+N 2750 -430 2750 -360 {lab=Vout}
 N 2630 -430 2630 -360 {lab=#net15}
-N 3100 -430 3220 -430 {lab=Vout_n_buf3}
-N 3220 -440 3220 -430 {lab=Vout_n_buf3}
+N 3100 -430 3220 -430 {lab=Vout_n}
+N 3220 -440 3220 -430 {lab=Vout_n}
 N 3280 -440 3280 -430 {lab=#net16}
-N 3190 -360 3190 -330 {lab=Vout_n_buf3}
+N 3190 -360 3190 -330 {lab=Vout_n}
 N 3310 -360 3310 -330 {lab=#net16}
 N 3220 -310 3280 -310 {lab=GND}
-N 3190 -430 3190 -360 {lab=Vout_n_buf3}
+N 3190 -430 3190 -360 {lab=Vout_n}
 N 3310 -430 3310 -360 {lab=#net16}
 N 3280 -430 3420 -430 {lab=#net16}
-N 3100 -380 3100 -300 {lab=Vout_n_buf3}
-N 2840 -380 2840 -300 {lab=Vout_s}
+N 3100 -380 3100 -300 {lab=Vout_n}
+N 2840 -380 2840 -300 {lab=Vout}
 N 2840 -220 3100 -220 {lab=Ibias5}
 N 2840 -270 3100 -270 {lab=GND}
 N 3210 -120 3420 -120 {lab=Ibias6}
@@ -275,9 +275,9 @@ N 2730 -120 2790 -120 {lab=Ibias6}
 N 3150 -120 3210 -120 {lab=Ibias6}
 N 2880 -560 3060 -560 {lab=#net17}
 N 2960 -560 2960 -520 {lab=#net17}
-N 2840 -520 2870 -520 {lab=Vout_s}
+N 2840 -520 2870 -520 {lab=Vout}
 N 2930 -520 2970 -520 {lab=#net17}
-N 3070 -520 3100 -520 {lab=Vout_n_buf3}
+N 3070 -520 3100 -520 {lab=Vout_n}
 N 2970 -520 3010 -520 {lab=#net17}
 N 2900 -540 3040 -540 {lab=GND}
 N 2840 -590 2840 -560 {lab=VDD}
@@ -292,11 +292,11 @@ N 1420 -920 1430 -920 {lab=GND}
 N 1020 -850 1100 -850 {lab=Vbn}
 N 2100 -720 2260 -720 {lab=Vf_n}
 N 2500 -720 2660 -720 {lab=Vf}
-N 1960 -750 2060 -750 {lab=Vout_n_buf3}
+N 1960 -750 2060 -750 {lab=Vout_n}
 N 2060 -720 2060 -690 {lab=Vf_n}
 N 2060 -690 2100 -690 {lab=Vf_n}
 N 2100 -720 2100 -690 {lab=Vf_n}
-N 2360 -750 2460 -750 {lab=Vout_s}
+N 2360 -750 2460 -750 {lab=Vout}
 N 2460 -720 2460 -690 {lab=Vf}
 N 2460 -690 2500 -690 {lab=Vf}
 N 2500 -720 2500 -690 {lab=Vf}
@@ -305,7 +305,7 @@ N 1440 -150 1470 -150 {lab=GND}
 N 2080 -270 2080 -180 {lab=#net13}
 N 2050 -150 2080 -150 {lab=GND}
 N 1240 -1080 1380 -1080 {lab=Vbn}
-C {code_shown.sym} 750 240 0 0 {name=s1 only_toplevel=false spice_ignore=true value="
+C {code_shown.sym} 750 240 0 0 {name=s1 only_toplevel=true spice_ignore=true value="
 .include /foss/pdks/gf180mcuD/libs.tech/ngspice/design.ngspice
 .lib /foss/pdks/gf180mcuD/libs.tech/ngspice/sm141064.ngspice ss
 .lib /foss/pdks/gf180mcuD/libs.tech/ngspice/sm141064.ngspice bjt_ss
@@ -422,7 +422,7 @@ C {gnd.sym} 640 -270 0 0 {name=l14 lab=GND}
 C {gnd.sym} 200 -150 3 1 {name=l18 lab=GND}
 C {gnd.sym} 330 -560 0 1 {name=l43 lab=GND}
 C {gnd.sym} 920 -560 0 1 {name=l44 lab=GND}
-C {code_shown.sym} -750 190 0 0 {name=s2 only_toplevel=false spice_ignore=true value="
+C {code_shown.sym} -750 190 0 0 {name=s2 only_toplevel=true spice_ignore=true value="
 .include /foss/pdks/gf180mcuD/libs.tech/ngspice/design.ngspice
 .lib /foss/pdks/gf180mcuD/libs.tech/ngspice/sm141064.ngspice ss
 .lib /foss/pdks/gf180mcuD/libs.tech/ngspice/sm141064.ngspice bjt_ss
@@ -468,18 +468,30 @@ print mean(v5#branch)
 .endc
 "
 }
-C {code_shown.sym} 2170 360 0 0 {name=s3 only_toplevel=false spice_ignore=false value="
+C {code_shown.sym} 2170 360 0 0 {name=s3 only_toplevel=true spice_ignore=false value="
 .include /foss/pdks/gf180mcuD/libs.tech/ngspice/design.ngspice
-.lib /foss/pdks/gf180mcuD/libs.tech/ngspice/sm141064.ngspice ff
-.lib /foss/pdks/gf180mcuD/libs.tech/ngspice/sm141064.ngspice bjt_ff
-.lib /foss/pdks/gf180mcuD/libs.tech/ngspice/sm141064.ngspice diode_ff
-.lib /foss/pdks/gf180mcuD/libs.tech/ngspice/sm141064.ngspice res_ff
-.lib /foss/pdks/gf180mcuD/libs.tech/ngspice/sm141064.ngspice mimcap_ff
-.lib /foss/pdks/gf180mcuD/libs.tech/ngspice/sm141064.ngspice moscap_ff
+.lib /foss/pdks/gf180mcuD/libs.tech/ngspice/sm141064.ngspice typical
+.lib /foss/pdks/gf180mcuD/libs.tech/ngspice/sm141064.ngspice bjt_typical
+.lib /foss/pdks/gf180mcuD/libs.tech/ngspice/sm141064.ngspice diode_typical
+.lib /foss/pdks/gf180mcuD/libs.tech/ngspice/sm141064.ngspice res_typical
+.lib /foss/pdks/gf180mcuD/libs.tech/ngspice/sm141064.ngspice mimcap_typical
+.lib /foss/pdks/gf180mcuD/libs.tech/ngspice/sm141064.ngspice moscap_typical
 .option method=gear
 
+VDD_src VDD 0 DC 3.3
+* GND_src GND 0 DC 0
+Vin_src Vin 0 DC 1.65 AC 10m 0
+Vin_n_src Vin_n 0 DC 1.65 AC 10m 180
+
+VCP5_src Vcp_5 0 DC 3.3
+VCP4_src Vcp_4 0 DC 3.3
+VCP3_src Vcp_3 0 DC 3.3
+VCP2_src Vcp_2 0 DC 3.3
+VCP1_src Vcp_1 0 DC 3.3
+VCP0_src Vcp_0 0 DC 3.3
+
 .control
-set temp = 85
+set temp = 25
   * 1. Setup the sweep parameters
   let v_ctrl = 3.3
 
@@ -496,8 +508,8 @@ set temp = 85
   * 4. Calculate Differential Gain in dB
   * Formula: 20 * log10(|Vout_diff| / |Vin_diff|)
   let vin_mag = mag(v(vin) - v(vin_n))
-  let vout_s_mag = mag(v(vout_s))
-  let vout_buf_mag = mag(v(vout_s) - v(vout_n_buf3))
+  let vout_s_mag = mag(v(vout))
+  let vout_buf_mag = mag(v(vout) - v(vout_n))
   let vout_s_gain = 20 * log10(vout_s_mag / vin_mag)
   let vout_buf_gain = 20 * log10(vout_buf_mag / vin_mag)
 
@@ -1185,8 +1197,6 @@ spiceprefix=X
 }
 C {lab_pin.sym} 2970 -650 0 0 {name=p67 sig_type=std_logic lab=VDD
 }
-C {lab_pin.sym} 3070 -430 2 1 {name=p69 sig_type=std_logic lab=Vout_n_buf3
-}
 C {lab_pin.sym} 3460 -150 0 1 {name=p70 sig_type=std_logic lab=Vout_n_buf2
 }
 C {lab_pin.sym} 2460 -150 0 0 {name=p71 sig_type=std_logic lab=Vout_buf2
@@ -1407,9 +1417,9 @@ spiceprefix=X
 C {vsource.sym} 1420 -950 0 1 {name=V20 value=0 savecurrent=false}
 C {lab_wire.sym} 1420 -920 2 0 {name=p86 sig_type=std_logic lab=GND}
 C {lab_wire.sym} 1420 -1040 0 1 {name=p87 sig_type=std_logic lab=Ibias6}
-C {lab_pin.sym} 2360 -750 0 0 {name=p88 sig_type=std_logic lab=Vout_s}
+C {lab_pin.sym} 2360 -750 0 0 {name=p88 sig_type=std_logic lab=Vout}
 C {lab_pin.sym} 2260 -720 0 1 {name=p89 sig_type=std_logic lab=Vf_n}
-C {lab_pin.sym} 1960 -750 0 0 {name=p90 sig_type=std_logic lab=Vout_n_buf3}
+C {lab_pin.sym} 1960 -750 0 0 {name=p90 sig_type=std_logic lab=Vout_n}
 C {lab_pin.sym} 2660 -720 0 1 {name=p91 sig_type=std_logic lab=Vf}
 C {symbols/nfet_03v3.sym} 2080 -720 0 1 {name=M54
 L=0.28u
@@ -1539,6 +1549,15 @@ C {ipin.sym} 640 -650 0 0 {name=p9 lab=VDD
 }
 C {ipin.sym} 130 -150 0 0 {name=p12 lab=Vin}
 C {ipin.sym} 1130 -150 0 1 {name=p19 lab=Vin_n}
-C {opin.sym} 2870 -430 0 0 {name=p22 lab=Vout_s
+C {opin.sym} 2870 -430 0 0 {name=p22 lab=Vout
 }
 C {ipin.sym} 740 -740 0 0 {name=p2 lab=GND}
+C {opin.sym} 3070 -430 0 1 {name=p23 lab=Vout_n
+}
+C {capa-2.sym} 2870 -400 0 0 {name=C2
+m=1
+value=150f
+footprint=1206
+only_toplevel=true
+device=polarized_capacitor}
+C {gnd.sym} 2870 -370 0 0 {name=l3 lab=GND}

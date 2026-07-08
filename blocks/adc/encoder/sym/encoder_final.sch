@@ -9,13 +9,13 @@ N 350 -950 380 -950 {lab=GND}
 N 350 -990 380 -990 {lab=VDD}
 N 1010 -1690 1010 -1660 {lab=VDD}
 N 1010 -280 1010 -260 {lab=GND}
-N 820 -1610 860 -1610 {lab=CLK_PRE}
+N 820 -1610 860 -1610 {lab=CLK_EVAL}
 N 720 -1580 720 -330 {lab=wl[62:0]
 bus=true}
 N 680 -990 720 -990 {lab=wl[62:0]
 bus=true}
 N 730 -1590 860 -1590 {lab=wl[0]}
-N 700 -1610 820 -1610 {lab=CLK_PRE}
+N 700 -1610 820 -1610 {lab=CLK_EVAL}
 N 730 -1570 860 -1570 {lab=wl[1]}
 N 730 -1550 860 -1550 {lab=wl[2]}
 N 730 -1530 860 -1530 {lab=wl[3]}
@@ -46,7 +46,6 @@ N 730 -1050 860 -1050 {lab=wl[27]}
 N 730 -1030 860 -1030 {lab=wl[28]}
 N 730 -1010 860 -1010 {lab=wl[29]}
 N 730 -990 860 -990 {lab=wl[30]}
-N 730 -970 860 -970 {lab=wl[31]}
 N 730 -950 860 -950 {lab=wl[32]}
 N 730 -930 860 -930 {lab=wl[33]}
 N 730 -910 860 -910 {lab=wl[34]}
@@ -97,6 +96,10 @@ N 1450 -1630 1510 -1630 {lab=CLK_EVAL}
 N 1450 -1590 1500 -1590 {lab=GND}
 N 1800 -1670 1830 -1670 {lab=b_out[5:0]
 bus=true}
+N 730 -970 860 -970 {lab=#net1}
+N 690 -930 730 -970 {lab=#net1}
+N 330 -930 690 -930 {lab=#net1}
+N 300 -960 330 -930 {lab=#net1}
 C {bus_connect_nolab.sym} 720 -1580 0 0 {name=r2}
 C {ipin.sym} 277.5 -969.7436562655409 0 0 {name=p1 lab=comp[0:62]}
 C {lab_wire.sym} 360 -990 0 0 {name=p3 sig_type=std_logic lab=VDD}
@@ -142,7 +145,6 @@ C {bus_connect_nolab.sym} 720 -1040 0 0 {name=r34}
 C {bus_connect_nolab.sym} 720 -1020 0 0 {name=r35}
 C {bus_connect_nolab.sym} 720 -1000 0 0 {name=r36}
 C {bus_connect_nolab.sym} 720 -980 0 0 {name=r37}
-C {bus_connect_nolab.sym} 720 -960 0 0 {name=r38}
 C {bus_connect_nolab.sym} 720 -940 0 0 {name=r39}
 C {bus_connect_nolab.sym} 720 -920 0 0 {name=r40}
 C {bus_connect_nolab.sym} 720 -900 0 0 {name=r41}
@@ -195,7 +197,6 @@ C {lab_wire.sym} 800 -1050 0 0 {name=p41 sig_type=std_logic lab=wl[27]}
 C {lab_wire.sym} 800 -1030 0 0 {name=p42 sig_type=std_logic lab=wl[28]}
 C {lab_wire.sym} 800 -1010 0 0 {name=p43 sig_type=std_logic lab=wl[29]}
 C {lab_wire.sym} 800 -990 0 0 {name=p44 sig_type=std_logic lab=wl[30]}
-C {lab_wire.sym} 800 -970 0 0 {name=p45 sig_type=std_logic lab=wl[31]}
 C {lab_wire.sym} 800 -950 0 0 {name=p46 sig_type=std_logic lab=wl[32]}
 C {lab_wire.sym} 800 -930 0 0 {name=p47 sig_type=std_logic lab=wl[33]}
 C {lab_wire.sym} 800 -910 0 0 {name=p48 sig_type=std_logic lab=wl[34]}
@@ -253,3 +254,5 @@ C {blocks/adc/encoder/sym/tm_to_bin2.sym} 530 -970 0 0 {name=x1}
 C {blocks/adc/encoder/sym/ROM2.sym} 1010 -970 0 0 {name=x2}
 C {blocks/adc/encoder/sym/dff_encoder.sym} 1650 -1630 0 0 {name=x4[5:0]}
 C {lab_wire.sym} 740 -1610 0 0 {name=p6 sig_type=std_logic lab=CLK_EVAL}
+C {bus_connect_nolab.sym} 290 -970 2 1 {name=r38}
+C {lab_wire.sym} 800 -970 0 0 {name=p7 sig_type=std_logic lab=comp[31]}
