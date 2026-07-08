@@ -159,7 +159,7 @@ C {gnd.sym} 620 190 0 0 {name=l3 lab=0}
 C {symbols/pfet_03v3.sym} 890 -110 0 0 {name=M7
 L=0.28u
 W=45u
-nf=1
+nf=15
 m=1
 ad="'int((nf+1)/2) * W/nf * 0.18u'"
 pd="'2*int((nf+1)/2) * (W/nf + 0.18u)'"
