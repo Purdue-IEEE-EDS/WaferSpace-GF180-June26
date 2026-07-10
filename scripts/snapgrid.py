@@ -13,6 +13,12 @@ TOUCH_ALL_LAYERS = True  # To ignore the above list and just snap all layers to 
 ROUNDING = 5  # in dbu, so 5 == 0.005um
 
 
+# References: https://www.klayout.de/forum/discussion/1467/iterating-through-layers-with-particular-name
+# https://www.klayout.de/doc-qt5/code/class_Shapes.html#method23
+# https://www.klayout.org/klayout-pypi/overview/shapes/
+# https://www.klayout.de/forum/discussion/1361/python-code-equivalent-of-converting-all-cells-to-static
+
+
 def point_needs_rounding(pt, u = ROUNDING):
     return pt.x % u or pt.y % u
 
