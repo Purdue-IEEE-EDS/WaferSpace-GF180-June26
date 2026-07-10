@@ -3,12 +3,14 @@
 
 // Parallel DDS datapath wrapper.
 //
-// Each lane processes one finished phase sample in the slow vector domain.
+// Each lane processes one finished carry-save phase sample in the slow vector
+// domain.
 // In the intended 4:1 build, this clock runs at 125 MHz while the serializer
 // runs at 500 MHz.
 // The scalar datapath remains the per-lane implementation and contributes
-// 8 registered clk_vec stages per lane:
-//   phase_vec sampled on edge N -> dac_{i,q}_vec valid just after edge N+7.
+// 12 registered clk_vec stages per lane:
+//   {phase_s_vec, phase_c_vec} sampled on edge N -> dac_{i,q}_vec valid just
+//   after edge N+11.
 module dds_datapath_vec #(
     parameter int PHASE_W        = 32,
     parameter int SINE_TRUNC_W   = 14,
@@ -21,7 +23,8 @@ module dds_datapath_vec #(
 ) (
     input  logic                          clk,
     input  logic                          rst_n,
-    input  logic [LANES-1:0][PHASE_W-1:0] phase_vec,
+    input  logic [LANES-1:0][PHASE_W-1:0] phase_s_vec,
+    input  logic [LANES-1:0][PHASE_W-1:0] phase_c_vec,
     input  logic                          out_enable,
     output wire [LANES-1:0][DAC_SW_W-1:0] dac_i_vec,
     output wire [LANES-1:0][DAC_SW_W-1:0] dac_q_vec
@@ -47,8 +50,8 @@ module dds_datapath_vec #(
             ) u_lane (
                 .clk        (clk),
                 .rst_n      (rst_n),
-                .phi_s      (phase_vec[lane]),
-                .phi_c      ({PHASE_W{1'b0}}),
+                .phi_s      (phase_s_vec[lane]),
+                .phi_c      (phase_c_vec[lane]),
                 .out_enable (out_enable),
                 .dac_i      (dac_i_vec[lane]),
                 .dac_q      (dac_q_vec[lane])

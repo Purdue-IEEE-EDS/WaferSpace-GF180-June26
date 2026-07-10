@@ -43,7 +43,9 @@ module freq_runner #(
     output logic                  phase_reset_req,
     output logic [PHASE_W-1:0]    dp_s,
     output logic [PHASE_W-1:0]    dp_c,
+`ifndef SYNTHESIS
     output logic [PHASE_W-1:0]    ftw_lane0,
+`endif
     output logic [PHASE_W-1:0]    ftw_step_now,
     output logic                  run_active,
     output logic                  segment_done,
@@ -76,7 +78,9 @@ module freq_runner #(
     localparam int LANES_LOG2 = (LANES > 1) ? $clog2(LANES) : 0;
 
     // Visible FTW state: lane 0 / base FTW for the current emitted block.
+`ifndef SYNTHESIS
     assign ftw_lane0 = dp_s + dp_c;
+`endif
 
     always_comb begin
         ftw_step_now = {PHASE_W{1'b0}};

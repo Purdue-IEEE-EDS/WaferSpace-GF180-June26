@@ -24,6 +24,7 @@ module tb_phase_accum;
         .out_enable     (out_enable),
         .phase_reset_req(phase_reset_req),
         .ftw_now        (ftw_now),
+        .ftw_c_now      ({PHASE_W{1'b0}}),
         .ftw_step_now   (ftw_step_now),
         .phase_vec      (phase_vec),
         .valid_vec      (valid_vec)
@@ -76,27 +77,34 @@ module tb_phase_accum;
         for (lane = 0; lane < LANES; lane = lane + 1)
             check_phase(lane, 32'd0, "post-reset phases");
 
-        // Disabled: phase_base holds even if FTW inputs move.
+        // Disabled: phase_base holds even if FTW inputs move. Lane outputs are
+        // registered behind the timing handoff, so changed inputs are visible
+        // after the second edge.
         ftw_now      <= 32'd100;
         ftw_step_now <= 32'd25;
-        #1;
+        tick(1);
         check_accum(32'd0, "disabled hold accum");
-        check_phase(0, 32'd0,   "disabled hold lane0");
-        check_phase(1, 32'd100, "disabled hold lane1");
-        check_phase(2, 32'd225, "disabled hold lane2");
-        check_phase(3, 32'd375, "disabled hold lane3");
+        check_phase(0, 32'd0, "disabled handoff lane0");
+        check_phase(1, 32'd0, "disabled handoff lane1");
+        check_phase(2, 32'd0, "disabled handoff lane2");
+        check_phase(3, 32'd0, "disabled handoff lane3");
         if (valid_vec !== 4'b0000) begin
             $display("FAIL [disabled hold valid]: valid_vec=%b exp=0000", valid_vec);
             err_count = err_count + 1;
         end
         tick(1);
         check_accum(32'd0, "disabled hold accum after tick");
+        check_phase(0, 32'd0,   "disabled hold lane0");
+        check_phase(1, 32'd100, "disabled hold lane1");
+        check_phase(2, 32'd225, "disabled hold lane2");
+        check_phase(3, 32'd375, "disabled hold lane3");
 
         // Constant FTW block expansion.
         out_enable   <= 1'b1;
         ftw_now      <= 32'd100;
         ftw_step_now <= 32'd0;
-        #1;
+        tick(1);
+        tick(1);
         check_phase(0, 32'd0,   "const lane0");
         check_phase(1, 32'd100, "const lane1");
         check_phase(2, 32'd200, "const lane2");
@@ -105,8 +113,9 @@ module tb_phase_accum;
             $display("FAIL [const valid]: valid_vec=%b exp=1111", valid_vec);
             err_count = err_count + 1;
         end
+        check_accum(32'd400, "const accum advanced");
         tick(1);
-        check_accum(32'd400, "const accum next");
+        check_accum(32'd800, "const accum next");
         check_phase(0, 32'd400, "const next lane0");
         check_phase(1, 32'd500, "const next lane1");
         check_phase(2, 32'd600, "const next lane2");
@@ -118,14 +127,15 @@ module tb_phase_accum;
         phase_reset_req <= 1'b0;
         ftw_now      <= 32'd10;
         ftw_step_now <= 32'd2;
-        #1;
-        check_accum(32'd0, "slope reset accum");
+        tick(1);
+        tick(1);
+        check_accum(32'd52, "slope reset accum");
         check_phase(0, 32'd0,  "slope lane0");
         check_phase(1, 32'd10, "slope lane1");
         check_phase(2, 32'd22, "slope lane2");
         check_phase(3, 32'd36, "slope lane3");
         tick(1);
-        check_accum(32'd52, "slope accum next");
+        check_accum(32'd104, "slope accum next");
         check_phase(0, 32'd52, "slope next lane0");
         check_phase(1, 32'd62, "slope next lane1");
         check_phase(2, 32'd74, "slope next lane2");
@@ -137,13 +147,14 @@ module tb_phase_accum;
         phase_reset_req <= 1'b0;
         ftw_now      <= 32'd40;
         ftw_step_now <= -32'd5;
-        #1;
+        tick(1);
+        tick(1);
         check_phase(0, 32'd0,   "neg lane0");
         check_phase(1, 32'd40,  "neg lane1");
         check_phase(2, 32'd75,  "neg lane2");
         check_phase(3, 32'd105, "neg lane3");
         tick(1);
-        check_accum(32'd130, "neg accum next");
+        check_accum(32'd260, "neg accum next");
 
         $display("========================================");
         if (err_count == 0) $display("ALL TESTS PASSED");

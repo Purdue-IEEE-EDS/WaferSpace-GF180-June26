@@ -7,19 +7,23 @@
 // the DAC at midscale until the first launch event.
 //
 // Timing contract in the clk_vec domain:
-//   - A phase sample captured on edge N reaches dac_i/dac_q just after edge N+7.
-//   - That is 8 registered stages, or 7 full clk_vec intervals.
+//   - A phase sample captured on edge N reaches dac_i/dac_q just after edge N+11.
+//   - That is 12 registered stages, or 11 full clk_vec intervals.
 //   - dds_top then adds serializer latency before the word reaches the DAC pins.
 //
 // Registered stages:
 //   S0a  lower-slice carry_out + upper-slice register
-//   S0b  upper CPA + lower-carry select    -> phi_trunc_sine
+//   S0b  upper CPA
+//   S0c  lower-carry increment/select      -> phi_trunc_sine
 //   S1   coarse/fraction/sign register
 //   S2   shared sin/cos ROM read
-//   S3   interpolation + BASE_W rounding
-//   S4   guard-bit rounding + fold swap    -> mag_{i,q}_2
-//   S5   dac_encoder                       -> sw_pos_{i,q}_r
-//   S6   sign XOR + enable mux             -> dac_{i,q}
+//   S3a  interpolation multiply bit partials
+//   S3b  interpolation multiply pair sums
+//   S3c  interpolation multiply final sum
+//   S4   interpolation add + BASE_W rounding
+//   S5   guard-bit rounding + fold swap    -> mag_{i,q}_2
+//   S6   dac_encoder                       -> sw_pos_{i,q}_r
+//   S7   sign XOR + enable mux             -> dac_{i,q}
 
 module dds_datapath #(
     parameter int PHASE_W        = 32,
@@ -84,15 +88,25 @@ module dds_datapath #(
         end
     end
 
-    // S0b: upper CPA + lower-carry select -> phi_trunc_sine.
-    logic [SINE_TRUNC_W-1:0] upper_0;
-    logic [SINE_TRUNC_W-1:0] upper_1;
+    // S0b/S0c: upper CPA, then lower-carry increment -> phi_trunc_sine.
+    logic [SINE_TRUNC_W-1:0] upper_sum;
+    logic [SINE_TRUNC_W-1:0] upper_sum_r;
+    logic                    lo_carry_2;
     logic [SINE_TRUNC_W-1:0] phi_upper;
     logic [SINE_TRUNC_W-1:0] phi_trunc_sine;
 
-    assign upper_0   = phi_s_up_r + phi_c_up_r;
-    assign upper_1   = upper_0 + SINE_TRUNC_W'(1);
-    assign phi_upper = lo_carry_r ? upper_1 : upper_0;
+    assign upper_sum = phi_s_up_r + phi_c_up_r;
+    assign phi_upper = upper_sum_r + SINE_TRUNC_W'(lo_carry_2);
+
+    always_ff @(posedge clk or negedge rst_n) begin
+        if (!rst_n) begin
+            upper_sum_r <= '0;
+            lo_carry_2  <= 1'b0;
+        end else begin
+            upper_sum_r <= upper_sum;
+            lo_carry_2  <= lo_carry_r;
+        end
+    end
 
     always_ff @(posedge clk or negedge rst_n) begin
         if (!rst_n) phi_trunc_sine <= '0;
@@ -165,12 +179,14 @@ module dds_datapath #(
         end
     end
 
+`ifndef SYNTHESIS
     // TB probe, not on the functional path.
     logic [PHASE_W-1:0] phi_binary;
     always_ff @(posedge clk or negedge rst_n) begin
         if (!rst_n) phi_binary <= '0;
         else        phi_binary <= phi_s + phi_c;
     end
+`endif
 
 endmodule
 

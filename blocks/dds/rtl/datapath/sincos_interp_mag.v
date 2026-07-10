@@ -5,14 +5,17 @@
 //
 // Timing contract:
 //   - A phase_i sample captured at S1 on edge N reaches
-//     {mag_i, mag_q, sign_i, sign_q, valid_o} just after edge N+3.
-//   - That is 4 registered stages, or 3 full clk intervals.
+//     {mag_i, mag_q, sign_i, sign_q, valid_o} just after edge N+6.
+//   - That is 7 registered stages, or 6 full clk intervals.
 //
 // Registered stages:
 //   S1: coarse/fraction/sign register
 //   S2: shared sin/cos ROM read
-//   S3: interpolation + BASE_W rounding
-//   S4: guard-bit rounding, fold swap, sign output
+//   S3a: slope * fraction bit partials
+//   S3b: partial-product pair sums
+//   S3c: final product sum
+//   S4: interpolation add + BASE_W rounding
+//   S5: guard-bit rounding, fold swap, sign output
 module sincos_interp_mag #(
     parameter int SINE_TRUNC_W = 14,
     parameter int MAG_W        = 9,
@@ -61,25 +64,55 @@ module sincos_interp_mag #(
     logic              sign_q_2;
     logic              valid_2;
 
-    logic signed [FRAC_W:0] frac_2_signed;
-    logic signed [PROD_W-1:0] sin_prod;
-    logic signed [PROD_W-1:0] cos_prod;
-    logic signed [ACC_W-1:0]  sin_prod_acc;
-    logic signed [ACC_W-1:0]  cos_prod_acc;
-    logic signed [ACC_W-1:0]  sin_base_acc;
-    logic signed [ACC_W-1:0]  cos_base_acc;
-    logic signed [ACC_W-1:0]  sin_acc;
-    logic signed [ACC_W-1:0]  cos_acc;
+    localparam int PROD_PAIR_N = (FRAC_W + 1) / 2;
 
-    logic [BASE_W-1:0] sin_ext_3;
-    logic [BASE_W-1:0] cos_ext_3;
+    logic signed [PROD_W-1:0] sin_part_3 [FRAC_W];
+    logic signed [PROD_W-1:0] cos_part_3 [FRAC_W];
+    logic [BASE_W-1:0]        sin_base_3;
+    logic [BASE_W-1:0]        cos_base_3;
     logic              fold_3;
     logic              sign_i_3;
     logic              sign_q_3;
     logic              valid_3;
 
-    logic [MAG_W-1:0] sin_mag_3;
-    logic [MAG_W-1:0] cos_mag_3;
+    logic signed [PROD_W-1:0] sin_pair_4 [PROD_PAIR_N];
+    logic signed [PROD_W-1:0] cos_pair_4 [PROD_PAIR_N];
+    logic signed [PROD_W-1:0] sin_pair_next [PROD_PAIR_N];
+    logic signed [PROD_W-1:0] cos_pair_next [PROD_PAIR_N];
+    logic [BASE_W-1:0] sin_base_4;
+    logic [BASE_W-1:0] cos_base_4;
+    logic              fold_4;
+    logic              sign_i_4;
+    logic              sign_q_4;
+    logic              valid_4;
+
+    logic signed [PROD_W-1:0] sin_prod_5;
+    logic signed [PROD_W-1:0] cos_prod_5;
+    logic signed [PROD_W-1:0] sin_prod_next;
+    logic signed [PROD_W-1:0] cos_prod_next;
+    logic [BASE_W-1:0] sin_base_5;
+    logic [BASE_W-1:0] cos_base_5;
+    logic              fold_5;
+    logic              sign_i_5;
+    logic              sign_q_5;
+    logic              valid_5;
+
+    logic signed [ACC_W-1:0] sin_prod_acc_5;
+    logic signed [ACC_W-1:0] cos_prod_acc_5;
+    logic signed [ACC_W-1:0] sin_base_acc_5;
+    logic signed [ACC_W-1:0] cos_base_acc_5;
+    logic signed [ACC_W-1:0] sin_acc_5;
+    logic signed [ACC_W-1:0] cos_acc_5;
+
+    logic [BASE_W-1:0] sin_ext_6;
+    logic [BASE_W-1:0] cos_ext_6;
+    logic              fold_6;
+    logic              sign_i_6;
+    logic              sign_q_6;
+    logic              valid_6;
+
+    logic [MAG_W-1:0] sin_mag_6;
+    logic [MAG_W-1:0] cos_mag_6;
 
     initial begin
         if (SINE_TRUNC_W < 4)
@@ -146,6 +179,18 @@ module sincos_interp_mag #(
         end
     endfunction
 
+    function automatic logic signed [PROD_W-1:0] slope_frac_bit(
+        input logic signed [SLOPE_W-1:0] slope,
+        input logic frac_bit,
+        input int bit_idx
+    );
+        logic signed [PROD_W-1:0] slope_ext;
+        begin
+            slope_ext = {{(PROD_W-SLOPE_W){slope[SLOPE_W-1]}}, slope};
+            slope_frac_bit = frac_bit ? (slope_ext <<< bit_idx) : '0;
+        end
+    endfunction
+
     phase_to_sincos_interp #(
         .SINE_TRUNC_W (SINE_TRUNC_W),
         .COARSE_W     (COARSE_W),
@@ -207,36 +252,133 @@ module sincos_interp_mag #(
         end
     end
 
-    assign frac_2_signed = $signed({1'b0, frac_2});
-    assign sin_prod      = sin_slope_2 * frac_2_signed;
-    assign cos_prod      = cos_slope_2 * frac_2_signed;
-    assign sin_prod_acc  = sin_prod;
-    assign cos_prod_acc  = cos_prod;
-    assign sin_base_acc  = $signed({1'b0, sin_base_2, {FRAC_W{1'b0}}});
-    assign cos_base_acc  = $signed({1'b0, cos_base_2, {FRAC_W{1'b0}}});
-    assign sin_acc       = sin_base_acc + sin_prod_acc;
-    assign cos_acc       = cos_base_acc + cos_prod_acc;
-
     always_ff @(posedge clk or negedge rst_n) begin
+        integer stage3_idx;
         if (!rst_n) begin
-            sin_ext_3 <= '0;
-            cos_ext_3 <= '0;
-            fold_3    <= 1'b0;
-            sign_i_3  <= 1'b0;
-            sign_q_3  <= 1'b0;
-            valid_3   <= 1'b0;
+            for (stage3_idx = 0; stage3_idx < FRAC_W; stage3_idx = stage3_idx + 1) begin
+                sin_part_3[stage3_idx] <= '0;
+                cos_part_3[stage3_idx] <= '0;
+            end
+            sin_base_3    <= '0;
+            cos_base_3    <= '0;
+            fold_3        <= 1'b0;
+            sign_i_3      <= 1'b0;
+            sign_q_3      <= 1'b0;
+            valid_3       <= 1'b0;
         end else begin
-            sin_ext_3 <= round_clip_base(sin_acc);
-            cos_ext_3 <= round_clip_base(cos_acc);
-            fold_3    <= fold_2;
-            sign_i_3  <= sign_i_2;
-            sign_q_3  <= sign_q_2;
-            valid_3   <= valid_2;
+            for (stage3_idx = 0; stage3_idx < FRAC_W; stage3_idx = stage3_idx + 1) begin
+                sin_part_3[stage3_idx] <= slope_frac_bit(sin_slope_2, frac_2[stage3_idx], stage3_idx);
+                cos_part_3[stage3_idx] <= slope_frac_bit(cos_slope_2, frac_2[stage3_idx], stage3_idx);
+            end
+            sin_base_3    <= sin_base_2;
+            cos_base_3    <= cos_base_2;
+            fold_3        <= fold_2;
+            sign_i_3      <= sign_i_2;
+            sign_q_3      <= sign_q_2;
+            valid_3       <= valid_2;
         end
     end
 
-    assign sin_mag_3 = round_sat_mag(sin_ext_3);
-    assign cos_mag_3 = round_sat_mag(cos_ext_3);
+    always_comb begin
+        integer pair_comb_idx;
+        for (pair_comb_idx = 0; pair_comb_idx < PROD_PAIR_N; pair_comb_idx = pair_comb_idx + 1) begin
+            sin_pair_next[pair_comb_idx] = sin_part_3[pair_comb_idx * 2];
+            cos_pair_next[pair_comb_idx] = cos_part_3[pair_comb_idx * 2];
+            if (((pair_comb_idx * 2) + 1) < FRAC_W) begin
+                sin_pair_next[pair_comb_idx] =
+                    sin_part_3[pair_comb_idx * 2] + sin_part_3[(pair_comb_idx * 2) + 1];
+                cos_pair_next[pair_comb_idx] =
+                    cos_part_3[pair_comb_idx * 2] + cos_part_3[(pair_comb_idx * 2) + 1];
+            end
+        end
+    end
+
+    always_ff @(posedge clk or negedge rst_n) begin
+        integer stage4_idx;
+        if (!rst_n) begin
+            for (stage4_idx = 0; stage4_idx < PROD_PAIR_N; stage4_idx = stage4_idx + 1) begin
+                sin_pair_4[stage4_idx] <= '0;
+                cos_pair_4[stage4_idx] <= '0;
+            end
+            sin_base_4 <= '0;
+            cos_base_4 <= '0;
+            fold_4     <= 1'b0;
+            sign_i_4   <= 1'b0;
+            sign_q_4   <= 1'b0;
+            valid_4    <= 1'b0;
+        end else begin
+            for (stage4_idx = 0; stage4_idx < PROD_PAIR_N; stage4_idx = stage4_idx + 1) begin
+                sin_pair_4[stage4_idx] <= sin_pair_next[stage4_idx];
+                cos_pair_4[stage4_idx] <= cos_pair_next[stage4_idx];
+            end
+            sin_base_4 <= sin_base_3;
+            cos_base_4 <= cos_base_3;
+            fold_4     <= fold_3;
+            sign_i_4   <= sign_i_3;
+            sign_q_4   <= sign_q_3;
+            valid_4    <= valid_3;
+        end
+    end
+
+    always_comb begin
+        integer sum_comb_idx;
+        sin_prod_next = '0;
+        cos_prod_next = '0;
+        for (sum_comb_idx = 0; sum_comb_idx < PROD_PAIR_N; sum_comb_idx = sum_comb_idx + 1) begin
+            sin_prod_next = sin_prod_next + sin_pair_4[sum_comb_idx];
+            cos_prod_next = cos_prod_next + cos_pair_4[sum_comb_idx];
+        end
+    end
+
+    always_ff @(posedge clk or negedge rst_n) begin
+        if (!rst_n) begin
+            sin_prod_5 <= '0;
+            cos_prod_5 <= '0;
+            sin_base_5 <= '0;
+            cos_base_5 <= '0;
+            fold_5    <= 1'b0;
+            sign_i_5  <= 1'b0;
+            sign_q_5  <= 1'b0;
+            valid_5   <= 1'b0;
+        end else begin
+            sin_prod_5 <= sin_prod_next;
+            cos_prod_5 <= cos_prod_next;
+            sin_base_5 <= sin_base_4;
+            cos_base_5 <= cos_base_4;
+            fold_5    <= fold_4;
+            sign_i_5  <= sign_i_4;
+            sign_q_5  <= sign_q_4;
+            valid_5   <= valid_4;
+        end
+    end
+
+    assign sin_prod_acc_5 = sin_prod_5;
+    assign cos_prod_acc_5 = cos_prod_5;
+    assign sin_base_acc_5 = $signed({1'b0, sin_base_5, {FRAC_W{1'b0}}});
+    assign cos_base_acc_5 = $signed({1'b0, cos_base_5, {FRAC_W{1'b0}}});
+    assign sin_acc_5      = sin_base_acc_5 + sin_prod_acc_5;
+    assign cos_acc_5      = cos_base_acc_5 + cos_prod_acc_5;
+
+    always_ff @(posedge clk or negedge rst_n) begin
+        if (!rst_n) begin
+            sin_ext_6 <= '0;
+            cos_ext_6 <= '0;
+            fold_6    <= 1'b0;
+            sign_i_6  <= 1'b0;
+            sign_q_6  <= 1'b0;
+            valid_6   <= 1'b0;
+        end else begin
+            sin_ext_6 <= round_clip_base(sin_acc_5);
+            cos_ext_6 <= round_clip_base(cos_acc_5);
+            fold_6    <= fold_5;
+            sign_i_6  <= sign_i_5;
+            sign_q_6  <= sign_q_5;
+            valid_6   <= valid_5;
+        end
+    end
+
+    assign sin_mag_6 = round_sat_mag(sin_ext_6);
+    assign cos_mag_6 = round_sat_mag(cos_ext_6);
 
     always_ff @(posedge clk or negedge rst_n) begin
         if (!rst_n) begin
@@ -246,11 +388,11 @@ module sincos_interp_mag #(
             sign_q  <= 1'b0;
             valid_o <= 1'b0;
         end else begin
-            mag_i   <= fold_3 ? cos_mag_3 : sin_mag_3;
-            mag_q   <= fold_3 ? sin_mag_3 : cos_mag_3;
-            sign_i  <= sign_i_3;
-            sign_q  <= sign_q_3;
-            valid_o <= valid_3;
+            mag_i   <= fold_6 ? cos_mag_6 : sin_mag_6;
+            mag_q   <= fold_6 ? sin_mag_6 : cos_mag_6;
+            sign_i  <= sign_i_6;
+            sign_q  <= sign_q_6;
+            valid_o <= valid_6;
         end
     end
 

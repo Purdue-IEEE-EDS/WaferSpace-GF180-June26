@@ -20,9 +20,10 @@ module tb_dds_wave_scan_match;
     localparam ROM_DEPTH        = 1 << SINE_COARSE_W;
     localparam PROD_W           = SLOPE_W + SINE_FRAC_W + 1;
     localparam ACC_W            = BASE_W + SINE_FRAC_W + 2;
-    // phase_vec sampled on clk_vec edge N reaches dac_{i,q}_vec just after
-    // edge N+7: 8 registered stages, 7 full clk_vec intervals.
-    localparam PIPE_LATENCY     = 8;
+    // Registered phase_vec sampled by the datapath on clk_vec edge N reaches
+    // dac_{i,q}_vec just after edge N+8: 9 registered stages, 8 full
+    // clk_vec intervals.
+    localparam PIPE_LATENCY     = 9;
     localparam PHASE_BLOCKS   = 16;
     localparam CODE_WARMUP    = 0;
     localparam CODE_SAMPLES   = 1024;
@@ -84,6 +85,9 @@ module tb_dds_wave_scan_match;
     logic [LANES-1:0][PHASE_W-1:0] phase_pipe [0:PIPE_LATENCY-1];
     logic [LANES-1:0][DAC_SW_W-1:0] code_i_pipe [0:PIPE_LATENCY-1];
     logic [LANES-1:0][DAC_SW_W-1:0] code_q_pipe [0:PIPE_LATENCY-1];
+    logic [LANES-1:0][PHASE_W-1:0] ser_phase_vec;
+    logic [LANES-1:0][DAC_SW_W-1:0] ser_code_i_vec;
+    logic [LANES-1:0][DAC_SW_W-1:0] ser_code_q_vec;
 
     logic [1:0] gold_ser_lane;
     logic       gold_load_dout;
@@ -389,10 +393,10 @@ module tb_dds_wave_scan_match;
                                label, block_idx, dut.ftw_step_now, scenario_step));
 
         for (lane = 0; lane < LANES; lane = lane + 1) begin
-            if (dut.phase_vec[lane] !== exp_phase_vec_cur[lane]) begin
+            if (dut.phase_vec[lane] !== phase_pipe[0][lane]) begin
                 fail_msg($sformatf(
                     "%s block %0d lane %0d: phase=%08h exp=%08h",
-                    label, block_idx, lane, dut.phase_vec[lane], exp_phase_vec_cur[lane]
+                    label, block_idx, lane, dut.phase_vec[lane], phase_pipe[0][lane]
                 ));
             end
         end
@@ -515,12 +519,17 @@ module tb_dds_wave_scan_match;
                     code_q_pipe[stage_idx][lane_idx] <= MIDSCALE_SW;
                 end
             end
+            for (lane_idx = 0; lane_idx < LANES; lane_idx = lane_idx + 1) begin
+                ser_phase_vec[lane_idx] <= {PHASE_W{1'b0}};
+                ser_code_i_vec[lane_idx] <= MIDSCALE_SW;
+                ser_code_q_vec[lane_idx] <= MIDSCALE_SW;
+            end
         end else begin
             for (lane_idx = 0; lane_idx < LANES; lane_idx = lane_idx + 1) begin
                 phase_pipe[0][lane_idx] <= exp_phase_vec_cur[lane_idx];
                 if (dut.phase_valid_vec[0]) begin
-                    code_i_pipe[0][lane_idx] <= phase_to_dac_code(exp_phase_vec_cur[lane_idx], 1'b0);
-                    code_q_pipe[0][lane_idx] <= phase_to_dac_code(exp_phase_vec_cur[lane_idx], 1'b1);
+                    code_i_pipe[0][lane_idx] <= phase_to_dac_code(phase_pipe[0][lane_idx], 1'b0);
+                    code_q_pipe[0][lane_idx] <= phase_to_dac_code(phase_pipe[0][lane_idx], 1'b1);
                 end else begin
                     code_i_pipe[0][lane_idx] <= MIDSCALE_SW;
                     code_q_pipe[0][lane_idx] <= MIDSCALE_SW;
@@ -533,6 +542,12 @@ module tb_dds_wave_scan_match;
                     code_i_pipe[stage_idx][lane_idx] <= code_i_pipe[stage_idx-1][lane_idx];
                     code_q_pipe[stage_idx][lane_idx] <= code_q_pipe[stage_idx-1][lane_idx];
                 end
+            end
+
+            for (lane_idx = 0; lane_idx < LANES; lane_idx = lane_idx + 1) begin
+                ser_phase_vec[lane_idx] <= phase_pipe[PIPE_LATENCY-1][lane_idx];
+                ser_code_i_vec[lane_idx] <= code_i_pipe[PIPE_LATENCY-1][lane_idx];
+                ser_code_q_vec[lane_idx] <= code_q_pipe[PIPE_LATENCY-1][lane_idx];
             end
 
             if (dut.phase_reset_req)
@@ -570,20 +585,20 @@ module tb_dds_wave_scan_match;
             gold_load_sh2  <= (gold_ser_lane == 2'd3);
             gold_load_sh3  <= (gold_ser_lane == 2'd3);
 
-            gold_ser_i <= gold_load_dout ? code_i_pipe[PIPE_LATENCY-1][0] : gold_sh1_i;
-            gold_sh1_i <= gold_load_sh1  ? code_i_pipe[PIPE_LATENCY-1][1] : gold_sh2_i;
-            gold_sh2_i <= gold_load_sh2  ? code_i_pipe[PIPE_LATENCY-1][2] : gold_sh3_i;
-            gold_sh3_i <= gold_load_sh3  ? code_i_pipe[PIPE_LATENCY-1][3] : {DAC_SW_W{1'b0}};
+            gold_ser_i <= gold_load_dout ? ser_code_i_vec[0] : gold_sh1_i;
+            gold_sh1_i <= gold_load_sh1  ? ser_code_i_vec[1] : gold_sh2_i;
+            gold_sh2_i <= gold_load_sh2  ? ser_code_i_vec[2] : gold_sh3_i;
+            gold_sh3_i <= gold_load_sh3  ? ser_code_i_vec[3] : {DAC_SW_W{1'b0}};
 
-            gold_ser_q <= gold_load_dout ? code_q_pipe[PIPE_LATENCY-1][0] : gold_sh1_q;
-            gold_sh1_q <= gold_load_sh1  ? code_q_pipe[PIPE_LATENCY-1][1] : gold_sh2_q;
-            gold_sh2_q <= gold_load_sh2  ? code_q_pipe[PIPE_LATENCY-1][2] : gold_sh3_q;
-            gold_sh3_q <= gold_load_sh3  ? code_q_pipe[PIPE_LATENCY-1][3] : {DAC_SW_W{1'b0}};
+            gold_ser_q <= gold_load_dout ? ser_code_q_vec[0] : gold_sh1_q;
+            gold_sh1_q <= gold_load_sh1  ? ser_code_q_vec[1] : gold_sh2_q;
+            gold_sh2_q <= gold_load_sh2  ? ser_code_q_vec[2] : gold_sh3_q;
+            gold_sh3_q <= gold_load_sh3  ? ser_code_q_vec[3] : {DAC_SW_W{1'b0}};
 
-            gold_ser_phase <= gold_load_dout ? phase_pipe[PIPE_LATENCY-1][0] : gold_sh1_phase;
-            gold_sh1_phase <= gold_load_sh1  ? phase_pipe[PIPE_LATENCY-1][1] : gold_sh2_phase;
-            gold_sh2_phase <= gold_load_sh2  ? phase_pipe[PIPE_LATENCY-1][2] : gold_sh3_phase;
-            gold_sh3_phase <= gold_load_sh3  ? phase_pipe[PIPE_LATENCY-1][3] : {PHASE_W{1'b0}};
+            gold_ser_phase <= gold_load_dout ? ser_phase_vec[0] : gold_sh1_phase;
+            gold_sh1_phase <= gold_load_sh1  ? ser_phase_vec[1] : gold_sh2_phase;
+            gold_sh2_phase <= gold_load_sh2  ? ser_phase_vec[2] : gold_sh3_phase;
+            gold_sh3_phase <= gold_load_sh3  ? ser_phase_vec[3] : {PHASE_W{1'b0}};
         end
     end
 

@@ -26,19 +26,24 @@ module serializer_4to1 #(
     output logic                    vec_load
 );
 
+    logic [3:0] lane_oh;
     logic wrap_now;
     logic load_blk;
 
-    assign wrap_now = (ser_lane == 2'd3);
+    assign wrap_now = lane_oh[3];
     assign vec_load = load_blk;
+
+    assign ser_lane = lane_oh[3] ? 2'd3 :
+                      lane_oh[2] ? 2'd2 :
+                      lane_oh[1] ? 2'd1 : 2'd0;
 
     // Only reset the tiny global control state.
     always_ff @(posedge clk_ser) begin
         if (!rst_n) begin
-            ser_lane <= 2'd0;
+            lane_oh  <= 4'b0001;
             load_blk <= 1'b1;
         end else begin
-            ser_lane <= ser_lane + 2'd1;
+            lane_oh  <= {lane_oh[2:0], lane_oh[3]};
             load_blk <= wrap_now;
         end
     end

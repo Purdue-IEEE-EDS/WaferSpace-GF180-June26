@@ -25,10 +25,9 @@ module cal_dac_scan #(
 );
 
     localparam integer TOTAL_W    = N_CELLS * CELL_W;
-    localparam integer CELL_IDX_W = (N_CELLS <= 1) ? 1 : $clog2(N_CELLS);
-    localparam integer BIT_IDX_W  = (CELL_W  <= 1) ? 1 : $clog2(CELL_W);
     localparam integer WAIT_W     = (SHIFT_CYCLES <= 1) ? 1 : $clog2(SHIFT_CYCLES);
     localparam integer START_BIT  = (N_CELLS - 1) * CELL_W;
+    localparam integer SHIFT_IDX_W = (TOTAL_W <= 1) ? 1 : $clog2(TOTAL_W);
 
     typedef enum logic [3:0] {
         ST_IDLE,
@@ -44,22 +43,24 @@ module cal_dac_scan #(
 
     state_t state;
 
-    logic [TOTAL_W-1:0] frame_latched;
-    logic [CELL_IDX_W-1:0] cell_idx;
-    logic [BIT_IDX_W-1:0]  bit_idx;
+    logic [TOTAL_W-1:0]    scan_load_word;
+    logic [TOTAL_W-1:0]    scan_shift;
+    logic [SHIFT_IDX_W-1:0] shift_idx;
     logic [WAIT_W-1:0]     wait_cnt;
-    logic [CELL_IDX_W-1:0] next_cell_idx;
-    logic [BIT_IDX_W-1:0]  next_bit_idx;
 
     assign busy = (state != ST_IDLE);
-    always_comb begin
-        next_cell_idx = cell_idx;
-        next_bit_idx  = bit_idx + BIT_IDX_W'(1);
-        if (bit_idx == BIT_IDX_W'(CELL_W - 1)) begin
-            next_cell_idx = cell_idx - CELL_IDX_W'(1);
-            next_bit_idx  = '0;
+
+    genvar load_cell;
+    genvar load_bit;
+    generate
+        for (load_cell = 0; load_cell < N_CELLS; load_cell = load_cell + 1) begin : g_scan_cell
+            for (load_bit = 0; load_bit < CELL_W; load_bit = load_bit + 1) begin : g_scan_bit
+                localparam integer DST = (load_cell * CELL_W) + load_bit;
+                localparam integer SRC = ((N_CELLS - 1 - load_cell) * CELL_W) + load_bit;
+                assign scan_load_word[DST] = frame_data[SRC];
+            end
         end
-    end
+    endgenerate
 
     cal_dac_chain #(
         .N_CELLS    (N_CELLS),
@@ -77,9 +78,8 @@ module cal_dac_scan #(
     always_ff @(posedge clk or negedge rst_n) begin
         if (!rst_n) begin
             state         <= ST_IDLE;
-            frame_latched <= '0;
-            cell_idx      <= '0;
-            bit_idx       <= '0;
+            shift_idx     <= '0;
+            scan_shift    <= '0;
             wait_cnt      <= '0;
             cal_clk       <= 1'b0;
             cal_load      <= 1'b0;
@@ -92,9 +92,8 @@ module cal_dac_scan #(
                 ST_IDLE: begin
                     wait_cnt <= '0;
                     if (start) begin
-                        frame_latched <= frame_data;
-                        cell_idx      <= CELL_IDX_W'(N_CELLS - 1);
-                        bit_idx       <= '0;
+                        shift_idx     <= '0;
+                        scan_shift    <= {1'b0, scan_load_word[TOTAL_W-1:1]};
                         cal_data      <= frame_data[START_BIT];
                         state         <= ST_SHIFT_WAIT;
                     end
@@ -111,7 +110,7 @@ module cal_dac_scan #(
 
                 ST_SHIFT_PULSE: begin
                     cal_clk <= 1'b1;
-                    if (cell_idx == '0 && bit_idx == BIT_IDX_W'(CELL_W - 1)) begin
+                    if (shift_idx == SHIFT_IDX_W'(TOTAL_W - 1)) begin
                         state <= ST_LOAD_WAIT_0;
                     end else begin
                         state <= ST_SHIFT_HOLD;
@@ -123,11 +122,11 @@ module cal_dac_scan #(
                 end
 
                 ST_SHIFT_ADVANCE: begin
-                    wait_cnt  <= '0;
-                    cell_idx  <= next_cell_idx;
-                    bit_idx   <= next_bit_idx;
-                    cal_data  <= frame_latched[(next_cell_idx * CELL_W) + next_bit_idx];
-                    state     <= ST_SHIFT_WAIT;
+                    wait_cnt   <= '0;
+                    shift_idx  <= shift_idx + SHIFT_IDX_W'(1);
+                    cal_data   <= scan_shift[0];
+                    scan_shift <= {1'b0, scan_shift[TOTAL_W-1:1]};
+                    state      <= ST_SHIFT_WAIT;
                 end
 
                 ST_LOAD_WAIT_0: begin

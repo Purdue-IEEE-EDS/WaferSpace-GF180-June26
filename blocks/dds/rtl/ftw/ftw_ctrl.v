@@ -30,7 +30,9 @@ module ftw_ctrl #(
     output logic                  phase_reset_req,
     output logic [PHASE_W-1:0]    dp_s,
     output logic [PHASE_W-1:0]    dp_c,
+`ifndef SYNTHESIS
     output logic [PHASE_W-1:0]    ftw_lane0,
+`endif
     output logic [PHASE_W-1:0]    ftw_step_now,
     output logic                  run_active,
     output logic                  segment_done,
@@ -90,7 +92,9 @@ module ftw_ctrl #(
         .phase_reset_req           (phase_reset_req),
         .dp_s                      (dp_s),
         .dp_c                      (dp_c),
+`ifndef SYNTHESIS
         .ftw_lane0                 (ftw_lane0),
+`endif
         .ftw_step_now              (ftw_step_now),
         .run_active                (run_active),
         .segment_done              (segment_done),

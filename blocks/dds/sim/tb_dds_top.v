@@ -347,7 +347,7 @@ module tb_dds_top;
             begin
                 for (i = 0; i < 24; i = i + 1) begin
                     @(posedge dut.clk_vec); #1;
-                    if (dut.u_freq.phase_reset_req) begin
+                    if (dut.phase_reset_req) begin
                         launch_reset_seen = 1'b1;
                         @(posedge dut.clk_vec); #1;
                         phi_after = dut.u_accum.phase_accum;
@@ -371,7 +371,7 @@ module tb_dds_top;
             begin
                 for (i = 0; i < 24; i = i + 1) begin
                     @(posedge dut.clk_vec); #1;
-                    if (dut.u_freq.phase_reset_req)
+                    if (dut.phase_reset_req)
                         sync_reset_seen = 1'b1;
                 end
             end

@@ -280,7 +280,7 @@ syn: $(SYN_NET)
 $(SYN_SCRIPT): Makefile
 	@mkdir -p $(SYN_DIR)
 	@echo "# ── Read RTL ──"                                     >  $@
-	@echo "read_verilog -sv $(RTL_ALL)"                          >> $@
+	@echo "read_verilog -sv -DSYNTHESIS $(RTL_ALL)"              >> $@
 	@echo ""                                                     >> $@
 	@echo "# ── Elaborate hierarchy ──"                          >> $@
 	@echo "hierarchy -top dds_top -check"                        >> $@
@@ -362,12 +362,14 @@ endif
 	@echo "read_verilog $(SYN_NET)"                           >> $@
 	@echo "link_design dds_top"                               >> $@
 	@echo "create_clock -name $(FAST_CLK_NAME) -period $(SER_CLK_PERIOD) [get_ports clk]" >> $@
-	@echo "create_generated_clock -name clk_cal -source [get_ports clk] -divide_by 2 [get_nets clk_cal]" >> $@
 	@echo "create_generated_clock -name clk_vec -source [get_ports clk] -divide_by 4 [get_nets clk_div4]" >> $@
 	@echo ""                                                  >> $@
 	@echo "set_input_delay  0.1 -clock $(FAST_CLK_NAME) [get_ports {$(CORE_SYNC_IN_PORTS)}]" >> $@
 	@echo "# DDS config bundle comes from the external SPI block and is synchronized inside dds_top." >> $@
 	@echo "set_false_path -from [get_ports {$(CORE_ASYNC_IN_PORTS)}]" >> $@
+	@echo "# Divider self-feedback defines generated clocks; reset-sync outputs are synchronized release controls." >> $@
+	@echo "set_false_path -from [get_cells {u_clk_div4/*}] -to [get_cells {u_clk_div4/*}]" >> $@
+	@echo "set_false_path -from [get_cells {u_ser_rst_sync/* u_vec_rst_sync/*}]" >> $@
 	@echo "set_output_delay 0.1 -clock $(FAST_CLK_NAME) [get_ports {$(CORE_OUT_PORTS)}]" >> $@
 	@echo ""                                                  >> $@
 	@echo "set_max_fanout 16 [current_design]"                >> $@
@@ -401,6 +403,7 @@ endif
 STA_BUF_SCRIPT = $(SYN_DIR)/sta_buf.tcl
 STA_BUF_SDC    = $(SYN_DIR)/sta_buf.sdc
 STA_BUF_NET    = $(SYN_DIR)/dds_top_buf.v
+STA_BUF_REPAIR_DESIGN ?= 0
 
 .PHONY: sta_buf
 
@@ -410,11 +413,13 @@ sta_buf: $(SYN_NET) $(STA_BUF_SDC) $(STA_BUF_SCRIPT)
 $(STA_BUF_SDC): $(SYN_NET) Makefile
 	@mkdir -p $(SYN_DIR)
 	@echo "create_clock -name $(FAST_CLK_NAME) -period $(SER_CLK_PERIOD) [get_ports clk]" >  $@
-	@echo "create_generated_clock -name clk_cal -source [get_ports clk] -divide_by 2 [get_nets clk_cal]" >> $@
 	@echo "create_generated_clock -name clk_vec -source [get_ports clk] -divide_by 4 [get_nets clk_div4]" >> $@
 	@echo "set_input_delay  0.1 -clock $(FAST_CLK_NAME) [get_ports {$(CORE_SYNC_IN_PORTS)}]" >> $@
 	@echo "# DDS config bundle comes from the external SPI block and is synchronized inside dds_top." >> $@
 	@echo "set_false_path -from [get_ports {$(CORE_ASYNC_IN_PORTS)}]"      >> $@
+	@echo "# Divider self-feedback defines generated clocks; reset-sync outputs are synchronized release controls." >> $@
+	@echo "set_false_path -from [get_cells {u_clk_div4/*}] -to [get_cells {u_clk_div4/*}]" >> $@
+	@echo "set_false_path -from [get_cells {u_ser_rst_sync/* u_vec_rst_sync/*}]" >> $@
 	@echo "set_output_delay 0.1 -clock $(FAST_CLK_NAME) [get_ports {$(CORE_OUT_PORTS)}]" >> $@
 	@echo "set_max_fanout 16 [current_design]"                             >> $@
 	@echo "set_max_transition 1.0 [current_design]"                        >> $@
@@ -457,6 +462,11 @@ $(STA_BUF_SCRIPT): $(SYN_NET) $(STA_BUF_SDC) Makefile
 	@echo "# Global placement for parasitic estimation"                    >> $@
 	@echo "global_placement -density 0.45 -pad_left 2 -pad_right 2"       >> $@
 	@echo "estimate_parasitics -placement"                                 >> $@
+ifeq ($(STA_BUF_REPAIR_DESIGN),1)
+	@echo "repair_design"                                                  >> $@
+	@echo "detailed_placement"                                             >> $@
+	@echo "estimate_parasitics -placement"                                 >> $@
+endif
 	@echo ""                                                               >> $@
 	@echo "# Buffer insertion + gate sizing"                               >> $@
 	@echo ""                                                               >> $@
@@ -524,6 +534,9 @@ $(PNR_SDC): $(SYN_NET)
 	@echo "set_input_delay  0.1 -clock $(FAST_CLK_NAME) [get_ports {$(CORE_SYNC_IN_PORTS)}]" >> $@
 	@echo "# DDS config bundle comes from the external SPI block and is synchronized inside dds_top." >> $@
 	@echo "set_false_path -from [get_ports {$(CORE_ASYNC_IN_PORTS)}]"      >> $@
+	@echo "# Divider self-feedback defines generated clocks; reset-sync outputs are synchronized release controls." >> $@
+	@echo "set_false_path -from [get_cells {u_clk_div4/*}] -to [get_cells {u_clk_div4/*}]" >> $@
+	@echo "set_false_path -from [get_cells {u_ser_rst_sync/* u_vec_rst_sync/*}]" >> $@
 	@echo "set_output_delay 0.1 -clock $(FAST_CLK_NAME) [get_ports {$(CORE_OUT_PORTS)}]" >> $@
 	@echo "set_max_fanout 16 [current_design]"                             >> $@
 	@echo "set_max_transition 1.0 [current_design]"                        >> $@
