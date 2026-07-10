@@ -362,8 +362,8 @@ endif
 	@echo "read_verilog $(SYN_NET)"                           >> $@
 	@echo "link_design dds_top"                               >> $@
 	@echo "create_clock -name $(FAST_CLK_NAME) -period $(SER_CLK_PERIOD) [get_ports clk]" >> $@
-	@echo "create_generated_clock -name clk_cal -source [get_ports clk] -divide_by 2 [get_pins u_clk_div4/clk_div2]" >> $@
-	@echo "create_generated_clock -name clk_vec -source [get_ports clk] -divide_by 4 [get_pins u_clk_div4/clk_div4]" >> $@
+	@echo "create_generated_clock -name clk_cal -source [get_ports clk] -divide_by 2 [get_nets clk_cal]" >> $@
+	@echo "create_generated_clock -name clk_vec -source [get_ports clk] -divide_by 4 [get_nets clk_div4]" >> $@
 	@echo ""                                                  >> $@
 	@echo "set_input_delay  0.1 -clock $(FAST_CLK_NAME) [get_ports {$(CORE_SYNC_IN_PORTS)}]" >> $@
 	@echo "# DDS config bundle comes from the external SPI block and is synchronized inside dds_top." >> $@
@@ -410,8 +410,8 @@ sta_buf: $(SYN_NET) $(STA_BUF_SDC) $(STA_BUF_SCRIPT)
 $(STA_BUF_SDC): $(SYN_NET) Makefile
 	@mkdir -p $(SYN_DIR)
 	@echo "create_clock -name $(FAST_CLK_NAME) -period $(SER_CLK_PERIOD) [get_ports clk]" >  $@
-	@echo "create_generated_clock -name clk_cal -source [get_ports clk] -divide_by 2 [get_pins u_clk_div4/clk_div2]" >> $@
-	@echo "create_generated_clock -name clk_vec -source [get_ports clk] -divide_by 4 [get_pins u_clk_div4/clk_div4]" >> $@
+	@echo "create_generated_clock -name clk_cal -source [get_ports clk] -divide_by 2 [get_nets clk_cal]" >> $@
+	@echo "create_generated_clock -name clk_vec -source [get_ports clk] -divide_by 4 [get_nets clk_div4]" >> $@
 	@echo "set_input_delay  0.1 -clock $(FAST_CLK_NAME) [get_ports {$(CORE_SYNC_IN_PORTS)}]" >> $@
 	@echo "# DDS config bundle comes from the external SPI block and is synchronized inside dds_top." >> $@
 	@echo "set_false_path -from [get_ports {$(CORE_ASYNC_IN_PORTS)}]"      >> $@
