@@ -31,8 +31,40 @@ gridRound = lambda x: round(x * 200) / 200
 
 def main():
     guardRing = gdspy.Cell("guardRing")
+    
+    outer_points = [
+        (-1944.61000, -1257.50000),
+        (-1957.50000, -1244.61000),
+        (-1957.50000, 1244.61000),
+        (-1944.61000, 1257.50000),
+        (1944.61000, 1257.50000),
+        (1957.50000, 1244.61000),
+        (1957.50000, -1244.61000),
+        (1944.61000, -1257.50000),
+    ]
+    inner_points = [
+        (-1938.39000, 1242.50000),
+        (-1942.50000, 1238.39000),
+        (-1942.50000, -1238.39000),
+        (-1938.39000, -1242.50000),
+        (1938.39000, -1242.50000),
+        (1942.50000, -1238.39000),
+        (1942.50000, 1238.39000),
+        (1938.39000, 1242.50000),
+    ]
+
     for layer in ringMetalLayers:
-        ring = gdspy.Polygon(points, layer=layer)
+        if layer == 31:  # Pplus layer
+            outer_poly = gdspy.Polygon(outer_points)
+            inner_poly = gdspy.Polygon(inner_points)
+            clean_ring = gdspy.boolean(outer_poly, inner_poly, 'not')
+            ring = gdspy.offset(clean_ring, 0.05, layer=31)
+            for poly in ring.polygons:
+                for idx in range(len(poly)):
+                    poly[idx][0] = gridRound(poly[idx][0])
+                    poly[idx][1] = gridRound(poly[idx][1])
+        else:
+            ring = gdspy.Polygon(points, layer=layer)
         guardRing.add(ring)
 
     viaInternalSpacing = 0.28
@@ -233,7 +265,7 @@ def main():
 
     example = gdspy.GdsLibrary()
     example.add(guardRing)
-    example.write_gds("example.gds")
+    example.write_gds("top/guard-ring.gds")
 
 if __name__ == "__main__":
     main()
