@@ -305,6 +305,14 @@ N 1440 -150 1470 -150 {lab=GND}
 N 2080 -270 2080 -180 {lab=#net13}
 N 2050 -150 2080 -150 {lab=GND}
 N 1240 -1080 1380 -1080 {lab=Vbn}
+N 1140 -820 1140 -760 {lab=GND}
+N 1140 -980 1140 -920 {lab=GND}
+N 1280 -980 1280 -920 {lab=GND}
+N 1280 -820 1280 -760 {lab=GND}
+N 1420 -820 1420 -760 {lab=GND}
+N 1420 -980 1420 -920 {lab=GND}
+N 860 -780 860 -740 {lab=GND}
+N 860 -860 860 -840 {lab=#net18}
 C {code_shown.sym} 750 240 0 0 {name=s1 only_toplevel=true spice_ignore=true value="
 .include /foss/pdks/gf180mcuD/libs.tech/ngspice/design.ngspice
 .lib /foss/pdks/gf180mcuD/libs.tech/ngspice/sm141064.ngspice ss
@@ -658,44 +666,28 @@ spiceprefix=X
 C {lab_pin.sym} 920 -440 3 1 {name=p27 sig_type=std_logic lab=VDD
 }
 C {gnd.sym} 920 -310 0 1 {name=l36 lab=GND}
-C {symbols/ppolyf_u.sym} 350 -560 0 0 {name=R8
+C {symbols/ppolyf_u.sym} 350 -560 2 1 {name=R8
 W=1e-6
 L=3e-6
 model=ppolyf_u_1k
 spiceprefix=X
 m=1}
-C {symbols/ppolyf_u.sym} 940 -560 0 0 {name=R10
+C {symbols/ppolyf_u.sym} 940 -560 2 1 {name=R10
 W=1e-6
 L=3e-6
 model=ppolyf_u_1k
 spiceprefix=X
 m=1}
-C {symbols/ppolyf_u.sym} 430 -120 1 1 {name=R1
-W=1e-6
-L=15e-6
-model=ppolyf_u
-spiceprefix=X
-m=1
-spice_ignore=true}
-C {symbols/ppolyf_u.sym} 850 -120 1 1 {name=R2
-W=1e-6
-L=15e-6
-model=ppolyf_u
-spiceprefix=X
-m=1
-spice_ignore=true}
-C {gnd.sym} 430 -100 0 1 {name=l12 lab=GND}
-C {gnd.sym} 850 -100 0 1 {name=l15 lab=GND}
 C {lab_wire.sym} 640 -220 0 0 {name=p14 sig_type=std_logic lab=Ibias}
 C {symbols/cap_nmos_03v3.sym} 140 -430 1 0 {name=C4
-W=2u
-L=1u
+W=1u
+L=2u
 model=cap_nmos_03v3
 spiceprefix=X
 m=1}
 C {symbols/cap_nmos_03v3.sym} 1120 -430 3 1 {name=C1
-W=2u
-L=1u
+W=1u
+L=2u
 model=cap_nmos_03v3
 spiceprefix=X
 m=1}
@@ -803,14 +795,15 @@ C {lab_wire.sym} 500 -990 0 0 {name=p5 sig_type=std_logic lab=VDD}
 C {lab_wire.sym} 500 -870 2 0 {name=p6 sig_type=std_logic lab=GND}
 C {lab_wire.sym} 1020 -920 0 1 {name=p7 sig_type=std_logic lab=Vbp}
 C {lab_wire.sym} 1020 -850 0 1 {name=p8 sig_type=std_logic lab=Vbn}
-C {symbols/ppolyf_u_1k.sym} 860 -830 0 1 {name=R12
+C {symbols/ppolyf_u_1k.sym} 860 -810 2 0 {name=R12
 W=1e-6
 L=2e-6
 model=ppolyf_u_1k
 spiceprefix=X
 m=1
 spice_ignore=false}
-C {vsource.sym} 860 -770 0 1 {name=V2 value=0 savecurrent=false}
+C {vsource.sym} 860 -770 0 1 {name=V2 value=0 savecurrent=false
+lvs_ignore=true}
 C {symbols/nfet_03v3.sym} 1120 -850 0 0 {name=M17
 L=0.56u
 W=32u
@@ -825,7 +818,8 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {vsource.sym} 1140 -790 0 1 {name=V5 value=0 savecurrent=false}
+C {vsource.sym} 1140 -790 0 1 {name=V5 value=0 savecurrent=false
+lvs_ignore=true}
 C {lab_wire.sym} 1140 -760 2 0 {name=p13 sig_type=std_logic lab=GND}
 C {lab_wire.sym} 1140 -880 0 1 {name=p10 sig_type=std_logic lab=Ibias}
 C {symbols/nfet_03v3.sym} 1120 -1010 0 0 {name=M18
@@ -842,7 +836,8 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {vsource.sym} 1140 -950 0 1 {name=V8 value=0 savecurrent=false}
+C {vsource.sym} 1140 -950 0 1 {name=V8 value=0 savecurrent=false
+lvs_ignore=true}
 C {lab_wire.sym} 1140 -920 2 0 {name=p15 sig_type=std_logic lab=GND}
 C {lab_wire.sym} 1140 -1040 0 1 {name=p16 sig_type=std_logic lab=Ibias2}
 C {symbols/nfet_03v3.sym} 1260 -850 0 0 {name=M22
@@ -859,7 +854,8 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {vsource.sym} 1280 -790 0 1 {name=V9 value=0 savecurrent=false}
+C {vsource.sym} 1280 -790 0 1 {name=V9 value=0 savecurrent=false
+lvs_ignore=true}
 C {lab_wire.sym} 1280 -760 2 0 {name=p25 sig_type=std_logic lab=GND}
 C {lab_wire.sym} 1280 -880 0 1 {name=p42 sig_type=std_logic lab=Ibias3}
 C {symbols/nfet_03v3.sym} 1260 -1010 0 0 {name=M23
@@ -876,7 +872,8 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {vsource.sym} 1280 -950 0 1 {name=V12 value=0 savecurrent=false}
+C {vsource.sym} 1280 -950 0 1 {name=V12 value=0 savecurrent=false
+lvs_ignore=true}
 C {lab_wire.sym} 1280 -920 2 0 {name=p43 sig_type=std_logic lab=GND}
 C {lab_wire.sym} 1280 -1040 0 1 {name=p44 sig_type=std_logic lab=Ibias4}
 C {symbols/pfet_03v3.sym} 530 -560 0 1 {name=M29
@@ -907,14 +904,14 @@ sa=0 sb=0 sd=0
 model=pfet_03v3
 spiceprefix=X
 spice_ignore=false}
-C {symbols/ppolyf_u_1k.sym} 570 -520 1 0 {name=R5
+C {symbols/ppolyf_u_1k.sym} 570 -520 3 1 {name=R5
 W=1e-6
 L=9e-6
 model=ppolyf_u_1k
 spiceprefix=X
 m=1
 spice_ignore=false}
-C {symbols/ppolyf_u_1k.sym} 710 -520 3 1 {name=R6
+C {symbols/ppolyf_u_1k.sym} 710 -520 1 0 {name=R6
 W=1e-6
 L=9e-6
 model=ppolyf_u_1k
@@ -922,25 +919,25 @@ spiceprefix=X
 m=1
 spice_ignore=false}
 C {gnd.sym} 650 -540 0 0 {name=l16 lab=GND}
-C {symbols/ppolyf_u_1k.sym} 330 -330 3 0 {name=R3
+C {symbols/ppolyf_u_1k.sym} 330 -330 1 1 {name=R3
 W=1e-6
 L=3e-6
 model=ppolyf_u_1k
 spiceprefix=X
 m=1}
-C {symbols/ppolyf_u_1k.sym} 390 -330 3 0 {name=R4
+C {symbols/ppolyf_u_1k.sym} 390 -330 1 1 {name=R4
 W=1e-6
 L=3e-6
 model=ppolyf_u_1k
 spiceprefix=X
 m=1}
-C {symbols/ppolyf_u_1k.sym} 950 -330 1 1 {name=R9
+C {symbols/ppolyf_u_1k.sym} 950 -330 3 0 {name=R9
 W=1e-6
 L=3e-6
 model=ppolyf_u_1k
 spiceprefix=X
 m=1}
-C {symbols/ppolyf_u_1k.sym} 890 -330 1 1 {name=R37
+C {symbols/ppolyf_u_1k.sym} 890 -330 3 0 {name=R37
 W=1e-6
 L=3e-6
 model=ppolyf_u_1k
@@ -1058,44 +1055,28 @@ spiceprefix=X
 C {lab_pin.sym} 2050 -440 3 1 {name=p64 sig_type=std_logic lab=VDD
 }
 C {gnd.sym} 2050 -310 0 1 {name=l11 lab=GND}
-C {symbols/ppolyf_u.sym} 1480 -560 0 0 {name=R15
+C {symbols/ppolyf_u.sym} 1480 -560 2 1 {name=R15
 W=1e-6
 L=3e-6
 model=ppolyf_u_1k
 spiceprefix=X
 m=1}
-C {symbols/ppolyf_u.sym} 2070 -560 0 0 {name=R17
+C {symbols/ppolyf_u.sym} 2070 -560 2 1 {name=R17
 W=1e-6
 L=3e-6
 model=ppolyf_u_1k
 spiceprefix=X
 m=1}
-C {symbols/ppolyf_u.sym} 1560 -120 1 1 {name=R18
-W=1e-6
-L=15e-6
-model=ppolyf_u
-spiceprefix=X
-m=1
-spice_ignore=true}
-C {symbols/ppolyf_u.sym} 1980 -120 1 1 {name=R19
-W=1e-6
-L=15e-6
-model=ppolyf_u
-spiceprefix=X
-m=1
-spice_ignore=true}
-C {gnd.sym} 1560 -100 0 1 {name=l17 lab=GND}
-C {gnd.sym} 1980 -100 0 1 {name=l19 lab=GND}
 C {lab_wire.sym} 1770 -220 0 0 {name=p65 sig_type=std_logic lab=Ibias3}
 C {symbols/cap_nmos_03v3.sym} 1270 -430 1 0 {name=C3
-W=2u
-L=1u
+W=1u
+L=2u
 model=cap_nmos_03v3
 spiceprefix=X
 m=1}
 C {symbols/cap_nmos_03v3.sym} 2250 -430 3 1 {name=C5
-W=2u
-L=1u
+W=1u
+L=2u
 model=cap_nmos_03v3
 spiceprefix=X
 m=1}
@@ -1128,14 +1109,14 @@ sa=0 sb=0 sd=0
 model=pfet_03v3
 spiceprefix=X
 spice_ignore=false}
-C {symbols/ppolyf_u_1k.sym} 1700 -520 1 0 {name=R35
+C {symbols/ppolyf_u_1k.sym} 1700 -520 3 1 {name=R35
 W=1e-6
 L=9e-6
 model=ppolyf_u_1k
 spiceprefix=X
 m=1
 spice_ignore=false}
-C {symbols/ppolyf_u_1k.sym} 1840 -520 3 1 {name=R36
+C {symbols/ppolyf_u_1k.sym} 1840 -520 1 0 {name=R36
 W=1e-6
 L=9e-6
 model=ppolyf_u_1k
@@ -1143,25 +1124,25 @@ spiceprefix=X
 m=1
 spice_ignore=false}
 C {gnd.sym} 1780 -540 0 0 {name=l20 lab=GND}
-C {symbols/ppolyf_u_1k.sym} 1460 -330 3 0 {name=R38
+C {symbols/ppolyf_u_1k.sym} 1460 -330 1 1 {name=R38
 W=1e-6
 L=3e-6
 model=ppolyf_u_1k
 spiceprefix=X
 m=1}
-C {symbols/ppolyf_u_1k.sym} 1520 -330 3 0 {name=R39
+C {symbols/ppolyf_u_1k.sym} 1520 -330 1 1 {name=R39
 W=1e-6
 L=3e-6
 model=ppolyf_u_1k
 spiceprefix=X
 m=1}
-C {symbols/ppolyf_u_1k.sym} 2080 -330 1 1 {name=R40
+C {symbols/ppolyf_u_1k.sym} 2080 -330 3 0 {name=R40
 W=1e-6
 L=3e-6
 model=ppolyf_u_1k
 spiceprefix=X
 m=1}
-C {symbols/ppolyf_u_1k.sym} 2020 -330 1 1 {name=R41
+C {symbols/ppolyf_u_1k.sym} 2020 -330 3 0 {name=R41
 W=1e-6
 L=3e-6
 model=ppolyf_u_1k
@@ -1274,44 +1255,28 @@ spiceprefix=X
 C {lab_pin.sym} 3250 -440 3 1 {name=p75 sig_type=std_logic lab=VDD
 }
 C {gnd.sym} 3250 -310 0 1 {name=l33 lab=GND}
-C {symbols/ppolyf_u.sym} 2680 -560 0 0 {name=R42
+C {symbols/ppolyf_u.sym} 2680 -560 2 1 {name=R42
 W=1e-6
 L=3e-6
 model=ppolyf_u_1k
 spiceprefix=X
 m=1}
-C {symbols/ppolyf_u.sym} 3270 -560 0 0 {name=R43
+C {symbols/ppolyf_u.sym} 3270 -560 2 1 {name=R43
 W=1e-6
 L=3e-6
 model=ppolyf_u_1k
 spiceprefix=X
 m=1}
-C {symbols/ppolyf_u.sym} 2760 -120 1 1 {name=R44
-W=1e-6
-L=15e-6
-model=ppolyf_u
-spiceprefix=X
-m=1
-spice_ignore=true}
-C {symbols/ppolyf_u.sym} 3180 -120 1 1 {name=R46
-W=1e-6
-L=15e-6
-model=ppolyf_u
-spiceprefix=X
-m=1
-spice_ignore=true}
-C {gnd.sym} 2760 -100 0 1 {name=l34 lab=GND}
-C {gnd.sym} 3180 -100 0 1 {name=l37 lab=GND}
 C {lab_wire.sym} 2970 -220 0 0 {name=p82 sig_type=std_logic lab=Ibias5}
 C {symbols/cap_nmos_03v3.sym} 2470 -430 1 0 {name=C6
-W=2u
-L=1u
+W=1u
+L=2u
 model=cap_nmos_03v3
 spiceprefix=X
 m=1}
 C {symbols/cap_nmos_03v3.sym} 3450 -430 3 1 {name=C7
-W=2u
-L=1u
+W=1u
+L=2u
 model=cap_nmos_03v3
 spiceprefix=X
 m=1}
@@ -1344,14 +1309,14 @@ sa=0 sb=0 sd=0
 model=pfet_03v3
 spiceprefix=X
 spice_ignore=false}
-C {symbols/ppolyf_u_1k.sym} 2900 -520 1 0 {name=R47
+C {symbols/ppolyf_u_1k.sym} 2900 -520 3 1 {name=R47
 W=1e-6
 L=9e-6
 model=ppolyf_u_1k
 spiceprefix=X
 m=1
 spice_ignore=false}
-C {symbols/ppolyf_u_1k.sym} 3040 -520 3 1 {name=R48
+C {symbols/ppolyf_u_1k.sym} 3040 -520 1 0 {name=R48
 W=1e-6
 L=9e-6
 model=ppolyf_u_1k
@@ -1359,25 +1324,25 @@ spiceprefix=X
 m=1
 spice_ignore=false}
 C {gnd.sym} 2980 -540 0 0 {name=l38 lab=GND}
-C {symbols/ppolyf_u_1k.sym} 2660 -330 3 0 {name=R49
+C {symbols/ppolyf_u_1k.sym} 2660 -330 1 1 {name=R49
 W=1e-6
 L=3e-6
 model=ppolyf_u_1k
 spiceprefix=X
 m=1}
-C {symbols/ppolyf_u_1k.sym} 2720 -330 3 0 {name=R50
+C {symbols/ppolyf_u_1k.sym} 2720 -330 1 1 {name=R50
 W=1e-6
 L=3e-6
 model=ppolyf_u_1k
 spiceprefix=X
 m=1}
-C {symbols/ppolyf_u_1k.sym} 3280 -330 1 1 {name=R51
+C {symbols/ppolyf_u_1k.sym} 3280 -330 3 0 {name=R51
 W=1e-6
 L=3e-6
 model=ppolyf_u_1k
 spiceprefix=X
 m=1}
-C {symbols/ppolyf_u_1k.sym} 3220 -330 1 1 {name=R52
+C {symbols/ppolyf_u_1k.sym} 3220 -330 3 0 {name=R52
 W=1e-6
 L=3e-6
 model=ppolyf_u_1k
@@ -1397,7 +1362,8 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {vsource.sym} 1420 -790 0 1 {name=V19 value=0 savecurrent=false}
+C {vsource.sym} 1420 -790 0 1 {name=V19 value=0 savecurrent=false
+lvs_ignore=true}
 C {lab_wire.sym} 1420 -760 2 0 {name=p84 sig_type=std_logic lab=GND}
 C {lab_wire.sym} 1420 -880 0 1 {name=p85 sig_type=std_logic lab=Ibias5}
 C {symbols/nfet_03v3.sym} 1400 -1010 0 0 {name=M51
@@ -1414,7 +1380,8 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {vsource.sym} 1420 -950 0 1 {name=V20 value=0 savecurrent=false}
+C {vsource.sym} 1420 -950 0 1 {name=V20 value=0 savecurrent=false
+lvs_ignore=true}
 C {lab_wire.sym} 1420 -920 2 0 {name=p86 sig_type=std_logic lab=GND}
 C {lab_wire.sym} 1420 -1040 0 1 {name=p87 sig_type=std_logic lab=Ibias6}
 C {lab_pin.sym} 2360 -750 0 0 {name=p88 sig_type=std_logic lab=Vout}
@@ -1559,5 +1526,7 @@ m=1
 value=150f
 footprint=1206
 only_toplevel=true
-device=polarized_capacitor}
+device=polarized_capacitor
+spice_ignore=true
+lvs_ignore=true}
 C {gnd.sym} 2870 -370 0 0 {name=l3 lab=GND}
