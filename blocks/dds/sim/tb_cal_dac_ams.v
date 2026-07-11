@@ -186,7 +186,7 @@ module tb_cal_dac_ams;
 
     task automatic cal_wait(input int n);
     begin
-        repeat (n) @(posedge dut.clk_cal);
+        repeat (n) @(posedge dut.clk_vec);
         #1;
     end
     endtask
@@ -270,7 +270,7 @@ module tb_cal_dac_ams;
     begin
         saw_busy = 1'b0;
         for (k = 0; k < 32; k++) begin
-            @(posedge dut.clk_cal);
+            @(posedge dut.clk_vec);
             #1;
             if (cal_clk)
                 cal_shift_pulses = cal_shift_pulses + 1;
@@ -289,7 +289,7 @@ module tb_cal_dac_ams;
         int k;
     begin
         for (k = 0; k < cycles; k++) begin
-            @(posedge dut.clk_cal);
+            @(posedge dut.clk_vec);
             #1;
             if (dut.cal_busy)
                 $fatal(1, "%s: busy asserted unexpectedly", label);

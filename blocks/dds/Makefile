@@ -89,7 +89,8 @@ SYN_NET    = $(SYN_DIR)/dds_top_syn.v
 SYN_SCRIPT = $(SYN_DIR)/synth.ys
 
 # STA tool: use standalone 'sta' if found, else fall back to 'openroad'
-STA        ?= $(shell command -v openroad >/dev/null 2>&1 && echo openroad || { command -v sta >/dev/null 2>&1 && echo sta; })
+#STA        ?= $(shell command -v openroad >/dev/null 2>&1 && echo openroad || { command -v sta >/dev/null 2>&1 && echo sta; })
+STA ?= openroad
 OPENROAD   ?= openroad
 KLAYOUT    ?= klayout
 
@@ -109,8 +110,8 @@ STA_SCRIPT = $(SYN_DIR)/sta.tcl
 CELL_VLOG  = $(PDK_ROOT)/gf180mcuD/libs.ref/$(SCL)/verilog/primitives.v \
              $(PDK_ROOT)/gf180mcuD/libs.ref/$(SCL)/verilog/$(SCL).v
 
-.PHONY: all lut lut_hex lint sim sim_freq sim_accum sim_spi sim_spi_sweep sim_cal_dac sim_cal_dac_scan sim_cal_dac_ams sim_cal_dac_spi sim_cal_dac_e2e sim_main_dac_ams sim_top sim_user_e2e sim_direct_bypass sim_wave_scan_match wave syn sta sta_buf sim_syn pnr gds clean \
-       $(SYN_SCRIPT) $(STA_SCRIPT) $(STA_BUF_SCRIPT) $(STA_BUF_SDC) $(PNR_SCRIPT) $(PNR_SDC)
+.PHONY: all lut lut_hex lint sim sim_freq sim_accum sim_spi sim_spi_sweep sim_cal_dac sim_cal_dac_scan sim_cal_dac_ams sim_cal_dac_spi sim_cal_dac_e2e sim_main_dac_ams sim_top sim_user_e2e sim_direct_bypass sim_wave_scan_match wave syn sta sta_buf sim_syn gds clean \
+       $(SYN_SCRIPT) $(STA_SCRIPT) $(STA_BUF_SCRIPT) $(STA_BUF_SDC)
 
 all: lut lint sim
 
@@ -403,11 +404,25 @@ endif
 STA_BUF_SCRIPT = $(SYN_DIR)/sta_buf.tcl
 STA_BUF_SDC    = $(SYN_DIR)/sta_buf.sdc
 STA_BUF_NET    = $(SYN_DIR)/dds_top_buf.v
+STA_BUF_DEF    = $(SYN_DIR)/dds_top_sta_buf.def
+STA_BUF_GDS    = $(SYN_DIR)/dds_top.gds
 STA_BUF_REPAIR_DESIGN ?= 0
+LIB_DIR        = $(PDK_ROOT)/gf180mcuD/libs.ref/$(SCL)
+TECH_LEF       = $(LIB_DIR)/techlef/$(SCL)__max.tlef
+CELL_LEF       = $(LIB_DIR)/lef/$(SCL).lef
+SITE_NAME      ?= GF018hv5v_green_sc9
+STA_BUF_UTIL   ?= 80
+STA_BUF_ASPECT_RATIO ?= 1.0
+STA_BUF_CORE_SPACE ?= 5
+STA_BUF_GP_DENSITY ?= 0.95
+STA_BUF_PAD_LEFT ?= 0
+STA_BUF_PAD_RIGHT ?= 0
 
 .PHONY: sta_buf
 
-sta_buf: $(SYN_NET) $(STA_BUF_SDC) $(STA_BUF_SCRIPT)
+sta_buf: $(STA_BUF_DEF)
+
+$(STA_BUF_DEF): $(SYN_NET) $(STA_BUF_SDC) $(STA_BUF_SCRIPT)
 	$(OPENROAD) -exit $(STA_BUF_SCRIPT) 2>&1 | tee $(SYN_DIR)/sta_buf.log
 
 $(STA_BUF_SDC): $(SYN_NET) Makefile
@@ -434,7 +449,7 @@ $(STA_BUF_SCRIPT): $(SYN_NET) $(STA_BUF_SDC) Makefile
 	@echo "read_sdc $(STA_BUF_SDC)"                                        >> $@
 	@echo ""                                                               >> $@
 	@echo "# Minimal floorplan for wire RC estimation"                     >> $@
-	@echo "initialize_floorplan -utilization 35 -aspect_ratio 1.0 -core_space 10 -site $(SITE_NAME)" >> $@
+	@echo "initialize_floorplan -utilization $(STA_BUF_UTIL) -aspect_ratio $(STA_BUF_ASPECT_RATIO) -core_space $(STA_BUF_CORE_SPACE) -site $(SITE_NAME)" >> $@
 	@echo ""                                                               >> $@
 	@echo "make_tracks Metal1 -x_offset 0.24 -x_pitch 0.48 -y_offset 0.28 -y_pitch 0.56" >> $@
 	@echo "make_tracks Metal2 -x_offset 0.28 -x_pitch 0.56 -y_offset 0.24 -y_pitch 0.48" >> $@
@@ -460,7 +475,7 @@ $(STA_BUF_SCRIPT): $(SYN_NET) $(STA_BUF_SDC) Makefile
 	@echo "pdngen"                                                         >> $@
 	@echo ""                                                               >> $@
 	@echo "# Global placement for parasitic estimation"                    >> $@
-	@echo "global_placement -density 0.45 -pad_left 2 -pad_right 2"       >> $@
+	@echo "global_placement -density $(STA_BUF_GP_DENSITY) -pad_left $(STA_BUF_PAD_LEFT) -pad_right $(STA_BUF_PAD_RIGHT)" >> $@
 	@echo "estimate_parasitics -placement"                                 >> $@
 ifeq ($(STA_BUF_REPAIR_DESIGN),1)
 	@echo "repair_design"                                                  >> $@
@@ -503,11 +518,36 @@ endif
 	@echo ""                                                               >> $@
 	@echo "# Write buffered netlist for inspection"                        >> $@
 	@echo "write_verilog $(STA_BUF_NET)"                                   >> $@
+	@echo "write_def $(STA_BUF_DEF)"                                       >> $@
 	@echo "puts \"\n=== TIMING SUMMARY ===\""                            >> $@
 	@echo "report_tns"                                                   >> $@
 	@echo "report_wns"                                                   >> $@
+	@echo "puts \"\n=== PHYSICAL SUMMARY ===\""                          >> $@
+	@echo "puts \"placement_knobs floorplan_util=$(STA_BUF_UTIL) aspect_ratio=$(STA_BUF_ASPECT_RATIO) core_space_um=$(STA_BUF_CORE_SPACE) gp_density=$(STA_BUF_GP_DENSITY) pad_left=$(STA_BUF_PAD_LEFT) pad_right=$(STA_BUF_PAD_RIGHT)\"" >> $@
+	@echo "report_design_area"                                           >> $@
+	@echo 'set block [ord::get_db_block]'                                >> $@
+	@echo 'set dbu [$$block getDefUnits]'                                >> $@
+	@echo 'set die [$$block getDieArea]'                                 >> $@
+	@echo 'set core [$$block getCoreArea]'                               >> $@
+	@echo 'set die_w [expr {double([$$die xMax] - [$$die xMin]) / $$dbu}]' >> $@
+	@echo 'set die_h [expr {double([$$die yMax] - [$$die yMin]) / $$dbu}]' >> $@
+	@echo 'set core_w [expr {double([$$core xMax] - [$$core xMin]) / $$dbu}]' >> $@
+	@echo 'set core_h [expr {double([$$core yMax] - [$$core yMin]) / $$dbu}]' >> $@
+	@echo 'set std_cell_area_dbu2 0.0'                                   >> $@
+	@echo 'foreach inst [$$block getInsts] {'                            >> $@
+	@echo '    set master [$$inst getMaster]'                            >> $@
+	@echo '    set std_cell_area_dbu2 [expr {$$std_cell_area_dbu2 + double([$$master getWidth]) * double([$$master getHeight])}]' >> $@
+	@echo '}'                                                            >> $@
+	@echo 'set die_area_um2 [expr {$$die_w * $$die_h}]'                  >> $@
+	@echo 'set core_area_um2 [expr {$$core_w * $$core_h}]'               >> $@
+	@echo 'set std_cell_area_um2 [expr {$$std_cell_area_dbu2 / double($$dbu) / double($$dbu)}]' >> $@
+	@echo 'set util_pct [expr {100.0 * $$std_cell_area_um2 / $$core_area_um2}]' >> $@
+	@echo 'puts [format "die_um %.3f x %.3f area_um2 %.3f" $$die_w $$die_h $$die_area_um2]' >> $@
+	@echo 'puts [format "core_um %.3f x %.3f area_um2 %.3f" $$core_w $$core_h $$core_area_um2]' >> $@
+	@echo 'puts [format "std_cell_area_um2 %.3f core_util_pct %.2f" $$std_cell_area_um2 $$util_pct]' >> $@
+	@echo 'puts [format "counts instances %d pins %d nets %d rows %d" [llength [$$block getInsts]] [llength [$$block getBTerms]] [llength [$$block getNets]] [llength [$$block getRows]]]' >> $@
 
-	
+
 # ── Gate-level sim ───────────────────────────────────────────
 
 sim_syn: $(SYN_NET)
@@ -516,115 +556,22 @@ sim_syn: $(SYN_NET)
 	cd $(SIM_DIR) && $(VVP) tb_dds_top_syn.vvp
 	@echo "Gate-level sim done → $(SIM_DIR)/tb_dds_top_syn.vcd"
 
-# ── Place & Route (OpenROAD) ─────────────────────────────────
-
-PNR_SCRIPT = $(SYN_DIR)/pnr.tcl
-PNR_SDC    = $(SYN_DIR)/pnr.sdc
-PNR_DEF    = $(SYN_DIR)/dds_top_pnr.def
-PNR_GDS    = $(SYN_DIR)/dds_top.gds
-LIB_DIR    = $(PDK_ROOT)/gf180mcuD/libs.ref/$(SCL)
-TECH_LEF   = $(LIB_DIR)/techlef/$(SCL)__max.tlef
-CELL_LEF   = $(LIB_DIR)/lef/$(SCL).lef
-SITE_NAME  ?= GF018hv5v_green_sc9
-
-pnr: $(PNR_DEF)
-
-$(PNR_SDC): $(SYN_NET)
-	@echo "create_clock -name $(FAST_CLK_NAME) -period $(SER_CLK_PERIOD) [get_ports clk]" >  $@
-	@echo "set_input_delay  0.1 -clock $(FAST_CLK_NAME) [get_ports {$(CORE_SYNC_IN_PORTS)}]" >> $@
-	@echo "# DDS config bundle comes from the external SPI block and is synchronized inside dds_top." >> $@
-	@echo "set_false_path -from [get_ports {$(CORE_ASYNC_IN_PORTS)}]"      >> $@
-	@echo "# Divider self-feedback defines generated clocks; reset-sync outputs are synchronized release controls." >> $@
-	@echo "set_false_path -from [get_cells {u_clk_div4/*}] -to [get_cells {u_clk_div4/*}]" >> $@
-	@echo "set_false_path -from [get_cells {u_ser_rst_sync/* u_vec_rst_sync/*}]" >> $@
-	@echo "set_output_delay 0.1 -clock $(FAST_CLK_NAME) [get_ports {$(CORE_OUT_PORTS)}]" >> $@
-	@echo "set_max_fanout 16 [current_design]"                             >> $@
-	@echo "set_max_transition 1.0 [current_design]"                        >> $@
-
-$(PNR_SCRIPT): $(SYN_NET)
-	@echo "read_lef $(TECH_LEF)"                                           >  $@
-	@echo "read_lef $(CELL_LEF)"                                           >> $@
-	@echo "read_liberty $(LIB_FILE)"                                       >> $@
-	@echo "read_verilog $(SYN_NET)"                                        >> $@
-	@echo "link_design dds_top"                                            >> $@
-	@echo "read_sdc $(PNR_SDC)"                                            >> $@
-	@echo ""                                                               >> $@
-	@echo "initialize_floorplan -utilization 35 -aspect_ratio 1.0 -core_space 10 -site $(SITE_NAME)" >> $@
-	@echo ""                                                               >> $@
-	@echo "make_tracks Metal1 -x_offset 0.24 -x_pitch 0.48 -y_offset 0.28 -y_pitch 0.56" >> $@
-	@echo "make_tracks Metal2 -x_offset 0.28 -x_pitch 0.56 -y_offset 0.24 -y_pitch 0.48" >> $@
-	@echo "make_tracks Metal3 -x_offset 0.28 -x_pitch 0.56 -y_offset 0.28 -y_pitch 0.56" >> $@
-	@echo "make_tracks Metal4 -x_offset 0.28 -x_pitch 0.56 -y_offset 0.28 -y_pitch 0.56" >> $@
-	@echo "make_tracks Metal5 -x_offset 0.28 -x_pitch 0.56 -y_offset 0.28 -y_pitch 0.56" >> $@
-	@echo ""                                                               >> $@
-	@echo "set_routing_layers -signal Metal1-Metal5"                       >> $@
-	@echo "set_wire_rc -signal -layer Metal3"                              >> $@
-	@echo "set_wire_rc -clock -layer Metal4"                               >> $@
-	@echo ""                                                               >> $@
-	@echo "place_pins -hor_layers Metal3 -ver_layers Metal2"               >> $@
-	@echo ""                                                               >> $@
-	@echo "add_global_connection -net VDD -pin_pattern VDD -power"         >> $@
-	@echo "add_global_connection -net VSS -pin_pattern VSS -ground"        >> $@
-	@echo "set_voltage_domain -power VDD -ground VSS"                      >> $@
-	@echo "define_pdn_grid -name core -pins {Metal5}"                      >> $@
-	@echo "add_pdn_stripe -grid core -layer Metal1 -width 0.48 -followpins" >> $@
-	@echo "add_pdn_stripe -grid core -layer Metal4 -width 1.6 -spacing 1.6 -pitch 40.0 -offset 2.0" >> $@
-	@echo "add_pdn_stripe -grid core -layer Metal5 -width 1.6 -spacing 1.6 -pitch 40.0 -offset 2.0" >> $@
-	@echo "add_pdn_connect -layers {Metal1 Metal4}"                        >> $@
-	@echo "add_pdn_connect -layers {Metal4 Metal5}"                        >> $@
-	@echo "pdngen"                                                         >> $@
-	@echo ""                                                               >> $@
-	@echo "global_placement -density 0.45 -pad_left 2 -pad_right 2"       >> $@
-	@echo "estimate_parasitics -placement"                                 >> $@
-	@echo "repair_design"                                                  >> $@
-	@echo "detailed_placement"                                             >> $@
-	@echo "check_placement"                                                >> $@
-	@echo ""                                                               >> $@
-	@echo "clock_tree_synthesis -root_buf $(SCL)__clkbuf_8 -buf_list {$(SCL)__clkbuf_2 $(SCL)__clkbuf_4 $(SCL)__clkbuf_8} -sink_clustering_enable" >> $@
-	@echo "set_propagated_clock [all_clocks]"                              >> $@
-	@echo "repair_clock_nets"                                              >> $@
-	@echo "detailed_placement"                                             >> $@
-	@echo ""                                                               >> $@
-	@echo "estimate_parasitics -placement"                                 >> $@
-	@echo "repair_timing -setup -verbose"                                  >> $@
-	@echo "detailed_placement"                                             >> $@
-	@echo "estimate_parasitics -placement"                                 >> $@
-	@echo "repair_timing -setup -verbose"                                  >> $@
-	@echo "detailed_placement"                                             >> $@
-	@echo "estimate_parasitics -placement"                                 >> $@
-	@echo "repair_timing -hold -verbose"                                   >> $@
-	@echo "detailed_placement"                                             >> $@
-	@echo ""                                                               >> $@
-	@echo "global_route -verbose -allow_congestion"                        >> $@
-	@echo "detailed_route -output_drc $(SYN_DIR)/route_drc.rpt -bottom_routing_layer Metal1 -top_routing_layer Metal5" >> $@
-	@echo ""                                                               >> $@
-	@echo "estimate_parasitics -global_routing"                            >> $@
-	@echo "report_checks -path_delay max -slack_max -0.0 -group_count 5"  >> $@
-	@echo "report_checks -path_delay min -slack_max -0.0 -group_count 5"  >> $@
-	@echo "report_tns"                                                     >> $@
-	@echo "report_wns"                                                     >> $@
-	@echo "report_clock_skew"                                              >> $@
-	@echo "report_design_area"                                             >> $@
-	@echo ""                                                               >> $@
-	@echo "write_def $(PNR_DEF)"                                           >> $@
-	@echo "write_verilog $(SYN_DIR)/dds_top_pnr.v"                        >> $@
-
-$(PNR_DEF): $(SYN_NET) $(PNR_SDC) $(PNR_SCRIPT)
-	$(OPENROAD) $(PNR_SCRIPT) 2>&1 | tee $(SYN_DIR)/pnr.log
-
 # ── GDS (KLayout) ───────────────────────────────────────────
 
-gds: $(PNR_GDS)
+gds: $(STA_BUF_GDS)
 
-$(PNR_GDS): $(PNR_DEF)
+$(STA_BUF_GDS): $(STA_BUF_DEF)
 	$(KLAYOUT) -zz \
 	  -rd design_name=dds_top \
-	  -rd in_def=$(PNR_DEF) \
+	  -rd in_def=$(STA_BUF_DEF) \
+	  -rd tech_lef=$(TECH_LEF) \
+	  -rd cell_lef=$(CELL_LEF) \
 	  -rd in_gds=$(LIB_DIR)/gds/$(SCL).gds \
-	  -rd out_gds=$(PNR_GDS) \
+	  -rd out_gds=$(STA_BUF_GDS) \
 	  -rd seal_gds="" \
 	  -rm scripts/def2gds.py
-	@echo "GDS → $(PNR_GDS)"
+	@test -s $(STA_BUF_GDS)
+	@echo "GDS → $(STA_BUF_GDS)"
 
 # ── Clean ────────────────────────────────────────────────────
 

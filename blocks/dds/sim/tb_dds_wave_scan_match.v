@@ -20,10 +20,10 @@ module tb_dds_wave_scan_match;
     localparam ROM_DEPTH        = 1 << SINE_COARSE_W;
     localparam PROD_W           = SLOPE_W + SINE_FRAC_W + 1;
     localparam ACC_W            = BASE_W + SINE_FRAC_W + 2;
-    // Registered phase_vec sampled by the datapath on clk_vec edge N reaches
-    // dac_{i,q}_vec just after edge N+8: 9 registered stages, 8 full
-    // clk_vec intervals.
-    localparam PIPE_LATENCY     = 9;
+    // phase_accum_vec4 first registers the FTW/control handoff, then emits a
+    // phase block. dds_datapath samples that block on clk_vec edge N and
+    // produces dac_{i,q}_vec just after edge N+11.
+    localparam PIPE_LATENCY     = 12;
     localparam PHASE_BLOCKS   = 16;
     localparam CODE_WARMUP    = 0;
     localparam CODE_SAMPLES   = 1024;
@@ -80,6 +80,10 @@ module tb_dds_wave_scan_match;
     logic [PHASE_W-1:0] exp_phase_base;
     logic [PHASE_W-1:0] exp_ftw_x2, exp_ftw_x3, exp_ftw_x4;
     logic [PHASE_W-1:0] exp_step_x3, exp_step_x6;
+    logic [PHASE_W-1:0] exp_ftw_1;
+    logic [PHASE_W-1:0] exp_step_1;
+    logic               exp_out_enable_1;
+    logic               exp_phase_valid;
     logic [LANES-1:0][PHASE_W-1:0] exp_phase_vec_cur;
 
     logic [LANES-1:0][PHASE_W-1:0] phase_pipe [0:PIPE_LATENCY-1];
@@ -173,16 +177,16 @@ module tb_dds_wave_scan_match;
     `include "./rtl/datapath/sincos_interp_init.v"
     end
 
-    assign exp_ftw_x2  = scenario_ftw << 1;
-    assign exp_ftw_x3  = (scenario_ftw << 1) + scenario_ftw;
-    assign exp_ftw_x4  = scenario_ftw << 2;
-    assign exp_step_x3 = (scenario_step << 1) + scenario_step;
-    assign exp_step_x6 = (scenario_step << 2) + (scenario_step << 1);
+    assign exp_ftw_x2  = exp_ftw_1 << 1;
+    assign exp_ftw_x3  = (exp_ftw_1 << 1) + exp_ftw_1;
+    assign exp_ftw_x4  = exp_ftw_1 << 2;
+    assign exp_step_x3 = (exp_step_1 << 1) + exp_step_1;
+    assign exp_step_x6 = (exp_step_1 << 2) + (exp_step_1 << 1);
 
     always_comb begin
         exp_phase_vec_cur[0] = exp_phase_base;
-        exp_phase_vec_cur[1] = exp_phase_base + scenario_ftw;
-        exp_phase_vec_cur[2] = exp_phase_base + exp_ftw_x2 + scenario_step;
+        exp_phase_vec_cur[1] = exp_phase_base + exp_ftw_1;
+        exp_phase_vec_cur[2] = exp_phase_base + exp_ftw_x2 + exp_step_1;
         exp_phase_vec_cur[3] = exp_phase_base + exp_ftw_x3 + exp_step_x3;
     end
 
@@ -512,6 +516,10 @@ module tb_dds_wave_scan_match;
     always_ff @(posedge dut.clk_vec or negedge dut.core_rst_n_vec) begin
         if (!dut.core_rst_n_vec) begin
             exp_phase_base <= {PHASE_W{1'b0}};
+            exp_ftw_1 <= {PHASE_W{1'b0}};
+            exp_step_1 <= {PHASE_W{1'b0}};
+            exp_out_enable_1 <= 1'b0;
+            exp_phase_valid <= 1'b0;
             for (stage_idx = 0; stage_idx < PIPE_LATENCY; stage_idx = stage_idx + 1) begin
                 for (lane_idx = 0; lane_idx < LANES; lane_idx = lane_idx + 1) begin
                     phase_pipe[stage_idx][lane_idx] <= {PHASE_W{1'b0}};
@@ -526,8 +534,8 @@ module tb_dds_wave_scan_match;
             end
         end else begin
             for (lane_idx = 0; lane_idx < LANES; lane_idx = lane_idx + 1) begin
-                phase_pipe[0][lane_idx] <= exp_phase_vec_cur[lane_idx];
-                if (dut.phase_valid_vec[0]) begin
+                phase_pipe[0][lane_idx] <= dut.phase_reset_req ? {PHASE_W{1'b0}} : exp_phase_vec_cur[lane_idx];
+                if (exp_phase_valid) begin
                     code_i_pipe[0][lane_idx] <= phase_to_dac_code(phase_pipe[0][lane_idx], 1'b0);
                     code_q_pipe[0][lane_idx] <= phase_to_dac_code(phase_pipe[0][lane_idx], 1'b1);
                 end else begin
@@ -552,8 +560,13 @@ module tb_dds_wave_scan_match;
 
             if (dut.phase_reset_req)
                 exp_phase_base <= {PHASE_W{1'b0}};
-            else if (dut.wave_en)
+            else if (exp_out_enable_1)
                 exp_phase_base <= exp_phase_base + exp_ftw_x4 + exp_step_x6;
+
+            exp_ftw_1 <= dut.ftw_lane0;
+            exp_step_1 <= dut.ftw_step_now;
+            exp_out_enable_1 <= dut.wave_en & ~dut.phase_reset_req;
+            exp_phase_valid <= dut.phase_reset_req ? 1'b0 : exp_out_enable_1;
         end
     end
 

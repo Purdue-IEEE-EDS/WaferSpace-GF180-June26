@@ -23,6 +23,7 @@ module tb_dds_user_e2e;
 
     localparam CLK_P        = 3.2;
     localparam SCLK_P       = 20.0;
+    localparam int LAUNCH_SETTLE_CYCLES = 96;
 
     localparam N_UNARY      = (1 << UNARY_BITS) - 1;
     localparam MIDSCALE     = 1 << (UNARY_BITS - 1);
@@ -373,7 +374,7 @@ module tb_dds_user_e2e;
         spi_write32(7'h02, 32'h1000_0000);
         spi_write8(7'h01, 8'h00);
         pulse_io_update;
-        clk_wait(48);
+        clk_wait(LAUNCH_SETTLE_CYCLES);
         if (dac_i === MIDSCALE_SW && dac_q === MIDSCALE_SW)
             fail_msg("CW launch never left midscale");
         expect_motion(32, "CW launch");
@@ -383,7 +384,7 @@ module tb_dds_user_e2e;
         capture_iq(16, first_i, first_q);
         spi_write32(7'h02, 32'h1800_0000);
         pulse_io_update;
-        clk_wait(40);
+        clk_wait(LAUNCH_SETTLE_CYCLES);
         capture_iq_2(16);
         differs = 1'b0;
         for (i = 0; i < 16; i = i + 1)
@@ -413,7 +414,7 @@ module tb_dds_user_e2e;
         $display("--- E2E Test 5: zero frequency ---");
         spi_write32(7'h02, 32'd0);
         pulse_io_update;
-        clk_wait(48);
+        clk_wait(LAUNCH_SETTLE_CYCLES);
         expect_stable(16, "zero frequency");
 
         // Test 6: sync relaunch reproduces the launch epoch.
@@ -421,11 +422,11 @@ module tb_dds_user_e2e;
         spi_write32(7'h02, 32'h0800_0000);
         spi_write8(7'h01, 8'h08);
         pulse_io_update;
-        clk_wait(48);
+        clk_wait(LAUNCH_SETTLE_CYCLES);
         capture_iq(12, first_i, first_q);
-        clk_wait(48);
+        clk_wait(LAUNCH_SETTLE_CYCLES);
         pulse_sync;
-        clk_wait(48);
+        clk_wait(LAUNCH_SETTLE_CYCLES);
         capture_iq_2(12);
         for (i = 0; i < 12; i = i + 1) begin
             if (cap_i[i] != cap2_i[i] || cap_q[i] != cap2_q[i]) begin
@@ -438,7 +439,7 @@ module tb_dds_user_e2e;
         $display("--- E2E Test 7: TEST mode ---");
         spi_write8(7'h01, 8'h03);
         pulse_io_update;
-        clk_wait(48);
+        clk_wait(LAUNCH_SETTLE_CYCLES);
         expect_motion(32, "TEST mode");
         if (dut.u_freq.ftw_lane0 !== TEST_TONE_FTW)
             fail_msg($sformatf("TEST ftw_lane0=%08x exp=%08x", dut.u_freq.ftw_lane0, TEST_TONE_FTW));
@@ -451,11 +452,11 @@ module tb_dds_user_e2e;
         spi_write32(7'h0A, 32'd1000);
         spi_write8(7'h01, 8'h01);
         pulse_io_update;
-        clk_wait(48);
+        clk_wait(LAUNCH_SETTLE_CYCLES);
         capture_iq(12, first_i, first_q);
         spi_write8(7'h01, 8'h03);
         pulse_io_update;
-        clk_wait(48);
+        clk_wait(LAUNCH_SETTLE_CYCLES);
         capture_iq_2(12);
         differs = 1'b0;
         for (i = 0; i < 12; i = i + 1)
@@ -472,11 +473,11 @@ module tb_dds_user_e2e;
         do_power_cycle_reset;
         spi_write8(7'h01, 8'h03);
         pulse_io_update;
-        clk_wait(48);
+        clk_wait(LAUNCH_SETTLE_CYCLES);
         capture_iq(12, first_i, first_q);
-        clk_wait(48);
+        clk_wait(LAUNCH_SETTLE_CYCLES);
         pulse_sync;
-        clk_wait(48);
+        clk_wait(LAUNCH_SETTLE_CYCLES);
         capture_iq_2(12);
         for (i = 0; i < 12; i = i + 1) begin
             if (cap_i[i] != cap2_i[i] || cap_q[i] != cap2_q[i]) begin
@@ -493,11 +494,11 @@ module tb_dds_user_e2e;
         spi_write32(7'h02, 32'h0400_0000);
         spi_write8(7'h01, 8'h00);
         pulse_io_update;
-        clk_wait(48);
+        clk_wait(LAUNCH_SETTLE_CYCLES);
         capture_iq(12, first_i, first_q);
         spi_write32(7'h02, 32'h1800_0000);
         pulse_io_update_and_sync;
-        clk_wait(48);
+        clk_wait(LAUNCH_SETTLE_CYCLES);
         capture_iq_2(12);
         differs = 1'b0;
         for (i = 0; i < 12; i = i + 1)
@@ -519,7 +520,7 @@ module tb_dds_user_e2e;
         pulse_io_update;
         saw_busy = 1'b0;
         for (i = 0; i < 1024; i = i + 1) begin
-            @(posedge dut.clk_cal); #1;
+            @(posedge dut.clk_vec); #1;
             if (dut.cal_busy)
                 saw_busy = 1'b1;
             if (saw_busy && !dut.cal_busy)

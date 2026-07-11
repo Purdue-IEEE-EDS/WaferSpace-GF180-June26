@@ -1,0 +1,63 @@
+# ── Read RTL ──
+read_verilog -sv -DSYNTHESIS rtl/ftw/profile_normalizer.v rtl/ftw/freq_runner.v rtl/ftw/ftw_ctrl.v rtl/ftw/seg_timer.v rtl/ftw/step_half.v rtl/ftw/dp_half.v rtl/phase/phase_accum_vec4.v rtl/datapath/phase_to_sincos_interp.v rtl/datapath/sincos_interp_rom.v rtl/datapath/sincos_interp_mag.v rtl/datapath/dac_encoder.v rtl/datapath/dds_datapath.v rtl/datapath/dds_datapath_vec.v rtl/serializer/serializer_4to1.v rtl/cal_dac/cal_dac_chain.v rtl/cal_dac/cal_dac_scan.v rtl/common/carry_out.v rtl/common/clock_divider_4x.v rtl/common/reset_sync.v rtl/common/sync_edge.v rtl/spi/spi_slave.v rtl/spi/dds_regmap.v rtl/dds_top.v
+
+# ── Elaborate hierarchy ──
+hierarchy -top dds_top -check
+# ── Post-elaborate hierarchy ──
+ls
+
+# ── Behavioral → structural ──
+proc
+
+# ── NO FLATTEN — preserve module boundaries ──
+# flatten is intentionally omitted.
+# seg_timer and kogge_stone must stay hierarchical.
+
+# ── Coarse optimisation ──
+opt_expr
+opt_clean
+check
+opt -nodffe -nosdff
+wreduce
+peepopt
+opt_clean
+
+# ── Arithmetic and sharing ──
+alumacc
+share
+opt
+
+# ── Memory ──
+memory -nomap
+opt_clean
+opt -fast -full
+memory_map
+opt -full
+
+# ── Technology mapping ──
+techmap
+opt -fast
+
+# ── Hierarchy check before ABC ──
+# ── Pre-ABC hierarchy ──
+ls
+
+# ── DFF → liberty cell mapping ──
+dfflibmap -liberty /Users/eyn/.ciel/gf180mcuD/libs.ref/gf180mcu_fd_sc_mcu9t5v0/lib/gf180mcu_fd_sc_mcu9t5v0__tt_025C_3v30.lib
+
+# ── ABC: single pass, timing-driven ──
+# -D 2000: delay target (ps) = fast clk period
+# No -dff: do NOT retime across register boundaries
+abc -liberty /Users/eyn/.ciel/gf180mcuD/libs.ref/gf180mcu_fd_sc_mcu9t5v0/lib/gf180mcu_fd_sc_mcu9t5v0__tt_025C_3v30.lib -D 2000
+
+# ── Replace constants with physical tie cells ──
+hilomap -hicell gf180mcu_fd_sc_mcu9t5v0__tieh Z -locell gf180mcu_fd_sc_mcu9t5v0__tiel ZN
+
+# ── Final cleanup and stats ──
+opt_clean
+stat -liberty /Users/eyn/.ciel/gf180mcuD/libs.ref/gf180mcu_fd_sc_mcu9t5v0/lib/gf180mcu_fd_sc_mcu9t5v0__tt_025C_3v30.lib
+# ── Final hierarchy ──
+ls
+
+# ── Write netlist ──
+write_verilog -noattr syn/dds_top_syn.v

@@ -1,7 +1,6 @@
 sim/*.vvp
 sim/*.vcd
 .DS_Store
-syn/
 *.hex
 *.vvp
 *.vcd

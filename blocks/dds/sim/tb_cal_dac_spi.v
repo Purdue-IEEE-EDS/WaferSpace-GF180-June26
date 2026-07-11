@@ -229,7 +229,7 @@ module tb_cal_dac_spi;
     begin
         saw_busy = 1'b0;
         for (k = 0; k < 1024; k++) begin
-            @(posedge dut.clk_cal);
+            @(posedge dut.clk_vec);
             #1;
             if (dut.cal_busy)
                 saw_busy = 1'b1;
@@ -246,7 +246,7 @@ module tb_cal_dac_spi;
         int k;
     begin
         for (k = 0; k < polls; k++) begin
-            @(posedge dut.clk_cal);
+            @(posedge dut.clk_vec);
             #1;
             if (dut.cal_busy) begin
                 fail($sformatf("%s: busy asserted unexpectedly", label));
