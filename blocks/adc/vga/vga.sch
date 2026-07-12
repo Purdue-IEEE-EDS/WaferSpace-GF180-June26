@@ -305,15 +305,14 @@ N 1440 -150 1470 -150 {lab=GND}
 N 2080 -270 2080 -180 {lab=#net13}
 N 2050 -150 2080 -150 {lab=GND}
 N 1240 -1080 1380 -1080 {lab=Vbn}
+N 860 -800 860 -740 {lab=GND}
 N 1140 -820 1140 -760 {lab=GND}
 N 1140 -980 1140 -920 {lab=GND}
 N 1280 -980 1280 -920 {lab=GND}
 N 1280 -820 1280 -760 {lab=GND}
 N 1420 -820 1420 -760 {lab=GND}
 N 1420 -980 1420 -920 {lab=GND}
-N 860 -780 860 -740 {lab=GND}
-N 860 -860 860 -840 {lab=#net18}
-C {code_shown.sym} 750 240 0 0 {name=s1 only_toplevel=true spice_ignore=true value="
+C {code_shown.sym} 750 240 0 0 {name=s1 only_toplevel=true spice_ignore=true lvs_ignore=true value="
 .include /foss/pdks/gf180mcuD/libs.tech/ngspice/design.ngspice
 .lib /foss/pdks/gf180mcuD/libs.tech/ngspice/sm141064.ngspice ss
 .lib /foss/pdks/gf180mcuD/libs.tech/ngspice/sm141064.ngspice bjt_ss
@@ -430,7 +429,7 @@ C {gnd.sym} 640 -270 0 0 {name=l14 lab=GND}
 C {gnd.sym} 200 -150 3 1 {name=l18 lab=GND}
 C {gnd.sym} 330 -560 0 1 {name=l43 lab=GND}
 C {gnd.sym} 920 -560 0 1 {name=l44 lab=GND}
-C {code_shown.sym} -750 190 0 0 {name=s2 only_toplevel=true spice_ignore=true value="
+C {code_shown.sym} -750 190 0 0 {name=s2 only_toplevel=true spice_ignore=true lvs_ignore=true value="
 .include /foss/pdks/gf180mcuD/libs.tech/ngspice/design.ngspice
 .lib /foss/pdks/gf180mcuD/libs.tech/ngspice/sm141064.ngspice ss
 .lib /foss/pdks/gf180mcuD/libs.tech/ngspice/sm141064.ngspice bjt_ss
@@ -476,7 +475,7 @@ print mean(v5#branch)
 .endc
 "
 }
-C {code_shown.sym} 2170 360 0 0 {name=s3 only_toplevel=true spice_ignore=false value="
+C {code_shown.sym} 2170 360 0 0 {name=s3 only_toplevel=true spice_ignore=false lvs_ignore=true value="
 .include /foss/pdks/gf180mcuD/libs.tech/ngspice/design.ngspice
 .lib /foss/pdks/gf180mcuD/libs.tech/ngspice/sm141064.ngspice typical
 .lib /foss/pdks/gf180mcuD/libs.tech/ngspice/sm141064.ngspice bjt_typical
@@ -795,7 +794,7 @@ C {lab_wire.sym} 500 -990 0 0 {name=p5 sig_type=std_logic lab=VDD}
 C {lab_wire.sym} 500 -870 2 0 {name=p6 sig_type=std_logic lab=GND}
 C {lab_wire.sym} 1020 -920 0 1 {name=p7 sig_type=std_logic lab=Vbp}
 C {lab_wire.sym} 1020 -850 0 1 {name=p8 sig_type=std_logic lab=Vbn}
-C {symbols/ppolyf_u_1k.sym} 860 -810 2 0 {name=R12
+C {symbols/ppolyf_u_1k.sym} 860 -830 2 0 {name=R12
 W=1e-6
 L=2e-6
 model=ppolyf_u_1k
@@ -1388,34 +1387,6 @@ C {lab_pin.sym} 2360 -750 0 0 {name=p88 sig_type=std_logic lab=Vout}
 C {lab_pin.sym} 2260 -720 0 1 {name=p89 sig_type=std_logic lab=Vf_n}
 C {lab_pin.sym} 1960 -750 0 0 {name=p90 sig_type=std_logic lab=Vout_n}
 C {lab_pin.sym} 2660 -720 0 1 {name=p91 sig_type=std_logic lab=Vf}
-C {symbols/nfet_03v3.sym} 2080 -720 0 1 {name=M54
-L=0.28u
-W=0.22u
-nf=1
-m=1
-ad="'int((nf+1)/2) * W/nf * 0.18u'"
-pd="'2*int((nf+1)/2) * (W/nf + 0.18u)'"
-as="'int((nf+2)/2) * W/nf * 0.18u'"
-ps="'2*int((nf+2)/2) * (W/nf + 0.18u)'"
-nrd="'0.18u / W'" nrs="'0.18u / W'"
-sa=0 sb=0 sd=0
-model=nfet_03v3
-spiceprefix=X
-}
-C {symbols/nfet_03v3.sym} 2480 -720 0 1 {name=M55
-L=0.28u
-W=0.22u
-nf=1
-m=1
-ad="'int((nf+1)/2) * W/nf * 0.18u'"
-pd="'2*int((nf+1)/2) * (W/nf + 0.18u)'"
-as="'int((nf+2)/2) * W/nf * 0.18u'"
-ps="'2*int((nf+2)/2) * (W/nf + 0.18u)'"
-nrd="'0.18u / W'" nrs="'0.18u / W'"
-sa=0 sb=0 sd=0
-model=nfet_03v3
-spiceprefix=X
-}
 C {lab_pin.sym} 1400 -150 0 0 {name=p92 sig_type=std_logic lab=Vf_n
 }
 C {symbols/nfet_03v3.sym} 1420 -150 0 0 {name=M56
@@ -1530,3 +1501,31 @@ device=polarized_capacitor
 spice_ignore=true
 lvs_ignore=true}
 C {gnd.sym} 2870 -370 0 0 {name=l3 lab=GND}
+C {symbols/pfet_03v3.sym} 2080 -720 0 1 {name=M1
+L=0.28u
+W=0.44u
+nf=1
+m=1
+ad="'int((nf+1)/2) * W/nf * 0.18u'"
+pd="'2*int((nf+1)/2) * (W/nf + 0.18u)'"
+as="'int((nf+2)/2) * W/nf * 0.18u'"
+ps="'2*int((nf+2)/2) * (W/nf + 0.18u)'"
+nrd="'0.18u / W'" nrs="'0.18u / W'"
+sa=0 sb=0 sd=0
+model=pfet_03v3
+spiceprefix=X
+}
+C {symbols/pfet_03v3.sym} 2480 -720 0 1 {name=M2
+L=0.28u
+W=0.44u
+nf=1
+m=1
+ad="'int((nf+1)/2) * W/nf * 0.18u'"
+pd="'2*int((nf+1)/2) * (W/nf + 0.18u)'"
+as="'int((nf+2)/2) * W/nf * 0.18u'"
+ps="'2*int((nf+2)/2) * (W/nf + 0.18u)'"
+nrd="'0.18u / W'" nrs="'0.18u / W'"
+sa=0 sb=0 sd=0
+model=pfet_03v3
+spiceprefix=X
+}
