@@ -1,0 +1,23 @@
+** sch_path: /foss/designs/IHP-SG13CMOS5L-May26/VCOGF180_4.9GHz.sch
+.subckt gfvcolayout
+
+M1 Vn Vp net3 GND nfet_03v3 L=0.28u W=40u nf=10
+M2 Vp Vn net2 GND nfet_03v3 L=0.28u W=40u nf=10
+M3 net2 Vn GND GND nfet_03v3 L=0.28u W=15u nf=3
+M4 net3 Vp GND GND nfet_03v3 L=0.28u W=15u nf=3
+XR1 net1 Vctrl GND pplus_u r_width=5e-6 r_length=20e-6
+M5 Vn Vp VDD VDD pfet_03v3 L=0.28u W=40u nf=10
+M6 Vp Vn VDD VDD pfet_03v3 L=0.28u W=40u nf=10
+M7 Vp net1 Vp Vp nfet_03v3 L=20u W=44u nf=2 m=2
+M8 Vn net1 Vn Vn nfet_03v3 L=20u W=44u nf=2 m=2
+XC4 net2 Vp cap_mim_2f0fF c_width=5e-6 c_length=5e-6
+XC1 net2 GND cap_mim_2f0fF c_width=5e-6 c_length=5e-6
+XC2 net3 GND cap_mim_2f0fF c_width=5e-6 c_length=5e-6
+XC3 net3 Vn cap_mim_2f0fF c_width=5e-6 c_length=5e-6
+M9 VDD Vp Vpb GND nfet_03v3 L=0.28u W=29.995u nf=7
+XR3 Vpb GND GND pplus_u r_width=5e-6 r_length=20e-6
+M10 VDD Vn Vnb GND nfet_03v3 L=0.28u W=29.995u nf=7
+XR4 Vnb GND GND pplus_u r_width=5e-6 r_length=20e-6
+.ends
+
+

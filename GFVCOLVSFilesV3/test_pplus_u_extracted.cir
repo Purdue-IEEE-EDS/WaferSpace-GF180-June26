@@ -1,0 +1,7 @@
+* Extracted by KLayout with GF180MCU LVS runset on : 12/07/2026 21:17
+
+* cell test_pplus_u
+.SUBCKT test_pplus_u
+* device instance $1 r0 *1 9.04,2.33 pplus_u
+R$1 \$1 \$1 \$1 740 pplus_u L=20U W=5U
+.ENDS test_pplus_u
