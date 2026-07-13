@@ -94,6 +94,18 @@ C {gnd.sym} 1310 -40 0 0 {name=l7 lab=GND}
 C {lab_wire.sym} 1090 -750 0 0 {name=p2 sig_type=std_logic lab=VDD}
 C {lab_wire.sym} 935 -140 0 0 {name=p3 sig_type=std_logic lab=Vp}
 C {lab_wire.sym} 1280 -145 0 1 {name=p4 sig_type=std_logic lab=Vn}
+C {devices/code_shown.sym} 290 -1060 0 0 {name=MODELS only_toplevel=true
+format="tcleval( @value )"
+value="
+.include $::180MCU_MODELS/design.ngspice
+.lib $::180MCU_MODELS/sm141064.ngspice ss
+.lib $::180MCU_MODELS/sm141064.ngspice res_typical
+.lib $::180MCU_MODELS/sm141064.ngspice moscap_typical
+* .lib $::180MCU_MODELS/sm141064.ngspice res_statistical
+.lib $::180MCU_MODELS/sm141064.ngspice cap_mim
+.lib $::180MCU_MODELS/sm141064.ngspice mimcap_typical
+"
+lvs_ignore=true}
 C {symbols/nfet_03v3.sym} 1230 -40 0 0 {name=M1
 L=0.28u
 W=40u
@@ -154,7 +166,7 @@ model=nfet_03v3
 spiceprefix=X
 }
 C {gnd.sym} 1330 120 0 0 {name=l4 lab=GND}
-C {symbols/pplus_u.sym} 1090 -260 2 1 {name=R1
+C {symbols/pplus_u.sym} 1090 -260 0 0 {name=R1
 W=5e-6
 L=20e-6
 model=pplus_u
@@ -195,11 +207,11 @@ m=1
 value=340p
 footprint=1206
 device=inductor
-lvs_ignore=True}
+lvs_ignore=true}
 C {symbols/nfet_03v3.sym} 1010 -200 0 1 {name=M7
-L=30u
-W=30u
-nf=3
+L=20u
+W=44u
+nf=2
 m=2
 ad="'int((nf+1)/2) * W/nf * 0.18u'"
 pd="'2*int((nf+1)/2) * (W/nf + 0.18u)'"
@@ -211,9 +223,9 @@ model=nfet_03v3
 spiceprefix=X
 }
 C {symbols/nfet_03v3.sym} 1210 -200 2 1 {name=M8
-L=30u
-W=30u
-nf=3
+L=20u
+W=44u
+nf=2
 m=2
 ad="'int((nf+1)/2) * W/nf * 0.18u'"
 pd="'2*int((nf+1)/2) * (W/nf + 0.18u)'"
@@ -224,25 +236,25 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {symbols/cap_mim_2f0fF.sym} 730 -40 0 0 {name=C4
+C {symbols/cap_mim_2f0fF.sym} 730 -40 2 1 {name=C4
 W=5e-6
 L=5e-6
 model=cap_mim_2f0fF
 spiceprefix=X
 m=1}
-C {symbols/cap_mim_2f0fF.sym} 730 90 2 0 {name=C1
+C {symbols/cap_mim_2f0fF.sym} 730 90 0 0 {name=C1
 W=5e-6
 L=5e-6
 model=cap_mim_2f0fF
 spiceprefix=X
 m=1}
-C {symbols/cap_mim_2f0fF.sym} 1400 90 2 0 {name=C2
+C {symbols/cap_mim_2f0fF.sym} 1400 90 0 0 {name=C2
 W=5e-6
 L=5e-6
 model=cap_mim_2f0fF
 spiceprefix=X
 m=1}
-C {symbols/cap_mim_2f0fF.sym} 1400 -40 0 0 {name=C3
+C {symbols/cap_mim_2f0fF.sym} 1400 -40 2 1 {name=C3
 W=5e-6
 L=5e-6
 model=cap_mim_2f0fF
@@ -296,3 +308,20 @@ C {gnd.sym} 1370 -300 0 1 {name=l12 lab=GND}
 C {gnd.sym} 1350 -250 0 1 {name=l13 lab=GND}
 C {lab_wire.sym} 1460 -340 0 1 {name=p6 sig_type=std_logic lab=Vnb}
 C {gnd.sym} 1410 -380 0 0 {name=l15 lab=GND}
+C {devices/code_shown.sym} -25 -1065 0 0 {name=NGSPICE only_toplevel=true
+value="
+VDD vdd 0 dc 3.3
+Vctrl vctrl 0 dc 0.1
+.control
+save all
+tran 10ps 350ns
+plot v(vp) v(vn)
+plot v(vpb) v(vnb)
+linearize v(vp) v(vpb)
+set specwindow=blackman
+fft v(vp) v(vpb)
+plot mag(v(vp)) mag(v(vpb))
+write VCO_GF180.raw
+.endc
+"
+lvs_ignore=true}

@@ -1,6 +1,0 @@
-** sch_path: /foss/designs/WaferSpace-GF180-June26/GFVCOLVSFiles/test_pplus_u.sch
-.subckt test_pplus_u
-
-XR1 0 0 0 pplus_u r_width=5e-6 r_length=20e-6
-.ends
-
