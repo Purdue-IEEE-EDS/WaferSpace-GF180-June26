@@ -94,18 +94,16 @@ C {gnd.sym} 1310 -40 0 0 {name=l7 lab=GND}
 C {lab_wire.sym} 1090 -750 0 0 {name=p2 sig_type=std_logic lab=VDD}
 C {lab_wire.sym} 935 -140 0 0 {name=p3 sig_type=std_logic lab=Vp}
 C {lab_wire.sym} 1280 -145 0 1 {name=p4 sig_type=std_logic lab=Vn}
-C {devices/code_shown.sym} 290 -1060 0 0 {name=MODELS only_toplevel=true
+C {devices/code_shown.sym} 290 -1060 0 0 {name=MODELS only_toplevel=true lvs_ignore=true
 format="tcleval( @value )"
-value="
-.include $::180MCU_MODELS/design.ngspice
+value=".include $::180MCU_MODELS/design.ngspice
 .lib $::180MCU_MODELS/sm141064.ngspice ss
 .lib $::180MCU_MODELS/sm141064.ngspice res_typical
 .lib $::180MCU_MODELS/sm141064.ngspice moscap_typical
 * .lib $::180MCU_MODELS/sm141064.ngspice res_statistical
 .lib $::180MCU_MODELS/sm141064.ngspice cap_mim
 .lib $::180MCU_MODELS/sm141064.ngspice mimcap_typical
-"
-lvs_ignore=true}
+"}
 C {symbols/nfet_03v3.sym} 1230 -40 0 0 {name=M1
 L=0.28u
 W=40u
@@ -308,9 +306,8 @@ C {gnd.sym} 1370 -300 0 1 {name=l12 lab=GND}
 C {gnd.sym} 1350 -250 0 1 {name=l13 lab=GND}
 C {lab_wire.sym} 1460 -340 0 1 {name=p6 sig_type=std_logic lab=Vnb}
 C {gnd.sym} 1410 -380 0 0 {name=l15 lab=GND}
-C {devices/code_shown.sym} -25 -1065 0 0 {name=NGSPICE only_toplevel=true
-value="
-VDD vdd 0 dc 3.3
+C {devices/code_shown.sym} -25 -1065 0 0 {name=NGSPICE only_toplevel=true lvs_ignore=true
+value="VDD vdd 0 dc 3.3
 Vctrl vctrl 0 dc 0.1
 .control
 save all
@@ -323,5 +320,4 @@ fft v(vp) v(vpb)
 plot mag(v(vp)) mag(v(vpb))
 write VCO_GF180.raw
 .endc
-"
-lvs_ignore=true}
+"}
