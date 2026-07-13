@@ -8,9 +8,8 @@ E {}
 N 0 370 10 370 {lab=GND}
 N 10 370 10 400 {lab=GND}
 N 0 400 10 400 {lab=GND}
-N -300 -110 -300 -10 {lab=o1_b}
-N -90 -110 -90 -10 {lab=o2_b}
-N -90 -190 -90 -170 {lab=VDD}
+N -300 -110 -300 -10 {lab=o1}
+N -90 -110 -90 -10 {lab=o2}
 N -300 80 -90 80 {lab=#net1}
 N -90 50 -90 80 {lab=#net1}
 N -200 80 -200 130 {lab=#net1}
@@ -18,21 +17,21 @@ N 100 50 100 80 {lab=#net2}
 N 100 80 300 80 {lab=#net2}
 N 300 50 300 80 {lab=#net2}
 N 200 80 200 130 {lab=#net2}
-N 140 20 160 20 {lab=o2_b}
-N 240 20 260 20 {lab=o1_b}
-N 160 20 240 -30 {lab=o2_b}
-N 160 -30 240 20 {lab=o1_b}
-N 100 -30 160 -30 {lab=o1_b}
-N 100 -25 100 -10 {lab=o1_b}
-N 100 -30 100 -25 {lab=o1_b}
-N 300 -30 300 -10 {lab=o2_b}
+N 140 20 160 20 {lab=o2}
+N 240 20 260 20 {lab=o1}
+N 160 20 240 -30 {lab=o2}
+N 160 -30 240 20 {lab=o1}
+N 100 -30 160 -30 {lab=o1}
+N 100 -25 100 -10 {lab=o1}
+N 100 -30 100 -25 {lab=o1}
+N 300 -30 300 -10 {lab=o2}
 N 0 230 200 230 {lab=#net3}
 N 200 190 200 230 {lab=#net3}
 N -200 230 0 230 {lab=#net3}
 N -200 190 -200 230 {lab=#net3}
-N -300 -40 100 -40 {lab=o1_b}
-N 100 -40 100 -30 {lab=o1_b}
-N 300 -60 300 -30 {lab=o2_b}
+N -300 -40 100 -40 {lab=o1}
+N 100 -40 100 -30 {lab=o1}
+N 300 -60 300 -30 {lab=o2}
 N -190 370 -180 370 {lab=GND}
 N -190 370 -190 400 {lab=GND}
 N -190 400 -180 400 {lab=GND}
@@ -45,11 +44,10 @@ N -180 320 840 320 {lab=IREF}
 N 140 160 200 160 {lab=GND}
 N -200 160 -140 160 {lab=GND}
 N -430 -190 -90 -190 {lab=VDD}
-N -300 -190 -300 -170 {lab=VDD}
 N -300 50 -300 80 {lab=#net1}
 N -300 20 -240 20 {lab=GND}
-N 240 -30 300 -30 {lab=o2_b}
-N -90 -60 300 -60 {lab=o2_b}
+N 240 -30 300 -30 {lab=o2}
+N -90 -60 300 -60 {lab=o2}
 N -280 160 -240 160 {lab=i1}
 N 570 -110 570 -10 {lab=o3}
 N 780 -110 780 -10 {lab=o4}
@@ -76,8 +74,8 @@ N 670 190 670 230 {lab=#net6}
 N 570 -40 970 -40 {lab=o3}
 N 970 -40 970 -30 {lab=o3}
 N 1170 -60 1170 -30 {lab=o4}
-N 510 20 530 20 {lab=o2_b}
-N 820 20 840 20 {lab=o1_b}
+N 510 20 530 20 {lab=o2}
+N 820 20 840 20 {lab=o1}
 N 1010 160 1070 160 {lab=GND}
 N 670 160 730 160 {lab=GND}
 N 570 -190 570 -170 {lab=VDD}
@@ -94,6 +92,8 @@ N 880 350 890 350 {lab=GND}
 N 880 230 880 290 {lab=#net6}
 N -140 320 -140 370 {lab=IREF}
 N 240 160 280 160 {lab=i2}
+N -90 -190 -90 -170 {lab=VDD}
+N -300 -190 -300 -170 {lab=VDD}
 C {symbols/nfet_03v3.sym} -320 20 0 0 {name=M1
 L=0.28u
 W=1.44u
@@ -124,9 +124,8 @@ spiceprefix=X
 }
 C {symbols/nfet_03v3.sym} -20 370 0 0 {name=M4
 L=0.28u
-W=18.3u
-nf=30
-mult=1
+W=3.66u
+nf=6
 ad="'int((nf+1)/2) * W/nf * 0.18u'"
 pd="'2*int((nf+1)/2) * (W/nf + 0.18u)'"
 as="'int((nf+2)/2) * W/nf * 0.18u'"
@@ -135,7 +134,7 @@ nrd="'0.18u / W'" nrs="'0.18u / W'"
 sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
-}
+m=1}
 C {lab_pin.sym} -240 20 0 1 {name=p6 lab=GND}
 C {lab_pin.sym} -90 20 0 0 {name=p7 lab=GND}
 C {lab_pin.sym} 0 400 0 0 {name=p8 lab=GND}
@@ -221,18 +220,18 @@ value="
 .lib $::180MCU_MODELS/sm141064.ngspice typical
 .lib $::180MCU_MODELS/sm141064.ngspice res_typical
 "}
-C {devices/code_shown.sym} -220 -465 0 0 {name=NGSPICE only_toplevel=true lvs_ignore=true
+C {devices/code_shown.sym} -220 -395 0 0 {name=NGSPICE only_toplevel=true lvs_ignore=true
 value="V_VDD   VDD     0 DC 3.3
-V_VinP   i1     0 PULSE(0.4 1.3 0 52p 90p 53p 200p)
-V_VinN   i2     0 PULSE(1.3 0.4 0 52p 90p 53p 200p)
-*V_VinP   i1     0 SIN(0.85 0.45 5G 0 0 0)
-*V_VinN   i2     0 SIN(0.85 0.45 5G 0 0 180)
+V_VinP   i1     0 PULSE(1.94 2.68 0 104p 180p 106p 400p)
+V_VinN   i2     0 PULSE(2.68 1.94 0 104p 180p 106p 400p)
+*V_VinP   i1     0 SIN(0.85 0.45 2G 0 0 0)
+*V_VinN   i2     0 SIN(0.85 0.45 2G 0 0 180)
 
 .control
 save all
 tran 10p 350n
 write my_test_1.raw
-plot i1 o1_b
+plot i1 o1 xlimit 100n 103n
 .endc
 "}
 C {lab_pin.sym} -360 20 0 0 {name=p11 sig_type=std_logic lab=o3
@@ -331,15 +330,14 @@ C {lab_pin.sym} 1010 160 0 0 {name=p30 lab=GND}
 C {lab_pin.sym} 630 160 0 0 {name=p13 sig_type=std_logic lab=i2}
 C {lab_pin.sym} 570 -80 0 0 {name=p14 sig_type=std_logic lab=o3}
 C {lab_pin.sym} 780 -80 0 0 {name=p15 sig_type=std_logic lab=o4}
-C {lab_pin.sym} 510 20 0 0 {name=p16 sig_type=std_logic lab=o2_b
+C {lab_pin.sym} 510 20 0 0 {name=p16 sig_type=std_logic lab=o2
 }
-C {lab_pin.sym} 840 20 2 0 {name=p17 sig_type=std_logic lab=o1_b}
+C {lab_pin.sym} 840 20 2 0 {name=p17 sig_type=std_logic lab=o1}
 C {lab_pin.sym} 1110 160 0 1 {name=p18 sig_type=std_logic lab=i1}
 C {symbols/nfet_03v3.sym} 860 320 0 0 {name=M10
 L=0.28u
-W=18.3u
-nf=30
-mult=1
+W=3.66u
+nf=6
 ad="'int((nf+1)/2) * W/nf * 0.18u'"
 pd="'2*int((nf+1)/2) * (W/nf + 0.18u)'"
 as="'int((nf+2)/2) * W/nf * 0.18u'"
@@ -348,20 +346,47 @@ nrd="'0.18u / W'" nrs="'0.18u / W'"
 sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
-}
+m=1}
 C {lab_pin.sym} 880 350 0 0 {name=p31 lab=GND}
 C {ipin.sym} 280 160 2 0 {name=p2 lab=i2}
 C {ipin.sym} -280 160 0 0 {name=p1 lab=i1}
-C {opin.sym} -480 220 0 0 {name=p5 lab=o2_b}
-C {opin.sym} -480 160 0 0 {name=p3 lab=o1_b}
+C {opin.sym} -90 -80 0 0 {name=p5 lab=o2}
+C {opin.sym} -300 -80 0 1 {name=p3 lab=o1}
 C {iopin.sym} -430 -190 0 1 {name=p4 lab=VDD}
 C {iopin.sym} -430 -160 0 1 {name=p32 lab=GND}
 C {ipin.sym} -180 320 0 0 {name=p22 lab=IREF}
 C {isource.sym} -180 290 0 0 {name=I0 value=20u spice_ignore=false lvs_ignore=true only_toplevel=true}
 C {lab_pin.sym} -180 260 0 1 {name=p33 lab=GND}
 C {gnd.sym} 0 400 0 0 {name=l1 lab=GND}
-C {lab_pin.sym} -30 -80 0 1 {name=p24 lab=GND}
-C {capa-2.sym} -330 -80 1 0 {name=C2
+C {symbols/ppolyf_u_1k.sym} 780 -140 0 0 {name=R1
+W=1e-6
+L=15e-6
+model=ppolyf_u_1k
+spiceprefix=X
+m=1}
+C {lab_pin.sym} 760 -140 0 0 {name=p23 lab=GND}
+C {symbols/ppolyf_u_1k.sym} 570 -140 0 1 {name=R2
+W=1e-6
+L=15e-6
+model=ppolyf_u_1k
+spiceprefix=X
+m=1}
+C {lab_pin.sym} 590 -140 0 1 {name=p24 lab=GND}
+C {symbols/ppolyf_u_1k.sym} -90 -140 0 0 {name=R3
+W=1e-6
+L=15e-6
+model=ppolyf_u_1k
+spiceprefix=X
+m=1}
+C {lab_pin.sym} -110 -140 0 0 {name=p34 lab=GND}
+C {symbols/ppolyf_u_1k.sym} -300 -140 0 1 {name=R4
+W=1e-6
+L=15e-6
+model=ppolyf_u_1k
+spiceprefix=X
+m=1}
+C {lab_pin.sym} -280 -140 0 1 {name=p35 lab=GND}
+C {capa-2.sym} -330 -90 1 0 {name=C1
 m=1
 value=13.2f
 footprint=1206
@@ -369,11 +394,7 @@ device=polarized_capacitor
 only_toplevel=true
 spice_ignore=false
 lvs_ignore=true}
-C {lab_pin.sym} -300 -80 2 0 {name=p34 sig_type=std_logic lab=o1_b}
-C {lab_pin.sym} -90 -80 0 0 {name=p35 sig_type=std_logic lab=o2_b
-}
-C {lab_pin.sym} -360 -80 0 0 {name=p39 lab=GND}
-C {capa-2.sym} -60 -80 3 0 {name=C3
+C {capa-2.sym} -60 -90 3 0 {name=C2
 m=1
 value=13.2f
 footprint=1206
@@ -381,31 +402,5 @@ device=polarized_capacitor
 only_toplevel=true
 spice_ignore=false
 lvs_ignore=true}
-C {symbols/ppolyf_u_1k.sym} -300 -140 0 1 {name=R3
-W=1e-6
-L=10e-6
-model=ppolyf_u_1k
-spiceprefix=X
-m=1}
-C {symbols/ppolyf_u_1k.sym} -90 -140 0 0 {name=R4
-W=1e-6
-L=10e-6
-model=ppolyf_u_1k
-spiceprefix=X
-m=1}
-C {lab_pin.sym} -280 -140 0 1 {name=p23 lab=GND}
-C {lab_pin.sym} -110 -140 0 0 {name=p43 lab=GND}
-C {symbols/ppolyf_u_1k.sym} 570 -140 0 1 {name=R5
-W=1e-6
-L=10e-6
-model=ppolyf_u_1k
-spiceprefix=X
-m=1}
-C {symbols/ppolyf_u_1k.sym} 780 -140 0 0 {name=R6
-W=1e-6
-L=10e-6
-model=ppolyf_u_1k
-spiceprefix=X
-m=1}
-C {lab_pin.sym} 590 -140 0 1 {name=p44 lab=GND}
-C {lab_pin.sym} 760 -140 0 0 {name=p45 lab=GND}
+C {lab_pin.sym} -360 -90 0 0 {name=p36 lab=GND}
+C {lab_pin.sym} -30 -90 0 1 {name=p37 lab=GND}

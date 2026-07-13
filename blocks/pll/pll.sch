@@ -22,14 +22,14 @@ N 1480 -390 1480 -250 {lab=V_out_n}
 N 1420 -250 1480 -250 {lab=V_out_n}
 N 740 -190 780 -190 {lab=#net5}
 N 740 -170 780 -170 {lab=#net6}
-N 400 -160 440 -160 {lab=#net7}
-N 400 -140 440 -140 {lab=#net8}
-N 740 -150 790 -150 {lab=#net9}
-N 790 -150 790 -50 {lab=#net9}
-N 1080 -180 1130 -180 {lab=#net10}
-N 1130 -180 1130 -80 {lab=#net10}
-N 1420 -210 1470 -210 {lab=#net11}
-N 1470 -210 1470 -110 {lab=#net11}
+N 700 -190 740 -190 {lab=#net5}
+N 700 -170 740 -170 {lab=#net6}
+N 740 -150 790 -150 {lab=#net7}
+N 790 -150 790 -50 {lab=#net7}
+N 1080 -180 1130 -180 {lab=#net8}
+N 1130 -180 1130 -80 {lab=#net8}
+N 1420 -210 1470 -210 {lab=#net9}
+N 1470 -210 1470 -110 {lab=#net9}
 N 620 -490 620 -460 {lab=VSS}
 N 620 -520 740 -520 {lab=#net4}
 N 520 -490 580 -490 {lab=Vbias_n}
@@ -37,25 +37,24 @@ N 520 -520 520 -490 {lab=Vbias_n}
 N 480 -520 520 -520 {lab=Vbias_n}
 N 480 -490 480 -460 {lab=VSS}
 N -10 -280 10 -280 {lab=V_cryst}
-N 310 -320 420 -320 {lab=#net12}
-N 310 -300 420 -300 {lab=#net13}
+N 310 -320 420 -320 {lab=#net10}
+N 310 -300 420 -300 {lab=#net11}
 N 1080 -220 1120 -220 {lab=Vdiv_out_n}
 N 1080 -200 1120 -200 {lab=Vdiv_out}
-N 1110 -380 1160 -380 {lab=#net14}
-N -320 0 80 0 {lab=#net15}
-N 80 -150 80 0 {lab=#net15}
-N 40 -150 80 -150 {lab=#net15}
+N -320 0 80 0 {lab=#net12}
+N 80 -150 80 0 {lab=#net12}
+N 40 -150 80 -150 {lab=#net12}
 N -260 -260 -260 -90 {lab=VSS}
 N -260 -260 10 -260 {lab=VSS}
-N -350 -110 -350 -70 {lab=#net15}
+N -350 -110 -350 -70 {lab=#net12}
 N -310 -140 -310 -40 {lab=VSS}
 N -350 -40 -350 -10 {lab=VSS}
 N -350 -170 -350 -140 {lab=VDD}
 N -310 -90 -260 -90 {lab=VSS}
-N -400 -90 -350 -90 {lab=#net15}
-N -400 -90 -400 60 {lab=#net15}
-N -400 60 -320 60 {lab=#net15}
-N -320 -0 -320 60 {lab=#net15}
+N -400 -90 -350 -90 {lab=#net12}
+N -400 -90 -400 60 {lab=#net12}
+N -400 60 -320 60 {lab=#net12}
+N -320 -0 -320 60 {lab=#net12}
 N 40 -130 40 -110 {lab=VSS}
 C {blocks/pll/cpump.sym} 960 -380 0 0 {name=x1}
 C {blocks/pll/mux.sym} 570 -340 0 0 {name=x2}
@@ -74,7 +73,6 @@ C {lab_pin.sym} 1160 -400 0 0 {name=p10 sig_type=std_logic lab=VSS}
 C {blocks/pll/cml_div.sym} 1270 -210 2 0 {name=x5}
 C {lab_pin.sym} 1420 -170 0 1 {name=p11 sig_type=std_logic lab=VDD}
 C {lab_pin.sym} 1420 -190 0 1 {name=p12 sig_type=std_logic lab=VSS}
-C {blocks/pll/cml_div.sym} 930 -180 2 0 {name=x6}
 C {lab_pin.sym} 1080 -140 0 1 {name=p13 sig_type=std_logic lab=VDD}
 C {lab_pin.sym} 1080 -160 0 1 {name=p14 sig_type=std_logic lab=VSS}
 C {lab_pin.sym} 740 -110 0 1 {name=p15 sig_type=std_logic lab=VDD}
@@ -134,19 +132,19 @@ V_CRYST V_cryst 0 SIN(1.65 1.65 50meg 0 0 0)
 .control
     set temp = 25
 
-    let freq = 50meg
-    let pers = 500
-    let persteps = 20
+    let freq = 1250meg
+    let pers = 150
+    let persteps = 80
 
     let tper = 1 / freq
     let tfin = tper * pers
     let tstep = tper / persteps
     let tplotst = tfin - 2 * tper
 
-    tran 10ps 100ns
+    tran $&tstep $&tfin
     write pll_toplevel.raw
 
-    plot V_out xlimit $&tplotst $&tfin
+    plot V_out vdiv_out net6 xlimit $&tplotst $&tfin
 .endc
 "}
 C {opin.sym} 1500 -410 0 0 {name=p42 lab=V_out}
@@ -190,20 +188,22 @@ spiceprefix=X
 }
 C {lab_pin.sym} -350 -170 1 0 {name=p22 sig_type=std_logic lab=VDD}
 C {lab_pin.sym} -350 -10 1 1 {name=p23 sig_type=std_logic lab=VSS}
-C {blocks/pll/cml_div_2.sym} 590 -150 2 0 {name=x7}
+C {blocks/pll/cml_div_2.sym} 930 -180 2 0 {name=x7}
 C {lab_pin.sym} -260 -210 0 1 {name=p17 sig_type=std_logic lab=VSS}
 C {opin.sym} 1480 -250 0 0 {name=p18 lab=V_out_n}
 C {opin.sym} 1120 -220 3 0 {name=p24 lab=Vdiv_out_n}
 C {opin.sym} 1090 -200 3 0 {name=p25 lab=Vdiv_out}
-C {capa-2.sym} 400 -110 0 0 {name=C1
+C {vsource.sym} 1160 -350 0 0 {name=V1 value=0.1 savecurrent=false}
+C {lab_pin.sym} 1160 -320 0 0 {name=p31 sig_type=std_logic lab=VSS}
+C {capa-2.sym} 700 -140 0 0 {name=C1
 m=1
-value=10f
+value=13.2f
 footprint=1206
 device=polarized_capacitor}
-C {capa-2.sym} 400 -190 2 0 {name=C2
+C {capa-2.sym} 700 -220 2 0 {name=C2
 m=1
-value=10f
+value=13.2f
 footprint=1206
 device=polarized_capacitor}
-C {lab_pin.sym} 400 -220 0 1 {name=p26 sig_type=std_logic lab=VSS}
-C {lab_pin.sym} 400 -80 0 1 {name=p27 sig_type=std_logic lab=VSS}
+C {lab_pin.sym} 700 -110 0 1 {name=p26 sig_type=std_logic lab=VSS}
+C {lab_pin.sym} 700 -250 0 1 {name=p27 sig_type=std_logic lab=VSS}
