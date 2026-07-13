@@ -1,3 +1,10 @@
+sim/*.vvp
+sim/*.vcd
+.DS_Store
+*.hex
 *.vvp
 *.vcd
-*.hex
+sim/wave_scan_match_analysis
+sim/*.csv
+*.pyc
+.DS_Store

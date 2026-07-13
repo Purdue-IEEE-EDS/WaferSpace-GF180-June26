@@ -1,0 +1,65 @@
+** sch_path: /foss/designs/encoder/sym/NAND3_layout_tb.sch
+**.subckt NAND3_layout_tb a out C b
+*.ipin a
+*.opin out
+*.ipin C
+*.ipin b
+V1 VDD GND 3.3
+x1 b a VDD out C GND NAND3
+**** begin user architecture code
+
+
+.include /foss/designs/encoder/layout/nand3/NAND3.spice
+VA A 0 PULSE(0 3.3 250p 10p 10p 240p 500p)
+VB B 0 PULSE(0 3.3 500p 10p 10p 490p 1n)
+VC C 0 PULSE(0 3.3 1n 10p 10p 990p 2n)
+.tran 1p 2n
+.control
+run
+
+write nand.raw
+.endc
+
+
+
+.include /foss/pdks/gf180mcuD/libs.tech/ngspice/design.ngspice
+.lib /foss/pdks/gf180mcuD/libs.tech/ngspice/sm141064.ngspice typical
+
+**** end user architecture code
+**.ends
+
+* expanding   symbol:  NAND3.sym # of pins=6
+** sym_path: /foss/designs/encoder/sym/NAND3.sym
+** sch_path: /foss/designs/encoder/sym/NAND3.sch
+.subckt NAND3 b a VDD out C GND
+*.ipin a
+*.opin out
+*.ipin C
+*.ipin b
+*.ipin VDD
+*.ipin GND
+XM5 out net1 VDD VDD pfet_03v3 L=0.28u W=3.3u nf=5 ad='int((nf+1)/2) * W/nf * 0.18u' as='int((nf+2)/2) * W/nf * 0.18u' pd='2*int((nf+1)/2) * (W/nf + 0.18u)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.18u)' nrd='0.18u / W' nrs='0.18u / W' sa=0 sb=0 sd=0
+XM6 out net1 GND GND nfet_03v3 L=0.28u W=2.54u nf=4 ad='int((nf+1)/2) * W/nf * 0.18u' as='int((nf+2)/2) * W/nf * 0.18u' pd='2*int((nf+1)/2) * (W/nf + 0.18u)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.18u)' nrd='0.18u / W' nrs='0.18u / W' sa=0 sb=0 sd=0
+XM7 cbar C VDD VDD pfet_03v3 L=0.28u W=3.3u nf=5 ad='int((nf+1)/2) * W/nf * 0.18u' as='int((nf+2)/2) * W/nf * 0.18u' pd='2*int((nf+1)/2) * (W/nf + 0.18u)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.18u)' nrd='0.18u / W' nrs='0.18u / W' sa=0 sb=0 sd=0
+XM8 cbar C GND GND nfet_03v3 L=0.28u W=2.54u nf=4 ad='int((nf+1)/2) * W/nf * 0.18u' as='int((nf+2)/2) * W/nf * 0.18u' pd='2*int((nf+1)/2) * (W/nf + 0.18u)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.18u)' nrd='0.18u / W' nrs='0.18u / W' sa=0 sb=0 sd=0
+XM13 net1 a VDD VDD pfet_03v3 L=0.28u W=3.3u nf=5 ad='int((nf+1)/2) * W/nf * 0.18u' as='int((nf+2)/2) * W/nf * 0.18u' pd='2*int((nf+1)/2) * (W/nf + 0.18u)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.18u)' nrd='0.18u / W' nrs='0.18u / W' sa=0 sb=0 sd=0
+XM14 net1 b VDD VDD pfet_03v3 L=0.28u W=3.3u nf=5 ad='int((nf+1)/2) * W/nf * 0.18u' as='int((nf+2)/2) * W/nf * 0.18u' pd='2*int((nf+1)/2) * (W/nf + 0.18u)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.18u)' nrd='0.18u / W' nrs='0.18u / W' sa=0 sb=0 sd=0
+XM15 net1 cbar VDD VDD pfet_03v3 L=0.28u W=3.3u nf=5 ad='int((nf+1)/2) * W/nf * 0.18u' as='int((nf+2)/2) * W/nf * 0.18u' pd='2*int((nf+1)/2) * (W/nf + 0.18u)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.18u)' nrd='0.18u / W' nrs='0.18u / W' sa=0 sb=0 sd=0
+XM16 net1 a net2 GND nfet_03v3 L=0.28u W=2.54u nf=4 ad='int((nf+1)/2) * W/nf * 0.18u' as='int((nf+2)/2) * W/nf * 0.18u' pd='2*int((nf+1)/2) * (W/nf + 0.18u)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.18u)' nrd='0.18u / W' nrs='0.18u / W' sa=0 sb=0 sd=0
+XM17 net2 b net3 GND nfet_03v3 L=0.28u W=2.54u nf=4 ad='int((nf+1)/2) * W/nf * 0.18u' as='int((nf+2)/2) * W/nf * 0.18u' pd='2*int((nf+1)/2) * (W/nf + 0.18u)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.18u)' nrd='0.18u / W' nrs='0.18u / W' sa=0 sb=0 sd=0
+XM18 net3 cbar GND GND nfet_03v3 L=0.28u W=2.54u nf=4 ad='int((nf+1)/2) * W/nf * 0.18u' as='int((nf+2)/2) * W/nf * 0.18u' pd='2*int((nf+1)/2) * (W/nf + 0.18u)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.18u)' nrd='0.18u / W' nrs='0.18u / W' sa=0 sb=0 sd=0
+.ends
+
+.GLOBAL VDD
+.GLOBAL GND
+.end

@@ -1,0 +1,93 @@
+** sch_path: /foss/designs/encoder/sym/tm_to_bin2.sch
+.subckt NAND3 B A VDD out C GND
+M5 out net1 VDD VDD pfet_03v3 L=0.28u W=16.5u
+M6 out net1 GND GND nfet_03v3 L=0.28u W=10.16u
+M7 cbar C VDD VDD pfet_03v3 L=0.28u W=16.5u
+M8 cbar C GND GND nfet_03v3 L=0.28u W=10.16u
+M13 net1 A VDD VDD pfet_03v3 L=0.28u W=16.5u
+M14 net1 B VDD VDD pfet_03v3 L=0.28u W=16.5u
+M15 net1 cbar VDD VDD pfet_03v3 L=0.28u W=16.5u
+M16 net1 A net2 GND nfet_03v3 L=0.28u W=10.16u
+M17 net2 B net3 GND nfet_03v3 L=0.28u W=10.16u
+M18 net3 cbar GND GND nfet_03v3 L=0.28u W=10.16u
+.ends
+.subckt tm_to_bin2 VDD
++ comp[0] comp[1] comp[2] comp[3] comp[4] comp[5] comp[6] comp[7] comp[8] comp[9]
++ comp[10] comp[11] comp[12] comp[13] comp[14] comp[15] comp[16] comp[17] comp[18] comp[19]
++ comp[20] comp[21] comp[22] comp[23] comp[24] comp[25] comp[26] comp[27] comp[28] comp[29]
++ comp[30] comp[31] comp[32] comp[33] comp[34] comp[35] comp[36] comp[37] comp[38] comp[39]
++ comp[40] comp[41] comp[42] comp[43] comp[44] comp[45] comp[46] comp[47] comp[48] comp[49]
++ comp[50] comp[51] comp[52] comp[53] comp[54] comp[55] comp[56] comp[57] comp[58] comp[59]
++ comp[60] comp[61] comp[62] GND
++ wl[0] wl[1] wl[2] wl[3] wl[4] wl[5] wl[6] wl[7] wl[8] wl[9]
++ wl[10] wl[11] wl[12] wl[13] wl[14] wl[15] wl[16] wl[17] wl[18] wl[19]
++ wl[20] wl[21] wl[22] wl[23] wl[24] wl[25] wl[26] wl[27] wl[28] wl[29]
++ wl[30] wl[31] wl[32] wl[33] wl[34] wl[35] wl[36] wl[37] wl[38] wl[39]
++ wl[40] wl[41] wl[42] wl[43] wl[44] wl[45] wl[46] wl[47] wl[48] wl[49]
++ wl[50] wl[51] wl[52] wl[53] wl[54] wl[55] wl[56] wl[57] wl[58] wl[59]
++ wl[60] wl[61] wl[62]
+x_top1 comp[62] comp[61] VDD wl[62] GND GND NAND3
+x1[61] comp[1] comp[0] VDD wl[1] comp[2] GND NAND3
+x1[60] comp[2] comp[1] VDD wl[2] comp[3] GND NAND3
+x1[59] comp[3] comp[2] VDD wl[3] comp[4] GND NAND3
+x1[58] comp[4] comp[3] VDD wl[4] comp[5] GND NAND3
+x1[57] comp[5] comp[4] VDD wl[5] comp[6] GND NAND3
+x1[56] comp[6] comp[5] VDD wl[6] comp[7] GND NAND3
+x1[55] comp[7] comp[6] VDD wl[7] comp[8] GND NAND3
+x1[54] comp[8] comp[7] VDD wl[8] comp[9] GND NAND3
+x1[53] comp[9] comp[8] VDD wl[9] comp[10] GND NAND3
+x1[52] comp[10] comp[9] VDD wl[10] comp[11] GND NAND3
+x1[51] comp[11] comp[10] VDD wl[11] comp[12] GND NAND3
+x1[50] comp[12] comp[11] VDD wl[12] comp[13] GND NAND3
+x1[49] comp[13] comp[12] VDD wl[13] comp[14] GND NAND3
+x1[48] comp[14] comp[13] VDD wl[14] comp[15] GND NAND3
+x1[47] comp[15] comp[14] VDD wl[15] comp[16] GND NAND3
+x1[46] comp[16] comp[15] VDD wl[16] comp[17] GND NAND3
+x1[45] comp[17] comp[16] VDD wl[17] comp[18] GND NAND3
+x1[44] comp[18] comp[17] VDD wl[18] comp[19] GND NAND3
+x1[43] comp[19] comp[18] VDD wl[19] comp[20] GND NAND3
+x1[42] comp[20] comp[19] VDD wl[20] comp[21] GND NAND3
+x1[41] comp[21] comp[20] VDD wl[21] comp[22] GND NAND3
+x1[40] comp[22] comp[21] VDD wl[22] comp[23] GND NAND3
+x1[39] comp[23] comp[22] VDD wl[23] comp[24] GND NAND3
+x1[38] comp[24] comp[23] VDD wl[24] comp[25] GND NAND3
+x1[37] comp[25] comp[24] VDD wl[25] comp[26] GND NAND3
+x1[36] comp[26] comp[25] VDD wl[26] comp[27] GND NAND3
+x1[35] comp[27] comp[26] VDD wl[27] comp[28] GND NAND3
+x1[34] comp[28] comp[27] VDD wl[28] comp[29] GND NAND3
+x1[33] comp[29] comp[28] VDD wl[29] comp[30] GND NAND3
+x1[32] comp[30] comp[29] VDD wl[30] comp[31] GND NAND3
+x1[31] comp[31] comp[30] VDD wl[31] comp[32] GND NAND3
+x1[30] comp[32] comp[31] VDD wl[32] comp[33] GND NAND3
+x1[29] comp[33] comp[32] VDD wl[33] comp[34] GND NAND3
+x1[28] comp[34] comp[33] VDD wl[34] comp[35] GND NAND3
+x1[27] comp[35] comp[34] VDD wl[35] comp[36] GND NAND3
+x1[26] comp[36] comp[35] VDD wl[36] comp[37] GND NAND3
+x1[25] comp[37] comp[36] VDD wl[37] comp[38] GND NAND3
+x1[24] comp[38] comp[37] VDD wl[38] comp[39] GND NAND3
+x1[23] comp[39] comp[38] VDD wl[39] comp[40] GND NAND3
+x1[22] comp[40] comp[39] VDD wl[40] comp[41] GND NAND3
+x1[21] comp[41] comp[40] VDD wl[41] comp[42] GND NAND3
+x1[20] comp[42] comp[41] VDD wl[42] comp[43] GND NAND3
+x1[19] comp[43] comp[42] VDD wl[43] comp[44] GND NAND3
+x1[18] comp[44] comp[43] VDD wl[44] comp[45] GND NAND3
+x1[17] comp[45] comp[44] VDD wl[45] comp[46] GND NAND3
+x1[16] comp[46] comp[45] VDD wl[46] comp[47] GND NAND3
+x1[15] comp[47] comp[46] VDD wl[47] comp[48] GND NAND3
+x1[14] comp[48] comp[47] VDD wl[48] comp[49] GND NAND3
+x1[13] comp[49] comp[48] VDD wl[49] comp[50] GND NAND3
+x1[12] comp[50] comp[49] VDD wl[50] comp[51] GND NAND3
+x1[11] comp[51] comp[50] VDD wl[51] comp[52] GND NAND3
+x1[10] comp[52] comp[51] VDD wl[52] comp[53] GND NAND3
+x1[9] comp[53] comp[52] VDD wl[53] comp[54] GND NAND3
+x1[8] comp[54] comp[53] VDD wl[54] comp[55] GND NAND3
+x1[7] comp[55] comp[54] VDD wl[55] comp[56] GND NAND3
+x1[6] comp[56] comp[55] VDD wl[56] comp[57] GND NAND3
+x1[5] comp[57] comp[56] VDD wl[57] comp[58] GND NAND3
+x1[4] comp[58] comp[57] VDD wl[58] comp[59] GND NAND3
+x1[3] comp[59] comp[58] VDD wl[59] comp[60] GND NAND3
+x1[2] comp[60] comp[59] VDD wl[60] comp[61] GND NAND3
+x1[1] comp[61] comp[60] VDD wl[61] comp[62] GND NAND3
+x_bot2 comp[0] VDD VDD wl[0] comp[1] GND NAND3
+.ends
+.end
