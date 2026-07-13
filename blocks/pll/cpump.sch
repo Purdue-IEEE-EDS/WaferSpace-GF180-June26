@@ -22,7 +22,6 @@ C {ipin.sym} 270 -380 0 0 {name=p1 lab=Iref_pos}
 C {ipin.sym} 270 -140 0 0 {name=p2 lab=Iref_neg}
 C {ipin.sym} 150 -310 0 0 {name=p3 lab=V_up}
 C {ipin.sym} 150 -210 0 0 {name=p4 lab=V_down}
-C {ipin.sym} 480 -470 0 0 {name=p5 lab=V_inv}
 C {symbols/pfet_03v3.sym} 250 -310 0 0 {name=M1
 L=1u
 W=40u
@@ -60,13 +59,6 @@ model=ppolyf_u
 spiceprefix=X
 m=1}
 C {opin.sym} 590 -260 0 0 {name=p8 lab=V_out}
-C {symbols/cap_nmos_03v3.sym} 480 -440 0 0 {name=C3
-W=1e-6
-L=1e-6
-model=cap_nmos_03v3
-spiceprefix=X
-m=1}
-C {lab_pin.sym} 480 -410 3 0 {name=p9 sig_type=std_logic lab=VSS}
 C {symbols/cap_mim_analog.sym} 400 -170 0 0 {name=C1
 W=5e-6
 L=5e-6
