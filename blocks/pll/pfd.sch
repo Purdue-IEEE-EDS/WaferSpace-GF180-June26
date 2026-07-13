@@ -32,7 +32,7 @@ N 760 200 840 200 {lab=RST}
 N 620 330 820 330 {lab=Vb}
 N 820 520 840 520 {lab=#net4}
 N 780 520 820 520 {lab=#net4}
-N 920 530 1000 530 {lab=Qa}
+N 920 530 1000 530 {lab=Qb}
 N 800 540 840 540 {lab=#net5}
 N 800 540 800 620 {lab=#net5}
 N 800 620 900 620 {lab=#net5}
@@ -42,9 +42,9 @@ N 900 620 900 800 {lab=#net5}
 N 900 340 900 420 {lab=#net4}
 N 780 420 900 420 {lab=#net4}
 N 780 420 780 520 {lab=#net4}
-N 820 350 820 440 {lab=Qa}
-N 820 440 940 440 {lab=Qa}
-N 940 440 940 530 {lab=Qa}
+N 820 350 820 440 {lab=Qb}
+N 820 440 940 440 {lab=Qb}
+N 940 440 940 530 {lab=Qb}
 N 780 800 900 800 {lab=#net5}
 N 800 710 800 820 {lab=#net6}
 N 800 820 940 820 {lab=#net6}
@@ -54,7 +54,7 @@ N 780 800 780 910 {lab=#net5}
 N 780 910 840 910 {lab=#net5}
 N 760 890 840 890 {lab=RST}
 N 1000 -170 1000 170 {lab=Qa}
-N 1000 190 1000 530 {lab=Qa}
+N 1000 190 1000 530 {lab=Qb}
 N 800 710 820 710 {lab=#net6}
 N 800 10 820 10 {lab=#net3}
 C {devices/code_shown.sym} 10 -875 0 0 {name=MODELS only_toplevel=true
@@ -88,13 +88,13 @@ lvs_ignore=true}
 C {vsource.sym} 620 -340 0 0 {name=V2 value="PULSE(0 3.3 5n 1n 1n 1u 2u)" savecurrent=false spice_ignore=true lvs_ignore=true}
 C {gnd.sym} 620 -310 0 1 {name=l9 lab=0 spice_ignore=true lvs_ignore=true}
 C {lab_wire.sym} 860 -390 0 0 {name=p2 sig_type=std_logic lab=VDD}
-C {gnd.sym} 860 -330 0 0 {name=l11 lab=GND}
-C {gnd.sym} 880 -140 0 0 {name=l1 lab=GND}
+C {lab_pin.sym} 860 -330 0 0 {name=p8 lab=GND}
+C {lab_pin.sym} 880 -140 0 0 {name=p18 lab=GND}
 C {lab_wire.sym} 860 -10 0 0 {name=p5 sig_type=std_logic lab=VDD}
-C {gnd.sym} 860 50 0 0 {name=l12 lab=GND}
+C {lab_pin.sym} 860 50 0 0 {name=p19 lab=GND}
 C {blocks/pll/nor.sym} 880 220 0 0 {name=x5}
 C {lab_wire.sym} 760 200 0 0 {name=p6 sig_type=std_logic lab=RST}
-C {gnd.sym} 880 240 0 0 {name=l2 lab=GND}
+C {lab_pin.sym} 880 240 0 0 {name=p20 lab=GND}
 C {blocks/pll/nor.sym} 860 350 0 0 {name=x1}
 C {blocks/pll/nor.sym} 880 540 0 0 {name=x6}
 C {lab_wire.sym} 880 500 0 0 {name=p1 sig_type=std_logic lab=VDD}
@@ -102,20 +102,22 @@ C {blocks/pll/nor.sym} 860 730 0 0 {name=x7}
 C {vsource.sym} 620 360 0 0 {name=V1 value="PULSE(0 3.3 0 1n 1n 1.5u 2u)" savecurrent=false spice_ignore=true lvs_ignore=true}
 C {gnd.sym} 620 390 0 1 {name=l3 lab=0 spice_ignore=true lvs_ignore=true}
 C {lab_wire.sym} 860 310 0 0 {name=p9 sig_type=std_logic lab=VDD}
-C {gnd.sym} 860 370 0 0 {name=l4 lab=GND}
-C {gnd.sym} 880 560 0 0 {name=l5 lab=GND}
+C {lab_pin.sym} 860 370 0 0 {name=p21 lab=GND}
+C {lab_pin.sym} 880 560 0 0 {name=p22 lab=GND}
 C {lab_wire.sym} 860 690 0 0 {name=p10 sig_type=std_logic lab=VDD}
-C {gnd.sym} 860 750 0 0 {name=l6 lab=GND}
+C {lab_pin.sym} 860 750 0 0 {name=p23 lab=GND}
 C {blocks/pll/nor.sym} 880 910 0 0 {name=x8}
 C {lab_wire.sym} 760 890 0 0 {name=p11 sig_type=std_logic lab=RST}
-C {gnd.sym} 880 930 0 0 {name=l7 lab=GND}
+C {lab_pin.sym} 880 930 0 0 {name=p24 lab=GND}
 C {lab_wire.sym} 880 870 0 0 {name=p12 sig_type=std_logic lab=VDD}
 C {blocks/pll/nand.sym} 1040 180 0 0 {name=x9}
 C {lab_wire.sym} 1080 180 0 1 {name=p13 sig_type=std_logic lab=RST}
-C {gnd.sym} 1030 220 0 0 {name=l8 lab=GND}
+C {lab_pin.sym} 1030 220 0 0 {name=p25 lab=GND}
 C {lab_wire.sym} 1030 140 0 0 {name=p14 sig_type=std_logic lab=VDD}
 C {lab_wire.sym} 880 180 0 0 {name=p7 sig_type=std_logic lab=VDD}
 C {ipin.sym} 620 330 0 0 {name=p15 lab=Vb}
 C {ipin.sym} 620 -370 0 0 {name=p16 lab=Va}
 C {opin.sym} 1000 -170 0 0 {name=p4 lab=Qa}
 C {opin.sym} 1000 530 0 0 {name=p17 lab=Qb}
+C {iopin.sym} 780 -480 0 0 {name=p26 lab=VDD}
+C {iopin.sym} 780 -460 0 0 {name=p27 lab=GND}

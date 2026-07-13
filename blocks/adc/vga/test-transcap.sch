@@ -127,6 +127,7 @@ w=1e-6
 l=1e-6
 model=cap_mim_2f0_m4m5_noshield
 spiceprefix=X
+spice_ignore=true
 m=1}
 C {symbols/cap_mim_2f0fF.sym} 310 -180 0 0 {name=C2
 W=1e-6

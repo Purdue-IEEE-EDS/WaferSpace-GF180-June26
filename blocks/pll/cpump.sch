@@ -50,8 +50,8 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {ipin.sym} 340 -310 0 1 {name=p6 lab=VDD}
-C {ipin.sym} 380 -140 1 1 {name=p7 lab=VSS}
+C {iopin.sym} 340 -310 0 0 {name=p6 lab=VDD}
+C {iopin.sym} 380 -140 1 0 {name=p7 lab=VSS}
 C {symbols/ppolyf_u.sym} 400 -230 0 0 {name=R1
 W=2e-6
 L=8e-6
