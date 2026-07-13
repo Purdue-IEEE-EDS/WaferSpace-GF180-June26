@@ -3,7 +3,7 @@
  <description/>
  <original-file/>
  <generator>drc: script='/foss/pdks/ciel/gf180mcu/versions/b344c97eacc2aaf8e14ae7e43e2e9dc0871de2c0/gf180mcuD/libs.tech/klayout/tech/drc/gf180mcu.drc'</generator>
- <top-cell>TOP</top-cell>
+ <top-cell>rom2</top-cell>
  <tags>
  </tags>
  <categories>
@@ -1599,14 +1599,6 @@
    </categories>
   </category>
   <category>
-   <name>M1.4</name>
-   <description>M1.4 : Metal1 coverage over the entire die shall be &gt;30%
-                  (Refer to section 13.0 for Dummy Metal fill guidelines.
-                   Customer needs to ensure enough dummy metal to satisfy Metal1 coverage) : 30%</description>
-   <categories>
-   </categories>
-  </category>
-  <category>
    <name>M2.4</name>
    <description>M2.4 : Metal2 coverage over the entire die shall be &gt;30%
                   (Refer to section 13.0 for Dummy Metal fill guidelines.
@@ -1619,30 +1611,6 @@
    <description>M3.4 : metal3 coverage over the entire die shall be &gt;30%
                       (Refer to section 13.0 for Dummy Metal fill guidelines.
                       Customer needs to ensure enough dummy metal to satisfy metal3 coverage) : 30%</description>
-   <categories>
-   </categories>
-  </category>
-  <category>
-   <name>M4.4</name>
-   <description>M4.4 : metal4 coverage over the entire die shall be &gt;30%
-                      (Refer to section 13.0 for Dummy Metal fill guidelines.
-                      Customer needs to ensure enough dummy metal to satisfy metal4 coverage) : 30%</description>
-   <categories>
-   </categories>
-  </category>
-  <category>
-   <name>M5.4</name>
-   <description>M5.4 : metal5 coverage over the entire die shall be &gt;30%
-                      (Refer to section 13.0 for Dummy Metal fill guidelines.
-                      Customer needs to ensure enough dummy metal to satisfy metal5 coverage) : 30%</description>
-   <categories>
-   </categories>
-  </category>
-  <category>
-   <name>MT.3</name>
-   <description>MT.3 : MetalTop coverage over the entire die shall be &gt;30%
-                                  (Refer to section 10.3 for Dummy Metal-fill guidelines.
-                                  Customer needs to ensure enough dummy metal to satisfy Metaln coverage) : 30%</description>
    <categories>
    </categories>
   </category>
@@ -4765,7 +4733,7 @@
  </categories>
  <cells>
   <cell>
-   <name>TOP</name>
+   <name>rom2</name>
    <variant/>
    <layout-name/>
    <references>
@@ -4776,157 +4744,49 @@
   <item>
    <tags/>
    <category>DBU</category>
-   <cell>TOP</cell>
+   <cell>rom2</cell>
    <visited>false</visited>
    <multiplicity>1</multiplicity>
    <comment/>
    <image/>
    <values>
-    <value>polygon: (52.66,57.55;52.66,157.34;93.4,157.34;93.4,57.55)</value>
+    <value>polygon: (52.8,59.74;52.8,157.42;88.34,157.42;88.34,59.74)</value>
    </values>
   </item>
   <item>
    <tags/>
    <category>'PL.8'</category>
-   <cell>TOP</cell>
+   <cell>rom2</cell>
    <visited>false</visited>
    <multiplicity>1</multiplicity>
    <comment/>
    <image/>
    <values>
-    <value>polygon: (52.66,57.55;52.66,157.34;93.4,157.34;93.4,57.55)</value>
-   </values>
-  </item>
-  <item>
-   <tags/>
-   <category>'M1.4'</category>
-   <cell>TOP</cell>
-   <visited>false</visited>
-   <multiplicity>1</multiplicity>
-   <comment/>
-   <image/>
-   <values>
-    <value>polygon: (52.66,57.55;52.66,157.34;93.4,157.34;93.4,57.55)</value>
+    <value>polygon: (52.8,59.74;52.8,157.42;88.34,157.42;88.34,59.74)</value>
    </values>
   </item>
   <item>
    <tags/>
    <category>'M2.4'</category>
-   <cell>TOP</cell>
+   <cell>rom2</cell>
    <visited>false</visited>
    <multiplicity>1</multiplicity>
    <comment/>
    <image/>
    <values>
-    <value>polygon: (52.66,57.55;52.66,157.34;93.4,157.34;93.4,57.55)</value>
+    <value>polygon: (52.8,59.74;52.8,157.42;88.34,157.42;88.34,59.74)</value>
    </values>
   </item>
   <item>
    <tags/>
    <category>'M3.4'</category>
-   <cell>TOP</cell>
+   <cell>rom2</cell>
    <visited>false</visited>
    <multiplicity>1</multiplicity>
    <comment/>
    <image/>
    <values>
-    <value>polygon: (52.66,57.55;52.66,157.34;93.4,157.34;93.4,57.55)</value>
-   </values>
-  </item>
-  <item>
-   <tags/>
-   <category>'M4.4'</category>
-   <cell>TOP</cell>
-   <visited>false</visited>
-   <multiplicity>1</multiplicity>
-   <comment/>
-   <image/>
-   <values>
-    <value>polygon: (52.66,57.55;52.66,157.34;93.4,157.34;93.4,57.55)</value>
-   </values>
-  </item>
-  <item>
-   <tags/>
-   <category>'M5.4'</category>
-   <cell>TOP</cell>
-   <visited>false</visited>
-   <multiplicity>1</multiplicity>
-   <comment/>
-   <image/>
-   <values>
-    <value>polygon: (52.66,57.55;52.66,157.34;93.4,157.34;93.4,57.55)</value>
-   </values>
-  </item>
-  <item>
-   <tags/>
-   <category>'MT.3'</category>
-   <cell>TOP</cell>
-   <visited>false</visited>
-   <multiplicity>1</multiplicity>
-   <comment/>
-   <image/>
-   <values>
-    <value>polygon: (52.66,57.55;52.66,157.34;93.4,157.34;93.4,57.55)</value>
-   </values>
-  </item>
-  <item>
-   <tags/>
-   <category>'NW.2b_LV'</category>
-   <cell>TOP</cell>
-   <visited>false</visited>
-   <multiplicity>1</multiplicity>
-   <comment/>
-   <image/>
-   <values>
-    <value>polygon: (54.65,71.77;53.265,71.96;54.48,71.96;55.865,71.77)</value>
-   </values>
-  </item>
-  <item>
-   <tags/>
-   <category>'NW.2b_LV'</category>
-   <cell>TOP</cell>
-   <visited>false</visited>
-   <multiplicity>1</multiplicity>
-   <comment/>
-   <image/>
-   <values>
-    <value>polygon: (56.67,61.645;56.47,63.03;56.47,64.225;56.67,62.84)</value>
-   </values>
-  </item>
-  <item>
-   <tags/>
-   <category>'NW.2b_LV'</category>
-   <cell>TOP</cell>
-   <visited>false</visited>
-   <multiplicity>1</multiplicity>
-   <comment/>
-   <image/>
-   <values>
-    <value>polygon: (56.67,62.84;55.285,63.03;56.47,63.03;57.855,62.84)</value>
-   </values>
-  </item>
-  <item>
-   <tags/>
-   <category>'NW.2b_LV'</category>
-   <cell>TOP</cell>
-   <visited>false</visited>
-   <multiplicity>1</multiplicity>
-   <comment/>
-   <image/>
-   <values>
-    <value>polygon: (54.65,70.57;54.48,71.96;54.48,73.16;54.65,71.77)</value>
-   </values>
-  </item>
-  <item>
-   <tags/>
-   <category>'NW.2b_LV'</category>
-   <cell>TOP</cell>
-   <visited>false</visited>
-   <multiplicity>1</multiplicity>
-   <comment/>
-   <image/>
-   <values>
-    <value>polygon: (72.87,66.16;73.89,66.63;76.01,66.63;74.69,66.16)</value>
+    <value>polygon: (52.8,59.74;52.8,157.42;88.34,157.42;88.34,59.74)</value>
    </values>
   </item>
  </items>
