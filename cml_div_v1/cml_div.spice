@@ -1,0 +1,25 @@
+** sch_path: /foss/designs/WaferSpace-GF180-June26/blocks/pll/cml_div.sch
+.subckt cml_div VDD GND o1_b o2_b i2 i1 IREF
+*.PININFO i2:I i1:I o2_b:O o1_b:O VDD:B GND:B IREF:I
+M1 o1_b o3 net1 GND nfet_03v3 L=0.28u W=1.44u nf=1
+M2 o2_b o4 net1 GND nfet_03v3 L=0.28u W=1.44u nf=1
+M4 net3 IREF GND GND nfet_03v3 L=0.28u W=18.3u nf=30
+M6 net1 i1 net3 GND nfet_03v3 L=0.28u W=4.5u nf=3
+M7 o1_b o2_b net2 GND nfet_03v3 L=0.28u W=1.44u nf=2
+M8 o2_b o1_b net2 GND nfet_03v3 L=0.28u W=1.44u nf=2
+M11 net2 i2 net3 GND nfet_03v3 L=0.28u W=4.5u nf=3
+M9 IREF IREF GND GND nfet_03v3 L=0.28u W=0.61u nf=1
+M20 o3 o2_b net4 GND nfet_03v3 L=0.28u W=1.44u nf=1
+M21 o4 o1_b net4 GND nfet_03v3 L=0.28u W=1.44u nf=1
+M25 net4 i2 net6 GND nfet_03v3 L=0.28u W=4.5u nf=3
+M26 o3 o4 net5 GND nfet_03v3 L=0.28u W=1.44u nf=2
+M27 o4 o3 net5 GND nfet_03v3 L=0.28u W=1.44u nf=2
+M28 net5 i1 net6 GND nfet_03v3 L=0.28u W=4.5u nf=3
+M10 net6 IREF GND GND nfet_03v3 L=0.28u W=18.3u nf=30
+XR3 o1_b VDD GND ppolyf_u_1k r_width=1e-6 r_length=10e-6
+XR4 o2_b VDD GND ppolyf_u_1k r_width=1e-6 r_length=10e-6
+XR5 o3 VDD GND ppolyf_u_1k r_width=1e-6 r_length=10e-6
+XR6 o4 VDD GND ppolyf_u_1k r_width=1e-6 r_length=10e-6
+.ends
+.GLOBAL GND
+

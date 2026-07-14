@@ -1,0 +1,59 @@
+* Extracted by KLayout with GF180MCU LVS runset on : 14/07/2026 05:47
+
+* cell cml_div
+* pin SUB
+.SUBCKT cml_div SUB
+* device instance $1 r0 *1 19.04,-3.15 nfet_03v3
+M$1 \$11 \$47 \$12 SUB nfet_03v3 L=0.28U W=1.44U AS=0.6264P AD=0.6264P PS=3.9U
++ PD=3.9U
+* device instance $3 r0 *1 12.44,-3.15 nfet_03v3
+M$3 \$47 \$11 \$12 SUB nfet_03v3 L=0.28U W=1.44U AS=0.6264P AD=0.6264P PS=3.9U
++ PD=3.9U
+* device instance $5 r0 *1 30.98,-5.995 nfet_03v3
+M$5 \$21 \$13 \$20 SUB nfet_03v3 L=0.28U W=4.5U AS=1.695P AD=1.695P PS=8.26U
++ PD=8.26U
+* device instance $8 r0 *1 38.725,-3.15 nfet_03v3
+M$8 \$25 \$23 \$24 SUB nfet_03v3 L=0.28U W=1.44U AS=0.6264P AD=0.6264P PS=3.9U
++ PD=3.9U
+* device instance $10 r0 *1 8.59,-2.99 nfet_03v3
+M$10 \$11 \$23 \$8 SUB nfet_03v3 L=0.28U W=1.44U AS=0.8784P AD=0.8784P PS=4.1U
++ PD=4.1U
+* device instance $11 r0 *1 15.2,-5.995 nfet_03v3
+M$11 \$12 \$13 \$7 SUB nfet_03v3 L=0.28U W=4.5U AS=1.695P AD=1.695P PS=8.26U
++ PD=8.26U
+* device instance $14 r0 *1 2.38,-2.97 nfet_03v3
+M$14 \$47 \$25 \$8 SUB nfet_03v3 L=0.28U W=1.44U AS=0.8784P AD=0.8784P PS=4.1U
++ PD=4.1U
+* device instance $15 r0 *1 41.485,-5.995 nfet_03v3
+M$15 \$24 \$9 \$20 SUB nfet_03v3 L=0.28U W=4.5U AS=1.695P AD=1.695P PS=8.26U
++ PD=8.26U
+* device instance $18 r0 *1 45.325,-3.15 nfet_03v3
+M$18 \$23 \$25 \$24 SUB nfet_03v3 L=0.28U W=1.44U AS=0.6264P AD=0.6264P PS=3.9U
++ PD=3.9U
+* device instance $20 r0 *1 4.695,-5.995 nfet_03v3
+M$20 \$8 \$9 \$7 SUB nfet_03v3 L=0.28U W=4.5U AS=1.695P AD=1.695P PS=8.26U
++ PD=8.26U
+* device instance $23 r0 *1 34.875,-2.99 nfet_03v3
+M$23 \$23 \$47 \$21 SUB nfet_03v3 L=0.28U W=1.44U AS=0.8784P AD=0.8784P PS=4.1U
++ PD=4.1U
+* device instance $24 r0 *1 28.665,-2.97 nfet_03v3
+M$24 \$25 \$11 \$21 SUB nfet_03v3 L=0.28U W=1.44U AS=0.8784P AD=0.8784P PS=4.1U
++ PD=4.1U
+* device instance $25 r0 *1 37.245,5.075 ppolyf_u_1k
+R$25 \$23 \$76 SUB 10000 ppolyf_u_1k L=10U W=1U
+* device instance $26 r0 *1 32.18,5.075 ppolyf_u_1k
+R$26 \$25 \$76 SUB 10000 ppolyf_u_1k L=10U W=1U
+* device instance $27 r0 *1 10.96,5.075 ppolyf_u_1k
+R$27 \$11 \$76 SUB 10000 ppolyf_u_1k L=10U W=1U
+* device instance $28 r0 *1 5.895,5.075 ppolyf_u_1k
+R$28 \$47 \$76 SUB 10000 ppolyf_u_1k L=10U W=1U
+* device instance $29 r0 *1 26.295,-9.08 nfet_03v3
+M$29 \$20 \$5 SUB SUB nfet_03v3 L=0.28U W=18.3U AS=4.9715P AD=4.9715P PS=35.21U
++ PD=35.21U
+* device instance $59 r0 *1 -3.095,-8.74 nfet_03v3
+M$59 \$5 \$5 SUB SUB nfet_03v3 L=0.28U W=0.61U AS=0.3721P AD=0.3721P PS=2.44U
++ PD=2.44U
+* device instance $60 r0 *1 0.01,-9.08 nfet_03v3
+M$60 \$7 \$5 SUB SUB nfet_03v3 L=0.28U W=18.3U AS=4.9715P AD=4.9715P PS=35.21U
++ PD=35.21U
+.ENDS cml_div
