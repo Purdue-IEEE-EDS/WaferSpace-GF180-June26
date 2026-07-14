@@ -16,7 +16,7 @@ module tb_spi_slave;
     wire [7:0] wdata;
     reg  [7:0] rdata;
 
-    spi_slave dut (
+    spi_slave_core dut (
         .sclk  (sclk),
         .csn   (csn),
         .mosi  (mosi),

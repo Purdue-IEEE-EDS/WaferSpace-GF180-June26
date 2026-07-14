@@ -1,0 +1,17 @@
+** sch_path: /foss/designs/encoder/sym/dff_encoder.sch
+.subckt dff_encoder VDD RST CLK D Q GND
+M1  net2 D   VDD VDD pfet_03v3 L=0.28u W=0.88u
+M7  A    CLK net2 VDD pfet_03v3 L=0.28u W=0.88u
+M8  net1 CLK VDD VDD pfet_03v3 L=0.28u W=0.88u
+M9  B    A   net1 VDD pfet_03v3 L=0.28u W=0.88u
+M10 B    RST VDD VDD pfet_03v3 L=0.28u W=0.88u
+M19 A    D   GND GND nfet_03v3 L=0.28u W=0.36u
+M20 B    A   net4 GND nfet_03v3 L=0.28u W=0.36u
+M21 QB   CLK net3 GND nfet_03v3 L=0.28u W=0.36u
+M22 net3 B   GND GND nfet_03v3 L=0.28u W=0.36u
+M23 Q    QB  GND GND nfet_03v3 L=0.28u W=0.88u
+M24 Q    QB  VDD VDD pfet_03v3 L=0.28u W=1.76u
+M25 QB   B   VDD VDD pfet_03v3 L=0.28u W=0.88u
+M26 net4 CLK GND GND nfet_03v3 L=0.28u W=0.36u
+.ends
+.end

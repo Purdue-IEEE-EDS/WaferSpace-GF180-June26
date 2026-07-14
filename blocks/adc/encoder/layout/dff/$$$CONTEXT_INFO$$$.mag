@@ -1,0 +1,27 @@
+magic
+tech gf180mcuD
+magscale 1 5
+timestamp 1609135618
+<< checkpaint >>
+rect -1115 -1069 1254 1245
+use nfet$2  nfet$2_0
+timestamp 1609135618
+transform 1 0 0 0 1 0
+box -42 -30 179 155
+use nfet$3  nfet$3_0
+timestamp 1609135618
+transform 1 0 0 0 1 0
+box -42 -30 108 103
+use nfet  nfet_0
+timestamp 1609135618
+transform 1 0 0 0 1 0
+box -42 -30 108 103
+use pfet$1  pfet$1_0
+timestamp 1609135618
+transform 1 0 0 0 1 0
+box -115 -69 254 245
+use pfet$2  pfet$2_0
+timestamp 1609135618
+transform 1 0 0 0 1 0
+box -90 -68 156 132
+<< end >>

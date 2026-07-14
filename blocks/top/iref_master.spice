@@ -1,0 +1,22 @@
+** sch_path: /foss/designs/WaferSpace-GF180-June26/blocks/top/iref_master.sch
+.subckt iref_master IREF_ADC IREF_EXT Vdd IREF_DAC IREF_LVDS IREF_PLL
+*.PININFO IREF_ADC:O IREF_DAC:O Vdd:I IREF_EXT:I IREF_LVDS:O IREF_PLL:O
+M1 VP_CAS VP_CAS Vdd Vdd pfet_03v3 L=1u W=10u nf=20
+M2 net1 net1 VP_CAS Vdd pfet_03v3 L=1u W=10u nf=20
+M3 net2 VP_CAS Vdd Vdd pfet_03v3 L=1u W=10u nf=20
+M21 VN_MIRR net1 net2 Vdd pfet_03v3 L=1u W=10u nf=20
+M22 VN_MIRR VN_MIRR 0 0 nfet_03v3 L=4u W=10u nf=10
+M23 net3 VP_CAS Vdd Vdd pfet_03v3 L=1u W=10u nf=20
+M24 VN_CAS net1 net3 Vdd pfet_03v3 L=1u W=10u nf=20
+M25 net4 VN_CAS 0 0 nfet_03v3 L=1u W=10u nf=10
+M26 VN_CAS VN_MIRR net4 0 nfet_03v3 L=1u W=10u nf=10
+M30 net5 VN_CAS 0 0 nfet_03v3 L=1u W=10u nf=10
+M31 IREF_ADC VN_MIRR net5 0 nfet_03v3 L=1u W=10u nf=10
+M32 net6 VN_CAS 0 0 nfet_03v3 L=1u W=10u nf=10
+M33 IREF_DAC VN_MIRR net6 0 nfet_03v3 L=1u W=10u nf=10
+M34 net7 VN_CAS 0 0 nfet_03v3 L=1u W=10u nf=10
+M35 IREF_LVDS VN_MIRR net7 0 nfet_03v3 L=1u W=10u nf=10
+M36 net8 VN_CAS 0 0 nfet_03v3 L=1u W=10u nf=10
+M37 IREF_PLL VN_MIRR net8 0 nfet_03v3 L=1u W=10u nf=10
+.ends
+

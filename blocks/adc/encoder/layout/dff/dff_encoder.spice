@@ -1,0 +1,102 @@
+* SPICE3 file created from dff_encoder.ext - technology: gf180mcuD
+
+.option scale=5n
+
+.subckt pfet$2 a_28_n136# w_n180_n88# a_n92_0# a_94_0# VSUBS
+X0 a_94_0# a_28_n136# a_n92_0# w_n180_n88# pfet_03v3 ad=22.88n pd=0.612m as=22.88n ps=0.612m w=176 l=56
+C0 a_28_n136# w_n180_n88# 0.09251f
+C1 a_94_0# a_n92_0# 0.02488f
+C2 a_94_0# VSUBS 0.035f
+C3 a_n92_0# VSUBS 0.035f
+C4 a_28_n136# VSUBS 0.13385f
+C5 w_n180_n88# VSUBS 0.51955f
+.ends
+
+.subckt nfet$3 a_n84_n2# a_30_132# a_94_0# VSUBS
+X0 a_94_0# a_30_132# a_n84_n2# VSUBS nfet_03v3 ad=9.12n pd=0.396m as=9.12n ps=0.396m w=72 l=56
+C0 a_n84_n2# a_94_0# 0.02595f
+C1 a_94_0# VSUBS 0.04495f
+C2 a_n84_n2# VSUBS 0.04495f
+C3 a_30_132# VSUBS 0.22306f
+.ends
+
+.subckt nfet a_n84_n2# a_30_132# a_94_0# VSUBS
+X0 a_94_0# a_30_132# a_n84_n2# VSUBS nfet_03v3 ad=9.12n pd=0.396m as=9.12n ps=0.396m w=72 l=56
+C0 a_n84_n2# a_94_0# 0.02595f
+C1 a_94_0# VSUBS 0.04495f
+C2 a_n84_n2# VSUBS 0.04495f
+C3 a_30_132# VSUBS 0.22306f
+.ends
+
+.subckt pfet$1 a_28_n136# a_n92_0# a_94_0# w_n230_n138# VSUBS
+X0 a_94_0# a_28_n136# a_n92_0# w_n230_n138# pfet_03v3 ad=45.76n pd=0.964m as=45.76n ps=0.964m w=352 l=56
+C0 a_28_n136# w_n230_n138# 0.14374f
+C1 a_94_0# w_n230_n138# 0.20415f
+C2 a_94_0# a_28_n136# 0.01143f
+C3 a_n92_0# w_n230_n138# 0.02037f
+C4 a_28_n136# a_n92_0# 0.01143f
+C5 a_94_0# a_n92_0# 0.09167f
+C6 a_94_0# VSUBS 0.02097f
+C7 a_n92_0# VSUBS 0.06197f
+C8 a_28_n136# VSUBS 0.08032f
+C9 w_n230_n138# VSUBS 1.44242f
+.ends
+
+.subckt nfet$2 a_216_0# a_n84_0# a_94_0# a_30_236#
+X0 a_94_0# a_30_236# a_n84_0# a_216_0# nfet_03v3 ad=21.472n pd=0.596m as=21.472n ps=0.596m w=176 l=56
+C0 a_n84_0# a_94_0# 0.02606f
+C1 a_94_0# a_216_0# 0.08418f
+C2 a_n84_0# a_216_0# 0.04206f
+C3 a_30_236# a_216_0# 0.22104f
+.ends
+
+.subckt dff_encoder VDD RST GND Q D CLK
+Xpfet$2_0 m1_1769_1620# VDD VDD m1_2377_1620# GND pfet$2
+Xpfet$2_1 RST VDD m1_1769_1620# VDD GND pfet$2
+Xpfet$2_2 m1_952_1159# VDD pfet$2_4/a_94_0# m1_1769_1620# GND pfet$2
+Xpfet$2_3 D VDD VDD pfet$2_3/a_94_0# GND pfet$2
+Xnfet$3_0 GND CLK nfet_1/a_n84_n2# GND nfet$3
+Xpfet$2_4 CLK VDD VDD pfet$2_4/a_94_0# GND pfet$2
+Xpfet$2_5 CLK VDD pfet$2_3/a_94_0# m1_952_1159# GND pfet$2
+Xnfet_0 m1_952_1159# D GND GND nfet
+Xnfet_2 GND m1_1769_1620# nfet_2/a_94_0# GND nfet
+Xnfet_1 nfet_1/a_n84_n2# m1_952_1159# m1_1769_1620# GND nfet
+Xnfet_3 nfet_2/a_94_0# CLK m1_2377_1620# GND nfet
+Xpfet$1_0 m1_2377_1620# VDD Q VDD GND pfet$1
+Xnfet$2_0 GND GND Q m1_2377_1620# nfet$2
+C0 VDD m1_952_1159# 0.25532f
+C1 RST m1_952_1159# 0.28962f
+C2 D m1_952_1159# 0.15324f
+C3 VDD RST 0.09962f
+C4 VDD D 0.0879f
+C5 m1_952_1159# CLK 0.82729f
+C6 D RST 0.2565f
+C7 VDD CLK 0.21727f
+C8 RST nfet_1/a_n84_n2# 0.01313f
+C9 RST CLK 0.15126f
+C10 D CLK 0.26838f
+C11 VDD m1_2377_1620# 0.4064f
+C12 m1_2377_1620# CLK 0.12032f
+C13 VDD pfet$2_3/a_94_0# 0.03811f
+C14 m1_952_1159# pfet$2_4/a_94_0# 0.01479f
+C15 VDD pfet$2_4/a_94_0# 0.03741f
+C16 Q VDD 0.15638f
+C17 m1_1769_1620# m1_952_1159# 0.26109f
+C18 VDD m1_1769_1620# 0.28344f
+C19 m1_1769_1620# RST 0.55639f
+C20 Q m1_2377_1620# 0.10926f
+C21 m1_1769_1620# CLK 0.27206f
+C22 m1_1769_1620# m1_2377_1620# 0.11109f
+C23 Q GND 0.45444f
+C24 m1_2377_1620# GND 0.38991f
+C25 m1_1769_1620# GND 0.2704f
+C26 nfet_2/a_94_0# GND 0.01084f
+C27 m1_952_1159# GND 0.33164f
+C28 D GND 0.34707f
+C29 VDD GND 0.15241f
+C30 CLK GND 0.433f
+C31 pfet$2_3/a_94_0# GND -0.06423f
+C32 pfet$2_4/a_94_0# GND -0.06677f
+C33 RST GND 0.42855f
+.ends
+
