@@ -1,0 +1,9 @@
+** sch_path: /foss/designs/WaferSpace-GF180-June26/blocks/pll/nand.sch
+.subckt nand VDD Z A B GND
+*.PININFO A:I VDD:B Z:O GND:B B:I
+M1 Z A net1 GND nfet_03v3 L=0.28u W=0.22u nf=1
+M2 Z A VDD VDD pfet_03v3 L=0.28u W=0.22u nf=1
+M3 Z B VDD VDD pfet_03v3 L=0.28u W=0.22u nf=1
+M4 net1 B GND GND nfet_03v3 L=0.28u W=0.22u nf=1
+.ends
+

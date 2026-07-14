@@ -1,0 +1,40 @@
+** sch_path: /foss/designs/WaferSpace-GF180-June26/blocks/pll/pfd.sch
+.subckt pfd VDD GND Va Qa Vb Qb
+*.PININFO Vb:I Va:I Qa:O Qb:O VDD:B GND:B
+x2 VDD Va Qa net1 GND nor
+x3 VDD net1 net2 Qa GND nor
+x4 VDD net1 net3 net2 GND nor
+x5 VDD net2 RST net3 GND nor
+x1 VDD Vb Qb net4 GND nor
+x6 VDD net4 net5 Qb GND nor
+x7 VDD net4 net6 net5 GND nor
+x8 VDD net5 RST net6 GND nor
+x9 VDD net7 Qa Qb GND nand
+M1 RST net7 GND GND nfet_03v3 L=0.28u W=0.22u nf=1
+M2 RST net7 VDD VDD pfet_03v3 L=0.28u W=0.22u nf=1
+.ends
+
+* expanding   symbol:  blocks/pll/nor.sym # of pins=5
+** sym_path: /foss/designs/WaferSpace-GF180-June26/blocks/pll/nor.sym
+** sch_path: /foss/designs/WaferSpace-GF180-June26/blocks/pll/nor.sch
+.subckt nor VDD A B Z GND
+*.PININFO A:I B:I Z:O GND:B VDD:B
+M1 Z A GND GND nfet_03v3 L=0.28u W=0.22u nf=1
+M2 Z B net1 VDD pfet_03v3 L=0.28u W=0.22u nf=1
+M3 Z B GND GND nfet_03v3 L=0.28u W=0.22u nf=1
+M4 net1 A VDD VDD pfet_03v3 L=0.28u W=0.22u nf=1
+.ends
+
+
+* expanding   symbol:  blocks/pll/nand.sym # of pins=5
+** sym_path: /foss/designs/WaferSpace-GF180-June26/blocks/pll/nand.sym
+** sch_path: /foss/designs/WaferSpace-GF180-June26/blocks/pll/nand.sch
+.subckt nand VDD Z A B GND
+*.PININFO A:I VDD:B Z:O GND:B B:I
+M1 Z A net1 GND nfet_03v3 L=0.28u W=0.22u nf=1
+M2 Z A VDD VDD pfet_03v3 L=0.28u W=0.22u nf=1
+M3 Z B VDD VDD pfet_03v3 L=0.28u W=0.22u nf=1
+M4 net1 B GND GND nfet_03v3 L=0.28u W=0.22u nf=1
+.ends
+
+

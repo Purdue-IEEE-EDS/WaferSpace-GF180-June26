@@ -1,0 +1,12 @@
+** sch_path: /foss/designs/WaferSpace-GF180-June26/blocks/pll/diffpair.sch
+.subckt diffpair VDD Vout Vin Vin_n GND
+*.PININFO Vin:I Vin_n:I VDD:B Vout:O GND:B
+M1 net3 Vin net1 GND nfet_03v3 L=0.56u W=4.5u nf=3
+M2 Vout Vin_n net1 GND nfet_03v3 L=0.56u W=4.5u nf=3
+M3 net1 net2 GND GND nfet_03v3 L=0.56u W=9u nf=6
+XR1 net3 VDD GND ppolyf_u_1k r_width=2e-6 r_length=24e-6
+XR2 Vout VDD GND ppolyf_u_1k r_width=2e-6 r_length=24e-6
+XR4 GND net2 GND ppolyf_u r_width=1e-6 r_length=1e-6
+XR5 net2 VDD GND ppolyf_u r_width=1e-6 r_length=2e-6
+.ends
+
