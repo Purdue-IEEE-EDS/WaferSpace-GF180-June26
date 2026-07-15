@@ -1,0 +1,4 @@
+.subckt strongarm_pre inp inn outp outn vss
+XR1 outp inp vss ppolyf_u_1k r_width=1u r_length=6u
+XR2 outn inn vss ppolyf_u_1k r_width=1u r_length=6u
+.ends

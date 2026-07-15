@@ -1,0 +1,6 @@
+.subckt refgen vdd vss vrefp vrefn
+XRtop vrefp vdd vss ppolyf_u_1k r_width=2u r_length=80.5u
+XRbot vrefn vss vss ppolyf_u_1k r_width=2u r_length=94.5u
+XCpz vrefp vss cap_nmos_03v3_b c_width=22.4u c_length=22.4u
+XCnz vrefn vss cap_nmos_03v3_b c_width=22.4u c_length=22.4u
+.ends
