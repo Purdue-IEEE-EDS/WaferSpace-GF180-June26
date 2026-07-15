@@ -1,0 +1,118 @@
+.subckt preamp_comp_block vdd vss vcm_p vcm_n clk q[62] q[61] q[60] q[59] q[58] q[57] q[56] q[55] q[54] q[53] q[52] q[51] q[50] q[49] q[48] q[47] q[46] q[45] q[44] q[43] q[42] q[41] q[40] q[39] q[38] q[37] q[36] q[35] q[34] q[33] q[32] q[31] q[30] q[29] q[28] q[27] q[26] q[25] q[24] q[23] q[22] q[21] q[20] q[19] q[18] q[17] q[16] q[15] q[14] q[13] q[12] q[11] q[10] q[9] q[8] q[7] q[6] q[5] q[4] q[3] q[2] q[1] q[0] vrefp vrefn nbias
+x3 vrefp vrefn tap1 tap2 tap3 tap4 tap5 tap6 tap7 tap8 vctr tap10 tap11 tap12 tap13 tap14 tap15 tap16 tap17 vss ladder
+x4 net165 net166 net167 net168 net169 net170 net171 net172 net173 preamp
+x5 net174 net175 net176 net177 net178 net179 net180 net181 net182 preamp
+x6 net183 net184 net185 net186 net187 net188 net189 net190 net191 preamp
+x7 net192 net193 net194 net195 net196 net197 net198 net199 net200 preamp
+x8 net3 net4 net8 net7 vss net201 net202 net203 net204 net205 net206 interp4
+x9 net8 net7 net1 net2 vss net9 net10 net11 net12 net20 net19 interp4
+x10 net1 net2 net6 net5 vss net18 net17 net16 net15 net14 net13 interp4
+x16 vdd net9 net10 clk q[62] net207 vss strongarm
+x17 vdd net11 net12 clk q[61] net208 vss strongarm
+x18 vdd net20 net19 clk q[60] net209 vss strongarm
+x19 vdd net135 net136 clk q[59] net210 vss strongarm
+x20 vdd net18 net17 clk q[58] net211 vss strongarm
+x21 vdd net16 net15 clk q[57] net212 vss strongarm
+x22 vdd net14 net13 clk q[56] net213 vss strongarm
+x23 vdd net163 net164 clk q[55] net214 vss strongarm
+x24 net6 net5 net28 net27 vss net21 net22 net23 net24 net25 net26 interp4
+x25 vdd net21 net22 clk q[54] net215 vss strongarm
+x26 vdd net23 net24 clk q[53] net216 vss strongarm
+x27 vdd net25 net26 clk q[52] net217 vss strongarm
+x11 vdd net137 net138 clk q[51] net218 vss strongarm
+x12 vdd net29 net30 clk q[50] net219 vss strongarm
+x13 vdd net31 net32 clk q[49] net220 vss strongarm
+x14 vdd net33 net34 clk q[48] net221 vss strongarm
+x28 vdd net139 net140 clk q[47] net222 vss strongarm
+x29 vdd net37 net38 clk q[46] net223 vss strongarm
+x30 vdd net39 net40 clk q[45] net224 vss strongarm
+x31 vdd net41 net42 clk q[44] net225 vss strongarm
+x32 vdd net141 net142 clk q[43] net226 vss strongarm
+x33 vdd net45 net46 clk q[42] net227 vss strongarm
+x34 vdd net47 net48 clk q[41] net228 vss strongarm
+x35 vdd net49 net50 clk q[40] net229 vss strongarm
+x36 vdd net143 net144 clk q[39] net230 vss strongarm
+x37 vdd net53 net54 clk q[38] net231 vss strongarm
+x38 vdd net55 net56 clk q[37] net232 vss strongarm
+x39 vdd net57 net58 clk q[36] net233 vss strongarm
+x40 vdd net145 net146 clk q[35] net234 vss strongarm
+x41 vdd net61 net62 clk q[34] net235 vss strongarm
+x42 vdd net63 net64 clk q[33] net236 vss strongarm
+x43 vdd net65 net66 clk q[32] net237 vss strongarm
+x44 vdd net148 net147 clk q[31] net238 vss strongarm
+x45 vdd net69 net70 clk q[30] net239 vss strongarm
+x46 vdd net71 net72 clk q[29] net240 vss strongarm
+x47 vdd net73 net74 clk q[28] net241 vss strongarm
+x48 vdd net150 net149 clk q[27] net242 vss strongarm
+x49 vdd net77 net78 clk q[26] net243 vss strongarm
+x50 vdd net79 net80 clk q[25] net244 vss strongarm
+x51 vdd net81 net82 clk q[24] net245 vss strongarm
+x52 vdd net152 net151 clk q[23] net246 vss strongarm
+x53 vdd net85 net86 clk q[22] net247 vss strongarm
+x54 vdd net87 net88 clk q[21] net248 vss strongarm
+x55 vdd net89 net90 clk q[20] net249 vss strongarm
+x56 vdd net154 net153 clk q[19] net250 vss strongarm
+x57 vdd net93 net94 clk q[18] net251 vss strongarm
+x58 vdd net95 net96 clk q[17] net252 vss strongarm
+x59 vdd net97 net98 clk q[16] net253 vss strongarm
+x60 vdd net156 net155 clk q[15] net254 vss strongarm
+x61 vdd net101 net102 clk q[14] net255 vss strongarm
+x62 vdd net103 net104 clk q[13] net256 vss strongarm
+x63 vdd net105 net106 clk q[12] net257 vss strongarm
+x64 vdd net158 net157 clk q[11] net258 vss strongarm
+x65 vdd net109 net110 clk q[10] net259 vss strongarm
+x66 vdd net111 net112 clk q[9] net260 vss strongarm
+x67 vdd net113 net114 clk q[8] net261 vss strongarm
+x68 vdd net160 net159 clk q[7] net262 vss strongarm
+x69 vdd net117 net118 clk q[6] net263 vss strongarm
+x70 vdd net119 net120 clk q[5] net264 vss strongarm
+x71 vdd net121 net122 clk q[4] net265 vss strongarm
+x72 vdd net162 net161 clk q[3] net266 vss strongarm
+x73 vdd net125 net126 clk q[2] net267 vss strongarm
+x74 vdd net127 net128 clk q[1] net268 vss strongarm
+x75 net269 net270 net271 net272 net273 net274 net275 net276 net277 preamp
+x76 net28 net27 net36 net35 vss net29 net30 net31 net32 net33 net34 interp4
+x77 net278 net279 net280 net281 net282 net283 net284 net285 net286 preamp
+x78 net36 net35 net44 net43 vss net37 net38 net39 net40 net41 net42 interp4
+x79 net287 net288 net289 net290 net291 net292 net293 net294 net295 preamp
+x80 net44 net43 net52 net51 vss net45 net46 net47 net48 net49 net50 interp4
+x81 net296 net297 net298 net299 net300 net301 net302 net303 net304 preamp
+x82 net52 net51 net60 net59 vss net53 net54 net55 net56 net57 net58 interp4
+x83 net305 net306 net307 net308 net309 net310 net311 net312 net313 preamp
+x84 net60 net59 net68 net67 vss net61 net62 net63 net64 net65 net66 interp4
+x85 net314 net315 net316 net317 net318 net319 net320 net321 net322 preamp
+x86 net68 net67 net76 net75 vss net69 net70 net71 net72 net73 net74 interp4
+x87 net323 net324 net325 net326 net327 net328 net329 net330 net331 preamp
+x88 net76 net75 net84 net83 vss net77 net78 net79 net80 net81 net82 interp4
+x89 net332 net333 net334 net335 net336 net337 net338 net339 net340 preamp
+x90 net84 net83 net92 net91 vss net85 net86 net87 net88 net89 net90 interp4
+x91 net341 net342 net343 net344 net345 net346 net347 net348 net349 preamp
+x92 net92 net91 net100 net99 vss net93 net94 net95 net96 net97 net98 interp4
+x93 net350 net351 net352 net353 net354 net355 net356 net357 net358 preamp
+x94 net100 net99 net108 net107 vss net101 net102 net103 net104 net105 net106 interp4
+x95 net359 net360 net361 net362 net363 net364 net365 net366 net367 preamp
+x96 net108 net107 net116 net115 vss net109 net110 net111 net112 net113 net114 interp4
+x97 net368 net369 net370 net371 net372 net373 net374 net375 net376 preamp
+x98 net116 net115 net124 net123 vss net117 net118 net119 net120 net121 net122 interp4
+x99 net377 net378 net379 net380 net381 net382 net383 net384 net385 preamp
+x100 net124 net123 net132 net131 vss net125 net126 net127 net128 net129 net130 interp4
+x101 net386 net387 net388 net389 net390 net391 net392 net393 net394 preamp
+x102 net132 net131 net134 net133 vss net395 net396 net397 net398 net399 net400 interp4
+x103 net401 net402 net403 net404 net405 net406 net407 net408 net409 preamp
+x15 vdd net129 net130 clk q[0] net410 vss strongarm
+x104 net1 net2 net135 net136 vss strongarm_pre
+x105 net6 net5 net163 net164 vss strongarm_pre
+x106 net28 net27 net137 net138 vss strongarm_pre
+x107 net36 net35 net139 net140 vss strongarm_pre
+x108 net44 net43 net141 net142 vss strongarm_pre
+x109 net52 net51 net143 net144 vss strongarm_pre
+x110 net60 net59 net145 net146 vss strongarm_pre
+x111 net68 net67 net148 net147 vss strongarm_pre
+x112 net76 net75 net150 net149 vss strongarm_pre
+x113 net84 net83 net152 net151 vss strongarm_pre
+x114 net92 net91 net154 net153 vss strongarm_pre
+x115 net100 net99 net156 net155 vss strongarm_pre
+x116 net108 net107 net158 net157 vss strongarm_pre
+x117 net116 net115 net160 net159 vss strongarm_pre
+x118 net124 net123 net162 net161 vss strongarm_pre
+.ends

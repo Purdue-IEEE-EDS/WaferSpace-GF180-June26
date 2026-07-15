@@ -49,6 +49,16 @@ N -920 -190 -710 -190 {lab=Q_bar}
 N -810 -190 -810 -170 {lab=Q_bar}
 N -810 -110 -810 -80 {lab=nb}
 N -810 -80 -810 -60 {lab=nb}
+N -540 -280 -540 -270 {lab=di_n}
+N -540 -280 -440 -280 {lab=di_n}
+N -440 -280 -440 -200 {lab=di_n}
+N -540 -200 -440 -200 {lab=di_n}
+N -540 -210 -540 -200 {lab=di_n}
+N -540 -170 -540 -160 {lab=di_p}
+N -540 -170 -440 -170 {lab=di_p}
+N -440 -170 -440 -90 {lab=di_p}
+N -540 -90 -440 -90 {lab=di_p}
+N -540 -100 -540 -90 {lab=di_p}
 C {symbols/pfet_03v3.sym} -1350 -740 0 0 {name=Mpr1
 L=0.28u
 W=4u
@@ -471,5 +481,43 @@ C {lab_wire.sym} -540 -460 0 1 {name=p72 sig_type=std_logic lab=vdd
 
 }
 C {lab_wire.sym} -540 -350 0 1 {name=p73 sig_type=std_logic lab=vdd
+
+}
+C {symbols/nfet_03v3.sym} -560 -240 0 0 {name=Mcz1
+L=0.28u
+W=5u
+nf=1
+m=1
+ad="'int((nf+1)/2) * W/nf * 0.18u'"
+pd="'2*int((nf+1)/2) * (W/nf + 0.18u)'"
+as="'int((nf+2)/2) * W/nf * 0.18u'"
+ps="'2*int((nf+2)/2) * (W/nf + 0.18u)'"
+nrd="'0.18u / W'" nrs="'0.18u / W'"
+sa=0 sb=0 sd=0
+model=nfet_03v3
+spiceprefix=X
+}
+C {lab_wire.sym} -580 -240 0 0 {name=p74 sig_type=std_logic lab=inp}
+C {lab_wire.sym} -540 -280 0 0 {name=p75 sig_type=std_logic lab=di_n}
+C {lab_wire.sym} -540 -240 0 1 {name=p76 sig_type=std_logic lab=vss
+
+}
+C {symbols/nfet_03v3.sym} -560 -130 0 0 {name=Mcz2
+L=0.28u
+W=5u
+nf=1
+m=1
+ad="'int((nf+1)/2) * W/nf * 0.18u'"
+pd="'2*int((nf+1)/2) * (W/nf + 0.18u)'"
+as="'int((nf+2)/2) * W/nf * 0.18u'"
+ps="'2*int((nf+2)/2) * (W/nf + 0.18u)'"
+nrd="'0.18u / W'" nrs="'0.18u / W'"
+sa=0 sb=0 sd=0
+model=nfet_03v3
+spiceprefix=X
+}
+C {lab_wire.sym} -580 -130 0 0 {name=p77 sig_type=std_logic lab=inn}
+C {lab_wire.sym} -540 -170 0 0 {name=p78 sig_type=std_logic lab=di_p}
+C {lab_wire.sym} -540 -130 0 1 {name=p79 sig_type=std_logic lab=vss
 
 }

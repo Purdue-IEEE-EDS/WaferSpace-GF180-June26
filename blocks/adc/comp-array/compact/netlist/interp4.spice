@@ -1,0 +1,10 @@
+.subckt interp4 opL onL opR onR vss op1 on1 op2 on2 op3 on3
+XR1 op1 opL vss ppolyf_u_1k r_width=1u r_length=3u
+XR2 op2 op1 vss ppolyf_u_1k r_width=1u r_length=3u
+XR3 op3 op2 vss ppolyf_u_1k r_width=1u r_length=3u
+XR4 opR op3 vss ppolyf_u_1k r_width=1u r_length=3u
+XR5 on1 onL vss ppolyf_u_1k r_width=1u r_length=3u
+XR6 on2 on1 vss ppolyf_u_1k r_width=1u r_length=3u
+XR7 on3 on2 vss ppolyf_u_1k r_width=1u r_length=3u
+XR8 onR on3 vss ppolyf_u_1k r_width=1u r_length=3u
+.ends

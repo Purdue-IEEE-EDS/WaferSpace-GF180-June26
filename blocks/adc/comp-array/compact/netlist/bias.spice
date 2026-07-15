@@ -1,0 +1,10 @@
+.subckt bias vdd vss nbias iref_adc
+XMp_in iref_adc iref_adc vdd vdd pfet_03v3 L=1u W=10u nf=2 ad='int((nf+1)/2) * W/nf * 0.18u' as='int((nf+2)/2) * W/nf * 0.18u' pd='2*int((nf+1)/2) * (W/nf + 0.18u)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.18u)' nrd='0.18u / W' nrs='0.18u / W' sa=0 sb=0 sd=0
+XMp_mirr nbias iref_adc vdd vdd pfet_03v3 L=1u W=10u nf=2 ad='int((nf+1)/2) * W/nf * 0.18u' as='int((nf+2)/2) * W/nf * 0.18u' pd='2*int((nf+1)/2) * (W/nf + 0.18u)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.18u)' nrd='0.18u / W' nrs='0.18u / W' sa=0 sb=0 sd=0 m=5
+XMref nbias nbias vss vss nfet_03v3 L=0.5u W=4u nf=2 ad='int((nf+1)/2) * W/nf * 0.18u' as='int((nf+2)/2) * W/nf * 0.18u' pd='2*int((nf+1)/2) * (W/nf + 0.18u)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.18u)' nrd='0.18u / W' nrs='0.18u / W' sa=0 sb=0 sd=0
+XCnb nbias vss cap_nmos_03v3_b c_width=16u c_length=16u
+XCpb iref_adc vss cap_nmos_03v3_b c_width=8u c_length=8u
+.ends

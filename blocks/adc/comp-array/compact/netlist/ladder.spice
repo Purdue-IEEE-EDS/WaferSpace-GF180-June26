@@ -1,0 +1,20 @@
+.subckt ladder vrefp vrefn tap1 tap2 tap3 tap4 tap5 tap6 tap7 tap8 tap9 tap10 tap11 tap12 tap13 tap14 tap15 tap16 tap17 vss
+XR1 tap17 vrefp vss ppolyf_u_1k r_width=2e-6 r_length=3.5e-6
+XR2 tap16 tap17 vss ppolyf_u_1k r_width=2e-6 r_length=3.5e-6
+XR3 tap15 tap16 vss ppolyf_u_1k r_width=2e-6 r_length=3.5e-6
+XR4 tap14 tap15 vss ppolyf_u_1k r_width=2e-6 r_length=3.5e-6
+XR5 tap13 tap14 vss ppolyf_u_1k r_width=2e-6 r_length=3.5e-6
+XR6 tap12 tap13 vss ppolyf_u_1k r_width=2e-6 r_length=3.5e-6
+XR7 tap11 tap12 vss ppolyf_u_1k r_width=2e-6 r_length=3.5e-6
+XR8 tap10 tap11 vss ppolyf_u_1k r_width=2e-6 r_length=3.5e-6
+XR9 tap9 tap10 vss ppolyf_u_1k r_width=2e-6 r_length=3.5e-6
+XR10 tap8 tap9 vss ppolyf_u_1k r_width=2e-6 r_length=3.5e-6
+XR11 tap7 tap8 vss ppolyf_u_1k r_width=2e-6 r_length=3.5e-6
+XR12 tap6 tap7 vss ppolyf_u_1k r_width=2e-6 r_length=3.5e-6
+XR13 tap5 tap6 vss ppolyf_u_1k r_width=2e-6 r_length=3.5e-6
+XR14 tap4 tap5 vss ppolyf_u_1k r_width=2e-6 r_length=3.5e-6
+XR15 tap3 tap4 vss ppolyf_u_1k r_width=2e-6 r_length=3.5e-6
+XR16 tap2 tap3 vss ppolyf_u_1k r_width=2e-6 r_length=3.5e-6
+XR17 tap1 tap2 vss ppolyf_u_1k r_width=2e-6 r_length=3.5e-6
+XR18 vrefn tap1 vss ppolyf_u_1k r_width=2e-6 r_length=3.5e-6
+.ends

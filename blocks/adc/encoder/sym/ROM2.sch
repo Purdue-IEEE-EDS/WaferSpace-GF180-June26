@@ -4203,7 +4203,7 @@ C {lab_wire.sym} 3730 -5500 2 1 {name=p37 sig_type=std_logic lab=THERMOMETER_31}
 C {lab_wire.sym} 4150 -5500 2 1 {name=p38 sig_type=std_logic lab=THERMOMETER_31}
 C {lab_wire.sym} 3580 -5620 0 0 {name=p41 sig_type=std_logic lab=B4bar_h}
 C {lab_wire.sym} 4000 -5620 0 0 {name=p42 sig_type=std_logic lab=B3bar_h}
-C {symbols/pfet_03v3.sym} 4530 -5720 3 1 {name=M10
+C {symbols/pfet_03v3.sym} 4530 -5720 1 0 {name=M10
 L=0.28u
 W=1.32u
 nf=3
@@ -4269,7 +4269,7 @@ m=-4}
 C {lab_wire.sym} 4910 -5700 3 0 {name=p49 sig_type=std_logic lab=VDD}
 C {lab_wire.sym} 4910 -5500 2 1 {name=p50 sig_type=std_logic lab=THERMOMETER_31}
 C {lab_wire.sym} 4760 -5620 0 0 {name=p52 sig_type=std_logic lab=B1bar_h}
-C {symbols/pfet_03v3.sym} 5250 -5720 3 1 {name=M14
+C {symbols/pfet_03v3.sym} 5250 -5720 1 0 {name=M14
 L=0.28u
 W=1.32u
 nf=3
@@ -4370,7 +4370,7 @@ C {lab_wire.sym} 3730 -5160 2 1 {name=p64 sig_type=std_logic lab=THERMOMETER_31b
 C {lab_wire.sym} 4150 -5160 2 1 {name=p65 sig_type=std_logic lab=THERMOMETER_31bar}
 C {lab_wire.sym} 3580 -5280 0 0 {name=p66 sig_type=std_logic lab=B4bar}
 C {lab_wire.sym} 4000 -5280 0 0 {name=p67 sig_type=std_logic lab=B3bar}
-C {symbols/pfet_03v3.sym} 4530 -5380 3 1 {name=M20
+C {symbols/pfet_03v3.sym} 4530 -5380 1 0 {name=M20
 L=0.28u
 W=1.32u
 nf=3
@@ -4438,7 +4438,7 @@ C {lab_wire.sym} 4910 -5360 3 0 {name=p74 sig_type=std_logic lab=VDD}
 C {lab_wire.sym} 4910 -5400 0 0 {name=p75 sig_type=std_logic lab=THERMOMETER_31}
 C {lab_wire.sym} 4910 -5160 2 1 {name=p76 sig_type=std_logic lab=THERMOMETER_31bar}
 C {lab_wire.sym} 4760 -5280 0 0 {name=p77 sig_type=std_logic lab=B1bar}
-C {symbols/pfet_03v3.sym} 5250 -5380 3 1 {name=M24
+C {symbols/pfet_03v3.sym} 5250 -5380 1 0 {name=M24
 L=0.28u
 W=1.32u
 nf=3
