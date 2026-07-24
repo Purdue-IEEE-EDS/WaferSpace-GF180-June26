@@ -1,0 +1,2100 @@
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[4\].stage.genblk1.even_stage.rot2.mult3.s25_pip\[17\] net:VDD
+	bbox = (97.7700, 983.5250) - (98.1500, 983.7550) on Layer Metal1
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[4\].stage.genblk1.even_stage.rot2.mult3.s25_pip\[17\] net:VDD
+	bbox = (97.8250, 983.5250) - (98.0550, 983.7550) on Layer Metal1
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[4\].stage.genblk1.even_stage.rot2.mult2.s33_pip\[13\] net:VDD
+	bbox = (141.4500, 828.9650) - (141.8300, 829.1950) on Layer Metal1
+violation type: Short
+	srcs: net:_09889_ net:VDD
+	bbox = (141.4500, 1313.9250) - (141.8300, 1314.1550) on Layer Metal1
+violation type: Short
+	srcs: net:VSS net:net1340
+	bbox = (162.1050, 1442.1650) - (162.3350, 1442.3950) on Layer Metal1
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[4\].stage.genblk1.even_stage.rot2.mult4.partial\[9\]\[13\] net:net1340
+	bbox = (163.1100, 1442.2850) - (163.4550, 1442.3950) on Layer Metal1
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[4\].stage.genblk1.even_stage.rot2.mult2.final_add/block1/_05_ net:VDD
+	bbox = (185.1300, 660.9650) - (185.5100, 661.1950) on Layer Metal1
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[4\].stage.genblk1.even_stage.rot2.bd[6] net:VDD
+	bbox = (228.8100, 941.5250) - (229.1900, 941.7550) on Layer Metal1
+violation type: Short
+	srcs: net:VDD net:net1207
+	bbox = (257.9300, 276.2450) - (258.0950, 276.4750) on Layer Metal1
+violation type: Short
+	srcs: net:VDD net:net1207
+	bbox = (257.9300, 276.2450) - (258.3100, 276.4750) on Layer Metal1
+violation type: Short
+	srcs: net:fft_core.stage.stage1.rot_out_im[10] net:VDD
+	bbox = (257.9300, 699.6050) - (258.3100, 699.8350) on Layer Metal1
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[4\].stage.genblk1.even_stage.rot2.mult4.s25_pip\[21\] net:VSS
+	bbox = (257.9300, 1100.5650) - (258.3100, 1100.6300) on Layer Metal1
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[4\].stage.genblk1.even_stage.rot2.mult1.csa_s6_1.cout\[22\] net:VDD
+	bbox = (287.0500, 1555.8450) - (287.4300, 1556.0750) on Layer Metal1
+violation type: Short
+	srcs: net:VSS net:net1220
+	bbox = (301.6100, 271.2050) - (301.9900, 271.4350) on Layer Metal1
+violation type: Short
+	srcs: net:VSS net:net1384
+	bbox = (308.2450, 1591.6850) - (308.4750, 1591.9150) on Layer Metal1
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[4\].stage.genblk1.even_stage.rot3.mult1.s33_pip\[20\] net:VSS
+	bbox = (345.2900, 555.6850) - (345.6700, 555.9150) on Layer Metal1
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[4\].stage.genblk1.even_stage.rot2.re/block2/_00_ net:VSS
+	bbox = (345.2900, 1049.0450) - (345.6700, 1049.2750) on Layer Metal1
+violation type: Short
+	srcs: net:zero_ net:VDD
+	bbox = (355.2050, 1163.8450) - (355.4350, 1164.6900) on Layer Metal1
+violation type: Short
+	srcs: net:zero_ net:VDD
+	bbox = (355.2050, 1163.8450) - (356.5550, 1164.0750) on Layer Metal1
+violation type: Short
+	srcs: net:zero_ net:VDD
+	bbox = (355.2050, 1164.0000) - (355.4350, 1164.4800) on Layer Metal1
+violation type: Short
+	srcs: net:zero_ net:VDD
+	bbox = (355.2050, 1164.0000) - (356.5550, 1164.0750) on Layer Metal1
+violation type: Short
+	srcs: net:zero_ net:VDD
+	bbox = (355.6500, 1163.8450) - (355.8800, 1164.0750) on Layer Metal1
+violation type: Short
+	srcs: net:zero_ net:VDD
+	bbox = (356.3250, 1163.7900) - (356.5550, 1164.0750) on Layer Metal1
+violation type: Short
+	srcs: net:zero_ net:VDD
+	bbox = (356.3250, 1164.0000) - (356.5550, 1164.0750) on Layer Metal1
+violation type: Short
+	srcs: net:_07890_ net:VSS
+	bbox = (359.8500, 169.8450) - (360.2300, 170.0750) on Layer Metal1
+violation type: Short
+	srcs: net:_06596_ net:VSS
+	bbox = (388.9700, 300.4900) - (389.3500, 300.5550) on Layer Metal1
+violation type: Short
+	srcs: net:_03752_ net:VSS
+	bbox = (418.0900, 79.1250) - (418.4700, 79.3550) on Layer Metal1
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[4\].stage.genblk1.even_stage.rot3.mult4.csa_s2_2.s\[13\] net:VDD
+	bbox = (438.2150, 74.6450) - (438.4450, 74.8750) on Layer Metal1
+violation type: Short
+	srcs: net:zero_ net:VDD
+	bbox = (659.8450, 256.5900) - (660.0750, 257.4900) on Layer Metal1
+violation type: Short
+	srcs: net:zero_ net:VDD
+	bbox = (659.8450, 256.8000) - (660.0750, 257.2800) on Layer Metal1
+violation type: Short
+	srcs: net:VDD net:clknet_leaf_89_fft_clk
+	bbox = (767.5300, 1045.6850) - (767.9100, 1045.9150) on Layer Metal1
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot3.mult4.s32_pip\[15\] net:VDD
+	bbox = (1000.4900, 1709.8450) - (1000.8700, 1710.0750) on Layer Metal1
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot3.mult1.csa_s2_2.cout\[22\] net:VSS
+	bbox = (1029.6100, 1802.8050) - (1029.9900, 1803.0350) on Layer Metal1
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.butterfly1.real_sub/block2/_02_ net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.butterfly1.real_sub/block2/add0.g
+	bbox = (1077.5850, 971.2050) - (1077.9150, 971.4350) on Layer Metal1
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[5\].stage.genblk1.genblk1.odd_stage.rot_out_im[12] net:VSS
+	bbox = (1102.4100, 1231.0450) - (1102.5350, 1231.2750) on Layer Metal1
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[5\].stage.genblk1.genblk1.odd_stage.rot_out_im[12] net:VSS
+	bbox = (1102.4100, 1231.0450) - (1102.7900, 1231.2750) on Layer Metal1
+violation type: Short
+	srcs: net:VDD net:clknet_6_27__leaf_fft_clk
+	bbox = (1160.6500, 970.6450) - (1160.8750, 970.8750) on Layer Metal1
+violation type: Short
+	srcs: net:VDD net:clknet_6_27__leaf_fft_clk
+	bbox = (1160.6500, 970.6450) - (1161.0300, 970.8750) on Layer Metal1
+violation type: Short
+	srcs: net:VSS net:net995
+	bbox = (1168.9650, 393.8450) - (1169.1950, 394.0750) on Layer Metal1
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[7\].stage.genblk1.genblk1.odd_stage.butterfly1.imag_add/block3/add3.cin net:net995
+	bbox = (1169.9850, 394.0650) - (1170.3150, 394.0750) on Layer Metal1
+violation type: Short
+	srcs: net:VSS net:clknet_leaf_335_fft_clk
+	bbox = (1189.7700, 1765.8450) - (1190.1500, 1765.9100) on Layer Metal1
+violation type: Short
+	srcs: net:VSS net:net1074
+	bbox = (1218.8900, 1443.2850) - (1219.0350, 1443.3500) on Layer Metal1
+violation type: Short
+	srcs: net:VSS net:net1074
+	bbox = (1218.8900, 1443.2850) - (1219.2700, 1443.3500) on Layer Metal1
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[7\].stage.genblk1.genblk1.odd_stage.butterfly1.imag_add/block0/_01_ net:VSS
+	bbox = (1242.8900, 624.0050) - (1243.1200, 624.2350) on Layer Metal1
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot1.mult1.csa_s3_2.cout\[19\] net:VDD
+	bbox = (1262.5700, 1025.5250) - (1262.7150, 1025.7550) on Layer Metal1
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot1.mult1.csa_s3_2.cout\[19\] net:VDD
+	bbox = (1262.5700, 1025.5250) - (1262.9500, 1025.7550) on Layer Metal1
+violation type: Short
+	srcs: net:_02106_ net:VDD
+	bbox = (1277.1300, 1757.4450) - (1277.5100, 1757.6750) on Layer Metal1
+violation type: Short
+	srcs: net:_02106_ net:VDD
+	bbox = (1277.1850, 1757.4450) - (1277.4150, 1757.6750) on Layer Metal1
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot3.mult3.csa_s6_1.s\[26\] net:VDD
+	bbox = (1344.2950, 1668.9650) - (1344.5250, 1669.1950) on Layer Metal1
+violation type: Short
+	srcs: net:VSS net:clknet_leaf_481_fft_clk
+	bbox = (1364.4900, 948.8050) - (1364.8700, 949.0350) on Layer Metal1
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot1.ad_pip\[12\] net:VSS
+	bbox = (1379.0500, 815.5250) - (1379.4300, 815.7550) on Layer Metal1
+violation type: Short
+	srcs: net:VSS net:net1080
+	bbox = (1480.9700, 1170.0050) - (1481.3500, 1170.2350) on Layer Metal1
+violation type: Short
+	srcs: net:VDD net:net1446
+	bbox = (1495.5300, 1840.8850) - (1495.9100, 1841.1150) on Layer Metal1
+violation type: Short
+	srcs: net:_00457_ net:VDD
+	bbox = (1495.5300, 1922.6450) - (1495.9100, 1922.8750) on Layer Metal1
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[7\].stage.genblk1.genblk1.odd_stage.triv_rot.imag_sub/g\[1\] net:VDD
+	bbox = (1510.0900, 365.8450) - (1510.4700, 366.0750) on Layer Metal1
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot3.mult2.s24_pip\[26\] net:VDD
+	bbox = (1539.2100, 1716.0050) - (1539.5900, 1716.2350) on Layer Metal1
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[8\].stage.genblk1.genblk1.genblk1.last_stage.butterfly1.real_add/block1/_01_ net:VDD
+	bbox = (1597.4500, 526.5650) - (1597.8300, 526.7950) on Layer Metal1
+violation type: Short
+	srcs: net:_11556_[0] net:VSS
+	bbox = (1602.9450, 1019.3650) - (1603.1750, 1019.5950) on Layer Metal1
+violation type: Short
+	srcs: net:net1279 net:clknet_leaf_150_fft_clk
+	bbox = (16.9400, 1469.0200) - (17.2200, 1469.3000) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[4\].stage.genblk1.even_stage.rot2.mult3.partial\[9\]\[11\] net:net1321
+	bbox = (17.5000, 1031.1000) - (17.7800, 1031.3800) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[4\].stage.genblk1.even_stage.rot2.mult3.partial\[9\]\[11\] net:net1321
+	bbox = (17.5000, 1031.1000) - (17.7800, 1032.5000) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[4\].stage.genblk1.even_stage.rot2.mult3.partial\[9\]\[11\] net:net1321
+	bbox = (17.5000, 1032.2200) - (17.7800, 1032.5000) on Layer Metal2
+violation type: Short
+	srcs: net:_09505_ net:net1174
+	bbox = (17.5000, 1659.4200) - (17.7800, 1659.7000) on Layer Metal2
+violation type: Short
+	srcs: net:_09505_ net:net1174
+	bbox = (17.5100, 1659.4200) - (17.7800, 1659.7500) on Layer Metal2
+violation type: Short
+	srcs: net:_00034_ net:_09512_
+	bbox = (18.6200, 1660.5400) - (18.9000, 1660.8200) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[4\].stage.genblk1.even_stage.rot2.c\[0\] net:net1177
+	bbox = (20.3000, 1318.3800) - (20.5800, 1318.6600) on Layer Metal2
+violation type: Short
+	srcs: net:net1160 net:net1172
+	bbox = (21.9800, 1651.5800) - (22.2600, 1651.8600) on Layer Metal2
+violation type: Short
+	srcs: net:net1160 net:net964
+	bbox = (21.9800, 1655.5000) - (22.2600, 1655.7800) on Layer Metal2
+violation type: Short
+	srcs: net:_09505_ net:net964
+	bbox = (22.5400, 1655.5000) - (22.8200, 1655.7800) on Layer Metal2
+violation type: Short
+	srcs: net:_00049_ net:_06893_
+	bbox = (27.5800, 1307.1800) - (27.8600, 1307.4600) on Layer Metal2
+violation type: Short
+	srcs: net:_00049_ net:_06893_
+	bbox = (27.5800, 1307.1800) - (27.8600, 1308.0200) on Layer Metal2
+violation type: Short
+	srcs: net:_00049_ net:_06893_
+	bbox = (27.5800, 1307.7400) - (27.8600, 1308.0200) on Layer Metal2
+violation type: Short
+	srcs: net:_07747_ net:_07748_
+	bbox = (28.1400, 1170.5400) - (28.4200, 1170.8200) on Layer Metal2
+violation type: Short
+	srcs: net:_07747_ net:_07748_
+	bbox = (28.1400, 1171.1000) - (28.4200, 1171.3800) on Layer Metal2
+violation type: Short
+	srcs: net:_07747_ net:_07748_
+	bbox = (28.1400, 1171.1000) - (28.4300, 1171.3800) on Layer Metal2
+violation type: Short
+	srcs: net:_07747_ net:_07748_
+	bbox = (28.1500, 1170.5400) - (28.4200, 1170.8200) on Layer Metal2
+violation type: Short
+	srcs: net:_07747_ net:_07748_
+	bbox = (28.1500, 1170.5400) - (28.4200, 1171.3800) on Layer Metal2
+violation type: Short
+	srcs: net:_07747_ net:_07748_
+	bbox = (28.1500, 1171.1000) - (28.4200, 1171.3800) on Layer Metal2
+violation type: Short
+	srcs: net:_07747_ net:_07748_
+	bbox = (28.1500, 1171.1000) - (28.4300, 1171.3800) on Layer Metal2
+violation type: Short
+	srcs: net:_01547_ net:net1303
+	bbox = (46.6200, 496.8100) - (46.9000, 497.1400) on Layer Metal2
+violation type: Short
+	srcs: net:_01547_ net:net1303
+	bbox = (46.6200, 496.8600) - (46.9000, 497.1400) on Layer Metal2
+violation type: Short
+	srcs: net:_08750_ net:net1349
+	bbox = (48.8600, 878.2200) - (49.1400, 878.5000) on Layer Metal2
+violation type: Short
+	srcs: net:_01695_ net:VSS
+	bbox = (51.6600, 1461.4100) - (51.9400, 1461.7900) on Layer Metal2
+violation type: Short
+	srcs: net:VDD net:net1329
+	bbox = (54.6200, 1496.6900) - (54.7400, 1496.7400) on Layer Metal2
+violation type: Short
+	srcs: net:VDD net:net1329
+	bbox = (54.6200, 1496.6900) - (54.7400, 1497.0700) on Layer Metal2
+violation type: Short
+	srcs: net:VDD net:net1329
+	bbox = (54.6200, 1496.6900) - (54.7800, 1496.7400) on Layer Metal2
+violation type: Short
+	srcs: net:VDD net:net1329
+	bbox = (54.6200, 1496.6900) - (54.7800, 1497.0700) on Layer Metal2
+violation type: Short
+	srcs: net:_05000_ net:net1330
+	bbox = (55.0200, 487.9000) - (55.3000, 488.1800) on Layer Metal2
+violation type: Short
+	srcs: net:VDD net:net1330
+	bbox = (55.0200, 488.6900) - (55.3000, 489.0700) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[4\].stage.genblk1.even_stage.rot2.b\[4\] net:net1330
+	bbox = (57.2600, 523.7400) - (57.5400, 524.0200) on Layer Metal2
+violation type: Short
+	srcs: net:net1308 net:net1309
+	bbox = (59.5000, 529.3400) - (59.7800, 529.6200) on Layer Metal2
+violation type: Short
+	srcs: net:_00936_ net:net1326
+	bbox = (65.1000, 1546.3000) - (65.3800, 1546.5800) on Layer Metal2
+violation type: Short
+	srcs: net:net1319 net:clknet_leaf_148_fft_clk
+	bbox = (68.4600, 1343.0200) - (68.7400, 1343.3000) on Layer Metal2
+violation type: Short
+	srcs: net:net1323 net:net1311
+	bbox = (86.9400, 1301.5800) - (87.2200, 1301.8600) on Layer Metal2
+violation type: Short
+	srcs: net:net1323 net:net1311
+	bbox = (88.6200, 1279.1800) - (88.9000, 1279.4600) on Layer Metal2
+violation type: Short
+	srcs: net:_07090_ net:net1323
+	bbox = (89.7400, 1186.7800) - (90.0200, 1187.0600) on Layer Metal2
+violation type: Short
+	srcs: net:net1321 net:net1323
+	bbox = (89.7400, 1309.4200) - (90.0200, 1309.7000) on Layer Metal2
+violation type: Short
+	srcs: net:net1321 net:net1323
+	bbox = (90.3000, 1075.0600) - (90.5800, 1075.3400) on Layer Metal2
+violation type: Short
+	srcs: net:net1321 net:net1323
+	bbox = (90.3000, 1279.1800) - (90.5800, 1279.4600) on Layer Metal2
+violation type: Short
+	srcs: net:net1321 net:clknet_leaf_138_fft_clk
+	bbox = (90.8600, 1097.7400) - (91.1400, 1098.0200) on Layer Metal2
+violation type: Short
+	srcs: net:net1321 net:clknet_leaf_138_fft_clk
+	bbox = (90.8600, 1097.7400) - (91.1400, 1098.5800) on Layer Metal2
+violation type: Short
+	srcs: net:net1321 net:clknet_leaf_138_fft_clk
+	bbox = (90.8600, 1098.3000) - (91.1400, 1098.5800) on Layer Metal2
+violation type: Short
+	srcs: net:net1321 net:net1323
+	bbox = (90.8600, 1191.2600) - (91.1400, 1191.5400) on Layer Metal2
+violation type: Short
+	srcs: net:net1321 net:net1323
+	bbox = (90.8600, 1191.2600) - (91.1400, 1192.1000) on Layer Metal2
+violation type: Short
+	srcs: net:net1321 net:net1323
+	bbox = (90.8600, 1191.8200) - (91.1400, 1192.1000) on Layer Metal2
+violation type: Short
+	srcs: net:VSS net:net1321
+	bbox = (91.4200, 1280.3000) - (92.2600, 1280.3500) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[4\].stage.genblk1.even_stage.butterfly2.imag_add/block2/add2.g net:VSS
+	bbox = (91.9800, 493.7300) - (92.2600, 494.1100) on Layer Metal2
+violation type: Short
+	srcs: net:_07091_ net:net1321
+	bbox = (91.9800, 1183.9800) - (92.2600, 1184.2600) on Layer Metal2
+violation type: Short
+	srcs: net:VSS net:net1321
+	bbox = (91.9800, 1280.3000) - (92.2600, 1280.3500) on Layer Metal2
+violation type: Short
+	srcs: net:VSS net:net1321
+	bbox = (91.9800, 1290.0500) - (92.2600, 1290.4300) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[4\].stage.genblk1.even_stage.rot1.mult2.partial_pip\[13\]\[17\] net:VDD
+	bbox = (94.7800, 1829.3300) - (95.0600, 1829.7100) on Layer Metal2
+violation type: Short
+	srcs: net:_06579_ net:fft_core.stages_gen_blk\[4\].stage.genblk1.even_stage.rot2.d\[0\]
+	bbox = (97.5800, 1085.4200) - (97.8600, 1085.7000) on Layer Metal2
+violation type: Short
+	srcs: net:_04535_ net:_04538_
+	bbox = (136.7800, 1233.2600) - (137.0600, 1233.5400) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[4\].stage.genblk1.even_stage.rot3.mult1.partial_pip\[7\]\[14\] net:VSS
+	bbox = (171.5000, 493.7300) - (171.7800, 494.1100) on Layer Metal2
+violation type: Short
+	srcs: net:VDD net:net1347
+	bbox = (174.8600, 1224.5300) - (175.1400, 1224.9100) on Layer Metal2
+violation type: Short
+	srcs: net:net1277 net:net1340
+	bbox = (196.1400, 1098.3000) - (196.4200, 1098.5800) on Layer Metal2
+violation type: Short
+	srcs: net:_10860_ net:_11089_
+	bbox = (196.7000, 338.3800) - (196.9800, 338.6600) on Layer Metal2
+violation type: Short
+	srcs: net:net1287 net:clknet_leaf_155_fft_clk
+	bbox = (202.8600, 1360.3800) - (203.1400, 1360.6600) on Layer Metal2
+violation type: Short
+	srcs: net:net1282 net:net1340
+	bbox = (208.4600, 1339.1000) - (208.7400, 1339.3800) on Layer Metal2
+violation type: Short
+	srcs: net:_01095_ net:net1282
+	bbox = (209.5800, 1343.0200) - (209.8600, 1343.3000) on Layer Metal2
+violation type: Short
+	srcs: net:_01095_ net:net1282
+	bbox = (209.5800, 1343.0200) - (209.8600, 1343.3500) on Layer Metal2
+violation type: Short
+	srcs: net:VSS net:net1282
+	bbox = (211.4200, 1269.8900) - (211.5400, 1270.2700) on Layer Metal2
+violation type: Short
+	srcs: net:_11111_ net:_11112_
+	bbox = (215.7400, 239.2100) - (216.0200, 239.5400) on Layer Metal2
+violation type: Short
+	srcs: net:_11111_ net:_11112_
+	bbox = (215.7400, 239.2600) - (216.0200, 239.5400) on Layer Metal2
+violation type: Short
+	srcs: net:_01710_ net:fft_core.stages_gen_blk\[4\].stage.genblk1.even_stage.rot2.bc[6]
+	bbox = (223.0200, 1115.1000) - (223.3000, 1115.3800) on Layer Metal2
+violation type: Short
+	srcs: net:_01558_ net:net1335
+	bbox = (225.2600, 1216.4600) - (225.5400, 1216.7400) on Layer Metal2
+violation type: Short
+	srcs: net:net1287 net:net1335
+	bbox = (226.3800, 1230.4600) - (226.6600, 1230.7400) on Layer Metal2
+violation type: Short
+	srcs: net:net1287 net:net1335
+	bbox = (226.3800, 1230.4600) - (226.6600, 1231.3000) on Layer Metal2
+violation type: Short
+	srcs: net:net1287 net:net1335
+	bbox = (226.3800, 1231.0200) - (226.6600, 1231.3000) on Layer Metal2
+violation type: Short
+	srcs: net:_10824_ net:fft_core.stage.dout_im3\[5\]
+	bbox = (233.1000, 486.7800) - (233.3800, 487.0600) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[4\].stage.genblk1.even_stage.rot3.mult2.op1\[15\] net:fft_core.stages_gen_blk\[4\].stage.genblk1.even_stage.rot3.mult2.final_add/block0/_05_
+	bbox = (245.4200, 193.0600) - (245.7000, 193.3400) on Layer Metal2
+violation type: Short
+	srcs: net:VSS net:net1206
+	bbox = (252.1400, 483.6500) - (252.4200, 484.0300) on Layer Metal2
+violation type: Short
+	srcs: net:VDD net:net1240
+	bbox = (254.6200, 337.4900) - (254.6600, 337.8700) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stage.dout_im3\[9\] net:net1190
+	bbox = (259.9800, 491.2600) - (260.2600, 491.5400) on Layer Metal2
+violation type: Short
+	srcs: net:_00337_ net:_00339_
+	bbox = (261.1000, 1146.4600) - (261.3800, 1146.7400) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stage.bf_out_im3[2] net:fft_core.stage.stage1.butterfly2.imag_sub/block0/_00_
+	bbox = (277.9000, 839.8600) - (278.1800, 840.1400) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stage.bf_out_im3[2] net:fft_core.stage.stage1.butterfly2.imag_sub/one_
+	bbox = (278.4600, 839.8600) - (278.7400, 840.1400) on Layer Metal2
+violation type: Short
+	srcs: net:_04028_ net:fft_core.stages_gen_blk\[4\].stage.genblk1.even_stage.rot2.bc_pip\[10\]
+	bbox = (287.9800, 1060.7800) - (288.2600, 1061.0600) on Layer Metal2
+violation type: Short
+	srcs: net:_04028_ net:fft_core.stages_gen_blk\[4\].stage.genblk1.even_stage.rot2.bc_pip\[10\]
+	bbox = (287.9800, 1060.7800) - (288.2600, 1061.3900) on Layer Metal2
+violation type: Short
+	srcs: net:_04028_ net:fft_core.stages_gen_blk\[4\].stage.genblk1.even_stage.rot2.bc_pip\[10\]
+	bbox = (287.9800, 1061.3400) - (288.2600, 1061.3900) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[4\].stage.genblk1.even_stage.rot2.ac[6] net:fft_core.stages_gen_blk\[4\].stage.genblk1.even_stage.rot2.ac[7]
+	bbox = (287.9800, 1175.5800) - (288.2600, 1175.8600) on Layer Metal2
+violation type: Short
+	srcs: net:_03969_ net:_04411_
+	bbox = (290.2200, 1060.1700) - (290.5000, 1060.5500) on Layer Metal2
+violation type: Short
+	srcs: net:_03969_ net:_04411_
+	bbox = (290.2200, 1060.2200) - (290.5000, 1060.5000) on Layer Metal2
+violation type: Short
+	srcs: net:_08084_ net:VDD
+	bbox = (295.2600, 176.2100) - (295.5400, 176.5900) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[4\].stage.genblk1.even_stage.rot1.mult2.final_add/block0/add1.cin net:VDD
+	bbox = (295.2600, 1839.4600) - (295.5400, 1839.7900) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[4\].stage.genblk1.even_stage.rot1.mult2.final_add/block0/add1.cin net:VDD
+	bbox = (295.2600, 1839.4600) - (295.5500, 1839.7400) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[4\].stage.genblk1.even_stage.rot1.mult2.final_add/block0/add1.cin net:VDD
+	bbox = (295.2700, 1839.4100) - (295.5400, 1839.7900) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[4\].stage.genblk1.even_stage.rot1.mult2.final_add/block0/add1.cin net:VDD
+	bbox = (295.2700, 1839.4100) - (295.5500, 1839.7400) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[4\].stage.genblk1.even_stage.butterfly2.real_add/block3/add0.p net:fft_core.stages_gen_blk\[4\].stage.genblk1.even_stage.butterfly2.real_add/block3/add3.p
+	bbox = (314.3000, 744.3800) - (314.5800, 744.6600) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[4\].stage.genblk1.even_stage.rot2.mult4.csa_s6_1.s\[22\] net:net1291
+	bbox = (320.4600, 1192.9400) - (320.7400, 1193.2200) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[4\].stage.genblk1.even_stage.rot2.ac[9] net:fft_core.stages_gen_blk\[4\].stage.genblk1.even_stage.rot2.mult4.op1\[21\]
+	bbox = (327.1800, 1222.6200) - (327.4600, 1222.9000) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[4\].stage.genblk1.even_stage.rot2.mult4.op1\[21\] net:fft_core.stages_gen_blk\[4\].stage.genblk1.even_stage.rot2.mult4.final_add/_1_
+	bbox = (327.7900, 1222.0100) - (328.0200, 1222.9000) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[4\].stage.genblk1.even_stage.rot2.mult4.op1\[21\] net:fft_core.stages_gen_blk\[4\].stage.genblk1.even_stage.rot2.mult4.final_add/_1_
+	bbox = (327.7900, 1222.6200) - (328.0200, 1222.9000) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[4\].stage.genblk1.even_stage.rot1.mult3.partial\[1\]\[11\] net:net1372
+	bbox = (329.9800, 1891.2600) - (330.2600, 1891.5400) on Layer Metal2
+violation type: Short
+	srcs: net:VSS net:clknet_leaf_124_fft_clk
+	bbox = (332.2200, 1279.9700) - (332.5000, 1280.3500) on Layer Metal2
+violation type: Short
+	srcs: net:VSS net:net1378
+	bbox = (332.2200, 1935.1700) - (332.5000, 1935.5500) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[4\].stage.genblk1.even_stage.rot3.mult1.partial_pip\[15\]\[18\] net:VDD
+	bbox = (335.0200, 438.2900) - (335.3000, 438.6700) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[4\].stage.genblk1.even_stage.rot2.re/block3/add1.cin net:VDD
+	bbox = (335.5800, 982.6100) - (335.8600, 982.9900) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stage.stage1.butterfly1.imag_sub/block2/_01_ net:net1139
+	bbox = (338.3800, 632.0500) - (338.6600, 632.6600) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stage.stage1.butterfly1.imag_sub/block2/_01_ net:net1139
+	bbox = (338.3800, 632.3800) - (338.6600, 632.6600) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[4\].stage.genblk1.even_stage.rot2.re/b_eff\[9\] net:fft_core.stages_gen_blk\[4\].stage.genblk1.even_stage.rot2.re/net1269
+	bbox = (341.7400, 1040.0600) - (342.0200, 1040.3400) on Layer Metal2
+violation type: Short
+	srcs: net:zero_ net:fft_core.stages_gen_blk\[4\].stage.genblk1.even_stage.rot2.re/b_eff\[15\]
+	bbox = (346.7800, 959.9800) - (347.0600, 960.2600) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[4\].stage.genblk1.even_stage.rot2.bc_pip\[6\] net:zero_
+	bbox = (354.6200, 1167.1800) - (354.9000, 1167.4600) on Layer Metal2
+violation type: Short
+	srcs: net:_10329_ net:fft_core.stages_gen_blk\[4\].stage.genblk1.even_stage.rot3.mult1.csa_s2_2.cout\[19\]
+	bbox = (359.6600, 431.3400) - (359.9400, 431.6200) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[4\].stage.genblk1.even_stage.rot1.mult3.s30_pip\[13\] net:net1385
+	bbox = (361.3400, 1675.6600) - (361.6200, 1675.9400) on Layer Metal2
+violation type: Short
+	srcs: net:net1375 net:clknet_leaf_198_fft_clk
+	bbox = (365.2600, 1721.8600) - (365.5400, 1722.1400) on Layer Metal2
+violation type: Short
+	srcs: net:net1385 net:clknet_leaf_198_fft_clk
+	bbox = (365.8200, 1721.8600) - (366.1000, 1722.1400) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[4\].stage.genblk1.even_stage.butterfly2.real_sub/b_eff\[9\] net:VSS
+	bbox = (371.4200, 786.0500) - (371.7000, 786.4300) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[4\].stage.genblk1.even_stage.rot1.c\[8\] net:clknet_leaf_200_fft_clk
+	bbox = (371.9800, 1579.3400) - (372.2600, 1579.6200) on Layer Metal2
+violation type: Short
+	srcs: net:_10163_ net:_11530_[2]
+	bbox = (386.5400, 502.4600) - (386.8200, 502.7400) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[4\].stage.genblk1.even_stage.rot1.mult3.s33_pip\[15\] net:net1397
+	bbox = (408.3800, 1780.9395) - (408.6600, 1780.9405) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[4\].stage.genblk1.even_stage.rot1.mult3.s33_pip\[15\] net:net1397
+	bbox = (408.3800, 1780.9395) - (409.2200, 1780.9405) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[4\].stage.genblk1.even_stage.rot1.mult3.s33_pip\[15\] net:net1397
+	bbox = (408.9400, 1780.9400) - (409.2200, 1781.2200) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[4\].stage.genblk1.even_stage.rot3.mult2.partial_pip\[11\]\[20\] net:net1205
+	bbox = (424.6200, 118.8600) - (424.9000, 119.1400) on Layer Metal2
+violation type: Short
+	srcs: net:_06128_ net:fft_core.stages_gen_blk\[4\].stage.genblk1.even_stage.rot3.mult3.partial_pip\[15\]\[15\]
+	bbox = (428.5400, 350.3700) - (428.8200, 350.4200) on Layer Metal2
+violation type: Short
+	srcs: net:_05542_ net:_06766_
+	bbox = (431.9000, 287.4200) - (432.1800, 287.7000) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stage.stage1.butterfly2.imag_sub/block1/_04_ net:VSS
+	bbox = (451.5000, 866.6900) - (451.7800, 867.0700) on Layer Metal2
+violation type: Short
+	srcs: net:_08582_ net:VSS
+	bbox = (452.6200, 1511.8100) - (452.7400, 1512.1900) on Layer Metal2
+violation type: Short
+	srcs: net:VDD net:net1136
+	bbox = (454.8600, 730.6100) - (455.1400, 730.9900) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[4\].stage.genblk1.even_stage.butterfly1.imag_add/c\[2\] net:VDD
+	bbox = (454.8600, 1153.9700) - (455.1400, 1154.3500) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stage.stage1.butterfly2.real_add/block3/_11_ net:fft_core.stages_gen_blk\[4\].stage.genblk1.even_stage.bottom_comm/delay1.shift_reg\[4\]\[12\]
+	bbox = (465.5000, 748.8100) - (465.7800, 749.1900) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stage.stage1.butterfly2.real_add/block3/_11_ net:fft_core.stages_gen_blk\[4\].stage.genblk1.even_stage.bottom_comm/delay1.shift_reg\[4\]\[12\]
+	bbox = (465.5000, 748.8600) - (465.7800, 749.1400) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stage.stage1.butterfly2.imag_add/block1/_06_ net:fft_core.stage.stage1.butterfly2.imag_add/block1/add2.g
+	bbox = (466.6200, 925.8200) - (466.9000, 926.1000) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[4\].stage.genblk1.even_stage.comm3\[17\] net:fft_core.stages_gen_blk\[4\].stage.genblk1.even_stage.bottom_comm/delay1.shift_reg\[0\]\[14\]
+	bbox = (475.0200, 531.5300) - (475.3000, 532.0500) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.din_re3_reg\[8\] net:reorder_im_re.top_comm3/branch1_sel\[0\]
+	bbox = (490.6995, 704.6200) - (490.7005, 704.9000) on Layer Metal2
+violation type: Short
+	srcs: net:_04589_ net:clknet_4_11_0_fft_clk
+	bbox = (490.7000, 1746.2200) - (490.9800, 1746.5000) on Layer Metal2
+violation type: Short
+	srcs: net:_10308_ net:_10309_
+	bbox = (493.5000, 448.7000) - (493.7800, 448.9800) on Layer Metal2
+violation type: Short
+	srcs: net:_03900_ net:VDD
+	bbox = (494.6200, 85.4900) - (494.9000, 85.8700) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stage.stage1.butterfly2.real_sub/block1/_09_ net:fft_core.stage.stage1.butterfly2.real_sub/block1/_13_
+	bbox = (500.2700, 687.8200) - (500.5500, 688.1000) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[4\].stage.genblk1.even_stage.rot3.mult3.partial_pip\[13\]\[17\] net:VSS
+	bbox = (531.5800, 362.6900) - (531.8600, 363.0700) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stage.stage1.butterfly1.real_add/block0/_12_ net:VSS
+	bbox = (531.5800, 1511.8100) - (531.8600, 1512.1900) on Layer Metal2
+violation type: Short
+	srcs: net:_04251_ net:VSS
+	bbox = (532.1400, 60.2900) - (532.4200, 60.6700) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[4\].stage.genblk1.even_stage.butterfly1.real_sub/block3/add0.p net:VDD
+	bbox = (534.6200, 1204.3700) - (534.6600, 1204.7500) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[4\].stage.genblk1.even_stage.rot1.ad[6] net:fft_core.stages_gen_blk\[4\].stage.genblk1.even_stage.rot1.ad[8]
+	bbox = (542.2200, 1601.1800) - (542.5000, 1601.4600) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[4\].stage.genblk1.even_stage.bottom_comm/delay1.shift_reg\[0\]\[5\] net:clknet_leaf_62_fft_clk
+	bbox = (561.2600, 789.1800) - (561.5400, 789.4600) on Layer Metal2
+violation type: Short
+	srcs: net:reorder_im_re.bottom_comm4/up_in_del\[9\] net:VSS
+	bbox = (572.4600, 715.4900) - (572.7400, 715.8700) on Layer Metal2
+violation type: Short
+	srcs: net:reorder_im_re.bottom_comm4/up_in_del\[7\] net:VDD
+	bbox = (575.8200, 791.0900) - (575.9400, 791.4700) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[4\].stage.genblk1.even_stage.rot1.im/block3/_03_ net:fft_core.stages_gen_blk\[4\].stage.genblk1.even_stage.rot1.im/block3/_07_
+	bbox = (601.5800, 1448.3000) - (601.8600, 1448.5800) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[4\].stage.genblk1.even_stage.rot1.re/block1/_01_ net:fft_core.stages_gen_blk\[4\].stage.genblk1.even_stage.rot1.re/block1/_02_
+	bbox = (611.1000, 1742.3000) - (611.3800, 1742.5800) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[4\].stage.genblk1.even_stage.rot1.im/block3/add1.p net:VSS
+	bbox = (612.2200, 1461.4100) - (612.5000, 1461.7900) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[4\].stage.genblk1.even_stage.rot1.im/block0/add1.p net:VSS
+	bbox = (612.2200, 1622.6900) - (612.5000, 1623.0700) on Layer Metal2
+violation type: Short
+	srcs: net:reorder_im_re.sel2\[1\] net:reorder_im_re.top_comm2/delay2.shift_reg\[1\]\[5\]
+	bbox = (620.0600, 662.6200) - (620.3400, 662.9000) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[4\].stage.genblk1.even_stage.rot1.real_out[8] net:fft_core.stages_gen_blk\[4\].stage.genblk1.even_stage.top_out_pip\[5\]\[12\]
+	bbox = (653.6600, 1428.7000) - (653.9400, 1428.9800) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[4\].stage.genblk1.even_stage.rot1.a\[5\] net:clknet_leaf_225_fft_clk
+	bbox = (681.6600, 1704.7800) - (681.9400, 1705.0600) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[4\].stage.genblk1.even_stage.rot1.a\[5\] net:clknet_leaf_225_fft_clk
+	bbox = (681.6600, 1704.7800) - (681.9400, 1705.6200) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[4\].stage.genblk1.even_stage.rot1.a\[5\] net:clknet_leaf_225_fft_clk
+	bbox = (681.6600, 1705.3400) - (681.9400, 1705.6200) on Layer Metal2
+violation type: Short
+	srcs: net:_04933_ net:_04935_
+	bbox = (688.9400, 368.6200) - (689.2200, 368.9000) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[4\].stage.genblk1.even_stage.rot1.mult1.partial_pip\[4\]\[12\] net:VSS
+	bbox = (692.3000, 1995.6500) - (692.5800, 1996.0300) on Layer Metal2
+violation type: Short
+	srcs: net:_05720_ net:_05722_
+	bbox = (715.2600, 394.3800) - (715.5400, 394.6600) on Layer Metal2
+violation type: Short
+	srcs: net:_05725_ net:_05971_
+	bbox = (718.0600, 349.0200) - (718.3400, 349.3000) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[4\].stage.genblk1.even_stage.rot1.mult1.partial_pip\[12\]\[13\] net:net1052
+	bbox = (726.4600, 1908.0100) - (726.7400, 1908.3400) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[4\].stage.genblk1.even_stage.rot1.mult1.partial_pip\[12\]\[13\] net:net1052
+	bbox = (726.4600, 1908.0600) - (726.7400, 1908.3400) on Layer Metal2
+violation type: Short
+	srcs: net:_00614_ net:fft_core.stages_gen_blk\[4\].stage.genblk1.even_stage.rot1.mult1.partial_pip\[13\]\[13\]
+	bbox = (727.5800, 1906.8900) - (727.8600, 1907.2200) on Layer Metal2
+violation type: Short
+	srcs: net:_00614_ net:fft_core.stages_gen_blk\[4\].stage.genblk1.even_stage.rot1.mult1.partial_pip\[13\]\[13\]
+	bbox = (727.5800, 1906.9400) - (727.8600, 1907.2200) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.mult4.partial\[15\]\[27\] net:VSS
+	bbox = (732.0600, 261.8900) - (732.3400, 262.2700) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[4\].stage.genblk1.even_stage.rot1.mult1.partial_pip\[13\]\[13\] net:VSS
+	bbox = (732.0600, 1915.0100) - (732.3400, 1915.3900) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[5\].stage.genblk1.genblk1.odd_stage.butterfly2.real_add/block2/_04_ net:VSS
+	bbox = (771.8200, 886.8500) - (772.1000, 887.2300) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[4\].stage.genblk1.even_stage.rot1.mult1.s25_pip\[15\] net:VSS
+	bbox = (771.8200, 1874.6900) - (772.1000, 1875.0700) on Layer Metal2
+violation type: Short
+	srcs: net:_05233_ net:_05271_
+	bbox = (777.4200, 104.3000) - (777.7000, 104.5800) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[5\].stage.genblk1.genblk1.odd_stage.butterfly2.real_sub/block2/_00_ net:fft_core.stages_gen_blk\[5\].stage.genblk1.genblk1.odd_stage.butterfly2.real_sub/block2/_11_
+	bbox = (781.3400, 923.8600) - (781.6200, 924.1400) on Layer Metal2
+violation type: Short
+	srcs: net:din_re[0] net:din_re[5]
+	bbox = (783.5800, 813.8200) - (783.8600, 814.1000) on Layer Metal2
+violation type: Short
+	srcs: net:din_re[5] net:fft_core.stages_gen_blk\[5\].stage.genblk1.genblk1.odd_stage.butterfly2.real_sub/block2/_02_
+	bbox = (783.5800, 924.7000) - (783.8600, 924.9800) on Layer Metal2
+violation type: Short
+	srcs: net:din_re[0] net:reorder_im_re.bottom_comm2/branch1_sel\[0\]
+	bbox = (784.7000, 806.5400) - (784.9800, 806.8200) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[4\].stage.dout_re0[3] net:fft_core.stages_gen_blk\[5\].stage.genblk1.genblk1.odd_stage.butterfly1.real_sub/b_eff\[1\]
+	bbox = (807.1000, 1409.1000) - (807.3800, 1409.3800) on Layer Metal2
+violation type: Short
+	srcs: net:rst net:clknet_0_fft_clk
+	bbox = (807.6600, 723.1000) - (807.9400, 723.3800) on Layer Metal2
+violation type: Short
+	srcs: net:divider/clk_reg\[1\] net:clknet_0_fft_clk
+	bbox = (808.2200, 725.9000) - (808.5000, 726.1800) on Layer Metal2
+violation type: Short
+	srcs: net:rst net:fft_core.stages_gen_blk\[5\].stage.genblk1.genblk1.odd_stage.butterfly1.real_sub/block1/_00_
+	bbox = (808.2200, 1297.0500) - (808.5000, 1297.4300) on Layer Metal2
+violation type: Short
+	srcs: net:rst net:fft_core.stages_gen_blk\[5\].stage.genblk1.genblk1.odd_stage.butterfly1.real_sub/block1/_00_
+	bbox = (808.2200, 1297.1000) - (808.5000, 1297.3800) on Layer Metal2
+violation type: Short
+	srcs: net:rst net:fft_core.stages_gen_blk\[5\].stage.genblk1.genblk1.odd_stage.butterfly1.real_add/block2/_09_
+	bbox = (809.3400, 1009.7700) - (809.6200, 1010.2900) on Layer Metal2
+violation type: Short
+	srcs: net:_05183_ net:divider/clk_reg\[1\]
+	bbox = (809.9000, 219.1000) - (810.1800, 219.3800) on Layer Metal2
+violation type: Short
+	srcs: net:_05183_ net:divider/clk_reg\[1\]
+	bbox = (809.9000, 219.1000) - (810.1800, 219.4300) on Layer Metal2
+violation type: Short
+	srcs: net:rst net:clknet_0_fft_clk
+	bbox = (809.9000, 1196.8600) - (810.1800, 1197.1400) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[4\].stage.genblk1.even_stage.rot1.mult1.op2\[15\] net:rst
+	bbox = (809.9000, 1833.0200) - (810.1800, 1833.3000) on Layer Metal2
+violation type: Short
+	srcs: net:rst net:clknet_0_fft_clk
+	bbox = (810.4600, 1379.4200) - (810.7400, 1379.7000) on Layer Metal2
+violation type: Short
+	srcs: net:rst net:fft_core.stages_gen_blk\[4\].stage.genblk1.even_stage.rot1.mult1.final_add/block0/_02_
+	bbox = (811.0200, 1816.2200) - (811.3000, 1816.5000) on Layer Metal2
+violation type: Short
+	srcs: net:dout_im[6] net:VSS
+	bbox = (811.5800, 100.6100) - (811.8600, 100.9900) on Layer Metal2
+violation type: Short
+	srcs: net:VSS net:stp_re/net371
+	bbox = (811.5800, 725.5700) - (811.8600, 725.9500) on Layer Metal2
+violation type: Short
+	srcs: net:rst net:VSS
+	bbox = (811.5800, 1360.6100) - (811.8600, 1360.9900) on Layer Metal2
+violation type: Short
+	srcs: net:rst net:VSS
+	bbox = (811.5800, 1370.6900) - (811.8600, 1371.0700) on Layer Metal2
+violation type: Short
+	srcs: net:VSS net:net1483
+	bbox = (812.1400, 251.8100) - (812.4200, 252.1900) on Layer Metal2
+violation type: Short
+	srcs: net:reorder_im_re.bottom_comm4/delay1.shift_reg\[2\]\[10\] net:VSS
+	bbox = (812.1400, 594.5300) - (812.4200, 594.9100) on Layer Metal2
+violation type: Short
+	srcs: net:rst net:VSS
+	bbox = (812.1400, 917.0900) - (812.4200, 917.4700) on Layer Metal2
+violation type: Short
+	srcs: net:rst net:VSS
+	bbox = (812.1400, 967.4900) - (812.4200, 967.8700) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[5\].stage.genblk1.genblk1.odd_stage.butterfly1.real_sub/g\[0\] net:VSS
+	bbox = (812.7000, 1400.9300) - (812.7400, 1401.3100) on Layer Metal2
+violation type: Short
+	srcs: net:rst net:clknet_2_3__leaf_adc_clk
+	bbox = (813.2600, 835.6600) - (813.5400, 835.9400) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.mult2.s30_pip\[26\] net:VDD
+	bbox = (814.6200, 25.0100) - (814.6600, 25.3900) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[5\].stage.genblk1.genblk1.odd_stage.butterfly1.real_add/block0/add0.p net:VDD
+	bbox = (814.9400, 1385.8100) - (815.2200, 1386.1900) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[5\].stage.genblk1.genblk1.odd_stage.butterfly1.real_sub/p\[0\] net:VDD
+	bbox = (814.9400, 1426.1300) - (815.2200, 1426.5100) on Layer Metal2
+violation type: Short
+	srcs: net:VDD net:fft_core.stages_gen_blk\[5\].stage.genblk1.genblk1.odd_stage.butterfly1.imag_add/net1023
+	bbox = (815.5000, 1133.8100) - (815.7800, 1134.1400) on Layer Metal2
+violation type: Short
+	srcs: net:VDD net:fft_core.stages_gen_blk\[5\].stage.genblk1.genblk1.odd_stage.butterfly1.imag_add/net1023
+	bbox = (815.5000, 1133.8600) - (815.7900, 1134.1400) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[4\].stage.genblk1.even_stage.rot1.mult1.final_add/block1/_03_ net:VDD
+	bbox = (815.5000, 1738.6100) - (815.7800, 1738.9900) on Layer Metal2
+violation type: Short
+	srcs: net:VDD net:fft_core.stages_gen_blk\[5\].stage.genblk1.genblk1.odd_stage.butterfly1.imag_add/net1023
+	bbox = (815.5100, 1133.8100) - (815.7800, 1134.1900) on Layer Metal2
+violation type: Short
+	srcs: net:VDD net:fft_core.stages_gen_blk\[5\].stage.genblk1.genblk1.odd_stage.butterfly1.imag_add/net1023
+	bbox = (815.5100, 1133.8600) - (815.7900, 1134.1900) on Layer Metal2
+violation type: Short
+	srcs: net:net1017 net:fft_core.stages_gen_blk\[5\].stage.genblk1.genblk1.odd_stage.butterfly1.imag_add/net1023
+	bbox = (816.0600, 1126.3000) - (816.3400, 1126.3500) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[4\].stage.dout_re0[7] net:fft_core.stages_gen_blk\[5\].stage.genblk1.genblk1.odd_stage.butterfly1.real_add/block1/add0.p
+	bbox = (816.0600, 1236.0600) - (816.3400, 1236.3400) on Layer Metal2
+violation type: Short
+	srcs: net:_05532_ net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.mult2.s31_pip\[27\]
+	bbox = (817.1800, 62.8600) - (817.4600, 63.1400) on Layer Metal2
+violation type: Short
+	srcs: net:_05532_ net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.mult2.s31_pip\[27\]
+	bbox = (817.1800, 62.8600) - (817.4600, 63.7000) on Layer Metal2
+violation type: Short
+	srcs: net:_05532_ net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.mult2.s31_pip\[27\]
+	bbox = (817.1800, 63.4200) - (817.4600, 63.7000) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[5\].stage.genblk1.genblk1.odd_stage.butterfly1.imag_sub/block3/add3.p net:fft_core.stages_gen_blk\[5\].stage.genblk1.genblk1.odd_stage.butterfly1.real_sub/g\[1\]
+	bbox = (819.4200, 1196.8600) - (819.7000, 1197.1400) on Layer Metal2
+violation type: Short
+	srcs: net:_06836_ net:VDD
+	bbox = (854.7000, 1889.8100) - (854.9800, 1890.1900) on Layer Metal2
+violation type: Short
+	srcs: net:_05400_ net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.mult2.csa_s6_1.cout\[15\]
+	bbox = (867.0200, 305.8500) - (867.3000, 306.1800) on Layer Metal2
+violation type: Short
+	srcs: net:_05400_ net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.mult2.csa_s6_1.cout\[15\]
+	bbox = (867.0200, 305.9000) - (867.3000, 306.1800) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[4\].stage.genblk1.even_stage.comm3\[9\] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.a\[7\]
+	bbox = (868.1400, 369.1800) - (868.4200, 369.4600) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[4\].stage.genblk1.even_stage.comm3\[9\] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.a\[7\]
+	bbox = (868.1400, 369.1800) - (868.4200, 369.7400) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[4\].stage.genblk1.even_stage.comm3\[9\] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.a\[7\]
+	bbox = (868.1400, 369.4600) - (868.4200, 369.7400) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[5\].stage.out_valid net:net1567
+	bbox = (883.2600, 1192.6600) - (883.5400, 1192.9400) on Layer Metal2
+violation type: Short
+	srcs: net:reorder_im_re.top_comm1/delay1.dout\[3\] net:VSS
+	bbox = (891.6600, 1138.8500) - (891.9400, 1139.2300) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot3.mult1.s33_pip\[13\] net:VDD
+	bbox = (894.6200, 1960.3700) - (894.7400, 1960.7500) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot3.mult1.partial_pip\[1\]\[8\] net:VDD
+	bbox = (895.0200, 1899.8900) - (895.3000, 1900.2700) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.mult2.partial_pip\[15\]\[17\] net:VDD
+	bbox = (895.5800, 317.3300) - (895.8600, 317.7100) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[5\].stage.dout_re2\[5\] net:fft_core.stages_gen_blk\[6\].stage.bf_out_re2[3]
+	bbox = (911.2600, 1399.0200) - (911.5400, 1399.3000) on Layer Metal2
+violation type: Short
+	srcs: net:din_re[1] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.a\[5\]
+	bbox = (912.9400, 910.1400) - (913.2200, 910.4200) on Layer Metal2
+violation type: Short
+	srcs: net:_04044_ net:_04048_
+	bbox = (915.7400, 592.0600) - (916.0200, 592.3400) on Layer Metal2
+violation type: Short
+	srcs: net:_04044_ net:_04048_
+	bbox = (915.7400, 592.0600) - (916.0200, 592.3900) on Layer Metal2
+violation type: Short
+	srcs: net:_04044_ net:_04048_
+	bbox = (915.7500, 592.0600) - (916.0200, 592.3400) on Layer Metal2
+violation type: Short
+	srcs: net:_04044_ net:_04048_
+	bbox = (915.7500, 592.0600) - (916.0200, 592.3900) on Layer Metal2
+violation type: Short
+	srcs: net:_04077_ net:_04080_
+	bbox = (917.4200, 655.9000) - (917.7000, 656.1800) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.bf_out_re2_pip\[8\] net:stp_re/genblk1\[3\].stp/rc1/_01_
+	bbox = (919.6600, 771.2600) - (919.9400, 771.5400) on Layer Metal2
+violation type: Short
+	srcs: net:_04068_ net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.mult1.partial_pip\[11\]\[15\]
+	bbox = (921.3400, 541.1000) - (921.6200, 541.3800) on Layer Metal2
+violation type: Short
+	srcs: net:_04343_ net:rst
+	bbox = (925.2600, 476.1400) - (925.5400, 476.4200) on Layer Metal2
+violation type: Short
+	srcs: net:_04335_ net:rst
+	bbox = (925.2600, 507.5000) - (925.5400, 507.7800) on Layer Metal2
+violation type: Short
+	srcs: net:_04341_ net:rst
+	bbox = (926.3800, 476.0900) - (926.6600, 476.4200) on Layer Metal2
+violation type: Short
+	srcs: net:_04341_ net:rst
+	bbox = (926.3800, 476.1400) - (926.6600, 476.4200) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.bf_out_re2_pip\[7\] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.a\[1\]
+	bbox = (926.3800, 904.5400) - (926.6600, 904.8200) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[5\].stage.genblk1.genblk1.odd_stage.comm0\[16\] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.bf_out_re2_pip\[7\]
+	bbox = (927.5000, 1217.5800) - (927.7800, 1217.8600) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.a\[8\] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.a\[9\]
+	bbox = (928.6200, 314.3000) - (928.9000, 314.5800) on Layer Metal2
+violation type: Short
+	srcs: net:VSS net:net1531
+	bbox = (931.9800, 796.1300) - (932.2600, 796.5100) on Layer Metal2
+violation type: Short
+	srcs: net:net1469 net:net1458
+	bbox = (937.0200, 485.0500) - (937.3000, 485.4300) on Layer Metal2
+violation type: Short
+	srcs: net:net1469 net:net1458
+	bbox = (937.0200, 485.1000) - (937.3000, 485.3800) on Layer Metal2
+violation type: Short
+	srcs: net:_04113_ net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.a\[7\]
+	bbox = (937.5800, 606.6200) - (937.8600, 606.9000) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.a\[12\] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.mult1.partial_pip\[10\]\[18\]
+	bbox = (938.7000, 487.9000) - (938.9800, 488.1800) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.a\[0\] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.a\[7\]
+	bbox = (939.2600, 603.8200) - (939.5400, 604.1000) on Layer Metal2
+violation type: Short
+	srcs: net:_04133_ net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.mult1.partial_pip\[11\]\[12\]
+	bbox = (956.0600, 608.8600) - (956.3400, 609.1400) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.mult1.partial_pip\[11\]\[11\] net:VSS
+	bbox = (971.4200, 695.3300) - (971.4600, 695.7100) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.butterfly1.real_add/block3/_07_ net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.butterfly1.real_add/block3/add3.g
+	bbox = (1008.1395, 844.0550) - (1008.1405, 844.3400) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.butterfly1.real_add/block3/_07_ net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.butterfly1.real_add/block3/add3.g
+	bbox = (1008.1400, 844.0600) - (1008.4200, 844.3400) on Layer Metal2
+violation type: Short
+	srcs: net:_11559_[0] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.mult1.final_add/block0/_12_
+	bbox = (1022.7000, 556.7800) - (1022.9800, 557.0600) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.ac[5] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.mult1.final_add/_1_
+	bbox = (1026.0600, 370.3000) - (1026.3400, 370.5800) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.bd_pip\[6\] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.re/g\[1\]
+	bbox = (1026.6200, 218.5400) - (1026.9000, 218.8200) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.bd_pip\[6\] net:net1459
+	bbox = (1027.1800, 224.3700) - (1027.4600, 224.4200) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.ac[5] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.b\[3\]
+	bbox = (1027.1800, 370.8600) - (1027.4600, 371.1400) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.b\[9\] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.mult1.op2\[22\]
+	bbox = (1028.3000, 369.7400) - (1028.5500, 370.0200) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.b\[9\] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.mult1.op2\[22\]
+	bbox = (1028.3000, 369.7400) - (1028.5500, 370.5800) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.b\[9\] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.mult1.op2\[22\]
+	bbox = (1028.3000, 370.3000) - (1028.5800, 370.5800) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.b\[3\] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.mult1.final_add/block1/add1.cin
+	bbox = (1028.3000, 419.0200) - (1028.5800, 419.3000) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.b\[9\] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.mult1.final_add/block1/_05_
+	bbox = (1029.4200, 395.2950) - (1029.7000, 395.7800) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.b\[9\] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.mult1.final_add/block1/_05_
+	bbox = (1029.4200, 395.5000) - (1029.7000, 395.7800) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.ac[2] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.mult1.op1\[18\]
+	bbox = (1029.9800, 546.7000) - (1030.2600, 546.9800) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.b\[2\] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.mult1.op2\[18\]
+	bbox = (1029.9800, 567.4200) - (1030.2600, 567.7000) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.b\[2\] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.mult1.op1\[18\]
+	bbox = (1030.8195, 546.7000) - (1030.8205, 546.9800) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.b\[10\] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.b\[2\]
+	bbox = (1031.1000, 579.1800) - (1031.3800, 579.4600) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.b\[10\] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.b\[2\]
+	bbox = (1031.1000, 581.4200) - (1031.3800, 581.7000) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.b\[11\] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.b\[7\]
+	bbox = (1032.2195, 396.6200) - (1032.2205, 396.9000) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.b\[11\] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.b\[7\]
+	bbox = (1032.2195, 396.6200) - (1032.2205, 397.4600) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.b\[11\] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.b\[7\]
+	bbox = (1032.2200, 397.1800) - (1032.5000, 397.4600) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.b\[4\] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.mult1.final_add/block0/_08_
+	bbox = (1032.2200, 582.4900) - (1032.5000, 582.8700) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.b\[4\] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.mult1.final_add/block0/_08_
+	bbox = (1032.2200, 582.5400) - (1032.5000, 582.8200) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.b\[7\] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.mult1.op2\[19\]
+	bbox = (1032.7800, 451.5000) - (1033.0600, 451.7800) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.mult1.final_add/block0/_04_ net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.mult1.final_add/block0/_08_
+	bbox = (1032.7800, 582.5400) - (1033.0600, 582.8200) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.b\[13\] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.mult1.final_add/block1/add2.g
+	bbox = (1034.4600, 394.9400) - (1034.7400, 395.2200) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.b\[13\] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.mult1.final_add/block1/add2.g
+	bbox = (1034.4600, 394.9400) - (1034.7400, 395.2700) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.b\[13\] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.mult1.final_add/block1/add2.g
+	bbox = (1034.4700, 394.9400) - (1034.7400, 395.2700) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.b\[13\] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.mult1.final_add/block1/add1.p
+	bbox = (1035.0200, 415.6600) - (1035.3000, 415.9400) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.b\[13\] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.mult1.final_add/block1/add1.p
+	bbox = (1035.0200, 415.6600) - (1035.3000, 415.9900) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.b\[13\] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.mult1.final_add/c\[1\]
+	bbox = (1035.0200, 424.0600) - (1035.3000, 424.3400) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.ac[6] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.re/p\[0\]
+	bbox = (1036.1400, 341.7400) - (1036.4200, 342.0200) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.b\[12\] net:clknet_leaf_595_fft_clk
+	bbox = (1038.3800, 416.7800) - (1038.6600, 417.0600) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.b\[12\] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.b\[5\]
+	bbox = (1040.6200, 502.4600) - (1040.9000, 502.7400) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.b\[5\] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.mult1.final_add/block1/add1.p
+	bbox = (1041.1800, 415.0500) - (1041.4600, 415.4300) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.b\[5\] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.mult1.final_add/block1/add1.p
+	bbox = (1041.1800, 415.1000) - (1041.4600, 415.3800) on Layer Metal2
+violation type: Short
+	srcs: net:VDD net:net1491
+	bbox = (1055.1800, 639.8900) - (1055.4600, 640.2700) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.mult3.csa_s3_1.cout\[27\] net:net952
+	bbox = (1057.9800, 268.3800) - (1058.2600, 268.6600) on Layer Metal2
+violation type: Short
+	srcs: net:_06061_ net:net1486
+	bbox = (1064.1400, 360.7800) - (1064.4200, 361.0600) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.bf_out_re0[4] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.b\[9\]
+	bbox = (1065.2600, 957.7400) - (1065.5400, 958.0200) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.b\[9\] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.butterfly2.imag_add/block3/_00_
+	bbox = (1065.2600, 982.9400) - (1065.5400, 983.2200) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[5\].stage.dout_im2\[12\] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.b\[9\]
+	bbox = (1065.2600, 989.8900) - (1065.5400, 990.5000) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[5\].stage.dout_im2\[12\] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.b\[9\]
+	bbox = (1065.2600, 990.2200) - (1065.5400, 990.5000) on Layer Metal2
+violation type: Short
+	srcs: net:net1422 net:_03668_
+	bbox = (1080.3800, 1575.4200) - (1080.6600, 1575.7000) on Layer Metal2
+violation type: Short
+	srcs: net:_06032_ net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.mult3.csa_s2_2.s\[14\]
+	bbox = (1089.3400, 588.1400) - (1089.6200, 588.4200) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.butterfly1.real_sub/block2/_02_ net:VSS
+	bbox = (1091.5800, 947.3300) - (1091.8600, 947.7100) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot3.mult4.s33_pip\[20\] net:VSS
+	bbox = (1092.1400, 1562.2100) - (1092.4200, 1562.5900) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.butterfly1.real_add/block0/add1.p net:VDD
+	bbox = (1095.5000, 1103.5700) - (1095.7800, 1103.9500) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.bf_out_im0[1] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.top_out_pip\[1\]\[20\]
+	bbox = (1101.6600, 900.0600) - (1101.9400, 900.3400) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[5\].stage.genblk1.genblk1.odd_stage.comm0_out_pip\[7\] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.bf_out_im3_pip\[2\]
+	bbox = (1103.3400, 1419.7400) - (1103.6200, 1420.0200) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[5\].stage.genblk1.genblk1.odd_stage.comm0_out_pip\[7\] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.bf_out_im3_pip\[2\]
+	bbox = (1103.3400, 1419.7400) - (1103.6200, 1420.5800) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[5\].stage.genblk1.genblk1.odd_stage.comm0_out_pip\[7\] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.bf_out_im3_pip\[2\]
+	bbox = (1103.3400, 1420.3000) - (1103.6200, 1420.5800) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.bf_out_im3_pip\[2\] net:clknet_leaf_303_fft_clk
+	bbox = (1103.3400, 1589.9800) - (1103.6200, 1590.2600) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.mult3.op1\[28\] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.mult3.op2\[28\]
+	bbox = (1103.9000, 123.9000) - (1104.1800, 124.1800) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.mult3.op1\[28\] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.mult3.op2\[28\]
+	bbox = (1103.9000, 123.9000) - (1104.1900, 124.1800) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.mult3.op1\[28\] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.mult3.op2\[28\]
+	bbox = (1103.9100, 123.9000) - (1104.1800, 124.1800) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.mult3.op1\[28\] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.mult3.op2\[28\]
+	bbox = (1103.9100, 123.9000) - (1104.1900, 124.1800) on Layer Metal2
+violation type: Short
+	srcs: net:net1420 net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot3.mult4.csa_s3_1.cout\[21\]
+	bbox = (1107.8200, 1594.4600) - (1108.1000, 1594.7400) on Layer Metal2
+violation type: Short
+	srcs: net:net1420 net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot3.mult4.csa_s3_1.cout\[21\]
+	bbox = (1107.8200, 1594.4600) - (1108.1000, 1594.7900) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.comm2\[13\] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.im/c\[3\]
+	bbox = (1121.8200, 163.6600) - (1122.1000, 163.9400) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.butterfly1.imag_add/block2/_00_ net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.butterfly1.imag_add/block2/_02_
+	bbox = (1125.7400, 1302.7000) - (1126.0200, 1302.9800) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[5\].stage.dout_im3\[12\] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.butterfly1.imag_add/block2/_04_
+	bbox = (1128.5400, 1250.6200) - (1128.8200, 1250.9000) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[5\].stage.dout_im3\[12\] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.butterfly1.imag_add/block2/_04_
+	bbox = (1128.5400, 1250.6200) - (1129.3800, 1250.9000) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[5\].stage.dout_im3\[12\] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.butterfly1.imag_add/block2/_04_
+	bbox = (1129.1000, 1250.6200) - (1129.3800, 1250.9000) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.butterfly1.imag_add/block2/_07_ net:VSS
+	bbox = (1132.4600, 1259.8100) - (1132.7400, 1260.1900) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.mult3.final_add/block0/_04_ net:VDD
+	bbox = (1134.7000, 649.9700) - (1134.9800, 650.3500) on Layer Metal2
+violation type: Short
+	srcs: net:zero_ net:VDD
+	bbox = (1134.7000, 1053.1700) - (1134.9800, 1053.5500) on Layer Metal2
+violation type: Short
+	srcs: net:VDD net:net1075
+	bbox = (1134.7000, 1073.3300) - (1134.9800, 1073.7100) on Layer Metal2
+violation type: Short
+	srcs: net:zero_ net:VDD
+	bbox = (1134.9800, 1043.0900) - (1135.2600, 1043.4700) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.im/block1/_07_ net:VDD
+	bbox = (1135.2600, 347.5700) - (1135.5400, 347.9500) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.mult3.final_add/block1/_05_ net:VDD
+	bbox = (1135.2600, 438.2900) - (1135.5400, 438.6700) on Layer Metal2
+violation type: Short
+	srcs: net:zero_ net:VDD
+	bbox = (1135.2600, 1033.0100) - (1135.5400, 1033.3900) on Layer Metal2
+violation type: Short
+	srcs: net:zero_ net:VDD
+	bbox = (1135.2600, 1063.2500) - (1135.5400, 1063.6300) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.im/block1/_07_ net:VDD
+	bbox = (1135.8200, 337.4900) - (1135.9400, 337.8700) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.mult3.final_add/block1/_05_ net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.mult3.final_add/block1/_06_
+	bbox = (1136.3800, 435.2600) - (1136.6600, 435.5400) on Layer Metal2
+violation type: Short
+	srcs: net:zero_ net:clknet_6_49__leaf_fft_clk
+	bbox = (1136.3800, 1071.9800) - (1136.6600, 1072.2600) on Layer Metal2
+violation type: Short
+	srcs: net:zero_ net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.mult3.final_add/block1/add1.p
+	bbox = (1136.9400, 445.9000) - (1137.2200, 445.9500) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.mult3.final_add/block0/_03_ net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.mult3.final_add/block0/_05_
+	bbox = (1136.9400, 676.0600) - (1137.2200, 676.3400) on Layer Metal2
+violation type: Short
+	srcs: net:net1505 net:net1510
+	bbox = (1137.5000, 1057.4200) - (1137.7800, 1057.7000) on Layer Metal2
+violation type: Short
+	srcs: net:zero_ net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.mult3.final_add/block1/_04_
+	bbox = (1138.0600, 430.7800) - (1138.3400, 431.0600) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.bf_out_im0[4] net:zero_
+	bbox = (1138.0600, 1015.4200) - (1138.3400, 1015.7000) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.bf_out_im0[4] net:zero_
+	bbox = (1138.0600, 1019.3400) - (1138.3400, 1019.6200) on Layer Metal2
+violation type: Short
+	srcs: net:zero_ net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.mult3.final_add/block1/add0.p
+	bbox = (1138.6200, 430.4500) - (1138.9000, 431.0600) on Layer Metal2
+violation type: Short
+	srcs: net:zero_ net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.mult3.final_add/block1/add0.p
+	bbox = (1138.6200, 430.7800) - (1138.9000, 431.0600) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.bf_out_im0[4] net:net1510
+	bbox = (1138.6200, 1055.9700) - (1138.9000, 1056.0200) on Layer Metal2
+violation type: Short
+	srcs: net:zero_ net:net1505
+	bbox = (1139.1800, 964.4600) - (1139.4600, 964.7400) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.bf_out_im0[4] net:zero_
+	bbox = (1139.1800, 1129.1000) - (1139.4600, 1129.3800) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.butterfly1.imag_add/_0_ net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.butterfly1.imag_add/block1/_09_
+	bbox = (1139.1800, 1362.6200) - (1139.4600, 1362.9000) on Layer Metal2
+violation type: Short
+	srcs: net:zero_ net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.mult3.final_add/block1/add2.g
+	bbox = (1139.7400, 420.6500) - (1140.0200, 421.5400) on Layer Metal2
+violation type: Short
+	srcs: net:zero_ net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.mult3.final_add/block1/add2.g
+	bbox = (1139.7400, 421.2600) - (1140.0200, 421.5400) on Layer Metal2
+violation type: Short
+	srcs: net:_11561_[0] net:zero_
+	bbox = (1139.7400, 483.9800) - (1140.0200, 484.2600) on Layer Metal2
+violation type: Short
+	srcs: net:zero_ net:net1506
+	bbox = (1139.7400, 964.4600) - (1140.0200, 964.7400) on Layer Metal2
+violation type: Short
+	srcs: net:zero_ net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.im/block1/_01_
+	bbox = (1140.3000, 370.2500) - (1140.5800, 370.7700) on Layer Metal2
+violation type: Short
+	srcs: net:zero_ net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.im/block1/_05_
+	bbox = (1140.3000, 371.4200) - (1140.5800, 371.7000) on Layer Metal2
+violation type: Short
+	srcs: net:zero_ net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.im/block1/_05_
+	bbox = (1140.3000, 371.4200) - (1140.5800, 372.2600) on Layer Metal2
+violation type: Short
+	srcs: net:zero_ net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.im/block1/_05_
+	bbox = (1140.3000, 371.9800) - (1140.5800, 372.2600) on Layer Metal2
+violation type: Short
+	srcs: net:_11561_[0] net:zero_
+	bbox = (1140.3000, 629.5800) - (1140.5800, 629.8600) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.top_out_pip\[4\]\[9\] net:zero_
+	bbox = (1140.3000, 735.4200) - (1140.5800, 735.7000) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.bf_out_im0[13] net:zero_
+	bbox = (1140.3000, 964.4600) - (1140.5800, 964.7400) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.top_out_pip\[2\]\[11\] net:zero_
+	bbox = (1140.8600, 629.5800) - (1141.1400, 629.8600) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.bf_out_im0[13] net:zero_
+	bbox = (1140.8600, 1129.1000) - (1141.1400, 1129.3800) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.im/block1/_00_ net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.im/block1/add0.p
+	bbox = (1141.4200, 371.9800) - (1141.7000, 372.2600) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.top_out_pip\[4\]\[9\] net:zero_
+	bbox = (1141.4200, 496.8600) - (1141.7000, 497.1400) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.top_out_pip\[4\]\[9\] net:zero_
+	bbox = (1141.4200, 629.5800) - (1141.7000, 629.8600) on Layer Metal2
+violation type: Short
+	srcs: net:zero_ net:net1510
+	bbox = (1141.4200, 1129.1000) - (1141.7000, 1129.3800) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.bf_out_im0[3] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.bf_out_im3_pip\[5\]
+	bbox = (1145.9000, 1374.9400) - (1146.1800, 1375.2200) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.top_out_pip\[1\]\[5\] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.im/block0/add0.p
+	bbox = (1157.6600, 669.3400) - (1157.9400, 669.6200) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[7\].stage.genblk1.genblk1.odd_stage.butterfly1.imag_add/block3/_04_ net:net995
+	bbox = (1167.7400, 375.3400) - (1168.0200, 375.6200) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.top_comm/up_in_del\[11\] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.top_comm/up_in_del\[27\]
+	bbox = (1178.9400, 487.0600) - (1179.2200, 487.3400) on Layer Metal2
+violation type: Short
+	srcs: net:_02556_ net:clknet_leaf_335_fft_clk
+	bbox = (1182.8595, 1779.8200) - (1182.8605, 1780.1000) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.comm0\[18\] net:net1003
+	bbox = (1192.3800, 743.7700) - (1192.6600, 744.1500) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.comm0\[18\] net:net1003
+	bbox = (1192.3800, 743.8200) - (1192.6600, 744.1000) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[7\].stage.genblk1.genblk1.odd_stage.comm3\[12\] net:fft_core.stages_gen_blk\[7\].stage.genblk1.genblk1.odd_stage.bottom_comm/delay1.shift_reg\[0\]\[13\]
+	bbox = (1230.4600, 487.9000) - (1230.7400, 488.1800) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[7\].stage.genblk1.genblk1.odd_stage.comm3\[12\] net:fft_core.stages_gen_blk\[7\].stage.genblk1.genblk1.odd_stage.bottom_comm/delay1.shift_reg\[0\]\[13\]
+	bbox = (1230.4600, 487.9000) - (1230.7400, 488.7400) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[7\].stage.genblk1.genblk1.odd_stage.comm3\[12\] net:fft_core.stages_gen_blk\[7\].stage.genblk1.genblk1.odd_stage.bottom_comm/delay1.shift_reg\[0\]\[13\]
+	bbox = (1230.4600, 488.4600) - (1230.7400, 488.7400) on Layer Metal2
+violation type: Short
+	srcs: net:_09693_ net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot1.mult3.partial\[3\]\[15\]
+	bbox = (1231.0200, 1369.0600) - (1231.3000, 1369.3400) on Layer Metal2
+violation type: Short
+	srcs: net:_08220_ net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.comm3\[9\]
+	bbox = (1241.1000, 860.3000) - (1241.3800, 860.5800) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[7\].stage.genblk1.genblk1.odd_stage.butterfly1.imag_sub/block1/add3.p net:VSS
+	bbox = (1251.7400, 433.2500) - (1252.0200, 433.6300) on Layer Metal2
+violation type: Short
+	srcs: net:_09643_ net:VDD
+	bbox = (1255.1000, 1436.2100) - (1255.3800, 1436.5900) on Layer Metal2
+violation type: Short
+	srcs: net:_09714_ net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot1.mult3.partial_pip\[0\]\[8\]
+	bbox = (1264.6200, 1359.2600) - (1264.9000, 1359.5400) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.comm3\[6\] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot3.imag_out[4]
+	bbox = (1267.4200, 1413.5800) - (1267.7000, 1413.8600) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot1.mult3.partial_pip\[11\]\[18\] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot3.imag_out[4]
+	bbox = (1267.9800, 1312.7800) - (1268.2600, 1313.0600) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[7\].stage.genblk1.genblk1.odd_stage.butterfly2.imag_sub/block2/add2.cin net:VDD
+	bbox = (1295.7000, 680.2100) - (1295.9400, 680.5900) on Layer Metal2
+violation type: Short
+	srcs: net:_09811_ net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot1.mult3.csa_s3_1.cout\[21\]
+	bbox = (1316.7000, 1316.7000) - (1316.9800, 1316.9800) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[7\].stage.genblk1.genblk1.odd_stage.butterfly2.imag_add/block1/_08_ net:VSS
+	bbox = (1331.8200, 685.2500) - (1332.1000, 685.6300) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot1.mult1.op2\[15\] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot3.real_out[13]
+	bbox = (1346.9400, 1110.0600) - (1347.2200, 1110.3400) on Layer Metal2
+violation type: Short
+	srcs: net:_11553_[0] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot1.mult4.partial\[0\]\[9\]
+	bbox = (1348.6200, 995.2100) - (1348.9000, 995.5900) on Layer Metal2
+violation type: Short
+	srcs: net:_11553_[0] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot1.mult4.partial\[0\]\[9\]
+	bbox = (1348.6200, 995.2600) - (1348.9000, 995.5400) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[7\].stage.genblk1.genblk1.odd_stage.bf_out_re1_pip\[4\] net:fft_core.stages_gen_blk\[7\].stage.genblk1.genblk1.odd_stage.bottom_comm/delay1.shift_reg\[0\]\[9\]
+	bbox = (1349.1800, 455.9800) - (1349.4600, 456.2600) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot1.bc[13] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot3.real_out[13]
+	bbox = (1349.1800, 1110.0600) - (1349.4600, 1110.3400) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot1.bc[13] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot1.mult4.partial\[0\]\[9\]
+	bbox = (1349.4600, 995.2600) - (1349.7400, 995.5400) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot3.real_out[13] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot1.mult3.final_add/block2/_02_
+	bbox = (1349.7400, 1224.3000) - (1350.0200, 1224.5800) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot1.mult1.final_add/c\[1\] net:clknet_leaf_480_fft_clk
+	bbox = (1350.3000, 990.2200) - (1350.5800, 990.5000) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot1.ac[0] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot1.mult1.final_add/block0/_06_
+	bbox = (1355.9500, 1065.8300) - (1356.1800, 1066.1000) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[7\].stage.dout_im0\[7\] net:fft_core.stages_gen_blk\[7\].stage.genblk1.genblk1.odd_stage.comm3\[28\]
+	bbox = (1356.4600, 445.9000) - (1356.7400, 446.1800) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot1.mult1.final_add/block0/_05_ net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot1.mult1.final_add/block0/_06_
+	bbox = (1357.0200, 1066.3800) - (1357.3000, 1066.6600) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[7\].stage.genblk1.genblk1.odd_stage.butterfly2.real_sub/block3/_02_ net:fft_core.stages_gen_blk\[7\].stage.genblk1.genblk1.odd_stage.butterfly2.real_sub/block3/add1.cin
+	bbox = (1358.1400, 599.9000) - (1358.4200, 600.1800) on Layer Metal2
+violation type: Short
+	srcs: net:_02606_ net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot3.mult3.csa_s3_1.cout\[24\]
+	bbox = (1358.1400, 1732.2200) - (1358.4200, 1732.5000) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot3.mult3.csa_s3_1.s\[24\] net:net1107
+	bbox = (1366.5400, 1747.9000) - (1366.8200, 1748.1800) on Layer Metal2
+violation type: Short
+	srcs: net:_02515_ net:VDD
+	bbox = (1374.9400, 1647.8900) - (1375.2200, 1648.2700) on Layer Metal2
+violation type: Short
+	srcs: net:VDD net:net1082
+	bbox = (1375.5000, 1012.8500) - (1375.7800, 1013.2300) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot1.mult3.op2\[22\] net:VDD
+	bbox = (1375.5000, 1254.7700) - (1375.7800, 1255.1500) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot1.mult3.op1\[15\] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot3.real_out[8]
+	bbox = (1395.1000, 1489.1800) - (1395.3500, 1489.4600) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot1.mult3.op1\[15\] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot3.real_out[8]
+	bbox = (1395.1000, 1489.1800) - (1395.3500, 1489.5100) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.comm3\[25\] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot1.bc[0]
+	bbox = (1405.7400, 1269.1000) - (1406.0200, 1269.3800) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.comm3\[25\] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot1.bc[3]
+	bbox = (1405.7400, 1367.1000) - (1406.0200, 1367.3800) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.comm3\[25\] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot1.bc[0]
+	bbox = (1406.3000, 1252.3000) - (1406.5800, 1252.5800) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.comm3\[25\] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot1.bc[0]
+	bbox = (1406.3000, 1252.3000) - (1407.1400, 1252.5800) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.comm3\[25\] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot1.bc[0]
+	bbox = (1406.8600, 1252.3000) - (1407.1400, 1252.5800) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.comm3\[25\] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.bottom_comm/delay1.shift_reg\[0\]\[23\]
+	bbox = (1407.9800, 1486.3800) - (1408.2600, 1486.6600) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.bottom_comm/delay1.shift_reg\[0\]\[23\] net:net1085
+	bbox = (1408.5400, 1427.8600) - (1408.8200, 1428.1400) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot1.mult2.partial\[15\]\[17\] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.bottom_comm/delay1.shift_reg\[0\]\[23\]
+	bbox = (1408.5400, 1512.1400) - (1408.8200, 1512.4200) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot1.mult4.partial_pip\[0\]\[10\] net:VDD
+	bbox = (1414.7000, 952.3700) - (1414.9800, 952.7500) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot1.mult2.partial_pip\[10\]\[16\] net:VDD
+	bbox = (1414.7000, 1537.0100) - (1414.9800, 1537.3900) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot1.mult2.partial\[2\]\[5\] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot1.mult2.partial_pip\[10\]\[16\]
+	bbox = (1414.7000, 1537.9000) - (1414.9800, 1538.1800) on Layer Metal2
+violation type: Short
+	srcs: net:VDD net:net1105
+	bbox = (1414.7000, 1809.1700) - (1414.9800, 1809.5500) on Layer Metal2
+violation type: Short
+	srcs: net:net1082 net:net1087
+	bbox = (1415.8200, 1135.8200) - (1416.1000, 1136.1000) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot1.mult2.partial\[2\]\[7\] net:net1089
+	bbox = (1424.2200, 1449.4200) - (1424.5000, 1449.7000) on Layer Metal2
+violation type: Short
+	srcs: net:pts_re/genblk1\[7\].pts/_01_ net:pts_re/genblk1\[7\].pts/pulse0_p
+	bbox = (1457.8200, 93.1000) - (1458.1000, 93.3800) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[7\].stage.dout_re3\[9\] net:fft_core.stages_gen_blk\[8\].stage.genblk1.genblk1.genblk1.last_stage.butterfly1.real_sub/c\[3\]
+	bbox = (1490.3000, 228.0600) - (1490.5800, 228.3400) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[8\].stage.bf_out_re0[8] net:VSS
+	bbox = (1491.9800, 211.4900) - (1492.2600, 211.8700) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[8\].stage.genblk1.genblk1.genblk1.last_stage.butterfly2.real_add/block2/add2.g net:VDD
+	bbox = (1494.7800, 206.4500) - (1495.0600, 206.8300) on Layer Metal2
+violation type: Short
+	srcs: net:pts_im/genblk1\[3\].pts/rc0/_02_ net:pts_re/genblk1\[2\].pts/rc0/_01_
+	bbox = (1515.5000, 134.2600) - (1515.7800, 134.5400) on Layer Metal2
+violation type: Short
+	srcs: net:pts_im/genblk1\[3\].pts/rc0/_02_ net:pts_re/genblk1\[2\].pts/rc0/_01_
+	bbox = (1515.5000, 134.2600) - (1516.3400, 134.5400) on Layer Metal2
+violation type: Short
+	srcs: net:pts_im/genblk1\[3\].pts/rc0/_02_ net:pts_re/genblk1\[2\].pts/rc0/_01_
+	bbox = (1516.0600, 134.2600) - (1516.3400, 134.5400) on Layer Metal2
+violation type: Short
+	srcs: net:pts_im/genblk1\[3\].pts/rc0/_02_ net:pts_re/genblk1\[3\].pts/rc0/_03_
+	bbox = (1516.6200, 134.2600) - (1516.9000, 134.5400) on Layer Metal2
+violation type: Short
+	srcs: net:pts_im/genblk1\[3\].pts/rc0/_02_ net:pts_re/genblk1\[3\].pts/rc0/_03_
+	bbox = (1516.6200, 134.2600) - (1516.9000, 135.3800) on Layer Metal2
+violation type: Short
+	srcs: net:pts_im/genblk1\[3\].pts/rc0/_02_ net:pts_re/genblk1\[3\].pts/rc0/_03_
+	bbox = (1516.6200, 135.1000) - (1516.9000, 135.3800) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot1.mult4.op1\[29\] net:VSS
+	bbox = (1532.3000, 856.6100) - (1532.5800, 856.9900) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot1.mult4.final_add/block3/_07_ net:VDD
+	bbox = (1535.1000, 841.4900) - (1535.3800, 841.8700) on Layer Metal2
+violation type: Short
+	srcs: net:_11283_ net:_11299_
+	bbox = (1542.3800, 966.1400) - (1542.6600, 966.4200) on Layer Metal2
+violation type: Short
+	srcs: net:pts_im/genblk1\[3\].pts/pulse0 net:pts_re/genblk1\[2\].pts/shift_reg\[1\]
+	bbox = (1551.9000, 73.5000) - (1552.1800, 73.7800) on Layer Metal2
+violation type: Short
+	srcs: net:pts_im/genblk1\[3\].pts/pulse0 net:pts_re/genblk1\[2\].pts/shift_reg\[1\]
+	bbox = (1551.9000, 73.5000) - (1552.1800, 74.3400) on Layer Metal2
+violation type: Short
+	srcs: net:pts_im/genblk1\[3\].pts/pulse0 net:pts_re/genblk1\[2\].pts/shift_reg\[1\]
+	bbox = (1551.9000, 74.0600) - (1552.1800, 74.3400) on Layer Metal2
+violation type: Short
+	srcs: net:pts_re/pts0/rc0/_02_ net:VSS
+	bbox = (1572.0600, 171.1700) - (1572.3400, 171.5500) on Layer Metal2
+violation type: Short
+	srcs: net:_09350_ net:VDD
+	bbox = (1574.8600, 1516.8500) - (1575.1400, 1517.2300) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot1.bd_pip\[9\] net:VDD
+	bbox = (1575.4200, 1083.4100) - (1575.7000, 1083.7900) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot1.bd_pip\[9\] net:VDD
+	bbox = (1575.4200, 1093.4900) - (1575.7000, 1093.8700) on Layer Metal2
+violation type: Short
+	srcs: net:_11205_ net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot1.bc_pip\[1\]
+	bbox = (1579.3400, 1101.1000) - (1579.6200, 1101.3800) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot1.imag_out[0] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.bottom_comm/delay1.shift_reg\[0\]\[19\]
+	bbox = (1583.2600, 933.1000) - (1583.5400, 933.3800) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot1.bd[2] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot1.bd_pip\[3\]
+	bbox = (1596.1400, 1190.1400) - (1596.4200, 1190.4200) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot1.bd[2] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot1.bd_pip\[3\]
+	bbox = (1596.1400, 1190.1400) - (1596.4200, 1192.1000) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot1.bd[2] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot1.bd_pip\[3\]
+	bbox = (1596.1400, 1191.8200) - (1596.4200, 1192.1000) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot1.bd[2] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot1.bd_pip\[3\]
+	bbox = (1596.1400, 1194.0600) - (1596.4200, 1194.3400) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot1.bd_pip\[3\] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot1.mult2.final_add/block3/_00_
+	bbox = (1596.1400, 1196.8100) - (1596.4200, 1197.1900) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot1.bd_pip\[3\] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot1.mult2.final_add/block3/_00_
+	bbox = (1596.1400, 1196.8600) - (1596.4200, 1197.1400) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot1.bd_pip\[3\] net:clknet_leaf_392_fft_clk
+	bbox = (1596.7000, 1190.1400) - (1596.9800, 1190.4200) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot1.bd[2] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot1.bd_pip\[3\]
+	bbox = (1597.2600, 1018.7800) - (1597.5400, 1019.0600) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot1.bd_pip\[3\] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.bottom_comm/delay1.shift_reg\[0\]\[14\]
+	bbox = (1597.2600, 1152.6200) - (1597.5400, 1152.9000) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.comm3\[21\] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot1.bd_pip\[3\]
+	bbox = (1597.2600, 1363.1800) - (1597.5400, 1363.4600) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot1.ad[0] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot1.bd[2]
+	bbox = (1597.8200, 998.0600) - (1598.1000, 998.3400) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot1.ad[0] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot1.bd_pip\[3\]
+	bbox = (1597.8200, 1004.7800) - (1598.1000, 1005.0600) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot1.bd_pip\[3\] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.bottom_comm/delay1.shift_reg\[0\]\[14\]
+	bbox = (1597.8200, 1155.4200) - (1598.1000, 1155.7000) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.comm3\[20\] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot1.bd_pip\[3\]
+	bbox = (1597.8200, 1318.3300) - (1598.1000, 1318.6600) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.comm3\[20\] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot1.bd_pip\[3\]
+	bbox = (1597.8200, 1318.3800) - (1598.1000, 1318.6600) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot1.bd_pip\[3\] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.bottom_comm/delay1.shift_reg\[0\]\[14\]
+	bbox = (1598.3800, 1004.7800) - (1598.6600, 1005.0600) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot1.ad[0] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.bottom_comm/delay1.shift_reg\[0\]\[14\]
+	bbox = (1598.3800, 1008.7000) - (1598.6600, 1008.9800) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.comm3\[21\] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.bottom_comm/delay1.shift_reg\[0\]\[14\]
+	bbox = (1598.3800, 1206.3800) - (1598.6600, 1206.6600) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.comm3\[16\] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot1.bd[1]
+	bbox = (1599.5000, 1256.2200) - (1599.7800, 1256.5000) on Layer Metal2
+violation type: Short
+	srcs: net:_11190_ net:_11201_
+	bbox = (1600.0600, 1140.8100) - (1600.3400, 1141.1900) on Layer Metal2
+violation type: Short
+	srcs: net:_11190_ net:_11201_
+	bbox = (1600.0600, 1140.8600) - (1600.3400, 1141.1400) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.comm3\[21\] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot1.mult2.final_add/block3/_02_
+	bbox = (1600.6200, 1192.3800) - (1600.9000, 1192.6600) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.comm3\[19\] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot1.mult2.final_add/c\[3\]
+	bbox = (1600.6200, 1261.7700) - (1600.9000, 1262.1500) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.comm3\[19\] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot1.mult2.final_add/c\[3\]
+	bbox = (1600.6200, 1261.8200) - (1600.9000, 1262.1000) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.comm3\[17\] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot3.real_out[5]
+	bbox = (1600.6200, 1486.9400) - (1600.9000, 1487.2200) on Layer Metal2
+violation type: Short
+	srcs: net:zero_ net:fft_core.stages_gen_blk\[7\].stage.genblk1.genblk1.odd_stage.triv_rot.imag_sub/one_
+	bbox = (1601.1800, 380.3800) - (1601.4600, 380.6600) on Layer Metal2
+violation type: Short
+	srcs: net:zero_ net:fft_core.stages_gen_blk\[7\].stage.genblk1.genblk1.odd_stage.triv_rot.imag_sub/one_
+	bbox = (1601.1800, 380.3800) - (1601.4600, 380.7100) on Layer Metal2
+violation type: Short
+	srcs: net:_11196_ net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot1.bd[4]
+	bbox = (1601.1800, 1101.0500) - (1601.4600, 1101.4300) on Layer Metal2
+violation type: Short
+	srcs: net:_11196_ net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot1.bd[4]
+	bbox = (1601.1800, 1101.1000) - (1601.4600, 1101.3800) on Layer Metal2
+violation type: Short
+	srcs: net:_11201_ net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.bottom_comm/delay1.shift_reg\[0\]\[20\]
+	bbox = (1601.1800, 1141.9800) - (1601.4600, 1142.2600) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot1.mult2.final_add/block3/_02_ net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot1.mult2.final_add/block3/_12_
+	bbox = (1601.1800, 1191.2600) - (1601.4600, 1192.6600) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot1.mult2.final_add/block3/_02_ net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot1.mult2.final_add/block3/_12_
+	bbox = (1601.1800, 1192.3800) - (1601.4600, 1192.6600) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot1.mult2.final_add/_3_ net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot1.mult2.final_add/c\[3\]
+	bbox = (1601.1800, 1262.0500) - (1601.4600, 1262.1000) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.bottom_comm/delay1.shift_reg\[0\]\[20\] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.bottom_comm/delay1.shift_reg\[0\]\[21\]
+	bbox = (1601.7400, 840.1400) - (1602.0200, 840.4200) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.bottom_comm/delay1.shift_reg\[0\]\[16\] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.bottom_comm/delay1.shift_reg\[0\]\[20\]
+	bbox = (1601.7400, 957.4600) - (1602.0200, 957.7400) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot1.bd_pip\[2\] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.bottom_comm/delay1.shift_reg\[0\]\[16\]
+	bbox = (1602.3000, 990.1700) - (1602.5800, 990.5500) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot1.bd_pip\[2\] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.bottom_comm/delay1.shift_reg\[0\]\[16\]
+	bbox = (1602.3000, 990.2200) - (1602.5800, 990.5000) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.bottom_comm/delay1.shift_reg\[0\]\[16\] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.bottom_comm/delay1.shift_reg\[0\]\[20\]
+	bbox = (1602.3000, 991.9000) - (1602.5800, 992.1800) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot1.mult4.op2\[15\] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.bottom_comm/delay1.shift_reg\[0\]\[20\]
+	bbox = (1602.3000, 1031.1000) - (1602.5500, 1031.3800) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.bottom_comm/delay1.shift_reg\[0\]\[17\] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.bottom_comm/delay1.shift_reg\[0\]\[20\]
+	bbox = (1602.3000, 1031.6600) - (1602.5800, 1031.9400) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.bottom_comm/delay1.shift_reg\[0\]\[17\] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.bottom_comm/delay1.shift_reg\[0\]\[20\]
+	bbox = (1602.3000, 1031.6600) - (1602.5800, 1033.0600) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.bottom_comm/delay1.shift_reg\[0\]\[17\] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.bottom_comm/delay1.shift_reg\[0\]\[20\]
+	bbox = (1602.3000, 1032.7800) - (1602.5800, 1033.0600) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot3.real_out[2] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot3.real_out[3]
+	bbox = (1602.3000, 1785.4200) - (1602.5800, 1785.7000) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot1.mult4.op2\[15\] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.bottom_comm/delay1.shift_reg\[0\]\[20\]
+	bbox = (1602.3100, 1030.4900) - (1602.5500, 1031.3800) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot1.mult4.op2\[15\] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.bottom_comm/delay1.shift_reg\[0\]\[20\]
+	bbox = (1602.3100, 1030.4900) - (1602.5800, 1030.8700) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot1.mult4.op2\[15\] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.bottom_comm/delay1.shift_reg\[0\]\[20\]
+	bbox = (1602.3100, 1030.5400) - (1602.5500, 1031.3800) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot1.mult4.op2\[15\] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.bottom_comm/delay1.shift_reg\[0\]\[20\]
+	bbox = (1602.3100, 1030.5400) - (1602.5800, 1030.8700) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot1.mult4.op2\[15\] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.bottom_comm/delay1.shift_reg\[0\]\[20\]
+	bbox = (1602.3100, 1031.1000) - (1602.5500, 1031.3800) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.bottom_comm/delay1.shift_reg\[0\]\[17\] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.bottom_comm/delay1.shift_reg\[0\]\[20\]
+	bbox = (1602.3100, 1031.6600) - (1602.5800, 1031.9400) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.bottom_comm/delay1.shift_reg\[0\]\[17\] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.bottom_comm/delay1.shift_reg\[0\]\[20\]
+	bbox = (1602.3100, 1031.6600) - (1602.5800, 1033.0600) on Layer Metal2
+violation type: Short
+	srcs: net:_11554_[0] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot1.mult2.final_add/block1/add0.p
+	bbox = (1602.8600, 1376.6200) - (1603.1400, 1376.9000) on Layer Metal2
+violation type: Short
+	srcs: net:_11554_[0] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot3.real_out[2]
+	bbox = (1602.8600, 1409.6600) - (1603.1400, 1409.9400) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot3.real_out[2] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot1.mult2.final_add/block0/_01_
+	bbox = (1603.4195, 1459.5000) - (1603.4205, 1459.7800) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.bottom_comm/delay1.shift_reg\[0\]\[17\] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.bottom_comm/delay1.shift_reg\[0\]\[20\]
+	bbox = (1603.4200, 1096.6200) - (1603.7000, 1096.9000) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot3.real_out[2] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot3.re/block0/_11_
+	bbox = (1603.4200, 1785.4200) - (1603.7000, 1785.7000) on Layer Metal2
+violation type: Short
+	srcs: net:_11556_[0] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.bottom_comm/delay1.shift_reg\[0\]\[17\]
+	bbox = (1603.9800, 1020.9700) - (1604.2600, 1021.3000) on Layer Metal2
+violation type: Short
+	srcs: net:_11556_[0] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.bottom_comm/delay1.shift_reg\[0\]\[17\]
+	bbox = (1603.9800, 1021.0200) - (1604.2600, 1021.3000) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot3.real_out[2] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot1.mult2.final_add/block0/_03_
+	bbox = (1604.2595, 1447.7400) - (1604.2605, 1448.6300) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot3.real_out[2] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot1.mult2.final_add/block0/_03_
+	bbox = (1604.2600, 1447.7400) - (1604.5400, 1448.0200) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot3.real_out[2] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot1.mult2.final_add/block0/_03_
+	bbox = (1604.5395, 1447.1800) - (1604.5405, 1447.4600) on Layer Metal2
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot3.real_out[2] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot1.mult2.final_add/block0/_03_
+	bbox = (1604.5395, 1447.1800) - (1604.5405, 1448.0200) on Layer Metal2
+violation type: Short
+	srcs: net:_04444_ net:net1268
+	bbox = (429.1000, 23.6600) - (429.3800, 23.9400) on Layer Metal3
+violation type: Short
+	srcs: net:fft_core.stage.bf_out_re3[5] net:fft_core.stage.bf_out_re3[6]
+	bbox = (429.1000, 696.2200) - (429.3800, 696.5000) on Layer Metal3
+violation type: Short
+	srcs: net:fft_core.stage.bf_out_re3[5] net:fft_core.stage.bf_out_re3[6]
+	bbox = (429.1000, 696.2200) - (429.3800, 697.0600) on Layer Metal3
+violation type: Short
+	srcs: net:fft_core.stage.bf_out_re3[5] net:fft_core.stage.bf_out_re3[6]
+	bbox = (429.1000, 696.7800) - (429.3800, 697.0600) on Layer Metal3
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[4\].stage.genblk1.even_stage.comm3\[17\] net:fft_core.stages_gen_blk\[4\].stage.genblk1.even_stage.rot3.re/b_eff\[7\]
+	bbox = (475.0200, 531.0200) - (475.3000, 531.3000) on Layer Metal3
+violation type: Short
+	srcs: net:fft_core.stage.bf_out_re3[5] net:fft_core.stage.bf_out_re3[6]
+	bbox = (483.9800, 696.2200) - (484.2600, 696.5000) on Layer Metal3
+violation type: Short
+	srcs: net:fft_core.stages_gen_blk\[4\].stage.genblk1.even_stage.rot3.mult4.s33_pip\[16\] net:net1267
+	bbox = (497.9800, 26.4600) - (498.2600, 26.7400) on Layer Metal3
+violation type: Short
+	srcs: net:reorder_im_re.s0_in\[2\]\[10\] net:reorder_im_re.bottom_comm2/up_in_del\[8\]
+	bbox = (781.9000, 678.8600) - (782.1800, 679.1400) on Layer Metal3
+violation type: Short
+	srcs: net:reorder_im_re.s0_in\[2\]\[10\] net:reorder_im_re.bottom_comm2/up_in_del\[8\]
+	bbox = (781.9000, 678.8600) - (782.1800, 679.7000) on Layer Metal3
+violation type: Short
+	srcs: net:reorder_im_re.s0_in\[2\]\[10\] net:reorder_im_re.bottom_comm2/up_in_del\[8\]
+	bbox = (781.9000, 679.4200) - (782.1800, 679.7000) on Layer Metal3
+violation type: Short
+	srcs: net:din_re[2] net:din_re[5]
+	bbox = (1176.7000, 991.9000) - (1176.9800, 992.1800) on Layer Metal3
+violation type: Short
+	srcs: net:_07613_ net:clknet_leaf_25_adc_clk
+	bbox = (1192.9400, 1014.3000) - (1193.2200, 1014.5800) on Layer Metal3
+violation type: Short
+	srcs: net:din_re[2] net:din_re[5]
+	bbox = (1256.7800, 991.9000) - (1257.0600, 992.1800) on Layer Metal3
+violation type: Short
+	srcs: net:din_re[5] net:VDD
+	bbox = (1294.5700, 993.0195) - (1295.9900, 993.0205) on Layer Metal3
+violation type: Short
+	srcs: net:din_re[3] net:din_re[4]
+	bbox = (1310.5400, 994.7000) - (1310.8200, 994.9800) on Layer Metal3
+violation type: Short
+	srcs: net:din_re[5] net:VDD
+	bbox = (1334.5700, 992.7395) - (1335.9900, 992.7405) on Layer Metal3
+violation type: Short
+	srcs: net:din_re[3] net:din_re[4]
+	bbox = (1336.8600, 994.7000) - (1337.1400, 994.9800) on Layer Metal3
+violation type: Short
+	srcs: net:din_im[3] net:din_im[4]
+	bbox = (1620.2200, 1013.1800) - (1620.5000, 1013.4600) on Layer Metal3
+violation type: Short
+	srcs: net:din_re[2] net:din_re[5]
+	bbox = (1621.9000, 992.4600) - (1622.1800, 992.7400) on Layer Metal3
+violation type: Short
+	srcs: net:din_re[2] net:din_re[4]
+	bbox = (1621.9000, 994.1400) - (1622.1800, 994.4200) on Layer Metal3
+violation type: Short
+	srcs: net:din_re[2] net:din_re[3]
+	bbox = (1621.9000, 994.7000) - (1622.1800, 994.9800) on Layer Metal3
+violation type: Metal Spacing
+	srcs: net:fft_core.stages_gen_blk\[4\].stage.genblk1.even_stage.butterfly2.real_sub/p\[0\]
+	bbox = (354.9250, 840.1500) - (355.1300, 840.3950) on Layer Metal1
+violation type: Metal Spacing
+	srcs: net:_01054_ net:VSS
+	bbox = (602.8050, 1825.6450) - (603.0350, 1825.7650) on Layer Metal1
+violation type: Metal Spacing
+	srcs: net:net1469
+	bbox = (934.2300, 597.6800) - (934.4900, 597.6850) on Layer Metal1
+violation type: Metal Spacing
+	srcs: net:fft_core.stages_gen_blk\[5\].stage.dout_im2\[10\] net:VDD
+	bbox = (1084.6850, 1256.2450) - (1084.8950, 1256.4500) on Layer Metal1
+violation type: Metal Spacing
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.mult3.final_add/block0/_00_ net:VDD
+	bbox = (1138.4450, 711.9250) - (1138.6550, 712.1300) on Layer Metal1
+violation type: Metal Spacing
+	srcs: net:net1072 net:net1522
+	bbox = (1343.0450, 1539.2750) - (1343.2750, 1539.2800) on Layer Metal1
+violation type: Metal Spacing
+	srcs: net:net1072 net:net1522
+	bbox = (1343.0450, 1539.2750) - (1343.2900, 1539.2800) on Layer Metal1
+violation type: Metal Spacing
+	srcs: net:fft_core.stages_gen_blk\[7\].stage.genblk1.genblk1.odd_stage.triv_rot.imag_sub/g\[1\] net:VDD
+	bbox = (1515.8850, 366.4300) - (1516.0950, 366.6350) on Layer Metal1
+violation type: Metal Spacing
+	srcs: net:zero_ net:VSS
+	bbox = (1528.4900, 394.2850) - (1528.7200, 394.4050) on Layer Metal1
+violation type: Metal Spacing
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot3.re/block1/_04_ net:VDD
+	bbox = (1588.8450, 1729.8850) - (1589.0750, 1730.0050) on Layer Metal1
+violation type: Metal Spacing
+	srcs: net:_09505_ net:net1174
+	bbox = (17.5000, 1659.7500) - (17.7800, 1659.9800) on Layer Metal2
+violation type: Metal Spacing
+	srcs: net:fft_core.stages_gen_blk\[4\].stage.genblk1.even_stage.rot2.c\[0\] net:net1177
+	bbox = (19.7400, 1318.1000) - (20.0200, 1318.3300) on Layer Metal2
+violation type: Metal Spacing
+	srcs: net:_09505_ net:net1160
+	bbox = (22.5400, 1655.2200) - (22.8200, 1655.4500) on Layer Metal2
+violation type: Metal Spacing
+	srcs: net:_01698_ net:VSS
+	bbox = (51.3800, 1471.4900) - (51.4200, 1471.5400) on Layer Metal2
+violation type: Metal Spacing
+	srcs: net:_01698_ net:VSS
+	bbox = (51.3800, 1471.4900) - (51.4200, 1471.8700) on Layer Metal2
+violation type: Metal Spacing
+	srcs: net:_01698_ net:VSS
+	bbox = (51.3900, 1471.4900) - (51.4200, 1471.5400) on Layer Metal2
+violation type: Metal Spacing
+	srcs: net:_01698_ net:VSS
+	bbox = (51.3900, 1471.4900) - (51.4200, 1471.8700) on Layer Metal2
+violation type: Metal Spacing
+	srcs: net:_07122_ net:net1321
+	bbox = (89.7400, 1206.1500) - (90.0200, 1206.3800) on Layer Metal2
+violation type: Metal Spacing
+	srcs: net:_06870_ net:fft_core.stages_gen_blk\[4\].stage.genblk1.even_stage.rot2.mult3.csa_s3_2.cout\[17\]
+	bbox = (153.0200, 1070.6300) - (153.3000, 1070.8600) on Layer Metal2
+violation type: Metal Spacing
+	srcs: net:VSS net:net1278
+	bbox = (212.7400, 1330.3700) - (212.9400, 1330.7500) on Layer Metal2
+violation type: Metal Spacing
+	srcs: net:_01751_ net:net1333
+	bbox = (234.7800, 1292.3900) - (235.0600, 1292.6200) on Layer Metal2
+violation type: Metal Spacing
+	srcs: net:fft_core.stages_gen_blk\[4\].stage.genblk1.even_stage.rot3.mult2.op2\[15\]
+	bbox = (244.8600, 194.2300) - (245.1400, 194.4600) on Layer Metal2
+violation type: Metal Spacing
+	srcs: net:fft_core.stages_gen_blk\[4\].stage.genblk1.even_stage.rot3.mult2.op2\[15\]
+	bbox = (244.8600, 194.2300) - (245.1500, 194.4600) on Layer Metal2
+violation type: Metal Spacing
+	srcs: net:fft_core.stages_gen_blk\[4\].stage.genblk1.even_stage.rot3.mult2.op2\[15\] net:fft_core.stages_gen_blk\[4\].stage.genblk1.even_stage.rot3.mult2.final_add/block0/_05_
+	bbox = (245.1500, 193.9000) - (245.4200, 194.2300) on Layer Metal2
+violation type: Metal Spacing
+	srcs: net:fft_core.stages_gen_blk\[4\].stage.genblk1.even_stage.rot3.mult2.op2\[15\] net:fft_core.stages_gen_blk\[4\].stage.genblk1.even_stage.rot3.mult2.final_add/block0/_05_
+	bbox = (245.1500, 193.9000) - (245.4200, 194.7400) on Layer Metal2
+violation type: Metal Spacing
+	srcs: net:fft_core.stages_gen_blk\[4\].stage.genblk1.even_stage.rot3.mult2.op2\[15\] net:fft_core.stages_gen_blk\[4\].stage.genblk1.even_stage.rot3.mult2.final_add/block0/_05_
+	bbox = (245.1500, 194.4600) - (245.4200, 194.7400) on Layer Metal2
+violation type: Metal Spacing
+	srcs: net:fft_core.stages_gen_blk\[4\].stage.genblk1.even_stage.rot2.mult1.final_add/block1/add0.p
+	bbox = (284.6200, 1604.3100) - (284.9000, 1604.4900) on Layer Metal2
+violation type: Metal Spacing
+	srcs: net:fft_core.stages_gen_blk\[4\].stage.genblk1.even_stage.rot2.ac[5] net:fft_core.stages_gen_blk\[4\].stage.genblk1.even_stage.rot2.ac_pip\[0\]
+	bbox = (301.4200, 1242.5000) - (301.7000, 1242.7300) on Layer Metal2
+violation type: Metal Spacing
+	srcs: net:fft_core.stages_gen_blk\[4\].stage.genblk1.even_stage.rot1.re/b_eff\[1\] net:net1062
+	bbox = (326.6200, 1832.7400) - (326.9000, 1832.9700) on Layer Metal2
+violation type: Metal Spacing
+	srcs: net:fft_core.stages_gen_blk\[4\].stage.genblk1.even_stage.rot2.mult4.op1\[21\] net:fft_core.stages_gen_blk\[4\].stage.genblk1.even_stage.rot2.mult4.final_add/_1_
+	bbox = (327.7400, 1221.7800) - (328.0200, 1222.0100) on Layer Metal2
+violation type: Metal Spacing
+	srcs: net:_10330_ net:fft_core.stages_gen_blk\[4\].stage.genblk1.even_stage.rot3.mult1.csa_s2_2.cout\[19\]
+	bbox = (359.6600, 416.5000) - (359.9400, 416.7300) on Layer Metal2
+violation type: Metal Spacing
+	srcs: net:net1203 net:net1207
+	bbox = (360.2200, 490.4700) - (360.5000, 490.7000) on Layer Metal2
+violation type: Metal Spacing
+	srcs: net:_11530_[2]
+	bbox = (385.9500, 501.0600) - (386.2600, 501.2900) on Layer Metal2
+violation type: Metal Spacing
+	srcs: net:_11530_[2]
+	bbox = (385.9800, 501.0600) - (386.2600, 501.2900) on Layer Metal2
+violation type: Metal Spacing
+	srcs: net:fft_core.stage.stage1.bf_out_im0_pip\[5\] net:fft_core.stage.stage1.bf_out_im0_pip\[7\]
+	bbox = (403.9000, 837.6700) - (404.1800, 837.9000) on Layer Metal2
+violation type: Metal Spacing
+	srcs: net:_06129_ net:fft_core.stages_gen_blk\[4\].stage.genblk1.even_stage.rot3.mult3.partial_pip\[15\]\[15\]
+	bbox = (429.1000, 349.3500) - (429.3800, 349.5800) on Layer Metal2
+violation type: Metal Spacing
+	srcs: net:fft_core.stages_gen_blk\[4\].stage.genblk1.even_stage.rot3.re/b_eff\[5\] net:reorder_im_re.top_comm4/delay2.shift_reg\[7\]\[1\]
+	bbox = (457.7100, 552.0700) - (457.9500, 552.3000) on Layer Metal2
+violation type: Metal Spacing
+	srcs: net:fft_core.stages_gen_blk\[4\].stage.genblk1.even_stage.rot3.re/b_eff\[5\] net:reorder_im_re.top_comm4/delay2.shift_reg\[7\]\[1\]
+	bbox = (457.9500, 551.6900) - (458.2200, 552.0700) on Layer Metal2
+violation type: Metal Spacing
+	srcs: net:fft_core.stages_gen_blk\[4\].stage.genblk1.even_stage.rot3.re/b_eff\[5\] net:reorder_im_re.top_comm4/delay2.shift_reg\[7\]\[1\]
+	bbox = (457.9500, 551.7400) - (458.2200, 552.0200) on Layer Metal2
+violation type: Metal Spacing
+	srcs: net:fft_core.din_im3_reg\[8\] net:fft_core.stage.stage1.butterfly2.imag_add/_0_
+	bbox = (459.3400, 959.1900) - (459.6200, 959.4200) on Layer Metal2
+violation type: Metal Spacing
+	srcs: net:_04589_ net:_04592_
+	bbox = (489.5800, 1746.5000) - (489.8600, 1746.5900) on Layer Metal2
+violation type: Metal Spacing
+	srcs: net:fft_core.stage.stage1.butterfly2.real_sub/block1/_09_ net:fft_core.stage.stage1.butterfly2.real_sub/block1/_13_
+	bbox = (500.5500, 687.7700) - (500.7800, 688.1000) on Layer Metal2
+violation type: Metal Spacing
+	srcs: net:VDD net:clknet_leaf_60_fft_clk
+	bbox = (534.3800, 700.7000) - (534.6200, 700.7500) on Layer Metal2
+violation type: Metal Spacing
+	srcs: net:fft_core.stages_gen_blk\[4\].stage.genblk1.even_stage.rot1.mult4.op2\[15\] net:fft_core.stages_gen_blk\[4\].stage.genblk1.even_stage.rot1.mult4.final_add/block0/_06_
+	bbox = (580.3000, 1775.1100) - (580.5500, 1775.3400) on Layer Metal2
+violation type: Metal Spacing
+	srcs: net:fft_core.stages_gen_blk\[4\].stage.genblk1.even_stage.rot1.mult4.op2\[15\] net:fft_core.stages_gen_blk\[4\].stage.genblk1.even_stage.rot1.mult4.final_add/block0/_06_
+	bbox = (580.3100, 1775.1100) - (580.5500, 1775.3400) on Layer Metal2
+violation type: Metal Spacing
+	srcs: net:fft_core.stages_gen_blk\[4\].stage.genblk1.even_stage.rot1.mult4.op1\[17\] net:fft_core.stages_gen_blk\[4\].stage.genblk1.even_stage.rot1.mult4.op2\[15\]
+	bbox = (580.5900, 1775.9000) - (580.8600, 1776.1800) on Layer Metal2
+violation type: Metal Spacing
+	srcs: net:fft_core.stages_gen_blk\[4\].stage.genblk1.even_stage.rot1.mult4.op1\[17\] net:fft_core.stages_gen_blk\[4\].stage.genblk1.even_stage.rot1.mult4.op2\[15\]
+	bbox = (580.5900, 1775.9000) - (580.8600, 1776.4300) on Layer Metal2
+violation type: Metal Spacing
+	srcs: net:fft_core.stages_gen_blk\[4\].stage.genblk1.even_stage.rot1.real_out[8] net:VDD
+	bbox = (654.5000, 1153.9700) - (654.6200, 1154.3500) on Layer Metal2
+violation type: Metal Spacing
+	srcs: net:_01623_ net:fft_core.stages_gen_blk\[4\].stage.genblk1.even_stage.rot1.mult1.partial_pip\[11\]\[19\]
+	bbox = (668.2200, 1706.2300) - (668.5000, 1706.4600) on Layer Metal2
+violation type: Metal Spacing
+	srcs: net:_05725_ net:_05971_
+	bbox = (716.3800, 344.8700) - (716.6600, 345.1000) on Layer Metal2
+violation type: Metal Spacing
+	srcs: net:_06945_ net:_06948_
+	bbox = (728.7000, 536.3400) - (728.9800, 536.5700) on Layer Metal2
+violation type: Metal Spacing
+	srcs: net:rst net:clknet_0_fft_clk
+	bbox = (807.3800, 722.2600) - (807.6600, 722.5400) on Layer Metal2
+violation type: Metal Spacing
+	srcs: net:rst net:clknet_0_fft_clk
+	bbox = (807.3800, 722.2600) - (807.6600, 723.3800) on Layer Metal2
+violation type: Metal Spacing
+	srcs: net:rst net:fft_core.stages_gen_blk\[5\].stage.genblk1.genblk1.odd_stage.butterfly1.real_sub/b_eff\[1\]
+	bbox = (808.2200, 1409.4300) - (808.5000, 1409.6600) on Layer Metal2
+violation type: Metal Spacing
+	srcs: net:rst net:fft_core.stages_gen_blk\[4\].stage.genblk1.even_stage.rot1.mult1.final_add/block2/_02_
+	bbox = (808.7800, 1696.1000) - (809.0300, 1696.3300) on Layer Metal2
+violation type: Metal Spacing
+	srcs: net:clknet_0_fft_clk net:net1529
+	bbox = (809.0600, 603.2100) - (809.3400, 603.5900) on Layer Metal2
+violation type: Metal Spacing
+	srcs: net:clknet_0_fft_clk net:net1529
+	bbox = (809.0600, 603.2600) - (809.3400, 603.5400) on Layer Metal2
+violation type: Metal Spacing
+	srcs: net:fft_core.stages_gen_blk\[5\].stage.genblk1.genblk1.odd_stage.butterfly1.real_sub/block0/add0.p net:clknet_0_fft_clk
+	bbox = (810.7400, 1427.8600) - (811.0200, 1428.1400) on Layer Metal2
+violation type: Metal Spacing
+	srcs: net:fft_core.stages_gen_blk\[5\].stage.genblk1.genblk1.odd_stage.butterfly1.real_sub/block0/add0.p net:clknet_0_fft_clk
+	bbox = (810.7400, 1427.8600) - (811.0200, 1428.7500) on Layer Metal2
+violation type: Metal Spacing
+	srcs: net:stp_re/stp0/load0_p net:VSS
+	bbox = (811.3000, 755.8100) - (811.4200, 756.1900) on Layer Metal2
+violation type: Metal Spacing
+	srcs: net:rst net:VSS
+	bbox = (811.3000, 1814.2100) - (811.4200, 1814.5900) on Layer Metal2
+violation type: Metal Spacing
+	srcs: net:fft_core.stages_gen_blk\[5\].stage.genblk1.genblk1.odd_stage.butterfly1.real_sub/_02_ net:VDD
+	bbox = (815.9400, 1204.3700) - (816.0600, 1204.7500) on Layer Metal2
+violation type: Metal Spacing
+	srcs: net:dout_re[2] net:fft_core.stages_gen_blk\[4\].stage.genblk1.even_stage.rot3.im/net1187
+	bbox = (817.7400, 186.3900) - (818.0200, 186.6200) on Layer Metal2
+violation type: Metal Spacing
+	srcs: net:fft_core.stages_gen_blk\[5\].stage.genblk1.genblk1.odd_stage.butterfly1.imag_sub/block3/add0.p net:fft_core.stages_gen_blk\[5\].stage.genblk1.genblk1.odd_stage.butterfly1.imag_sub/block3/add3.p
+	bbox = (820.5400, 1196.6300) - (820.8200, 1196.8600) on Layer Metal2
+violation type: Metal Spacing
+	srcs: net:adc_clk net:fft_core.stages_gen_blk\[5\].stage.genblk1.genblk1.odd_stage.butterfly1.real_sub/b_eff\[0\]
+	bbox = (824.7400, 1413.3000) - (824.9900, 1413.5300) on Layer Metal2
+violation type: Metal Spacing
+	srcs: net:adc_clk net:fft_core.stages_gen_blk\[5\].stage.genblk1.genblk1.odd_stage.butterfly1.real_sub/b_eff\[0\]
+	bbox = (824.7400, 1413.3000) - (825.0200, 1413.5300) on Layer Metal2
+violation type: Metal Spacing
+	srcs: net:adc_clk net:net1426
+	bbox = (827.5400, 1796.0600) - (827.8200, 1796.3400) on Layer Metal2
+violation type: Metal Spacing
+	srcs: net:adc_clk net:net1426
+	bbox = (827.5400, 1796.0600) - (827.8200, 1796.6700) on Layer Metal2
+violation type: Metal Spacing
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.val\[6\] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.mult4.final_add/block1/_05_
+	bbox = (859.7400, 360.5000) - (860.0200, 360.5250) on Layer Metal2
+violation type: Metal Spacing
+	srcs: net:_04044_
+	bbox = (915.7400, 591.7800) - (916.0200, 592.0100) on Layer Metal2
+violation type: Metal Spacing
+	srcs: net:_04044_
+	bbox = (915.7400, 591.7800) - (916.0300, 592.0100) on Layer Metal2
+violation type: Metal Spacing
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.butterfly2.real_add/block1/_07_ net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.butterfly2.real_sub/_02_
+	bbox = (923.5800, 1371.9100) - (923.8600, 1372.1400) on Layer Metal2
+violation type: Metal Spacing
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.butterfly2.real_add/block1/_05_ net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.butterfly2.real_sub/_02_
+	bbox = (924.1400, 1372.4200) - (924.4200, 1372.6500) on Layer Metal2
+violation type: Metal Spacing
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.a\[12\] net:VDD
+	bbox = (934.5000, 609.6500) - (934.6200, 610.0300) on Layer Metal2
+violation type: Metal Spacing
+	srcs: net:_04114_ net:_04116_
+	bbox = (942.6200, 543.6700) - (942.9000, 543.9000) on Layer Metal2
+violation type: Metal Spacing
+	srcs: net:_04116_
+	bbox = (943.7400, 541.9400) - (944.0200, 542.1700) on Layer Metal2
+violation type: Metal Spacing
+	srcs: net:_04116_
+	bbox = (943.7400, 541.9900) - (944.0200, 542.1700) on Layer Metal2
+violation type: Metal Spacing
+	srcs: net:_04302_
+	bbox = (966.4200, 677.6600) - (966.6700, 678.0200) on Layer Metal2
+violation type: Metal Spacing
+	srcs: net:_04655_ net:_04659_
+	bbox = (998.0600, 577.2200) - (998.3400, 577.4500) on Layer Metal2
+violation type: Metal Spacing
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.butterfly1.real_add/block3/_07_ net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.butterfly1.real_add/block3/add1.p
+	bbox = (1008.1400, 844.9000) - (1008.4200, 845.1300) on Layer Metal2
+violation type: Metal Spacing
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.c\[1\] net:net1463
+	bbox = (1008.7000, 724.5000) - (1008.9800, 724.7300) on Layer Metal2
+violation type: Metal Spacing
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.ac[2] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.b\[2\]
+	bbox = (1029.9800, 566.0700) - (1030.2600, 566.3000) on Layer Metal2
+violation type: Metal Spacing
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.mult1.op2\[20\] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.mult1.final_add/block1/add0.p
+	bbox = (1033.3500, 425.4600) - (1033.6200, 425.6900) on Layer Metal2
+violation type: Metal Spacing
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.mult1.op2\[20\] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.mult1.final_add/block1/add0.p
+	bbox = (1033.3500, 425.4600) - (1033.6300, 425.6900) on Layer Metal2
+violation type: Metal Spacing
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.mult1.op2\[20\] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.mult1.final_add/block1/add0.p
+	bbox = (1033.6300, 425.6900) - (1033.9000, 426.0700) on Layer Metal2
+violation type: Metal Spacing
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.mult1.op2\[20\] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.mult1.final_add/block1/add0.p
+	bbox = (1033.6300, 425.7400) - (1033.9000, 426.0700) on Layer Metal2
+violation type: Metal Spacing
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.mult1.final_add/c\[1\]
+	bbox = (1034.4600, 421.0300) - (1034.7400, 421.2100) on Layer Metal2
+violation type: Metal Spacing
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.b\[13\] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.mult1.final_add/block1/_13_
+	bbox = (1034.4700, 385.1400) - (1034.7400, 385.3700) on Layer Metal2
+violation type: Metal Spacing
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.b\[13\] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.mult1.final_add/block1/_13_
+	bbox = (1034.4700, 385.1400) - (1034.7500, 385.3700) on Layer Metal2
+violation type: Metal Spacing
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.b\[13\] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.mult1.final_add/block1/_13_
+	bbox = (1034.7500, 385.3700) - (1035.0200, 385.7500) on Layer Metal2
+violation type: Metal Spacing
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.b\[13\] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.mult1.final_add/block1/_13_
+	bbox = (1034.7500, 385.4200) - (1035.0200, 385.7500) on Layer Metal2
+violation type: Metal Spacing
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.bf_out_re0[4] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.butterfly2.imag_add/block3/net1408
+	bbox = (1063.8600, 990.2200) - (1064.1100, 990.5500) on Layer Metal2
+violation type: Metal Spacing
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.bf_out_re0[4] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.butterfly2.imag_add/block3/net1408
+	bbox = (1063.8600, 990.2200) - (1064.1100, 991.0600) on Layer Metal2
+violation type: Metal Spacing
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.bf_out_re0[4] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.butterfly2.imag_add/block3/net1408
+	bbox = (1063.8600, 990.7800) - (1064.1100, 991.0600) on Layer Metal2
+violation type: Metal Spacing
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.butterfly2.imag_add/block3/net1408
+	bbox = (1064.1100, 990.5500) - (1064.4200, 990.7800) on Layer Metal2
+violation type: Metal Spacing
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.butterfly2.imag_add/block3/net1408
+	bbox = (1064.1400, 990.5500) - (1064.4200, 990.7800) on Layer Metal2
+violation type: Metal Spacing
+	srcs: net:_03676_ net:VDD
+	bbox = (1134.4200, 1547.0900) - (1134.6200, 1547.4700) on Layer Metal2
+violation type: Metal Spacing
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot1.mult1.partial\[1\]\[7\] net:clknet_6_49__leaf_fft_clk
+	bbox = (1137.5000, 1034.7900) - (1137.7800, 1035.0200) on Layer Metal2
+violation type: Metal Spacing
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.butterfly1.imag_add/_0_ net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.butterfly1.imag_add/block1/_09_
+	bbox = (1137.5000, 1362.9500) - (1137.7800, 1363.1800) on Layer Metal2
+violation type: Metal Spacing
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.mult3.final_add/block1/_04_ net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.mult3.final_add/block1/_08_
+	bbox = (1138.0600, 419.9100) - (1138.3400, 420.1400) on Layer Metal2
+violation type: Metal Spacing
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot3.mult1.final_add/block2/_00_
+	bbox = (1138.6200, 1852.9500) - (1138.9000, 1853.1300) on Layer Metal2
+violation type: Metal Spacing
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.im/block1/_02_ net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.im/block1/_05_
+	bbox = (1139.1800, 370.0200) - (1139.4600, 370.2500) on Layer Metal2
+violation type: Metal Spacing
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.im/block1/_01_ net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.im/block1/_02_
+	bbox = (1144.2200, 369.5100) - (1144.5000, 369.7400) on Layer Metal2
+violation type: Metal Spacing
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.im/block1/_00_ net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.im/block1/_02_
+	bbox = (1144.2200, 370.0200) - (1144.5000, 370.2500) on Layer Metal2
+violation type: Metal Spacing
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.im/block1/_02_ net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot2.im/block1/add1.cin
+	bbox = (1144.7800, 369.5100) - (1145.0600, 369.7400) on Layer Metal2
+violation type: Metal Spacing
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.top_out_pip\[5\]\[25\] net:clknet_leaf_457_fft_clk
+	bbox = (1145.3400, 823.6700) - (1145.6200, 823.9000) on Layer Metal2
+violation type: Metal Spacing
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.butterfly1.imag_sub/block2/_11_ net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.butterfly1.imag_sub/block2/add1.cin
+	bbox = (1164.3800, 1297.4300) - (1164.6600, 1297.6600) on Layer Metal2
+violation type: Metal Spacing
+	srcs: net:_02227_ net:VDD
+	bbox = (1175.9400, 1829.3300) - (1176.1400, 1829.3800) on Layer Metal2
+violation type: Metal Spacing
+	srcs: net:clknet_2_1_0_fft_clk
+	bbox = (1183.7000, 325.4500) - (1183.9800, 325.7800) on Layer Metal2
+violation type: Metal Spacing
+	srcs: net:fft_core.stages_gen_blk\[7\].stage.genblk1.genblk1.odd_stage.butterfly1.imag_add/block2/_05_ net:fft_core.stages_gen_blk\[7\].stage.genblk1.genblk1.odd_stage.top_comm/delay1.dout\[12\]
+	bbox = (1206.3800, 493.2700) - (1206.6600, 493.5000) on Layer Metal2
+violation type: Metal Spacing
+	srcs: net:_07836_
+	bbox = (1245.3500, 919.6600) - (1245.5800, 919.9600) on Layer Metal2
+violation type: Metal Spacing
+	srcs: net:_07698_ net:_07822_
+	bbox = (1257.3400, 1012.3400) - (1257.6200, 1012.5700) on Layer Metal2
+violation type: Metal Spacing
+	srcs: net:_02172_ net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot3.mult3.s33_pip\[17\]
+	bbox = (1286.4600, 1826.5800) - (1286.7400, 1826.8100) on Layer Metal2
+violation type: Metal Spacing
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot1.bc_pip\[10\] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot1.mult1.final_add/block0/_06_
+	bbox = (1355.9500, 1066.6600) - (1356.1800, 1066.8900) on Layer Metal2
+violation type: Metal Spacing
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot3.mult3.csa_s3_1.cout\[25\] net:net1107
+	bbox = (1365.9800, 1757.7000) - (1366.2600, 1757.9300) on Layer Metal2
+violation type: Metal Spacing
+	srcs: net:_11017_ net:VDD
+	bbox = (1375.9400, 1093.4900) - (1376.0600, 1093.5400) on Layer Metal2
+violation type: Metal Spacing
+	srcs: net:_10025_ net:_10037_
+	bbox = (1390.1100, 1423.3800) - (1390.3400, 1423.6100) on Layer Metal2
+violation type: Metal Spacing
+	srcs: net:_10025_ net:_10037_
+	bbox = (1390.1100, 1423.3800) - (1390.3900, 1423.6100) on Layer Metal2
+violation type: Metal Spacing
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot1.mult3.op1\[15\] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot3.real_out[8]
+	bbox = (1395.1000, 1489.5100) - (1395.3800, 1489.7400) on Layer Metal2
+violation type: Metal Spacing
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot1.mult3.final_add/block0/_07_ net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot1.mult3.final_add/block0/add0.p
+	bbox = (1398.4600, 1453.6200) - (1398.7400, 1453.8500) on Layer Metal2
+violation type: Metal Spacing
+	srcs: net:_09200_ net:_09205_
+	bbox = (1415.2600, 1347.2700) - (1415.5400, 1347.5000) on Layer Metal2
+violation type: Metal Spacing
+	srcs: net:_10620_
+	bbox = (1429.8200, 1161.9100) - (1430.1000, 1162.0900) on Layer Metal2
+violation type: Metal Spacing
+	srcs: net:_10620_
+	bbox = (1429.8200, 1161.9100) - (1430.1200, 1162.0900) on Layer Metal2
+violation type: Metal Spacing
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot1.mult2.csa_s3_1.s\[19\] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot1.mult2.partial_pip\[2\]\[11\]
+	bbox = (1507.6600, 1398.7900) - (1507.9400, 1399.0200) on Layer Metal2
+violation type: Metal Spacing
+	srcs: net:fft_core.stages_gen_blk\[8\].stage.dout_re1\[10\] net:pts_re/genblk1\[3\].pts/rc0/_03_
+	bbox = (1517.1800, 132.0700) - (1517.4600, 132.3000) on Layer Metal2
+violation type: Metal Spacing
+	srcs: net:fft_core.stages_gen_blk\[8\].stage.genblk1.genblk1.genblk1.last_stage.butterfly2.imag_add/block1/_06_
+	bbox = (1521.6600, 310.1500) - (1521.9400, 310.3300) on Layer Metal2
+violation type: Metal Spacing
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot1.bd[2] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot1.bd_pip\[3\]
+	bbox = (1596.7000, 1150.1500) - (1596.9800, 1150.3800) on Layer Metal2
+violation type: Metal Spacing
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.comm3\[21\] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot1.bd_pip\[3\]
+	bbox = (1597.2600, 1286.7900) - (1597.5400, 1287.0200) on Layer Metal2
+violation type: Metal Spacing
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot1.bd[2] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot1.bd_pip\[3\]
+	bbox = (1598.3800, 1316.9800) - (1598.6600, 1317.2100) on Layer Metal2
+violation type: Metal Spacing
+	srcs: net:_11198_ net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.bottom_comm/delay1.shift_reg\[0\]\[21\]
+	bbox = (1598.9400, 1100.8200) - (1599.2200, 1101.0500) on Layer Metal2
+violation type: Metal Spacing
+	srcs: net:_11178_ net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.bottom_comm/delay1.shift_reg\[0\]\[21\]
+	bbox = (1598.9400, 1151.2700) - (1599.2200, 1151.5000) on Layer Metal2
+violation type: Metal Spacing
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.comm3\[21\] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot1.mult2.final_add/block3/_02_
+	bbox = (1598.9400, 1206.6600) - (1599.2200, 1206.7500) on Layer Metal2
+violation type: Metal Spacing
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot1.mult2.final_add/block3/_03_ net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot1.mult2.final_add/block3/add0.p
+	bbox = (1599.5000, 1207.7800) - (1599.7800, 1208.0100) on Layer Metal2
+violation type: Metal Spacing
+	srcs: net:_11201_ net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot1.mult4.csa_s6_1.cout\[14\]
+	bbox = (1600.6200, 1140.6300) - (1600.9000, 1140.8600) on Layer Metal2
+violation type: Metal Spacing
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot1.mult4.op2\[15\] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.bottom_comm/delay1.shift_reg\[0\]\[20\]
+	bbox = (1602.3000, 1030.2600) - (1602.5500, 1030.4900) on Layer Metal2
+violation type: Metal Spacing
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot1.mult4.op2\[15\] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.bottom_comm/delay1.shift_reg\[0\]\[20\]
+	bbox = (1602.3000, 1030.2600) - (1602.5800, 1030.4900) on Layer Metal2
+violation type: Metal Spacing
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot1.mult4.op2\[15\] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.bottom_comm/delay1.shift_reg\[0\]\[20\]
+	bbox = (1602.3000, 1030.8700) - (1602.5800, 1031.1000) on Layer Metal2
+violation type: Metal Spacing
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.bottom_comm/delay1.shift_reg\[0\]\[17\] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.bottom_comm/delay1.shift_reg\[0\]\[20\]
+	bbox = (1602.5800, 1031.1000) - (1602.8300, 1031.3800) on Layer Metal2
+violation type: Metal Spacing
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.bottom_comm/delay1.shift_reg\[0\]\[17\] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.bottom_comm/delay1.shift_reg\[0\]\[20\]
+	bbox = (1602.5800, 1031.1000) - (1602.8300, 1031.9400) on Layer Metal2
+violation type: Metal Spacing
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.bottom_comm/delay1.shift_reg\[0\]\[17\] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.bottom_comm/delay1.shift_reg\[0\]\[20\]
+	bbox = (1602.5900, 1031.1000) - (1602.8300, 1031.3800) on Layer Metal2
+violation type: Metal Spacing
+	srcs: net:_11187_
+	bbox = (1602.8600, 1164.7100) - (1603.1400, 1164.8900) on Layer Metal2
+violation type: Metal Spacing
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot3.real_out[2] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot1.mult2.final_add/block0/_01_
+	bbox = (1603.1400, 1459.8300) - (1603.1400, 1460.0600) on Layer Metal2
+violation type: Metal Spacing
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot1.bd_pip\[3\] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.bottom_comm/delay1.shift_reg\[0\]\[17\]
+	bbox = (1603.9800, 965.9100) - (1604.2600, 966.1400) on Layer Metal2
+violation type: Metal Spacing
+	srcs: net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot3.real_out[2] net:fft_core.stages_gen_blk\[6\].stage.genblk1.even_stage.rot1.mult2.final_add/block0/_00_
+	bbox = (1603.9800, 1459.7800) - (1604.2600, 1460.0100) on Layer Metal2
