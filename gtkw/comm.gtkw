@@ -1,0 +1,59 @@
+[*]
+[*] GTKWave Analyzer v4.0.0-prealpha (8ba24ab) (w)1999-2022 BSI
+[*] Thu May 14 17:16:40 2026
+[*]
+[dumpfile] "/foss/designs/WaferSpace-GF180-June26/blocks/dsp-fft/testbench.vcd"
+[dumpfile_mtime] "Thu May 14 17:09:45 2026"
+[dumpfile_size] 11388
+[savefile] "/foss/designs/WaferSpace-GF180-June26/blocks/dsp-fft/comm.gtkw"
+[timestart] 600000
+[size] 1427 600
+[pos] -1 -1
+*-14.715321 702200 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+[markername] AA
+[markername] BB
+[markername] CC
+[markername] DD
+[markername] EE
+[markername] FF
+[markername] GG
+[markername] HH
+[markername] II
+[markername] JJ
+[markername] KK
+[markername] LL
+[markername] MM
+[markername] NN
+[markername] OO
+[markername] PP
+[markername] QQ
+[markername] RR
+[markername] SS
+[markername] TT
+[markername] UU
+[markername] VV
+[markername] WW
+[markername] XX
+[markername] YY
+[markername] ZZ
+[treeopen] tb_commutator.
+[sst_width] 297
+[signals_width] 174
+[sst_expanded] 1
+[sst_vpaned_height] 149
+@28
+tb_commutator.DUT.clk
+tb_commutator.DUT.select
+@420
+tb_commutator.DUT.up_in[15:0]
+tb_commutator.DUT.low_in[15:0]
+tb_commutator.DUT.up_out[15:0]
+tb_commutator.DUT.low_out[15:0]
+@200
+-
+@420
+tb_commutator.DUT.low_in_del[15:0]
+@25
+tb_commutator.DUT.low_out_temp[15:0]
+[pattern_trace] 1
+[pattern_trace] 0

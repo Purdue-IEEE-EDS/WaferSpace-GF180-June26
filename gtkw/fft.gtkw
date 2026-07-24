@@ -1,0 +1,171 @@
+[*]
+[*] GTKWave Analyzer v4.0.0-prealpha (8ba24ab) (w)1999-2022 BSI
+[*] Wed May 20 20:50:38 2026
+[*]
+[dumpfile] "/foss/designs/WaferSpace-GF180-June26/blocks/dsp-fft/sim/testbench.vcd"
+[dumpfile_mtime] "Wed May 20 19:49:04 2026"
+[dumpfile_size] 9462575
+[savefile] "/foss/designs/WaferSpace-GF180-June26/blocks/dsp-fft/fft.gtkw"
+[timestart] 0
+[size] 1427 832
+[pos] -1 -1
+*-20.435074 2438000 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+[markername] AA
+[markername] BB
+[markername] CC
+[markername] DD
+[markername] EE
+[markername] FF
+[markername] GG
+[markername] HH
+[markername] II
+[markername] JJ
+[markername] KK
+[markername] LL
+[markername] MM
+[markername] NN
+[markername] OO
+[markername] PP
+[markername] QQ
+[markername] RR
+[markername] SS
+[markername] TT
+[markername] UU
+[markername] VV
+[markername] WW
+[markername] XX
+[markername] YY
+[markername] ZZ
+[treeopen] tb_fft.
+[treeopen] tb_fft.DUT.
+[treeopen] tb_fft.DUT.stages_gen_blk[1].
+[treeopen] tb_fft.DUT.stages_gen_blk[2].
+[treeopen] tb_fft.DUT.stages_gen_blk[2].stage.
+[treeopen] tb_fft.DUT.stages_gen_blk[3].
+[treeopen] tb_fft.DUT.stages_gen_blk[3].stage.
+[treeopen] tb_fft.DUT.stages_gen_blk[4].
+[treeopen] tb_fft.DUT.stages_gen_blk[5].
+[treeopen] tb_fft.DUT.stages_gen_blk[6].
+[treeopen] tb_fft.DUT.stages_gen_blk[7].
+[treeopen] tb_fft.DUT.stages_gen_blk[8].
+[sst_width] 297
+[signals_width] 234
+[sst_expanded] 1
+[sst_vpaned_height] 279
+@28
+tb_fft.DUT.stages_gen_blk[1].stage.in_valid
+@8420
+tb_fft.DUT.stages_gen_blk[1].stage.din_im0[15:0]
+tb_fft.DUT.stages_gen_blk[1].stage.din_im1[15:0]
+tb_fft.DUT.stages_gen_blk[1].stage.din_im2[15:0]
+tb_fft.DUT.stages_gen_blk[1].stage.din_im3[15:0]
+tb_fft.DUT.stages_gen_blk[1].stage.din_re0[15:0]
+tb_fft.DUT.stages_gen_blk[1].stage.din_re1[15:0]
+tb_fft.DUT.stages_gen_blk[1].stage.din_re2[15:0]
+tb_fft.DUT.stages_gen_blk[1].stage.din_re3[15:0]
+@200
+-
+@28
+tb_fft.DUT.stages_gen_blk[1].stage.out_valid
+@8420
+tb_fft.DUT.stages_gen_blk[1].stage.dout_im0[15:0]
+tb_fft.DUT.stages_gen_blk[1].stage.dout_im1[15:0]
+tb_fft.DUT.stages_gen_blk[1].stage.dout_im2[15:0]
+tb_fft.DUT.stages_gen_blk[1].stage.dout_im3[15:0]
+tb_fft.DUT.stages_gen_blk[1].stage.dout_re0[15:0]
+tb_fft.DUT.stages_gen_blk[1].stage.dout_re1[15:0]
+tb_fft.DUT.stages_gen_blk[1].stage.dout_re2[15:0]
+tb_fft.DUT.stages_gen_blk[1].stage.dout_re3[15:0]
+@200
+-
+@28
+tb_fft.DUT.stages_gen_blk[2].stage.out_valid
+@8420
+tb_fft.DUT.stages_gen_blk[2].stage.dout_im0[15:0]
+tb_fft.DUT.stages_gen_blk[2].stage.dout_im1[15:0]
+tb_fft.DUT.stages_gen_blk[2].stage.dout_im2[15:0]
+tb_fft.DUT.stages_gen_blk[2].stage.dout_im3[15:0]
+tb_fft.DUT.stages_gen_blk[2].stage.dout_re0[15:0]
+tb_fft.DUT.stages_gen_blk[2].stage.dout_re1[15:0]
+tb_fft.DUT.stages_gen_blk[2].stage.dout_re2[15:0]
+tb_fft.DUT.stages_gen_blk[2].stage.dout_re3[15:0]
+@200
+-
+@28
+tb_fft.DUT.stages_gen_blk[3].stage.out_valid
+@8420
+tb_fft.DUT.stages_gen_blk[3].stage.dout_im0[15:0]
+tb_fft.DUT.stages_gen_blk[3].stage.dout_im1[15:0]
+tb_fft.DUT.stages_gen_blk[3].stage.dout_im2[15:0]
+tb_fft.DUT.stages_gen_blk[3].stage.dout_im3[15:0]
+tb_fft.DUT.stages_gen_blk[3].stage.dout_re0[15:0]
+tb_fft.DUT.stages_gen_blk[3].stage.dout_re1[15:0]
+tb_fft.DUT.stages_gen_blk[3].stage.dout_re2[15:0]
+tb_fft.DUT.stages_gen_blk[3].stage.dout_re3[15:0]
+@200
+-
+@28
+tb_fft.DUT.stages_gen_blk[4].stage.out_valid
+@8420
+tb_fft.DUT.stages_gen_blk[4].stage.dout_im0[15:0]
+tb_fft.DUT.stages_gen_blk[4].stage.dout_im1[15:0]
+tb_fft.DUT.stages_gen_blk[4].stage.dout_im2[15:0]
+tb_fft.DUT.stages_gen_blk[4].stage.dout_im3[15:0]
+tb_fft.DUT.stages_gen_blk[4].stage.dout_re0[15:0]
+tb_fft.DUT.stages_gen_blk[4].stage.dout_re1[15:0]
+tb_fft.DUT.stages_gen_blk[4].stage.dout_re2[15:0]
+tb_fft.DUT.stages_gen_blk[4].stage.dout_re3[15:0]
+@200
+-
+@28
+tb_fft.DUT.stages_gen_blk[5].stage.out_valid
+@8420
+tb_fft.DUT.stages_gen_blk[5].stage.dout_im0[15:0]
+tb_fft.DUT.stages_gen_blk[5].stage.dout_im1[15:0]
+tb_fft.DUT.stages_gen_blk[5].stage.dout_im2[15:0]
+tb_fft.DUT.stages_gen_blk[5].stage.dout_im3[15:0]
+tb_fft.DUT.stages_gen_blk[5].stage.dout_re0[15:0]
+tb_fft.DUT.stages_gen_blk[5].stage.dout_re1[15:0]
+tb_fft.DUT.stages_gen_blk[5].stage.dout_re2[15:0]
+tb_fft.DUT.stages_gen_blk[5].stage.dout_re3[15:0]
+@200
+-
+@28
+tb_fft.DUT.stages_gen_blk[6].stage.out_valid
+@8420
+tb_fft.DUT.stages_gen_blk[6].stage.dout_im0[15:0]
+tb_fft.DUT.stages_gen_blk[6].stage.dout_im1[15:0]
+tb_fft.DUT.stages_gen_blk[6].stage.dout_im2[15:0]
+tb_fft.DUT.stages_gen_blk[6].stage.dout_im3[15:0]
+tb_fft.DUT.stages_gen_blk[6].stage.dout_re0[15:0]
+tb_fft.DUT.stages_gen_blk[6].stage.dout_re1[15:0]
+tb_fft.DUT.stages_gen_blk[6].stage.dout_re2[15:0]
+tb_fft.DUT.stages_gen_blk[6].stage.dout_re3[15:0]
+@200
+-
+@28
+tb_fft.DUT.stages_gen_blk[7].stage.out_valid
+@8420
+tb_fft.DUT.stages_gen_blk[7].stage.dout_im0[15:0]
+tb_fft.DUT.stages_gen_blk[7].stage.dout_im1[15:0]
+tb_fft.DUT.stages_gen_blk[7].stage.dout_im2[15:0]
+tb_fft.DUT.stages_gen_blk[7].stage.dout_im3[15:0]
+tb_fft.DUT.stages_gen_blk[7].stage.dout_re0[15:0]
+tb_fft.DUT.stages_gen_blk[7].stage.dout_re1[15:0]
+tb_fft.DUT.stages_gen_blk[7].stage.dout_re2[15:0]
+tb_fft.DUT.stages_gen_blk[7].stage.dout_re3[15:0]
+@200
+-
+@28
+tb_fft.DUT.stages_gen_blk[8].stage.out_valid
+@8420
+tb_fft.DUT.stages_gen_blk[8].stage.dout_im0[15:0]
+tb_fft.DUT.stages_gen_blk[8].stage.dout_im1[15:0]
+tb_fft.DUT.stages_gen_blk[8].stage.dout_im2[15:0]
+tb_fft.DUT.stages_gen_blk[8].stage.dout_im3[15:0]
+tb_fft.DUT.stages_gen_blk[8].stage.dout_re0[15:0]
+tb_fft.DUT.stages_gen_blk[8].stage.dout_re1[15:0]
+tb_fft.DUT.stages_gen_blk[8].stage.dout_re2[15:0]
+tb_fft.DUT.stages_gen_blk[8].stage.dout_re3[15:0]
+[pattern_trace] 1
+[pattern_trace] 0
